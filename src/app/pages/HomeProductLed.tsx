@@ -41,7 +41,7 @@ export default function HomeProductLed() {
               <img
                 src={heroImage}
                 alt="Zuraio AI Hub product interface"
-                className="relative z-10 w-full h-auto max-w-[720px] cursor-zoom-in scale-[1.08] rounded-lg transition-transform duration-700 ease-out hover:z-30 hover:scale-[1.38] lg:hover:-translate-x-[22%]"
+                className="relative z-10 w-full h-auto max-w-[720px] cursor-zoom-in scale-[1.08] rounded-lg transition-all duration-700 ease-out hover:z-30 hover:scale-[1.38] hover:opacity-90 lg:hover:-translate-x-[22%]"
                 style={{
                   display: 'block',
                   transformOrigin: 'center'
