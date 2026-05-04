@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
 
 interface ComparisonBannerProps {
-  currentVersion: 'original' | 'revised' | 'product-led';
+  currentVersion: 'original' | 'revised' | 'product-led' | 'refined';
 }
 
 const options = [
   { id: 'original', label: 'Original', to: '/home-original' },
   { id: 'revised', label: 'Visual / Photo-led', to: '/home-revised' },
   { id: 'product-led', label: 'Product-led', to: '/home-product-led' },
+  { id: 'refined', label: 'Refined', to: '/home-v4' },
 ] as const;
 
 export function ComparisonBanner({ currentVersion }: ComparisonBannerProps) {
