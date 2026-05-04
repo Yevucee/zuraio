@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ComparisonBanner } from '../../components/ComparisonBanner';
 import heroImage from '../../../imports/hero_image_2_-.png';
+import { SilhouetteAvatar, TestimonialCard } from './components/TestimonialCard';
 
 const RED = '#C8102E';
 const PAPER = '#F7F5EE';
@@ -72,6 +73,8 @@ const personas = [
   ['Administration', ['email summaries', 'document search', 'report drafts']],
   ['Sales & client teams', ['client briefs', 'proposal preparation', 'follow-up drafting']],
 ] as const;
+
+const customerLogoSlots = ['Logo 1', 'Logo 2', 'Logo 3', 'Logo 4', 'Logo 5', 'Logo 6'];
 
 function useRevealSections() {
   useEffect(() => {
@@ -560,6 +563,69 @@ function StickyDemoBar({ show, onDemo, onDismiss }: { show: boolean; onDemo: () 
   );
 }
 
+function CustomerLogoStrip() {
+  return (
+    <Section className="bg-white py-16 md:py-20 lg:py-24">
+      <div className="mx-auto max-w-[1100px] text-center">
+        <p className="mb-8 text-xs font-semibold uppercase tracking-[0.08em]" style={{ color: MUTED }}>
+          Trusted by Swiss companies
+        </p>
+        {/* TODO: replace placeholder logo slots with real customer/partner SVG logos.
+            Each logo should be a single-color SVG, max-height 40px, rendered in muted
+            greyscale by default and full color on hover. */}
+        <div className="grid grid-cols-2 gap-4 min-[481px]:grid-cols-3 md:grid-cols-6">
+          {customerLogoSlots.map((label) => (
+            <div
+              key={label}
+              role="img"
+              aria-label="Customer logo placeholder"
+              className="flex h-10 items-center justify-center rounded border bg-white text-sm opacity-60 transition-opacity duration-300 hover:opacity-100"
+              style={{ borderColor: BORDER, color: MUTED }}
+            >
+              {label}
+            </div>
+          ))}
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+function FounderPhotoSlot() {
+  const [hasPhotoError, setHasPhotoError] = useState(false);
+
+  if (hasPhotoError) {
+    return <SilhouetteAvatar size={160} className="mx-auto mb-4" />;
+  }
+
+  return (
+    <img
+      src="src/assets/founders/founder-1.jpg"
+      alt="Founder portrait placeholder"
+      className="mx-auto mb-4 h-40 w-40 rounded-full border object-cover"
+      style={{
+        borderColor: SOFT,
+        boxShadow: 'inset 0 1px 2px rgba(11,20,36,0.04)',
+      }}
+      onError={() => setHasPhotoError(true)}
+    />
+  );
+}
+
+function SwissContextPhotoSlot() {
+  return (
+    <div
+      className="mx-auto mt-8 hidden aspect-[4/3] w-full max-w-[320px] items-center justify-center rounded-xl border px-6 text-center text-sm md:flex"
+      style={{ backgroundColor: 'white', borderColor: BORDER, color: MUTED }}
+    >
+      {/* TODO: when a real Swiss-context photo is available, drop at
+          src/assets/founders/environment-1.jpg and replace the placeholder. Avoid
+          generic "team smiling at laptop" stock photography. */}
+      Photo placeholder — Swiss-context image (office, Zurich skyline, boardroom)
+    </div>
+  );
+}
+
 export default function HomeV4() {
   const [activeModal, setActiveModal] = useState<'video' | 'pdf' | null>(null);
   const [pdfSubmitted, setPdfSubmitted] = useState(false);
@@ -679,9 +745,18 @@ export default function HomeV4() {
       </Section>
 
       <Section className="bg-white">
+        {/* TODO: replace placeholder customer name, role, photo and quote with a real
+            reference once approved. Photo should be square, min 320×320, neutral
+            background. Drop it at src/assets/customers/customer-1.jpg. */}
+        <TestimonialCard />
+      </Section>
+
+      <Section className="bg-white">
         <div className="mb-12 text-center"><h2 className="text-4xl font-semibold md:text-5xl" style={{ color: INK }}>Less searching. Fewer missed details. Better-prepared teams.</h2></div>
         <BeforeAfter />
       </Section>
+
+      <CustomerLogoStrip />
 
       <Section>
         <div className="mb-12">
@@ -724,10 +799,13 @@ export default function HomeV4() {
             <p className="text-xl leading-relaxed" style={{ color: BODY }}>Zuraio started because we needed a better way to prepare, search, summarise, draft and follow up — without handing sensitive company knowledge to uncontrolled tools. <em>We built the layer we wanted to use ourselves.</em></p>
           </div>
           <div className="text-center">
-            {/* TODO: replace placeholder with real founder photo + name once available */}
-            <div className="mx-auto mb-4 flex h-40 w-40 items-center justify-center rounded-full text-3xl font-semibold" style={{ backgroundColor: SOFT, color: INK }}>FN</div>
+            {/* TODO: drop a real founder headshot at src/assets/founders/founder-1.jpg
+                (square, min 320×320, neutral background). Replace placeholder name + title
+                at the same time. Until the asset exists, the silhouette fallback renders. */}
+            <FounderPhotoSlot />
             <p className="font-semibold" style={{ color: INK }}>[Founder Name]</p>
             <p style={{ color: MUTED }}>Co-founder & CEO</p>
+            <SwissContextPhotoSlot />
           </div>
         </div>
       </Section>
