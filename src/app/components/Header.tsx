@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import logo from '../../imports/260209_Zuraio_Logo_and_Claim.png';
 
 const navItems = [
   { label: 'Home', to: '/' },
@@ -28,22 +29,8 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" style={{ borderColor: 'rgba(70, 70, 70, 0.2)' }}>
       <div className="container mx-auto flex h-16 items-center justify-between px-6 max-w-[1320px]">
-        <Link to="/" className="flex items-center gap-3" onClick={() => setIsMenuOpen(false)}>
-          <span
-            className="flex h-9 w-9 items-center justify-center rounded-md text-lg font-semibold"
-            style={{ backgroundColor: 'var(--zuraio-olive)', color: 'var(--paper-white)' }}
-            aria-hidden="true"
-          >
-            Z
-          </span>
-          <span className="leading-none">
-            <span className="block text-xl font-semibold tracking-tight" style={{ color: 'var(--deep-charcoal)' }}>
-              Zuraio
-            </span>
-            <span className="block text-[10px] uppercase tracking-[0.18em]" style={{ fontFamily: 'var(--font-mono)', color: 'var(--charcoal)' }}>
-              own your data
-            </span>
-          </span>
+        <Link to="/" className="flex items-center" onClick={() => setIsMenuOpen(false)}>
+          <img src={logo} alt="Zuraio - own your data" className="h-8" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { FeatureCard } from '../components/FeatureCard';
 import { ComparisonBanner } from '../components/ComparisonBanner';
-import { ProductInterfacePreview } from '../components/ProductInterfacePreview';
+import heroImage from '../../imports/hero_image_2_-.png';
 
 export default function HomeProductLed() {
   return (
@@ -37,8 +37,18 @@ export default function HomeProductLed() {
               </div>
             </div>
 
-            <div className="flex justify-center items-center">
-              <ProductInterfacePreview />
+            <div className="flex justify-center items-center overflow-visible">
+              <img
+                src={heroImage}
+                alt="Zuraio AI Hub product interface"
+                className="w-full h-auto"
+                style={{
+                  display: 'block',
+                  maxWidth: '720px',
+                  transform: 'scale(1.08)',
+                  transformOrigin: 'center'
+                }}
+              />
             </div>
           </div>
         </div>
