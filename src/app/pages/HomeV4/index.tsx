@@ -658,13 +658,14 @@ export default function HomeV4() {
           <div className="grid grid-cols-1 lg:grid-cols-[42%_58%] gap-12 lg:gap-14 items-center">
             <div className="max-w-[560px]">
               <p className="mb-6 inline-flex rounded-full px-4 py-2 text-sm font-semibold" style={{ backgroundColor: SOFT, color: INK }}>
-                AI Hub for Swiss companies
+                Controlled AI for Swiss companies
               </p>
-              <h1 className="mb-6 text-4xl font-semibold leading-tight md:text-5xl lg:text-6xl" style={{ color: INK }}>
-                Use AI on the work your company already does. Without losing control of your data.
+              <h1 className="mb-6 text-4xl font-semibold leading-[1.05] md:text-5xl lg:text-6xl" style={{ color: INK }}>
+                <span className="block">Use AI.</span>
+                <span className="block">Keep control.</span>
               </h1>
-              <p className="mb-10 max-w-[560px] text-lg leading-relaxed md:text-xl" style={{ color: MUTED }}>
-                Zuraio AI Hub connects your emails, documents, meetings and internal knowledge through one controlled layer — with configurable data residency, model choice and auditability built in.
+              <p className="mb-10 max-w-[520px] text-lg leading-relaxed md:text-xl" style={{ color: MUTED }}>
+                One Hub for your emails, documents and meetings — with residency, model choice and audit built in.
               </p>
               <div className="mb-5 flex flex-col gap-4 sm:flex-row">
                 <PrimaryButton to="/contact">Book a private demo</PrimaryButton>
