@@ -37,15 +37,13 @@ export default function HomeProductLed() {
               </div>
             </div>
 
-            <div className="flex justify-center items-center overflow-visible">
+            <div className="relative flex justify-center items-center overflow-visible">
               <img
                 src={heroImage}
                 alt="Zuraio AI Hub product interface"
-                className="w-full h-auto"
+                className="relative z-10 w-full h-auto max-w-[720px] cursor-zoom-in scale-[1.08] rounded-lg transition-transform duration-700 ease-out hover:z-30 hover:scale-[1.38] lg:hover:-translate-x-[22%]"
                 style={{
                   display: 'block',
-                  maxWidth: '720px',
-                  transform: 'scale(1.08)',
                   transformOrigin: 'center'
                 }}
               />
