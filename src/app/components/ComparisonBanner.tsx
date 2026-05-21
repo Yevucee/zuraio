@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 interface ComparisonBannerProps {
-  currentVersion: 'original' | 'revised' | 'product-led' | 'refined';
+  currentVersion: 'original' | 'revised' | 'product-led' | 'refined' | 'motion-led';
 }
 
 const options = [
@@ -9,6 +9,7 @@ const options = [
   { id: 'revised', label: 'Visual / Photo-led', to: '/home-revised' },
   { id: 'product-led', label: 'Product-led', to: '/home-product-led' },
   { id: 'refined', label: 'Refined', to: '/home-v4' },
+  { id: 'motion-led', label: 'Home v5 — Motion-led', to: '/home-v5' },
 ] as const;
 
 export function ComparisonBanner({ currentVersion }: ComparisonBannerProps) {

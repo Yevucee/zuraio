@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import HomeRevised from "./pages/HomeRevised";
 import HomeProductLed from "./pages/HomeProductLed";
 import HomeV4 from "./pages/HomeV4";
+import HomeV5 from "./pages/HomeV5";
 import HowItHelps from "./pages/HowItHelps";
 import DataControl from "./pages/DataControl";
 import Platform from "./pages/Platform";
@@ -23,6 +24,7 @@ export const router = createHashRouter([
       { path: "home-revised", Component: HomeRevised },
       { path: "home-product-led", Component: HomeProductLed },
       { path: "home-v4", Component: HomeV4 },
+      { path: "home-v5", Component: HomeV5 },
       { path: "how-it-helps", Component: HowItHelps },
       { path: "data-control", Component: DataControl },
       { path: "platform", Component: Platform },
