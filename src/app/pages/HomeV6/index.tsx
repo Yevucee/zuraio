@@ -6,7 +6,7 @@ import { ToolStrip } from './components/ToolStrip';
 import { DailyWorkCards } from './components/DailyWorkCards';
 import { ProductExamples } from './components/ProductExamples';
 import { ControlSection } from './components/ControlSection';
-import { SetupSection } from './components/SetupSection';
+import { AuditReadinessSection } from './components/AuditReadinessSection';
 import { FounderSection } from './components/FounderSection';
 import { FinalCTA } from './components/FinalCTA';
 import { useReducedMotion } from './components/hooks/useReducedMotion';
@@ -49,7 +49,7 @@ export default function HomeV6() {
       <DailyWorkCards />
       <ProductExamples />
       <ControlSection />
-      <SetupSection />
+      <AuditReadinessSection />
       <FounderSection />
       <FinalCTA />
     </div>
