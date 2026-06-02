@@ -11,6 +11,17 @@ export function V6Styles() {
         box-shadow: 0 1px 2px rgba(11,20,36,0.04), 0 8px 24px rgba(11,20,36,0.04);
       }
 
+      .v6-control-card {
+        box-shadow: 0 1px 2px rgba(11,20,36,0.04), 0 4px 16px rgba(11,20,36,0.03);
+        transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+      }
+
+      .v6-control-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 4px rgba(11,20,36,0.05), 0 12px 28px rgba(11,20,36,0.07);
+        border-color: rgba(159, 175, 82, 0.35) !important;
+      }
+
       .v6-btn-primary {
         transition: transform 180ms ease, box-shadow 180ms ease;
       }
@@ -91,6 +102,7 @@ export function V6Styles() {
         .v6-reveal,
         .v6-step,
         .v6-btn-primary,
+        .v6-control-card,
         .v6-flow-dot {
           animation: none !important;
           transition: none !important;
