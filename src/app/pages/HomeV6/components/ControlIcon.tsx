@@ -1,10 +1,4 @@
-export type ControlIconType =
-  | 'swiss-hosting'
-  | 'on-premise'
-  | 'access'
-  | 'sources'
-  | 'model'
-  | 'review';
+export type ControlIconType = 'swiss-hosting' | 'access' | 'sources' | 'review';
 
 const stroke = {
   fill: 'none' as const,
@@ -28,13 +22,6 @@ export function ControlIcon({ type }: { type: ControlIconType }) {
             <path d="M8 8V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3M12 12v4" {...stroke} />
           </>
         )}
-        {type === 'on-premise' && (
-          <>
-            <rect x="3" y="4" width="7" height="16" rx="1" {...stroke} />
-            <rect x="14" y="7" width="7" height="13" rx="1" {...stroke} />
-            <path d="M5 8h3M5 12h3M16 10h3M16 14h3" {...stroke} />
-          </>
-        )}
         {type === 'access' && (
           <>
             <circle cx="9" cy="8" r="3" {...stroke} />
@@ -45,14 +32,6 @@ export function ControlIcon({ type }: { type: ControlIconType }) {
           <>
             <path d="M8 4h8l2 3v13H6V7l2-3z" {...stroke} />
             <path d="M10 11h4M10 15h4" {...stroke} />
-          </>
-        )}
-        {type === 'model' && (
-          <>
-            <circle cx="6" cy="12" r="2" {...stroke} />
-            <circle cx="18" cy="8" r="2" {...stroke} />
-            <circle cx="18" cy="16" r="2" {...stroke} />
-            <path d="M8 12h4M14 9l2-1M14 15l2 1" {...stroke} />
           </>
         )}
         {type === 'review' && (
