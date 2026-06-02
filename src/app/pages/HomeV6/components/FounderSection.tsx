@@ -1,27 +1,28 @@
+import { useI18n } from '../../../../i18n/I18nProvider';
 import { V6Section } from './V6Section';
 
 export function FounderSection() {
+  const { messages: m } = useI18n();
+  const f = m.homeV6.founder;
+
   return (
     <V6Section reveal>
       <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
         <div>
           <h2 className="mb-4 text-3xl font-semibold md:text-4xl" style={{ color: 'var(--deep-charcoal)' }}>
-            Made for the work we had to do ourselves.
+            {f.title}
           </h2>
           <p className="mb-4 text-base leading-relaxed" style={{ color: 'var(--charcoal)' }}>
-            Zuraio started because we needed a better way to prepare, search, summarise, draft and follow up in our own
-            work.
+            {f.body1}
           </p>
           <p className="mb-4 text-base leading-relaxed" style={{ color: 'var(--charcoal)' }}>
-            Public AI tools were useful, but they were not enough for serious company work. We wanted AI connected to
-            real business knowledge, with clear control over data, access and model choice.
+            {f.body2}
           </p>
           <p className="text-base leading-relaxed" style={{ color: 'var(--charcoal)' }}>
-            That is what became Zuraio.
+            {f.body3}
           </p>
         </div>
 
-        {/* TODO: replace with approved founder or team photo at src/assets/home-v6/founder.jpg */}
         <div
           className="flex aspect-[4/3] items-center justify-center rounded-xl border px-6 text-center text-sm"
           style={{
@@ -30,9 +31,9 @@ export function FounderSection() {
             color: 'var(--charcoal)',
           }}
           role="img"
-          aria-label="Founder or team photo placeholder"
+          aria-label={f.photoAria}
         >
-          Founder or team photo placeholder — calm, documentary-style image preferred
+          {f.photoPlaceholder}
         </div>
       </div>
     </V6Section>

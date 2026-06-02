@@ -1,51 +1,22 @@
+import { useI18n } from '../../../../i18n/I18nProvider';
 import { V6Section } from './V6Section';
 
-const proofCards = [
-  {
-    title: 'What was asked',
-    body: 'See the prompt or request that started the work.',
-  },
-  {
-    title: 'What was used',
-    body: 'Show the approved company sources behind the answer.',
-  },
-  {
-    title: 'What was produced',
-    body: 'Keep a reviewable record of the draft, answer or summary.',
-  },
-] as const;
-
-const sources = ['Email thread', 'Contract draft', 'Policy note'] as const;
-
 function AuditTrailVisual() {
+  const { messages: m } = useI18n();
+  const a = m.homeV6.audit;
+
   const steps = [
-    {
-      label: 'Prompt',
-      content: '“What changed in the Q3 contract thread?”',
-      type: 'text' as const,
-    },
-    {
-      label: 'Sources used',
-      content: null,
-      type: 'sources' as const,
-    },
-    {
-      label: 'Output',
-      content: 'Draft reply prepared',
-      type: 'text' as const,
-    },
-    {
-      label: 'Review',
-      content: 'Hans Peter Meyer · Saved for review',
-      type: 'text' as const,
-    },
+    { label: a.steps.prompt.label, content: a.steps.prompt.content, type: 'text' as const },
+    { label: a.steps.sources.label, content: null, type: 'sources' as const },
+    { label: a.steps.output.label, content: a.steps.output.content, type: 'text' as const },
+    { label: a.steps.review.label, content: a.steps.review.content, type: 'text' as const },
   ];
 
   return (
     <div
       className="v6-card rounded-xl border bg-white p-5 md:p-6"
       style={{ borderColor: 'rgba(70, 70, 70, 0.12)' }}
-      aria-label="Example audit trail showing prompt, sources, output and review"
+      aria-label={a.trailAria}
     >
       <div className="relative space-y-0">
         {steps.map((step, index) => (
@@ -73,7 +44,7 @@ function AuditTrailVisual() {
               </p>
               {step.type === 'sources' ? (
                 <div className="flex flex-wrap gap-2">
-                  {sources.map((source) => (
+                  {a.sourceTags.map((source) => (
                     <span
                       key={source}
                       className="rounded-full border px-2.5 py-1 text-xs font-medium"
@@ -101,6 +72,9 @@ function AuditTrailVisual() {
 }
 
 export function AuditReadinessSection() {
+  const { messages: m } = useI18n();
+  const a = m.homeV6.audit;
+
   return (
     <V6Section background="grey" reveal>
       <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-14">
@@ -109,22 +83,20 @@ export function AuditReadinessSection() {
             className="mb-4 text-xs font-semibold tracking-[0.12em]"
             style={{ fontFamily: 'var(--font-mono)', color: 'var(--zuraio-olive)' }}
           >
-            REVIEWABLE AI USE
+            {a.label}
           </p>
           <h2 className="mb-4 text-3xl font-semibold md:text-4xl" style={{ color: 'var(--deep-charcoal)' }}>
-            AI you can explain later.
+            {a.title}
           </h2>
           <p className="mb-4 text-base leading-relaxed" style={{ color: 'var(--charcoal)' }}>
-            As AI becomes part of daily work, companies will need to understand how answers, drafts and summaries were
-            produced.
+            {a.body1}
           </p>
           <p className="mb-8 text-base leading-relaxed" style={{ color: 'var(--charcoal)' }}>
-            Zuraio is designed to make prompts, sources, outputs and review steps easier to trace, so your team can use
-            AI with more confidence.
+            {a.body2}
           </p>
 
           <div className="mb-8 flex flex-col gap-3">
-            {proofCards.map(({ title, body }) => (
+            {a.proofCards.map(({ title, body }) => (
               <article
                 key={title}
                 className="rounded-lg border bg-white p-4"
@@ -141,7 +113,7 @@ export function AuditReadinessSection() {
           </div>
 
           <p className="text-sm leading-relaxed" style={{ color: 'var(--charcoal)' }}>
-            This helps companies prepare for future AI governance, internal review and audit expectations.
+            {a.footnote}
           </p>
         </div>
 

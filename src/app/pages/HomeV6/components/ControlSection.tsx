@@ -1,28 +1,8 @@
+import { useI18n } from '../../../../i18n/I18nProvider';
 import { V6Section } from './V6Section';
 import { ControlIcon, type ControlIconType } from './ControlIcon';
 
-const trustCards: { title: string; body: string; icon: ControlIconType }[] = [
-  {
-    title: 'Hosted in Switzerland',
-    body: 'For Swiss companies that want their Zuraio environment hosted in Switzerland.',
-    icon: 'swiss-hosting',
-  },
-  {
-    title: 'Access follows your rules',
-    body: 'People only work with the sources and information they are allowed to use.',
-    icon: 'access',
-  },
-  {
-    title: 'Answers show their sources',
-    body: 'Your team can check where information came from before relying on it.',
-    icon: 'sources',
-  },
-  {
-    title: 'Built to be reviewed',
-    body: 'Prompts, sources and outputs can be easier to trace according to the agreed setup.',
-    icon: 'review',
-  },
-];
+const cardIcons: ControlIconType[] = ['swiss-hosting', 'access', 'sources', 'review'];
 
 function TrustCard({
   title,
@@ -52,6 +32,9 @@ function TrustCard({
 }
 
 export function ControlSection() {
+  const { messages: m } = useI18n();
+  const c = m.homeV6.control;
+
   return (
     <V6Section>
       <div
@@ -66,25 +49,24 @@ export function ControlSection() {
           className="mb-8 text-center text-xs font-semibold uppercase tracking-[0.1em] md:text-left"
           style={{ fontFamily: 'var(--font-mono)', color: 'var(--zuraio-olive)' }}
         >
-          Controlled company AI
+          {c.label}
         </p>
 
         <div className="mx-auto max-w-[800px] text-center md:text-left">
           <h2 className="mb-4 text-3xl font-semibold md:text-4xl" style={{ color: 'var(--deep-charcoal)' }}>
-            AI, without handing over the keys.
+            {c.title}
           </h2>
           <p className="mb-3 text-lg leading-relaxed" style={{ color: 'var(--charcoal)' }}>
-            AI should not mean losing control of company data.
+            {c.body1}
           </p>
           <p className="text-lg leading-relaxed" style={{ color: 'var(--charcoal)' }}>
-            Zuraio gives companies control over where it runs, what it can use, who can access it and how outputs can
-            be reviewed.
+            {c.body2}
           </p>
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
-          {trustCards.map((card) => (
-            <TrustCard key={card.title} {...card} />
+          {c.cards.map((card, index) => (
+            <TrustCard key={card.title} {...card} icon={cardIcons[index]} />
           ))}
         </div>
 
@@ -96,10 +78,10 @@ export function ControlSection() {
           }}
         >
           <p className="mb-1 text-sm font-semibold" style={{ color: 'var(--deep-charcoal)' }}>
-            Need stronger control?
+            {c.strongerTitle}
           </p>
           <p className="text-sm leading-relaxed" style={{ color: 'var(--charcoal)' }}>
-            On-premise options and model choice can be discussed for companies with stricter internal requirements.
+            {c.strongerBody}
           </p>
         </div>
       </div>
