@@ -52,6 +52,8 @@ A self-contained landing page package lives in `zuraio-landing/`. It is intended
 
 If `index.html` and the images in `zuraio-landing/assets/` are not yet in the repo, see `zuraio-landing/ADD_MISSING_FILES.md` for how to add them from your Mac.
 
+**Live URL:** `/zuraio/index.html` (static, isolated from the React app)
+
 ## Deploy to GitHub Pages
 
 This project includes a GitHub Actions workflow at `.github/workflows/deploy.yml`.
