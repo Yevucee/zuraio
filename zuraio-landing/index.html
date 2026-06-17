@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Zuraio — AI for Swiss companies that need control of their data</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --olive:#9FAF52;
+    --olive-deep:#788A36;
+    --soft-olive:#D0DC9A;
+    --soft-olive-tint:#EAF0D6;
+    --charcoal:#262823;
+    --charcoal-soft:#464646;
+    --muted:#6C6F66;
+    --hairline:#E4E6DC;
+    --cloud:#F3F4EE;
+    --paper:#FBFBF8;
+    --white:#FFFFFF;
+    --teal:#1C857D;
+    --teal-soft:#E0F0EE;
+    --shadow-sm:0 1px 2px rgba(38,40,35,.04), 0 2px 8px rgba(38,40,35,.04);
+    --shadow-md:0 4px 12px rgba(38,40,35,.06), 0 12px 36px rgba(38,40,35,.07);
+    --shadow-lg:0 8px 24px rgba(38,40,35,.08), 0 30px 80px rgba(38,40,35,.10);
+    --radius:14px;
+    --radius-lg:22px;
+    --maxw:1180px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    color:var(--charcoal);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  h1,h2,h3,h4{margin:0;font-weight:600;line-height:1.12;letter-spacing:-0.015em;color:var(--charcoal);}
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  .serif{font-family:"IBM Plex Serif",Georgia,serif;font-weight:400;letter-spacing:-0.01em;}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace;}
+
+  /* section markers / eyebrows */
+  .marker{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11.5px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--olive-deep);
+    display:inline-flex;align-items:center;gap:9px;
+  }
+  .marker::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--olive);box-shadow:0 0 0 4px var(--soft-olive-tint);}
+
+  section{position:relative;}
+  .pad{padding:104px 0;}
+  .pad-sm{padding:80px 0;}
+  .lede{font-size:18px;color:var(--muted);max-width:60ch;}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:saturate(140%) blur(10px);
+    background:rgba(251,251,248,.82);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s, box-shadow .3s;
+  }
+  header.nav.scrolled{border-bottom:1px solid var(--hairline);box-shadow:var(--shadow-sm);}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:70px;}
+  .brand{display:flex;align-items:center;gap:11px;}
+  .brand svg{width:34px;height:34px;display:block;}
+  .brand .wm{font-weight:600;font-size:20px;letter-spacing:-0.01em;}
+  .nav-links{display:flex;align-items:center;gap:30px;}
+  .nav-links a{font-size:14.5px;color:var(--charcoal-soft);font-weight:500;transition:color .2s;}
+  .nav-links a:hover{color:var(--olive-deep);}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    font-family:inherit;font-size:14.5px;font-weight:600;cursor:pointer;
+    padding:11px 20px;border-radius:10px;border:1px solid transparent;
+    transition:transform .15s var(--ease), background .2s, box-shadow .2s, border-color .2s;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--olive);color:#fff;box-shadow:0 1px 0 rgba(0,0,0,.04);}
+  .btn-primary:hover{background:var(--olive-deep);transform:translateY(-1px);box-shadow:var(--shadow-md);}
+  .btn-ghost{background:transparent;color:var(--charcoal);border-color:var(--hairline);}
+  .btn-ghost:hover{border-color:var(--olive);color:var(--olive-deep);background:var(--white);}
+  .btn-lg{padding:14px 26px;font-size:15.5px;}
+  .nav .btn-ghost{display:none;}
+  @media(min-width:980px){.nav .btn-ghost{display:inline-flex;}}
+
+  /* ---------- HERO (full-bleed image) ---------- */
+  .hero{position:relative;overflow:hidden;line-height:0;background:#EBEEDE;}
+  .hero-img{display:block;width:100%;height:auto;}
+  .hero-cta{position:absolute;z-index:6;display:block;border-radius:12px;cursor:pointer;}
+  .hero-cta:focus-visible{outline:2px solid var(--olive-deep);outline-offset:3px;}
+  .visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+
+  /* cinematic Swiss business scene — layered CSS + SVG, no photo */
+  .hero-scene{position:absolute;inset:0;z-index:0;overflow:hidden;}
+  .hero-scene .layer{position:absolute;inset:0;}
+  .sky{background:linear-gradient(180deg,#FCF8EC 0%, #F8F2E2 34%, #F0EEDF 66%, #EBEEDE 100%);}
+  .sun{background:
+      radial-gradient(58% 48% at 84% 4%, rgba(247,227,176,.78) 0%, rgba(247,227,176,.22) 40%, rgba(247,227,176,0) 72%),
+      radial-gradient(34% 32% at 80% -2%, rgba(255,248,228,.95), rgba(255,248,228,0) 62%);}
+  .ambient{background:
+      radial-gradient(46% 42% at 9% 94%, rgba(159,175,82,.17), rgba(159,175,82,0) 62%),
+      radial-gradient(66% 40% at 58% 106%, rgba(208,220,154,.32), rgba(208,220,154,0) 72%);}
+  .arch{position:absolute;left:0;right:0;bottom:0;width:100%;height:66%;display:block;}
+  .haze{background:linear-gradient(180deg, rgba(255,253,246,0) 40%, rgba(250,250,244,.5) 75%, var(--paper) 100%);}
+  .scrim{background:linear-gradient(90deg, rgba(251,251,248,.95) 0%, rgba(251,251,248,.80) 26%, rgba(251,251,248,.32) 52%, rgba(251,251,248,0) 74%);}
+  @media(max-width:1000px){
+    .scrim{background:linear-gradient(180deg, rgba(251,251,248,.32) 0%, rgba(251,251,248,.82) 48%, rgba(251,251,248,.97) 100%);}
+  }
+
+  .hero-in{position:relative;z-index:3;}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:38px;align-items:center;padding:84px 0 128px;}
+  @media(min-width:1000px){.hero-grid{grid-template-columns:1.04fr 1.12fr;gap:50px;padding:104px 0 158px;}}
+  .hero-copy{max-width:620px;}
+  .hero h1{font-size:clamp(38px,6vw,64px);line-height:1.03;margin:20px 0 0;}
+  .hero h1 .lead{font-family:"IBM Plex Serif",serif;font-weight:400;font-style:italic;color:var(--olive-deep);}
+  .hero .subline{font-size:clamp(18px,2.2vw,21px);font-weight:600;color:var(--charcoal);margin-top:18px;letter-spacing:-0.01em;}
+  .hero .sub{margin-top:18px;font-size:17px;color:var(--charcoal-soft);max-width:56ch;}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;}
+  .trustline{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px 18px;font-size:13px;color:var(--charcoal-soft);}
+  .trustline span{display:inline-flex;align-items:center;gap:8px;}
+  .trustline span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--olive);}
+
+  /* hero line motif — drawn in-scene, flows down into the page */
+  .hero-motif{position:absolute;z-index:2;right:0;bottom:-1px;width:min(60%,760px);height:360px;pointer-events:none;overflow:visible;}
+  @media(max-width:1000px){.hero-motif{width:112%;right:-6%;height:210px;opacity:.7;}}
+  .hero-motif .htrunk{fill:none;stroke:var(--soft-olive);stroke-width:7;opacity:.30;stroke-linecap:round;}
+  .hero-motif .hline{fill:none;stroke:var(--olive);stroke-width:2;opacity:.62;stroke-linecap:round;
+     stroke-dasharray:100;stroke-dashoffset:100;animation:heroDraw 2.6s var(--ease) .35s forwards;}
+  @keyframes heroDraw{to{stroke-dashoffset:0;}}
+  .hero-motif .hnode{fill:var(--olive);}
+  .hero-motif .hring{fill:none;stroke:var(--olive);stroke-width:2;opacity:.55;}
+  .hero-motif .flow-dot{fill:var(--olive);filter:drop-shadow(0 0 4px rgba(159,175,82,.6));}
+  @media(prefers-reduced-motion:reduce){.hero-motif .hline{animation:none;stroke-dashoffset:0;}}
+
+  /* hero product visual — floating, integrated into the scene */
+  .hero-visual{position:relative;}
+  .ui-glow{position:absolute;z-index:0;inset:-7% -5% -12% -3%;
+     background:radial-gradient(58% 58% at 58% 42%, rgba(255,255,255,.92), rgba(255,255,255,0) 72%);
+     filter:blur(10px);border-radius:44px;}
+  .ui-stack{position:relative;z-index:2;}
+  @media(min-width:1000px){
+    .ui-stack{transform:perspective(1700px) rotateY(-5deg) rotateX(1.5deg);transition:transform .55s var(--ease);}
+    .hero-visual:hover .ui-stack{transform:perspective(1700px) rotateY(-2deg) rotateX(.5deg);}
+  }
+  .hero .ui-card{box-shadow:0 20px 44px rgba(38,40,35,.15), 0 54px 110px rgba(38,40,35,.18);}
+  .ui-card{
+    background:var(--white);border:1px solid var(--hairline);border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-lg);overflow:hidden;
+  }
+  .ui-top{display:flex;align-items:center;gap:8px;padding:13px 16px;border-bottom:1px solid var(--hairline);background:linear-gradient(180deg,#fff,#FCFDFA);}
+  .dot{width:10px;height:10px;border-radius:50%;background:#E2E4DA;}
+  .ui-top .title{margin-left:8px;font-size:12.5px;font-weight:600;color:var(--charcoal-soft);}
+  .ui-top .route{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--teal);display:inline-flex;align-items:center;gap:6px;}
+  .ui-top .route::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 3px var(--teal-soft);}
+  .ui-body{padding:18px;}
+  .chat-q{background:var(--soft-olive-tint);border:1px solid #E2E8C9;border-radius:12px;padding:12px 14px;font-size:13.5px;color:var(--charcoal);max-width:86%;margin-left:auto;}
+  .brief{margin-top:16px;border:1px solid var(--hairline);border-radius:12px;padding:15px 16px;background:#fff;}
+  .brief .lbl{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--olive-deep);}
+  .brief h4{font-size:15px;margin:7px 0 9px;}
+  .brief p{font-size:13px;color:var(--muted);}
+  .brief ul{margin:11px 0 0;padding:0;list-style:none;display:grid;gap:8px;}
+  .brief li{font-size:13px;color:var(--charcoal-soft);display:flex;gap:9px;align-items:flex-start;}
+  .brief li::before{content:"";margin-top:6px;width:6px;height:6px;border-radius:2px;background:var(--olive);flex:none;}
+  .pillrow{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;}
+  .pill{font-family:"IBM Plex Mono",monospace;font-size:10.5px;display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:20px;background:var(--teal-soft);color:var(--teal);border:1px solid #BFE3DF;}
+  .pill::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--teal);}
+  .pill.src{background:var(--soft-olive-tint);color:var(--olive-deep);border-color:#DDE6BE;}
+  .pill.src::before{background:var(--olive);}
+  .ui-foot{display:flex;align-items:center;gap:10px;padding:13px 18px;border-top:1px solid var(--hairline);background:#FCFDFA;}
+  .ui-foot .mini{font-size:11.5px;color:var(--muted);display:inline-flex;align-items:center;gap:7px;}
+  .ui-foot .mini::before{content:"✓";color:var(--olive-deep);font-weight:700;}
+  .ui-btn{margin-left:auto;font-size:12px;font-weight:600;padding:8px 14px;border-radius:8px;background:var(--olive);color:#fff;}
+  .ui-btn.ghost{background:#fff;color:var(--charcoal);border:1px solid var(--hairline);margin-left:0;}
+  /* floating cards over the scene */
+  .ui-float{
+    position:absolute;z-index:3;left:-28px;bottom:28px;width:236px;
+    background:rgba(255,255,255,.92);border:1px solid var(--hairline);border-radius:16px;
+    box-shadow:var(--shadow-lg);padding:14px 15px;backdrop-filter:blur(6px);
+  }
+  .ui-chip{
+    position:absolute;z-index:3;right:-16px;top:-18px;display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,.94);border:1px solid var(--hairline);border-radius:999px;
+    box-shadow:var(--shadow-md);padding:8px 14px;font-family:"IBM Plex Mono",monospace;
+    font-size:11px;color:var(--olive-deep);backdrop-filter:blur(6px);
+  }
+  .ui-chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--olive);box-shadow:0 0 0 4px var(--soft-olive-tint);}
+  @media(max-width:1000px){
+    .ui-float{position:static;width:auto;margin-top:16px;backdrop-filter:none;}
+    .ui-chip{position:static;margin:0 auto 14px;width:max-content;}
+  }
+  .ui-float .lbl{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--olive-deep);}
+  .ui-float h5{font-size:13.5px;margin:6px 0 4px;}
+  .ui-float p{font-size:11.5px;color:var(--muted);}
+
+  /* ---------- generic blocks ---------- */
+  .head-block{max-width:720px;}
+  .head-block h2{font-size:clamp(28px,3.6vw,40px);margin-top:16px;}
+  .head-block p{margin-top:16px;}
+  .center{margin-left:auto;margin-right:auto;text-align:center;}
+  .center .marker{justify-content:center;}
+
+  /* pain cards */
+  .pain{background:linear-gradient(180deg,var(--cloud),#EFF1E8);}
+  .pain-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:46px;}
+  @media(min-width:680px){.pain-grid{grid-template-columns:1fr 1fr;}}
+  @media(min-width:1000px){.pain-grid{grid-template-columns:repeat(4,1fr);}}
+  .pcard{background:#fff;border:1px solid var(--hairline);border-radius:var(--radius);padding:22px 20px;box-shadow:var(--shadow-sm);transition:transform .3s var(--ease),box-shadow .3s;}
+  .pcard:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
+  .pcard .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--olive-deep);letter-spacing:.1em;}
+  .pcard h4{font-size:16.5px;margin:12px 0 8px;}
+  .pcard p{font-size:13.5px;color:var(--muted);}
+
+  /* tools */
+  .tool-note{font-size:13px;color:var(--muted);margin-top:14px;}
+  .tool-strip{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px;max-width:880px;}
+  .tool{
+    font-size:14px;font-weight:500;color:var(--charcoal-soft);
+    background:#fff;border:1px solid var(--hairline);border-radius:999px;
+    padding:10px 17px;display:inline-flex;align-items:center;gap:9px;box-shadow:var(--shadow-sm);
+    transition:border-color .2s,color .2s,transform .2s;
+  }
+  .tool:hover{border-color:var(--soft-olive);color:var(--olive-deep);transform:translateY(-2px);}
+  .tool::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--soft-olive);}
+  .clarify{margin-top:26px;font-size:13px;color:var(--muted);max-width:62ch;border-left:2px solid var(--soft-olive);padding-left:14px;}
+
+  /* bento */
+  .bento{display:grid;grid-template-columns:1fr;gap:16px;margin-top:46px;}
+  @media(min-width:680px){.bento{grid-template-columns:1fr 1fr;}}
+  @media(min-width:1000px){.bento{grid-template-columns:repeat(6,1fr);grid-auto-rows:1fr;}}
+  .bcard{position:relative;background:#fff;border:1px solid var(--hairline);border-radius:var(--radius);padding:24px 22px;box-shadow:var(--shadow-sm);overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s;}
+  .bcard:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
+  .bcard .route-accent{position:absolute;top:0;left:24px;width:2px;height:34px;background:linear-gradient(var(--olive),transparent);}
+  .bcard h4{font-size:18px;margin:0 0 8px;}
+  .bcard p{font-size:14px;color:var(--muted);}
+  .bcard .tag{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--olive-deep);}
+  @media(min-width:1000px){
+    .bcard.big{grid-column:span 3;}
+    .bcard.sm{grid-column:span 2;}
+    .bcard.wide{grid-column:span 3;}
+    .bento .b1{grid-column:span 3;}
+    .bento .b2{grid-column:span 3;}
+    .bento .b3{grid-column:span 2;}
+    .bento .b4{grid-column:span 2;}
+    .bento .b5{grid-column:span 2;}
+  }
+
+  /* see it in action */
+  .demo{background:linear-gradient(180deg,#F3F4EE,#FBFBF8);}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:38px;}
+  .tab{font-size:14px;font-weight:600;padding:10px 18px;border-radius:999px;border:1px solid var(--hairline);background:#fff;color:var(--charcoal-soft);cursor:pointer;transition:all .2s;}
+  .tab[aria-selected="true"]{background:var(--charcoal);color:#fff;border-color:var(--charcoal);}
+  .panel{display:none;margin-top:34px;}
+  .panel.active{display:block;animation:fade .4s var(--ease);}
+  @keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  .demo-row{display:grid;grid-template-columns:1fr;gap:34px;align-items:center;}
+  @media(min-width:920px){.demo-row{grid-template-columns:1fr 1.1fr;}}
+  .demo-row.flip .demo-text{order:2;}
+  .demo-text h3{font-size:26px;margin-bottom:12px;}
+  .demo-text p{font-size:15.5px;color:var(--muted);max-width:46ch;}
+  .demo-text .marker{margin-bottom:14px;}
+
+  /* control */
+  .control{background:linear-gradient(165deg,#2C2E29 0%, #34372F 100%);color:#EDEEE7;overflow:hidden;}
+  .control h2,.control h4{color:#fff;}
+  .control .marker{color:var(--soft-olive);}
+  .control .marker::before{box-shadow:0 0 0 4px rgba(159,175,82,.18);}
+  .control .lede{color:#C4C7BB;}
+  .ctrl-panel{margin-top:46px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);border-radius:var(--radius-lg);padding:30px;backdrop-filter:blur(4px);}
+  .ctrl-grid{display:grid;grid-template-columns:1fr;gap:16px;}
+  @media(min-width:680px){.ctrl-grid{grid-template-columns:1fr 1fr;}}
+  @media(min-width:1040px){.ctrl-grid{grid-template-columns:repeat(4,1fr);}}
+  .ccard{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.10);border-radius:var(--radius);padding:22px 20px;transition:border-color .3s,background .3s;}
+  .ccard:hover{border-color:rgba(159,175,82,.55);background:rgba(159,175,82,.07);}
+  .ccard .ic{width:34px;height:34px;border-radius:9px;background:rgba(159,175,82,.16);display:flex;align-items:center;justify-content:center;margin-bottom:14px;color:var(--soft-olive);}
+  .ccard h4{font-size:16px;margin-bottom:8px;}
+  .ccard p{font-size:13.5px;color:#BFC2B6;}
+  .ctrl-note{margin-top:22px;font-size:13.5px;color:#C4C7BB;display:flex;gap:11px;align-items:flex-start;border-top:1px solid rgba(255,255,255,.10);padding-top:20px;}
+  .ctrl-note b{color:#fff;font-weight:600;}
+
+  /* explain later — audit trail */
+  .audit{display:grid;grid-template-columns:1fr;gap:14px;margin-top:46px;}
+  @media(min-width:860px){.audit{grid-template-columns:repeat(3,1fr) ;align-items:stretch;}}
+  .acol{background:#fff;border:1px solid var(--hairline);border-radius:var(--radius);padding:22px 20px;box-shadow:var(--shadow-sm);position:relative;}
+  .acol .step{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);}
+  .acol h4{font-size:16px;margin:9px 0 8px;}
+  .acol p{font-size:13.5px;color:var(--muted);}
+  .acol .chip{margin-top:12px;display:inline-flex;gap:7px;flex-wrap:wrap;}
+  .arrow{display:none;}
+  @media(min-width:860px){
+    .arrow{display:flex;align-items:center;justify-content:center;}
+  }
+  .review-label{margin-top:30px;display:inline-flex;align-items:center;gap:9px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--olive-deep);background:var(--soft-olive-tint);border:1px solid #DDE6BE;border-radius:999px;padding:8px 15px;}
+  .review-label::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--olive);}
+
+  /* origin */
+  .origin{background:linear-gradient(180deg,#FBFBF8,#F3F4EE);}
+  .origin-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:center;}
+  @media(min-width:920px){.origin-grid{grid-template-columns:1.1fr .9fr;}}
+  .origin-photo{position:relative;margin-top:42px;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--hairline);box-shadow:var(--shadow-md);}
+  .origin-photo img{display:block;width:100%;height:auto;}
+  .origin-photo .cap{position:absolute;left:18px;bottom:16px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:#fff;background:rgba(38,40,35,.5);padding:6px 11px;border-radius:8px;backdrop-filter:blur(3px);}
+  .origin-text p{margin-top:18px;font-size:16px;color:var(--charcoal-soft);max-width:54ch;}
+  .origin-text p.first{font-size:18px;color:var(--charcoal);}
+  .still{position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--hairline);box-shadow:var(--shadow-md);min-height:340px;background:#E9EBE0;}
+  .still svg{width:100%;height:100%;display:block;}
+  .still .cap{position:absolute;left:18px;bottom:16px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:#fff;background:rgba(38,40,35,.55);padding:6px 11px;border-radius:8px;backdrop-filter:blur(3px);}
+
+  /* final cta */
+  .final{background:var(--olive);color:#fff;text-align:center;overflow:hidden;}
+  .final h2{color:#fff;font-size:clamp(30px,4vw,46px);}
+  .final p{margin:18px auto 0;max-width:54ch;color:#F2F5E4;font-size:17px;}
+  .final .cta-row{justify-content:center;}
+  .final .btn-primary{background:#fff;color:var(--olive-deep);}
+  .final .btn-primary:hover{background:#fff;color:var(--charcoal);box-shadow:var(--shadow-lg);}
+  .final .btn-ghost{border-color:rgba(255,255,255,.5);color:#fff;}
+  .final .btn-ghost:hover{background:rgba(255,255,255,.12);border-color:#fff;color:#fff;}
+  .final .small{margin-top:22px;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;color:#EAF0D6;}
+
+  /* footer */
+  footer{background:#262823;color:#A9AC9F;padding:46px 0;font-size:13px;}
+  .foot-in{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center;}
+  .foot-in .brand .wm{color:#fff;}
+  .foot-links{display:flex;gap:22px;flex-wrap:wrap;}
+  .foot-links a:hover{color:var(--soft-olive);}
+
+  /* ---------- LINE MOTIF ---------- */
+  .motif{display:block;width:100%;height:90px;margin:-10px 0;overflow:visible;}
+  .motif path{fill:none;stroke:var(--olive);stroke-width:2;stroke-linecap:round;opacity:.5;}
+  .motif .soft{stroke:var(--soft-olive);stroke-width:6;opacity:.35;}
+  .motif .node{fill:var(--olive);}
+  .motif .node-teal{fill:var(--teal);}
+  .motif .ring{fill:none;stroke:var(--olive);stroke-width:2;opacity:.5;}
+
+  /* draw-on-scroll */
+  .draw path.draw{stroke-dasharray:var(--len);stroke-dashoffset:var(--len);transition:stroke-dashoffset 1.4s var(--ease);}
+  .draw.in path.draw{stroke-dashoffset:0;}
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+  .reveal.in{opacity:1;transform:none;}
+  .reveal.d1{transition-delay:.06s;}
+  .reveal.d2{transition-delay:.12s;}
+  .reveal.d3{transition-delay:.18s;}
+  .reveal.d4{transition-delay:.24s;}
+
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;transition:none;}
+    .draw path.draw{stroke-dashoffset:0;transition:none;}
+    .panel.active{animation:none;}
+    .flow-dot{display:none;}
+  }
+  .flow-dot{fill:var(--olive);}
+
+  /* ---------- ONE CONTINUOUS PAGE SPINE ---------- */
+  .flow{position:relative;isolation:isolate;}
+  .flow > section{position:relative;}
+  .flow > section > .wrap{position:relative;z-index:2;}
+  .spine{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:visible;}
+  .spine .trunk{fill:none;stroke:var(--soft-olive);stroke-width:9;opacity:.16;vector-effect:non-scaling-stroke;stroke-linecap:round;}
+  .spine .draw{fill:none;stroke:var(--olive);stroke-width:3;opacity:.9;vector-effect:non-scaling-stroke;stroke-linecap:round;filter:drop-shadow(0 0 5px rgba(159,175,82,.85));}
+  .spine .snode{fill:var(--olive);}
+  .spine .sring{fill:none;stroke:var(--olive);stroke-width:1.8;opacity:.5;vector-effect:non-scaling-stroke;}
+  .spine .snode-teal{fill:var(--teal);}
+  .spine .flow-dot{fill:var(--olive);filter:drop-shadow(0 0 5px rgba(159,175,82,.6));}
+  .spine .ping{fill:none;stroke:var(--olive);stroke-width:1.5;}
+  @media(prefers-reduced-motion:reduce){.spine .flow-dot{display:none;}}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="Zuraio home">
+      <svg viewBox="0 0 1182 1182" aria-hidden="true">
+        <g transform="matrix(0.526154,0,0,0.526154,-54.1775,-54.2715)"><path d="M574.625,1181.59C534.577,1115.01 511.538,1037.06 511.538,953.776C511.538,709.325 710.001,510.862 954.452,510.862C1115.07,510.862 1255.84,596.544 1333.49,724.656C1374.02,791.521 1397.37,869.944 1397.37,953.776C1397.37,1073.97 1349.39,1183.04 1271.55,1262.88C1270.31,1264.07 1269.07,1265.27 1267.85,1266.49C1266.06,1268.25 1264.3,1270.04 1262.55,1271.85C1226,1309.73 1198.56,1356.46 1183.78,1408.49C1175.76,1436.72 1171.47,1466.52 1171.47,1497.31C1171.47,1528.09 1175.76,1557.89 1183.78,1586.12C1222.46,1722.27 1347.8,1822.11 1496.27,1822.11C1675.54,1822.11 1821.08,1676.57 1821.08,1497.31C1821.08,1408.25 1785.15,1327.51 1727.03,1268.81L1875.69,1268.81C1915.99,1335.54 1939.19,1413.74 1939.19,1497.31C1939.19,1741.76 1740.72,1940.22 1496.27,1940.22C1335.37,1940.22 1194.39,1854.24 1116.82,1725.75C1076.54,1659.03 1053.36,1580.86 1053.36,1497.31C1053.36,1457.36 1058.66,1418.64 1068.59,1381.82C1089.13,1305.67 1129.49,1237.62 1183.78,1183.55L1183.78,1183.48C1242.39,1124.71 1278.64,1043.64 1278.64,954.166C1278.64,925.375 1274.89,897.454 1267.85,870.866C1231.03,731.907 1104.31,629.362 953.842,629.362C774.578,629.362 629.038,774.902 629.038,954.166C629.038,1042.69 664.527,1122.98 722.039,1181.59L574.625,1181.59Z" style="fill:#9FAF52;"/></g>
+        <g transform="matrix(0.414294,0,0,0.414294,254.535,129.476)"><path d="M392,527C392,485.606 425.606,452 467,452C508.394,452 542,485.606 542,527L542,985.47C542,1026.86 508.394,1060.47 467,1060.47C425.606,1060.47 392,1026.86 392,985.47L392,527Z" style="fill:#464646;"/></g>
+        <g transform="matrix(0.81846,0,0,0.81846,-621.282,-427.039)"><path d="M1656,1270C1741,1270 1810,1339.01 1810,1424C1810,1509 1741,1578 1656,1578C1571.01,1578 1502,1509 1502,1424C1502,1339.01 1571.01,1270 1656,1270ZM1656,1348.07C1614.09,1348.07 1580.07,1382.09 1580.07,1424C1580.07,1465.91 1614.09,1499.93 1656,1499.93C1697.91,1499.93 1731.93,1465.91 1731.93,1424C1731.93,1382.09 1697.91,1348.07 1656,1348.07Z" style="fill:#464646;"/></g>
+      </svg>
+      <span class="wm">Zuraio</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#pain">The problem</a>
+      <a href="#control">Data control</a>
+      <a href="#tools">How it fits</a>
+      <a href="#action">See it work</a>
+    </nav>
+    <div style="display:flex;gap:10px;">
+      <a class="btn btn-ghost" href="#action">See it in action</a>
+      <a class="btn btn-primary" href="#final">Book a demo</a>
+    </div>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- ============ HERO (full-bleed image supplied by client) ============ -->
+<section class="hero">
+  <img class="hero-img" src="assets/zuraio-hero.jpg"
+       alt="Zuraio — AI for Swiss companies that need control of their data. Headline: Your work, ready before you are. AI that helps your team work faster, with your data under control. The screen shows a prepared meeting brief with its sources, access rules and audit trail, over a calm Swiss city and lake at golden hour." />
+  <h1 class="visually-hidden">Your work, ready before you are. AI that helps your team work faster, with your data under control.</h1>
+  <a class="hero-cta" href="#final" aria-label="Book a demo" style="left:3.4%;top:54.3%;width:13.0%;height:6.8%;"></a>
+  <a class="hero-cta" href="#action" aria-label="See it in action" style="left:16.7%;top:54.3%;width:14.0%;height:6.8%;"></a>
+</section>
+
+<!-- ============ FLOW: the brand line continues out of the hero, down the page ============ -->
+<div class="flow">
+  <svg class="spine" preserveAspectRatio="none" aria-hidden="true">
+    <path class="trunk" id="spineTrunkA"></path>
+    <path class="trunk" id="spineTrunkB"></path>
+    <path class="draw" id="spineA"></path>
+    <path class="draw" id="spineB"></path>
+    <g id="spineNodes"></g>
+    <circle class="flow-dot" r="4.6"><animateMotion id="fmA" dur="9s" repeatCount="indefinite" rotate="auto"></animateMotion><animate attributeName="r" values="4.6;6.6;4.6" dur="2.6s" repeatCount="indefinite"></animate></circle>
+    <circle class="flow-dot" r="3.1" opacity="0.78"><animateMotion id="fmB" dur="9s" begin="-3s" repeatCount="indefinite"></animateMotion></circle>
+    <circle class="flow-dot" r="2.3" opacity="0.6"><animateMotion id="fmC" dur="9s" begin="-6s" repeatCount="indefinite"></animateMotion></circle>
+  </svg>
+
+<!-- ============ PAIN ============ -->
+<section class="pain pad" id="pain">
+  <div class="wrap">
+    <div class="head-block reveal">
+      <span class="marker">Recognise this?</span>
+      <h2>Your company already has the answers. They are just hard to find.</h2>
+      <p class="lede">Emails, documents, meetings, CRM records and shared drives hold valuable company knowledge. But when information is spread across systems, people lose time searching, preparing and repeating work that has already been done.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pcard reveal d1"><span class="n">01</span><h4>Knowledge is scattered</h4><p>Important information sits across inboxes, folders, meetings and business systems.</p></div>
+      <div class="pcard reveal d2"><span class="n">02</span><h4>People lose time to admin</h4><p>Summaries, reports, meeting notes and follow-ups take time away from real work.</p></div>
+      <div class="pcard reveal d3"><span class="n">03</span><h4>Answers are hard to trust</h4><p>When nobody knows where information came from, decisions become slower.</p></div>
+      <div class="pcard reveal d4"><span class="n">04</span><h4>AI feels risky without control</h4><p>Public AI tools are useful, but sensitive company knowledge needs clearer rules.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTROL ============ -->
+<section class="control pad" id="control">
+  <!-- large subtle background line motif -->
+  <svg aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;opacity:.10;" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1200 600">
+    <path d="M-50,120 C300,120 300,300 600,300 C900,300 900,90 1250,90" fill="none" stroke="#9FAF52" stroke-width="2"/>
+    <path d="M-50,460 C300,460 300,300 600,300 C900,300 900,520 1250,520" fill="none" stroke="#9FAF52" stroke-width="2"/>
+    <circle cx="600" cy="300" r="10" fill="none" stroke="#9FAF52" stroke-width="2"/>
+    <circle cx="600" cy="300" r="3" fill="#9FAF52"/>
+  </svg>
+  <div class="wrap" style="position:relative;z-index:2;">
+    <div class="head-block reveal">
+      <span class="marker">Trust &amp; data control</span>
+      <h2>AI, without handing over the keys.</h2>
+      <p class="lede">AI should not mean losing control of company data. Zuraio gives companies control over where it runs, what it can use, who can access it and how outputs can be reviewed.</p>
+    </div>
+    <div class="ctrl-panel reveal d1">
+      <div class="ctrl-grid">
+        <div class="ccard">
+          <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-6 9 6v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+          <h4>Hosted in Switzerland</h4><p>For Swiss companies that want their Zuraio environment hosted in Switzerland.</p>
+        </div>
+        <div class="ccard">
+          <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+          <h4>Access follows your rules</h4><p>People only work with the sources and information they are allowed to use.</p>
+        </div>
+        <div class="ccard">
+          <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2z"/><path d="M8 12h7M8 16h5"/></svg></div>
+          <h4>Answers show their sources</h4><p>Your team can check where information came from before relying on it.</p>
+        </div>
+        <div class="ccard">
+          <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+          <h4>Built to be reviewed</h4><p>Prompts, sources and outputs can be easier to trace according to the agreed setup.</p>
+        </div>
+      </div>
+      <p class="ctrl-note"><span style="color:var(--soft-olive);">▣</span><span><b>Need stronger control?</b> On-premise options and model choice can be discussed for companies with stricter internal requirements.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOOLS ============ -->
+<section class="pad" id="tools">
+  <div class="wrap">
+    <div class="head-block reveal">
+      <span class="marker">Works where your team works</span>
+      <h2>Fits into the tools you already use.</h2>
+      <p class="lede">Zuraio is designed to connect with the tools your team already uses — from email and documents to meetings, messages, notes and company systems.</p>
+      <p class="tool-note">Start with the work that matters most: email, meetings, documents, reports, internal search and follow-ups.</p>
+    </div>
+    <div class="tool-strip reveal d1">
+      <span class="tool">Outlook</span><span class="tool">Gmail</span><span class="tool">Microsoft 365</span>
+      <span class="tool">Google Workspace</span><span class="tool">Teams</span><span class="tool">Slack</span>
+      <span class="tool">Notion</span><span class="tool">SharePoint</span><span class="tool">OneDrive</span>
+      <span class="tool">HubSpot</span><span class="tool">Salesforce</span><span class="tool">WhatsApp</span>
+      <span class="tool">Voice notes</span>
+    </div>
+    <p class="clarify reveal d2">Specific connections depend on your company setup, approved tools and pilot scope.</p>
+  </div>
+</section>
+
+<!-- ============ OUTCOMES (bento) ============ -->
+<section class="pad" id="outcomes">
+  <div class="wrap">
+    <div class="head-block reveal">
+      <span class="marker">Everyday work</span>
+      <h2>Less searching. More doing.</h2>
+      <p class="lede">Zuraio helps teams move faster through the work they already do every day — with more context and fewer missed details.</p>
+    </div>
+    <div class="bento">
+      <div class="bcard b1 reveal d1"><span class="route-accent"></span><span class="tag">Meetings</span><h4>Walk in prepared</h4><p>Relevant emails, documents, notes and open actions, gathered before you sit down.</p></div>
+      <div class="bcard b2 reveal d2"><span class="route-accent"></span><span class="tag">Email</span><h4>Replies, ready to review</h4><p>Summarise long threads and prepare replies your team can check before sending.</p></div>
+      <div class="bcard b3 reveal d1"><span class="route-accent"></span><span class="tag">Answers</span><h4>Find it, with sources</h4><p>Ask across company knowledge and see the sources behind the answer.</p></div>
+      <div class="bcard b4 reveal d2"><span class="route-accent"></span><span class="tag">Reports</span><h4>First drafts, faster</h4><p>Turn existing information into drafts of updates, summaries and reports.</p></div>
+      <div class="bcard b5 reveal d3"><span class="route-accent"></span><span class="tag">Follow-ups</span><h4>Nothing slips</h4><p>Capture actions from emails, meetings, notes and messages so fewer things are missed.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SEE IT IN ACTION ============ -->
+<section class="demo pad" id="action">
+  <div class="wrap">
+    <div class="head-block center reveal">
+      <span class="marker">See it in action</span>
+      <h2>Watch the work take shape.</h2>
+      <p class="lede center" style="margin-left:auto;margin-right:auto;">Short examples show how Zuraio helps teams prepare, reply and find answers from approved company knowledge.</p>
+    </div>
+
+    <div class="tabs reveal d1" role="tablist" aria-label="Product examples">
+      <button class="tab" role="tab" aria-selected="true" data-tab="email">Email</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="meeting">Meetings</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="knowledge">Knowledge</button>
+    </div>
+
+    <!-- EMAIL -->
+    <div class="panel active" id="email">
+      <div class="demo-row">
+        <div class="demo-text">
+          <span class="marker">Email assistant</span>
+          <h3>The reply is already waiting.</h3>
+          <p>Long email threads slow people down. Zuraio helps summarise the conversation, identify what matters and prepare a reply in your tone. You review, edit and decide what gets sent.</p>
+        </div>
+        <div class="ui-card">
+          <div class="ui-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="title">Email assistant</span><span class="route">in your tone</span></div>
+          <div class="ui-body">
+            <div class="brief">
+              <span class="lbl">Thread summary · 14 messages</span>
+              <h4>Delivery date for the Q3 order</h4>
+              <p>The client asks to move delivery two weeks earlier. Production confirmed it is possible if the deposit is received by Friday.</p>
+            </div>
+            <div class="brief" style="margin-top:12px;background:var(--soft-olive-tint);border-color:#DDE6BE;">
+              <span class="lbl">Draft reply</span>
+              <p style="color:var(--charcoal);">Dear Ms. Keller, thank you for the update. We can bring delivery forward to week 30, provided the deposit reaches us by Friday. I'll confirm the revised schedule once received…</p>
+              <div class="pillrow"><span class="pill src">Order #4821</span><span class="pill src">2 emails</span></div>
+            </div>
+          </div>
+          <div class="ui-foot"><span class="mini">You decide what gets sent</span><span class="ui-btn ghost">Edit before send</span><span class="ui-btn">Review draft</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MEETING -->
+    <div class="panel" id="meeting">
+      <div class="demo-row flip">
+        <div class="demo-text">
+          <span class="marker">Meeting brief</span>
+          <h3>Walk in prepared.</h3>
+          <p>Before a meeting, Zuraio can bring together relevant emails, notes, documents, decisions and open actions. Your team starts with a clear brief instead of searching through folders and inboxes.</p>
+        </div>
+        <div class="ui-card">
+          <div class="ui-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="title">Meeting brief</span><span class="route">access: approved</span></div>
+          <div class="ui-body">
+            <div class="brief">
+              <span class="lbl">Context</span>
+              <h4>Quarterly review — Brunner AG</h4>
+              <p>Renewal discussion. Last contract signed 2024. Two open support tickets resolved last week.</p>
+            </div>
+            <div class="brief" style="margin-top:12px;">
+              <span class="lbl">Open follow-ups</span>
+              <ul>
+                <li>Send updated pricing for the second site</li>
+                <li>Confirm onboarding date for new team members</li>
+              </ul>
+              <div class="pillrow"><span class="pill src">CRM</span><span class="pill src">4 emails</span><span class="pill src">Notes</span></div>
+            </div>
+          </div>
+          <div class="ui-foot"><span class="mini">Talking points suggested</span><span class="ui-btn">Open brief</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KNOWLEDGE -->
+    <div class="panel" id="knowledge">
+      <div class="demo-row">
+        <div class="demo-text">
+          <span class="marker">Knowledge search</span>
+          <h3>Find the answer. See the proof.</h3>
+          <p>Ask questions across approved company knowledge and see where the answer came from. This makes answers easier to check, share and trust.</p>
+        </div>
+        <div class="ui-card">
+          <div class="ui-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="title">Knowledge search</span><span class="route">approved sources</span></div>
+          <div class="ui-body">
+            <div class="chat-q">What warranty terms did we agree with Brunner AG last year?</div>
+            <div class="brief">
+              <span class="lbl">Answer</span>
+              <p style="color:var(--charcoal);">A 24-month warranty on parts and labour, with a 5-day response commitment for critical issues. Renewal review due in September.</p>
+              <div class="pillrow">
+                <span class="pill src">Contract 2024.pdf · p.4</span>
+                <span class="pill src">Email · 12 Mar</span>
+                <span class="pill">Verified source</span>
+              </div>
+            </div>
+          </div>
+          <div class="ui-foot"><span class="mini">Every answer shows its sources</span><span class="ui-btn ghost">Open sources</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPLAIN LATER ============ -->
+<section class="pad" id="explain">
+  <div class="wrap">
+    <div class="head-block reveal">
+      <span class="marker">Reviewable AI use</span>
+      <h2>AI you can explain later.</h2>
+      <p class="lede">As AI becomes part of daily work, companies will need to understand how answers, drafts and summaries were produced. Zuraio is designed to make prompts, sources, outputs and review steps easier to trace — so your team can use AI with more confidence.</p>
+    </div>
+    <div class="audit">
+      <div class="acol reveal d1"><span class="step">01 · What was asked</span><h4>The request</h4><p>See the prompt or request that started the work.</p><div class="chip"><span class="pill">prompt logged</span></div></div>
+      <div class="acol reveal d2"><span class="step">02 · What was used</span><h4>The sources</h4><p>Show the approved company sources behind the answer.</p><div class="chip"><span class="pill src">3 sources</span><span class="pill src">approved</span></div></div>
+      <div class="acol reveal d3"><span class="step">03 · What was produced</span><h4>The output</h4><p>Keep a reviewable record of the draft, answer or summary.</p><div class="chip"><span class="pill">output saved</span></div></div>
+    </div>
+    <div class="reveal d2"><span class="review-label">Prompt → Sources used → Output → Review</span></div>
+    <p class="clarify reveal d3" style="margin-top:22px;">This helps companies prepare for future AI governance, internal review and audit expectations.</p>
+  </div>
+</section>
+
+<!-- ============ ORIGIN ============ -->
+<section class="origin pad" id="origin">
+  <div class="wrap">
+    <div class="origin-grid">
+      <div class="origin-text reveal">
+        <span class="marker">Why we built it</span>
+        <h2 style="margin-top:16px;">Made for the work we had to do ourselves.</h2>
+        <p class="first">Zuraio started because we needed a better way to prepare, search, summarise, draft and follow up in our own work.</p>
+        <p>Public AI tools were useful, but they were not enough for serious company work. We wanted AI connected to real business knowledge, with clear control over data, access and model choice.</p>
+        <p>That is what became Zuraio.</p>
+      </div>
+      <figure class="origin-photo reveal d1" style="margin:0;">
+        <img src="assets/zuraio-team.jpg" alt="The Zuraio team working together at a table — laptop, notebooks, coffee and a whiteboard listing prepare, search, summarise, draft and follow up, with a sketch of company knowledge, sources, access control and audit trail." />
+        <figcaption class="cap">Built because we needed it ourselves.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final pad" id="final">
+  <div class="wrap reveal">
+    <h2>Find your first Zuraio use case.</h2>
+    <p>We will walk through your current tools, your data-control needs and the first practical ways Zuraio could help your team.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary btn-lg" href="mailto:hello@zuraio.ch">Book a demo</a>
+      <a class="btn btn-ghost btn-lg" href="#action">See it in action</a>
+    </div>
+    <p class="small">PRIVATE DEMO · YOUR COMPANY SETUP · YOUR QUESTIONS</p>
+  </div>
+</section>
+</div><!-- /flow -->
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap foot-in">
+    <div class="brand">
+      <svg viewBox="0 0 1182 1182" width="28" height="28" aria-hidden="true">
+        <g transform="matrix(0.526154,0,0,0.526154,-54.1775,-54.2715)"><path d="M574.625,1181.59C534.577,1115.01 511.538,1037.06 511.538,953.776C511.538,709.325 710.001,510.862 954.452,510.862C1115.07,510.862 1255.84,596.544 1333.49,724.656C1374.02,791.521 1397.37,869.944 1397.37,953.776C1397.37,1073.97 1349.39,1183.04 1271.55,1262.88C1270.31,1264.07 1269.07,1265.27 1267.85,1266.49C1266.06,1268.25 1264.3,1270.04 1262.55,1271.85C1226,1309.73 1198.56,1356.46 1183.78,1408.49C1175.76,1436.72 1171.47,1466.52 1171.47,1497.31C1171.47,1528.09 1175.76,1557.89 1183.78,1586.12C1222.46,1722.27 1347.8,1822.11 1496.27,1822.11C1675.54,1822.11 1821.08,1676.57 1821.08,1497.31C1821.08,1408.25 1785.15,1327.51 1727.03,1268.81L1875.69,1268.81C1915.99,1335.54 1939.19,1413.74 1939.19,1497.31C1939.19,1741.76 1740.72,1940.22 1496.27,1940.22C1335.37,1940.22 1194.39,1854.24 1116.82,1725.75C1076.54,1659.03 1053.36,1580.86 1053.36,1497.31C1053.36,1457.36 1058.66,1418.64 1068.59,1381.82C1089.13,1305.67 1129.49,1237.62 1183.78,1183.55L1183.78,1183.48C1242.39,1124.71 1278.64,1043.64 1278.64,954.166C1278.64,925.375 1274.89,897.454 1267.85,870.866C1231.03,731.907 1104.31,629.362 953.842,629.362C774.578,629.362 629.038,774.902 629.038,954.166C629.038,1042.69 664.527,1122.98 722.039,1181.59L574.625,1181.59Z" style="fill:#9FAF52;"/></g>
+        <g transform="matrix(0.414294,0,0,0.414294,254.535,129.476)"><path d="M392,527C392,485.606 425.606,452 467,452C508.394,452 542,485.606 542,527L542,985.47C542,1026.86 508.394,1060.47 467,1060.47C425.606,1060.47 392,1026.86 392,985.47L392,527Z" style="fill:#fff;"/></g>
+        <g transform="matrix(0.81846,0,0,0.81846,-621.282,-427.039)"><path d="M1656,1270C1741,1270 1810,1339.01 1810,1424C1810,1509 1741,1578 1656,1578C1571.01,1578 1502,1509 1502,1424C1502,1339.01 1571.01,1270 1656,1270ZM1656,1348.07C1614.09,1348.07 1580.07,1382.09 1580.07,1424C1580.07,1465.91 1614.09,1499.93 1656,1499.93C1697.91,1499.93 1731.93,1465.91 1731.93,1424C1731.93,1382.09 1697.91,1348.07 1656,1348.07Z" style="fill:#fff;"/></g>
+      </svg>
+      <span class="wm">Zuraio</span>
+    </div>
+    <div class="foot-links">
+      <a href="#pain">The problem</a><a href="#control">Data control</a><a href="#tools">How it fits</a><a href="#action">See it work</a><a href="#final">Book a demo</a>
+    </div>
+    <div class="mono" style="font-size:11.5px;color:#7C7F73;">AI for Swiss companies that need control of their data.</div>
+  </div>
+</footer>
+
+<script>
+  // nav shadow on scroll
+  const nav=document.getElementById('nav');
+  addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>8),{passive:true});
+
+  // reduced motion check
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  // reveal on scroll
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>{if(reduce){el.classList.add('in');}else io.observe(el);});
+
+  // line motif draw-on-scroll
+  document.querySelectorAll('.motif.draw').forEach(svg=>{
+    svg.querySelectorAll('path.draw').forEach(p=>{
+      try{const len=p.getTotalLength();p.style.setProperty('--len',len);}catch(e){}
+    });
+  });
+  const ioLine=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ioLine.unobserve(e.target);}});
+  },{threshold:0.35});
+  document.querySelectorAll('.motif.draw').forEach(el=>{if(reduce){el.classList.add('in');}else ioLine.observe(el);});
+
+  // tabs
+  const tabs=document.querySelectorAll('.tab');
+  tabs.forEach(t=>t.addEventListener('click',()=>{
+    tabs.forEach(x=>x.setAttribute('aria-selected','false'));
+    t.setAttribute('aria-selected','true');
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    document.getElementById(t.dataset.tab).classList.add('active');
+  }));
+
+  /* ---------- one continuous snaking page line ---------- */
+  (function(){
+    const flow=document.querySelector('.flow');
+    const svg=document.querySelector('.spine');
+    if(!flow||!svg) return;
+    const A=document.getElementById('spineA'), B=document.getElementById('spineB');
+    const TA=document.getElementById('spineTrunkA'), TB=document.getElementById('spineTrunkB');
+    const nodesG=document.getElementById('spineNodes');
+    const fm=[document.getElementById('fmA'),document.getElementById('fmB'),document.getElementById('fmC')];
+    const SVGNS='http://www.w3.org/2000/svg';
+    if(B) B.remove();            // single line — drop the second strand
+    if(TB) TB.remove();
+
+    let lenA=0;
+
+    // smooth Catmull-Rom spline through points (in px) -> cubic bezier path
+    function spline(P){
+      if(P.length<2) return '';
+      let d='M '+P[0].x.toFixed(1)+','+P[0].y.toFixed(1);
+      for(let i=0;i<P.length-1;i++){
+        const p0=P[i-1]||P[i], p1=P[i], p2=P[i+1], p3=P[i+2]||P[i+1];
+        const c1x=p1.x+(p2.x-p0.x)/6, c1y=p1.y+(p2.y-p0.y)/6;
+        const c2x=p2.x-(p3.x-p1.x)/6, c2y=p2.y-(p3.y-p1.y)/6;
+        d+=' C '+c1x.toFixed(1)+','+c1y.toFixed(1)+' '+c2x.toFixed(1)+','+c2y.toFixed(1)+' '+p2.x.toFixed(1)+','+p2.y.toFixed(1);
+      }
+      return d;
+    }
+
+    function circle(cls,x,y,r){
+      const c=document.createElementNS(SVGNS,'circle');
+      c.setAttribute('class',cls); c.setAttribute('cx',x); c.setAttribute('cy',y); c.setAttribute('r',r);
+      return c;
+    }
+    // logo-inspired node: an open ring (echo of the logo's circle) with a centre dot
+    // plus a slow outward "ping" pulse to give the line gentle life
+    function ring(x,y,teal,idx){
+      const baseR=teal?10:9;
+      nodesG.appendChild(circle('sring',x,y,baseR));
+      nodesG.appendChild(circle(teal?'snode-teal':'snode',x,y,3.2));
+      if(!reduce){
+        const p=circle('ping',x,y,baseR);
+        const aR=document.createElementNS(SVGNS,'animate');
+        aR.setAttribute('attributeName','r'); aR.setAttribute('values',baseR+';'+(baseR+13));
+        aR.setAttribute('dur','3.6s'); aR.setAttribute('begin',(idx*0.45)+'s');
+        aR.setAttribute('repeatCount','indefinite');
+        aR.setAttribute('calcMode','spline'); aR.setAttribute('keyTimes','0;1'); aR.setAttribute('keySplines','.22 .61 .36 1');
+        const aO=document.createElementNS(SVGNS,'animate');
+        aO.setAttribute('attributeName','opacity'); aO.setAttribute('values','0.5;0');
+        aO.setAttribute('dur','3.6s'); aO.setAttribute('begin',(idx*0.45)+'s'); aO.setAttribute('repeatCount','indefinite');
+        p.appendChild(aR); p.appendChild(aO);
+        nodesG.appendChild(p);
+      }
+    }
+
+    // Build a routing line inspired by the logo's connected arcs.
+    // It hugs one side gutter through each section, drops a ring node onto every
+    // section to lead the eye in, then crosses to the other side for the next one.
+    function build(){
+      const W=flow.offsetWidth, H=flow.offsetHeight;
+      if(!W||!H) return;
+      svg.setAttribute('viewBox','0 0 '+W+' '+H);
+      const contentW=Math.min(1180, W-56);
+      const lEdge=(W-contentW)/2, rEdge=W-lEdge;
+      const cl=v=>Math.max(W*0.05, Math.min(W*0.95, v));
+      const lNode=cl(lEdge-2),  rNode=cl(rEdge+2);     // node sits just outside the content column
+      const lGut=cl(lEdge*0.46), rGut=cl(W-lEdge*0.46); // deep swing into the gutter
+      const secs=Array.prototype.slice.call(flow.children).filter(e=>e.tagName==='SECTION');
+
+      const seamX=0.736*W;          // exact x where the image's line exits
+      // short lead leaving the image at its exact exit tangent (~27deg from vertical), then it curves right
+      const wp=[{x:seamX,y:0},{x:seamX-37,y:70}];
+      const nodePts=[];
+      secs.forEach((sec,i)=>{
+        const top=sec.offsetTop, h=sec.offsetHeight;
+        const side=(i===0)?'r':((i%2===1)?'l':'r');    // 1st section curves right (then alternate)
+        let ny=top+Math.min(150,h*0.16);              // node near the section heading
+        let nx=(side==='l')?lNode:rNode;
+        if(i===0){ nx=rNode; ny=top+Math.min(300,h*0.34); }  // give the rightward curve room below the lead
+        wp.push({x:nx,y:ny});
+        nodePts.push({x:nx,y:ny,teal:sec.id==='control'});
+        wp.push({x:(side==='l')?lGut:rGut, y:top+h*0.80}); // run down that side, then cross at the seam
+      });
+      wp.push({x:0.5*W,y:H});       // resolve to centre at the very bottom
+
+      const d=spline(wp);
+      A.setAttribute('d',d); TA.setAttribute('d',d);
+
+      nodesG.textContent='';
+      nodePts.forEach((n,idx)=>ring(n.x,n.y,n.teal,idx));   // ring + pulse at each section
+
+      fm.forEach(m=>{ if(m) m.setAttribute('path',d); });   // flowing dots follow the line
+      lenA=A.getTotalLength(); A.style.strokeDasharray=lenA;
+      draw();
+    }
+
+    function draw(){
+      const r=flow.getBoundingClientRect();
+      let p=(innerHeight*0.78 - r.top)/(r.height*0.82);   // line leads the scroll down
+      p=Math.max(0,Math.min(1,p));
+      // keep the hand-off out of the hero image always drawn solid, so it reads as one line
+      p=reduce?1:Math.max(p,0.14);
+      A.style.strokeDashoffset=lenA*(1-p);
+    }
+
+    let raf=null;
+    addEventListener('scroll',()=>{ if(raf) return; raf=requestAnimationFrame(()=>{draw();raf=null;}); },{passive:true});
+    let rt=null;
+    addEventListener('resize',()=>{ clearTimeout(rt); rt=setTimeout(build,150); });
+    build();
+    addEventListener('load',()=>setTimeout(build,120));
+    if(document.fonts&&document.fonts.ready){document.fonts.ready.then(()=>setTimeout(build,60));}
+  })();
+</script>
+</body>
+</html>
