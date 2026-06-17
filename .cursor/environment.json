@@ -1,0 +1,17 @@
+{
+  "name": "zuraio-website",
+  "install": "npm install",
+  "terminals": [
+    {
+      "name": "Vite dev server",
+      "command": "npm run dev -- --host 0.0.0.0 --port 5173",
+      "description": "Runs the Vite development server for the Zuraio marketing site."
+    }
+  ],
+  "ports": [
+    {
+      "name": "web",
+      "port": 5173
+    }
+  ]
+}
