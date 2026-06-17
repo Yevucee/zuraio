@@ -46,6 +46,12 @@ If a stale environment is cached, delete it from the [Cloud Agents dashboard](ht
 
 Agent instructions for cloud sessions are in `AGENTS.md`.
 
+## Zuraio landing page (standalone)
+
+A self-contained landing page package lives in `zuraio-landing/`. It is intended as a separate page from the main React site, served at `/zuraio/index.html` without sharing the global layout or styles.
+
+If `index.html` and the images in `zuraio-landing/assets/` are not yet in the repo, see `zuraio-landing/ADD_MISSING_FILES.md` for how to add them from your Mac.
+
 ## Deploy to GitHub Pages
 
 This project includes a GitHub Actions workflow at `.github/workflows/deploy.yml`.
