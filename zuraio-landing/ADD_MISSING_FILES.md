@@ -1,14 +1,12 @@
 # Add the missing landing page files
 
-This folder is ready in the repo, but two items still need to be added from your Mac:
+The landing page is integrated at `public/zuraio/` and served at `/zuraio/index.html`.
 
-| File | Required |
-|---|---|
-| `index.html` | Yes — the full self-contained page |
-| `assets/zuraio-hero.jpg` | Yes |
-| `assets/zuraio-team.jpg` | Yes |
+This source folder (`zuraio-landing/`) is the canonical drop-in package. If you update the page, copy changes to `public/zuraio/` (or ask Cursor to sync them).
 
-Cursor chat cannot upload folders or large HTML files reliably. Use one of these methods instead.
+## Original upload instructions
+
+Cursor chat cannot upload folders or large HTML files reliably. If you need to re-add files from your Mac:
 
 ## Option 1 — Git on your Mac (recommended)
 
