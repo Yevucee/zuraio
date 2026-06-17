@@ -272,7 +272,7 @@
   .demo-text .marker{margin-bottom:14px;}
 
   /* control */
-  .control{background:linear-gradient(165deg,#2C2E29 0%, #34372F 100%);color:#EDEEE7;overflow:visible;}
+  .control{background:linear-gradient(165deg,#2C2E29 0%, #34372F 100%);color:#EDEEE7;overflow:hidden;}
   .control h2,.control h4{color:#fff;}
   .control .marker{color:var(--soft-olive);}
   .control .marker::before{box-shadow:0 0 0 4px rgba(159,175,82,.18);}
@@ -364,11 +364,11 @@
 
   /* ---------- ONE CONTINUOUS PAGE SPINE ---------- */
   .flow{position:relative;isolation:isolate;}
-  .flow > section{position:relative;z-index:2;}
+  .flow > section{position:relative;}
   .flow > section > .wrap{position:relative;z-index:2;}
   .spine{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:visible;}
-  .spine .trunk{fill:none;stroke:var(--soft-olive);stroke-width:9;opacity:.16;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round;}
-  .spine .draw{fill:none;stroke:var(--olive);stroke-width:3;opacity:.9;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 5px rgba(159,175,82,.85));}
+  .spine .trunk{fill:none;stroke:var(--soft-olive);stroke-width:9;opacity:.16;vector-effect:non-scaling-stroke;stroke-linecap:round;}
+  .spine .draw{fill:none;stroke:var(--olive);stroke-width:3;opacity:.9;vector-effect:non-scaling-stroke;stroke-linecap:round;filter:drop-shadow(0 0 5px rgba(159,175,82,.85));}
   .spine .snode{fill:var(--olive);}
   .spine .sring{fill:none;stroke:var(--olive);stroke-width:1.8;opacity:.5;vector-effect:non-scaling-stroke;}
   .spine .snode-teal{fill:var(--teal);}
@@ -704,10 +704,6 @@
     es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
   },{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.reveal').forEach(el=>{if(reduce){el.classList.add('in');}else io.observe(el);});
-  // If observers fail (e.g. script error elsewhere), don't leave content invisible
-  setTimeout(function(){
-    document.querySelectorAll('.reveal:not(.in)').forEach(function(el){ el.classList.add('in'); });
-  }, 4000);
 
   // line motif draw-on-scroll
   document.querySelectorAll('.motif.draw').forEach(svg=>{
@@ -744,13 +740,6 @@
 
     let lenA=0;
 
-    function lerp(a,b,t){return a+(b-a)*t;}
-    function xAtY(from,to,y){
-      const dy=to.y-from.y;
-      if(Math.abs(dy)<0.5) return to.x;
-      return lerp(from.x,to.x,(y-from.y)/dy);
-    }
-
     // smooth Catmull-Rom spline through points (in px) -> cubic bezier path
     function spline(P){
       if(P.length<2) return '';
@@ -762,14 +751,6 @@
         d+=' C '+c1x.toFixed(1)+','+c1y.toFixed(1)+' '+c2x.toFixed(1)+','+c2y.toFixed(1)+' '+p2.x.toFixed(1)+','+p2.y.toFixed(1);
       }
       return d;
-    }
-
-    // Collinear bridge through a section boundary so the stroke reads as one line
-    function seamBridge(wp,seamY,nextX,nextY){
-      const prev=wp[wp.length-1];
-      const x=xAtY(prev,{x:nextX,y:nextY},seamY);
-      wp.push({x,y:seamY-3});
-      wp.push({x,y:seamY+3});
     }
 
     function circle(cls,x,y,r){
@@ -812,31 +793,21 @@
       const lGut=cl(lEdge*0.46), rGut=cl(W-lEdge*0.46); // deep swing into the gutter
       const secs=Array.prototype.slice.call(flow.children).filter(e=>e.tagName==='SECTION');
 
-      const seamX=cl(0.736*W);       // exact x where the image's line exits
-      const heroTan=27*Math.PI/180; // ~27deg from vertical — matches painted line in hero image
-      const heroLead=92;
-      const wp=[{x:seamX,y:0}];
-      [0.45,0.78,1].forEach(t=>{
-        wp.push({
-          x:seamX-Math.sin(heroTan)*heroLead*t,
-          y:Math.cos(heroTan)*heroLead*t
-        });
-      });
+      const seamX=0.736*W;          // exact x where the image's line exits
+      // short lead leaving the image at its exact exit tangent (~27deg from vertical), then it curves right
+      const wp=[{x:seamX,y:0},{x:seamX-37,y:70}];
       const nodePts=[];
       secs.forEach((sec,i)=>{
-        const top=sec.offsetTop, h=sec.offsetHeight, bottom=top+h;
-        const side=(i===0)?'r':((i%2===1)?'l':'r');
-        const gutterX=(side==='l')?lGut:rGut;
+        const top=sec.offsetTop, h=sec.offsetHeight;
+        const side=(i===0)?'r':((i%2===1)?'l':'r');    // 1st section curves right (then alternate)
+        let ny=top+Math.min(150,h*0.16);              // node near the section heading
         let nx=(side==='l')?lNode:rNode;
-        let ny=top+Math.min(150,h*0.16);
-        if(i===0){ nx=rNode; ny=top+Math.min(300,h*0.34); }
-        if(i>0) seamBridge(wp,top,nx,ny);
+        if(i===0){ nx=rNode; ny=top+Math.min(300,h*0.34); }  // give the rightward curve room below the lead
         wp.push({x:nx,y:ny});
         nodePts.push({x:nx,y:ny,teal:sec.id==='control'});
-        wp.push({x:gutterX,y:top+h*0.52});
-        wp.push({x:gutterX,y:bottom-6});
+        wp.push({x:(side==='l')?lGut:rGut, y:top+h*0.80}); // run down that side, then cross at the seam
       });
-      wp.push({x:0.5*W,y:H});
+      wp.push({x:0.5*W,y:H});       // resolve to centre at the very bottom
 
       const d=spline(wp);
       A.setAttribute('d',d); TA.setAttribute('d',d);
