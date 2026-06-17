@@ -30,6 +30,22 @@ Preview the production build locally:
 npm run preview
 ```
 
+## Cursor Cloud
+
+This repo includes a Cursor Cloud environment so you can work from any machine (Mac, home, etc.) without a local Node setup.
+
+Configuration lives in `.cursor/environment.json`. On startup it runs `npm install` and starts the Vite dev server on port 5173.
+
+To use it:
+
+1. Open this repo in Cursor
+2. Start a **Cloud Agent** from the `main` branch
+3. Preview the site via the exposed port 5173 in the Cloud UI
+
+If a stale environment is cached, delete it from the [Cloud Agents dashboard](https://cursor.com/dashboard?tab=cloud-agents) and start fresh.
+
+Agent instructions for cloud sessions are in `AGENTS.md`.
+
 ## Deploy to GitHub Pages
 
 This project includes a GitHub Actions workflow at `.github/workflows/deploy.yml`.
