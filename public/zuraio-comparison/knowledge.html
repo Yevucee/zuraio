@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knowledge — Zuraio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+
+<section class="page-hero pad">
+  <div class="wrap">
+    <span class="marker">Knowledge</span>
+    <h1>Your company knowledge, connected and searchable.</h1>
+    <p class="lede">Zuraio is designed to connect approved internal sources so employees can ask questions and receive answers backed by the documents and systems your company already uses.</p>
+  </div>
+</section>
+
+<section class="pad">
+  <div class="wrap">
+    <span class="marker">What can be connected</span>
+    <h2>Approved sources for company-specific answers.</h2>
+    <p class="lede">The right sources depend on your organisation, permissions and agreed setup. Zuraio is designed to work with selected internal knowledge — not public internet data alone.</p>
+
+    <div class="grid-cards cols-3">
+      <article class="pcard reveal">
+        <h3>Documents and files</h3>
+        <p>Policies, standards, proposals, project files, templates and shared folders from approved storage locations.</p>
+        <p class="mono status-note">Examples may include SharePoint, OneDrive, Google Drive — subject to integration availability.</p>
+      </article>
+      <article class="pcard reveal d1">
+        <h3>Email and calendar</h3>
+        <p>Relevant threads, meeting context and correspondence where access permissions allow — for briefings, follow-ups and search.</p>
+        <p class="mono status-note">Examples may include Outlook, Gmail — subject to integration availability.</p>
+      </article>
+      <article class="pcard reveal d2">
+        <h3>Business systems</h3>
+        <p>CRM records, ERP data, project tools and other approved systems that hold operational context.</p>
+        <p class="mono status-note">See <a href="integrations.html">integrations</a> for current status by category.</p>
+      </article>
+      <article class="pcard reveal d3">
+        <h3>Meeting notes and transcripts</h3>
+        <p>Notes, summaries and recorded context from meetings — where your company chooses to connect them.</p>
+      </article>
+      <article class="pcard reveal d4">
+        <h3>Internal wikis and knowledge bases</h3>
+        <p>Structured internal documentation, FAQs and team knowledge repositories.</p>
+      </article>
+      <article class="pcard reveal d5">
+        <h3>Custom and API sources</h3>
+        <p>Additional sources via APIs or custom connectors, depending on your deployment and requirements.</p>
+      </article>
+    </div>
+
+    <div class="todo-block reveal">
+      <p class="mono">TODO: Confirm the definitive list of connectable source types and integration status before publication.</p>
+    </div>
+  </div>
+</section>
+
+<section class="pad cloud-bg">
+  <div class="wrap">
+    <span class="marker">Sourced answers</span>
+    <h2>Answers you can trace back to a source.</h2>
+    <p class="lede">Generic AI can sound confident without showing where information came from. Zuraio is designed so that, where internal sources are used, users can see references to the documents or systems behind an answer — making it easier to check, share and trust.</p>
+
+    <div class="grid-cards cols-2">
+      <article class="pcard reveal">
+        <h3>Why sources matter</h3>
+        <ul>
+          <li>Verify claims before acting on them</li>
+          <li>Share answers with colleagues who need the original context</li>
+          <li>Reduce reliance on unverified model memory</li>
+          <li>Support internal review and governance expectations</li>
+        </ul>
+      </article>
+      <article class="pcard reveal d1">
+        <h3>What users may see</h3>
+        <ul>
+          <li>Document name and location (where permissions allow)</li>
+          <li>Relevant excerpt or reference pointer</li>
+          <li>Date or version indicator where available</li>
+          <li>Indication when an answer is not source-backed</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="todo-block reveal">
+      <p class="mono">TODO: Verify exact source-display behaviour and UI copy with product team before publication.</p>
+    </div>
+  </div>
+</section>
+
+<section class="pad">
+  <div class="wrap">
+    <span class="marker">How it works</span>
+    <h2>From scattered knowledge to a connected answer.</h2>
+
+    <div class="diagram-box reveal">
+      <div class="knowledge-flow">
+        <div class="flow-row sources">
+          <div class="flow-node">Email</div>
+          <div class="flow-node">Documents</div>
+          <div class="flow-node">CRM / ERP</div>
+          <div class="flow-node">Meeting notes</div>
+        </div>
+        <div class="flow-connector" aria-hidden="true">
+          <span class="flow-line"></span>
+          <span class="flow-arrow">↓</span>
+        </div>
+        <div class="flow-row hub">
+          <div class="flow-node hub-node">Zuraio AI Hub</div>
+        </div>
+        <div class="flow-connector" aria-hidden="true">
+          <span class="flow-line"></span>
+          <span class="flow-arrow">↓</span>
+        </div>
+        <div class="flow-row outputs">
+          <div class="flow-node output">Source-backed answer</div>
+          <div class="flow-node output">Meeting brief</div>
+          <div class="flow-node output">Draft / summary</div>
+        </div>
+      </div>
+      <p class="mono diagram-caption">Diagram: illustrative flow — not a technical specification. Permissions and routing apply at each step.</p>
+    </div>
+  </div>
+</section>
+
+<section class="pad cta-band">
+  <div class="wrap center">
+    <h2>See how knowledge could connect in your company.</h2>
+    <p class="lede">We can walk through your current sources, access model and the first questions your teams would want to ask.</p>
+    <p style="margin-top:24px;"><a class="btn btn-primary btn-lg" href="contact.html">Book a private demo</a></p>
+  </div>
+</section>
+
+</main>
+<div id="site-footer"></div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
