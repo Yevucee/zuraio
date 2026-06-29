@@ -31,7 +31,7 @@
   --maxw-tech: 760px;
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
   --nav-h: 70px;
-  --hero-copy-min: 280px;
+  --hero-copy-min: 300px;
   --marquee-duration: 48s;
 }
 
@@ -124,11 +124,11 @@ section {
 }
 
 .pad {
-  padding: 90px 0;
+  padding: 78px 0;
 }
 
 .pad-sm {
-  padding: 72px 0;
+  padding: 62px 0;
 }
 
 .lede {
@@ -2552,7 +2552,77 @@ footer.site-footer {
    10b. HTML class aliases & page utilities
    ========================================================================== */
 
-/* Hero comparison (index.html class names) */
+/* Hero comparison (index.html) — production two-column layout */
+.hero-product {
+  background: var(--paper);
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+@media (min-width: 1000px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+    gap: 48px;
+  }
+}
+
+.hero-copy {
+  max-width: 620px;
+  min-height: var(--hero-copy-min);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-copy h1 {
+  font-size: clamp(34px, 5.2vw, 56px);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  margin: 0;
+}
+
+.hero-lede,
+[data-hero-paragraph] {
+  margin-top: 20px;
+  font-size: 17px;
+  color: var(--charcoal-soft);
+  max-width: 52ch;
+  line-height: 1.55;
+}
+
+.hero-copy .cta-row {
+  margin-top: 28px;
+}
+
+.hero-copy .trustline {
+  margin-top: 24px;
+}
+
+.hero-visual {
+  position: relative;
+  line-height: 0;
+}
+
+.hero-product-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  /* Same asset — frame shows the product UI portion (right side of composite) */
+  aspect-ratio: 16 / 11;
+  object-fit: cover;
+  object-position: 78% 38%;
+}
+
+/* Legacy full-bleed hero classes — kept for reference, unused on comparison homepage */
 .hero-compare,
 .hero-comparison {
   position: relative;
@@ -2611,13 +2681,14 @@ footer.site-footer {
 }
 
 .hero-compare-copy,
+.hero-copy,
 [data-hero-copy] {
   max-width: 620px;
   min-height: var(--hero-copy-min);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 36px 0;
+  padding: 0;
   transition: opacity 0.22s var(--ease);
 }
 
@@ -2641,6 +2712,14 @@ footer.site-footer {
   align-items: center;
   gap: 14px;
   background: var(--paper);
+}
+
+.hero-product .hero-compare-controls,
+.hero-product [data-hero-controls] {
+  margin-top: 28px;
+  padding: 20px 0 0;
+  border-top: 1px solid var(--hairline);
+  background: transparent;
 }
 
 .hero-compare-nav,
@@ -2752,6 +2831,27 @@ footer.site-footer {
 
   .hero-compare-bg img {
     min-height: 280px;
+  }
+}
+
+[data-hero-copy].is-changing {
+  opacity: 0.4;
+}
+
+@media (max-width: 640px) {
+  .hero-compare-controls {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-dots {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero-compare-nav {
+    justify-content: center;
+    width: 100%;
   }
 }
 

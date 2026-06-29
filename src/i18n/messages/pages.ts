@@ -25,10 +25,11 @@ export const pagesEn = {
       },
       message: 'Message',
       confidential: 'Your enquiry will be handled confidentially.',
-      thankYou: 'Thank you. Please email us directly at email@zuraio.ch so we can arrange the conversation.',
+      thankYou: 'Thank you. Please email us directly at hello@zuraio.ch so we can arrange the conversation.',
     },
     direct: {
       title: 'Or contact us directly',
+      email: 'hello@zuraio.ch',
       location: 'Switzerland',
     },
   },
@@ -385,10 +386,11 @@ export const pagesDe = {
       message: 'Nachricht',
       confidential: 'Ihre Anfrage wird vertraulich behandelt.',
       thankYou:
-        'Vielen Dank. Bitte schreiben Sie uns direkt an email@zuraio.ch, damit wir das Gespräch vereinbaren können.',
+        'Vielen Dank. Bitte schreiben Sie uns direkt an hello@zuraio.ch, damit wir das Gespräch vereinbaren können.',
     },
     direct: {
       title: 'Oder kontaktieren Sie uns direkt',
+      email: 'hello@zuraio.ch',
       location: 'Schweiz',
     },
   },

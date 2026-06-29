@@ -2,14 +2,33 @@ import { renderHeader, renderFooter, initReveal, initTabs } from './site.js';
 import { initHeroComparison } from './hero-comparison.js';
 import { initMarquee } from './integrations-marquee.js';
 import { initFaq } from './faq-accordion.js';
+import {
+  applyAllTranslations,
+  getLocale,
+  initLocaleSwitcher,
+} from './i18n.js';
 
-renderHeader();
-renderFooter();
-initReveal();
-initTabs();
-initHeroComparison();
-initMarquee();
-initFaq();
+document.documentElement.lang = getLocale();
+
+function boot() {
+  renderHeader();
+  renderFooter();
+  applyAllTranslations();
+  initReveal();
+  initTabs();
+  initHeroComparison();
+  initMarquee();
+  initFaq();
+}
+
+boot();
+
+initLocaleSwitcher(() => {
+  renderHeader();
+  renderFooter();
+  applyAllTranslations();
+  initMarquee();
+});
 
 // Email demo step controls
 document.querySelectorAll('[data-demo-step]').forEach((btn) => {
@@ -33,6 +52,8 @@ form?.addEventListener('submit', (e) => {
   if (notice) {
     notice.hidden = false;
     notice.textContent =
-      'Development notice: this form is not yet connected to a backend. Integration point documented in contact.html source.';
+      getLocale() === 'de'
+        ? 'Entwicklungshinweis: Dieses Formular ist noch nicht mit einem Backend verbunden. Integrationspunkt in contact.html dokumentiert.'
+        : 'Development notice: this form is not yet connected to a backend. Integration point documented in contact.html source.';
   }
 });

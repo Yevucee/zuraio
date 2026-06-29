@@ -76,6 +76,211 @@ export const nav = {
   about: { label: 'About', href: 'about.html' },
 };
 
+export const ui = {
+  bookDemo: 'Book a demo',
+  technical: 'Technical',
+  previous: '← Previous',
+  next: 'Next →',
+  optionOf: (n) => `Option ${n} of 5`,
+  optionLabel: (n) => `Option ${n}`,
+  previousAria: 'Previous hero option',
+  nextAria: 'Next hero option',
+  heroOptionsGroup: 'Hero messaging options',
+  trustAria: 'Trust signals',
+  langEn: 'EN',
+  langDe: 'DE',
+  languageContact: 'Language / Contact',
+  languageActive: 'active',
+  openMenu: 'Open menu',
+  closeMenu: 'Close menu',
+  zuraioHome: 'Zuraio home',
+};
+
+export const home = {
+  meta: {
+    title: 'Zuraio — AI for Swiss companies that need control of their data',
+  },
+  problem: {
+    marker: 'Recognise this?',
+    heading: 'Your company already has the answers. They are just hard to find.',
+    body: 'Important knowledge is spread across emails, documents, meetings and business systems. People lose time searching, preparing and repeating work that has already been done.',
+    cards: [
+      { title: 'Knowledge is scattered', body: 'Important information sits across inboxes, files, meetings and company systems.' },
+      { title: 'Administration takes over', body: 'Summaries, reports, preparation and follow-ups take time away from real work.' },
+      { title: 'Answers lack context', body: 'People make slower decisions when they cannot see the full history or source.' },
+      { title: 'Public AI creates uncertainty', body: 'Useful tools become risky when sensitive company knowledge is used without clear rules.' },
+    ],
+    link: 'See practical use cases →',
+  },
+  different: {
+    marker: 'More than a chatbot',
+    heading: 'Your company knowledge, working for your people.',
+    body: 'Generic AI works with what someone manually gives it. Zuraio connects to approved company knowledge, understands the context of the person asking and prepares sourced work for their review.',
+    generic: {
+      title: 'Generic AI',
+      items: ['Isolated conversations', 'Information added manually', 'Limited company context'],
+    },
+    zuraio: {
+      title: 'Zuraio',
+      items: ['Connected company knowledge', 'Personal and role-relevant context', 'Sourced answers and drafts', 'Review before action'],
+    },
+  },
+  pillars: {
+    heading: 'Everything your assistant needs to help.',
+    items: [
+      { title: 'Knowledge', body: 'Zuraio works with approved emails, documents, contacts, meeting notes and company systems.', link: 'Explore knowledge →', href: 'knowledge.html' },
+      { title: 'Connections', body: 'It works alongside the tools your team already uses rather than forcing people to replace them.', link: 'View connections →', href: 'integrations.html' },
+      { title: 'Safety', body: 'Hosting, access, sources and review rules remain under company control.', link: 'Read about data control →', href: 'data-control.html' },
+    ],
+  },
+  integrations: {
+    heading: 'Fits into the tools your team already uses.',
+    body: 'Zuraio is designed to work alongside your existing email, documents, meetings, messages and business systems.',
+    clarify: 'Specific connections depend on your company setup, approved tools and deployment scope.',
+    link: 'View integrations →',
+  },
+  demo: {
+    heading: 'See your assistant working.',
+    body: 'Zuraio gathers the right company context, prepares the work and brings it back with sources for your approval.',
+    disclaimer: 'Staged demonstration — capabilities depend on agreed deployment and permissions.',
+    steps: [
+      '1. Request arrives',
+      '2. Client history',
+      '3. Related files',
+      '4. Calendar check',
+      '5. Suggested times',
+      '6. Draft reply',
+      '7. Sources shown',
+      '8. Awaiting approval',
+    ],
+    tabs: [
+      { label: 'Email', heading: 'The reply is already waiting.', body: 'Long threads can be summarised and replies prepared using relevant company context. You review, edit and decide what gets sent.' },
+      { label: 'Meetings', heading: 'Walk in prepared.', body: 'Relevant emails, notes, documents, decisions and open actions gathered before you sit down.' },
+      { label: 'Knowledge', heading: 'Find the answer. See the proof.', body: 'Ask across approved company knowledge and see where the answer came from.' },
+    ],
+  },
+  outcomes: {
+    heading: 'Less administration. More valuable work.',
+    body: 'Zuraio helps people spend less time searching, summarising and preparing, so they can focus on clients, decisions and the work they are employed to do.',
+    cards: [
+      { tag: 'Meetings', title: 'Walk in prepared', body: 'Relevant history, decisions and open actions already prepared.' },
+      { tag: 'Email', title: 'Draft replies ready', body: 'Drafts based on the full thread and relevant company context.' },
+      { tag: 'Answers', title: 'Ask with evidence', body: 'Ask across approved knowledge and see the sources behind the response.' },
+      { tag: 'Reports', title: 'First drafts, faster', body: 'Turn existing information into structured first drafts.' },
+      { tag: 'Follow-ups', title: 'Nothing slips', body: 'Capture actions and next steps before they are forgotten.' },
+    ],
+  },
+  dataControl: {
+    marker: 'Data control',
+    heading: 'AI, without handing over the keys.',
+    body: 'Zuraio gives companies control over where it runs, what information it can use, who can access it and how its work is reviewed.',
+    cards: [
+      { title: 'Hosted in Switzerland', body: 'A Swiss-hosted option for companies that want their environment and company data kept in Switzerland.' },
+      { title: 'Access follows your rules', body: 'People work only with the information they are permitted to use.' },
+      { title: 'Answers show their sources', body: 'Users can check where information came from before relying on it.' },
+      { title: 'Built to be reviewed', body: 'Requests, sources and outputs can be easier to trace according to the agreed setup.' },
+    ],
+    note: '<b>Need stronger control?</b> On-premise options and model choice can be discussed for companies with stricter internal requirements.',
+    link: 'Explore data control and security →',
+  },
+  reviewable: {
+    heading: 'AI you can explain later.',
+    body: 'See what was asked, which approved sources were used and what was produced. This supports internal review and helps companies prepare for future AI-governance expectations.',
+    steps: [
+      { label: 'What was asked', title: 'The request', body: 'The prompt or request that started the work.' },
+      { label: 'What was used', title: 'The sources', body: 'The approved company sources behind the answer.' },
+      { label: 'What was produced', title: 'The output', body: 'The answer, draft or summary awaiting review.' },
+    ],
+    link: 'View the technical approach →',
+  },
+  origin: {
+    marker: 'Why we built it',
+    heading: 'Made for the work we had to do ourselves.',
+    paragraphs: [
+      'Zuraio started because we needed a better way to prepare, search, summarise, draft and follow up in our own work.',
+      'Public AI tools were useful, but they were not enough for serious company work. We wanted AI connected to real business knowledge, with clear control over data, access and model choice.',
+      'That became Zuraio.',
+    ],
+    link: 'Meet the team →',
+    caption: 'Built because we needed it ourselves.',
+    imageAlt: 'The Zuraio team working together — laptop, notebooks and whiteboard with prepare, search, summarise, draft and follow up.',
+  },
+  final: {
+    heading: 'See what your own assistant could take off your desk.',
+    body: 'We will look at your current tools, company knowledge and data-control requirements, then identify where Zuraio could help first.',
+    primaryCta: 'Book a private demo',
+    secondaryCta: 'See the assistant working',
+    supporting: 'Your company. Your information. Your approval.',
+  },
+};
+
+export const pages = {
+  howItHelps: {
+    title: 'How it helps — Zuraio',
+    hero: { marker: 'How it helps', heading: 'Less administration. More valuable work.', lede: 'Zuraio helps people prepare, search, draft, summarise and follow up using approved company knowledge. It works alongside existing systems and brings the relevant context together when it is needed.' },
+  },
+  knowledge: {
+    title: 'Knowledge — Zuraio',
+    hero: { marker: 'Knowledge', heading: 'Turn scattered company information into usable context.', lede: 'Important knowledge is often spread across inboxes, shared drives, meeting notes, CRM records and business systems. Zuraio is designed to bring approved information together so people can find, understand and use it more effectively.' },
+  },
+  integrations: {
+    title: 'Integrations — Zuraio',
+    hero: { marker: 'Integrations', heading: 'Works alongside the systems your team already uses.', lede: 'Zuraio is designed to connect company knowledge and workflows without forcing teams to replace systems that already work.' },
+  },
+  dataControl: {
+    title: 'Data control & security — Zuraio',
+    hero: { marker: 'Data control & security', heading: 'Your data. Your rules. Your deployment.', lede: 'Zuraio is designed to help companies use AI without giving up control over company knowledge, permissions or infrastructure choices.' },
+  },
+  deploymentModels: {
+    title: 'Deployment models — Zuraio',
+    hero: { marker: 'Deployment models', heading: 'Local, hybrid or Swiss-hosted cloud.', lede: 'Different companies have different requirements for control, performance, infrastructure and cost. Zuraio can be configured around the deployment model agreed for the customer.' },
+  },
+  technicalArchitecture: {
+    title: 'Technical architecture — Zuraio',
+    hero: { marker: 'Technical architecture', heading: 'A controlled path from request to reviewed output.', lede: 'Zuraio connects users, approved company sources, business tools and AI models through a governed execution layer. The exact architecture depends on the customer environment and deployment model.' },
+  },
+  aiGovernance: {
+    title: 'AI governance — Zuraio',
+    hero: { marker: 'AI governance', heading: 'AI use that can be understood and reviewed.', lede: 'Responsible company AI requires more than a model. Organisations need clear rules for access, data use, human review, logging and accountability.' },
+  },
+  faq: {
+    title: 'FAQ — Zuraio',
+    hero: { marker: 'FAQ', heading: 'Practical questions about using Zuraio at work.', lede: 'Answers to common questions about deployment, permissions, data control and everyday use.' },
+  },
+  about: {
+    title: 'About — Zuraio',
+    hero: { marker: 'About Zuraio', heading: 'Built by people who needed a better way to work.', lede: 'Zuraio began with a practical problem. Existing AI tools were useful, but they did not combine company knowledge, data control and everyday work in the way we needed.' },
+  },
+  contact: {
+    title: 'Contact — Zuraio',
+    hero: { marker: 'Contact', heading: 'Find the first practical use case for your company.', lede: 'We will look at your current tools, company knowledge and data-control requirements, then identify where Zuraio could help first.' },
+  },
+  resources: {
+    title: 'Resources — Zuraio',
+    hero: { marker: 'Resources', heading: 'Technical and practical information about Zuraio.', lede: 'Guides, overviews and reference material for teams evaluating or deploying Zuraio.' },
+  },
+  privacy: {
+    title: 'Privacy — Zuraio',
+    hero: { marker: 'Legal', heading: 'Privacy policy.', lede: 'This page is a structured placeholder. A complete privacy policy must be prepared and reviewed by qualified legal counsel before publication.' },
+  },
+  impressum: {
+    title: 'Impressum — Zuraio',
+    hero: { marker: 'Legal', heading: 'Impressum.', lede: 'This page is a structured placeholder. All company details below must be verified and inserted before publication.' },
+  },
+  terms: {
+    title: 'Terms of use — Zuraio',
+    hero: { marker: 'Legal', heading: 'Terms of use.', lede: 'This page is a structured placeholder. Complete terms must be prepared and reviewed by qualified legal counsel before publication.' },
+  },
+  cookies: {
+    title: 'Cookie settings — Zuraio',
+    hero: { marker: 'Legal', heading: 'Cookie settings.', lede: 'This page is a structured placeholder. Actual cookie categories and controls will be published after legal and technical review.' },
+  },
+};
+
+export const site = {
+  tagline: 'AI for Swiss companies that need control of their data.',
+};
+
 export const footerGroups = [
   {
     title: 'Product',
@@ -112,7 +317,8 @@ export const footerGroups = [
     links: [
       { label: 'Impressum', href: 'impressum.html' },
       { label: 'Privacy', href: 'privacy.html' },
-      { label: 'Cookie settings', href: 'privacy.html#cookies' },
+      { label: 'Cookie settings', href: 'cookies.html' },
+      { label: 'Terms of use', href: 'terms.html' },
     ],
   },
 ];

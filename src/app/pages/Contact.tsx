@@ -172,7 +172,7 @@ export default function Contact() {
               {p.direct.title}
             </h2>
             <p className="text-xl mb-4" style={{ color: 'var(--charcoal)' }}>
-              email@zuraio.ch
+              {p.direct.email}
             </p>
             <p className="text-xl" style={{ color: 'var(--charcoal)' }}>
               {p.direct.location}
