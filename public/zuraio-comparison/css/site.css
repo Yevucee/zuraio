@@ -2552,77 +2552,8 @@ footer.site-footer {
    10b. HTML class aliases & page utilities
    ========================================================================== */
 
-/* Hero comparison (index.html) — production two-column layout */
-.hero-product {
-  background: var(--paper);
-  overflow: hidden;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 36px;
-  align-items: center;
-}
-
-@media (min-width: 1000px) {
-  .hero-grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
-    gap: 48px;
-  }
-}
-
-.hero-copy {
-  max-width: 620px;
-  min-height: var(--hero-copy-min);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.hero-copy h1 {
-  font-size: clamp(34px, 5.2vw, 56px);
-  line-height: 1.06;
-  letter-spacing: -0.02em;
-  color: var(--charcoal);
-  margin: 0;
-}
-
-.hero-lede,
-[data-hero-paragraph] {
-  margin-top: 20px;
-  font-size: 17px;
-  color: var(--charcoal-soft);
-  max-width: 52ch;
-  line-height: 1.55;
-}
-
-.hero-copy .cta-row {
-  margin-top: 28px;
-}
-
-.hero-copy .trustline {
-  margin-top: 24px;
-}
-
-.hero-visual {
-  position: relative;
-  line-height: 0;
-}
-
-.hero-product-img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  /* Same asset — frame shows the product UI portion (right side of composite) */
-  aspect-ratio: 16 / 11;
-  object-fit: cover;
-  object-position: 78% 38%;
-}
-
-/* Legacy full-bleed hero classes — kept for reference, unused on comparison homepage */
+/* Hero comparison — full-bleed image with HTML copy replacing baked-in headline area.
+   The hero JPG contains legacy marketing copy in the pixels; an opaque backing hides it. */
 .hero-compare,
 .hero-comparison {
   position: relative;
@@ -2654,11 +2585,12 @@ footer.site-footer {
   inset: 0;
   z-index: 1;
   pointer-events: none;
+  /* Soft blend on the right only — left text zone is covered by .hero-compare-copy::before */
   background: linear-gradient(
     90deg,
-    rgba(251, 251, 248, 0.96) 0%,
-    rgba(251, 251, 248, 0.84) 24%,
-    rgba(251, 251, 248, 0.38) 50%,
+    transparent 0%,
+    transparent 36%,
+    rgba(251, 251, 248, 0.45) 48%,
     rgba(251, 251, 248, 0) 72%
   );
 }
@@ -2683,13 +2615,37 @@ footer.site-footer {
 .hero-compare-copy,
 .hero-copy,
 [data-hero-copy] {
+  position: relative;
   max-width: 620px;
   min-height: var(--hero-copy-min);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0;
+  padding: 28px 0;
   transition: opacity 0.22s var(--ease);
+}
+
+/* Opaque panel hides baked-in headline text in the hero JPG */
+.hero-compare-copy::before,
+[data-hero-copy]::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -48px;
+  bottom: -48px;
+  left: -100vw;
+  right: -28px;
+  background: var(--paper);
+  box-shadow: 12px 0 40px rgba(251, 251, 248, 0.92);
+}
+
+.hero-compare-copy h1,
+[data-hero-copy] h1 {
+  font-size: clamp(34px, 5.2vw, 58px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  margin: 0;
 }
 
 .hero-compare-lede,
@@ -2712,14 +2668,6 @@ footer.site-footer {
   align-items: center;
   gap: 14px;
   background: var(--paper);
-}
-
-.hero-product .hero-compare-controls,
-.hero-product [data-hero-controls] {
-  margin-top: 28px;
-  padding: 20px 0 0;
-  border-top: 1px solid var(--hairline);
-  background: transparent;
 }
 
 .hero-compare-nav,
@@ -2809,28 +2757,39 @@ footer.site-footer {
   .hero-scrim {
     background: linear-gradient(
       180deg,
-      rgba(251, 251, 248, 0.2) 0%,
-      rgba(251, 251, 248, 0.78) 42%,
-      rgba(251, 251, 248, 0.97) 100%
+      transparent 0%,
+      transparent 30%,
+      rgba(251, 251, 248, 0.55) 52%,
+      var(--paper) 68%
     );
   }
 
   .hero-compare-in,
   .hero-in {
-    position: relative;
-    inset: auto;
-    margin-top: -38%;
+    position: absolute;
+    inset: 0;
+    margin-top: 0;
+    align-items: flex-start;
+    padding-top: 20px;
     pointer-events: auto;
+  }
+
+  .hero-compare-copy::before,
+  [data-hero-copy]::before {
+    top: -24px;
+    bottom: -24px;
+    left: -100vw;
+    right: -100vw;
   }
 
   .hero-compare-copy,
   [data-hero-copy] {
     min-height: auto;
-    padding: 0;
+    padding: 16px 0 8px;
   }
 
   .hero-compare-bg img {
-    min-height: 280px;
+    min-height: 320px;
   }
 }
 
