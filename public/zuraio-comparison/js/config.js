@@ -6,6 +6,8 @@ export const SITE = {
   name: 'Zuraio',
   tagline: 'AI for Swiss companies that need control of their data.',
   internalLabel: 'Hero Comparison — Five Messaging Options',
+  // Note: zuraio-hero.jpg includes legacy headline text baked into the image pixels.
+  // HTML copy replaces it visually via an opaque backing panel in CSS.
   heroImage: '../zuraio/assets/zuraio-hero.jpg',
   teamImage: '../zuraio/assets/zuraio-team.jpg',
   contactEmail: 'hello@zuraio.ch',
