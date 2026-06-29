@@ -54,6 +54,26 @@ If `index.html` and the images in `zuraio-landing/assets/` are not yet in the re
 
 **Live URL:** `/zuraio/index.html` (static, isolated from the React app)
 
+## Hero comparison site (review)
+
+A separate multi-page site for comparing five hero messaging options lives in `public/zuraio-comparison/`. It does **not** replace the React homepage.
+
+**Review URL:** `/zuraio-comparison/index.html?hero=1&lang=en`
+
+- Five hero options labelled **Option 1 of 5** through **Option 5 of 5** (not internal working numbers)
+- Same hero image on every option: `public/zuraio/assets/zuraio-hero.jpg`
+- English and German via the header language switcher (`?lang=en` / `?lang=de`)
+- Comparison controls toggle in `public/zuraio-comparison/js/config.js`:
+
+```js
+HERO_COMPARISON_ENABLED = true   // false hides controls and locks to DEFAULT_HERO_OPTION
+DEFAULT_HERO_OPTION = 1          // 1–5
+```
+
+The main React app links to this site from the homepage comparison banner (“Hero comparison (5 options)”).
+
+Legal pages (`privacy.html`, `impressum.html`, `terms.html`, `cookies.html`) are **structured placeholders** — not for publication until legal review.
+
 ## Deploy to GitHub Pages
 
 This project includes a GitHub Actions workflow at `.github/workflows/deploy.yml`.

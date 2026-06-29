@@ -37,7 +37,7 @@ export const commonEn = {
     privacy: 'Privacy',
     terms: 'Terms',
     imprint: 'Imprint',
-    contactLine: 'email@zuraio.ch · Switzerland',
+    contactLine: 'hello@zuraio.ch · Switzerland',
     copyright: '© 2026 Zuraio',
   },
   comparison: {
@@ -48,6 +48,7 @@ export const commonEn = {
     refined: 'Refined',
     motionLed: 'Home v5 — Motion-led',
     swissOnePage: 'Home v6 — Swiss One-Page',
+    heroComparison: 'Hero comparison (5 options)',
   },
   buttons: {
     bookDemo: 'Book a demo',
@@ -107,7 +108,7 @@ export const commonDe = {
     privacy: 'Datenschutz',
     terms: 'AGB',
     imprint: 'Impressum',
-    contactLine: 'email@zuraio.ch · Schweiz',
+    contactLine: 'hello@zuraio.ch · Schweiz',
     copyright: '© 2026 Zuraio',
   },
   comparison: {
@@ -118,6 +119,7 @@ export const commonDe = {
     refined: 'Verfeinert',
     motionLed: 'Home v5 — Motion',
     swissOnePage: 'Home v6 — Swiss One-Page',
+    heroComparison: 'Hero-Vergleich (5 Optionen)',
   },
   buttons: {
     bookDemo: 'Demo buchen',

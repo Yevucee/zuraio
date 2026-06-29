@@ -14,6 +14,8 @@ const optionIds = [
   { id: 'swiss-one-page' as const, to: '/home-v6' },
 ];
 
+const heroComparisonHref = './zuraio-comparison/index.html?hero=1&lang=en';
+
 export function ComparisonBanner({ currentVersion }: ComparisonBannerProps) {
   const { messages: m } = useI18n();
   const labels = m.common.comparison;
@@ -51,6 +53,16 @@ export function ComparisonBanner({ currentVersion }: ComparisonBannerProps) {
               </Link>
             );
           })}
+          <a
+            href={heroComparisonHref}
+            className="px-3 py-1 rounded transition-colors border"
+            style={{
+              borderColor: 'rgba(70, 70, 70, 0.2)',
+              color: 'var(--deep-charcoal)',
+            }}
+          >
+            {labels.heroComparison}
+          </a>
         </div>
       </div>
     </div>
