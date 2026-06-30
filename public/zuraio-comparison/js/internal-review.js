@@ -166,14 +166,6 @@ function applyDataControlReviewNotes() {
   });
 }
 
-function applyHeroReviewTodo() {
-  const mount = document.getElementById('hero-review-todo');
-  if (!mount) return;
-  const todo = globalTodos.find((t) => t.id === 'hero-finalisation');
-  if (!todo) return;
-  mount.innerHTML = renderGlobalTodo(todo);
-}
-
 function applyFooterReviewNotes() {
   const mount = document.getElementById('footer-review-notes');
   if (!mount) return;
@@ -235,7 +227,6 @@ export function initInternalReview() {
   document.body.classList.add('internal-review-mode');
   document.body.classList.remove('public-mode');
   showInternalElements();
-  applyHeroReviewTodo();
   applyDataControlReviewNotes();
   applyIntegrationReviewTodos();
   renderPageReviewPanel();
