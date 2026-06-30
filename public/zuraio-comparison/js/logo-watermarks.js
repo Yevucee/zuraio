@@ -1,25 +1,29 @@
 import { LOGO_WATERMARKS_ENABLED } from './config.js';
 import { renderMarkSvg } from './logo-svg.js';
 
+/** Roland reference outer wrappers per section placement. */
+const WATERMARK_LAYOUTS = {
+  'left soft': { outerClass: 'intro-band-mark', tone: 'soft' },
+  'right soft': { outerClass: 'intro-band-mark integrations-tool-watermark', tone: 'soft' },
+  'left dark': { outerClass: 'team-section-mark', tone: 'dark' },
+};
+
 /**
- * Decorative logo watermarks — adapted from Roland reference
- * (cherrypicker77/zuraio-webseite intro-band-mark, integrations-tool-watermark).
+ * Decorative logo watermarks — Roland reference structure
+ * (cherrypicker77/zuraio-webseite intro-band-mark, integrations-tool-watermark, team-section-mark).
  */
 export function initLogoWatermarks() {
   if (!LOGO_WATERMARKS_ENABLED) return;
 
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
   document.querySelectorAll('[data-logo-watermark]').forEach((section) => {
-    if (section.querySelector('.logo-watermark')) return;
+    if (section.querySelector('.intro-band-mark, .team-section-mark')) return;
 
-    const variants = section.dataset.logoWatermark.split(/\s+/).filter(Boolean);
+    const layout = WATERMARK_LAYOUTS[section.dataset.logoWatermark.trim()] ?? WATERMARK_LAYOUTS['left soft'];
+
     const wm = document.createElement('div');
-    wm.className = ['logo-watermark', ...variants.map((v) => `logo-watermark--${v}`)].join(' ');
+    wm.className = layout.outerClass;
     wm.setAttribute('aria-hidden', 'true');
-    wm.innerHTML = renderMarkSvg();
+    wm.innerHTML = renderMarkSvg(layout.tone);
     section.prepend(wm);
-
-    if (reduce) wm.classList.add('logo-watermark--static');
   });
 }
