@@ -61,7 +61,7 @@ A separate multi-page site for comparing five hero messaging options lives in `p
 **Review URL:** `/zuraio-comparison/index.html?hero=1&lang=en`
 
 - Five hero options labelled **Option 1 of 5** through **Option 5 of 5** (not internal working numbers)
-- Same hero image on every option: `public/zuraio/assets/zuraio-hero.jpg`
+- Five full hero images (copy baked in): `public/zuraio/assets/zuraio-hero-option-1.jpg` … `option-5.jpg` — see `public/zuraio/assets/ADD_HERO_IMAGES.md`
 - English and German via the header language switcher (`?lang=en` / `?lang=de`)
 - Comparison controls toggle in `public/zuraio-comparison/js/config.js`:
 

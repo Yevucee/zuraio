@@ -5,6 +5,8 @@ export const heroOptions = [
       'Zuraio gibt allen in Ihrem Unternehmen einen intelligenten Assistenten, der Informationen findet, Fragen beantwortet, Dokumente vorbereitet und bei der Arbeit hilft.',
     cta: 'Lernen Sie den KI-Assistenten Ihres Unternehmens kennen',
     ctaHref: 'contact.html',
+    image: '../zuraio/assets/zuraio-hero-option-1.jpg',
+    imageAlt: 'Zuraio — Ein digitaler Executive Assistant für jede Mitarbeitende Person.',
   },
   {
     headline: 'Geben Sie jeder Mitarbeitenden Person die Kraft eines Executive Assistants.',
@@ -12,6 +14,8 @@ export const heroOptions = [
       'Zuraio verbindet das Wissen und die Tools Ihres Unternehmens und unterstützt Ihre Teams sofort bei Recherche, Texten, Analyse und alltäglichen Aufgaben.',
     cta: 'So funktioniert Zuraio',
     ctaHref: '#assistant-demo',
+    image: '../zuraio/assets/zuraio-hero-option-2.jpg',
+    imageAlt: 'Zuraio — Geben Sie jeder Mitarbeitenden Person die Kraft eines Executive Assistants.',
   },
   {
     headline: 'Ein KI-Assistent, der Ihr Unternehmen kennt.',
@@ -19,6 +23,8 @@ export const heroOptions = [
       'Zuraio versteht Ihre Dokumente, Meetings, E-Mails und Ihr Unternehmenswissen, damit Mitarbeitende schneller Antworten finden und Arbeit erledigen können.',
     cta: 'Entdecken Sie den Zuraio AI Hub',
     ctaHref: 'knowledge.html',
+    image: '../zuraio/assets/zuraio-hero-option-3.jpg',
+    imageAlt: 'Zuraio — Ein KI-Assistent, der Ihr Unternehmen kennt.',
   },
   {
     headline: 'Der intelligente Workspace für Ihr gesamtes Unternehmen.',
@@ -26,6 +32,8 @@ export const heroOptions = [
       'Durchsuchen Sie Unternehmenswissen, erstellen Sie Dokumente, analysieren Sie Informationen und erledigen Sie alltägliche Arbeit über einen sicheren AI Hub.',
     cta: 'Sehen Sie, was möglich ist',
     ctaHref: '#assistant-demo',
+    image: '../zuraio/assets/zuraio-hero-option-4.jpg',
+    imageAlt: 'Zuraio — Der intelligente Workspace für Ihr gesamtes Unternehmen.',
   },
   {
     headline: 'Ein KI-Assistent für alle. Angetrieben von Ihrem Unternehmen.',
@@ -33,6 +41,8 @@ export const heroOptions = [
       'Zuraio macht aus Ihrem Unternehmenswissen sichere, praktische Unterstützung für jede Mitarbeitende Person.',
     cta: 'Zuraio entdecken',
     ctaHref: 'how-it-helps.html',
+    image: '../zuraio/assets/zuraio-hero-option-5.jpg',
+    imageAlt: 'Zuraio — Ein KI-Assistent für alle. Angetrieben von Ihrem Unternehmen.',
   },
 ];
 

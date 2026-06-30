@@ -2570,13 +2570,19 @@ footer.site-footer {
   position: relative;
 }
 
-.hero-compare-bg img {
+.hero-compare-bg img,
+.hero-compare-img {
   display: block;
   width: 100%;
   height: auto;
   min-height: 420px;
   object-fit: cover;
   object-position: center 40%;
+  transition: opacity 0.22s var(--ease);
+}
+
+.hero-compare-img.is-changing {
+  opacity: 0.55;
 }
 
 .hero-compare-scrim,

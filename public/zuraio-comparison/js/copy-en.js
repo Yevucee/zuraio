@@ -5,6 +5,9 @@ export const heroOptions = [
       'Zuraio gives everyone in your company an intelligent assistant that can find information, answer questions, prepare documents and help get work done.',
     cta: "Meet your company's AI assistant",
     ctaHref: 'contact.html',
+    image: '../zuraio/assets/zuraio-hero-option-1.jpg',
+    imageAlt:
+      'Zuraio — A digital executive assistant for every employee. Swiss-hosted AI with sources, access controls and meeting brief on screen.',
   },
   {
     headline: 'Give every employee the power of an executive assistant.',
@@ -12,6 +15,9 @@ export const heroOptions = [
       'Zuraio connects your company\u2019s knowledge and tools, giving your people instant support with research, writing, analysis and everyday tasks.',
     cta: 'See how Zuraio works',
     ctaHref: '#assistant-demo',
+    image: '../zuraio/assets/zuraio-hero-option-2.jpg',
+    imageAlt:
+      'Zuraio — Give every employee the power of an executive assistant. Product interface with meeting brief and sources.',
   },
   {
     headline: 'An AI assistant that knows your company.',
@@ -19,6 +25,9 @@ export const heroOptions = [
       'Zuraio understands your documents, meetings, emails and business knowledge, so your employees can find answers and complete work faster.',
     cta: 'Discover the Zuraio AI Hub',
     ctaHref: 'knowledge.html',
+    image: '../zuraio/assets/zuraio-hero-option-3.jpg',
+    imageAlt:
+      'Zuraio — An AI assistant that knows your company. Product interface with meeting brief and sources.',
   },
   {
     headline: 'The intelligent workspace for your entire company.',
@@ -26,6 +35,9 @@ export const heroOptions = [
       'Search company knowledge, create documents, analyse information and complete everyday work through one secure AI Hub.',
     cta: 'See what it can do',
     ctaHref: '#assistant-demo',
+    image: '../zuraio/assets/zuraio-hero-option-4.jpg',
+    imageAlt:
+      'Zuraio — The intelligent workspace for your entire company. Product interface with meeting brief and sources.',
   },
   {
     headline: 'An AI assistant for everyone. Powered by your company.',
@@ -33,6 +45,9 @@ export const heroOptions = [
       'Zuraio turns your business knowledge into secure, practical support for every employee.',
     cta: 'Explore Zuraio',
     ctaHref: 'how-it-helps.html',
+    image: '../zuraio/assets/zuraio-hero-option-5.jpg',
+    imageAlt:
+      'Zuraio — An AI assistant for everyone. Powered by your company. Product interface with meeting brief and sources.',
   },
 ];
 
