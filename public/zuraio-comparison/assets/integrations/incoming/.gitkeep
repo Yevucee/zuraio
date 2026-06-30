@@ -1,0 +1,5 @@
+Drop approved official integration logo SVGs here, then run:
+
+npm run sync:integration-logos
+
+See ../README.md for expected filenames.

@@ -3572,6 +3572,17 @@ footer.site-footer {
   height: 18px;
 }
 
+.integration-logo-img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: block;
+}
+
+.integration-item.has-logo .integration-name {
+  font-weight: 500;
+}
+
 .integration-item .status-label {
   font-size: 9px;
   padding: 2px 6px;
