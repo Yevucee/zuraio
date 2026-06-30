@@ -3,6 +3,7 @@ import { initHeroComparison } from './hero-comparison.js';
 import { initMarquee } from './integrations-marquee.js';
 import { initFaq } from './faq-accordion.js';
 import { initInternalReview, refreshInternalReview, isInternalReviewMode } from './internal-review.js';
+import { initLogoWatermarks } from './logo-watermarks.js';
 import { SITE } from './config.js';
 import {
   applyAllTranslations,
@@ -17,6 +18,7 @@ function boot() {
   renderFooter();
   applyAllTranslations();
   initInternalReview();
+  initLogoWatermarks();
   initReveal();
   initTabs();
   initHeroComparison();

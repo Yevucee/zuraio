@@ -31,6 +31,12 @@
       </div>
       <h1 class="visually-hidden" data-hero-headline>A digital executive assistant for every employee.</h1>
     </div>
+    <!--
+    TODO — HERO FINALISATION
+    Owner: Samuel / Roland
+    The current hero image contains baked-in text, trust points and button graphics.
+    Once the final hero wording and image treatment are approved, rebuild the headline, body, CTA and trust points as real HTML and use the image only as the background or visual layer.
+    -->
     <div class="wrap hero-compare-controls" data-hero-controls>
       <div class="hero-compare-nav">
         <button type="button" class="hero-nav-btn" data-hero-prev aria-label="Previous hero option">← Previous</button>
@@ -66,7 +72,7 @@
   </section>
 
   <!-- 3. What makes Zuraio different -->
-  <section class="pad" id="different">
+  <section class="pad section-quiet" id="different" data-logo-watermark="left soft">
     <div class="wrap">
       <div class="head-block reveal">
         <span class="marker">More than a chatbot</span>
@@ -105,59 +111,18 @@
       </div>
       <div class="ctrl-panel reveal d1">
         <div class="ctrl-grid">
-          <div class="ccard"><h4>Hosted in Switzerland</h4><p>A Swiss-hosted option for companies that want their environment and company data kept in Switzerland.</p></div>
-          <div class="ccard"><h4>Access follows your rules</h4><p>People work only with the information they are permitted to use.</p></div>
-          <div class="ccard"><h4>Answers show their sources</h4><p>Users can check where information came from before relying on it.</p></div>
-          <div class="ccard"><h4>Built to be reviewed</h4><p>Requests, sources and outputs can be easier to trace according to the agreed setup.</p></div>
+          <div class="ccard" data-review-key="swiss-hosting"><h4>Hosted in Switzerland</h4><p>A Swiss-hosted option for companies that want their environment and company data kept in Switzerland.</p></div>
+          <div class="ccard" data-review-key="access-rules"><h4>Access follows your rules</h4><p>People work only with the information they are permitted to use.</p></div>
+          <div class="ccard" data-review-key="sources"><h4>Answers show their sources</h4><p>Users can check where information came from before relying on it.</p></div>
+          <div class="ccard" data-review-key="reviewed"><h4>Built to be reviewed</h4><p>Requests, sources and outputs can be easier to trace according to the agreed setup.</p></div>
         </div>
-        <p class="ctrl-note"><span style="color:var(--soft-olive);">▣</span><span><b>Need stronger control?</b> On-premise options and model choice can be discussed for companies with stricter internal requirements.</span></p>
+        <p class="ctrl-note" data-review-key="on-premise"><span style="color:var(--soft-olive);">▣</span><span><b>Need stronger control?</b> On-premise options and model choice can be discussed for companies with stricter internal requirements.</span></p>
       </div>
       <p class="section-link reveal" style="margin-top:24px;"><a href="data-control.html" style="color:var(--soft-olive);">Explore data control and security →</a></p>
     </div>
   </section>
 
-  <!-- 5. Three pillars — Knowledge, Connections and Safety -->
-  <section class="pad pillars" id="pillars" style="background:var(--cloud);">
-    <div class="wrap">
-      <div class="head-block center reveal">
-        <h2>Everything your assistant needs to help.</h2>
-      </div>
-      <div class="pillar-grid">
-        <div class="pcard pillar-card reveal d1">
-          <span class="marker">Knowledge</span>
-          <p>Zuraio works with approved emails, documents, contacts, meeting notes and company systems.</p>
-          <a class="text-link" href="knowledge.html">Explore knowledge →</a>
-        </div>
-        <div class="pcard pillar-card reveal d2">
-          <span class="marker">Connections</span>
-          <p>It works alongside the tools your team already uses rather than forcing people to replace them.</p>
-          <a class="text-link" href="integrations.html">View connections →</a>
-        </div>
-        <div class="pcard pillar-card reveal d3">
-          <span class="marker">Safety</span>
-          <p>Hosting, access, sources and review rules remain under company control.</p>
-          <a class="text-link" href="data-control.html">Read about data control →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 6. Integrations -->
-  <section class="pad" id="integrations">
-    <div class="wrap">
-      <div class="head-block reveal">
-        <h2>Fits into the tools your team already uses.</h2>
-        <p class="lede">Zuraio is designed to work alongside your existing email, documents, meetings, messages and business systems.</p>
-      </div>
-      <div class="marquee-track" data-marquee tabindex="0" aria-label="Integration tools">
-        <div class="marquee-inner"></div>
-      </div>
-      <p class="clarify reveal">Specific connections depend on your company setup, approved tools and deployment scope.</p>
-      <p class="section-link reveal"><a href="integrations.html">View integrations →</a></p>
-    </div>
-  </section>
-
-  <!-- 7. See the assistant working -->
+  <!-- 5. See the assistant working — directly after Data Control -->
   <section class="demo pad" id="assistant-demo">
     <div class="wrap">
       <div class="head-block reveal">
@@ -231,8 +196,50 @@
     </div>
   </section>
 
+  <!-- 6. Three pillars — compact band -->
+  <section class="pad-sm pillars pillars--compact section-quiet" id="pillars">
+    <div class="wrap">
+      <div class="pillar-band">
+        <article class="pillar-item reveal d1">
+          <span class="pillar-num" aria-hidden="true">1</span>
+          <h3 class="pillar-title">Knowledge</h3>
+          <p class="pillar-body">Zuraio works with approved emails, documents, contacts, meeting notes and company systems.</p>
+          <a class="text-link" href="knowledge.html">Explore knowledge →</a>
+        </article>
+        <article class="pillar-item reveal d2">
+          <span class="pillar-num" aria-hidden="true">2</span>
+          <h3 class="pillar-title">Connections</h3>
+          <p class="pillar-body">It works alongside the tools your team already uses rather than forcing people to replace them.</p>
+          <a class="text-link" href="integrations.html">View connections →</a>
+        </article>
+        <article class="pillar-item reveal d3">
+          <span class="pillar-num" aria-hidden="true">3</span>
+          <h3 class="pillar-title">Safety</h3>
+          <p class="pillar-body">Hosting, access, sources and review rules remain under company control.</p>
+          <a class="text-link" href="data-control.html">Read about data control →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Integrations — compact supporting proof -->
+  <section class="pad-sm section-compact section-quiet" id="integrations" data-logo-watermark="right soft">
+    <div class="wrap">
+      <div class="head-block reveal head-block--compact">
+        <h2>Fits into the tools your team already uses.</h2>
+        <p class="lede lede--compact">Zuraio is designed to work alongside your existing email, documents, meetings, messages and business systems.</p>
+      </div>
+      <div class="marquee-track" data-marquee tabindex="0" aria-label="Integration tools">
+        <div class="marquee-inner"></div>
+      </div>
+      <div id="integration-review-todos" data-internal-only></div>
+      <p class="clarify reveal">Specific connections depend on your company setup, approved tools and deployment scope.</p>
+      <p class="section-link reveal"><a href="integrations.html">View integrations →</a></p>
+    </div>
+  </section>
+
   <!-- 8. Practical outcomes -->
-  <section class="pad" id="outcomes">
+  <section class="pad section-quiet" id="outcomes">
     <div class="wrap">
       <div class="head-block reveal">
         <h2>Less administration. More valuable work.</h2>
@@ -248,24 +255,44 @@
     </div>
   </section>
 
-  <!-- 9. Reviewable AI -->
-  <section class="pad" id="reviewable">
+  <!-- 9. Reviewable AI — compact process strip -->
+  <section class="pad-sm section-quiet" id="reviewable">
     <div class="wrap">
-      <div class="head-block reveal">
+      <div class="head-block reveal head-block--compact">
         <h2>AI you can explain later.</h2>
-        <p class="lede">See what was asked, which approved sources were used and what was produced. This supports internal review and helps companies prepare for future AI-governance expectations.</p>
+        <p class="lede lede--compact">See what was asked, which approved sources were used and what was produced. This supports internal review and helps companies prepare for future AI-governance expectations.</p>
       </div>
-      <div class="audit">
-        <div class="acol reveal d1"><span class="step">What was asked</span><h4>The request</h4><p>The prompt or request that started the work.</p></div>
-        <div class="acol reveal d2"><span class="step">What was used</span><h4>The sources</h4><p>The approved company sources behind the answer.</p></div>
-        <div class="acol reveal d3"><span class="step">What was produced</span><h4>The output</h4><p>The answer, draft or summary awaiting review.</p></div>
+      <div class="process-strip reveal d1" role="list" aria-label="Reviewable AI process">
+        <article class="process-step" role="listitem">
+          <span class="process-label">What was asked</span>
+          <strong class="process-title">The request</strong>
+          <p>The prompt or request that started the work.</p>
+        </article>
+        <span class="process-arrow" aria-hidden="true">→</span>
+        <article class="process-step" role="listitem">
+          <span class="process-label">What was used</span>
+          <strong class="process-title">Approved sources</strong>
+          <p>The approved company sources behind the answer.</p>
+        </article>
+        <span class="process-arrow" aria-hidden="true">→</span>
+        <article class="process-step" role="listitem">
+          <span class="process-label">What was produced</span>
+          <strong class="process-title">The output</strong>
+          <p>The answer, draft or summary awaiting review.</p>
+        </article>
+        <span class="process-arrow" aria-hidden="true">→</span>
+        <article class="process-step process-step--review" role="listitem">
+          <span class="process-label">Review</span>
+          <strong class="process-title">Human review</strong>
+          <p>You decide what is used, edited or sent.</p>
+        </article>
       </div>
       <p class="section-link reveal"><a href="technical-architecture.html">View the technical approach →</a></p>
     </div>
   </section>
 
   <!-- 10. Why we built it -->
-  <section class="origin pad" id="origin">
+  <section class="origin pad" id="origin" data-logo-watermark="left dark">
     <div class="wrap">
       <div class="origin-grid">
         <div class="origin-text reveal">
