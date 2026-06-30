@@ -9,6 +9,13 @@ function getHeroFromUrl() {
   return n >= 1 && n <= 5 ? n : DEFAULT_HERO_OPTION;
 }
 
+function heroImageUrl(path) {
+  return path
+    .split('/')
+    .map((segment, index) => (index === 0 ? segment : encodeURIComponent(segment)))
+    .join('/');
+}
+
 export function initHeroComparison() {
   const root = document.getElementById('hero-comparison');
   if (!root) return;
@@ -49,7 +56,8 @@ export function initHeroComparison() {
     const update = () => {
       if (headlineEl) headlineEl.textContent = data.headline;
       if (imgEl && data.image) {
-        imgEl.src = data.image;
+        const src = heroImageUrl(data.image);
+        imgEl.src = src;
         imgEl.alt = data.imageAlt || data.headline;
       }
       statusEl.textContent = ui.optionOf(option);
@@ -75,7 +83,7 @@ export function initHeroComparison() {
         update();
         imgEl.classList.remove('is-changing');
       };
-      preload.src = data.image;
+      preload.src = heroImageUrl(data.image);
     } else {
       update();
     }
