@@ -3,7 +3,7 @@ export const DEFAULT_HERO_OPTION = 1;
 export const SPINE_ENABLED = false;
 
 /** When true, show internal TODO labels, ownership and review panels. */
-export const INTERNAL_REVIEW_MODE = true;
+export const INTERNAL_REVIEW_MODE = false;
 
 /** When true, show decorative logo-derived background watermarks. */
 export const LOGO_WATERMARKS_ENABLED = true;

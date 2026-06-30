@@ -166,7 +166,7 @@ function applyDataControlReviewNotes() {
 
 function applyFooterReviewNotes() {
   const mount = document.getElementById('footer-review-notes');
-  if (!mount) return;
+  if (!mount || !INTERNAL_REVIEW_MODE) return;
   mount.innerHTML = footerReviewItems
     .map(
       (item) => `
