@@ -2,6 +2,8 @@ import { renderHeader, renderFooter, initReveal, initTabs } from './site.js';
 import { initHeroComparison } from './hero-comparison.js';
 import { initMarquee } from './integrations-marquee.js';
 import { initFaq } from './faq-accordion.js';
+import { initInternalReview, refreshInternalReview, isInternalReviewMode } from './internal-review.js';
+import { SITE } from './config.js';
 import {
   applyAllTranslations,
   getLocale,
@@ -14,6 +16,7 @@ function boot() {
   renderHeader();
   renderFooter();
   applyAllTranslations();
+  initInternalReview();
   initReveal();
   initTabs();
   initHeroComparison();
@@ -27,6 +30,7 @@ initLocaleSwitcher(() => {
   renderHeader();
   renderFooter();
   applyAllTranslations();
+  refreshInternalReview();
   initMarquee();
 });
 
@@ -49,11 +53,19 @@ const form = document.getElementById('contact-form');
 form?.addEventListener('submit', (e) => {
   e.preventDefault();
   const notice = document.getElementById('form-notice');
-  if (notice) {
-    notice.hidden = false;
+  if (!notice) return;
+  notice.hidden = false;
+
+  if (isInternalReviewMode()) {
     notice.textContent =
       getLocale() === 'de'
         ? 'Entwicklungshinweis: Dieses Formular ist noch nicht mit einem Backend verbunden. Integrationspunkt in contact.html dokumentiert.'
         : 'Development notice: this form is not yet connected to a backend. Integration point documented in contact.html source.';
+    return;
   }
+
+  notice.innerHTML =
+    getLocale() === 'de'
+      ? `Das Formular ist noch nicht verbunden. Bitte schreiben Sie uns an <a href="mailto:${SITE.contactEmail}">${SITE.contactEmail}</a>.`
+      : `This form is not yet connected. Please email us at <a href="mailto:${SITE.contactEmail}">${SITE.contactEmail}</a>.`;
 });
