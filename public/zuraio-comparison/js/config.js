@@ -2,13 +2,13 @@ export const HERO_COMPARISON_ENABLED = true;
 export const DEFAULT_HERO_OPTION = 1;
 export const SPINE_ENABLED = false;
 
-/** One full hero image per messaging option — copy is baked into each JPG. */
+/** One full hero image per messaging option — copy is baked into each PNG. */
 export const HERO_IMAGES = [
-  '../zuraio/assets/zuraio-hero-option-1.jpg',
-  '../zuraio/assets/zuraio-hero-option-2.jpg',
-  '../zuraio/assets/zuraio-hero-option-3.jpg',
-  '../zuraio/assets/zuraio-hero-option-4.jpg',
-  '../zuraio/assets/zuraio-hero-option-5.jpg',
+  '../zuraio/assets/zuraio hero 1.png',
+  '../zuraio/assets/Zuraio header 2.png',
+  '../zuraio/assets/Zuraio hero 3.png',
+  '../zuraio/assets/Zuraio hero 4.png',
+  '../zuraio/assets/Zuraio hero 5.png',
 ];
 
 export const SITE = {
