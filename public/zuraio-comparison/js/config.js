@@ -2,8 +2,8 @@ export const HERO_COMPARISON_ENABLED = true;
 export const DEFAULT_HERO_OPTION = 1;
 export const SPINE_ENABLED = false;
 
-/** When true, show internal TODO labels, ownership and review panels. */
-export const INTERNAL_REVIEW_MODE = true;
+/** When true, show internal TODO labels on the site. Keep false — use the team review document instead. */
+export const INTERNAL_REVIEW_MODE = false;
 
 /** One full hero image per messaging option — copy is baked into each PNG. */
 export const HERO_IMAGES = [

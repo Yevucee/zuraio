@@ -1,6 +1,5 @@
 import { getLocale, setLocale, getCopy } from './i18n.js';
 import { SITE } from './config.js';
-import { enhanceFooterWithReview } from './internal-review.js';
 
 function getNav() {
   return getCopy().nav;
@@ -149,11 +148,8 @@ export function renderFooter() {
           <div class="brand foot-brand">${LOGO_SVG.replace('fill:#464646', 'fill:#fff')}<span class="wm">Zuraio</span></div>
           <p class="foot-tagline">${getSiteTagline()}</p>
         </div>
-        <div id="footer-review-notes" data-internal-only></div>
       </div>
     </footer>`;
-
-  enhanceFooterWithReview();
 }
 
 export function initReveal() {
