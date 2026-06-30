@@ -3664,7 +3664,7 @@ footer.site-footer {
   right: -19%;
   top: 52%;
   width: 80%;
-  transform: translate(-50px, calc(-52% + 120px));
+  transform: translate(-50px, -52%);
 }
 
 #origin[data-logo-watermark] {
