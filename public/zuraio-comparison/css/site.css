@@ -2959,9 +2959,9 @@ footer.site-footer {
   transition: opacity 0.22s var(--ease);
 }
 
-/* Opaque panel hides baked-in headline text in the hero JPG */
+/* Opaque panel — legacy hero-compare only (hid baked-in headline in old hero PNGs) */
 .hero-compare-copy::before,
-[data-hero-copy]::before {
+.hero-compare [data-hero-copy]::before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -2971,6 +2971,12 @@ footer.site-footer {
   right: -28px;
   background: var(--paper);
   box-shadow: 12px 0 40px rgba(251, 251, 248, 0.92);
+}
+
+.hero-layered [data-hero-copy]::before,
+.hero-layered .hero-copy::before {
+  content: none;
+  display: none;
 }
 
 .hero-compare-copy h1,
@@ -3109,7 +3115,7 @@ footer.site-footer {
   }
 
   .hero-compare-copy::before,
-  [data-hero-copy]::before {
+  .hero-compare [data-hero-copy]::before {
     top: -24px;
     bottom: -24px;
     left: -100vw;
