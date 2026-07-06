@@ -9,11 +9,20 @@ function getHeroFromUrl() {
   return n >= 1 && n <= 5 ? n : DEFAULT_HERO_OPTION;
 }
 
-function heroImageUrl(path) {
-  return path
-    .split('/')
-    .map((segment, index) => (index === 0 ? segment : encodeURIComponent(segment)))
-    .join('/');
+function renderTrustSignals() {
+  const list = document.querySelector('.hero-trust');
+  const { trustSignals } = getCopy();
+  const ui = getCopy().ui;
+  if (!list || !trustSignals) return;
+  list.setAttribute('aria-label', ui.trustAria);
+  list.innerHTML = trustSignals
+    .map((item) => {
+      const label = typeof item === 'string' ? item : item.label;
+      const href = typeof item === 'string' ? null : item.href;
+      if (href) return `<li><a href="${href}">${label}</a></li>`;
+      return `<li>${label}</li>`;
+    })
+    .join('');
 }
 
 export function initHeroComparison() {
@@ -22,8 +31,10 @@ export function initHeroComparison() {
 
   let current = getHeroFromUrl();
 
-  const imgEl = root.querySelector('[data-hero-image]');
+  const copyEl = root.querySelector('[data-hero-copy]');
   const headlineEl = root.querySelector('[data-hero-headline]');
+  const paraEl = root.querySelector('[data-hero-paragraph]');
+  const ctaEl = root.querySelector('[data-hero-cta]');
   const statusEl = root.querySelector('[data-hero-status]');
   const controlsEl = root.querySelector('[data-hero-controls]');
   const dots = root.querySelectorAll('[data-hero-dot]');
@@ -54,12 +65,10 @@ export function initHeroComparison() {
     if (!data) return;
 
     const update = () => {
-      if (headlineEl) headlineEl.textContent = data.headline;
-      if (imgEl && data.image) {
-        const src = heroImageUrl(data.image);
-        imgEl.src = src;
-        imgEl.alt = data.imageAlt || data.headline;
-      }
+      headlineEl.textContent = data.headline;
+      paraEl.textContent = data.paragraph;
+      ctaEl.textContent = data.cta;
+      ctaEl.href = data.ctaHref;
       statusEl.textContent = ui.optionOf(option);
       dots.forEach((dot) => {
         const n = parseInt(dot.dataset.heroDot, 10);
@@ -72,18 +81,12 @@ export function initHeroComparison() {
       history.replaceState(null, '', url);
     };
 
-    if (animate && !reduce && imgEl && data.image) {
-      imgEl.classList.add('is-changing');
-      const preload = new Image();
-      preload.onload = () => {
+    if (animate && !reduce && copyEl) {
+      copyEl.classList.add('is-changing');
+      setTimeout(() => {
         update();
-        imgEl.classList.remove('is-changing');
-      };
-      preload.onerror = () => {
-        update();
-        imgEl.classList.remove('is-changing');
-      };
-      preload.src = heroImageUrl(data.image);
+        copyEl.classList.remove('is-changing');
+      }, 180);
     } else {
       update();
     }
@@ -112,6 +115,7 @@ export function initHeroComparison() {
   });
 
   applyControlLabels();
+  renderTrustSignals();
 
   if (!HERO_COMPARISON_ENABLED && controlsEl) {
     controlsEl.hidden = true;
@@ -122,6 +126,7 @@ export function initHeroComparison() {
 
   window.addEventListener('zuraio:locale', () => {
     applyControlLabels();
+    renderTrustSignals();
     render(current, false);
   });
 }

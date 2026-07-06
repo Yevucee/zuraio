@@ -8,20 +8,13 @@ export const INTERNAL_REVIEW_MODE = false;
 /** When true, show decorative logo-derived background watermarks. */
 export const LOGO_WATERMARKS_ENABLED = true;
 
-/** One full hero image per messaging option — copy is baked into each PNG. */
-export const HERO_IMAGES = [
-  '../zuraio/assets/zuraio hero 1.png',
-  '../zuraio/assets/Zuraio header 2.png',
-  '../zuraio/assets/Zuraio hero 3.png',
-  '../zuraio/assets/Zuraio hero 4.png',
-  '../zuraio/assets/Zuraio hero 5.png',
-];
-
 export const SITE = {
   name: 'Zuraio',
   tagline: 'AI for Swiss companies that need control of their data.',
   internalLabel: 'Hero Comparison — Five Messaging Options',
-  heroImage: HERO_IMAGES[0],
+  heroBackground: '../zuraio/assets/zurich-hero-bg.png',
+  heroPlatform: '../zuraio/assets/zuraio-platform-ui.png',
+  heroImage: '../zuraio/assets/zuraio-hero.jpg',
   teamImage: '../zuraio/assets/zuraio-team.jpg',
   contactEmail: 'hello@zuraio.ch',
 };
