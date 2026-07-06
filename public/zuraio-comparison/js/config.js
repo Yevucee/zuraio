@@ -1,4 +1,6 @@
 export const HERO_COMPARISON_ENABLED = true;
+/** Show prev/next/dots bar — off for public design; use ?hero=1–5 or arrow keys to compare. */
+export const HERO_CONTROLS_VISIBLE = false;
 export const DEFAULT_HERO_OPTION = 1;
 export const SPINE_ENABLED = false;
 

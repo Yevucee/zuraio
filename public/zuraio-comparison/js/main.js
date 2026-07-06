@@ -1,5 +1,5 @@
 import { renderHeader, renderFooter, initReveal, initTabs } from './site.js';
-import { initHeroComparison } from './hero-comparison.js?v=20260706';
+import { initHeroComparison } from './hero-comparison.js?v=20260710';
 import { initMarquee } from './integrations-marquee.js';
 import { initFaq } from './faq-accordion.js';
 import { initInternalReview, refreshInternalReview, isInternalReviewMode } from './internal-review.js';

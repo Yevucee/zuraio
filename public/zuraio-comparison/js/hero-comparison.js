@@ -1,6 +1,7 @@
-import { HERO_COMPARISON_ENABLED, DEFAULT_HERO_OPTION } from './config.js';
+import { HERO_COMPARISON_ENABLED, HERO_CONTROLS_VISIBLE, DEFAULT_HERO_OPTION } from './config.js';
 import { getCopy } from './i18n.js';
 import { getLocale } from './i18n.js';
+import { isInternalReviewMode } from './internal-review.js';
 
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -116,6 +117,10 @@ export function initHeroComparison() {
 
   applyControlLabels();
   renderTrustSignals();
+
+  if (controlsEl) {
+    controlsEl.hidden = !(HERO_CONTROLS_VISIBLE || isInternalReviewMode());
+  }
 
   if (!HERO_COMPARISON_ENABLED && controlsEl) {
     controlsEl.hidden = true;
