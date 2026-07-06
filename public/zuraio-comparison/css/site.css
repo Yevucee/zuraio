@@ -2556,7 +2556,8 @@ footer.site-footer {
 .hero-layered {
   position: relative;
   padding: 0;
-  overflow: hidden;
+  overflow: visible;
+  overflow-x: clip;
   background: #d8cbb8;
 }
 
@@ -2589,11 +2590,11 @@ footer.site-footer {
   pointer-events: none;
   background: linear-gradient(
     90deg,
-    rgba(251, 251, 248, 0.68) 0%,
-    rgba(251, 251, 248, 0.48) 16%,
-    rgba(251, 251, 248, 0.28) 32%,
-    rgba(251, 251, 248, 0.12) 48%,
-    rgba(251, 251, 248, 0.04) 62%,
+    rgba(251, 251, 248, 0.78) 0%,
+    rgba(251, 251, 248, 0.58) 16%,
+    rgba(251, 251, 248, 0.38) 32%,
+    rgba(251, 251, 248, 0.22) 48%,
+    rgba(251, 251, 248, 0.14) 62%,
     rgba(251, 251, 248, 0) 76%
   );
 }
@@ -2673,7 +2674,9 @@ footer.site-footer {
   position: relative;
   line-height: 0;
   justify-self: end;
-  width: min(100%, 720px);
+  width: min(112%, 820px);
+  margin-right: clamp(-20px, -2.5vw, -8px);
+  transform: translateX(3.5%);
 }
 
 .hero-platform-img {
@@ -2789,16 +2792,18 @@ footer.site-footer {
   .hero-layered__scrim {
     background: linear-gradient(
       180deg,
-      rgba(251, 251, 248, 0.62) 0%,
-      rgba(251, 251, 248, 0.38) 38%,
-      rgba(251, 251, 248, 0.14) 62%,
+      rgba(251, 251, 248, 0.72) 0%,
+      rgba(251, 251, 248, 0.48) 38%,
+      rgba(251, 251, 248, 0.24) 62%,
       rgba(251, 251, 248, 0) 100%
     );
   }
 
   .hero-layered .hero-visual {
     justify-self: center;
-    width: min(100%, 640px);
+    width: min(106%, 680px);
+    margin-right: 0;
+    transform: none;
   }
 
   .hero-platform-hotspot--data-route,
