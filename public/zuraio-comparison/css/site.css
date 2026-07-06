@@ -2552,7 +2552,263 @@ footer.site-footer {
    10b. HTML class aliases & page utilities
    ========================================================================== */
 
-/* Hero comparison (index.html) — production two-column layout */
+/* Hero comparison (index.html) — Zurich background + layered overlays */
+.hero-layered {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  background: #d8cbb8;
+}
+
+.hero-layered__stage {
+  position: relative;
+  min-height: clamp(560px, 78vh, 820px);
+  display: flex;
+  align-items: stretch;
+}
+
+.hero-layered__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  margin: 0;
+}
+
+.hero-layered__bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.hero-layered__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(251, 251, 248, 0.94) 0%,
+    rgba(251, 251, 248, 0.82) 26%,
+    rgba(251, 251, 248, 0.42) 48%,
+    rgba(251, 251, 248, 0.08) 62%,
+    rgba(251, 251, 248, 0) 72%
+  );
+}
+
+.hero-layered__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: clamp(52px, 9vh, 108px) 0 clamp(28px, 4vh, 48px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-layered .hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+@media (min-width: 1000px) {
+  .hero-layered .hero-grid {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: clamp(28px, 4vw, 52px);
+  }
+}
+
+.hero-layered .hero-copy {
+  max-width: 620px;
+  min-height: var(--hero-copy-min);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-layered .hero-copy h1 {
+  font-size: clamp(34px, 5.2vw, 56px);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  margin: 0;
+  text-shadow: 0 1px 18px rgba(251, 251, 248, 0.65);
+}
+
+.hero-layered .hero-lede,
+.hero-layered [data-hero-paragraph] {
+  margin-top: 20px;
+  font-size: 17px;
+  color: var(--charcoal-soft);
+  max-width: 52ch;
+  line-height: 1.55;
+  text-shadow: 0 1px 12px rgba(251, 251, 248, 0.55);
+}
+
+.hero-layered .hero-copy .cta-row {
+  margin-top: 28px;
+}
+
+.hero-layered .hero-copy .trustline {
+  margin-top: 24px;
+}
+
+.hero-layered .hero-trust a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(70, 70, 70, 0.22);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.hero-layered .hero-trust a:hover {
+  color: var(--olive-deep);
+  border-color: var(--olive);
+}
+
+.hero-layered .hero-visual {
+  position: relative;
+  line-height: 0;
+  justify-self: end;
+  width: min(100%, 720px);
+}
+
+.hero-platform-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 28px 70px rgba(15, 23, 42, 0.24),
+    0 10px 28px rgba(15, 23, 42, 0.14);
+}
+
+.hero-platform-hotspots {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-platform-hotspot {
+  position: absolute;
+  pointer-events: auto;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+  background: transparent;
+  border-radius: 6px;
+  outline: none;
+  transition: box-shadow 0.2s, background 0.2s;
+}
+
+.hero-platform-hotspot:focus-visible {
+  box-shadow: 0 0 0 2px var(--olive-deep);
+  background: rgba(159, 175, 82, 0.12);
+}
+
+.hero-platform-hotspot:hover {
+  background: rgba(159, 175, 82, 0.08);
+}
+
+.hero-platform-hotspot--sources {
+  top: 66%;
+  left: 22%;
+  width: 14%;
+  height: 5%;
+}
+
+.hero-platform-hotspot--documents {
+  top: 66%;
+  left: 36%;
+  width: 12%;
+  height: 5%;
+}
+
+.hero-platform-hotspot--emails {
+  top: 66%;
+  left: 48%;
+  width: 10%;
+  height: 5%;
+}
+
+.hero-platform-hotspot--project {
+  top: 66%;
+  left: 58%;
+  width: 16%;
+  height: 5%;
+}
+
+.hero-platform-hotspot--data-route {
+  top: 34%;
+  left: 84%;
+  width: 14%;
+  height: 9%;
+}
+
+.hero-platform-hotspot--access {
+  top: 44%;
+  left: 84%;
+  width: 14%;
+  height: 9%;
+}
+
+.hero-platform-hotspot--model {
+  top: 54%;
+  left: 84%;
+  width: 14%;
+  height: 9%;
+}
+
+.hero-platform-hotspot--audit {
+  top: 64%;
+  left: 84%;
+  width: 14%;
+  height: 9%;
+}
+
+.hero-layered .hero-compare-controls,
+.hero-layered [data-hero-controls] {
+  margin-top: clamp(24px, 4vh, 36px);
+  padding: 18px 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+@media (max-width: 999px) {
+  .hero-layered__stage {
+    min-height: auto;
+  }
+
+  .hero-layered__scrim {
+    background: linear-gradient(
+      180deg,
+      rgba(251, 251, 248, 0.94) 0%,
+      rgba(251, 251, 248, 0.78) 42%,
+      rgba(251, 251, 248, 0.35) 68%,
+      rgba(251, 251, 248, 0.12) 100%
+    );
+  }
+
+  .hero-layered .hero-visual {
+    justify-self: center;
+    width: min(100%, 640px);
+  }
+
+  .hero-platform-hotspot--data-route,
+  .hero-platform-hotspot--access,
+  .hero-platform-hotspot--model,
+  .hero-platform-hotspot--audit {
+    display: none;
+  }
+}
+
+/* Legacy hero-product alias (unused on homepage) */
 .hero-product {
   background: var(--paper);
   overflow: hidden;
@@ -2610,6 +2866,7 @@ footer.site-footer {
   line-height: 0;
 }
 
+/* hero-product-img kept for legacy pages */
 .hero-product-img {
   display: block;
   width: 100%;

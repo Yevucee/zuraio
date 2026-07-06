@@ -16,46 +16,61 @@
 <div id="site-header"></div>
 
 <main id="top">
-  <!-- 1. Hero comparison — production layout: copy left, product visual right -->
-  <section class="hero-product pad" id="hero-comparison" tabindex="0" aria-label="Hero messaging comparison">
-    <div class="wrap">
-      <div class="hero-grid">
-        <div class="hero-copy" data-hero-copy aria-live="polite">
-          <h1 data-hero-headline>A digital executive assistant for every employee.</h1>
-          <p class="hero-lede" data-hero-paragraph>Zuraio gives everyone in your company an intelligent assistant that can find information, answer questions, prepare documents and help get work done.</p>
-          <div class="cta-row">
-            <a class="btn btn-primary btn-lg" data-hero-cta href="contact.html">Meet your company's AI assistant</a>
-          </div>
-          <ul class="trustline hero-trust" aria-label="Trust signals">
-            <li>Swiss hosted</li>
-            <li>Sources shown</li>
-            <li>Company knowledge connected</li>
-            <li>You remain in control</li>
-          </ul>
-        </div>
-        <div class="hero-visual">
-          <img
-            class="hero-product-img"
-            src="../zuraio/assets/zuraio-hero.jpg"
-            alt="Zuraio product interface — meeting brief with sources, access rules and review trail."
-            width="1920"
-            height="1080"
-          />
-        </div>
-      </div>
+  <!-- 1. Hero — Zurich background, live copy left, platform UI popup right -->
+  <section class="hero-layered" id="hero-comparison" tabindex="0" aria-label="Hero messaging comparison">
+    <div class="hero-layered__stage">
+      <picture class="hero-layered__bg" aria-hidden="true">
+        <source srcset="../zuraio/assets/zurich-hero-bg.png" type="image/png" />
+        <img src="../zuraio/assets/zurich-hero-bg.jpg" alt="" width="2400" height="1600" decoding="async" fetchpriority="high" />
+      </picture>
+      <div class="hero-layered__scrim" aria-hidden="true"></div>
 
-      <div class="hero-compare-controls" data-hero-controls>
-        <div class="hero-compare-nav">
-          <button type="button" class="hero-nav-btn" data-hero-prev aria-label="Previous hero option">← Previous</button>
-          <span class="hero-nav-status" data-hero-status aria-live="polite">Option 1 of 5</span>
-          <button type="button" class="hero-nav-btn" data-hero-next aria-label="Next hero option">Next →</button>
+      <div class="wrap hero-layered__content">
+        <div class="hero-grid">
+          <div class="hero-copy" data-hero-copy aria-live="polite">
+            <h1 data-hero-headline>A digital executive assistant for every employee.</h1>
+            <p class="hero-lede" data-hero-paragraph>Zuraio gives everyone in your company an intelligent assistant that can find information, answer questions, prepare documents and help get work done.</p>
+            <div class="cta-row">
+              <a class="btn btn-primary btn-lg" data-hero-cta href="contact.html">Meet your company's AI assistant</a>
+            </div>
+            <ul class="trustline hero-trust" aria-label="Trust signals"></ul>
+          </div>
+
+          <div class="hero-visual">
+            <img
+              class="hero-platform-img"
+              src="../zuraio/assets/zuraio-platform-ui.png"
+              alt="Zuraio platform — meeting brief with sources, access rules and audit trail."
+              width="1438"
+              height="1094"
+              decoding="async"
+            />
+            <div class="hero-platform-hotspots" aria-label="Platform highlights">
+              <a href="knowledge.html" class="hero-platform-hotspot hero-platform-hotspot--sources">Sources</a>
+              <a href="knowledge.html" class="hero-platform-hotspot hero-platform-hotspot--documents">Documents</a>
+              <a href="integrations.html" class="hero-platform-hotspot hero-platform-hotspot--emails">Emails</a>
+              <a href="knowledge.html" class="hero-platform-hotspot hero-platform-hotspot--project">Project folder</a>
+              <a href="data-control.html" class="hero-platform-hotspot hero-platform-hotspot--data-route">Data route</a>
+              <a href="data-control.html" class="hero-platform-hotspot hero-platform-hotspot--access">Access</a>
+              <a href="deployment-models.html" class="hero-platform-hotspot hero-platform-hotspot--model">Model choice</a>
+              <a href="ai-governance.html" class="hero-platform-hotspot hero-platform-hotspot--audit">Audit</a>
+            </div>
+          </div>
         </div>
-        <div class="hero-dots" role="group" aria-label="Hero messaging options">
-          <button type="button" class="hero-dot is-active" data-hero-dot="1" aria-label="Option 1" aria-pressed="true">1</button>
-          <button type="button" class="hero-dot" data-hero-dot="2" aria-label="Option 2" aria-pressed="false">2</button>
-          <button type="button" class="hero-dot" data-hero-dot="3" aria-label="Option 3" aria-pressed="false">3</button>
-          <button type="button" class="hero-dot" data-hero-dot="4" aria-label="Option 4" aria-pressed="false">4</button>
-          <button type="button" class="hero-dot" data-hero-dot="5" aria-label="Option 5" aria-pressed="false">5</button>
+
+        <div class="hero-compare-controls" data-hero-controls>
+          <div class="hero-compare-nav">
+            <button type="button" class="hero-nav-btn" data-hero-prev aria-label="Previous hero option">← Previous</button>
+            <span class="hero-nav-status" data-hero-status aria-live="polite">Option 1 of 5</span>
+            <button type="button" class="hero-nav-btn" data-hero-next aria-label="Next hero option">Next →</button>
+          </div>
+          <div class="hero-dots" role="group" aria-label="Hero messaging options">
+            <button type="button" class="hero-dot is-active" data-hero-dot="1" aria-label="Option 1" aria-pressed="true">1</button>
+            <button type="button" class="hero-dot" data-hero-dot="2" aria-label="Option 2" aria-pressed="false">2</button>
+            <button type="button" class="hero-dot" data-hero-dot="3" aria-label="Option 3" aria-pressed="false">3</button>
+            <button type="button" class="hero-dot" data-hero-dot="4" aria-label="Option 4" aria-pressed="false">4</button>
+            <button type="button" class="hero-dot" data-hero-dot="5" aria-label="Option 5" aria-pressed="false">5</button>
+          </div>
         </div>
       </div>
     </div>

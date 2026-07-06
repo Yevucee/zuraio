@@ -15,7 +15,14 @@ function renderTrustSignals() {
   const ui = getCopy().ui;
   if (!list || !trustSignals) return;
   list.setAttribute('aria-label', ui.trustAria);
-  list.innerHTML = trustSignals.map((item) => `<li>${item}</li>`).join('');
+  list.innerHTML = trustSignals
+    .map((item) => {
+      const label = typeof item === 'string' ? item : item.label;
+      const href = typeof item === 'string' ? null : item.href;
+      if (href) return `<li><a href="${href}">${label}</a></li>`;
+      return `<li>${label}</li>`;
+    })
+    .join('');
 }
 
 export function initHeroComparison() {
