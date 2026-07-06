@@ -1,6 +1,6 @@
 export const HERO_COMPARISON_ENABLED = true;
-/** Show prev/next/dots bar — off for public design; use ?hero=1–5 or arrow keys to compare. */
-export const HERO_CONTROLS_VISIBLE = false;
+/** Auto-advance interval (ms) for the hero option rail below the hero. */
+export const HERO_AUTO_PLAY_MS = 7000;
 export const DEFAULT_HERO_OPTION = 1;
 export const SPINE_ENABLED = false;
 
