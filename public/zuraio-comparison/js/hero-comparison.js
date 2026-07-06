@@ -1,8 +1,4 @@
-import {
-  HERO_COMPARISON_ENABLED,
-  HERO_AUTO_PLAY_MS,
-  DEFAULT_HERO_OPTION,
-} from './config.js';
+import { HERO_COMPARISON_ENABLED, HERO_AUTO_PLAY_MS, DEFAULT_HERO_OPTION } from './config.js';
 import { getCopy } from './i18n.js';
 import { getLocale } from './i18n.js';
 
@@ -31,60 +27,15 @@ function renderTrustSignals() {
 
 export function initHeroComparison() {
   const root = document.getElementById('hero-comparison');
-  const rail = document.querySelector('[data-hero-rail]');
   if (!root) return;
 
   let current = getHeroFromUrl();
-  let paused = reduce;
   let autoTimer = null;
 
   const copyEl = root.querySelector('[data-hero-copy]');
   const headlineEl = root.querySelector('[data-hero-headline]');
   const paraEl = root.querySelector('[data-hero-paragraph]');
   const ctaEl = root.querySelector('[data-hero-cta]');
-  const statusEls = document.querySelectorAll('[data-hero-status]');
-  const dots = document.querySelectorAll('[data-hero-dot]');
-  const prevBtns = document.querySelectorAll('[data-hero-prev]');
-  const nextBtns = document.querySelectorAll('[data-hero-next]');
-  const pauseBtn = document.querySelector('[data-hero-pause]');
-  const railLabel = document.querySelector('[data-hero-rail-label]');
-  const progressBar = document.querySelector('[data-hero-progress]');
-  const dotsGroup = document.querySelector('.hero-option-rail__dots');
-
-  function applyControlLabels() {
-    const ui = getCopy().ui;
-    prevBtns.forEach((btn) => {
-      btn.textContent = ui.previous;
-      btn.setAttribute('aria-label', ui.previousAria);
-    });
-    nextBtns.forEach((btn) => {
-      btn.textContent = ui.next;
-      btn.setAttribute('aria-label', ui.nextAria);
-    });
-    dots.forEach((dot) => {
-      const n = parseInt(dot.dataset.heroDot, 10);
-      dot.setAttribute('aria-label', ui.optionLabel(n));
-    });
-    if (dotsGroup) dotsGroup.setAttribute('aria-label', ui.heroOptionsGroup);
-    if (railLabel) railLabel.textContent = ui.heroRailLabel;
-    updatePauseButton();
-  }
-
-  function updatePauseButton() {
-    if (!pauseBtn) return;
-    const ui = getCopy().ui;
-    pauseBtn.textContent = paused ? ui.play : ui.pause;
-    pauseBtn.setAttribute('aria-label', paused ? ui.playAria : ui.pauseAria);
-    pauseBtn.setAttribute('aria-pressed', paused ? 'true' : 'false');
-    rail?.classList.toggle('is-paused', paused);
-  }
-
-  function restartProgress() {
-    if (!progressBar || paused || reduce || !HERO_COMPARISON_ENABLED) return;
-    progressBar.style.animation = 'none';
-    progressBar.offsetHeight;
-    progressBar.style.animation = '';
-  }
 
   function stopAutoPlay() {
     if (autoTimer) {
@@ -95,15 +46,14 @@ export function initHeroComparison() {
 
   function startAutoPlay() {
     stopAutoPlay();
-    if (!HERO_COMPARISON_ENABLED || paused || reduce) return;
-    restartProgress();
+    if (!HERO_COMPARISON_ENABLED || reduce) return;
     autoTimer = setInterval(() => {
-      goTo(current === 5 ? 1 : current + 1, false);
+      goTo(current === 5 ? 1 : current + 1);
     }, HERO_AUTO_PLAY_MS);
   }
 
   function render(option, animate) {
-    const { heroOptions, ui } = getCopy();
+    const { heroOptions } = getCopy();
     const data = heroOptions[option - 1];
     if (!data) return;
 
@@ -112,14 +62,6 @@ export function initHeroComparison() {
       paraEl.textContent = data.paragraph;
       ctaEl.textContent = data.cta;
       ctaEl.href = data.ctaHref;
-      statusEls.forEach((el) => {
-        el.textContent = ui.optionOf(option);
-      });
-      dots.forEach((dot) => {
-        const n = parseInt(dot.dataset.heroDot, 10);
-        dot.setAttribute('aria-pressed', n === option ? 'true' : 'false');
-        dot.classList.toggle('is-active', n === option);
-      });
       const url = new URL(location.href);
       url.searchParams.set('hero', String(option));
       url.searchParams.set('lang', getLocale());
@@ -137,59 +79,41 @@ export function initHeroComparison() {
     }
   }
 
-  function goTo(option, userInitiated = true) {
+  function goTo(option) {
     current = Math.max(1, Math.min(5, option));
     render(current, true);
-    if (userInitiated) startAutoPlay();
-    else restartProgress();
   }
-
-  function togglePause() {
-    paused = !paused;
-    updatePauseButton();
-    if (paused) {
-      stopAutoPlay();
-    } else {
-      startAutoPlay();
-    }
-  }
-
-  prevBtns.forEach((btn) => {
-    btn.addEventListener('click', () => goTo(current === 1 ? 5 : current - 1));
-  });
-  nextBtns.forEach((btn) => {
-    btn.addEventListener('click', () => goTo(current === 5 ? 1 : current + 1));
-  });
-  dots.forEach((dot) => {
-    dot.addEventListener('click', () => goTo(parseInt(dot.dataset.heroDot, 10)));
-  });
-  pauseBtn?.addEventListener('click', togglePause);
 
   root.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') {
       e.preventDefault();
       goTo(current === 1 ? 5 : current - 1);
+      startAutoPlay();
     }
     if (e.key === 'ArrowRight') {
       e.preventDefault();
       goTo(current === 5 ? 1 : current + 1);
+      startAutoPlay();
     }
   });
 
-  applyControlLabels();
+  root.addEventListener('mouseenter', stopAutoPlay);
+  root.addEventListener('mouseleave', startAutoPlay);
+  root.addEventListener('focusin', stopAutoPlay);
+  root.addEventListener('focusout', (e) => {
+    if (!root.contains(e.relatedTarget)) startAutoPlay();
+  });
+
   renderTrustSignals();
 
   if (!HERO_COMPARISON_ENABLED) {
-    if (rail) rail.hidden = true;
-    goTo(DEFAULT_HERO_OPTION, false);
+    goTo(DEFAULT_HERO_OPTION);
   } else {
-    if (rail) rail.hidden = false;
     render(current, false);
     startAutoPlay();
   }
 
   window.addEventListener('zuraio:locale', () => {
-    applyControlLabels();
     renderTrustSignals();
     render(current, false);
   });
