@@ -2590,12 +2590,12 @@ footer.site-footer {
   pointer-events: none;
   background: linear-gradient(
     90deg,
-    rgba(251, 251, 248, 0.78) 0%,
-    rgba(251, 251, 248, 0.58) 16%,
-    rgba(251, 251, 248, 0.38) 32%,
-    rgba(251, 251, 248, 0.22) 48%,
-    rgba(251, 251, 248, 0.14) 62%,
-    rgba(251, 251, 248, 0) 76%
+    rgba(251, 251, 248, 0.82) 0%,
+    rgba(251, 251, 248, 0.64) 18%,
+    rgba(251, 251, 248, 0.42) 34%,
+    rgba(251, 251, 248, 0.24) 50%,
+    rgba(251, 251, 248, 0.12) 64%,
+    rgba(251, 251, 248, 0) 78%
   );
 }
 
@@ -2618,13 +2618,16 @@ footer.site-footer {
 
 @media (min-width: 1000px) {
   .hero-layered .hero-grid {
-    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-    gap: clamp(28px, 4vw, 52px);
+    grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+    gap: clamp(40px, 5vw, 72px);
+    align-items: center;
   }
 }
 
 .hero-layered .hero-copy {
-  max-width: 620px;
+  position: relative;
+  z-index: 3;
+  max-width: 520px;
   min-height: var(--hero-copy-min);
   display: flex;
   flex-direction: column;
@@ -2672,11 +2675,13 @@ footer.site-footer {
 
 .hero-layered .hero-visual {
   position: relative;
+  z-index: 1;
   line-height: 0;
   justify-self: end;
-  width: min(118%, 860px);
-  margin-right: clamp(-24px, -3vw, -10px);
-  transform: translateX(4%);
+  width: 100%;
+  max-width: 860px;
+  margin-right: clamp(-40px, -5vw, -18px);
+  transform: translateX(8%);
 }
 
 .hero-layered [data-hero-controls] {
