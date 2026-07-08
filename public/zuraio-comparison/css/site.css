@@ -807,6 +807,109 @@ header.nav.scrolled {
   background: linear-gradient(180deg, var(--cloud), #eff1e8);
 }
 
+/* Section photo backgrounds (problem + integrations) */
+.section-photo {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.section-photo > .wrap {
+  position: relative;
+  z-index: 2;
+}
+
+.section-photo__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.section-photo__bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.section-photo__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.section-photo--problem .section-photo__bg img {
+  object-position: 72% center;
+}
+
+.section-photo--problem .section-photo__scrim {
+  background: linear-gradient(
+    90deg,
+    rgba(243, 244, 238, 0.97) 0%,
+    rgba(243, 244, 238, 0.9) 26%,
+    rgba(243, 244, 238, 0.68) 46%,
+    rgba(243, 244, 238, 0.32) 66%,
+    rgba(243, 244, 238, 0) 88%
+  );
+}
+
+.section-photo--problem .pcard {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+}
+
+.section-photo--integrations .section-photo__bg img {
+  object-position: 68% center;
+}
+
+.section-photo--integrations .section-photo__scrim {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(251, 251, 248, 0.55) 0%,
+      rgba(251, 251, 248, 0.08) 42%,
+      rgba(251, 251, 248, 0.45) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(251, 251, 248, 0.96) 0%,
+      rgba(251, 251, 248, 0.84) 30%,
+      rgba(251, 251, 248, 0.52) 52%,
+      rgba(251, 251, 248, 0.12) 72%,
+      rgba(251, 251, 248, 0) 90%
+    );
+}
+
+@media (max-width: 999px) {
+  .section-photo--problem .section-photo__scrim {
+    background: linear-gradient(
+      180deg,
+      rgba(243, 244, 238, 0.94) 0%,
+      rgba(243, 244, 238, 0.78) 45%,
+      rgba(243, 244, 238, 0.42) 72%,
+      rgba(243, 244, 238, 0.12) 100%
+    );
+  }
+
+  .section-photo--problem .section-photo__bg img {
+    object-position: 65% 30%;
+  }
+
+  .section-photo--integrations .section-photo__scrim {
+    background: linear-gradient(
+      180deg,
+      rgba(251, 251, 248, 0.92) 0%,
+      rgba(251, 251, 248, 0.72) 50%,
+      rgba(251, 251, 248, 0.35) 100%
+    );
+  }
+
+  .section-photo--integrations .section-photo__bg img {
+    object-position: 60% 40%;
+  }
+}
+
 .pain-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -2583,6 +2686,10 @@ footer.site-footer {
   object-position: center 42%;
 }
 
+.hero-layered--composite .hero-layered__bg img {
+  object-position: center center;
+}
+
 .hero-layered__scrim {
   position: absolute;
   inset: 0;
@@ -2596,6 +2703,18 @@ footer.site-footer {
     rgba(251, 251, 248, 0.24) 50%,
     rgba(251, 251, 248, 0.12) 64%,
     rgba(251, 251, 248, 0) 78%
+  );
+}
+
+.hero-layered--composite .hero-layered__scrim {
+  background: linear-gradient(
+    90deg,
+    rgba(251, 251, 248, 0.88) 0%,
+    rgba(251, 251, 248, 0.72) 22%,
+    rgba(251, 251, 248, 0.48) 38%,
+    rgba(251, 251, 248, 0.22) 52%,
+    rgba(251, 251, 248, 0.08) 62%,
+    rgba(251, 251, 248, 0) 72%
   );
 }
 
@@ -2625,6 +2744,11 @@ footer.site-footer {
     grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
     gap: clamp(36px, 4.5vw, 64px);
     align-items: center;
+  }
+
+  .hero-layered--composite .hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 560px;
   }
 }
 
@@ -2686,6 +2810,10 @@ footer.site-footer {
   max-width: 960px;
   margin-right: clamp(-56px, -6.5vw, -24px);
   transform: translateX(6%);
+}
+
+.hero-layered--composite .hero-visual {
+  display: none;
 }
 
 .hero-layered [data-hero-controls] {
@@ -2813,6 +2941,16 @@ footer.site-footer {
       rgba(251, 251, 248, 0.72) 0%,
       rgba(251, 251, 248, 0.48) 38%,
       rgba(251, 251, 248, 0.24) 62%,
+      rgba(251, 251, 248, 0) 100%
+    );
+  }
+
+  .hero-layered--composite .hero-layered__scrim {
+    background: linear-gradient(
+      180deg,
+      rgba(251, 251, 248, 0.9) 0%,
+      rgba(251, 251, 248, 0.68) 42%,
+      rgba(251, 251, 248, 0.28) 68%,
       rgba(251, 251, 248, 0) 100%
     );
   }

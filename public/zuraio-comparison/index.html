@@ -9,18 +9,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=20260715">
+<link rel="stylesheet" href="css/site.css?v=20260716">
 </head>
 <body>
 
 <div id="site-header"></div>
 
 <main id="top">
-  <!-- 1. Hero — Zurich background, live copy left, platform UI popup right -->
-  <section class="hero-layered" id="hero-comparison" tabindex="0" aria-label="Hero messaging comparison">
+  <!-- 1. Hero — composite background with live copy overlay -->
+  <section class="hero-layered hero-layered--composite" id="hero-comparison" tabindex="0" aria-label="Hero messaging comparison">
     <div class="hero-layered__stage">
       <div class="hero-layered__bg" aria-hidden="true">
-        <img src="../zuraio/assets/zurich-hero-bg.png?v=20260706" alt="" width="1672" height="941" decoding="async" fetchpriority="high" />
+        <img src="../zuraio/assets/hero-and-popup.png?v=20260716" alt="" width="1672" height="941" decoding="async" fetchpriority="high" />
       </div>
       <div class="hero-layered__scrim" aria-hidden="true"></div>
 
@@ -76,7 +76,11 @@
   </section>
 
   <!-- 2. Business problem -->
-  <section class="pain pad" id="problem">
+  <section class="pain pad section-photo section-photo--problem" id="problem">
+    <div class="section-photo__bg" aria-hidden="true">
+      <img src="../zuraio/assets/260707-your-company-already.png?v=20260716" alt="" width="1672" height="941" decoding="async" />
+    </div>
+    <div class="section-photo__scrim" aria-hidden="true"></div>
     <div class="wrap">
       <div class="head-block reveal">
         <span class="marker">Recognise this?</span>
@@ -150,7 +154,11 @@
   </section>
 
   <!-- 5. Integrations -->
-  <section class="pad" id="integrations">
+  <section class="pad section-photo section-photo--integrations" id="integrations">
+    <div class="section-photo__bg" aria-hidden="true">
+      <img src="../zuraio/assets/260707-fits-into-the-tools.png?v=20260716" alt="" width="1672" height="941" decoding="async" />
+    </div>
+    <div class="section-photo__scrim" aria-hidden="true"></div>
     <div class="wrap">
       <div class="head-block reveal">
         <h2>Fits into the tools your team already uses.</h2>
@@ -333,6 +341,6 @@
 </main>
 
 <div id="site-footer"></div>
-<script type="module" src="js/main.js?v=20260713"></script>
+<script type="module" src="js/main.js?v=20260716"></script>
 </body>
 </html>
