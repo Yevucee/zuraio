@@ -22,7 +22,7 @@ export const SITE = {
   internalLabel: 'Hero Comparison — Five Messaging Options',
   heroBackground: '../zuraio/assets/hero-and-popup.png',
   heroPlatform: '../zuraio/assets/zuraio-platform-ui.png',
-  problemDiagram: '../zuraio/assets/zuraio-problem-scattered-company-knowledge.png',
+  problemDiagram: '../zuraio/assets/zuraio_knowledge_background_right_aligned.png',
   integrationsBackground: '../zuraio/assets/260707-fits-into-the-tools.png',
   heroImage: '../zuraio/assets/zuraio-hero.jpg',
   contactEmail: 'hello@zuraio.ch',

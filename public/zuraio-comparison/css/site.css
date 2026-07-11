@@ -824,8 +824,8 @@ header.nav.scrolled {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: right center;
+  object-fit: contain;
+  object-position: right top;
 }
 
 .pain__scrim {
@@ -835,12 +835,11 @@ header.nav.scrolled {
   pointer-events: none;
   background: linear-gradient(
     90deg,
-    rgba(251, 251, 248, 0.98) 0%,
-    rgba(251, 251, 248, 0.92) 28%,
-    rgba(251, 251, 248, 0.72) 48%,
-    rgba(251, 251, 248, 0.38) 68%,
-    rgba(251, 251, 248, 0.08) 85%,
-    rgba(251, 251, 248, 0) 100%
+    rgba(251, 251, 248, 1) 0%,
+    rgba(251, 251, 248, 1) 42%,
+    rgba(251, 251, 248, 0.92) 54%,
+    rgba(251, 251, 248, 0.55) 68%,
+    rgba(251, 251, 248, 0) 84%
   );
 }
 
@@ -880,20 +879,22 @@ header.nav.scrolled {
 
 @media (max-width: 999px) {
   .pain__bg {
-    opacity: 0.42;
+    left: 0;
+    opacity: 0.5;
   }
 
   .pain__scrim {
     background: linear-gradient(
       180deg,
-      rgba(251, 251, 248, 0.96) 0%,
-      rgba(251, 251, 248, 0.9) 55%,
-      rgba(251, 251, 248, 0.78) 100%
+      rgba(251, 251, 248, 0.98) 0%,
+      rgba(251, 251, 248, 0.94) 50%,
+      rgba(251, 251, 248, 0.88) 100%
     );
   }
 
   .pain__bg img {
-    object-position: 75% 20%;
+    object-fit: contain;
+    object-position: right top;
   }
 }
 
