@@ -804,23 +804,48 @@ header.nav.scrolled {
    4. Pain section
    ========================================================================== */
 .pain {
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(180deg, var(--cloud), #eff1e8);
 }
 
-.problem-hero {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 32px;
-  align-items: center;
-  margin-bottom: 46px;
+.pain > .wrap {
+  position: relative;
+  z-index: 2;
 }
 
-@media (min-width: 900px) {
-  .problem-hero {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-    gap: clamp(32px, 5vw, 64px);
-    align-items: center;
-  }
+.pain__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.pain__bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+}
+
+.pain__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(251, 251, 248, 0.98) 0%,
+    rgba(251, 251, 248, 0.92) 28%,
+    rgba(251, 251, 248, 0.72) 48%,
+    rgba(251, 251, 248, 0.38) 68%,
+    rgba(251, 251, 248, 0.08) 85%,
+    rgba(251, 251, 248, 0) 100%
+  );
+}
+
+.problem-hero {
+  margin-bottom: 46px;
 }
 
 .problem-copy {
@@ -853,24 +878,23 @@ header.nav.scrolled {
   line-height: 1.55;
 }
 
-.problem-visual {
-  line-height: 0;
-  justify-self: center;
-  width: 100%;
-  max-width: 720px;
-}
-
-@media (min-width: 900px) {
-  .problem-visual {
-    justify-self: end;
-    max-width: none;
+@media (max-width: 999px) {
+  .pain__bg {
+    opacity: 0.42;
   }
-}
 
-.problem-visual img {
-  display: block;
-  width: 100%;
-  height: auto;
+  .pain__scrim {
+    background: linear-gradient(
+      180deg,
+      rgba(251, 251, 248, 0.96) 0%,
+      rgba(251, 251, 248, 0.9) 55%,
+      rgba(251, 251, 248, 0.78) 100%
+    );
+  }
+
+  .pain__bg img {
+    object-position: 75% 20%;
+  }
 }
 
 /* Section photo backgrounds (integrations) */
