@@ -1,15 +1,15 @@
 # Assistant demo showcase images
 
-Place platform screenshots here for the **See your assistant working** carousel on the comparison homepage.
+Platform screenshots for the **See your assistant working** carousel on the comparison homepage.
 
-| File | Slide | Suggested content |
-|------|-------|-------------------|
-| `zuraio-demo-email.png` | Email | Draft reply with thread context and sources |
-| `zuraio-demo-meeting.png` | Meetings | Meeting brief with client history and open actions |
-| `zuraio-demo-knowledge.png` | Knowledge | Knowledge search with sourced answer |
+| File | Use case |
+|------|----------|
+| `zuraio-demo-mail.png` | Email |
+| `zuraio-demo-project-summary.png` | Project summary |
+| `zuraio-demo-appointment-reply.png` | Appointment & reply |
+| `zuraio-demo-meeting-transcript.png` | Meeting transcript |
+| `zuraio-demo-tasks.png` | Tasks |
+| `zuraio-demo-briefing.png` | Briefing |
 
-Use these **exact filenames** (lowercase, hyphens).
-
-Update paths in `public/zuraio-comparison/js/config.js` → `DEMO_SHOWCASE_SLIDES` after adding files.
-
-Until custom screenshots are added, the site falls back to existing platform assets defined in config.
+Paths are configured in `public/zuraio-comparison/js/config.js` → `DEMO_SHOWCASE_SLIDES`.
+Captions are in `copy-en.js` and `copy-de.js` under `home.demo.slides`.

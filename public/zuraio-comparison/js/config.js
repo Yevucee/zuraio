@@ -33,16 +33,10 @@ export const SITE = {
 
 /** Platform screenshots for the assistant demo carousel (index.html). */
 export const DEMO_SHOWCASE_SLIDES = [
-  {
-    id: 'email',
-    image: '../zuraio/assets/zuraio-platform-ui.png',
-  },
-  {
-    id: 'meeting',
-    image: '../zuraio/assets/hero-and-popup.png',
-  },
-  {
-    id: 'knowledge',
-    image: '../zuraio/assets/zuraio-platform-ui.png',
-  },
+  { id: 'mail', image: '../zuraio/assets/zuraio-demo-mail.png' },
+  { id: 'project-summary', image: '../zuraio/assets/zuraio-demo-project-summary.png' },
+  { id: 'appointment-reply', image: '../zuraio/assets/zuraio-demo-appointment-reply.png' },
+  { id: 'meeting-transcript', image: '../zuraio/assets/zuraio-demo-meeting-transcript.png' },
+  { id: 'tasks', image: '../zuraio/assets/zuraio-demo-tasks.png' },
+  { id: 'briefing', image: '../zuraio/assets/zuraio-demo-briefing.png' },
 ];

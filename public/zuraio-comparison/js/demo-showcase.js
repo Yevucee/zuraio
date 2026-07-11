@@ -35,7 +35,7 @@ export function initDemoShowcase() {
         (slide, index) => `
       <figure class="demo-showcase__slide${index === current ? ' is-active' : ''}" data-demo-slide="${index}">
         <img
-          src="${slide.image}?v=20260723"
+          src="${slide.image}?v=20260723c"
           alt="${slide.alt || ''}"
           width="1586"
           height="992"
