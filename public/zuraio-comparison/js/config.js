@@ -26,4 +26,5 @@ export const SITE = {
   integrationsBackground: '../zuraio/assets/260707-fits-into-the-tools.png',
   heroImage: '../zuraio/assets/zuraio-hero.jpg',
   contactEmail: 'hello@zuraio.ch',
+  logo: '../Zuraio-AI-Logo',
 };
