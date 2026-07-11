@@ -807,6 +807,72 @@ header.nav.scrolled {
   background: linear-gradient(180deg, var(--cloud), #eff1e8);
 }
 
+.problem-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+  margin-bottom: 46px;
+}
+
+@media (min-width: 900px) {
+  .problem-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: clamp(32px, 5vw, 64px);
+    align-items: center;
+  }
+}
+
+.problem-copy {
+  max-width: 560px;
+  transition: opacity 0.22s var(--ease);
+}
+
+.problem-copy.is-changing,
+[data-problem-copy].is-changing {
+  opacity: 0;
+}
+
+.problem-copy .marker {
+  display: block;
+}
+
+.problem-copy h2 {
+  margin-top: 12px;
+  font-size: clamp(28px, 4.2vw, 44px);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+}
+
+.problem-copy .lede {
+  margin-top: 18px;
+  font-size: 17px;
+  color: var(--charcoal-soft);
+  max-width: 52ch;
+  line-height: 1.55;
+}
+
+.problem-visual {
+  line-height: 0;
+  justify-self: center;
+  width: 100%;
+  max-width: 720px;
+}
+
+@media (min-width: 900px) {
+  .problem-visual {
+    justify-self: end;
+    max-width: none;
+  }
+}
+
+.problem-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .pain-grid {
   display: grid;
   grid-template-columns: 1fr;

@@ -76,8 +76,7 @@ export function applyHomeTranslations() {
   if (home.meta?.title) document.title = home.meta.title;
 
   setText('#problem .marker', home.problem.marker);
-  setText('#problem h2', home.problem.heading);
-  setText('#problem .lede', home.problem.body);
+  setText('#problem [data-problem-body], #problem .lede', home.problem.body);
   applyList('#problem .pain-grid', home.problem.cards, (c, i) =>
     `<div class="pcard reveal${i ? ` d${i}` : ''}"><span class="n">${c.title}</span><p>${c.body}</p></div>`,
   );

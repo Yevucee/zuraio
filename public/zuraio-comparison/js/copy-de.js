@@ -36,6 +36,24 @@ export const heroOptions = [
   },
 ];
 
+export const problemOptions = [
+  {
+    heading: 'Lassen Sie Zuraio Ihr Unternehmenswissen leichter finden und nutzen.',
+  },
+  {
+    heading: 'Lassen Sie Zuraio Ihre Informationen finden und die Arbeit voranbringen.',
+  },
+  {
+    heading: 'Lassen Sie Zuraio Ihr Wissen verbinden und die Arbeit vereinfachen.',
+  },
+  {
+    heading: 'Lassen Sie Zuraio Ihren Mitarbeitenden helfen, Antworten zu finden und Arbeit zu erledigen.',
+  },
+  {
+    heading: 'Lassen Sie Zuraio Ihr Unternehmenswissen leichter finden, verstehen und nutzen.',
+  },
+];
+
 export const trustSignals = [
   'In der Schweiz gehostet',
   'Quellen sichtbar',

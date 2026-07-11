@@ -1,5 +1,6 @@
 import { renderHeader, renderFooter, initReveal, initTabs } from './site.js';
 import { initHeroComparison } from './hero-comparison.js';
+import { initProblemComparison } from './problem-comparison.js';
 import { initMarquee } from './integrations-marquee.js';
 import { initFaq } from './faq-accordion.js';
 import {
@@ -17,6 +18,7 @@ function boot() {
   initReveal();
   initTabs();
   initHeroComparison();
+  initProblemComparison();
   initMarquee();
   initFaq();
 }
