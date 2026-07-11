@@ -96,14 +96,15 @@ export function applyHomeTranslations() {
     zuraio.querySelector('ul').innerHTML = home.different.zuraio.items.map((i) => `<li>${i}</li>`).join('');
   }
 
-  setText('#pillars h2', home.pillars.heading);
-  const pillarCards = document.querySelectorAll('#pillars .pillar-card');
+  const pillarItems = document.querySelectorAll('#pillars .pillar-item');
   home.pillars.items?.forEach((item, i) => {
-    const card = pillarCards[i];
-    if (!card) return;
-    card.querySelector('.marker').textContent = item.title;
-    card.querySelector('p').textContent = item.body;
-    const link = card.querySelector('.text-link');
+    const el = pillarItems[i];
+    if (!el) return;
+    const title = el.querySelector('.pillar-title');
+    const body = el.querySelector('.pillar-body');
+    if (title) title.textContent = item.title;
+    if (body) body.textContent = item.body;
+    const link = el.querySelector('.text-link');
     if (link) {
       link.textContent = item.link;
       link.href = item.href;
@@ -159,13 +160,16 @@ export function applyHomeTranslations() {
 
   setText('#reviewable h2', home.reviewable.heading);
   setText('#reviewable .lede', home.reviewable.body);
-  const acols = document.querySelectorAll('#reviewable .acol');
+  const processSteps = document.querySelectorAll('#reviewable .process-step');
   home.reviewable.steps?.forEach((step, i) => {
-    const el = acols[i];
+    const el = processSteps[i];
     if (!el) return;
-    el.querySelector('.step').textContent = step.label;
-    el.querySelector('h4').textContent = step.title;
-    el.querySelector('p').textContent = step.body;
+    const label = el.querySelector('.process-label');
+    const title = el.querySelector('.process-title');
+    const body = el.querySelector('p');
+    if (label) label.textContent = step.label;
+    if (title) title.textContent = step.title;
+    if (body) body.textContent = step.body;
   });
   setHtml('#reviewable .section-link a', home.reviewable.link);
 

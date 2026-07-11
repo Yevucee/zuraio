@@ -1,6 +1,12 @@
-import { HERO_COMPARISON_ENABLED, DEFAULT_HERO_OPTION } from './config.js';
+import {
+  HERO_COMPARISON_ENABLED,
+  HERO_CONTROLS_VISIBLE,
+  HERO_AUTO_PLAY_MS,
+  DEFAULT_HERO_OPTION,
+} from './config.js';
 import { getCopy } from './i18n.js';
 import { getLocale } from './i18n.js';
+import { isInternalReviewMode } from './internal-review.js';
 
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -15,7 +21,14 @@ function renderTrustSignals() {
   const ui = getCopy().ui;
   if (!list || !trustSignals) return;
   list.setAttribute('aria-label', ui.trustAria);
-  list.innerHTML = trustSignals.map((item) => `<li>${item}</li>`).join('');
+  list.innerHTML = trustSignals
+    .map((item) => {
+      const label = typeof item === 'string' ? item : item.label;
+      const href = typeof item === 'string' ? null : item.href;
+      if (href) return `<li><a href="${href}">${label}</a></li>`;
+      return `<li>${label}</li>`;
+    })
+    .join('');
 }
 
 export function initHeroComparison() {
@@ -23,6 +36,7 @@ export function initHeroComparison() {
   if (!root) return;
 
   let current = getHeroFromUrl();
+  let autoTimer = null;
 
   const copyEl = root.querySelector('[data-hero-copy]');
   const headlineEl = root.querySelector('[data-hero-headline]');
@@ -50,6 +64,21 @@ export function initHeroComparison() {
     });
     const dotsGroup = root.querySelector('.hero-dots');
     if (dotsGroup) dotsGroup.setAttribute('aria-label', ui.heroOptionsGroup);
+  }
+
+  function stopAutoPlay() {
+    if (autoTimer) {
+      clearInterval(autoTimer);
+      autoTimer = null;
+    }
+  }
+
+  function startAutoPlay() {
+    stopAutoPlay();
+    if (!HERO_COMPARISON_ENABLED || reduce || HERO_CONTROLS_VISIBLE || isInternalReviewMode()) return;
+    autoTimer = setInterval(() => {
+      goTo(current === 5 ? 1 : current + 1);
+    }, HERO_AUTO_PLAY_MS);
   }
 
   function render(option, animate) {
@@ -100,26 +129,45 @@ export function initHeroComparison() {
     if (e.key === 'ArrowLeft') {
       e.preventDefault();
       goTo(current === 1 ? 5 : current - 1);
+      startAutoPlay();
     }
     if (e.key === 'ArrowRight') {
       e.preventDefault();
       goTo(current === 5 ? 1 : current + 1);
+      startAutoPlay();
     }
+  });
+
+  root.addEventListener('mouseenter', stopAutoPlay);
+  root.addEventListener('mouseleave', startAutoPlay);
+  root.addEventListener('focusin', stopAutoPlay);
+  root.addEventListener('focusout', (e) => {
+    if (!root.contains(e.relatedTarget)) startAutoPlay();
   });
 
   applyControlLabels();
   renderTrustSignals();
+
+  if (controlsEl) {
+    controlsEl.hidden = !(HERO_CONTROLS_VISIBLE || isInternalReviewMode());
+  }
 
   if (!HERO_COMPARISON_ENABLED && controlsEl) {
     controlsEl.hidden = true;
     goTo(DEFAULT_HERO_OPTION);
   } else {
     render(current, false);
+    startAutoPlay();
   }
 
   window.addEventListener('zuraio:locale', () => {
     applyControlLabels();
     renderTrustSignals();
     render(current, false);
+  });
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopAutoPlay();
+    else startAutoPlay();
   });
 }

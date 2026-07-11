@@ -55,10 +55,10 @@ export const problemOptions = [
 ];
 
 export const trustSignals = [
-  'In der Schweiz gehostet',
-  'Quellen sichtbar',
-  'Unternehmenswissen verbunden',
-  'Sie behalten die Kontrolle',
+  { label: 'In der Schweiz gehostet', href: 'deployment-models.html' },
+  { label: 'Quellen sichtbar', href: 'knowledge.html' },
+  { label: 'Unternehmenswissen verbunden', href: 'knowledge.html' },
+  { label: 'Sie behalten die Kontrolle', href: 'data-control.html' },
 ];
 
 export const integrations = [
