@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=20260722">
+<link rel="stylesheet" href="css/site.css?v=20260723">
 </head>
 <body>
 
@@ -194,68 +194,26 @@
         <p class="lede">Zuraio gathers the right company context, prepares the work and brings it back with sources for your approval.</p>
       </div>
 
-      <div class="email-demo reveal d1">
-        <div class="email-demo-steps" role="tablist" aria-label="Email demo steps">
-          <button type="button" class="email-step is-active" data-demo-step="1" aria-selected="true">1. Request arrives</button>
-          <button type="button" class="email-step" data-demo-step="2" aria-selected="false">2. Client history</button>
-          <button type="button" class="email-step" data-demo-step="3" aria-selected="false">3. Related files</button>
-          <button type="button" class="email-step" data-demo-step="4" aria-selected="false">4. Calendar check</button>
-          <button type="button" class="email-step" data-demo-step="5" aria-selected="false">5. Suggested times</button>
-          <button type="button" class="email-step" data-demo-step="6" aria-selected="false">6. Draft reply</button>
-          <button type="button" class="email-step" data-demo-step="7" aria-selected="false">7. Sources shown</button>
-          <button type="button" class="email-step" data-demo-step="8" aria-selected="false">8. Awaiting approval</button>
-        </div>
-        <div class="ui-card email-demo-panel">
-          <div data-demo-panel="1">
-            <div class="ui-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="title">Incoming email</span></div>
-            <div class="ui-body"><div class="chat-q">Could we meet next week to review the Q3 proposal and timeline?</div><p class="demo-caption">A client email arrives requesting a meeting.</p></div>
-          </div>
-          <div data-demo-panel="2" hidden>
-            <div class="ui-top"><span class="title">Client history</span><span class="route">CRM · approved</span></div>
-            <div class="ui-body"><div class="brief"><span class="lbl">Context</span><h4>Brunner AG — renewal discussion</h4><p>Last contract signed 2024. Two open support tickets resolved last week.</p></div></div>
-          </div>
-          <div data-demo-panel="3" hidden>
-            <div class="ui-top"><span class="title">Related files</span></div>
-            <div class="ui-body"><div class="pillrow"><span class="pill src">Proposal_Q3.pdf</span><span class="pill src">Meeting notes · Jun</span><span class="pill src">Contract 2024</span></div></div>
-          </div>
-          <div data-demo-panel="4" hidden>
-            <div class="ui-top"><span class="title">Calendar</span></div>
-            <div class="ui-body"><p class="demo-caption">The assistant checks the user's calendar for suitable availability.</p></div>
-          </div>
-          <div data-demo-panel="5" hidden>
-            <div class="ui-top"><span class="title">Suggested times</span></div>
-            <div class="ui-body"><ul class="demo-list"><li>Tuesday 14:00–15:00</li><li>Wednesday 10:30–11:30</li><li>Thursday 09:00–10:00</li></ul></div>
-          </div>
-          <div data-demo-panel="6" hidden>
-            <div class="ui-top"><span class="title">Draft reply</span><span class="route">in your tone</span></div>
-            <div class="ui-body"><div class="brief" style="background:var(--soft-olive-tint);"><p>Dear Ms Keller, thank you for your message. I can offer Tuesday at 14:00 or Wednesday at 10:30 to review the Q3 proposal…</p></div></div>
-          </div>
-          <div data-demo-panel="7" hidden>
-            <div class="ui-top"><span class="title">Sources</span></div>
-            <div class="ui-body"><div class="pillrow"><span class="pill src">CRM record</span><span class="pill src">Proposal_Q3.pdf</span><span class="pill src">2 prior emails</span></div></div>
-          </div>
-          <div data-demo-panel="8" hidden>
-            <div class="ui-foot"><span class="mini">You decide what gets sent</span><span class="ui-btn ghost">Edit draft</span><span class="ui-btn">Approve &amp; send</span></div>
+      <div
+        class="demo-showcase reveal d1"
+        id="demo-showcase"
+        tabindex="0"
+        aria-label="Platform demonstration"
+      >
+        <div class="demo-showcase__frame">
+          <div class="demo-showcase__stage" data-demo-slides aria-live="polite"></div>
+          <div class="demo-showcase__progress" aria-hidden="true">
+            <span class="demo-showcase__bar" data-demo-progress></span>
           </div>
         </div>
-        <p class="demo-disclaimer">Staged demonstration — capabilities depend on agreed deployment and permissions.</p>
-      </div>
 
-      <div class="tabs reveal d2" role="tablist" aria-label="Secondary demonstrations">
-        <button class="tab" role="tab" aria-selected="true" data-tab="demo-email">Email</button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="demo-meeting">Meetings</button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="demo-knowledge">Knowledge</button>
-      </div>
-      <div class="panel active" id="demo-email">
-        <div class="demo-row reveal">
-          <div class="demo-text"><h3>The reply is already waiting.</h3><p>Long threads can be summarised and replies prepared using relevant company context. You review, edit and decide what gets sent.</p></div>
+        <div class="demo-showcase__copy" data-demo-copy>
+          <span class="marker" data-demo-label>Email</span>
+          <h3 data-demo-heading>The reply is already waiting.</h3>
+          <p data-demo-caption-text>Long threads can be summarised and replies prepared using relevant company context. You review, edit and decide what gets sent.</p>
         </div>
-      </div>
-      <div class="panel" id="demo-meeting">
-        <div class="demo-row reveal"><div class="demo-text"><h3>Walk in prepared.</h3><p>Relevant emails, notes, documents, decisions and open actions gathered before you sit down.</p></div></div>
-      </div>
-      <div class="panel" id="demo-knowledge">
-        <div class="demo-row reveal"><div class="demo-text"><h3>Find the answer. See the proof.</h3><p>Ask across approved company knowledge and see where the answer came from.</p></div></div>
+
+        <p class="demo-disclaimer">Staged demonstration — capabilities depend on agreed deployment and permissions.</p>
       </div>
     </div>
   </section>
@@ -349,6 +307,6 @@
 </main>
 
 <div id="site-footer"></div>
-<script type="module" src="js/main.js?v=20260717"></script>
+<script type="module" src="js/main.js?v=20260723"></script>
 </body>
 </html>

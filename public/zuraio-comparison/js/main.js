@@ -1,6 +1,7 @@
 import { renderHeader, renderFooter, initReveal, initTabs } from './site.js';
 import { initHeroComparison } from './hero-comparison.js?v=20260716';
 import { initProblemComparison } from './problem-comparison.js?v=20260716';
+import { initDemoShowcase } from './demo-showcase.js?v=20260723';
 import { initMarquee } from './integrations-marquee.js';
 import { initFaq } from './faq-accordion.js';
 import { initInternalReview, refreshInternalReview, isInternalReviewMode } from './internal-review.js';
@@ -24,6 +25,7 @@ function boot() {
   initTabs();
   initHeroComparison();
   initProblemComparison();
+  initDemoShowcase();
   initMarquee();
   initFaq();
 }
@@ -36,20 +38,6 @@ initLocaleSwitcher(() => {
   applyAllTranslations();
   refreshInternalReview();
   initMarquee();
-});
-
-// Email demo step controls
-document.querySelectorAll('[data-demo-step]').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    const step = btn.dataset.demoStep;
-    document.querySelectorAll('[data-demo-panel]').forEach((p) => {
-      p.hidden = p.dataset.demoPanel !== step;
-    });
-    document.querySelectorAll('[data-demo-step]').forEach((b) => {
-      b.classList.toggle('is-active', b.dataset.demoStep === step);
-      b.setAttribute('aria-selected', b.dataset.demoStep === step ? 'true' : 'false');
-    });
-  });
 });
 
 // Contact form

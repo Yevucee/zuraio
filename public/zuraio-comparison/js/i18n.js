@@ -119,20 +119,15 @@ export function applyHomeTranslations() {
   setText('#assistant-demo h2', home.demo.heading);
   setText('#assistant-demo .lede', home.demo.body);
   setText('#assistant-demo .demo-disclaimer', home.demo.disclaimer);
-  home.demo.steps?.forEach((label, i) => {
-    const btn = document.querySelector(`[data-demo-step="${i + 1}"]`);
-    if (btn) btn.textContent = label;
-  });
-  home.demo.tabs?.forEach((tab, i) => {
-    const labels = ['demo-email', 'demo-meeting', 'demo-knowledge'];
-    const btn = document.querySelector(`[data-tab="${labels[i]}"]`);
-    if (btn) btn.textContent = tab.label;
-    const panel = document.getElementById(labels[i]);
-    if (panel) {
-      panel.querySelector('h3').textContent = tab.heading;
-      panel.querySelector('p').textContent = tab.body;
-    }
-  });
+  const activeSlide = document.querySelector('#demo-showcase [data-demo-slide].is-active');
+  const slideIndex = activeSlide ? parseInt(activeSlide.dataset.demoSlide, 10) : 0;
+  const slideCopy = home.demo.slides?.[slideIndex];
+  if (slideCopy) {
+    setText('[data-demo-label]', slideCopy.label);
+    setText('[data-demo-caption-text]', slideCopy.body);
+    const headingEl = document.querySelector('[data-demo-heading]');
+    if (headingEl) headingEl.textContent = slideCopy.heading;
+  }
 
   setText('#outcomes h2', home.outcomes.heading);
   setText('#outcomes .lede', home.outcomes.body);

@@ -161,20 +161,28 @@ export const home = {
     heading: 'Sehen Sie Ihren Assistenten bei der Arbeit.',
     body: 'Zuraio sammelt den richtigen Unternehmenskontext, bereitet die Arbeit vor und liefert sie mit Quellen zur Freigabe zurück.',
     disclaimer: 'Inszenierte Demonstration — Funktionen hängen vom vereinbarten Deployment und den Berechtigungen ab.',
-    steps: [
-      '1. Anfrage trifft ein',
-      '2. Kundenhistorie',
-      '3. Verwandte Dateien',
-      '4. Kalenderprüfung',
-      '5. Vorgeschlagene Zeiten',
-      '6. Antwortentwurf',
-      '7. Quellen angezeigt',
-      '8. Wartet auf Freigabe',
-    ],
-    tabs: [
-      { label: 'E-Mail', heading: 'Die Antwort wartet bereits.', body: 'Lange Threads können zusammengefasst und Antworten mit relevantem Unternehmenskontext vorbereitet werden. Sie prüfen, bearbeiten und entscheiden, was gesendet wird.' },
-      { label: 'Meetings', heading: 'Vorbereitet ins Meeting.', body: 'Relevante E-Mails, Notizen, Dokumente, Entscheidungen und offene Aktionen werden vor dem Meeting zusammengetragen.' },
-      { label: 'Wissen', heading: 'Antwort finden. Nachweis sehen.', body: 'Fragen Sie über genehmigtes Unternehmenswissen und sehen Sie, woher die Antwort stammt.' },
+    slides: [
+      {
+        id: 'email',
+        label: 'E-Mail',
+        heading: 'Die Antwort wartet bereits.',
+        body: 'Lange Threads können zusammengefasst und Antworten mit relevantem Unternehmenskontext vorbereitet werden. Sie prüfen, bearbeiten und entscheiden, was gesendet wird.',
+        alt: 'Zuraio E-Mail-Assistent — Antwortentwurf mit Thread-Kontext und Quellen.',
+      },
+      {
+        id: 'meeting',
+        label: 'Meetings',
+        heading: 'Vorbereitet ins Meeting.',
+        body: 'Relevante E-Mails, Notizen, Dokumente, Entscheidungen und offene Aktionen werden vor dem Meeting zusammengetragen.',
+        alt: 'Zuraio Meeting-Briefing — Kundenhistorie, Dateien und Gesprächspunkte vorbereitet.',
+      },
+      {
+        id: 'knowledge',
+        label: 'Wissen',
+        heading: 'Antwort finden. Nachweis sehen.',
+        body: 'Fragen Sie über genehmigtes Unternehmenswissen und sehen Sie, woher die Antwort stammt.',
+        alt: 'Zuraio Wissenssuche — belegte Antwort mit Links zu genehmigten Dokumenten.',
+      },
     ],
   },
   outcomes: {

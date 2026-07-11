@@ -8,6 +8,8 @@ export const PROBLEM_COMPARISON_ENABLED = true;
 /** Auto-advance interval (ms) for problem section title options. */
 export const PROBLEM_AUTO_PLAY_MS = 5000;
 export const DEFAULT_PROBLEM_OPTION = 1;
+/** Auto-advance interval (ms) for platform demo showcase slides. */
+export const DEMO_AUTO_PLAY_MS = 5500;
 export const SPINE_ENABLED = false;
 
 /** When true, show internal TODO labels, ownership and review panels. */
@@ -28,3 +30,19 @@ export const SITE = {
   contactEmail: 'hello@zuraio.ch',
   logo: '../Zuraio-AI-Logo',
 };
+
+/** Platform screenshots for the assistant demo carousel (index.html). */
+export const DEMO_SHOWCASE_SLIDES = [
+  {
+    id: 'email',
+    image: '../zuraio/assets/zuraio-platform-ui.png',
+  },
+  {
+    id: 'meeting',
+    image: '../zuraio/assets/hero-and-popup.png',
+  },
+  {
+    id: 'knowledge',
+    image: '../zuraio/assets/zuraio-platform-ui.png',
+  },
+];

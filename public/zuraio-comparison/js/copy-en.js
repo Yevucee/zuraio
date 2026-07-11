@@ -161,20 +161,28 @@ export const home = {
     heading: 'See your assistant working.',
     body: 'Zuraio gathers the right company context, prepares the work and brings it back with sources for your approval.',
     disclaimer: 'Staged demonstration — capabilities depend on agreed deployment and permissions.',
-    steps: [
-      '1. Request arrives',
-      '2. Client history',
-      '3. Related files',
-      '4. Calendar check',
-      '5. Suggested times',
-      '6. Draft reply',
-      '7. Sources shown',
-      '8. Awaiting approval',
-    ],
-    tabs: [
-      { label: 'Email', heading: 'The reply is already waiting.', body: 'Long threads can be summarised and replies prepared using relevant company context. You review, edit and decide what gets sent.' },
-      { label: 'Meetings', heading: 'Walk in prepared.', body: 'Relevant emails, notes, documents, decisions and open actions gathered before you sit down.' },
-      { label: 'Knowledge', heading: 'Find the answer. See the proof.', body: 'Ask across approved company knowledge and see where the answer came from.' },
+    slides: [
+      {
+        id: 'email',
+        label: 'Email',
+        heading: 'The reply is already waiting.',
+        body: 'Long threads can be summarised and replies prepared using relevant company context. You review, edit and decide what gets sent.',
+        alt: 'Zuraio email assistant — draft reply prepared with thread context and sources.',
+      },
+      {
+        id: 'meeting',
+        label: 'Meetings',
+        heading: 'Walk in prepared.',
+        body: 'Relevant emails, notes, documents, decisions and open actions gathered before you sit down.',
+        alt: 'Zuraio meeting brief — client history, related files and talking points prepared.',
+      },
+      {
+        id: 'knowledge',
+        label: 'Knowledge',
+        heading: 'Find the answer. See the proof.',
+        body: 'Ask across approved company knowledge and see where the answer came from.',
+        alt: 'Zuraio knowledge search — sourced answer with links to approved documents.',
+      },
     ],
   },
   outcomes: {
