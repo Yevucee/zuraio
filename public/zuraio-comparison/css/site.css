@@ -126,6 +126,19 @@ section {
   position: relative;
 }
 
+/* Section background bands — alternate paper / cloud down the page.
+   Homepage order (index.html):
+   hero (photo) → problem cloud → different paper → pillars cloud →
+   integrations paper (photo) → demo cloud → outcomes paper →
+   control dark → reviewable cloud → origin paper → final olive */
+.section-band--paper {
+  background: var(--paper);
+}
+
+.section-band--cloud {
+  background: var(--cloud);
+}
+
 .pad {
   padding: 78px 0;
 }
@@ -931,6 +944,7 @@ header.nav.scrolled {
   position: relative;
   overflow: hidden;
   isolation: isolate;
+  background: var(--paper);
 }
 
 .section-photo > .wrap {
@@ -1170,7 +1184,7 @@ header.nav.scrolled {
 
 /* ---------- Three pillars ---------- */
 .pillars {
-  background: linear-gradient(180deg, var(--paper), var(--cloud));
+  background: linear-gradient(180deg, var(--cloud), #eff1e8);
 }
 
 .pillars-grid {
@@ -1955,9 +1969,9 @@ header.nav.scrolled {
   background: var(--olive);
 }
 
-/* Origin */
+/* Origin — paper band before final olive CTA */
 .origin {
-  background: linear-gradient(180deg, var(--paper), #f3f4ee);
+  background: var(--paper);
 }
 
 .origin-grid {
