@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=20260736">
+<link rel="stylesheet" href="css/site.css?v=20260737">
 </head>
 <body>
 
@@ -126,31 +126,65 @@
     </div>
   </section>
 
-  <!-- 4. What makes Zuraio different — paper band -->
+  <!-- 4. Workflow comparison + integrations — paper band -->
   <section class="pad section-band section-band--paper" id="different">
     <div class="wrap">
       <div class="head-block reveal">
         <span class="marker">More than a chatbot</span>
         <h2>Your company knowledge, working for your people.</h2>
-        <p class="lede">Generic AI works with what someone manually gives it. Zuraio connects to approved company knowledge, understands the context of the person asking and prepares sourced work for their review.</p>
+        <p class="lede">Generic AI only knows what someone manually provides. Zuraio securely connects to approved company knowledge, understands the context of the person asking and prepares sourced work for review.</p>
       </div>
-      <div class="compare-grid reveal d1">
-        <div class="compare-col compare-generic">
-          <h3 class="compare-title">Generic AI</h3>
-          <ul>
-            <li>Isolated conversations</li>
-            <li>Information added manually</li>
-            <li>Limited company context</li>
-          </ul>
+
+      <div class="workflow-compare reveal d1">
+        <div class="workflow-compare__shell">
+          <div class="workflow-panel workflow-panel--without" data-workflow-panel="without">
+            <header class="workflow-panel__head">
+              <span class="workflow-panel__badge workflow-panel__badge--neutral" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+              </span>
+              <div class="workflow-panel__intro">
+                <h3 class="workflow-panel__title">Without Zuraio</h3>
+                <p class="workflow-panel__subtitle">Manual, repetitive and harder to trust</p>
+              </div>
+            </header>
+            <div class="workflow-steps" data-workflow-steps="without"></div>
+          </div>
+
+          <div class="workflow-compare__divider" aria-hidden="true"></div>
+
+          <div class="workflow-panel workflow-panel--with" data-workflow-panel="with">
+            <header class="workflow-panel__head">
+              <span class="workflow-panel__badge workflow-panel__badge--olive" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 9.5 17 19 7"/></svg>
+              </span>
+              <div class="workflow-panel__intro">
+                <h3 class="workflow-panel__title">With Zuraio</h3>
+                <p class="workflow-panel__subtitle">Connected, intelligent and ready to use</p>
+              </div>
+            </header>
+            <div class="workflow-steps" data-workflow-steps="with"></div>
+          </div>
         </div>
-        <div class="compare-col compare-zuraio">
-          <h3 class="compare-title">Zuraio</h3>
-          <ul>
-            <li>Connected company knowledge</li>
-            <li>Personal and role-relevant context</li>
-            <li>Sourced answers and drafts</li>
-            <li>Review before action</li>
-          </ul>
+      </div>
+
+      <div class="integrations-strip reveal d2">
+        <div class="integrations-strip__card">
+          <div class="integrations-strip__top">
+            <div class="integrations-strip__lead">
+              <span class="integrations-strip__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              </span>
+              <p class="integrations-strip__title">Works with the tools your team already uses.</p>
+            </div>
+            <a class="integrations-strip__link" href="integrations.html">View all integrations →</a>
+          </div>
+          <div class="integrations-strip__logos" data-integrations-strip></div>
+          <p class="integrations-strip__note">
+            <span class="integrations-strip__lock" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+            </span>
+            <span data-integrations-clarify>Connections depend on your company setup, approved tools and deployment scope.</span>
+          </p>
         </div>
       </div>
     </div>
@@ -182,32 +216,7 @@
     </div>
   </section>
 
-  <!-- 6. Integrations — paper band + photo background -->
-  <section class="pad section-band section-band--paper section-photo section-photo--integrations" id="integrations">
-    <div class="section-photo__bg" aria-hidden="true">
-      <img src="../zuraio/assets/260707-fits-into-the-tools.png?v=20260716" alt="" width="1672" height="941" decoding="async" />
-    </div>
-    <div class="section-photo__scrim" aria-hidden="true"></div>
-    <div class="wrap">
-      <div class="head-block reveal">
-        <h2>Fits into the tools your team already uses.</h2>
-        <p class="lede">Zuraio is designed to work alongside your existing email, documents, meetings, messages and business systems.</p>
-      </div>
-      <div class="marquee-track" data-marquee tabindex="0" aria-label="Integration tools">
-        <div class="marquee-inner">
-          <span class="tool">Outlook</span><span class="tool">Gmail</span><span class="tool">Microsoft 365</span>
-          <span class="tool">Google Workspace</span><span class="tool">Teams</span><span class="tool">Slack</span>
-          <span class="tool">Notion</span><span class="tool">SharePoint</span><span class="tool">OneDrive</span>
-          <span class="tool">HubSpot</span><span class="tool">Salesforce</span><span class="tool">WhatsApp</span>
-          <span class="tool">Voice notes</span>
-        </div>
-      </div>
-      <p class="clarify reveal">Specific connections depend on your company setup, approved tools and deployment scope.</p>
-      <p class="section-link reveal"><a href="integrations.html">View integrations →</a></p>
-    </div>
-  </section>
-
-  <!-- 7. See the assistant working — cloud band -->
+  <!-- 6. See the assistant working — cloud band -->
   <section class="demo pad section-band section-band--cloud" id="assistant-demo">
     <div class="wrap">
       <div class="head-block reveal">
@@ -307,6 +316,6 @@
 </main>
 
 <div id="site-footer"></div>
-<script type="module" src="js/main.js?v=20260736"></script>
+<script type="module" src="js/main.js?v=20260737"></script>
 </body>
 </html>

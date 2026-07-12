@@ -133,14 +133,56 @@ export const home = {
   different: {
     marker: 'Mehr als ein Chatbot',
     heading: 'Ihr Unternehmenswissen, im Dienst Ihrer Teams.',
-    body: 'Generische KI arbeitet mit dem, was jemand manuell eingibt. Zuraio verbindet sich mit genehmigtem Unternehmenswissen, versteht den Kontext der fragenden Person und bereitet quellenbasierte Arbeit zur Prüfung vor.',
-    generic: {
-      title: 'Generische KI',
-      items: ['Isolierte Gespräche', 'Manuell hinzugefügte Informationen', 'Begrenzter Unternehmenskontext'],
+    body: 'Generische KI kennt nur das, was jemand manuell bereitstellt. Zuraio verbindet sich sicher mit genehmigtem Unternehmenswissen, versteht den Kontext der fragenden Person und bereitet quellenbasierte Arbeit zur Prüfung vor.',
+    without: {
+      title: 'Ohne Zuraio',
+      subtitle: 'Manuell, repetitiv und schwerer vertrauenswürdig',
+      steps: [
+        {
+          title: 'Generische KI fragen',
+          body: 'Jedes Mal von vorn in einem isolierten Chat beginnen.',
+        },
+        {
+          title: 'Kontext manuell hinzufügen',
+          body: 'Kopieren, einfügen und zusammenfassen, was das Modell wissen muss.',
+        },
+        {
+          title: 'Generische Ausgabe prüfen',
+          body: 'Fakten ohne Quellen oder Unternehmenshistorie verifizieren.',
+        },
+        {
+          title: 'Beim nächsten Mal wiederholen',
+          body: 'Dieselbe Arbeit für die nächste Anfrage erneut leisten.',
+        },
+      ],
     },
-    zuraio: {
-      title: 'Zuraio',
-      items: ['Verbundenes Unternehmenswissen', 'Persönlicher und rollenbezogener Kontext', 'Quellenbasierte Antworten und Entwürfe', 'Prüfung vor Aktion'],
+    with: {
+      title: 'Mit Zuraio',
+      subtitle: 'Verbunden, intelligent und einsatzbereit',
+      steps: [
+        {
+          title: 'Zuraio fragen',
+          body: 'In natürlicher Sprache direkt im Arbeitsfluss fragen.',
+        },
+        {
+          title: 'Nutzt genehmigtes Unternehmenswissen',
+          body: 'Greift auf E-Mails, Dokumente und Systeme zu, die Sie freigegeben haben.',
+        },
+        {
+          title: 'Erstellt quellenbasierte Arbeit',
+          body: 'Entwürfe und Zusammenfassungen kommen mit Referenzen.',
+        },
+        {
+          title: 'Prüfen und handeln',
+          body: 'Sie genehmigen, bearbeiten oder senden mit Vertrauen.',
+        },
+      ],
+    },
+    integrationsStrip: {
+      title: 'Funktioniert mit den Tools, die Ihr Team bereits nutzt.',
+      link: 'Alle Integrationen ansehen →',
+      clarify: 'Verbindungen hängen von Ihrem Setup, genehmigten Tools und Deployment-Umfang ab.',
+      tools: ['microsoft-365', 'google-workspace', 'outlook', 'sharepoint', 'hubspot', 'salesforce'],
     },
   },
   pillars: {

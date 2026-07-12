@@ -1,6 +1,12 @@
 import * as en from './copy-en.js';
 import * as de from './copy-de.js';
 import { PAIN_CARD_ICONS } from './pain-card-icons.js';
+import {
+  WORKFLOW_ICONS_WITHOUT,
+  WORKFLOW_ICONS_WITH,
+} from './workflow-icons.js';
+import { INTEGRATIONS, getIntegrationLabel } from './integrations-data.js';
+import { hasIntegrationLogo } from './integrations-manifest.js';
 
 const LOCALE_KEY = 'zuraio-locale';
 
@@ -58,6 +64,38 @@ function applyList(selector, items, template) {
   container.innerHTML = items.map(template).join('');
 }
 
+function renderWorkflowSteps(steps, icons, tone) {
+  if (!steps?.length) return '';
+  return steps
+    .map((step, i) => {
+      const arrow =
+        i < steps.length - 1
+          ? `<span class="workflow-step-arrow workflow-step-arrow--${tone}" aria-hidden="true"></span>`
+          : '';
+      return `<article class="workflow-step workflow-step--${tone}">
+        <span class="workflow-step__icon">${icons[i] || ''}</span>
+        <h4 class="workflow-step__title">${step.title}</h4>
+        <p class="workflow-step__body">${step.body}</p>
+      </article>${arrow}`;
+    })
+    .join('');
+}
+
+function renderIntegrationsStripPills(toolIds, locale) {
+  if (!toolIds?.length) return '';
+  return toolIds
+    .map((id) => INTEGRATIONS.find((item) => item.id === id))
+    .filter(Boolean)
+    .map((item) => {
+      const name = getIntegrationLabel(item, locale);
+      const logo = hasIntegrationLogo(item.id)
+        ? `<img class="integrations-strip__logo" src="${item.logo}" alt="" width="18" height="18" loading="lazy" decoding="async" />`
+        : '';
+      return `<span class="integrations-strip__pill">${logo}<span>${name}</span></span>`;
+    })
+    .join('');
+}
+
 export function applyDataI18n() {
   document.querySelectorAll('[data-i18n]').forEach((el) => {
     const value = t(el.dataset.i18n);
@@ -86,15 +124,41 @@ export function applyHomeTranslations() {
   setText('#different .marker', home.different.marker);
   setText('#different h2', home.different.heading);
   setText('#different .lede', home.different.body);
-  const generic = document.querySelector('#different .compare-generic');
-  const zuraio = document.querySelector('#different .compare-zuraio');
-  if (generic && home.different.generic) {
-    generic.querySelector('.compare-title').textContent = home.different.generic.title;
-    generic.querySelector('ul').innerHTML = home.different.generic.items.map((i) => `<li>${i}</li>`).join('');
+
+  const withoutPanel = document.querySelector('[data-workflow-panel="without"]');
+  const withPanel = document.querySelector('[data-workflow-panel="with"]');
+  if (withoutPanel && home.different.without) {
+    withoutPanel.querySelector('.workflow-panel__title').textContent = home.different.without.title;
+    withoutPanel.querySelector('.workflow-panel__subtitle').textContent = home.different.without.subtitle;
+    const stepsEl = withoutPanel.querySelector('[data-workflow-steps="without"]');
+    if (stepsEl) {
+      stepsEl.innerHTML = renderWorkflowSteps(
+        home.different.without.steps,
+        WORKFLOW_ICONS_WITHOUT,
+        'neutral',
+      );
+    }
   }
-  if (zuraio && home.different.zuraio) {
-    zuraio.querySelector('.compare-title').textContent = home.different.zuraio.title;
-    zuraio.querySelector('ul').innerHTML = home.different.zuraio.items.map((i) => `<li>${i}</li>`).join('');
+  if (withPanel && home.different.with) {
+    withPanel.querySelector('.workflow-panel__title').textContent = home.different.with.title;
+    withPanel.querySelector('.workflow-panel__subtitle').textContent = home.different.with.subtitle;
+    const stepsEl = withPanel.querySelector('[data-workflow-steps="with"]');
+    if (stepsEl) {
+      stepsEl.innerHTML = renderWorkflowSteps(
+        home.different.with.steps,
+        WORKFLOW_ICONS_WITH,
+        'olive',
+      );
+    }
+  }
+
+  const strip = home.different.integrationsStrip;
+  if (strip) {
+    setText('#different .integrations-strip__title', strip.title);
+    setText('#different .integrations-strip__link', strip.link);
+    setText('#different [data-integrations-clarify]', strip.clarify);
+    const logosEl = document.querySelector('[data-integrations-strip]');
+    if (logosEl) logosEl.innerHTML = renderIntegrationsStripPills(strip.tools, getLocale());
   }
 
   const pillarItems = document.querySelectorAll('#pillars .pillar-item');
@@ -112,10 +176,7 @@ export function applyHomeTranslations() {
     }
   });
 
-  setText('#integrations h2', home.integrations.heading);
-  setText('#integrations .lede', home.integrations.body);
-  setText('#integrations .clarify', home.integrations.clarify);
-  setHtml('#integrations .section-link a', home.integrations.link);
+  setText('#pillars h2', home.pillars.heading);
 
   setText('#assistant-demo h2', home.demo.heading);
   setText('#assistant-demo .lede', home.demo.body);

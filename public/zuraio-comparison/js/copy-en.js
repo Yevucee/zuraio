@@ -133,14 +133,56 @@ export const home = {
   different: {
     marker: 'More than a chatbot',
     heading: 'Your company knowledge, working for your people.',
-    body: 'Generic AI works with what someone manually gives it. Zuraio connects to approved company knowledge, understands the context of the person asking and prepares sourced work for their review.',
-    generic: {
-      title: 'Generic AI',
-      items: ['Isolated conversations', 'Information added manually', 'Limited company context'],
+    body: 'Generic AI only knows what someone manually provides. Zuraio securely connects to approved company knowledge, understands the context of the person asking and prepares sourced work for review.',
+    without: {
+      title: 'Without Zuraio',
+      subtitle: 'Manual, repetitive and harder to trust',
+      steps: [
+        {
+          title: 'Ask generic AI',
+          body: 'Start from scratch in an isolated chat window.',
+        },
+        {
+          title: 'Add context manually',
+          body: 'Copy, paste and summarise what the model needs to know.',
+        },
+        {
+          title: 'Check generic output',
+          body: 'Verify facts without sources or company history.',
+        },
+        {
+          title: 'Repeat next time',
+          body: 'Do the same work again for the next request.',
+        },
+      ],
     },
-    zuraio: {
-      title: 'Zuraio',
-      items: ['Connected company knowledge', 'Personal and role-relevant context', 'Sourced answers and drafts', 'Review before action'],
+    with: {
+      title: 'With Zuraio',
+      subtitle: 'Connected, intelligent and ready to use',
+      steps: [
+        {
+          title: 'Ask Zuraio',
+          body: 'Ask in natural language from within your workflow.',
+        },
+        {
+          title: 'Uses approved company knowledge',
+          body: 'Pulls from emails, documents and systems you have approved.',
+        },
+        {
+          title: 'Creates sourced work',
+          body: 'Drafts and summaries arrive with references attached.',
+        },
+        {
+          title: 'Review and act',
+          body: 'You approve, edit or send with confidence.',
+        },
+      ],
+    },
+    integrationsStrip: {
+      title: 'Works with the tools your team already uses.',
+      link: 'View all integrations →',
+      clarify: 'Connections depend on your company setup, approved tools and deployment scope.',
+      tools: ['microsoft-365', 'google-workspace', 'outlook', 'sharepoint', 'hubspot', 'salesforce'],
     },
   },
   pillars: {
