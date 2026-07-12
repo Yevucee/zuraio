@@ -104,13 +104,16 @@ export function renderHeader() {
     });
   });
 
-  if (navEl && !navEl.dataset.scrollBound) {
-    navEl.dataset.scrollBound = 'true';
-    window.addEventListener(
-      'scroll',
-      () => navEl.classList.toggle('scrolled', scrollY > 8),
-      { passive: true },
-    );
+  if (el && !el.dataset.scrollBound) {
+    el.dataset.scrollBound = 'true';
+    const updateNavScroll = () => {
+      const floating = window.scrollY > 48;
+      el.classList.toggle('is-floating', floating);
+      navEl?.classList.toggle('is-floating', floating);
+      navEl?.classList.toggle('scrolled', floating);
+    };
+    updateNavScroll();
+    window.addEventListener('scroll', updateNavScroll, { passive: true });
   }
 }
 

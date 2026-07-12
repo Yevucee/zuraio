@@ -49,7 +49,7 @@ html {
 
 body {
   margin: 0;
-  padding-top: calc(var(--nav-h) + var(--nav-float-top) + var(--nav-float-gap));
+  padding-top: var(--nav-h);
   font-family: "IBM Plex Sans", system-ui, sans-serif;
   color: var(--charcoal);
   background: var(--paper);
@@ -293,22 +293,49 @@ main#top > section + section:not(.hero-layered):not(.final) {
 }
 
 /* ==========================================================================
-   2. Navigation — floating bar
+   2. Navigation — top bar → floating pill on scroll
    ========================================================================== */
 #site-header {
   position: fixed;
-  top: var(--nav-float-top);
+  top: 0;
   left: 0;
   right: 0;
   z-index: 50;
-  padding: 0 20px;
+  padding: 0;
   pointer-events: none;
+  transition:
+    top 0.38s var(--ease),
+    padding 0.38s var(--ease);
+}
+
+#site-header.is-floating {
+  top: var(--nav-float-top);
+  padding: 0 20px;
 }
 
 header.nav {
   position: relative;
   top: auto;
   pointer-events: auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid var(--hairline);
+  backdrop-filter: none;
+  background: var(--paper);
+  box-shadow: none;
+  transition:
+    border-radius 0.38s var(--ease),
+    border-color 0.38s var(--ease),
+    box-shadow 0.38s var(--ease),
+    background 0.38s var(--ease),
+    max-width 0.38s var(--ease),
+    backdrop-filter 0.38s var(--ease);
+}
+
+header.nav.is-floating {
   max-width: var(--maxw);
   margin: 0 auto;
   border-radius: 16px;
@@ -316,13 +343,9 @@ header.nav {
   backdrop-filter: saturate(140%) blur(12px);
   background: rgba(251, 251, 248, 0.88);
   box-shadow: 0 4px 22px rgba(38, 40, 35, 0.08);
-  transition:
-    border-color 0.3s,
-    box-shadow 0.3s,
-    background 0.3s;
 }
 
-header.nav.scrolled {
+header.nav.is-floating.scrolled {
   border-color: var(--hairline);
   background: rgba(251, 251, 248, 0.96);
   box-shadow: 0 10px 32px rgba(38, 40, 35, 0.12);
