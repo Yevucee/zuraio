@@ -988,7 +988,7 @@ header.nav.is-floating.scrolled {
   #problem .pain-grid {
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    margin-top: clamp(200px, 18vw, 260px);
+    margin-top: clamp(100px, 11vw, 150px);
   }
 }
 
