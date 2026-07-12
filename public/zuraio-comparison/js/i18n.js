@@ -5,8 +5,6 @@ import {
   WORKFLOW_ICONS_WITHOUT,
   WORKFLOW_ICONS_WITH,
 } from './workflow-icons.js';
-import { INTEGRATIONS, getIntegrationLabel } from './integrations-data.js';
-import { hasIntegrationLogo } from './integrations-manifest.js';
 
 const LOCALE_KEY = 'zuraio-locale';
 
@@ -81,21 +79,6 @@ function renderWorkflowSteps(steps, icons, tone) {
     .join('');
 }
 
-function renderIntegrationsStripPills(toolIds, locale) {
-  if (!toolIds?.length) return '';
-  return toolIds
-    .map((id) => INTEGRATIONS.find((item) => item.id === id))
-    .filter(Boolean)
-    .map((item) => {
-      const name = getIntegrationLabel(item, locale);
-      const logo = hasIntegrationLogo(item.id)
-        ? `<img class="integrations-strip__logo" src="${item.logo}" alt="" width="18" height="18" loading="lazy" decoding="async" />`
-        : '';
-      return `<span class="integrations-strip__pill">${logo}<span>${name}</span></span>`;
-    })
-    .join('');
-}
-
 export function applyDataI18n() {
   document.querySelectorAll('[data-i18n]').forEach((el) => {
     const value = t(el.dataset.i18n);
@@ -157,8 +140,6 @@ export function applyHomeTranslations() {
     setText('#different .integrations-strip__title', strip.title);
     setText('#different .integrations-strip__link', strip.link);
     setText('#different [data-integrations-clarify]', strip.clarify);
-    const logosEl = document.querySelector('[data-integrations-strip]');
-    if (logosEl) logosEl.innerHTML = renderIntegrationsStripPills(strip.tools, getLocale());
   }
 
   const pillarItems = document.querySelectorAll('#pillars .pillar-item');
