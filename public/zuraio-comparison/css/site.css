@@ -900,22 +900,6 @@ header.nav.is-floating.scrolled {
   position: relative;
 }
 
-@media (min-width: 1000px) {
-  #problem .pain__bg {
-    bottom: auto;
-    height: clamp(280px, 34vw, 380px);
-  }
-
-  #problem .problem-hero {
-    min-height: clamp(280px, 34vw, 380px);
-    margin-bottom: 28px;
-  }
-
-  #problem .pain-grid {
-    margin-top: 0;
-  }
-}
-
 .problem-copy {
   max-width: 560px;
   transition: opacity 0.22s var(--ease);
@@ -1004,6 +988,7 @@ header.nav.is-floating.scrolled {
   #problem .pain-grid {
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+    margin-top: clamp(200px, 18vw, 260px);
   }
 }
 
