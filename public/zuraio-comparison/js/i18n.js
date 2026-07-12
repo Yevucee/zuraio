@@ -1,5 +1,6 @@
 import * as en from './copy-en.js';
 import * as de from './copy-de.js';
+import { PAIN_CARD_ICONS } from './pain-card-icons.js';
 
 const LOCALE_KEY = 'zuraio-locale';
 
@@ -78,7 +79,7 @@ export function applyHomeTranslations() {
   setText('#problem .marker', home.problem.marker);
   setText('#problem [data-problem-body], #problem .lede', home.problem.body);
   applyList('#problem .pain-grid', home.problem.cards, (c, i) =>
-    `<div class="pcard reveal${i ? ` d${i}` : ''}"><span class="n">${c.title}</span><p>${c.body}</p></div>`,
+    `<div class="pcard pain-card reveal${i ? ` d${i}` : ''}"><span class="pain-card__icon">${PAIN_CARD_ICONS[i] || ''}</span><span class="n">${c.title}</span><p>${c.body}</p></div>`,
   );
   setHtml('#problem .section-link a', home.problem.link);
 
