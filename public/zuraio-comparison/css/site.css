@@ -3923,12 +3923,15 @@ footer.site-footer {
 }
 
 .compare-step-arrow {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   color: rgba(120, 120, 116, 0.42);
-  padding: 10px 0;
+  width: 34px;
+  height: 22px;
+  margin: 0 auto;
 }
 
 .compare-step-arrow--olive {
@@ -3937,24 +3940,51 @@ footer.site-footer {
 
 .compare-step-arrow::before {
   content: "";
-  display: block;
-  width: 7px;
-  height: 7px;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 6px;
+  width: 1px;
+  background: currentColor;
+  transform: translateX(-50%);
+}
+
+.compare-step-arrow::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 1px;
+  width: 6px;
+  height: 6px;
   border-right: 1.5px solid currentColor;
   border-bottom: 1.5px solid currentColor;
-  transform: rotate(45deg);
+  transform: translateX(-50%) rotate(45deg);
 }
 
 @media (min-width: 960px) {
   .compare-step-arrow {
-    width: 16px;
-    padding: 0;
-    margin-top: 10px;
+    width: 22px;
+    height: 34px;
+    margin: 0;
     align-self: flex-start;
   }
 
   .compare-step-arrow::before {
-    transform: rotate(-45deg);
+    left: 0;
+    right: 6px;
+    top: 50%;
+    bottom: auto;
+    width: auto;
+    height: 1px;
+    transform: translateY(-50%);
+  }
+
+  .compare-step-arrow::after {
+    left: auto;
+    right: 0;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%) rotate(-45deg);
   }
 }
 
