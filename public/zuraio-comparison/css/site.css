@@ -3885,7 +3885,8 @@ footer.site-footer {
     background 0.4s var(--ease),
     border-color 0.4s var(--ease),
     color 0.4s var(--ease),
-    box-shadow 0.4s var(--ease);
+    box-shadow 0.4s var(--ease),
+    opacity 0.4s var(--ease);
 }
 
 .compare-step__icon svg {
@@ -3897,12 +3898,30 @@ footer.site-footer {
   background: #f3f3f1;
   border: 1px solid rgba(70, 70, 70, 0.07);
   color: #8a8a86;
+  opacity: 0.55;
 }
 
 .compare-step--olive .compare-step__icon {
   background: rgba(159, 175, 82, 0.12);
   border: 1px solid rgba(159, 175, 82, 0.18);
   color: var(--olive-deep);
+  opacity: 0.55;
+}
+
+.compare-step--neutral.is-lit .compare-step__icon {
+  background: #ebecea;
+  border-color: rgba(90, 90, 86, 0.18);
+  color: #5a5a56;
+  opacity: 1;
+  box-shadow: 0 0 0 3px rgba(120, 120, 116, 0.1);
+}
+
+.compare-step--olive.is-lit .compare-step__icon {
+  background: rgba(159, 175, 82, 0.26);
+  border-color: rgba(159, 175, 82, 0.38);
+  color: var(--olive-deep);
+  opacity: 1;
+  box-shadow: 0 0 0 3px rgba(159, 175, 82, 0.16);
 }
 
 .compare-step__title {

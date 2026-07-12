@@ -23,19 +23,51 @@ function lightAllSteps() {
   });
 }
 
+function getStepActivationTimes(panelKey, durationMs) {
+  const box = document.querySelector(`[data-compare-box="${panelKey}"]`);
+  const track = box?.querySelector('.compare-progress__track');
+  const steps = box?.querySelectorAll('.compare-step') ?? [];
+  if (!steps.length) return [];
+
+  const trackRect = track?.getBoundingClientRect();
+  const usePosition =
+    trackRect &&
+    trackRect.width > 0 &&
+    window.matchMedia('(min-width: 960px)').matches;
+
+  if (usePosition) {
+    return Array.from(steps).map((step) => {
+      const icon = step.querySelector('.compare-step__icon');
+      const iconRect = icon?.getBoundingClientRect();
+      if (!iconRect) return 0;
+
+      const centerX = iconRect.left + iconRect.width / 2;
+      const ratio = Math.min(
+        1,
+        Math.max(0, (centerX - trackRect.left) / trackRect.width),
+      );
+      return ratio * durationMs;
+    });
+  }
+
+  return Array.from(steps).map((_, index) => {
+    const threshold = (index + 0.5) / steps.length;
+    return threshold * durationMs;
+  });
+}
+
 function scheduleStepLights(panelKey, durationMs) {
   const steps = document.querySelectorAll(
     `[data-compare-box="${panelKey}"] .compare-step`,
   );
   if (!steps.length) return;
 
-  steps.forEach((step, index) => {
-    const threshold = (index + 0.5) / steps.length;
-    const activateAt = threshold * durationMs;
+  const activationTimes = getStepActivationTimes(panelKey, durationMs);
 
+  steps.forEach((step, index) => {
     const timerId = window.setTimeout(() => {
       step.classList.add('is-lit');
-    }, activateAt);
+    }, activationTimes[index] ?? 0);
 
     stepTimers.push(timerId);
   });
@@ -84,10 +116,9 @@ function startPanelAnimation(panelKey, durationMs) {
     requestAnimationFrame(() => {
       fill.style.transition = `width ${durationMs}ms linear`;
       fill.style.width = '100%';
+      scheduleStepLights(panelKey, durationMs);
     });
   });
-
-  scheduleStepLights(panelKey, durationMs);
   window.setTimeout(() => setPanelComplete(panelKey), durationMs + 40);
 }
 
