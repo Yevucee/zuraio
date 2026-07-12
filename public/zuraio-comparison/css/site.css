@@ -126,6 +126,22 @@ section {
   position: relative;
 }
 
+/* Section background bands — solid paper / cloud alternation on the homepage.
+   hero (photo) → problem cloud → different paper → pillars cloud →
+   integrations paper → demo cloud → outcomes paper → control dark →
+   reviewable cloud → origin paper → final olive */
+.section-band--paper {
+  background: var(--paper);
+}
+
+.section-band--cloud {
+  background: var(--cloud);
+}
+
+main#top > section + section:not(.hero-layered):not(.final) {
+  border-top: 1px solid var(--hairline);
+}
+
 .pad {
   padding: 78px 0;
 }
@@ -834,7 +850,7 @@ header.nav.scrolled {
 .pain {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, var(--cloud), #eff1e8);
+  background: var(--cloud);
 }
 
 .pain > .wrap {
@@ -931,6 +947,7 @@ header.nav.scrolled {
   position: relative;
   overflow: hidden;
   isolation: isolate;
+  background: var(--paper);
 }
 
 .section-photo > .wrap {
@@ -1169,8 +1186,8 @@ header.nav.scrolled {
 }
 
 /* ---------- Three pillars ---------- */
-.pillars {
-  background: linear-gradient(180deg, var(--paper), var(--cloud));
+.pillars.section-band--cloud {
+  background: var(--cloud);
 }
 
 .pillars-grid {
@@ -1324,7 +1341,7 @@ header.nav.scrolled {
    5. Email demo steps
    ========================================================================== */
 .email-demo {
-  background: linear-gradient(180deg, #f3f4ee, var(--paper));
+  background: transparent;
 }
 
 .demo-steps {
@@ -1389,8 +1406,8 @@ header.nav.scrolled {
    ========================================================================== */
 
 /* Demo tabs */
-.demo {
-  background: linear-gradient(180deg, #f3f4ee, var(--paper));
+.demo.section-band--cloud {
+  background: var(--cloud);
 }
 
 .tabs {
@@ -1956,8 +1973,8 @@ header.nav.scrolled {
 }
 
 /* Origin */
-.origin {
-  background: linear-gradient(180deg, var(--paper), #f3f4ee);
+.origin.section-band--paper {
+  background: var(--paper);
 }
 
 .origin-grid {
