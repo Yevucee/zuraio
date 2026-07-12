@@ -1,7 +1,70 @@
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-function particleCount(width, height) {
-  return Math.min(90, Math.max(36, Math.floor((width * height) / 12000)));
+const COLORS = {
+  primary: '215, 232, 160',
+  accent: '248, 255, 220',
+  deep: '200, 218, 130',
+};
+
+const CLUSTER_SEEDS = [
+  { x: 0.18, y: 0.28 },
+  { x: 0.42, y: 0.22 },
+  { x: 0.68, y: 0.34 },
+  { x: 0.84, y: 0.24 },
+  { x: 0.3, y: 0.62 },
+  { x: 0.58, y: 0.58 },
+  { x: 0.78, y: 0.72 },
+];
+
+const DEPTH_LAYERS = [
+  { depth: 0.18, density: 1.35, speed: 0.28, opacity: 0.22, radius: [0.8, 1.3], connect: 0.82 },
+  { depth: 0.4, density: 1.15, speed: 0.48, opacity: 0.34, radius: [1.2, 1.9], connect: 0.96 },
+  { depth: 0.62, density: 0.95, speed: 0.68, opacity: 0.44, radius: [1.7, 2.5], connect: 1.08 },
+  { depth: 0.84, density: 0.72, speed: 0.92, opacity: 0.54, radius: [2.2, 3.3], connect: 1.22 },
+  { depth: 1, density: 0.48, speed: 1.12, opacity: 0.62, radius: [2.8, 4.1], connect: 1.34 },
+];
+
+const LOCK_TARGET = 6;
+
+function randomBetween(min, max) {
+  return min + Math.random() * (max - min);
+}
+
+function drawLock(context, x, y, size, alpha, elapsed, phase) {
+  const pulse = 0.92 + Math.sin(elapsed * 1.4 + phase) * 0.08;
+  const scale = size * 2.8 * pulse;
+  const bodyW = scale * 0.62;
+  const bodyH = scale * 0.52;
+  const top = y - scale * 0.08;
+  const shackleR = bodyW * 0.34;
+
+  context.save();
+  context.lineCap = 'round';
+  context.lineJoin = 'round';
+  context.strokeStyle = `rgba(${COLORS.accent}, ${Math.min(1, alpha * 1.05)})`;
+  context.fillStyle = `rgba(${COLORS.accent}, ${alpha * 0.28})`;
+  context.lineWidth = Math.max(1.1, scale * 0.14);
+
+  context.beginPath();
+  context.arc(x, top - bodyH * 0.08, shackleR, Math.PI, 0, false);
+  context.stroke();
+
+  context.beginPath();
+  context.moveTo(x - bodyW / 2, top);
+  context.lineTo(x - bodyW / 2, top + bodyH);
+  context.quadraticCurveTo(x - bodyW / 2, top + bodyH + scale * 0.12, x, top + bodyH + scale * 0.12);
+  context.quadraticCurveTo(x + bodyW / 2, top + bodyH + scale * 0.12, x + bodyW / 2, top + bodyH);
+  context.lineTo(x + bodyW / 2, top);
+  context.closePath();
+  context.fill();
+  context.stroke();
+
+  context.beginPath();
+  context.arc(x, top + bodyH * 0.58, scale * 0.07, 0, Math.PI * 2);
+  context.fillStyle = `rgba(${COLORS.primary}, ${alpha * 0.85})`;
+  context.fill();
+
+  context.restore();
 }
 
 export function initControlParticles() {
@@ -9,138 +72,276 @@ export function initControlParticles() {
   const canvas = section?.querySelector('[data-control-particles]');
   if (!section || !canvas) return;
 
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return;
-
-  const rgb = '159, 175, 82';
-  const linkDistance = 150;
-  const dotRadius = 2;
-  const speed = reduce ? 0 : 0.28;
-  const lineOpacity = 0.16;
-  const dotOpacity = 0.5;
+  const context = canvas.getContext('2d');
+  if (!context) return;
 
   let width = 0;
   let height = 0;
   let dpr = 1;
-  let particles = [];
-  let frameId = null;
-  let running = false;
+  let layers = [];
+  let animationFrame = 0;
+  let isVisible = false;
+  let isRunning = false;
+  let lockCount = 0;
 
-  function initParticles() {
-    const count = particleCount(width, height);
-    particles = Array.from({ length: count }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() - 0.5) * speed,
-      vy: (Math.random() - 0.5) * speed,
+  function createNode(x, y, layerIndex, layerConfig, seedIndex = -1) {
+    const accent = Math.random() < (layerIndex >= 3 ? 0.34 : 0.18);
+    const [radiusMin, radiusMax] = layerConfig.radius;
+    let isLock = false;
+
+    if (
+      lockCount < LOCK_TARGET &&
+      layerIndex >= 2 &&
+      seedIndex >= 0 &&
+      seedIndex < 5 &&
+      Math.random() < 0.28
+    ) {
+      isLock = true;
+      lockCount += 1;
+    }
+
+    return {
+      x,
+      y,
+      vx: randomBetween(-0.22, 0.22) * layerConfig.speed,
+      vy: randomBetween(-0.22, 0.22) * layerConfig.speed,
+      phase: Math.random() * Math.PI * 2,
+      pulse: randomBetween(0.7, 1.2),
+      radius: randomBetween(radiusMin, radiusMax),
+      accent,
+      isLock,
+      layerIndex,
+      depth: layerConfig.depth,
+      layerOpacity: layerConfig.opacity,
+      layerSpeed: layerConfig.speed,
+      connectScale: layerConfig.connect,
+    };
+  }
+
+  function buildLayerNodes(layerIndex, layerConfig) {
+    const area = width * height;
+    const baseCount = Math.round(area / 22000);
+    const clusterNodes = Math.round(CLUSTER_SEEDS.length * 10 * layerConfig.density);
+    const total = Math.min(
+      layerIndex === 0 ? 70 : 52,
+      Math.max(layerIndex === 0 ? 34 : 22, Math.round((baseCount + clusterNodes) * layerConfig.density))
+    );
+    const layerNodes = [];
+
+    CLUSTER_SEEDS.forEach((seed, seedIndex) => {
+      const clusterSize = Math.round(10 * layerConfig.density);
+      for (let index = 0; index < clusterSize; index += 1) {
+        const angle = Math.random() * Math.PI * 2;
+        const spread = Math.pow(Math.random(), 0.55) * Math.min(width, height) * (0.1 + layerIndex * 0.015);
+        layerNodes.push(
+          createNode(
+            seed.x * width + Math.cos(angle) * spread,
+            seed.y * height + Math.sin(angle) * spread,
+            layerIndex,
+            layerConfig,
+            seedIndex
+          )
+        );
+      }
+    });
+
+    while (layerNodes.length < total) {
+      layerNodes.push(createNode(Math.random() * width, Math.random() * height, layerIndex, layerConfig));
+    }
+
+    return layerNodes;
+  }
+
+  function buildNodes() {
+    lockCount = 0;
+    layers = DEPTH_LAYERS.map((layerConfig, layerIndex) => ({
+      config: layerConfig,
+      nodes: buildLayerNodes(layerIndex, layerConfig),
     }));
-  }
 
-  function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const rect = section.getBoundingClientRect();
-    width = Math.max(1, rect.width);
-    height = Math.max(1, rect.height);
-    canvas.width = Math.floor(width * dpr);
-    canvas.height = Math.floor(height * dpr);
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    initParticles();
-    if (reduce) drawFrame();
-  }
-
-  function drawLinks() {
-    for (let i = 0; i < particles.length; i += 1) {
-      for (let j = i + 1; j < particles.length; j += 1) {
-        const a = particles[i];
-        const b = particles[j];
-        const dx = a.x - b.x;
-        const dy = a.y - b.y;
-        const dist = Math.hypot(dx, dy);
-        if (dist >= linkDistance) continue;
-        const alpha = (1 - dist / linkDistance) * lineOpacity;
-        ctx.strokeStyle = `rgba(${rgb}, ${alpha})`;
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(a.x, a.y);
-        ctx.lineTo(b.x, b.y);
-        ctx.stroke();
+    let locks = layers.flatMap((layer) => layer.nodes.filter((node) => node.isLock));
+    if (locks.length < LOCK_TARGET) {
+      const candidates = layers
+        .flatMap((layer) => layer.nodes.filter((node) => !node.isLock && node.layerIndex >= 2))
+        .sort((a, b) => b.depth - a.depth);
+      for (const node of candidates) {
+        if (locks.length >= LOCK_TARGET) break;
+        node.isLock = true;
+        locks.push(node);
       }
     }
   }
 
-  function drawDots() {
-    particles.forEach((p) => {
-      ctx.fillStyle = `rgba(${rgb}, ${dotOpacity})`;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, dotRadius, 0, Math.PI * 2);
-      ctx.fill();
+  function resizeCanvas() {
+    const bounds = section.getBoundingClientRect();
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = Math.max(1, Math.round(bounds.width));
+    height = Math.max(1, Math.round(bounds.height));
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    context.setTransform(dpr, 0, 0, dpr, 0, 0);
+    buildNodes();
+  }
+
+  function updateNode(node, elapsed, motionScale) {
+    const driftX = Math.sin(elapsed * 0.22 * node.pulse + node.phase) * 0.34 * node.layerSpeed;
+    const driftY = Math.cos(elapsed * 0.19 * node.pulse + node.phase) * 0.34 * node.layerSpeed;
+    node.x += (node.vx + driftX) * motionScale;
+    node.y += (node.vy + driftY) * motionScale;
+
+    if (node.x < -24) node.vx = Math.abs(node.vx);
+    if (node.x > width + 24) node.vx = -Math.abs(node.vx);
+    if (node.y < -24) node.vy = Math.abs(node.vy);
+    if (node.y > height + 24) node.vy = -Math.abs(node.vy);
+
+    node.vx += Math.sin(elapsed * 0.15 + node.phase) * 0.0025 * node.layerSpeed * motionScale;
+    node.vy += Math.cos(elapsed * 0.13 + node.phase) * 0.0025 * node.layerSpeed * motionScale;
+    const maxSpeed = 0.35 * node.layerSpeed;
+    node.vx = Math.max(-maxSpeed, Math.min(maxSpeed, node.vx));
+    node.vy = Math.max(-maxSpeed, Math.min(maxSpeed, node.vy));
+  }
+
+  function drawConnection(a, b, connectDistance, depthFactor, lineBoost) {
+    const dx = a.x - b.x;
+    const dy = a.y - b.y;
+    const distance = Math.hypot(dx, dy);
+    if (distance > connectDistance) return;
+
+    const strength = 1 - distance / connectDistance;
+    const frontDepth = Math.max(a.depth, b.depth);
+    const frontBoost = 1 + frontDepth * 0.9;
+    const alpha =
+      strength *
+      strength *
+      (0.16 + a.layerOpacity * 0.32 + b.layerOpacity * 0.32) *
+      0.55 *
+      depthFactor *
+      lineBoost *
+      frontBoost;
+    const lineTone = a.accent || b.accent ? COLORS.accent : COLORS.primary;
+
+    context.beginPath();
+    context.moveTo(a.x, a.y);
+    context.lineTo(b.x, b.y);
+    context.strokeStyle = `rgba(${lineTone}, ${Math.min(1, alpha)})`;
+    context.lineWidth = (strength > 0.72 ? 1.35 : 0.95) * (0.7 + frontDepth * 0.85);
+    context.stroke();
+  }
+
+  function drawNode(node, elapsed) {
+    const pulse = 0.88 + Math.sin(elapsed * (1.1 + node.depth * 0.5) + node.phase) * 0.12;
+    const radius = node.radius * pulse * (0.82 + node.depth * 0.28);
+    const tone = node.accent ? COLORS.accent : COLORS.deep;
+    const frontBoost = 1 + node.depth * 0.7;
+    const alpha = Math.min(1, node.layerOpacity * (node.accent ? 1.08 : 0.92) * frontBoost);
+
+    if (node.isLock) {
+      context.beginPath();
+      context.arc(node.x, node.y, radius + 4 * node.depth, 0, Math.PI * 2);
+      context.fillStyle = `rgba(${COLORS.primary}, ${alpha * 0.22})`;
+      context.fill();
+      drawLock(context, node.x, node.y, radius, alpha, elapsed, node.phase);
+      return;
+    }
+
+    context.beginPath();
+    context.arc(node.x, node.y, radius + 2.2 * node.depth, 0, Math.PI * 2);
+    context.fillStyle = `rgba(${tone}, ${alpha * 0.18})`;
+    context.fill();
+
+    context.beginPath();
+    context.arc(node.x, node.y, radius, 0, Math.PI * 2);
+    context.fillStyle = `rgba(${tone}, ${Math.min(1, alpha * 0.85)})`;
+    context.fill();
+  }
+
+  function drawFrame(time) {
+    context.clearRect(0, 0, width, height);
+
+    const baseConnectDistance = Math.min(190, Math.max(112, width * 0.145));
+    const motionScale = reduce ? 0 : 1;
+    const elapsed = time * 0.001;
+
+    layers.forEach((layer) => {
+      layer.nodes.forEach((node) => updateNode(node, elapsed, motionScale));
+    });
+
+    layers.forEach((layer) => {
+      const connectDistance = baseConnectDistance * layer.config.connect;
+      const nodes = layer.nodes;
+      for (let i = 0; i < nodes.length; i += 1) {
+        const a = nodes[i];
+        for (let j = i + 1; j < nodes.length; j += 1) {
+          drawConnection(a, nodes[j], connectDistance, 1, 1);
+        }
+      }
+    });
+
+    for (let layerIndex = 0; layerIndex < layers.length - 1; layerIndex += 1) {
+      const backLayer = layers[layerIndex];
+      const frontLayer = layers[layerIndex + 1];
+      const depthGap = frontLayer.config.depth - backLayer.config.depth;
+      const bridgeDistance = baseConnectDistance * (0.72 + depthGap * 0.35);
+      const bridgeBoost = 0.58 - layerIndex * 0.04;
+
+      backLayer.nodes.forEach((backNode) => {
+        frontLayer.nodes.forEach((frontNode) => {
+          drawConnection(backNode, frontNode, bridgeDistance, 0.55 + depthGap * 0.35, bridgeBoost);
+        });
+      });
+    }
+
+    layers.forEach((layer) => {
+      layer.nodes.forEach((node) => drawNode(node, elapsed));
     });
   }
 
-  function stepParticles() {
-    particles.forEach((p) => {
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x <= 0 || p.x >= width) p.vx *= -1;
-      if (p.y <= 0 || p.y >= height) p.vy *= -1;
-      p.x = Math.max(0, Math.min(width, p.x));
-      p.y = Math.max(0, Math.min(height, p.y));
-    });
-  }
-
-  function drawFrame() {
-    ctx.clearRect(0, 0, width, height);
-    if (!reduce) stepParticles();
-    drawLinks();
-    drawDots();
-  }
-
-  function tick() {
-    drawFrame();
-    if (running) frameId = requestAnimationFrame(tick);
+  function tick(time) {
+    if (!isRunning) return;
+    drawFrame(time);
+    animationFrame = window.requestAnimationFrame(tick);
   }
 
   function start() {
-    if (running) return;
-    running = true;
-    if (reduce) {
-      drawFrame();
-      return;
-    }
-    tick();
+    if (isRunning || reduce) return;
+    isRunning = true;
+    animationFrame = window.requestAnimationFrame(tick);
   }
 
   function stop() {
-    running = false;
-    if (frameId) {
-      cancelAnimationFrame(frameId);
-      frameId = null;
-    }
+    isRunning = false;
+    window.cancelAnimationFrame(animationFrame);
   }
 
-  resize();
-
-  const resizeObserver = new ResizeObserver(resize);
+  const resizeObserver = new ResizeObserver(() => {
+    resizeCanvas();
+    if (isVisible || reduce) drawFrame(performance.now());
+  });
   resizeObserver.observe(section);
 
-  const visibilityObserver = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) start();
+  const intersectionObserver = new IntersectionObserver(
+    (entries) => {
+      isVisible = entries.some((entry) => entry.isIntersecting);
+      if (isVisible && document.visibilityState === 'visible') start();
       else stop();
     },
     { threshold: 0.08 }
   );
-  visibilityObserver.observe(section);
+  intersectionObserver.observe(section);
 
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) stop();
-    else {
-      const rect = section.getBoundingClientRect();
-      if (rect.bottom > 0 && rect.top < window.innerHeight) start();
-    }
+    if (document.visibilityState === 'visible' && isVisible) start();
+    else stop();
   });
 
-  start();
+  resizeCanvas();
+  drawFrame(performance.now());
+
+  if (reduce) return;
+
+  const initialBounds = section.getBoundingClientRect();
+  isVisible = initialBounds.bottom > 0 && initialBounds.top < window.innerHeight;
+  if (isVisible && document.visibilityState === 'visible') start();
 }
