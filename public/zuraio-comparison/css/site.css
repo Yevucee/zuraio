@@ -339,15 +339,16 @@ header.nav.is-floating {
   max-width: var(--maxw);
   margin: 0 auto;
   border-radius: 16px;
-  border: 1px solid rgba(228, 230, 220, 0.92);
-  backdrop-filter: saturate(140%) blur(12px);
-  background: rgba(251, 251, 248, 0.88);
+  border: 1px solid rgba(228, 230, 220, 0.75);
+  backdrop-filter: saturate(140%) blur(14px);
+  -webkit-backdrop-filter: saturate(140%) blur(14px);
+  background: rgba(251, 251, 248, 0.72);
   box-shadow: 0 4px 22px rgba(38, 40, 35, 0.08);
 }
 
 header.nav.is-floating.scrolled {
-  border-color: var(--hairline);
-  background: rgba(251, 251, 248, 0.96);
+  border-color: rgba(228, 230, 220, 0.82);
+  background: rgba(251, 251, 248, 0.82);
   box-shadow: 0 10px 32px rgba(38, 40, 35, 0.12);
 }
 

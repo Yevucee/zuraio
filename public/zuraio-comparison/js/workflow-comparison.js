@@ -1,6 +1,6 @@
 const WITH_DURATION_MS = 1800;
 const WITHOUT_DURATION_MS = 9000;
-const HOLD_COMPLETE_MS = 10000;
+const HOLD_COMPLETE_MS = 5000;
 
 let loopTimer = null;
 let viewportObserver = null;
