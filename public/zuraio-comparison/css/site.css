@@ -872,21 +872,6 @@ header.nav.scrolled {
   object-position: right top;
 }
 
-.pain__scrim {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    rgba(251, 251, 248, 1) 0%,
-    rgba(251, 251, 248, 1) 42%,
-    rgba(251, 251, 248, 0.92) 54%,
-    rgba(251, 251, 248, 0.55) 68%,
-    rgba(251, 251, 248, 0) 84%
-  );
-}
-
 .problem-hero {
   margin-bottom: 46px;
 }
@@ -925,15 +910,6 @@ header.nav.scrolled {
   .pain__bg {
     left: 0;
     opacity: 0.5;
-  }
-
-  .pain__scrim {
-    background: linear-gradient(
-      180deg,
-      rgba(251, 251, 248, 0.98) 0%,
-      rgba(251, 251, 248, 0.94) 50%,
-      rgba(251, 251, 248, 0.88) 100%
-    );
   }
 
   .pain__bg img {
