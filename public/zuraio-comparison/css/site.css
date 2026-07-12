@@ -127,8 +127,8 @@ section {
 }
 
 /* Section background bands — solid paper / cloud alternation on the homepage.
-   hero (photo) → problem cloud → different paper → pillars cloud →
-   integrations paper → demo cloud → outcomes paper → control dark →
+   hero (photo) → problem cloud → data control dark → different paper →
+   pillars cloud → integrations paper → demo cloud → outcomes paper →
    reviewable cloud → origin paper → final olive */
 .section-band--paper {
   background: var(--paper);
