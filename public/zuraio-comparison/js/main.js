@@ -8,7 +8,8 @@ import { initFaq } from './faq-accordion.js';
 import { initInternalReview, refreshInternalReview, isInternalReviewMode } from './internal-review.js';
 import { initLogoWatermarks } from './logo-watermarks.js';
 import { SITE } from './config.js';
-import { applyAllTranslations, getLocale, initLocaleSwitcher } from './i18n.js?v=20260738';
+import { initWorkflowComparison, resetWorkflowComparison } from './workflow-comparison.js?v=20260739';
+import { applyAllTranslations, getLocale, initLocaleSwitcher } from './i18n.js?v=20260739';
 
 document.documentElement.lang = getLocale();
 
@@ -26,6 +27,7 @@ function boot() {
   initControlParticles();
   initMarquee();
   initFaq();
+  initWorkflowComparison();
 }
 
 boot();
@@ -37,6 +39,7 @@ initLocaleSwitcher(() => {
   initReveal();
   refreshInternalReview();
   initMarquee();
+  resetWorkflowComparison();
 });
 
 // Contact form

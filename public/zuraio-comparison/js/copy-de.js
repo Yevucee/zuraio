@@ -136,45 +136,59 @@ export const home = {
     body: 'Generische KI kennt nur das, was jemand manuell bereitstellt. Zuraio verbindet sich sicher mit genehmigtem Unternehmenswissen, versteht den Kontext der fragenden Person und bereitet quellenbasierte Arbeit zur Prüfung vor.',
     without: {
       title: 'Ohne Zuraio',
-      subtitle: 'Manuell, repetitiv und schwerer vertrauenswürdig',
+      subtitle: 'Typischer Prozess: bis zu 20 Minuten',
+      timeLabel: '~20 Min.',
+      progressCompleting: 'Wird abgeschlossen...',
+      progressCompleted: 'Abgeschlossen',
       steps: [
         {
           title: 'Generische KI fragen',
-          body: 'Jedes Mal von vorn in einem isolierten Chat beginnen.',
+          body: 'Ein neues Gespräch beginnen',
         },
         {
           title: 'Kontext manuell hinzufügen',
-          body: 'Kopieren, einfügen und zusammenfassen, was das Modell wissen muss.',
+          body: 'Dateien finden und hochladen oder die Situation erklären',
         },
         {
           title: 'Generische Ausgabe prüfen',
-          body: 'Fakten ohne Quellen oder Unternehmenshistorie verifizieren.',
+          body: 'Informationen prüfen und verifizieren',
+        },
+        {
+          title: 'Verfeinern und erneut fragen',
+          body: 'Weitere Details hinzufügen und präzisieren',
+        },
+        {
+          title: 'Verifizieren und zusammenstellen',
+          body: 'Gegenchecken und Informationen zusammenführen',
         },
         {
           title: 'Beim nächsten Mal wiederholen',
-          body: 'Dieselbe Arbeit für die nächste Anfrage erneut leisten.',
+          body: 'Mit einem neuen Gespräch von vorn beginnen',
         },
       ],
     },
     with: {
       title: 'Mit Zuraio',
-      subtitle: 'Verbunden, intelligent und einsatzbereit',
+      subtitle: 'Typischer Prozess: unter 1 Minute',
+      timeLabel: '<1 Min.',
+      progressCompleting: 'Wird abgeschlossen...',
+      progressCompleted: 'Abgeschlossen.',
       steps: [
         {
           title: 'Zuraio fragen',
-          body: 'In natürlicher Sprache direkt im Arbeitsfluss fragen.',
+          body: 'Ihre Frage in natürlicher Sprache stellen',
         },
         {
-          title: 'Nutzt genehmigtes Unternehmenswissen',
-          body: 'Greift auf E-Mails, Dokumente und Systeme zu, die Sie freigegeben haben.',
+          title: 'Nutzt genehmigtes Wissen',
+          body: 'Verbindet sich automatisch mit Ihren Unternehmensquellen',
         },
         {
           title: 'Erstellt quellenbasierte Arbeit',
-          body: 'Entwürfe und Zusammenfassungen kommen mit Referenzen.',
+          body: 'Erzeugt Antworten und Entwürfe mit Referenzen',
         },
         {
           title: 'Prüfen und handeln',
-          body: 'Sie genehmigen, bearbeiten oder senden mit Vertrauen.',
+          body: 'Sie prüfen, verifizieren und handeln mit Vertrauen',
         },
       ],
     },

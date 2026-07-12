@@ -136,45 +136,59 @@ export const home = {
     body: 'Generic AI only knows what someone manually provides. Zuraio securely connects to approved company knowledge, understands the context of the person asking and prepares sourced work for review.',
     without: {
       title: 'Without Zuraio',
-      subtitle: 'Manual, repetitive and harder to trust',
+      subtitle: 'Typical process: up to 20 minutes',
+      timeLabel: '~20 min',
+      progressCompleting: 'Completing...',
+      progressCompleted: 'Completed',
       steps: [
         {
           title: 'Ask generic AI',
-          body: 'Start from scratch in an isolated chat window.',
+          body: 'Start a new conversation',
         },
         {
           title: 'Add context manually',
-          body: 'Copy, paste and summarise what the model needs to know.',
+          body: 'Find and upload files or explain the situation',
         },
         {
           title: 'Check generic output',
-          body: 'Verify facts without sources or company history.',
+          body: 'Review and verify information',
+        },
+        {
+          title: 'Refine and ask again',
+          body: 'Add more details and clarify',
+        },
+        {
+          title: 'Verify and compile',
+          body: 'Cross-check and pull information together',
         },
         {
           title: 'Repeat next time',
-          body: 'Do the same work again for the next request.',
+          body: 'Start over with a new conversation',
         },
       ],
     },
     with: {
       title: 'With Zuraio',
-      subtitle: 'Connected, intelligent and ready to use',
+      subtitle: 'Typical process: under 1 minute',
+      timeLabel: '<1 min',
+      progressCompleting: 'Completing...',
+      progressCompleted: 'Completed.',
       steps: [
         {
           title: 'Ask Zuraio',
-          body: 'Ask in natural language from within your workflow.',
+          body: 'Ask your question in natural language',
         },
         {
-          title: 'Uses approved company knowledge',
-          body: 'Pulls from emails, documents and systems you have approved.',
+          title: 'Uses approved knowledge',
+          body: 'Automatically connects to your company sources',
         },
         {
           title: 'Creates sourced work',
-          body: 'Drafts and summaries arrive with references attached.',
+          body: 'Generates answers and drafts with references',
         },
         {
           title: 'Review and act',
-          body: 'You approve, edit or send with confidence.',
+          body: 'You review, verify and take action with confidence',
         },
       ],
     },

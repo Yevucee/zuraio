@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=20260738">
+<link rel="stylesheet" href="css/site.css?v=20260739">
 </head>
 <body>
 
@@ -135,36 +135,57 @@
         <p class="lede">Generic AI only knows what someone manually provides. Zuraio securely connects to approved company knowledge, understands the context of the person asking and prepares sourced work for review.</p>
       </div>
 
-      <div class="workflow-compare reveal d1">
-        <div class="workflow-compare__shell">
-          <div class="workflow-panel workflow-panel--without" data-workflow-panel="without">
-            <header class="workflow-panel__head">
-              <span class="workflow-panel__badge workflow-panel__badge--neutral" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      <div class="compare-pair reveal d1" data-workflow-compare>
+        <article class="compare-box compare-box--without" data-compare-box="without">
+          <header class="compare-box__head">
+            <div class="compare-box__head-main">
+              <span class="compare-box__icon compare-box__icon--clock" data-compare-header-icon="without" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 8v4.5l3 2"/></svg>
               </span>
-              <div class="workflow-panel__intro">
-                <h3 class="workflow-panel__title">Without Zuraio</h3>
-                <p class="workflow-panel__subtitle">Manual, repetitive and harder to trust</p>
+              <div>
+                <h3 class="compare-box__title">Without Zuraio</h3>
+                <p class="compare-box__subtitle">Typical process: up to 20 minutes</p>
               </div>
-            </header>
-            <div class="workflow-steps" data-workflow-steps="without"></div>
+            </div>
+            <span class="compare-box__time">~20 min</span>
+          </header>
+          <div class="compare-box__progress-wrap">
+            <div class="compare-progress compare-progress--slow" data-compare-progress="without">
+              <div class="compare-progress__track">
+                <div class="compare-progress__fill"></div>
+              </div>
+            </div>
+            <p class="compare-box__status" data-compare-status="without" data-completing-label="Completing..." data-completed-label="Completed">Completing...</p>
           </div>
+          <div class="compare-steps compare-steps--long" data-workflow-steps="without"></div>
+        </article>
 
-          <div class="workflow-compare__divider" aria-hidden="true"></div>
-
-          <div class="workflow-panel workflow-panel--with" data-workflow-panel="with">
-            <header class="workflow-panel__head">
-              <span class="workflow-panel__badge workflow-panel__badge--olive" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 9.5 17 19 7"/></svg>
+        <article class="compare-box compare-box--with" data-compare-box="with">
+          <header class="compare-box__head">
+            <div class="compare-box__head-main">
+              <span class="compare-box__icon compare-box__icon--lightning" data-compare-header-icon="with" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 10-14h-7l0-6z"/></svg>
               </span>
-              <div class="workflow-panel__intro">
-                <h3 class="workflow-panel__title">With Zuraio</h3>
-                <p class="workflow-panel__subtitle">Connected, intelligent and ready to use</p>
+              <div>
+                <h3 class="compare-box__title">With Zuraio</h3>
+                <p class="compare-box__subtitle">Typical process: under 1 minute</p>
               </div>
-            </header>
-            <div class="workflow-steps" data-workflow-steps="with"></div>
+            </div>
+            <span class="compare-box__time"> &lt;1 min</span>
+          </header>
+          <div class="compare-box__progress-wrap">
+            <div class="compare-progress compare-progress--fast" data-compare-progress="with">
+              <div class="compare-progress__track">
+                <div class="compare-progress__fill"></div>
+                <span class="compare-progress__tick" hidden aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 9.5 17 19 7"/></svg>
+                </span>
+              </div>
+            </div>
+            <p class="compare-box__status" data-compare-status="with" data-completing-label="Completing..." data-completed-label="Completed.">Completing...</p>
           </div>
-        </div>
+          <div class="compare-steps" data-workflow-steps="with"></div>
+        </article>
       </div>
 
       <div class="integrations-strip reveal d2">
@@ -318,6 +339,6 @@
 </main>
 
 <div id="site-footer"></div>
-<script type="module" src="js/main.js?v=20260738"></script>
+<script type="module" src="js/main.js?v=20260739"></script>
 </body>
 </html>

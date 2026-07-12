@@ -68,15 +68,38 @@ function renderWorkflowSteps(steps, icons, tone) {
     .map((step, i) => {
       const arrow =
         i < steps.length - 1
-          ? `<span class="workflow-step-arrow workflow-step-arrow--${tone}" aria-hidden="true"></span>`
+          ? `<span class="compare-step-arrow compare-step-arrow--${tone}" aria-hidden="true"></span>`
           : '';
-      return `<article class="workflow-step workflow-step--${tone}">
-        <span class="workflow-step__icon">${icons[i] || ''}</span>
-        <h4 class="workflow-step__title">${step.title}</h4>
-        <p class="workflow-step__body">${step.body}</p>
+      return `<article class="compare-step compare-step--${tone}">
+        <span class="compare-step__icon">${icons[i] || ''}</span>
+        <h4 class="compare-step__title">${step.title}</h4>
+        <p class="compare-step__body">${step.body}</p>
       </article>${arrow}`;
     })
     .join('');
+}
+
+function applyComparePanel(panelKey, panelCopy, icons, tone) {
+  const panel = document.querySelector(`[data-compare-box="${panelKey}"]`);
+  if (!panel || !panelCopy) return;
+
+  panel.querySelector('.compare-box__title').textContent = panelCopy.title;
+  panel.querySelector('.compare-box__subtitle').textContent = panelCopy.subtitle;
+  panel.querySelector('.compare-box__time').textContent = panelCopy.timeLabel;
+
+  const status = panel.querySelector(`[data-compare-status="${panelKey}"]`);
+  if (status) {
+    status.dataset.completingLabel = panelCopy.progressCompleting;
+    status.dataset.completedLabel = panelCopy.progressCompleted;
+    if (!status.classList.contains('is-complete')) {
+      status.textContent = panelCopy.progressCompleting;
+    }
+  }
+
+  const stepsEl = panel.querySelector(`[data-workflow-steps="${panelKey}"]`);
+  if (stepsEl) {
+    stepsEl.innerHTML = renderWorkflowSteps(panelCopy.steps, icons, tone);
+  }
 }
 
 export function applyDataI18n() {
@@ -108,31 +131,13 @@ export function applyHomeTranslations() {
   setText('#different h2', home.different.heading);
   setText('#different .lede', home.different.body);
 
-  const withoutPanel = document.querySelector('[data-workflow-panel="without"]');
-  const withPanel = document.querySelector('[data-workflow-panel="with"]');
+  const withoutPanel = document.querySelector('[data-compare-box="without"]');
+  const withPanel = document.querySelector('[data-compare-box="with"]');
   if (withoutPanel && home.different.without) {
-    withoutPanel.querySelector('.workflow-panel__title').textContent = home.different.without.title;
-    withoutPanel.querySelector('.workflow-panel__subtitle').textContent = home.different.without.subtitle;
-    const stepsEl = withoutPanel.querySelector('[data-workflow-steps="without"]');
-    if (stepsEl) {
-      stepsEl.innerHTML = renderWorkflowSteps(
-        home.different.without.steps,
-        WORKFLOW_ICONS_WITHOUT,
-        'neutral',
-      );
-    }
+    applyComparePanel('without', home.different.without, WORKFLOW_ICONS_WITHOUT, 'neutral');
   }
   if (withPanel && home.different.with) {
-    withPanel.querySelector('.workflow-panel__title').textContent = home.different.with.title;
-    withPanel.querySelector('.workflow-panel__subtitle').textContent = home.different.with.subtitle;
-    const stepsEl = withPanel.querySelector('[data-workflow-steps="with"]');
-    if (stepsEl) {
-      stepsEl.innerHTML = renderWorkflowSteps(
-        home.different.with.steps,
-        WORKFLOW_ICONS_WITH,
-        'olive',
-      );
-    }
+    applyComparePanel('with', home.different.with, WORKFLOW_ICONS_WITH, 'olive');
   }
 
   const strip = home.different.integrationsStrip;
