@@ -3844,7 +3844,7 @@ footer.site-footer {
 .compare-steps {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
   margin-top: auto;
 }
 
@@ -3859,11 +3859,15 @@ footer.site-footer {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  width: 100%;
 }
 
 @media (min-width: 960px) {
   .compare-step {
     flex: 1 1 0;
+    width: auto;
+    align-items: center;
+    text-align: center;
   }
 }
 
@@ -3927,11 +3931,12 @@ footer.site-footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 34px;
   color: rgba(120, 120, 116, 0.42);
-  width: 34px;
-  height: 22px;
-  margin: 0 auto;
+  margin: 0;
+  align-self: flex-start;
 }
 
 .compare-step-arrow--olive {
@@ -3941,50 +3946,50 @@ footer.site-footer {
 .compare-step-arrow::before {
   content: "";
   position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 6px;
-  width: 1px;
+  left: 2px;
+  right: 8px;
+  top: 50%;
+  height: 1px;
   background: currentColor;
-  transform: translateX(-50%);
+  transform: translateY(-50%);
 }
 
 .compare-step-arrow::after {
   content: "";
   position: absolute;
-  left: 50%;
-  bottom: 1px;
+  right: 2px;
+  top: 50%;
   width: 6px;
   height: 6px;
   border-right: 1.5px solid currentColor;
   border-bottom: 1.5px solid currentColor;
-  transform: translateX(-50%) rotate(45deg);
+  transform: translateY(-50%) rotate(-45deg);
 }
 
-@media (min-width: 960px) {
+@media (max-width: 959px) {
   .compare-step-arrow {
-    width: 22px;
-    height: 34px;
-    margin: 0;
-    align-self: flex-start;
+    flex: 0 0 auto;
+    width: 34px;
+    height: 28px;
+    align-self: center;
   }
 
   .compare-step-arrow::before {
-    left: 0;
-    right: 6px;
-    top: 50%;
-    bottom: auto;
-    width: auto;
-    height: 1px;
-    transform: translateY(-50%);
+    left: 50%;
+    right: auto;
+    top: 2px;
+    bottom: 8px;
+    width: 1px;
+    height: auto;
+    transform: translateX(-50%);
   }
 
   .compare-step-arrow::after {
-    left: auto;
-    right: 0;
-    top: 50%;
-    bottom: auto;
-    transform: translateY(-50%) rotate(-45deg);
+    left: 50%;
+    right: auto;
+    top: auto;
+    bottom: 2px;
+    transform: translateX(-50%) rotate(45deg);
   }
 }
 

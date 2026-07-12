@@ -1,5 +1,9 @@
 const WITH_DURATION_MS = 1800;
 const WITHOUT_DURATION_MS = 9000;
+const HOLD_COMPLETE_MS = 10000;
+
+let loopTimer = null;
+let viewportObserver = null;
 
 function setPanelComplete(panelKey) {
   const progress = document.querySelector(`[data-compare-progress="${panelKey}"]`);
@@ -24,14 +28,13 @@ function setPanelComplete(panelKey) {
 
 function startPanelAnimation(panelKey, durationMs) {
   const progress = document.querySelector(`[data-compare-progress="${panelKey}"]`);
-  if (!progress || progress.dataset.started === 'true') return;
+  const fill = progress?.querySelector('.compare-progress__fill');
+  if (!progress || !fill) return;
 
-  progress.dataset.started = 'true';
-  const fill = progress.querySelector('.compare-progress__fill');
-  if (!fill) return;
-
-  fill.style.width = '0%';
+  progress.classList.remove('is-complete');
   progress.classList.add('is-running');
+  fill.style.transition = 'none';
+  fill.style.width = '0%';
 
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
@@ -43,54 +46,8 @@ function startPanelAnimation(panelKey, durationMs) {
   window.setTimeout(() => setPanelComplete(panelKey), durationMs + 40);
 }
 
-function setImmediateComplete() {
-  ['with', 'without'].forEach((key) => {
-    const progress = document.querySelector(`[data-compare-progress="${key}"]`);
-    if (progress) {
-      progress.dataset.started = 'true';
-      progress.classList.add('is-complete');
-      const fill = progress.querySelector('.compare-progress__fill');
-      if (fill) {
-        fill.style.transition = 'none';
-        fill.style.width = '100%';
-      }
-      const tick = progress.querySelector('.compare-progress__tick');
-      if (tick) tick.hidden = key !== 'with';
-    }
-    setPanelComplete(key);
-  });
-}
-
-export function initWorkflowComparison() {
-  const root = document.querySelector('[data-workflow-compare]');
-  if (!root || root.dataset.progressReady === 'true') return;
-
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced) {
-    root.dataset.progressReady = 'true';
-    setImmediateComplete();
-    return;
-  }
-
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        root.dataset.progressReady = 'true';
-        startPanelAnimation('with', WITH_DURATION_MS);
-        startPanelAnimation('without', WITHOUT_DURATION_MS);
-        io.disconnect();
-      });
-    },
-    { threshold: 0.2, rootMargin: '0px 0px -5% 0px' },
-  );
-
-  io.observe(root);
-}
-
-export function resetWorkflowComparison() {
+function resetPanelsForRestart() {
   document.querySelectorAll('[data-compare-progress]').forEach((progress) => {
-    progress.dataset.started = 'false';
     progress.classList.remove('is-running', 'is-complete');
     const fill = progress.querySelector('.compare-progress__fill');
     if (fill) {
@@ -107,9 +64,82 @@ export function resetWorkflowComparison() {
       status.textContent = status.dataset.completingLabel;
     }
   });
+}
 
+function clearLoopTimer() {
+  if (loopTimer) {
+    window.clearTimeout(loopTimer);
+    loopTimer = null;
+  }
+}
+
+function runAnimationCycle(root) {
+  if (root.dataset.progressActive !== 'true') return;
+
+  clearLoopTimer();
+  resetPanelsForRestart();
+  startPanelAnimation('with', WITH_DURATION_MS);
+  startPanelAnimation('without', WITHOUT_DURATION_MS);
+
+  loopTimer = window.setTimeout(() => {
+    runAnimationCycle(root);
+  }, WITHOUT_DURATION_MS + HOLD_COMPLETE_MS);
+}
+
+function setImmediateComplete() {
+  clearLoopTimer();
+  ['with', 'without'].forEach((key) => {
+    const progress = document.querySelector(`[data-compare-progress="${key}"]`);
+    if (progress) progress.classList.add('is-complete');
+    setPanelComplete(key);
+  });
+}
+
+function stopAnimation(root) {
+  root.dataset.progressActive = 'false';
+  clearLoopTimer();
+}
+
+function startAnimation(root) {
+  root.dataset.progressActive = 'true';
+  runAnimationCycle(root);
+}
+
+export function initWorkflowComparison() {
   const root = document.querySelector('[data-workflow-compare]');
-  if (root) root.dataset.progressReady = 'false';
+  if (!root) return;
 
+  if (viewportObserver) {
+    viewportObserver.disconnect();
+    viewportObserver = null;
+  }
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) {
+    stopAnimation(root);
+    setImmediateComplete();
+    return;
+  }
+
+  viewportObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          startAnimation(root);
+        } else {
+          stopAnimation(root);
+        }
+      });
+    },
+    { threshold: 0.2, rootMargin: '0px 0px -5% 0px' },
+  );
+
+  viewportObserver.observe(root);
+}
+
+export function resetWorkflowComparison() {
+  const root = document.querySelector('[data-workflow-compare]');
+  if (root) stopAnimation(root);
+  resetPanelsForRestart();
   initWorkflowComparison();
 }
