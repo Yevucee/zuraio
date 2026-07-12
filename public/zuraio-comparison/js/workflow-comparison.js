@@ -4,6 +4,42 @@ const HOLD_COMPLETE_MS = 5000;
 
 let loopTimer = null;
 let viewportObserver = null;
+let stepTimers = [];
+
+function clearStepTimers() {
+  stepTimers.forEach((id) => window.clearTimeout(id));
+  stepTimers = [];
+}
+
+function resetStepLights() {
+  document.querySelectorAll('.compare-step').forEach((step) => {
+    step.classList.remove('is-lit');
+  });
+}
+
+function lightAllSteps() {
+  document.querySelectorAll('.compare-step').forEach((step) => {
+    step.classList.add('is-lit');
+  });
+}
+
+function scheduleStepLights(panelKey, durationMs) {
+  const steps = document.querySelectorAll(
+    `[data-compare-box="${panelKey}"] .compare-step`,
+  );
+  if (!steps.length) return;
+
+  steps.forEach((step, index) => {
+    const threshold = (index + 0.5) / steps.length;
+    const activateAt = threshold * durationMs;
+
+    const timerId = window.setTimeout(() => {
+      step.classList.add('is-lit');
+    }, activateAt);
+
+    stepTimers.push(timerId);
+  });
+}
 
 function setPanelComplete(panelKey) {
   const progress = document.querySelector(`[data-compare-progress="${panelKey}"]`);
@@ -24,12 +60,20 @@ function setPanelComplete(panelKey) {
     status.textContent = completed;
     status.classList.add('is-complete');
   }
+
+  document
+    .querySelectorAll(`[data-compare-box="${panelKey}"] .compare-step`)
+    .forEach((step) => step.classList.add('is-lit'));
 }
 
 function startPanelAnimation(panelKey, durationMs) {
   const progress = document.querySelector(`[data-compare-progress="${panelKey}"]`);
   const fill = progress?.querySelector('.compare-progress__fill');
   if (!progress || !fill) return;
+
+  document
+    .querySelectorAll(`[data-compare-box="${panelKey}"] .compare-step`)
+    .forEach((step) => step.classList.remove('is-lit'));
 
   progress.classList.remove('is-complete');
   progress.classList.add('is-running');
@@ -43,10 +87,14 @@ function startPanelAnimation(panelKey, durationMs) {
     });
   });
 
+  scheduleStepLights(panelKey, durationMs);
   window.setTimeout(() => setPanelComplete(panelKey), durationMs + 40);
 }
 
 function resetPanelsForRestart() {
+  clearStepTimers();
+  resetStepLights();
+
   document.querySelectorAll('[data-compare-progress]').forEach((progress) => {
     progress.classList.remove('is-running', 'is-complete');
     const fill = progress.querySelector('.compare-progress__fill');
@@ -88,16 +136,19 @@ function runAnimationCycle(root) {
 
 function setImmediateComplete() {
   clearLoopTimer();
+  clearStepTimers();
   ['with', 'without'].forEach((key) => {
     const progress = document.querySelector(`[data-compare-progress="${key}"]`);
     if (progress) progress.classList.add('is-complete');
     setPanelComplete(key);
   });
+  lightAllSteps();
 }
 
 function stopAnimation(root) {
   root.dataset.progressActive = 'false';
   clearLoopTimer();
+  clearStepTimers();
 }
 
 function startAnimation(root) {

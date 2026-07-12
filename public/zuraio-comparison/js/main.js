@@ -8,8 +8,8 @@ import { initFaq } from './faq-accordion.js';
 import { initInternalReview, refreshInternalReview, isInternalReviewMode } from './internal-review.js';
 import { initLogoWatermarks } from './logo-watermarks.js';
 import { SITE } from './config.js';
-import { initWorkflowComparison, resetWorkflowComparison } from './workflow-comparison.js?v=20260743';
-import { applyAllTranslations, getLocale, initLocaleSwitcher } from './i18n.js?v=20260743';
+import { initWorkflowComparison, resetWorkflowComparison } from './workflow-comparison.js?v=20260744';
+import { applyAllTranslations, getLocale, initLocaleSwitcher } from './i18n.js?v=20260744';
 
 document.documentElement.lang = getLocale();
 
