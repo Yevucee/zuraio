@@ -3682,7 +3682,7 @@ footer.site-footer {
   align-items: stretch;
 }
 
-@media (min-width: 960px) {
+@media (min-width: 1100px) {
   .compare-pair {
     grid-template-columns: 1fr 1fr;
     gap: 22px;
@@ -3842,40 +3842,29 @@ footer.site-footer {
 }
 
 .compare-steps {
-  display: grid;
-  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   margin-top: auto;
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 960px) {
   .compare-steps {
-    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
-    align-items: start;
-    gap: 8px;
-  }
-
-  .compare-steps--long {
-    grid-template-columns:
-      minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr) auto
-      minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
-    gap: 6px;
-  }
-}
-
-@media (min-width: 960px) and (max-width: 1099px) {
-  .compare-steps,
-  .compare-steps--long {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px 12px;
-  }
-
-  .compare-step-arrow {
-    display: none !important;
+    flex-direction: row;
+    align-items: flex-start;
   }
 }
 
 .compare-step {
+  display: flex;
+  flex-direction: column;
   min-width: 0;
+}
+
+@media (min-width: 960px) {
+  .compare-step {
+    flex: 1 1 0;
+  }
 }
 
 .compare-step__icon {
@@ -3886,6 +3875,7 @@ footer.site-footer {
   height: 34px;
   border-radius: 50%;
   margin-bottom: 10px;
+  flex-shrink: 0;
 }
 
 .compare-step__icon svg {
@@ -3911,10 +3901,12 @@ footer.site-footer {
   letter-spacing: -0.01em;
   line-height: 1.35;
   color: var(--charcoal);
+  min-height: 2.6em;
 }
 
 .compare-steps--long .compare-step__title {
-  font-size: 12px;
+  font-size: 11.5px;
+  min-height: 2.8em;
 }
 
 .compare-step__body {
@@ -3922,72 +3914,47 @@ footer.site-footer {
   font-size: 11.5px;
   line-height: 1.5;
   color: var(--charcoal-soft);
+  flex: 1;
 }
 
 .compare-steps--long .compare-step__body {
-  font-size: 11px;
+  font-size: 10.5px;
+  line-height: 1.45;
 }
 
 .compare-step-arrow {
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: rgba(120, 120, 116, 0.42);
+  padding: 10px 0;
 }
 
-@media (min-width: 1100px) {
+.compare-step-arrow--olive {
+  color: rgba(159, 175, 82, 0.48);
+}
+
+.compare-step-arrow::before {
+  content: "";
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+
+@media (min-width: 960px) {
   .compare-step-arrow {
-    display: block;
-    align-self: center;
-    width: 14px;
-    height: 1px;
-    margin-top: 16px;
-    background: repeating-linear-gradient(
-      90deg,
-      rgba(120, 120, 116, 0.26) 0,
-      rgba(120, 120, 116, 0.26) 3px,
-      transparent 3px,
-      transparent 6px
-    );
-    position: relative;
+    width: 16px;
+    padding: 0;
+    margin-top: 10px;
+    align-self: flex-start;
   }
 
-  .compare-step-arrow::after {
-    content: "";
-    position: absolute;
-    right: -1px;
-    top: 50%;
-    width: 4px;
-    height: 4px;
-    border-top: 1px solid rgba(120, 120, 116, 0.26);
-    border-right: 1px solid rgba(120, 120, 116, 0.26);
-    transform: translateY(-50%) rotate(45deg);
-  }
-
-  .compare-step-arrow--olive {
-    background: repeating-linear-gradient(
-      90deg,
-      rgba(159, 175, 82, 0.32) 0,
-      rgba(159, 175, 82, 0.32) 3px,
-      transparent 3px,
-      transparent 6px
-    );
-  }
-
-  .compare-step-arrow--olive::after {
-    border-color: rgba(159, 175, 82, 0.32);
-  }
-}
-
-@media (max-width: 959px) {
-  .compare-step:not(:last-child)::after {
-    content: "";
-    display: block;
-    width: 1px;
-    height: 12px;
-    margin: 12px auto 0;
-    background: linear-gradient(180deg, rgba(120, 120, 116, 0.2), rgba(120, 120, 116, 0.05));
-  }
-
-  .compare-box--with .compare-step:not(:last-child)::after {
-    background: linear-gradient(180deg, rgba(159, 175, 82, 0.26), rgba(159, 175, 82, 0.05));
+  .compare-step-arrow::before {
+    transform: rotate(-45deg);
   }
 }
 
