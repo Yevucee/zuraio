@@ -24,7 +24,8 @@ const DEPTH_LAYERS = [
   { depth: 1, density: 0.48, speed: 1.12, opacity: 0.62, radius: [2.8, 4.1], connect: 1.34 },
 ];
 
-const LOCK_TARGET = 6;
+const LOCK_TARGET = 10;
+const KEY_TARGET = 10;
 
 function randomBetween(min, max) {
   return min + Math.random() * (max - min);
@@ -67,6 +68,52 @@ function drawLock(context, x, y, size, alpha, elapsed, phase) {
   context.restore();
 }
 
+function drawKey(context, x, y, size, alpha, elapsed, phase) {
+  const pulse = 0.92 + Math.sin(elapsed * 1.35 + phase) * 0.08;
+  const scale = size * 2.5 * pulse;
+  const bowR = scale * 0.3;
+  const shaftLen = scale * 0.9;
+  const bowX = -shaftLen * 0.32;
+
+  context.save();
+  context.translate(x, y);
+  context.rotate(-0.28);
+  context.lineCap = 'round';
+  context.lineJoin = 'round';
+  context.strokeStyle = `rgba(${COLORS.accent}, ${Math.min(1, alpha * 1.05)})`;
+  context.fillStyle = `rgba(${COLORS.accent}, ${alpha * 0.24})`;
+  context.lineWidth = Math.max(1.1, scale * 0.13);
+
+  context.beginPath();
+  context.arc(bowX, 0, bowR, 0, Math.PI * 2);
+  context.fill();
+  context.stroke();
+
+  context.beginPath();
+  context.arc(bowX, 0, bowR * 0.42, 0, Math.PI * 2);
+  context.strokeStyle = `rgba(${COLORS.primary}, ${alpha * 0.75})`;
+  context.stroke();
+
+  context.strokeStyle = `rgba(${COLORS.accent}, ${Math.min(1, alpha * 1.05)})`;
+  context.beginPath();
+  context.moveTo(bowX + bowR, 0);
+  context.lineTo(bowX + shaftLen, 0);
+  context.stroke();
+
+  context.beginPath();
+  context.moveTo(bowX + shaftLen * 0.52, 0);
+  context.lineTo(bowX + shaftLen * 0.52, scale * 0.2);
+  context.moveTo(bowX + shaftLen * 0.7, 0);
+  context.lineTo(bowX + shaftLen * 0.7, scale * 0.14);
+  context.moveTo(bowX + shaftLen * 0.86, 0);
+  context.lineTo(bowX + shaftLen * 0.86, scale * 0.22);
+  context.lineTo(bowX + shaftLen, scale * 0.22);
+  context.lineTo(bowX + shaftLen, 0);
+  context.stroke();
+
+  context.restore();
+}
+
 export function initControlParticles() {
   const section = document.getElementById('data-control');
   const canvas = section?.querySelector('[data-control-particles]');
@@ -82,23 +129,10 @@ export function initControlParticles() {
   let animationFrame = 0;
   let isVisible = false;
   let isRunning = false;
-  let lockCount = 0;
 
-  function createNode(x, y, layerIndex, layerConfig, seedIndex = -1) {
+  function createNode(x, y, layerIndex, layerConfig) {
     const accent = Math.random() < (layerIndex >= 3 ? 0.34 : 0.18);
     const [radiusMin, radiusMax] = layerConfig.radius;
-    let isLock = false;
-
-    if (
-      lockCount < LOCK_TARGET &&
-      layerIndex >= 2 &&
-      seedIndex >= 0 &&
-      seedIndex < 5 &&
-      Math.random() < 0.28
-    ) {
-      isLock = true;
-      lockCount += 1;
-    }
 
     return {
       x,
@@ -109,7 +143,7 @@ export function initControlParticles() {
       pulse: randomBetween(0.7, 1.2),
       radius: randomBetween(radiusMin, radiusMax),
       accent,
-      isLock,
+      icon: 'none',
       layerIndex,
       depth: layerConfig.depth,
       layerOpacity: layerConfig.opacity,
@@ -138,8 +172,7 @@ export function initControlParticles() {
             seed.x * width + Math.cos(angle) * spread,
             seed.y * height + Math.sin(angle) * spread,
             layerIndex,
-            layerConfig,
-            seedIndex
+            layerConfig
           )
         );
       }
@@ -152,24 +185,30 @@ export function initControlParticles() {
     return layerNodes;
   }
 
+  function assignIcons() {
+    const eligible = layers
+      .flatMap((layer) => layer.nodes)
+      .filter((node) => node.layerIndex >= 2)
+      .sort((a, b) => b.depth - a.depth || a.x - b.x);
+
+    eligible.forEach((node) => {
+      node.icon = 'none';
+    });
+
+    eligible.slice(0, LOCK_TARGET).forEach((node) => {
+      node.icon = 'lock';
+    });
+    eligible.slice(LOCK_TARGET, LOCK_TARGET + KEY_TARGET).forEach((node) => {
+      node.icon = 'key';
+    });
+  }
+
   function buildNodes() {
-    lockCount = 0;
     layers = DEPTH_LAYERS.map((layerConfig, layerIndex) => ({
       config: layerConfig,
       nodes: buildLayerNodes(layerIndex, layerConfig),
     }));
-
-    let locks = layers.flatMap((layer) => layer.nodes.filter((node) => node.isLock));
-    if (locks.length < LOCK_TARGET) {
-      const candidates = layers
-        .flatMap((layer) => layer.nodes.filter((node) => !node.isLock && node.layerIndex >= 2))
-        .sort((a, b) => b.depth - a.depth);
-      for (const node of candidates) {
-        if (locks.length >= LOCK_TARGET) break;
-        node.isLock = true;
-        locks.push(node);
-      }
-    }
+    assignIcons();
   }
 
   function resizeCanvas() {
@@ -237,12 +276,21 @@ export function initControlParticles() {
     const frontBoost = 1 + node.depth * 0.7;
     const alpha = Math.min(1, node.layerOpacity * (node.accent ? 1.08 : 0.92) * frontBoost);
 
-    if (node.isLock) {
+    if (node.icon === 'lock') {
       context.beginPath();
       context.arc(node.x, node.y, radius + 4 * node.depth, 0, Math.PI * 2);
       context.fillStyle = `rgba(${COLORS.primary}, ${alpha * 0.22})`;
       context.fill();
       drawLock(context, node.x, node.y, radius, alpha, elapsed, node.phase);
+      return;
+    }
+
+    if (node.icon === 'key') {
+      context.beginPath();
+      context.arc(node.x, node.y, radius + 4 * node.depth, 0, Math.PI * 2);
+      context.fillStyle = `rgba(${COLORS.primary}, ${alpha * 0.18})`;
+      context.fill();
+      drawKey(context, node.x, node.y, radius, alpha, elapsed, node.phase);
       return;
     }
 

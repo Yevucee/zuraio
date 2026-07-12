@@ -2,7 +2,7 @@ import { renderHeader, renderFooter, initReveal, initTabs } from './site.js';
 import { initHeroComparison } from './hero-comparison.js?v=20260716';
 import { initProblemComparison } from './problem-comparison.js?v=20260716';
 import { initDemoShowcase } from './demo-showcase.js?v=20260723';
-import { initControlParticles } from './control-particles.js?v=20260726';
+import { initControlParticles } from './control-particles.js?v=20260727';
 import { initMarquee } from './integrations-marquee.js';
 import { initFaq } from './faq-accordion.js';
 import { initInternalReview, refreshInternalReview, isInternalReviewMode } from './internal-review.js';
