@@ -1113,27 +1113,81 @@ header.nav.is-floating.scrolled {
   color: var(--muted);
 }
 
-/* Problem section cards — after .pcard so styles always win */
+/* Problem section cards — premium executive panels */
 #problem .pain-card {
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  border-radius: 18px;
-  padding: 26px 24px;
-  box-shadow:
-    0 1px 0 rgba(0, 0, 0, 0.03),
-    0 16px 40px rgba(25, 35, 45, 0.06);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f8f5 100%);
+  border: 1px solid rgba(70, 70, 70, 0.06);
+  border-radius: 17px;
+  padding: 28px 26px 30px;
+  box-shadow: 0 8px 24px rgba(25, 35, 45, 0.04);
   transition:
     transform 0.24s var(--ease),
-    box-shadow 0.24s var(--ease);
+    box-shadow 0.24s var(--ease),
+    border-color 0.24s var(--ease);
+}
+
+#problem .pain-card::before {
+  content: "";
+  position: absolute;
+  top: -28%;
+  left: -18%;
+  width: 72%;
+  height: 58%;
+  border-radius: 50%;
+  filter: blur(36px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#problem .pain-grid .pain-card:nth-child(1)::before {
+  background: rgba(159, 175, 82, 0.11);
+}
+
+#problem .pain-grid .pain-card:nth-child(2)::before {
+  background: rgba(118, 112, 102, 0.09);
+}
+
+#problem .pain-grid .pain-card:nth-child(3)::before {
+  background: rgba(130, 145, 120, 0.1);
+}
+
+#problem .pain-grid .pain-card:nth-child(4)::before {
+  background: rgba(180, 175, 165, 0.1);
+}
+
+#problem .pain-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+}
+
+@media (min-width: 1200px) {
+  #problem .pain-card::after {
+    opacity: 0.026;
+  }
+}
+
+#problem .pain-card__icon,
+#problem .pain-card .n,
+#problem .pain-card p {
+  position: relative;
+  z-index: 2;
 }
 
 #problem .pain-card:hover {
-  transform: translateY(-3px);
-  box-shadow:
-    0 1px 0 rgba(0, 0, 0, 0.03),
-    0 22px 48px rgba(25, 35, 45, 0.08);
+  transform: translateY(-2px);
+  border-color: rgba(70, 70, 70, 0.09);
+  box-shadow: 0 10px 28px rgba(25, 35, 45, 0.055);
 }
 
 #problem .pain-card__icon {
@@ -1142,11 +1196,17 @@ header.nav.is-floating.scrolled {
   justify-content: center;
   width: 40px;
   height: 40px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   border-radius: 11px;
-  background: rgba(159, 175, 82, 0.1);
-  border: 1px solid rgba(159, 175, 82, 0.18);
+  background: linear-gradient(180deg, #f9faf6 0%, #eff1ea 100%);
+  border: 1px solid rgba(70, 70, 70, 0.06);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88);
   color: var(--olive-deep);
+  transition: background 0.24s var(--ease);
+}
+
+#problem .pain-card:hover .pain-card__icon {
+  background: linear-gradient(180deg, #fcfdf9 0%, #f3f5ef 100%);
 }
 
 #problem .pain-card__icon svg {
@@ -1159,15 +1219,15 @@ header.nav.is-floating.scrolled {
   font-family: "IBM Plex Sans", system-ui, sans-serif;
   font-size: 15px;
   font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.38;
+  letter-spacing: -0.012em;
+  line-height: 1.4;
   color: var(--charcoal);
 }
 
 #problem .pain-card p {
-  margin-top: 10px;
+  margin-top: 14px;
   font-size: 14px;
-  line-height: 1.62;
+  line-height: 1.68;
   color: var(--charcoal-soft);
 }
 
