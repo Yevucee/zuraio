@@ -730,8 +730,7 @@ header.nav.is-floating.scrolled {
   line-height: 1.55;
 }
 
-.trustline,
-.hero-trust {
+.trustline {
   margin-top: 26px;
   display: flex;
   flex-wrap: wrap;
@@ -741,8 +740,16 @@ header.nav.is-floating.scrolled {
   line-height: 1.4;
 }
 
+.hero-trust {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  list-style: none;
+}
+
 .trustline span,
-.hero-trust span,
 .trust-signal {
   display: inline-flex;
   align-items: center;
@@ -750,7 +757,6 @@ header.nav.is-floating.scrolled {
 }
 
 .trustline span::before,
-.hero-trust span::before,
 .trust-signal::before {
   content: "";
   width: 6px;
@@ -3066,20 +3072,50 @@ footer.site-footer {
   margin-top: 28px;
 }
 
-.hero-layered .hero-copy .trustline {
-  margin-top: 24px;
+.hero-layered .hero-copy .trustline,
+.hero-layered .hero-copy .hero-trust {
+  margin-top: 16px;
 }
 
-.hero-layered .hero-trust a {
-  color: inherit;
+.hero-trust li {
+  margin: 0;
+  padding: 0;
+}
+
+.hero-trust-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(43, 43, 38, 0.12);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #3a3a33;
   text-decoration: none;
-  border-bottom: 1px solid rgba(70, 70, 70, 0.22);
-  transition: color 0.2s, border-color 0.2s;
+  line-height: 1.2;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    background 0.2s;
 }
 
-.hero-layered .hero-trust a:hover {
+.hero-trust-pill::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8ab13a;
+  flex-shrink: 0;
+}
+
+.hero-trust-pill:hover {
   color: var(--olive-deep);
-  border-color: var(--olive);
+  border-color: rgba(159, 175, 82, 0.35);
+  background: rgba(255, 255, 255, 0.82);
 }
 
 .hero-layered .hero-visual {
@@ -3300,8 +3336,9 @@ footer.site-footer {
   margin-top: 28px;
 }
 
-.hero-copy .trustline {
-  margin-top: 24px;
+.hero-copy .trustline,
+.hero-copy .hero-trust {
+  margin-top: 16px;
 }
 
 .hero-visual {
@@ -3517,21 +3554,6 @@ footer.site-footer {
   border-color: var(--olive);
   color: #fff;
   transform: none;
-}
-
-.hero-trust li {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.hero-trust li::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--olive);
-  flex-shrink: 0;
 }
 
 @media (max-width: 999px) {

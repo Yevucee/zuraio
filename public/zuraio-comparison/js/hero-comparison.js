@@ -25,8 +25,10 @@ function renderTrustSignals() {
     .map((item) => {
       const label = typeof item === 'string' ? item : item.label;
       const href = typeof item === 'string' ? null : item.href;
-      if (href) return `<li><a href="${href}">${label}</a></li>`;
-      return `<li>${label}</li>`;
+      if (href) {
+        return `<li><a class="hero-trust-pill" href="${href}">${label}</a></li>`;
+      }
+      return `<li><span class="hero-trust-pill">${label}</span></li>`;
     })
     .join('');
 }
