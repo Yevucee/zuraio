@@ -3206,10 +3206,12 @@ footer.site-footer {
   z-index: 1;
   line-height: 0;
   justify-self: end;
+  align-self: start;
   width: 100%;
-  max-width: min(52vw, 720px);
-  margin-right: clamp(-40px, -4vw, -12px);
-  transform: translateX(4%);
+  max-width: min(48vw, 680px);
+  margin-right: clamp(-56px, -6vw, -20px);
+  margin-top: clamp(-12px, -2vh, 0px);
+  transform: translate(10%, -8%);
 }
 
 .hero-layered--composite .hero-visual {
