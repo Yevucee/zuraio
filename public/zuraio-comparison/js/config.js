@@ -23,7 +23,7 @@ export const SITE = {
   tagline: 'AI for Swiss companies that need control of their data.',
   internalLabel: 'Hero Comparison — Five Messaging Options',
   heroBackground: '../zuraio/assets/260714_zuraio_hero_12.png',
-  heroPopup: '../zuraio/assets/hero-popup-ui.png',
+  heroPopup: '../zuraio/assets/260707_UI_Apps_Vision.png',
   heroPlatform: '../zuraio/assets/zuraio-platform-ui.png',
   problemDiagram: '../zuraio/assets/zuraio_knowledge_background_right_aligned.png',
   integrationsBackground: '../zuraio/assets/260707-fits-into-the-tools.png',

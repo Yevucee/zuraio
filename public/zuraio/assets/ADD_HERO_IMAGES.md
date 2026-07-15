@@ -7,7 +7,7 @@ The hero uses **two separate layers** — not one baked composite:
 | File | Role |
 |------|------|
 | `260714_zuraio_hero_12.png` | Full-bleed office background (your photo only — no Zurich skyline assets) |
-| `hero-popup-ui.png` | Chat UI popup on the right, above the background |
+| `260707_UI_Apps_Vision.png` | Chat UI popup on the right, above the background |
 
 The homepage hero uses **`260714_zuraio_hero_12.png`** as the background layer.
 
