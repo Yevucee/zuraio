@@ -2412,21 +2412,21 @@ h3 .headline-em {
 
 /* Final CTA */
 .final {
-  background: var(--olive);
-  color: #fff;
+  background: var(--soft-olive);
+  color: var(--charcoal);
   text-align: center;
   overflow: hidden;
 }
 
 .final h2 {
-  color: #fff;
+  color: var(--charcoal);
   font-size: clamp(30px, 4vw, 46px);
 }
 
 .final p {
   margin: 18px auto 0;
   max-width: 54ch;
-  color: #f2f5e4;
+  color: var(--charcoal-soft);
   font-size: 17px;
 }
 
@@ -2435,25 +2435,25 @@ h3 .headline-em {
 }
 
 .final .btn-primary {
-  background: #fff;
-  color: var(--olive-deep);
+  background: var(--charcoal);
+  color: #fff;
 }
 
 .final .btn-primary:hover {
-  background: #fff;
-  color: var(--charcoal);
+  background: var(--charcoal-soft);
+  color: #fff;
   box-shadow: var(--shadow-lg);
 }
 
 .final .btn-ghost {
-  border-color: rgba(255, 255, 255, 0.5);
-  color: #fff;
+  border-color: rgba(38, 40, 35, 0.28);
+  color: var(--charcoal);
 }
 
 .final .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: #fff;
-  color: #fff;
+  background: rgba(255, 255, 255, 0.55);
+  border-color: var(--charcoal);
+  color: var(--charcoal);
 }
 
 .final .small {
@@ -2461,7 +2461,7 @@ h3 .headline-em {
   font-family: "IBM Plex Mono", monospace;
   font-size: 12px;
   letter-spacing: 0.08em;
-  color: #eaf0d6;
+  color: var(--charcoal-soft);
 }
 
 /* ==========================================================================
