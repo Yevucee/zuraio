@@ -1,6 +1,7 @@
 export const heroOptions = [
   {
     headline: 'Un assistant de direction numérique pour chaque collaborateur.',
+    emphasis: 'assistant',
     paragraph:
       'Zuraio offre à chaque personne de votre entreprise un assistant intelligent capable de trouver des informations, répondre aux questions, préparer des documents et faciliter le travail au quotidien.',
     cta: 'Découvrez l\u2019assistant IA de votre entreprise',
@@ -8,6 +9,7 @@ export const heroOptions = [
   },
   {
     headline: 'Donnez à chaque collaborateur la puissance d\u2019un assistant de direction.',
+    emphasis: 'pouvoir',
     paragraph:
       'Zuraio connecte les connaissances et les outils de votre entreprise, offrant à vos équipes un soutien immédiat pour la recherche, la rédaction, l\u2019analyse et les tâches quotidiennes.',
     cta: 'Découvrez le fonctionnement de Zuraio',
@@ -15,6 +17,7 @@ export const heroOptions = [
   },
   {
     headline: 'Un assistant IA qui connaît votre entreprise.',
+    emphasis: 'connaît',
     paragraph:
       'Zuraio comprend vos documents, réunions, e-mails et connaissances métier, afin que vos collaborateurs trouvent des réponses et accomplissent leur travail plus rapidement.',
     cta: 'Découvrez le Zuraio AI Hub',
@@ -22,6 +25,7 @@ export const heroOptions = [
   },
   {
     headline: 'L\u2019espace de travail intelligent pour toute votre entreprise.',
+    emphasis: 'workspace',
     paragraph:
       'Recherchez les connaissances de l\u2019entreprise, créez des documents, analysez des informations et accomplissez le travail quotidien via un AI Hub sécurisé.',
     cta: 'Découvrez ce qu\u2019il peut faire',
@@ -29,6 +33,7 @@ export const heroOptions = [
   },
   {
     headline: 'Un assistant IA pour tous. Alimenté par votre entreprise.',
+    emphasis: 'tous',
     paragraph:
       'Zuraio transforme vos connaissances métier en un soutien sécurisé et concret pour chaque collaborateur.',
     cta: 'Explorer Zuraio',
@@ -39,18 +44,23 @@ export const heroOptions = [
 export const problemOptions = [
   {
     heading: 'Laissez Zuraio rendre les connaissances de votre entreprise plus faciles à trouver et à utiliser.',
+    emphasis: 'trouver',
   },
   {
     heading: 'Laissez Zuraio retrouver vos informations et faire avancer le travail.',
+    emphasis: 'avancer',
   },
   {
     heading: 'Laissez Zuraio connecter vos connaissances et simplifier le travail.',
+    emphasis: 'simplifier',
   },
   {
     heading: 'Laissez Zuraio aider vos collaborateurs à trouver des réponses et à accomplir leur travail.',
+    emphasis: 'réponses',
   },
   {
     heading: 'Laissez Zuraio rendre les connaissances de votre entreprise plus faciles à trouver, à comprendre et à utiliser.',
+    emphasis: 'comprendre',
   },
 ];
 
@@ -136,9 +146,11 @@ export const home = {
   different: {
     marker: 'Plus qu\u2019un chatbot',
     heading: 'Les connaissances de votre entreprise, au service de vos équipes.',
+    headingEmphasis: 'service',
     body: 'Une IA générique ne connaît que ce qu\u2019on lui fournit manuellement. Zuraio se connecte de manière sécurisée aux connaissances approuvées de l\u2019entreprise, comprend le contexte de la personne qui pose la question et prépare un travail sourcé pour validation.',
     without: {
       title: 'Sans Zuraio',
+      titleEmphasis: null,
       subtitle: 'Processus typique : jusqu\u2019à 20 minutes',
       timeLabel: '~20 min',
       progressCompleting: 'En cours...',
@@ -172,6 +184,7 @@ export const home = {
     },
     with: {
       title: 'Avec Zuraio',
+      titleEmphasis: 'Zuraio',
       subtitle: 'Processus typique : moins d\u2019une minute',
       timeLabel: '<1 min',
       progressCompleting: 'En cours...',
@@ -204,6 +217,7 @@ export const home = {
   },
   pillars: {
     heading: 'Tout ce dont votre assistant a besoin pour vous aider.',
+    headingEmphasis: 'aider',
     items: [
       { title: 'Connaissances', body: 'Zuraio travaille avec les e-mails, documents, contacts, notes de réunion et systèmes approuvés de l\u2019entreprise.', link: 'Explorer les connaissances →', href: 'knowledge.html' },
       { title: 'Connexions', body: 'Il s\u2019intègre aux outils que votre équipe utilise déjà, sans imposer de les remplacer.', link: 'Voir les connexions →', href: 'integrations.html' },
@@ -218,6 +232,7 @@ export const home = {
   },
   demo: {
     heading: 'Voyez votre assistant à l\u2019œuvre.',
+    headingEmphasis: 'œuvre',
     body: 'Zuraio rassemble le bon contexte d\u2019entreprise, prépare le travail et le restitue avec les sources pour votre validation.',
     disclaimer: 'Démonstration scénarisée — les fonctionnalités dépendent du déploiement et des autorisations convenus.',
     slides: [
@@ -225,6 +240,7 @@ export const home = {
         id: 'mail',
         label: 'E-mail',
         heading: 'La réponse est déjà prête.',
+        emphasis: 'prête',
         body: 'Les longs fils de discussion peuvent être synthétisés et les réponses préparées à partir du contexte pertinent de l\u2019entreprise. Vous examinez, modifiez et décidez de ce qui est envoyé.',
         alt: 'Assistant e-mail Zuraio — message entrant avec brouillon de réponse et sources.',
       },
@@ -232,6 +248,7 @@ export const home = {
         id: 'project-summary',
         label: 'Synthèse de projet',
         heading: 'La vue d\u2019ensemble, déjà assemblée.',
+        emphasis: 'assemblée',
         body: 'Zuraio rassemble le contexte du projet à partir des e-mails, documents et notes, afin que votre équipe voie l\u2019état d\u2019avancement sans chercher.',
         alt: 'Synthèse de projet Zuraio — aperçu consolidé du projet avec détails clés et sources.',
       },
@@ -239,6 +256,7 @@ export const home = {
         id: 'appointment-reply',
         label: 'Rendez-vous et réponse',
         heading: 'La planification, gérée avec le contexte.',
+        emphasis: 'contexte',
         body: 'Une demande client est associée aux disponibilités du calendrier, à l\u2019historique pertinent et à un brouillon de réponse prêt pour votre validation.',
         alt: 'Flux rendez-vous Zuraio — créneaux suggérés et brouillon de réponse préparés à partir du contexte d\u2019entreprise.',
       },
@@ -246,6 +264,7 @@ export const home = {
         id: 'meeting-transcript',
         label: 'Transcription de réunion',
         heading: 'Chaque réunion, capturée et exploitable.',
+        emphasis: 'exploitable',
         body: 'Les transcriptions sont synthétisées avec décisions, actions et relances, afin que rien ne repose sur la seule mémoire.',
         alt: 'Transcription de réunion Zuraio — discussion synthétisée avec actions et relances.',
       },
@@ -253,6 +272,7 @@ export const home = {
         id: 'tasks',
         label: 'Tâches',
         heading: 'Rien ne passe entre les mailles.',
+        emphasis: 'mailles',
         body: 'Les actions sont extraites des e-mails, réunions et messages, afin que les relances soient visibles avant d\u2019être oubliées.',
         alt: 'Vue tâches Zuraio — actions ouvertes rassemblées à partir de l\u2019activité récente de l\u2019entreprise.',
       },
@@ -260,6 +280,7 @@ export const home = {
         id: 'briefing',
         label: 'Briefing',
         heading: 'Arrivez préparé.',
+        emphasis: 'préparé',
         body: 'E-mails, notes, documents, décisions et actions ouvertes pertinents rassemblés avant de vous asseoir.',
         alt: 'Brief de réunion Zuraio — historique client, fichiers associés et points de discussion préparés.',
       },
@@ -267,6 +288,7 @@ export const home = {
   },
   outcomes: {
     heading: 'Moins d\u2019administration. Plus de travail à valeur ajoutée.',
+    headingEmphasis: 'valeur',
     body: 'Zuraio aide les collaborateurs à consacrer moins de temps à chercher, synthétiser et préparer, afin qu\u2019ils puissent se concentrer sur les clients, les décisions et le travail pour lequel ils sont engagés.',
     cards: [
       { tag: 'Réunions', title: 'Arrivez préparé', body: 'Historique pertinent, décisions et actions ouvertes déjà préparés.' },
@@ -279,6 +301,7 @@ export const home = {
   dataControl: {
     marker: 'Contrôle des données',
     heading: 'L\u2019IA, sans lui remettre les clés.',
+    headingEmphasis: 'clés',
     body: 'Zuraio permet aux entreprises de contrôler où il s\u2019exécute, quelles informations il peut utiliser, qui y a accès et comment son travail est validé.',
     cards: [
       { title: 'Hébergé en Suisse', body: 'Une option hébergée en Suisse pour les entreprises qui souhaitent conserver leur environnement et leurs données d\u2019entreprise en Suisse.' },
@@ -291,6 +314,7 @@ export const home = {
   },
   reviewable: {
     heading: 'Une IA que vous pourrez expliquer plus tard.',
+    headingEmphasis: 'expliquer',
     body: 'Consultez ce qui a été demandé, quelles sources approuvées ont été utilisées et ce qui a été produit. Cela facilite l\u2019examen interne et aide les entreprises à se préparer aux futures exigences de gouvernance IA.',
     steps: [
       { label: 'Ce qui a été demandé', title: 'La demande', body: 'L\u2019invite ou la requête qui a lancé le travail.' },
@@ -302,6 +326,7 @@ export const home = {
   origin: {
     marker: 'Pourquoi nous l\u2019avons créé',
     heading: 'Conçu pour le travail que nous devions faire nous-mêmes.',
+    headingEmphasis: 'nous-mêmes',
     paragraphs: [
       'Zuraio est né parce que nous avions besoin d\u2019une meilleure façon de préparer, rechercher, synthétiser, rédiger et assurer le suivi dans notre propre travail.',
       'Les outils d\u2019IA publics étaient utiles, mais insuffisants pour un travail d\u2019entreprise sérieux. Nous voulions une IA connectée aux connaissances métier réelles, avec un contrôle clair sur les données, l\u2019accès et le choix du modèle.',
@@ -313,6 +338,7 @@ export const home = {
   },
   final: {
     heading: 'Découvrez ce que votre propre assistant pourrait retirer de votre bureau.',
+    headingEmphasis: 'assistant',
     body: 'Nous examinerons vos outils actuels, vos connaissances d\u2019entreprise et vos exigences en matière de contrôle des données, puis identifierons où Zuraio pourrait vous aider en premier.',
     primaryCta: 'Réserver une démo privée',
     secondaryCta: 'Voir l\u2019assistant à l\u2019œuvre',
@@ -323,27 +349,27 @@ export const home = {
 export const pages = {
   howItHelps: {
     title: 'Comment ça aide — Zuraio',
-    hero: { marker: 'Comment ça aide', heading: 'Moins d\u2019administration. Plus de travail à valeur ajoutée.', lede: 'Zuraio aide les collaborateurs à préparer, rechercher, rédiger, synthétiser et assurer le suivi à partir des connaissances approuvées de l\u2019entreprise. Il fonctionne aux côtés des systèmes existants et rassemble le contexte pertinent au moment où il est nécessaire.' },
+    hero: { marker: 'Comment ça aide', heading: 'Moins d\u2019administration. Plus de travail à valeur ajoutée.', headingEmphasis: 'valeur', lede: 'Zuraio aide les collaborateurs à préparer, rechercher, rédiger, synthétiser et assurer le suivi à partir des connaissances approuvées de l\u2019entreprise. Il fonctionne aux côtés des systèmes existants et rassemble le contexte pertinent au moment où il est nécessaire.' },
   },
   knowledge: {
     title: 'Connaissances — Zuraio',
-    hero: { marker: 'Connaissances', heading: 'Transformez les informations dispersées de l\u2019entreprise en contexte exploitable.', lede: 'Les connaissances importantes sont souvent dispersées entre boîtes de réception, lecteurs partagés, notes de réunion, enregistrements CRM et systèmes métier. Zuraio est conçu pour rassembler les informations approuvées afin que les collaborateurs puissent les trouver, les comprendre et les utiliser plus efficacement.' },
+    hero: { marker: 'Connaissances', heading: 'Transformez les informations dispersées de l\u2019entreprise en contexte exploitable.', headingEmphasis: 'exploitable', lede: 'Les connaissances importantes sont souvent dispersées entre boîtes de réception, lecteurs partagés, notes de réunion, enregistrements CRM et systèmes métier. Zuraio est conçu pour rassembler les informations approuvées afin que les collaborateurs puissent les trouver, les comprendre et les utiliser plus efficacement.' },
   },
   integrations: {
     title: 'Intégrations — Zuraio',
-    hero: { marker: 'Intégrations', heading: 'Fonctionne aux côtés des systèmes que votre équipe utilise déjà.', lede: 'Zuraio est conçu pour connecter les connaissances et les flux de travail de l\u2019entreprise sans imposer aux équipes de remplacer les systèmes qui fonctionnent déjà.' },
+    hero: { marker: 'Intégrations', heading: 'Fonctionne aux côtés des systèmes que votre équipe utilise déjà.', headingEmphasis: 'déjà', lede: 'Zuraio est conçu pour connecter les connaissances et les flux de travail de l\u2019entreprise sans imposer aux équipes de remplacer les systèmes qui fonctionnent déjà.' },
   },
   dataControl: {
     title: 'Contrôle des données et sécurité — Zuraio',
-    hero: { marker: 'Contrôle des données et sécurité', heading: 'Vos données. Vos règles. Votre déploiement.', lede: 'Zuraio est conçu pour aider les entreprises à utiliser l\u2019IA sans renoncer au contrôle de leurs connaissances, de leurs autorisations ou de leurs choix d\u2019infrastructure.' },
+    hero: { marker: 'Contrôle des données et sécurité', heading: 'Vos données. Vos règles. Votre déploiement.', headingEmphasis: 'règles', lede: 'Zuraio est conçu pour aider les entreprises à utiliser l\u2019IA sans renoncer au contrôle de leurs connaissances, de leurs autorisations ou de leurs choix d\u2019infrastructure.' },
   },
   deploymentModels: {
     title: 'Modèles de déploiement — Zuraio',
-    hero: { marker: 'Modèles de déploiement', heading: 'Local, hybride ou cloud hébergé en Suisse.', lede: 'Chaque entreprise a des exigences différentes en matière de contrôle, de performance, d\u2019infrastructure et de coûts. Zuraio peut être configuré selon le modèle de déploiement convenu avec le client.' },
+    hero: { marker: 'Modèles de déploiement', heading: 'Local, hybride ou cloud hébergé en Suisse.', headingEmphasis: 'Suisse', lede: 'Chaque entreprise a des exigences différentes en matière de contrôle, de performance, d\u2019infrastructure et de coûts. Zuraio peut être configuré selon le modèle de déploiement convenu avec le client.' },
   },
   technicalArchitecture: {
     title: 'Architecture technique — Zuraio',
-    hero: { marker: 'Architecture technique', heading: 'Un parcours contrôlé de la demande au résultat validé.', lede: 'Zuraio connecte les utilisateurs, les sources d\u2019entreprise approuvées, les outils métier et les modèles IA via une couche d\u2019exécution gouvernée. L\u2019architecture exacte dépend de l\u2019environnement client et du modèle de déploiement.' },
+    hero: { marker: 'Architecture technique', heading: 'Un parcours contrôlé de la demande au résultat validé.', headingEmphasis: 'contrôlé', lede: 'Zuraio connecte les utilisateurs, les sources d\u2019entreprise approuvées, les outils métier et les modèles IA via une couche d\u2019exécution gouvernée. L\u2019architecture exacte dépend de l\u2019environnement client et du modèle de déploiement.' },
   },
   aiGovernance: {
     title: 'Gouvernance IA — Zuraio',
@@ -351,11 +377,11 @@ export const pages = {
   },
   faq: {
     title: 'FAQ — Zuraio',
-    hero: { marker: 'FAQ', heading: 'Questions pratiques sur l\u2019utilisation de Zuraio au travail.', lede: 'Réponses aux questions fréquentes sur le déploiement, les autorisations, le contrôle des données et l\u2019utilisation quotidienne.' },
+    hero: { marker: 'FAQ', heading: 'Questions pratiques sur l\u2019utilisation de Zuraio au travail.', headingEmphasis: 'pratiques', lede: 'Réponses aux questions fréquentes sur le déploiement, les autorisations, le contrôle des données et l\u2019utilisation quotidienne.' },
   },
   about: {
     title: 'À propos — Zuraio',
-    hero: { marker: 'À propos de Zuraio', heading: 'Créé par des personnes qui avaient besoin d\u2019une meilleure façon de travailler.', lede: 'Zuraio est né d\u2019un problème concret. Les outils d\u2019IA existants étaient utiles, mais ils ne combinaient pas connaissances d\u2019entreprise, contrôle des données et travail quotidien de la manière dont nous en avions besoin.' },
+    hero: { marker: 'À propos de Zuraio', heading: 'Créé par des personnes qui avaient besoin d\u2019une meilleure façon de travailler.', headingEmphasis: 'meilleure', lede: 'Zuraio est né d\u2019un problème concret. Les outils d\u2019IA existants étaient utiles, mais ils ne combinaient pas connaissances d\u2019entreprise, contrôle des données et travail quotidien de la manière dont nous en avions besoin.' },
   },
   contact: {
     title: 'Contact — Zuraio',
@@ -363,7 +389,7 @@ export const pages = {
   },
   resources: {
     title: 'Ressources — Zuraio',
-    hero: { marker: 'Ressources', heading: 'Informations techniques et pratiques sur Zuraio.', lede: 'Guides, aperçus et documentation de référence pour les équipes qui évaluent ou déploient Zuraio.' },
+    hero: { marker: 'Ressources', heading: 'Informations techniques et pratiques sur Zuraio.', headingEmphasis: 'pratiques', lede: 'Guides, aperçus et documentation de référence pour les équipes qui évaluent ou déploient Zuraio.' },
   },
   privacy: {
     title: 'Confidentialité — Zuraio',

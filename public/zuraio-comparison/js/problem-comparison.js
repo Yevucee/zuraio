@@ -4,6 +4,7 @@ import {
   DEFAULT_PROBLEM_OPTION,
 } from './config.js';
 import { getCopy, getLocale } from './i18n.js';
+import { setHeadlineHtml } from './headline-emphasis.js';
 
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -43,7 +44,7 @@ export function initProblemComparison() {
     if (!data || !headlineEl) return;
 
     const update = () => {
-      headlineEl.textContent = data.heading;
+      setHeadlineHtml(headlineEl, data.heading, data.emphasis);
       const url = new URL(location.href);
       url.searchParams.set('problem', String(option));
       url.searchParams.set('lang', getLocale());

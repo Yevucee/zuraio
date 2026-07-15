@@ -8,6 +8,7 @@ import {
   WORKFLOW_ICONS_WITHOUT,
   WORKFLOW_ICONS_WITH,
 } from './workflow-icons.js';
+import { formatHeadline, setHeadlineHtml } from './headline-emphasis.js';
 
 const LOCALE_KEY = 'zuraio-locale';
 
@@ -43,6 +44,13 @@ export function t(path) {
     value = value[part];
   }
   return value;
+}
+
+function setHeading(selector, text, emphasis) {
+  if (text == null) return;
+  document.querySelectorAll(selector).forEach((el) => {
+    setHeadlineHtml(el, text, emphasis);
+  });
 }
 
 function setText(selector, text) {
@@ -86,7 +94,10 @@ function applyComparePanel(panelKey, panelCopy, icons, tone) {
   const panel = document.querySelector(`[data-compare-box="${panelKey}"]`);
   if (!panel || !panelCopy) return;
 
-  panel.querySelector('.compare-box__title').textContent = panelCopy.title;
+  panel.querySelector('.compare-box__title').innerHTML = formatHeadline(
+    panelCopy.title,
+    panelCopy.titleEmphasis,
+  );
   panel.querySelector('.compare-box__subtitle').textContent = panelCopy.subtitle;
   panel.querySelector('.compare-box__time').textContent = panelCopy.timeLabel;
 
@@ -131,7 +142,7 @@ export function applyHomeTranslations() {
   setHtml('#problem .section-link a', home.problem.link);
 
   setText('#different .marker', home.different.marker);
-  setText('#different h2', home.different.heading);
+  setHeading('#different h2', home.different.heading, home.different.headingEmphasis);
   setText('#different .lede', home.different.body);
 
   const withoutPanel = document.querySelector('[data-compare-box="without"]');
@@ -165,9 +176,9 @@ export function applyHomeTranslations() {
     }
   });
 
-  setText('#pillars h2', home.pillars.heading);
+  setHeading('#pillars h2', home.pillars.heading, home.pillars.headingEmphasis);
 
-  setText('#assistant-demo h2', home.demo.heading);
+  setHeading('#assistant-demo h2', home.demo.heading, home.demo.headingEmphasis);
   setText('#assistant-demo .lede', home.demo.body);
   setText('#assistant-demo .demo-disclaimer', home.demo.disclaimer);
   const activeSlide = document.querySelector('#demo-showcase [data-demo-slide].is-active');
@@ -177,10 +188,10 @@ export function applyHomeTranslations() {
     setText('[data-demo-label]', slideCopy.label);
     setText('[data-demo-caption-text]', slideCopy.body);
     const headingEl = document.querySelector('[data-demo-heading]');
-    if (headingEl) headingEl.textContent = slideCopy.heading;
+    if (headingEl) setHeadlineHtml(headingEl, slideCopy.heading, slideCopy.emphasis);
   }
 
-  setText('#outcomes h2', home.outcomes.heading);
+  setHeading('#outcomes h2', home.outcomes.heading, home.outcomes.headingEmphasis);
   setText('#outcomes .lede', home.outcomes.body);
   const bentoCards = document.querySelectorAll('#outcomes .bcard');
   home.outcomes.cards?.forEach((card, i) => {
@@ -192,7 +203,7 @@ export function applyHomeTranslations() {
   });
 
   setText('#data-control .marker', home.dataControl.marker);
-  setText('#data-control h2', home.dataControl.heading);
+  setHeading('#data-control h2', home.dataControl.heading, home.dataControl.headingEmphasis);
   setText('#data-control .lede', home.dataControl.body);
   const ccards = document.querySelectorAll('#data-control .ccard');
   home.dataControl.cards?.forEach((card, i) => {
@@ -204,7 +215,7 @@ export function applyHomeTranslations() {
   setHtml('#data-control .ctrl-note span:last-child', home.dataControl.note);
   setHtml('#data-control .section-link a', home.dataControl.link);
 
-  setText('#reviewable h2', home.reviewable.heading);
+  setHeading('#reviewable h2', home.reviewable.heading, home.reviewable.headingEmphasis);
   setText('#reviewable .lede', home.reviewable.body);
   const processSteps = document.querySelectorAll('#reviewable .process-step');
   home.reviewable.steps?.forEach((step, i) => {
@@ -220,7 +231,7 @@ export function applyHomeTranslations() {
   setHtml('#reviewable .section-link a', home.reviewable.link);
 
   setText('#origin .marker', home.origin.marker);
-  setText('#origin h2', home.origin.heading);
+  setHeading('#origin h2', home.origin.heading, home.origin.headingEmphasis);
   const originText = document.querySelector('#origin .origin-text');
   if (originText) {
     const paragraphs = originText.querySelectorAll('p:not(.section-link)');
@@ -234,7 +245,7 @@ export function applyHomeTranslations() {
   const originImg = document.querySelector('#origin img');
   if (originImg && home.origin.imageAlt) originImg.alt = home.origin.imageAlt;
 
-  setText('#final h2', home.final.heading);
+  setHeading('#final h2', home.final.heading, home.final.headingEmphasis);
   setText('#final p:not(.small)', home.final.body);
   const finalCtas = document.querySelectorAll('#final .cta-row a');
   if (finalCtas[0]) finalCtas[0].textContent = home.final.primaryCta;
@@ -250,7 +261,7 @@ export function applyPageTranslations() {
   if (page.title) document.title = page.title;
   if (page.hero) {
     setText('.page-hero .marker', page.hero.marker);
-    setText('.page-hero h1', page.hero.heading);
+    setHeading('.page-hero h1', page.hero.heading, page.hero.headingEmphasis);
     setText('.page-hero .lede', page.hero.lede);
   }
   applyDataI18n();

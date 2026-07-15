@@ -1,5 +1,6 @@
 import { DEMO_AUTO_PLAY_MS, DEMO_SHOWCASE_SLIDES } from './config.js';
 import { getCopy } from './i18n.js';
+import { setHeadlineHtml } from './headline-emphasis.js';
 
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -84,7 +85,7 @@ export function initDemoShowcase() {
 
     const updateCopy = () => {
       labelEl.textContent = data.label || '';
-      headingEl.textContent = data.heading || '';
+      setHeadlineHtml(headingEl, data.heading || '', data.emphasis);
       captionEl.textContent = data.body || '';
       root.setAttribute('aria-label', data.heading || data.label || 'Platform demonstration');
     };

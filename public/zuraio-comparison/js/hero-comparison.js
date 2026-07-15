@@ -7,6 +7,7 @@ import {
 import { getCopy } from './i18n.js';
 import { getLocale } from './i18n.js';
 import { isInternalReviewMode } from './internal-review.js';
+import { setHeadlineHtml } from './headline-emphasis.js';
 
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -89,7 +90,7 @@ export function initHeroComparison() {
     if (!data) return;
 
     const update = () => {
-      headlineEl.textContent = data.headline;
+      setHeadlineHtml(headlineEl, data.headline, data.emphasis);
       paraEl.textContent = data.paragraph;
       ctaEl.textContent = data.cta;
       ctaEl.href = data.ctaHref;
