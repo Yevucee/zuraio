@@ -16,16 +16,17 @@ const CLUSTER_SEEDS = [
   { x: 0.78, y: 0.72 },
 ];
 
-const DEPTH_LAYERS = [
-  { depth: 0.18, density: 1.35, speed: 0.28, opacity: 0.22, radius: [0.8, 1.3], connect: 0.82 },
-  { depth: 0.4, density: 1.15, speed: 0.48, opacity: 0.34, radius: [1.2, 1.9], connect: 0.96 },
-  { depth: 0.62, density: 0.95, speed: 0.68, opacity: 0.44, radius: [1.7, 2.5], connect: 1.08 },
-  { depth: 0.84, density: 0.72, speed: 0.92, opacity: 0.54, radius: [2.2, 3.3], connect: 1.22 },
-  { depth: 1, density: 0.48, speed: 1.12, opacity: 0.62, radius: [2.8, 4.1], connect: 1.34 },
-];
+const LOCK_TARGET = 15;
+const KEY_TARGET = 15;
+const SPEED_FACTOR = 0.75;
 
-const LOCK_TARGET = 10;
-const KEY_TARGET = 10;
+const DEPTH_LAYERS = [
+  { depth: 0.18, density: 1.35, speed: 0.21, opacity: 0.22, radius: [0.8, 1.3], connect: 0.82 },
+  { depth: 0.4, density: 1.15, speed: 0.36, opacity: 0.34, radius: [1.2, 1.9], connect: 0.96 },
+  { depth: 0.62, density: 0.95, speed: 0.51, opacity: 0.44, radius: [1.7, 2.5], connect: 1.08 },
+  { depth: 0.84, density: 0.72, speed: 0.69, opacity: 0.54, radius: [2.2, 3.3], connect: 1.22 },
+  { depth: 1, density: 0.48, speed: 0.84, opacity: 0.62, radius: [2.8, 4.1], connect: 1.34 },
+];
 
 function randomBetween(min, max) {
   return min + Math.random() * (max - min);
@@ -185,22 +186,56 @@ export function initControlParticles() {
     return layerNodes;
   }
 
+  function buildEvenSlots(count) {
+    const aspect = width / Math.max(height, 1);
+    const cols = Math.max(3, Math.round(Math.sqrt(count * aspect)));
+    const rows = Math.ceil(count / cols);
+
+    return Array.from({ length: count }, (_, index) => {
+      const col = index % cols;
+      const row = Math.floor(index / cols);
+      return {
+        x: ((col + 0.5) / cols) * width,
+        y: ((row + 0.5) / rows) * height,
+      };
+    });
+  }
+
+  function assignIconsEvenly(count, iconType, eligible, assigned) {
+    const slots = buildEvenSlots(count);
+    const available = eligible.filter((node) => !assigned.has(node));
+
+    slots.forEach((slot) => {
+      let best = null;
+      let bestDistance = Infinity;
+
+      available.forEach((node) => {
+        if (assigned.has(node)) return;
+        const distance = Math.hypot(node.x - slot.x, node.y - slot.y);
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          best = node;
+        }
+      });
+
+      if (!best) return;
+      best.icon = iconType;
+      assigned.add(best);
+    });
+  }
+
   function assignIcons() {
     const eligible = layers
       .flatMap((layer) => layer.nodes)
-      .filter((node) => node.layerIndex >= 2)
-      .sort((a, b) => b.depth - a.depth || a.x - b.x);
+      .filter((node) => node.layerIndex >= 2);
 
     eligible.forEach((node) => {
       node.icon = 'none';
     });
 
-    eligible.slice(0, LOCK_TARGET).forEach((node) => {
-      node.icon = 'lock';
-    });
-    eligible.slice(LOCK_TARGET, LOCK_TARGET + KEY_TARGET).forEach((node) => {
-      node.icon = 'key';
-    });
+    const assigned = new Set();
+    assignIconsEvenly(LOCK_TARGET, 'lock', eligible, assigned);
+    assignIconsEvenly(KEY_TARGET, 'key', eligible, assigned);
   }
 
   function buildNodes() {
@@ -225,8 +260,9 @@ export function initControlParticles() {
   }
 
   function updateNode(node, elapsed, motionScale) {
-    const driftX = Math.sin(elapsed * 0.22 * node.pulse + node.phase) * 0.34 * node.layerSpeed;
-    const driftY = Math.cos(elapsed * 0.19 * node.pulse + node.phase) * 0.34 * node.layerSpeed;
+    const driftElapsed = elapsed * SPEED_FACTOR;
+    const driftX = Math.sin(driftElapsed * 0.22 * node.pulse + node.phase) * 0.34 * node.layerSpeed;
+    const driftY = Math.cos(driftElapsed * 0.19 * node.pulse + node.phase) * 0.34 * node.layerSpeed;
     node.x += (node.vx + driftX) * motionScale;
     node.y += (node.vy + driftY) * motionScale;
 
@@ -235,8 +271,8 @@ export function initControlParticles() {
     if (node.y < -24) node.vy = Math.abs(node.vy);
     if (node.y > height + 24) node.vy = -Math.abs(node.vy);
 
-    node.vx += Math.sin(elapsed * 0.15 + node.phase) * 0.0025 * node.layerSpeed * motionScale;
-    node.vy += Math.cos(elapsed * 0.13 + node.phase) * 0.0025 * node.layerSpeed * motionScale;
+    node.vx += Math.sin(driftElapsed * 0.15 + node.phase) * 0.0025 * node.layerSpeed * motionScale;
+    node.vy += Math.cos(driftElapsed * 0.13 + node.phase) * 0.0025 * node.layerSpeed * motionScale;
     const maxSpeed = 0.35 * node.layerSpeed;
     node.vx = Math.max(-maxSpeed, Math.min(maxSpeed, node.vx));
     node.vy = Math.max(-maxSpeed, Math.min(maxSpeed, node.vy));
@@ -309,7 +345,7 @@ export function initControlParticles() {
     context.clearRect(0, 0, width, height);
 
     const baseConnectDistance = Math.min(190, Math.max(112, width * 0.145));
-    const motionScale = reduce ? 0 : 1;
+    const motionScale = reduce ? 0 : SPEED_FACTOR;
     const elapsed = time * 0.001;
 
     layers.forEach((layer) => {
