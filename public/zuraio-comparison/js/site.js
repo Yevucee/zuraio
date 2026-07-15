@@ -54,7 +54,7 @@ export function renderHeader() {
     <header class="nav" id="nav">
       <div class="wrap nav-in">
         <a class="brand" href="${langHref('index.html')}" aria-label="${uiData.zuraioHome}">
-          <img class="brand-logo" src="${SITE.logo}" alt="Zuraio — own your data" width="1280" height="391" decoding="async" />
+          <img class="brand-logo" src="${SITE.logo}" alt="Zuraio — own your data" width="4796" height="1465" decoding="async" />
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="${uiData.openMenu}">
           <span></span><span></span><span></span>
