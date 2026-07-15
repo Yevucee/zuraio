@@ -9,7 +9,7 @@ export const heroOptions = [
   },
   {
     headline: 'Dia a ogni collaboratore la capacità di un assistente personale.',
-    emphasis: 'potere',
+    emphasis: 'assistente personale',
     paragraph:
       'Zuraio collega le conoscenze e gli strumenti della Sua azienda, offrendo supporto immediato per ricerca, redazione, analisi e attività quotidiane.',
     cta: 'Scopra come funziona Zuraio',
@@ -17,7 +17,7 @@ export const heroOptions = [
   },
   {
     headline: 'Un assistente IA che conosce la Sua azienda.',
-    emphasis: 'conosce',
+    emphasis: 'assistente IA',
     paragraph:
       'Zuraio comprende documenti, riunioni, e-mail e know-how aziendale, così i Suoi collaboratori trovano risposte e completano il lavoro più rapidamente.',
     cta: 'Scopra lo Zuraio AI Hub',
@@ -25,7 +25,6 @@ export const heroOptions = [
   },
   {
     headline: 'Lo spazio di lavoro intelligente per tutta la Sua azienda.',
-    emphasis: 'workspace',
     paragraph:
       'Cerchi nel know-how aziendale, crei documenti, analizzi informazioni e svolga il lavoro quotidiano attraverso un AI Hub sicuro.',
     cta: 'Veda cosa può fare',
@@ -33,7 +32,6 @@ export const heroOptions = [
   },
   {
     headline: 'Un assistente IA per tutti. Alimentato dalla Sua azienda.',
-    emphasis: 'tutti',
     paragraph:
       'Zuraio trasforma le conoscenze aziendali in supporto sicuro e pratico per ogni collaboratore.',
     cta: 'Esplori Zuraio',
@@ -44,23 +42,18 @@ export const heroOptions = [
 export const problemOptions = [
   {
     heading: 'Lasci che Zuraio renda le conoscenze aziendali più facili da trovare e utilizzare.',
-    emphasis: 'trovare',
   },
   {
     heading: 'Lasci che Zuraio trovi le Sue informazioni e faccia avanzare il lavoro.',
-    emphasis: 'avanti',
   },
   {
     heading: 'Lasci che Zuraio colleghi le Sue conoscenze e semplifichi il lavoro.',
-    emphasis: 'semplificare',
   },
   {
     heading: 'Lasci che Zuraio aiuti i Suoi collaboratori a trovare risposte e portare avanti il lavoro.',
-    emphasis: 'risposte',
   },
   {
     heading: 'Lasci che Zuraio renda le conoscenze aziendali più facili da trovare, comprendere e utilizzare.',
-    emphasis: 'capire',
   },
 ];
 
@@ -146,7 +139,7 @@ export const home = {
   different: {
     marker: 'Più di un chatbot',
     heading: 'Le conoscenze aziendali al servizio dei Suoi collaboratori.',
-    headingEmphasis: 'servizio',
+    headingEmphasis: 'conoscenze aziendali',
     body: 'L\'IA generica conosce solo ciò che qualcuno fornisce manualmente. Zuraio si collega in modo sicuro al know-how aziendale approvato, comprende il contesto di chi chiede e prepara lavoro documentato per la revisione.',
     without: {
       title: 'Senza Zuraio',
@@ -217,7 +210,6 @@ export const home = {
   },
   pillars: {
     heading: 'Tutto ciò di cui il Suo assistente ha bisogno per aiutare.',
-    headingEmphasis: 'aiutare',
     items: [
       { title: 'Conoscenze', body: 'Zuraio lavora con e-mail, documenti, contatti, note di riunione e sistemi aziendali approvati.', link: 'Esplori le conoscenze →', href: 'knowledge.html' },
       { title: 'Connessioni', body: 'Lavora accanto agli strumenti che il Suo team utilizza già, senza obbligare a sostituirli.', link: 'Veda le connessioni →', href: 'integrations.html' },
@@ -240,7 +232,7 @@ export const home = {
         id: 'mail',
         label: 'E-mail',
         heading: 'La risposta è già pronta.',
-        emphasis: 'pronta',
+        emphasis: 'risposta',
         body: 'I thread lunghi possono essere riassunti e le risposte preparate con il contesto aziendale pertinente. Lei revisiona, modifica e decide cosa inviare.',
         alt: 'Assistente e-mail Zuraio — posta in arrivo con bozza di risposta e fonti.',
       },
@@ -248,7 +240,6 @@ export const home = {
         id: 'project-summary',
         label: 'Sintesi di progetto',
         heading: 'Il quadro completo, già assemblato.',
-        emphasis: 'assemblato',
         body: 'Zuraio riunisce il contesto di progetto da e-mail, documenti e note, così il Suo team vede lo stato senza dover cercare.',
         alt: 'Sintesi di progetto Zuraio — panoramica consolidata con dettagli chiave e fonti.',
       },
@@ -256,7 +247,6 @@ export const home = {
         id: 'appointment-reply',
         label: 'Appuntamento e risposta',
         heading: 'Pianificazione gestita con contesto.',
-        emphasis: 'contesto',
         body: 'Una richiesta del cliente viene abbinata alla disponibilità del calendario, alla cronologia pertinente e a una bozza di risposta pronta per la Sua approvazione.',
         alt: 'Workflow appuntamenti Zuraio — orari suggeriti e bozza di risposta preparati dal contesto aziendale.',
       },
@@ -264,7 +254,6 @@ export const home = {
         id: 'meeting-transcript',
         label: 'Trascrizione riunione',
         heading: 'Ogni riunione, registrata e utilizzabile.',
-        emphasis: 'utilizzabile',
         body: 'Le trascrizioni vengono riassunte con decisioni, azioni e follow-up, così nulla dipende dalla sola memoria.',
         alt: 'Trascrizione riunione Zuraio — discussione riassunta con azioni e follow-up.',
       },
@@ -272,7 +261,6 @@ export const home = {
         id: 'tasks',
         label: 'Attività',
         heading: 'Nulla sfugge.',
-        emphasis: 'sfugge',
         body: 'Le azioni vengono estratte da e-mail, riunioni e messaggi, così i follow-up restano visibili prima di essere dimenticati.',
         alt: 'Vista attività Zuraio — azioni aperte raccolte dall\'attività aziendale recente.',
       },
@@ -280,7 +268,6 @@ export const home = {
         id: 'briefing',
         label: 'Briefing',
         heading: 'Entri preparato.',
-        emphasis: 'preparato',
         body: 'E-mail, note, documenti, decisioni e azioni aperte pertinenti raccolti prima di sedersi.',
         alt: 'Briefing riunione Zuraio — cronologia cliente, file correlati e punti di discussione preparati.',
       },
@@ -326,7 +313,6 @@ export const home = {
   origin: {
     marker: 'Perché l\'abbiamo creato',
     heading: 'Creato per il lavoro che dovevamo svolgere noi stessi.',
-    headingEmphasis: 'noi stessi',
     paragraphs: [
       'Zuraio è nato perché avevamo bisogno di un modo migliore per preparare, cercare, riassumere, redigere e fare follow-up nel nostro lavoro quotidiano.',
       'Gli strumenti di IA pubblici erano utili, ma non bastavano per un lavoro aziendale serio. Volevamo un\'IA collegata al know-how aziendale reale, con controllo chiaro su dati, accesso e scelta del modello.',
@@ -338,7 +324,6 @@ export const home = {
   },
   final: {
     heading: 'Veda cosa il Suo assistente potrebbe togliere dalla Sua scrivania.',
-    headingEmphasis: 'assistente',
     body: 'Esamineremo i Suoi strumenti attuali, il know-how aziendale e i requisiti di controllo dei dati, poi identificheremo dove Zuraio potrebbe aiutare per primo.',
     primaryCta: 'Prenoti una demo privata',
     secondaryCta: 'Veda l\'assistente al lavoro',

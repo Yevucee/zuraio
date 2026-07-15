@@ -9,7 +9,7 @@ export const heroOptions = [
   },
   {
     headline: 'Give every employee the power of an executive assistant.',
-    emphasis: 'power',
+    emphasis: 'executive assistant',
     paragraph:
       'Zuraio connects your company\u2019s knowledge and tools, giving your people instant support with research, writing, analysis and everyday tasks.',
     cta: 'See how Zuraio works',
@@ -17,7 +17,7 @@ export const heroOptions = [
   },
   {
     headline: 'An AI assistant that knows your company.',
-    emphasis: 'knows',
+    emphasis: 'AI assistant',
     paragraph:
       'Zuraio understands your documents, meetings, emails and business knowledge, so your employees can find answers and complete work faster.',
     cta: 'Discover the Zuraio AI Hub',
@@ -25,7 +25,6 @@ export const heroOptions = [
   },
   {
     headline: 'The intelligent workspace for your entire company.',
-    emphasis: 'workspace',
     paragraph:
       'Search company knowledge, create documents, analyse information and complete everyday work through one secure AI Hub.',
     cta: 'See what it can do',
@@ -33,7 +32,6 @@ export const heroOptions = [
   },
   {
     headline: 'An AI assistant for everyone. Powered by your company.',
-    emphasis: 'everyone',
     paragraph:
       'Zuraio turns your business knowledge into secure, practical support for every employee.',
     cta: 'Explore Zuraio',
@@ -44,23 +42,18 @@ export const heroOptions = [
 export const problemOptions = [
   {
     heading: 'Let Zuraio make your company knowledge easier to find and use.',
-    emphasis: 'find',
   },
   {
     heading: 'Let Zuraio find your information and move the work forward.',
-    emphasis: 'forward',
   },
   {
     heading: 'Let Zuraio connect your knowledge and simplify the work.',
-    emphasis: 'simplify',
   },
   {
     heading: 'Let Zuraio help your employees find answers and get work done.',
-    emphasis: 'answers',
   },
   {
     heading: 'Let Zuraio make your company knowledge easier to find, understand and use.',
-    emphasis: 'understand',
   },
 ];
 
@@ -146,7 +139,7 @@ export const home = {
   different: {
     marker: 'More than a chatbot',
     heading: 'Your company knowledge, working for your people.',
-    headingEmphasis: 'working',
+    headingEmphasis: 'company knowledge',
     body: 'Generic AI only knows what someone manually provides. Zuraio securely connects to approved company knowledge, understands the context of the person asking and prepares sourced work for review.',
     without: {
       title: 'Without Zuraio',
@@ -217,7 +210,6 @@ export const home = {
   },
   pillars: {
     heading: 'Everything your assistant needs to help.',
-    headingEmphasis: 'help',
     items: [
       { title: 'Knowledge', body: 'Zuraio works with approved emails, documents, contacts, meeting notes and company systems.', link: 'Explore knowledge →', href: 'knowledge.html' },
       { title: 'Connections', body: 'It works alongside the tools your team already uses rather than forcing people to replace them.', link: 'View connections →', href: 'integrations.html' },
@@ -240,7 +232,7 @@ export const home = {
         id: 'mail',
         label: 'Email',
         heading: 'The reply is already waiting.',
-        emphasis: 'waiting',
+        emphasis: 'reply',
         body: 'Long threads can be summarised and replies prepared using relevant company context. You review, edit and decide what gets sent.',
         alt: 'Zuraio email assistant — incoming mail with draft reply and sources.',
       },
@@ -248,7 +240,6 @@ export const home = {
         id: 'project-summary',
         label: 'Project summary',
         heading: 'The full picture, already assembled.',
-        emphasis: 'assembled',
         body: 'Zuraio pulls together project context from emails, documents and notes so your team can see status without searching.',
         alt: 'Zuraio project summary — consolidated project overview with key details and sources.',
       },
@@ -256,7 +247,6 @@ export const home = {
         id: 'appointment-reply',
         label: 'Appointment & reply',
         heading: 'Scheduling handled with context.',
-        emphasis: 'context',
         body: 'A client request is matched with calendar availability, relevant history and a draft reply ready for your approval.',
         alt: 'Zuraio appointment workflow — suggested times and draft reply prepared from company context.',
       },
@@ -264,7 +254,6 @@ export const home = {
         id: 'meeting-transcript',
         label: 'Meeting transcript',
         heading: 'Every meeting, captured and usable.',
-        emphasis: 'usable',
         body: 'Transcripts are summarised with decisions, actions and follow-ups so nothing depends on memory alone.',
         alt: 'Zuraio meeting transcript — summarised discussion with actions and follow-ups.',
       },
@@ -272,7 +261,6 @@ export const home = {
         id: 'tasks',
         label: 'Tasks',
         heading: 'Nothing slips through.',
-        emphasis: 'through',
         body: 'Actions are extracted from emails, meetings and messages so follow-ups are visible before they are forgotten.',
         alt: 'Zuraio tasks view — open actions gathered from recent company activity.',
       },
@@ -280,7 +268,6 @@ export const home = {
         id: 'briefing',
         label: 'Briefing',
         heading: 'Walk in prepared.',
-        emphasis: 'prepared',
         body: 'Relevant emails, notes, documents, decisions and open actions gathered before you sit down.',
         alt: 'Zuraio meeting brief — client history, related files and talking points prepared.',
       },
@@ -326,7 +313,6 @@ export const home = {
   origin: {
     marker: 'Why we built it',
     heading: 'Made for the work we had to do ourselves.',
-    headingEmphasis: 'ourselves',
     paragraphs: [
       'Zuraio started because we needed a better way to prepare, search, summarise, draft and follow up in our own work.',
       'Public AI tools were useful, but they were not enough for serious company work. We wanted AI connected to real business knowledge, with clear control over data, access and model choice.',
@@ -338,7 +324,6 @@ export const home = {
   },
   final: {
     heading: 'See what your own assistant could take off your desk.',
-    headingEmphasis: 'assistant',
     body: 'We will look at your current tools, company knowledge and data-control requirements, then identify where Zuraio could help first.',
     primaryCta: 'Book a private demo',
     secondaryCta: 'See the assistant working',

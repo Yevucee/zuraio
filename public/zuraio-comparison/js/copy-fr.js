@@ -9,7 +9,7 @@ export const heroOptions = [
   },
   {
     headline: 'Donnez à chaque collaborateur la puissance d\u2019un assistant de direction.',
-    emphasis: 'pouvoir',
+    emphasis: 'assistant de direction',
     paragraph:
       'Zuraio connecte les connaissances et les outils de votre entreprise, offrant à vos équipes un soutien immédiat pour la recherche, la rédaction, l\u2019analyse et les tâches quotidiennes.',
     cta: 'Découvrez le fonctionnement de Zuraio',
@@ -17,7 +17,7 @@ export const heroOptions = [
   },
   {
     headline: 'Un assistant IA qui connaît votre entreprise.',
-    emphasis: 'connaît',
+    emphasis: 'assistant IA',
     paragraph:
       'Zuraio comprend vos documents, réunions, e-mails et connaissances métier, afin que vos collaborateurs trouvent des réponses et accomplissent leur travail plus rapidement.',
     cta: 'Découvrez le Zuraio AI Hub',
@@ -25,7 +25,6 @@ export const heroOptions = [
   },
   {
     headline: 'L\u2019espace de travail intelligent pour toute votre entreprise.',
-    emphasis: 'workspace',
     paragraph:
       'Recherchez les connaissances de l\u2019entreprise, créez des documents, analysez des informations et accomplissez le travail quotidien via un AI Hub sécurisé.',
     cta: 'Découvrez ce qu\u2019il peut faire',
@@ -33,7 +32,6 @@ export const heroOptions = [
   },
   {
     headline: 'Un assistant IA pour tous. Alimenté par votre entreprise.',
-    emphasis: 'tous',
     paragraph:
       'Zuraio transforme vos connaissances métier en un soutien sécurisé et concret pour chaque collaborateur.',
     cta: 'Explorer Zuraio',
@@ -44,23 +42,18 @@ export const heroOptions = [
 export const problemOptions = [
   {
     heading: 'Laissez Zuraio rendre les connaissances de votre entreprise plus faciles à trouver et à utiliser.',
-    emphasis: 'trouver',
   },
   {
     heading: 'Laissez Zuraio retrouver vos informations et faire avancer le travail.',
-    emphasis: 'avancer',
   },
   {
     heading: 'Laissez Zuraio connecter vos connaissances et simplifier le travail.',
-    emphasis: 'simplifier',
   },
   {
     heading: 'Laissez Zuraio aider vos collaborateurs à trouver des réponses et à accomplir leur travail.',
-    emphasis: 'réponses',
   },
   {
     heading: 'Laissez Zuraio rendre les connaissances de votre entreprise plus faciles à trouver, à comprendre et à utiliser.',
-    emphasis: 'comprendre',
   },
 ];
 
@@ -146,7 +139,7 @@ export const home = {
   different: {
     marker: 'Plus qu\u2019un chatbot',
     heading: 'Les connaissances de votre entreprise, au service de vos équipes.',
-    headingEmphasis: 'service',
+    headingEmphasis: 'connaissances de votre entreprise',
     body: 'Une IA générique ne connaît que ce qu\u2019on lui fournit manuellement. Zuraio se connecte de manière sécurisée aux connaissances approuvées de l\u2019entreprise, comprend le contexte de la personne qui pose la question et prépare un travail sourcé pour validation.',
     without: {
       title: 'Sans Zuraio',
@@ -217,7 +210,6 @@ export const home = {
   },
   pillars: {
     heading: 'Tout ce dont votre assistant a besoin pour vous aider.',
-    headingEmphasis: 'aider',
     items: [
       { title: 'Connaissances', body: 'Zuraio travaille avec les e-mails, documents, contacts, notes de réunion et systèmes approuvés de l\u2019entreprise.', link: 'Explorer les connaissances →', href: 'knowledge.html' },
       { title: 'Connexions', body: 'Il s\u2019intègre aux outils que votre équipe utilise déjà, sans imposer de les remplacer.', link: 'Voir les connexions →', href: 'integrations.html' },
@@ -240,7 +232,7 @@ export const home = {
         id: 'mail',
         label: 'E-mail',
         heading: 'La réponse est déjà prête.',
-        emphasis: 'prête',
+        emphasis: 'réponse',
         body: 'Les longs fils de discussion peuvent être synthétisés et les réponses préparées à partir du contexte pertinent de l\u2019entreprise. Vous examinez, modifiez et décidez de ce qui est envoyé.',
         alt: 'Assistant e-mail Zuraio — message entrant avec brouillon de réponse et sources.',
       },
@@ -248,7 +240,6 @@ export const home = {
         id: 'project-summary',
         label: 'Synthèse de projet',
         heading: 'La vue d\u2019ensemble, déjà assemblée.',
-        emphasis: 'assemblée',
         body: 'Zuraio rassemble le contexte du projet à partir des e-mails, documents et notes, afin que votre équipe voie l\u2019état d\u2019avancement sans chercher.',
         alt: 'Synthèse de projet Zuraio — aperçu consolidé du projet avec détails clés et sources.',
       },
@@ -256,7 +247,6 @@ export const home = {
         id: 'appointment-reply',
         label: 'Rendez-vous et réponse',
         heading: 'La planification, gérée avec le contexte.',
-        emphasis: 'contexte',
         body: 'Une demande client est associée aux disponibilités du calendrier, à l\u2019historique pertinent et à un brouillon de réponse prêt pour votre validation.',
         alt: 'Flux rendez-vous Zuraio — créneaux suggérés et brouillon de réponse préparés à partir du contexte d\u2019entreprise.',
       },
@@ -264,7 +254,6 @@ export const home = {
         id: 'meeting-transcript',
         label: 'Transcription de réunion',
         heading: 'Chaque réunion, capturée et exploitable.',
-        emphasis: 'exploitable',
         body: 'Les transcriptions sont synthétisées avec décisions, actions et relances, afin que rien ne repose sur la seule mémoire.',
         alt: 'Transcription de réunion Zuraio — discussion synthétisée avec actions et relances.',
       },
@@ -272,7 +261,6 @@ export const home = {
         id: 'tasks',
         label: 'Tâches',
         heading: 'Rien ne passe entre les mailles.',
-        emphasis: 'mailles',
         body: 'Les actions sont extraites des e-mails, réunions et messages, afin que les relances soient visibles avant d\u2019être oubliées.',
         alt: 'Vue tâches Zuraio — actions ouvertes rassemblées à partir de l\u2019activité récente de l\u2019entreprise.',
       },
@@ -280,7 +268,6 @@ export const home = {
         id: 'briefing',
         label: 'Briefing',
         heading: 'Arrivez préparé.',
-        emphasis: 'préparé',
         body: 'E-mails, notes, documents, décisions et actions ouvertes pertinents rassemblés avant de vous asseoir.',
         alt: 'Brief de réunion Zuraio — historique client, fichiers associés et points de discussion préparés.',
       },
@@ -326,7 +313,6 @@ export const home = {
   origin: {
     marker: 'Pourquoi nous l\u2019avons créé',
     heading: 'Conçu pour le travail que nous devions faire nous-mêmes.',
-    headingEmphasis: 'nous-mêmes',
     paragraphs: [
       'Zuraio est né parce que nous avions besoin d\u2019une meilleure façon de préparer, rechercher, synthétiser, rédiger et assurer le suivi dans notre propre travail.',
       'Les outils d\u2019IA publics étaient utiles, mais insuffisants pour un travail d\u2019entreprise sérieux. Nous voulions une IA connectée aux connaissances métier réelles, avec un contrôle clair sur les données, l\u2019accès et le choix du modèle.',
@@ -338,7 +324,6 @@ export const home = {
   },
   final: {
     heading: 'Découvrez ce que votre propre assistant pourrait retirer de votre bureau.',
-    headingEmphasis: 'assistant',
     body: 'Nous examinerons vos outils actuels, vos connaissances d\u2019entreprise et vos exigences en matière de contrôle des données, puis identifierons où Zuraio pourrait vous aider en premier.',
     primaryCta: 'Réserver une démo privée',
     secondaryCta: 'Voir l\u2019assistant à l\u2019œuvre',

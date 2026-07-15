@@ -9,7 +9,7 @@ export const heroOptions = [
   },
   {
     headline: 'Geben Sie jeder Mitarbeitenden Person die Kraft eines Executive Assistants.',
-    emphasis: 'Kraft',
+    emphasis: 'Executive Assistant',
     paragraph:
       'Zuraio verbindet das Wissen und die Tools Ihres Unternehmens und unterstützt Ihre Teams sofort bei Recherche, Texten, Analyse und alltäglichen Aufgaben.',
     cta: 'So funktioniert Zuraio',
@@ -17,7 +17,7 @@ export const heroOptions = [
   },
   {
     headline: 'Ein KI-Assistent, der Ihr Unternehmen kennt.',
-    emphasis: 'kennt',
+    emphasis: 'KI-Assistent',
     paragraph:
       'Zuraio versteht Ihre Dokumente, Meetings, E-Mails und Ihr Unternehmenswissen, damit Mitarbeitende schneller Antworten finden und Arbeit erledigen können.',
     cta: 'Entdecken Sie den Zuraio AI Hub',
@@ -25,7 +25,6 @@ export const heroOptions = [
   },
   {
     headline: 'Der intelligente Workspace für Ihr gesamtes Unternehmen.',
-    emphasis: 'Workspace',
     paragraph:
       'Durchsuchen Sie Unternehmenswissen, erstellen Sie Dokumente, analysieren Sie Informationen und erledigen Sie alltägliche Arbeit über einen sicheren AI Hub.',
     cta: 'Sehen Sie, was möglich ist',
@@ -33,7 +32,6 @@ export const heroOptions = [
   },
   {
     headline: 'Ein KI-Assistent für alle. Angetrieben von Ihrem Unternehmen.',
-    emphasis: 'alle',
     paragraph:
       'Zuraio macht aus Ihrem Unternehmenswissen sichere, praktische Unterstützung für jede Mitarbeitende Person.',
     cta: 'Zuraio entdecken',
@@ -44,23 +42,18 @@ export const heroOptions = [
 export const problemOptions = [
   {
     heading: 'Lassen Sie Zuraio Ihr Unternehmenswissen leichter finden und nutzen.',
-    emphasis: 'finden',
   },
   {
     heading: 'Lassen Sie Zuraio Ihre Informationen finden und die Arbeit voranbringen.',
-    emphasis: 'voranbringen',
   },
   {
     heading: 'Lassen Sie Zuraio Ihr Wissen verbinden und die Arbeit vereinfachen.',
-    emphasis: 'vereinfachen',
   },
   {
     heading: 'Lassen Sie Zuraio Ihren Mitarbeitenden helfen, Antworten zu finden und Arbeit zu erledigen.',
-    emphasis: 'Antworten',
   },
   {
     heading: 'Lassen Sie Zuraio Ihr Unternehmenswissen leichter finden, verstehen und nutzen.',
-    emphasis: 'verstehen',
   },
 ];
 
@@ -146,7 +139,7 @@ export const home = {
   different: {
     marker: 'Mehr als ein Chatbot',
     heading: 'Ihr Unternehmenswissen, im Dienst Ihrer Teams.',
-    headingEmphasis: 'Dienst',
+    headingEmphasis: 'Unternehmenswissen',
     body: 'Generische KI kennt nur das, was jemand manuell bereitstellt. Zuraio verbindet sich sicher mit genehmigtem Unternehmenswissen, versteht den Kontext der fragenden Person und bereitet quellenbasierte Arbeit zur Prüfung vor.',
     without: {
       title: 'Ohne Zuraio',
@@ -217,7 +210,6 @@ export const home = {
   },
   pillars: {
     heading: 'Alles, was Ihr Assistent braucht, um zu helfen.',
-    headingEmphasis: 'helfen',
     items: [
       { title: 'Wissen', body: 'Zuraio arbeitet mit genehmigten E-Mails, Dokumenten, Kontakten, Meeting-Notizen und Unternehmenssystemen.', link: 'Wissen erkunden →', href: 'knowledge.html' },
       { title: 'Verbindungen', body: 'Es arbeitet mit den Tools, die Ihr Team bereits nutzt, statt Menschen zum Wechsel zu zwingen.', link: 'Verbindungen ansehen →', href: 'integrations.html' },
@@ -240,7 +232,7 @@ export const home = {
         id: 'mail',
         label: 'E-Mail',
         heading: 'Die Antwort wartet bereits.',
-        emphasis: 'wartet',
+        emphasis: 'Antwort',
         body: 'Lange Threads können zusammengefasst und Antworten mit relevantem Unternehmenskontext vorbereitet werden. Sie prüfen, bearbeiten und entscheiden, was gesendet wird.',
         alt: 'Zuraio E-Mail-Assistent — eingehende Mail mit Antwortentwurf und Quellen.',
       },
@@ -248,7 +240,6 @@ export const home = {
         id: 'project-summary',
         label: 'Projektzusammenfassung',
         heading: 'Das Gesamtbild, bereits zusammengestellt.',
-        emphasis: 'zusammengestellt',
         body: 'Zuraio führt Projektkontext aus E-Mails, Dokumenten und Notizen zusammen, damit Ihr Team den Status sieht, ohne zu suchen.',
         alt: 'Zuraio Projektzusammenfassung — konsolidierte Projektübersicht mit Details und Quellen.',
       },
@@ -256,7 +247,6 @@ export const home = {
         id: 'appointment-reply',
         label: 'Termin und Antwort',
         heading: 'Terminplanung mit Kontext erledigt.',
-        emphasis: 'Kontext',
         body: 'Eine Kundenanfrage wird mit Kalenderverfügbarkeit, relevanter Historie und einem Antwortentwurf zur Freigabe zusammengebracht.',
         alt: 'Zuraio Termin-Workflow — vorgeschlagene Zeiten und Antwortentwurf aus Unternehmenskontext.',
       },
@@ -264,7 +254,6 @@ export const home = {
         id: 'meeting-transcript',
         label: 'Meetingtranskript',
         heading: 'Jedes Meeting erfasst und nutzbar.',
-        emphasis: 'nutzbar',
         body: 'Transkripte werden mit Entscheidungen, Aktionen und Follow-ups zusammengefasst — nichts hängt allein vom Gedächtnis ab.',
         alt: 'Zuraio Meetingtranskript — zusammengefasste Diskussion mit Aktionen und Follow-ups.',
       },
@@ -272,7 +261,6 @@ export const home = {
         id: 'tasks',
         label: 'Aufgaben',
         heading: 'Nichts geht verloren.',
-        emphasis: 'verloren',
         body: 'Aktionen werden aus E-Mails, Meetings und Nachrichten extrahiert, damit Follow-ups sichtbar bleiben.',
         alt: 'Zuraio Aufgabenansicht — offene Aktionen aus aktueller Unternehmensaktivität.',
       },
@@ -280,7 +268,6 @@ export const home = {
         id: 'briefing',
         label: 'Briefing',
         heading: 'Vorbereitet ins Meeting.',
-        emphasis: 'Vorbereitet',
         body: 'Relevante E-Mails, Notizen, Dokumente, Entscheidungen und offene Aktionen werden vor dem Meeting zusammengetragen.',
         alt: 'Zuraio Meeting-Briefing — Kundenhistorie, Dateien und Gesprächspunkte vorbereitet.',
       },
@@ -326,7 +313,6 @@ export const home = {
   origin: {
     marker: 'Warum wir es gebaut haben',
     heading: 'Gemacht für die Arbeit, die wir selbst erledigen mussten.',
-    headingEmphasis: 'selbst',
     paragraphs: [
       'Zuraio entstand, weil wir einen besseren Weg brauchten, um in unserer eigenen Arbeit vorzubereiten, zu suchen, zusammenzufassen, zu entwerfen und nachzufassen.',
       'Öffentliche KI-Tools waren nützlich, reichten aber nicht für ernsthafte Unternehmensarbeit. Wir wollten KI, die mit echtem Unternehmenswissen verbunden ist — mit klarer Kontrolle über Daten, Zugriff und Modellwahl.',
@@ -338,7 +324,6 @@ export const home = {
   },
   final: {
     heading: 'Sehen Sie, was Ihr eigener Assistent von Ihrem Schreibtisch nehmen könnte.',
-    headingEmphasis: 'Assistent',
     body: 'Wir betrachten Ihre aktuellen Tools, Ihr Unternehmenswissen und Ihre Anforderungen an Datenkontrolle — und identifizieren, wo Zuraio zuerst helfen könnte.',
     primaryCta: 'Private Demo buchen',
     secondaryCta: 'Assistenten bei der Arbeit sehen',
