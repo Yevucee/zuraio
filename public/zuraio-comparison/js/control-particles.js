@@ -278,7 +278,14 @@ export function initControlParticles() {
     node.vy = Math.max(-maxSpeed, Math.min(maxSpeed, node.vy));
   }
 
+  function shouldConnect(a, b) {
+    if (a.icon === 'lock' && b.icon === 'lock') return false;
+    return true;
+  }
+
   function drawConnection(a, b, connectDistance, depthFactor, lineBoost) {
+    if (!shouldConnect(a, b)) return;
+
     const dx = a.x - b.x;
     const dy = a.y - b.y;
     const distance = Math.hypot(dx, dy);
