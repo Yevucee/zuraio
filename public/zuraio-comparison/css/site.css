@@ -281,7 +281,7 @@ main#top > section + section:not(.hero-layered):not(.final) {
 
 .btn:focus-visible,
 .tab:focus-visible,
-.lang-dropdown-option:focus-visible,
+.lang-dropdown-btn:focus-visible,
 .nav-toggle:focus-visible,
 .nav-dropdown-btn:focus-visible,
 .hero-ctrl-btn:focus-visible,
@@ -527,26 +527,75 @@ header.nav.is-floating.scrolled {
 }
 
 .lang-dropdown {
+  position: relative;
   flex-shrink: 0;
 }
 
 .lang-dropdown-btn {
-  min-width: 72px;
-  justify-content: space-between;
-  padding: 8px 14px;
-  border: 1px solid var(--hairline);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: auto;
+  min-width: 0;
+  padding: 7px 12px 7px 14px;
+  border: 1px solid rgba(43, 43, 38, 0.12);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.92);
   font-family: "IBM Plex Mono", monospace;
   font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   color: var(--charcoal);
+  cursor: pointer;
+  line-height: 1;
+  white-space: nowrap;
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    color 0.2s;
+}
+
+.lang-dropdown-btn:hover {
+  border-color: rgba(159, 175, 82, 0.35);
+  color: var(--olive-deep);
+}
+
+.lang-dropdown-current {
+  line-height: 1;
+}
+
+.lang-dropdown-btn::after {
+  content: "";
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.2s var(--ease);
+}
+
+.lang-dropdown-btn[aria-expanded="true"]::after {
+  transform: rotate(-135deg) translateY(1px);
 }
 
 .lang-dropdown-menu {
-  min-width: 92px;
+  display: none;
+  flex-direction: column;
+  gap: 2px;
   padding: 6px;
+  margin-top: 8px;
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  background: var(--white);
+  box-shadow: var(--shadow-md);
+  width: max-content;
+  min-width: 88px;
+}
+
+.lang-dropdown-menu.is-open {
+  display: flex;
 }
 
 .lang-dropdown-option {
@@ -587,9 +636,12 @@ header.nav.is-floating.scrolled {
 
 @media (min-width: 980px) {
   .lang-dropdown-menu {
-    left: auto;
+    position: absolute;
+    top: calc(100% + 8px);
     right: 0;
-    transform: none;
+    left: auto;
+    margin-top: 0;
+    z-index: 12;
   }
 }
 

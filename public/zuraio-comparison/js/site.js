@@ -30,19 +30,37 @@ function renderLangDropdown(uiData, locale) {
   ).join('');
 
   return `
-    <div class="lang-dropdown nav-dropdown">
-      <button type="button" class="lang-dropdown-btn nav-dropdown-btn" aria-expanded="false" aria-haspopup="listbox" aria-label="${uiData.languageLabel}">
+    <div class="lang-dropdown">
+      <button type="button" class="lang-dropdown-btn" aria-expanded="false" aria-haspopup="listbox" aria-label="${uiData.languageLabel}">
         <span class="lang-dropdown-current">${current}</span>
       </button>
-      <div class="lang-dropdown-menu nav-dropdown-menu" role="listbox" aria-label="${uiData.languageLabel}">
+      <div class="lang-dropdown-menu" role="listbox" aria-label="${uiData.languageLabel}">
         ${options}
       </div>
     </div>`;
 }
 
+function getDropdownParts(dropdownEl) {
+  if (!dropdownEl) return {};
+  const btn = dropdownEl.querySelector('[aria-haspopup]');
+  const menu =
+    dropdownEl.querySelector('.lang-dropdown-menu') ??
+    dropdownEl.querySelector('.nav-dropdown-menu');
+  return { btn, menu };
+}
+
+function closeAllDropdowns(root) {
+  root.querySelectorAll('[aria-haspopup][aria-expanded="true"]').forEach((btn) => {
+    btn.setAttribute('aria-expanded', 'false');
+    const parent = btn.closest('.lang-dropdown, .nav-dropdown');
+    parent
+      ?.querySelector('.lang-dropdown-menu, .nav-dropdown-menu')
+      ?.classList.remove('is-open');
+  });
+}
+
 function bindDropdown(root, dropdownEl, onSelect) {
-  const btn = dropdownEl?.querySelector('.nav-dropdown-btn');
-  const menu = dropdownEl?.querySelector('.nav-dropdown-menu');
+  const { btn, menu } = getDropdownParts(dropdownEl);
   if (!btn || !menu) return;
 
   const close = () => {
@@ -53,11 +71,7 @@ function bindDropdown(root, dropdownEl, onSelect) {
   btn.addEventListener('click', (event) => {
     event.stopPropagation();
     const open = btn.getAttribute('aria-expanded') === 'true';
-    root.querySelectorAll('.nav-dropdown-btn[aria-expanded="true"]').forEach((other) => {
-      if (other === btn) return;
-      other.setAttribute('aria-expanded', 'false');
-      other.closest('.nav-dropdown')?.querySelector('.nav-dropdown-menu')?.classList.remove('is-open');
-    });
+    closeAllDropdowns(root);
     btn.setAttribute('aria-expanded', open ? 'false' : 'true');
     menu.classList.toggle('is-open', !open);
   });
@@ -149,11 +163,8 @@ export function renderHeader() {
   if (!el.dataset.dropdownDismissBound) {
     el.dataset.dropdownDismissBound = 'true';
     document.addEventListener('click', (event) => {
-      if (event.target.closest('.nav-dropdown')) return;
-      el.querySelectorAll('.nav-dropdown-btn[aria-expanded="true"]').forEach((btn) => {
-        btn.setAttribute('aria-expanded', 'false');
-        btn.closest('.nav-dropdown')?.querySelector('.nav-dropdown-menu')?.classList.remove('is-open');
-      });
+      if (event.target.closest('.lang-dropdown, .nav-dropdown')) return;
+      closeAllDropdowns(el);
     });
   }
 
