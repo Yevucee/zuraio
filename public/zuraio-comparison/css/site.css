@@ -3092,10 +3092,15 @@ footer.site-footer {
   position: relative;
   z-index: 2;
   width: 100%;
-  padding: clamp(56px, 10vh, 112px) 0 clamp(56px, 10vh, 112px);
+  padding: clamp(72px, 9vh, 104px) 0 clamp(48px, 7vh, 80px);
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+}
+
+.hero-layered--composite .hero-layered__content {
   justify-content: center;
+  padding: clamp(56px, 10vh, 112px) 0 clamp(56px, 10vh, 112px);
 }
 
 .hero-layered__content.wrap {
@@ -3113,12 +3118,29 @@ footer.site-footer {
   .hero-layered .hero-grid {
     grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
     gap: clamp(36px, 4.5vw, 64px);
-    align-items: center;
+    align-items: start;
+  }
+
+  .hero-layered .hero-copy {
+    align-self: start;
+    justify-content: flex-start;
+    min-height: 0;
+    margin-top: clamp(-12px, -2vh, 0px);
+    transform: translateY(-8%);
   }
 
   .hero-layered--composite .hero-grid {
     grid-template-columns: minmax(0, 1fr);
     max-width: 560px;
+    align-items: center;
+  }
+
+  .hero-layered--composite .hero-copy {
+    align-self: auto;
+    justify-content: center;
+    min-height: var(--hero-copy-min);
+    margin-top: 0;
+    transform: none;
   }
 }
 
