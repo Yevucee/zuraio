@@ -280,6 +280,7 @@ export function initControlParticles() {
 
   function shouldConnect(a, b) {
     if (a.icon === 'lock' && b.icon === 'lock') return false;
+    if (a.icon === 'key' && b.icon === 'key') return false;
     return true;
   }
 
