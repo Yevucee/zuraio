@@ -1,4 +1,21 @@
-# Hero comparison images
+# Hero images
+
+## Layered homepage hero (`index.html`)
+
+The hero uses **two separate layers** — not one baked composite:
+
+| File | Role |
+|------|------|
+| `zurich-office-hero.jpg` | Full-bleed office background (your photo only — no Zurich skyline assets) |
+| `hero-popup-ui.png` | Chat UI popup on the right, above the background |
+
+Add your office photo as **`zurich-office-hero.jpg`** in this folder (JPEG, ideally under 2 MB for fast loading). After adding, commit and push.
+
+The live headline, body, CTA and trust pills stay as HTML on the left.
+
+---
+
+## Hero comparison options (optional review mode)
 
 Place five full hero PNGs here. Each image includes the marketing copy baked in (headline, body, CTAs).
 
