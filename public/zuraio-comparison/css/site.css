@@ -2090,6 +2090,15 @@ h3 .headline-em {
   z-index: 1;
 }
 
+#reviewable > .wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.audit-particles {
+  opacity: 0.42;
+}
+
 .control h2,
 .control h4 {
   color: #fff;
@@ -2233,6 +2242,44 @@ h3 .headline-em {
 .acol p {
   font-size: 13.5px;
   color: var(--muted);
+}
+
+#reviewable.control .headline-em {
+  color: var(--soft-olive);
+}
+
+#reviewable.control .section-link a {
+  color: var(--soft-olive);
+}
+
+#reviewable.control .section-link a:hover {
+  color: #fff;
+}
+
+#reviewable.control .acol {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+  transition:
+    border-color 0.3s,
+    background 0.3s;
+}
+
+#reviewable.control .acol:hover {
+  border-color: rgba(159, 175, 82, 0.55);
+  background: rgba(159, 175, 82, 0.07);
+}
+
+#reviewable.control .acol .step {
+  color: var(--soft-olive);
+}
+
+#reviewable.control .acol h4 {
+  color: #fff;
+}
+
+#reviewable.control .acol p {
+  color: #bfc2b6;
 }
 
 .acol .chip {
