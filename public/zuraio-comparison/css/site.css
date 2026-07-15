@@ -559,8 +559,9 @@ header.nav.is-floating.scrolled {
 }
 
 .lang-dropdown-btn:hover {
-  border-color: rgba(159, 175, 82, 0.35);
+  border-color: rgba(120, 138, 54, 0.42);
   color: var(--olive-deep);
+  background: var(--soft-olive);
 }
 
 .lang-dropdown-current {
@@ -3243,14 +3244,21 @@ footer.site-footer {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #8ab13a;
+  background: var(--olive);
   flex-shrink: 0;
+  transition: background 0.2s;
 }
 
-.hero-trust-pill:hover {
+.hero-trust-pill:hover,
+.hero-trust-pill:focus-visible {
   color: var(--olive-deep);
-  border-color: rgba(159, 175, 82, 0.35);
-  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(120, 138, 54, 0.42);
+  background: var(--soft-olive);
+}
+
+.hero-trust-pill:hover::before,
+.hero-trust-pill:focus-visible::before {
+  background: var(--olive-deep);
 }
 
 .hero-layered .hero-visual {
