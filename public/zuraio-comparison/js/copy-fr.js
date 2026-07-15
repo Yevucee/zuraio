@@ -300,15 +300,20 @@ export const home = {
     link: 'Explorer le contrôle des données et la sécurité →',
   },
   reviewable: {
+    marker: 'Gouvernance IA',
     heading: 'Une IA que vous pourrez expliquer plus tard.',
     headingEmphasis: 'expliquer',
-    body: 'Consultez ce qui a été demandé, quelles sources approuvées ont été utilisées et ce qui a été produit. Cela facilite l\u2019examen interne et aide les entreprises à se préparer aux futures exigences de gouvernance IA.',
-    steps: [
-      { label: 'Ce qui a été demandé', title: 'La demande', body: 'L\u2019invite ou la requête qui a lancé le travail.' },
-      { label: 'Ce qui a été utilisé', title: 'Les sources', body: 'Les sources d\u2019entreprise approuvées derrière la réponse.' },
-      { label: 'Ce qui a été produit', title: 'Le résultat', body: 'La réponse, le brouillon ou la synthèse en attente de validation.' },
+    bodyParagraphs: [
+      'L\u2019utilisation de l\u2019IA devient plus facile à examiner. Clients, auditeurs et régulateurs attendront de plus en plus que les entreprises expliquent d\u2019où viennent les informations et comment l\u2019IA a été utilisée.',
+      'Zuraio vous aide à rester prêt avec des réponses sourcées et une IA révisable.',
     ],
-    link: 'Voir l\u2019approche technique →',
+    steps: [
+      { label: 'Ce qui a été demandé', title: 'La demande', body: 'Conservez une trace de l\u2019invite ou de la tâche.' },
+      { label: 'Ce qui a été utilisé', title: 'Les sources', body: 'Voyez exactement quelles informations d\u2019entreprise approuvées ont été utilisées.' },
+      { label: 'Ce qui a été produit', title: 'Le résultat', body: 'Examinez la réponse, le brouillon ou la synthèse créée.' },
+      { label: 'Qui a validé', title: 'La révision', body: 'Sachez qui a révisé, modifié ou approuvé le résultat final.' },
+    ],
+    link: 'En savoir plus sur la gouvernance IA →',
   },
   origin: {
     marker: 'Pourquoi nous l\u2019avons créé',

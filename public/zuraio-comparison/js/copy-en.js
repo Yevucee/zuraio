@@ -300,15 +300,20 @@ export const home = {
     link: 'Explore data control and security →',
   },
   reviewable: {
+    marker: 'AI governance',
     heading: 'AI you can explain later.',
     headingEmphasis: 'explain',
-    body: 'See what was asked, which approved sources were used and what was produced. This supports internal review and helps companies prepare for future AI-governance expectations.',
-    steps: [
-      { label: 'What was asked', title: 'The request', body: 'The prompt or request that started the work.' },
-      { label: 'What was used', title: 'The sources', body: 'The approved company sources behind the answer.' },
-      { label: 'What was produced', title: 'The output', body: 'The answer, draft or summary awaiting review.' },
+    bodyParagraphs: [
+      'AI use is becoming easier to scrutinise. Customers, auditors and regulators will increasingly expect companies to explain where information came from and how AI was used.',
+      'Zuraio helps you stay prepared with source-backed answers and reviewable AI.',
     ],
-    link: 'View the technical approach →',
+    steps: [
+      { label: 'What was asked', title: 'The request', body: 'Keep a record of the prompt or task.' },
+      { label: 'What was used', title: 'The sources', body: 'See exactly which approved company information was used.' },
+      { label: 'What was produced', title: 'The output', body: 'Review the answer, draft or summary that was created.' },
+      { label: 'Who approved it', title: 'The review', body: 'Know who reviewed, edited or approved the final result.' },
+    ],
+    link: 'Learn about AI governance →',
   },
   origin: {
     marker: 'Why we built it',

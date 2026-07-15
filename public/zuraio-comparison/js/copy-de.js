@@ -300,15 +300,20 @@ export const home = {
     link: 'Datenkontrolle und Sicherheit erkunden →',
   },
   reviewable: {
+    marker: 'KI-Governance',
     heading: 'KI, die Sie später erklären können.',
     headingEmphasis: 'erklären',
-    body: 'Sehen Sie, was gefragt wurde, welche genehmigten Quellen genutzt wurden und was produziert wurde. Das unterstützt interne Prüfung und hilft Unternehmen, sich auf künftige KI-Governance-Erwartungen vorzubereiten.',
-    steps: [
-      { label: 'Was gefragt wurde', title: 'Die Anfrage', body: 'Die Eingabe oder Anfrage, die die Arbeit ausgelöst hat.' },
-      { label: 'Was genutzt wurde', title: 'Die Quellen', body: 'Die genehmigten Unternehmensquellen hinter der Antwort.' },
-      { label: 'Was produziert wurde', title: 'Das Ergebnis', body: 'Die Antwort, der Entwurf oder die Zusammenfassung zur Prüfung.' },
+    bodyParagraphs: [
+      'Die Nutzung von KI wird zunehmend leichter überprüfbar. Kunden, Prüfer und Regulierungsbehörden werden künftig verstärkt erwarten, dass Unternehmen erklären können, woher Informationen stammen und wie KI eingesetzt wurde.',
+      'Zuraio hilft Ihnen, vorbereitet zu bleiben — mit quellengestützten Antworten und überprüfbarer KI.',
     ],
-    link: 'Technischen Ansatz ansehen →',
+    steps: [
+      { label: 'Was gefragt wurde', title: 'Die Anfrage', body: 'Behalten Sie die Eingabe oder Aufgabe im Blick.' },
+      { label: 'Was genutzt wurde', title: 'Die Quellen', body: 'Sehen Sie genau, welche genehmigten Unternehmensinformationen genutzt wurden.' },
+      { label: 'Was produziert wurde', title: 'Das Ergebnis', body: 'Prüfen Sie die erstellte Antwort, den Entwurf oder die Zusammenfassung.' },
+      { label: 'Wer freigegeben hat', title: 'Die Prüfung', body: 'Wissen Sie, wer das Ergebnis geprüft, bearbeitet oder freigegeben hat.' },
+    ],
+    link: 'Mehr zur KI-Governance →',
   },
   origin: {
     marker: 'Warum wir es gebaut haben',

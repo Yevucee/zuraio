@@ -215,14 +215,18 @@ export function applyHomeTranslations() {
   setHtml('#data-control .ctrl-note span:last-child', home.dataControl.note);
   setHtml('#data-control .section-link a', home.dataControl.link);
 
+  setText('#reviewable .marker', home.reviewable.marker);
   setHeading('#reviewable h2', home.reviewable.heading, home.reviewable.headingEmphasis);
-  setText('#reviewable .lede', home.reviewable.body);
-  const processSteps = document.querySelectorAll('#reviewable .process-step');
+  const reviewableLedes = document.querySelectorAll('#reviewable .lede');
+  home.reviewable.bodyParagraphs?.forEach((paragraph, i) => {
+    if (reviewableLedes[i]) reviewableLedes[i].textContent = paragraph;
+  });
+  const processSteps = document.querySelectorAll('#reviewable .acol');
   home.reviewable.steps?.forEach((step, i) => {
     const el = processSteps[i];
     if (!el) return;
-    const label = el.querySelector('.process-label');
-    const title = el.querySelector('.process-title');
+    const label = el.querySelector('.step');
+    const title = el.querySelector('h4');
     const body = el.querySelector('p');
     if (label) label.textContent = step.label;
     if (title) title.textContent = step.title;

@@ -9,7 +9,7 @@ import { initInternalReview, refreshInternalReview, isInternalReviewMode } from 
 import { initLogoWatermarks } from './logo-watermarks.js';
 import { SITE } from './config.js';
 import { initWorkflowComparison, resetWorkflowComparison } from './workflow-comparison.js?v=20260746';
-import { applyAllTranslations, getLocale, initLocaleSwitcher } from './i18n.js?v=20260749';
+import { applyAllTranslations, getLocale, initLocaleSwitcher } from './i18n.js?v=20260767';
 
 document.documentElement.lang = getLocale();
 
