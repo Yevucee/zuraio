@@ -3,13 +3,14 @@ import { initHeroComparison } from './hero-comparison.js?v=20260747';
 import { initProblemComparison } from './problem-comparison.js?v=20260716';
 import { initDemoShowcase } from './demo-showcase.js?v=20260723';
 import { initControlParticles } from './control-particles.js?v=20260766';
+import { initAuditParticles } from './audit-particles.js?v=20260768';
 import { initMarquee } from './integrations-marquee.js';
 import { initFaq } from './faq-accordion.js';
 import { initInternalReview, refreshInternalReview, isInternalReviewMode } from './internal-review.js';
 import { initLogoWatermarks } from './logo-watermarks.js';
 import { SITE } from './config.js';
 import { initWorkflowComparison, resetWorkflowComparison } from './workflow-comparison.js?v=20260746';
-import { applyAllTranslations, getLocale, initLocaleSwitcher } from './i18n.js?v=20260749';
+import { applyAllTranslations, getLocale, initLocaleSwitcher } from './i18n.js?v=20260767';
 
 document.documentElement.lang = getLocale();
 
@@ -25,6 +26,7 @@ function boot() {
   initProblemComparison();
   initDemoShowcase();
   initControlParticles();
+  initAuditParticles();
   initMarquee();
   initFaq();
   initWorkflowComparison();

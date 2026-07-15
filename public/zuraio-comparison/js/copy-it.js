@@ -300,15 +300,20 @@ export const home = {
     link: 'Esplori controllo dei dati e sicurezza →',
   },
   reviewable: {
+    marker: 'AI governance',
     heading: 'IA che può spiegare in seguito.',
     headingEmphasis: 'spiegare',
-    body: 'Veda cosa è stato chiesto, quali fonti approvate sono state utilizzate e cosa è stato prodotto. Questo supporta la revisione interna e aiuta le aziende a prepararsi alle future aspettative di AI governance.',
-    steps: [
-      { label: 'Cosa è stato chiesto', title: 'La richiesta', body: 'Il prompt o la richiesta che ha avviato il lavoro.' },
-      { label: 'Cosa è stato utilizzato', title: 'Le fonti', body: 'Le fonti aziendali approvate alla base della risposta.' },
-      { label: 'Cosa è stato prodotto', title: 'L\'output', body: 'La risposta, la bozza o la sintesi in attesa di revisione.' },
+    bodyParagraphs: [
+      'L\u2019uso dell\u2019IA diventa più facile da verificare. Clienti, revisori e regolatori si aspetteranno sempre più che le aziende spieghino da dove provengono le informazioni e come è stata usata l\u2019IA.',
+      'Zuraio la aiuta a restare preparata con risposte basate sulle fonti e IA revisionabile.',
     ],
-    link: 'Veda l\'approccio tecnico →',
+    steps: [
+      { label: 'Cosa è stato chiesto', title: 'La richiesta', body: 'Conservi una traccia del prompt o del compito.' },
+      { label: 'Cosa è stato utilizzato', title: 'Le fonti', body: 'Veda esattamente quali informazioni aziendali approvate sono state utilizzate.' },
+      { label: 'Cosa è stato prodotto', title: 'L\'output', body: 'Esamini la risposta, la bozza o la sintesi creata.' },
+      { label: 'Chi ha approvato', title: 'La revisione', body: 'Sappia chi ha revisionato, modificato o approvato il risultato finale.' },
+    ],
+    link: 'Scopra l\'AI governance →',
   },
   origin: {
     marker: 'Perché l\'abbiamo creato',
