@@ -196,22 +196,24 @@ main#top > section + section:not(.hero-layered):not(.final) {
 /* ---------- Section markers / eyebrows ---------- */
 .marker {
   font-family: "IBM Plex Mono", monospace;
-  font-size: 11.5px;
+  font-size: 17.25px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--olive-deep);
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: 13.5px;
 }
 
 .marker::before {
   content: "";
-  width: 7px;
-  height: 7px;
+  display: inline-block;
+  flex-shrink: 0;
+  width: 10.5px;
+  height: 10.5px;
   border-radius: 50%;
   background: var(--olive);
-  box-shadow: 0 0 0 4px var(--soft-olive-tint);
+  box-shadow: 0 0 0 6px var(--soft-olive-tint);
 }
 
 /* ---------- Buttons ---------- */
@@ -1031,7 +1033,7 @@ h3 .headline-em {
 }
 
 .problem-copy .marker {
-  display: block;
+  display: inline-flex;
 }
 
 #problem .problem-copy h2 {
@@ -2098,7 +2100,7 @@ h3 .headline-em {
 }
 
 .control .marker::before {
-  box-shadow: 0 0 0 4px rgba(159, 175, 82, 0.18);
+  box-shadow: 0 0 0 6px rgba(159, 175, 82, 0.18);
 }
 
 .control .lede {
