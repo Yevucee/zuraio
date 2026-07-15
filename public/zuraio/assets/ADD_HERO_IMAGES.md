@@ -6,10 +6,10 @@ The hero uses **two separate layers** — not one baked composite:
 
 | File | Role |
 |------|------|
-| `zurich-office-hero.jpg` | Full-bleed office background (your photo only — no Zurich skyline assets) |
+| `260714_zuraio_hero_12_upscalet.jpg` | Full-bleed office background (your photo only — no Zurich skyline assets) |
 | `hero-popup-ui.png` | Chat UI popup on the right, above the background |
 
-Add your office photo as **`zurich-office-hero.jpg`** in this folder (JPEG, ideally under 2 MB for fast loading). After adding, commit and push.
+The homepage hero uses **`260714_zuraio_hero_12_upscalet.jpg`** as the background layer.
 
 The live headline, body, CTA and trust pills stay as HTML on the left.
 
