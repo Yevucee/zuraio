@@ -281,7 +281,7 @@ main#top > section + section:not(.hero-layered):not(.final) {
 
 .btn:focus-visible,
 .tab:focus-visible,
-.lang-btn:focus-visible,
+.lang-dropdown-option:focus-visible,
 .nav-toggle:focus-visible,
 .nav-dropdown-btn:focus-visible,
 .hero-ctrl-btn:focus-visible,
@@ -526,41 +526,71 @@ header.nav.is-floating.scrolled {
   border-top: 1px solid var(--hairline);
 }
 
-.lang-switch {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px;
-  border: 1px solid var(--hairline);
-  border-radius: 999px;
-  background: var(--white);
-  width: fit-content;
+.lang-dropdown {
+  flex-shrink: 0;
 }
 
-.lang-btn {
-  padding: 6px 12px;
-  border: none;
+.lang-dropdown-btn {
+  min-width: 72px;
+  justify-content: space-between;
+  padding: 8px 14px;
+  border: 1px solid var(--hairline);
   border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--charcoal);
+}
+
+.lang-dropdown-menu {
+  min-width: 92px;
+  padding: 6px;
+}
+
+.lang-dropdown-option {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
   background: transparent;
   font-family: "IBM Plex Mono", monospace;
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.06em;
-  color: var(--muted);
+  color: var(--charcoal-soft);
+  text-align: left;
   cursor: pointer;
   transition:
     background 0.2s,
     color 0.2s;
 }
 
-.lang-btn.is-active,
-.lang-btn[aria-pressed="true"] {
-  background: var(--charcoal);
-  color: #fff;
+.lang-dropdown-option:hover {
+  background: rgba(159, 175, 82, 0.1);
+  color: var(--olive-deep);
 }
 
-.lang-btn:not(.is-active):hover {
+.lang-dropdown-option.is-active,
+.lang-dropdown-option[aria-selected="true"] {
   color: var(--olive-deep);
+  font-weight: 600;
+  background: rgba(159, 175, 82, 0.12);
+}
+
+.lang-dropdown-option:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 2px;
+}
+
+@media (min-width: 980px) {
+  .lang-dropdown-menu {
+    left: auto;
+    right: 0;
+    transform: none;
+  }
 }
 
 @media (min-width: 980px) {

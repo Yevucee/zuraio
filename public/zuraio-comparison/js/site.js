@@ -1,4 +1,5 @@
 import { getLocale, setLocale, getCopy } from './i18n.js';
+import { SUPPORTED_LOCALES, getLocaleLabels } from './locales.js';
 import { SITE } from './config.js';
 import { enhanceFooterWithReview } from './internal-review.js';
 
@@ -19,6 +20,57 @@ function getSiteTagline() {
 }
 
 const LOGO_SVG = `<svg viewBox="0 0 1182 1182" aria-hidden="true"><g transform="matrix(0.526154,0,0,0.526154,-54.1775,-54.2715)"><path d="M574.625,1181.59C534.577,1115.01 511.538,1037.06 511.538,953.776C511.538,709.325 710.001,510.862 954.452,510.862C1115.07,510.862 1255.84,596.544 1333.49,724.656C1374.02,791.521 1397.37,869.944 1397.37,953.776C1397.37,1073.97 1349.39,1183.04 1271.55,1262.88C1270.31,1264.07 1269.07,1265.27 1267.85,1266.49C1266.06,1268.25 1264.3,1270.04 1262.55,1271.85C1226,1309.73 1198.56,1356.46 1183.78,1408.49C1175.76,1436.72 1171.47,1466.52 1171.47,1497.31C1171.47,1528.09 1175.76,1557.89 1183.78,1586.12C1222.46,1722.27 1347.8,1822.11 1496.27,1822.11C1675.54,1822.11 1821.08,1676.57 1821.08,1497.31C1821.08,1408.25 1785.15,1327.51 1727.03,1268.81L1875.69,1268.81C1915.99,1335.54 1939.19,1413.74 1939.19,1497.31C1939.19,1741.76 1740.72,1940.22 1496.27,1940.22C1335.37,1940.22 1194.39,1854.24 1116.82,1725.75C1076.54,1659.03 1053.36,1580.86 1053.36,1497.31C1053.36,1457.36 1058.66,1418.64 1068.59,1381.82C1089.13,1305.67 1129.49,1237.62 1183.78,1183.55L1183.78,1183.48C1242.39,1124.71 1278.64,1043.64 1278.64,954.166C1278.64,925.375 1274.89,897.454 1267.85,870.866C1231.03,731.907 1104.31,629.362 953.842,629.362C774.578,629.362 629.038,774.902 629.038,954.166C629.038,1042.69 664.527,1122.98 722.039,1181.59L574.625,1181.59Z" style="fill:#9FAF52;"/></g><g transform="matrix(0.414294,0,0,0.414294,254.535,129.476)"><path d="M392,527C392,485.606 425.606,452 467,452C508.394,452 542,485.606 542,527L542,985.47C542,1026.86 508.394,1060.47 467,1060.47C425.606,1060.47 392,1026.86 392,985.47L392,527Z" style="fill:#464646;"/></g><g transform="matrix(0.81846,0,0,0.81846,-621.282,-427.039)"><path d="M1656,1270C1741,1270 1810,1339.01 1810,1424C1810,1509 1741,1578 1656,1578C1571.01,1578 1502,1509 1502,1424C1502,1339.01 1571.01,1270 1656,1270ZM1656,1348.07C1614.09,1348.07 1580.07,1382.09 1580.07,1424C1580.07,1465.91 1614.09,1499.93 1656,1499.93C1697.91,1499.93 1731.93,1465.91 1731.93,1424C1731.93,1382.09 1697.91,1348.07 1656,1348.07Z" style="fill:#464646;"/></g></svg>`;
+
+function renderLangDropdown(uiData, locale) {
+  const labels = getLocaleLabels(uiData);
+  const current = labels[locale] ?? locale.toUpperCase();
+  const options = SUPPORTED_LOCALES.map(
+    (code) =>
+      `<button type="button" class="lang-dropdown-option${locale === code ? ' is-active' : ''}" role="option" data-lang="${code}" aria-selected="${locale === code}">${labels[code]}</button>`,
+  ).join('');
+
+  return `
+    <div class="lang-dropdown nav-dropdown">
+      <button type="button" class="lang-dropdown-btn nav-dropdown-btn" aria-expanded="false" aria-haspopup="listbox" aria-label="${uiData.languageLabel}">
+        <span class="lang-dropdown-current">${current}</span>
+      </button>
+      <div class="lang-dropdown-menu nav-dropdown-menu" role="listbox" aria-label="${uiData.languageLabel}">
+        ${options}
+      </div>
+    </div>`;
+}
+
+function bindDropdown(root, dropdownEl, onSelect) {
+  const btn = dropdownEl?.querySelector('.nav-dropdown-btn');
+  const menu = dropdownEl?.querySelector('.nav-dropdown-menu');
+  if (!btn || !menu) return;
+
+  const close = () => {
+    btn.setAttribute('aria-expanded', 'false');
+    menu.classList.remove('is-open');
+  };
+
+  btn.addEventListener('click', (event) => {
+    event.stopPropagation();
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    root.querySelectorAll('.nav-dropdown-btn[aria-expanded="true"]').forEach((other) => {
+      if (other === btn) return;
+      other.setAttribute('aria-expanded', 'false');
+      other.closest('.nav-dropdown')?.querySelector('.nav-dropdown-menu')?.classList.remove('is-open');
+    });
+    btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+    menu.classList.toggle('is-open', !open);
+  });
+
+  menu.querySelectorAll('[data-lang]').forEach((option) => {
+    option.addEventListener('click', () => {
+      onSelect?.(option.dataset.lang);
+      close();
+    });
+  });
+
+  return close;
+}
 
 function href(path) {
   if (path.startsWith('#') || path.startsWith('http') || path.startsWith('../')) return path;
@@ -69,10 +121,7 @@ export function renderHeader() {
             <a href="${langHref(navData.about.href)}">${navData.about.label}</a>
           </nav>
           <div class="nav-actions">
-            <div class="lang-switch" aria-label="Language">
-              <button type="button" class="lang-btn${locale === 'en' ? ' is-active' : ''}" data-lang="en" aria-pressed="${locale === 'en'}">${uiData.langEn}</button>
-              <button type="button" class="lang-btn${locale === 'de' ? ' is-active' : ''}" data-lang="de" aria-pressed="${locale === 'de'}">${uiData.langDe}</button>
-            </div>
+            ${renderLangDropdown(uiData, locale)}
             <a class="btn btn-primary" href="${langHref('contact.html')}">${uiData.bookDemo}</a>
           </div>
         </div>
@@ -89,20 +138,24 @@ export function renderHeader() {
     menu.classList.toggle('is-open', !open);
   });
 
-  const ddBtn = el.querySelector('.nav-dropdown-btn');
-  const ddMenu = el.querySelector('.nav-dropdown-menu');
-  ddBtn?.addEventListener('click', () => {
-    const open = ddBtn.getAttribute('aria-expanded') === 'true';
-    ddBtn.setAttribute('aria-expanded', open ? 'false' : 'true');
-    ddMenu.classList.toggle('is-open', !open);
+  const techDropdown = el.querySelector('.nav-links .nav-dropdown');
+  bindDropdown(el, techDropdown);
+
+  const langDropdown = el.querySelector('.lang-dropdown');
+  bindDropdown(el, langDropdown, (next) => {
+    if (next && next !== getLocale()) setLocale(next);
   });
 
-  el.querySelectorAll('[data-lang]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const next = btn.dataset.lang;
-      if (next && next !== getLocale()) setLocale(next);
+  if (!el.dataset.dropdownDismissBound) {
+    el.dataset.dropdownDismissBound = 'true';
+    document.addEventListener('click', (event) => {
+      if (event.target.closest('.nav-dropdown')) return;
+      el.querySelectorAll('.nav-dropdown-btn[aria-expanded="true"]').forEach((btn) => {
+        btn.setAttribute('aria-expanded', 'false');
+        btn.closest('.nav-dropdown')?.querySelector('.nav-dropdown-menu')?.classList.remove('is-open');
+      });
     });
-  });
+  }
 
   if (el && !el.dataset.scrollBound) {
     el.dataset.scrollBound = 'true';
@@ -123,6 +176,7 @@ export function renderFooter() {
 
   const uiData = getUi();
   const locale = getLocale();
+  const localeLabels = getLocaleLabels(uiData);
   const groups = getFooterGroups()
     .map(
       (g) => `
@@ -141,8 +195,10 @@ export function renderFooter() {
           <div class="foot-col">
             <h3 class="foot-col-title">${uiData.languageContact}</h3>
             <ul class="foot-col-links">
-              <li><span class="foot-muted">${uiData.langEn}${locale === 'en' ? ` (${uiData.languageActive})` : ''}</span></li>
-              <li><span class="foot-muted">${uiData.langDe}${locale === 'de' ? ` (${uiData.languageActive})` : ''}</span></li>
+              ${SUPPORTED_LOCALES.map(
+                (code) =>
+                  `<li><span class="foot-muted">${localeLabels[code]}${locale === code ? ` (${uiData.languageActive})` : ''}</span></li>`,
+              ).join('')}
               <li><a href="mailto:${SITE.contactEmail}">${SITE.contactEmail}</a></li>
             </ul>
           </div>

@@ -1,5 +1,8 @@
 import * as en from './copy-en.js';
 import * as de from './copy-de.js';
+import * as fr from './copy-fr.js';
+import * as it from './copy-it.js';
+import { isSupportedLocale } from './locales.js';
 import { PAIN_CARD_ICONS } from './pain-card-icons.js';
 import {
   WORKFLOW_ICONS_WITHOUT,
@@ -8,18 +11,18 @@ import {
 
 const LOCALE_KEY = 'zuraio-locale';
 
-const copies = { en, de };
+const copies = { en, de, fr, it };
 
 export function getLocale() {
   const fromUrl = new URLSearchParams(location.search).get('lang');
-  if (fromUrl === 'de' || fromUrl === 'en') return fromUrl;
+  if (isSupportedLocale(fromUrl)) return fromUrl;
   const stored = localStorage.getItem(LOCALE_KEY);
-  if (stored === 'de' || stored === 'en') return stored;
+  if (isSupportedLocale(stored)) return stored;
   return 'en';
 }
 
 export function setLocale(locale) {
-  if (locale !== 'en' && locale !== 'de') return;
+  if (!isSupportedLocale(locale)) return;
   localStorage.setItem(LOCALE_KEY, locale);
   document.documentElement.lang = locale;
   const url = new URL(location.href);

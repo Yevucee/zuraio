@@ -1,4 +1,4 @@
-import { renderHeader, renderFooter, initReveal, initTabs } from './site.js?v=20260748';
+import { renderHeader, renderFooter, initReveal, initTabs } from './site.js?v=20260749';
 import { initHeroComparison } from './hero-comparison.js?v=20260747';
 import { initProblemComparison } from './problem-comparison.js?v=20260716';
 import { initDemoShowcase } from './demo-showcase.js?v=20260723';
@@ -9,7 +9,7 @@ import { initInternalReview, refreshInternalReview, isInternalReviewMode } from 
 import { initLogoWatermarks } from './logo-watermarks.js';
 import { SITE } from './config.js';
 import { initWorkflowComparison, resetWorkflowComparison } from './workflow-comparison.js?v=20260746';
-import { applyAllTranslations, getLocale, initLocaleSwitcher } from './i18n.js?v=20260746';
+import { applyAllTranslations, getLocale, initLocaleSwitcher } from './i18n.js?v=20260749';
 
 document.documentElement.lang = getLocale();
 
