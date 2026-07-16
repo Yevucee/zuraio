@@ -2248,14 +2248,6 @@ h3 .headline-em {
   color: var(--soft-olive);
 }
 
-#reviewable.control .section-link a {
-  color: var(--soft-olive);
-}
-
-#reviewable.control .section-link a:hover {
-  color: #fff;
-}
-
 #reviewable.control .acol {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -3273,7 +3265,8 @@ footer.site-footer {
   padding: 0;
 }
 
-.hero-trust-pill {
+.hero-trust-pill,
+.section-link a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -3294,7 +3287,8 @@ footer.site-footer {
     background 0.2s;
 }
 
-.hero-trust-pill::before {
+.hero-trust-pill::before,
+.section-link a::before {
   content: "";
   width: 6px;
   height: 6px;
@@ -3305,14 +3299,18 @@ footer.site-footer {
 }
 
 .hero-trust-pill:hover,
-.hero-trust-pill:focus-visible {
+.hero-trust-pill:focus-visible,
+.section-link a:hover,
+.section-link a:focus-visible {
   color: var(--olive-deep);
   border-color: rgba(120, 138, 54, 0.42);
   background: var(--soft-olive);
 }
 
 .hero-trust-pill:hover::before,
-.hero-trust-pill:focus-visible::before {
+.hero-trust-pill:focus-visible::before,
+.section-link a:hover::before,
+.section-link a:focus-visible::before {
   background: var(--olive-deep);
 }
 
@@ -3833,15 +3831,32 @@ footer.site-footer {
   margin-top: 28px;
 }
 
-.section-link a {
-  font-weight: 600;
-  color: var(--olive-deep);
-  text-decoration: underline;
-  text-underline-offset: 3px;
+.control .section-link a {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: #edeee7;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
-.section-link a:hover {
-  color: var(--charcoal);
+.control .section-link a::before {
+  background: var(--soft-olive);
+}
+
+.control .section-link a:hover,
+.control .section-link a:focus-visible {
+  background: var(--soft-olive);
+  border-color: rgba(120, 138, 54, 0.42);
+  color: var(--olive-deep);
+}
+
+.control .section-link a:hover::before,
+.control .section-link a:focus-visible::before {
+  background: var(--olive-deep);
+}
+
+#data-control .section-link {
+  margin-top: 24px;
 }
 
 .text-link {
