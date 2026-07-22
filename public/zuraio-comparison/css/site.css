@@ -1099,7 +1099,7 @@ h3 .headline-em {
   content: '';
   position: absolute;
   inset: 8% 4%;
-  background: radial-gradient(ellipse 58% 52% at 50% 44%, rgba(220, 231, 183, 0.38), transparent 72%);
+  background: radial-gradient(ellipse 58% 52% at 50% 44%, rgba(210, 223, 165, 0.45), transparent 72%);
   pointer-events: none;
   z-index: 0;
 }
@@ -1198,25 +1198,25 @@ h3 .headline-em {
 .sk-label--subtle {
   font-size: 11px;
   font-weight: 500;
-  color: rgba(108, 111, 102, 0.65);
+  color: #5c5f56;
 }
 
 .sk-label--medium {
   font-size: 12.5px;
   font-weight: 500;
-  color: rgba(70, 70, 70, 0.62);
+  color: #3a3a3a;
 }
 
 .sk-label--emphasis {
   font-size: 13px;
   font-weight: 600;
-  color: rgba(38, 40, 35, 0.68);
+  color: #222420;
 }
 
 .sk-label--large {
   font-size: 19px;
   font-weight: 600;
-  color: rgba(70, 70, 70, 0.62);
+  color: #2e2e2e;
   letter-spacing: -0.02em;
 }
 
@@ -1350,12 +1350,30 @@ h3 .headline-em {
 @keyframes questionFade {
   0%,
   100% {
-    opacity: 0.18;
+    opacity: 0.1;
     transform: translate(-50%, -50%) translateY(2px);
   }
-  35%,
-  65% {
-    opacity: 0.72;
+  40%,
+  60% {
+    opacity: 0.88;
+    transform: translate(-50%, -50%) translateY(0);
+  }
+}
+
+.scattered-knowledge.is-active .sk-label--emphasis,
+.scattered-knowledge.is-active .sk-label--large {
+  animation-name: questionFadeStrong;
+}
+
+@keyframes questionFadeStrong {
+  0%,
+  100% {
+    opacity: 0.12;
+    transform: translate(-50%, -50%) translateY(2px);
+  }
+  40%,
+  60% {
+    opacity: 0.94;
     transform: translate(-50%, -50%) translateY(0);
   }
 }
@@ -1434,10 +1452,10 @@ h3 .headline-em {
 @keyframes skPathFade {
   0%,
   100% {
-    opacity: 0.26;
+    opacity: 0.3;
   }
   50% {
-    opacity: 0.38;
+    opacity: 0.44;
   }
 }
 
@@ -1460,19 +1478,19 @@ h3 .headline-em {
 
 /* Static state for reduced motion */
 .scattered-knowledge.is-static .sk-label--large {
-  opacity: 0.68;
+  opacity: 0.82;
 }
 
 .scattered-knowledge.is-static .sk-label--emphasis {
-  opacity: 0.58;
+  opacity: 0.78;
 }
 
 .scattered-knowledge.is-static .sk-label--medium {
-  opacity: 0.48;
+  opacity: 0.62;
 }
 
 .scattered-knowledge.is-static .sk-label--subtle {
-  opacity: 0.32;
+  opacity: 0.48;
 }
 
 .scattered-knowledge.is-static .sk-path {
@@ -1522,7 +1540,7 @@ h3 .headline-em {
     margin: 32px 0 0;
   }
 
-  .scattered-knowledge__lines .sk-path:nth-child(n + 26) {
+  .scattered-knowledge__lines .sk-path:nth-child(n + 28) {
     display: none;
   }
 }
