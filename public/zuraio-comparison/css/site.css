@@ -1408,15 +1408,12 @@ h3 .headline-em {
 @keyframes skPathDraw {
   0% {
     stroke-dashoffset: 1;
-    opacity: 0.18;
+    opacity: 0.32;
   }
-  50% {
-    stroke-dashoffset: 0;
-    opacity: 0.58;
-  }
+  40%,
   100% {
-    stroke-dashoffset: 0.25;
-    opacity: 0.28;
+    stroke-dashoffset: 0;
+    opacity: 0.46;
   }
 }
 
@@ -1428,10 +1425,10 @@ h3 .headline-em {
 @keyframes skPathFade {
   0%,
   100% {
-    opacity: 0.18;
+    opacity: 0.34;
   }
   50% {
-    opacity: 0.55;
+    opacity: 0.5;
   }
 }
 
@@ -1516,7 +1513,7 @@ h3 .headline-em {
     margin: 32px 0 0;
   }
 
-  .scattered-knowledge__lines .sk-path:nth-child(n + 22) {
+  .scattered-knowledge__lines .sk-path:nth-child(n + 24) {
     display: none;
   }
 }
