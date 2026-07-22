@@ -3145,10 +3145,10 @@ footer.site-footer {
   pointer-events: none;
   background: linear-gradient(
     90deg,
-    rgba(251, 251, 248, 0.72) 0%,
-    rgba(251, 251, 248, 0.61) 24%,
-    rgba(251, 251, 248, 0.38) 38%,
-    rgba(251, 251, 248, 0.14) 50%,
+    rgba(251, 251, 248, 0.61) 0%,
+    rgba(251, 251, 248, 0.52) 24%,
+    rgba(251, 251, 248, 0.32) 38%,
+    rgba(251, 251, 248, 0.12) 50%,
     rgba(251, 251, 248, 0.03) 58%,
     rgba(251, 251, 248, 0) 66%
   );
@@ -3170,7 +3170,7 @@ footer.site-footer {
   position: relative;
   z-index: 2;
   width: 100%;
-  padding: clamp(72px, 9vh, 104px) 0 clamp(48px, 7vh, 80px);
+  padding: clamp(88px, 11vh, 120px) 0 clamp(48px, 7vh, 80px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -3203,8 +3203,8 @@ footer.site-footer {
     align-self: start;
     justify-content: flex-start;
     min-height: 0;
-    margin-top: clamp(-12px, -2vh, 0px);
-    transform: translateY(-8%);
+    margin-top: clamp(16px, 2.5vh, 32px);
+    transform: translateY(2%);
   }
 
   .hero-layered--composite .hero-grid {
@@ -3321,10 +3321,11 @@ footer.site-footer {
   justify-self: end;
   align-self: start;
   width: 100%;
-  max-width: min(48vw, 680px);
-  margin-right: clamp(-56px, -6vw, -20px);
-  margin-top: clamp(-12px, -2vh, 0px);
-  transform: translate(10%, -8%);
+  max-width: min(54vw, 780px);
+  margin-right: clamp(-72px, -7vw, -28px);
+  margin-top: clamp(16px, 2.5vh, 32px);
+  transform: translate(14%, 4%) scale(1.12);
+  transform-origin: top right;
 }
 
 .hero-layered--composite .hero-visual {
@@ -3463,9 +3464,9 @@ footer.site-footer {
   .hero-layered__scrim {
     background: linear-gradient(
       180deg,
-      rgba(251, 251, 248, 0.58) 0%,
-      rgba(251, 251, 248, 0.38) 38%,
-      rgba(251, 251, 248, 0.19) 62%,
+      rgba(251, 251, 248, 0.49) 0%,
+      rgba(251, 251, 248, 0.32) 38%,
+      rgba(251, 251, 248, 0.16) 62%,
       rgba(251, 251, 248, 0) 100%
     );
   }
