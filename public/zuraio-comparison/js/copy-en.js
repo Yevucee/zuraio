@@ -137,6 +137,15 @@ export const home = {
       { title: 'Public AI creates uncertainty', body: 'Useful tools become risky when sensitive company knowledge is used without clear rules.' },
     ],
     link: 'See practical use cases →',
+    illustration: {
+      questions: {
+        latestVersion: 'Latest version?',
+        whoKnows: 'Who knows?',
+        alreadyDone: 'Already done?',
+        whereIsIt: 'Where is it?',
+        mark: '?',
+      },
+    },
   },
   different: {
     marker: 'More than a chatbot',

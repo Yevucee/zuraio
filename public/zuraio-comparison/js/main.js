@@ -4,6 +4,7 @@ import { initProblemComparison } from './problem-comparison.js?v=20260716';
 import { initDemoShowcase } from './demo-showcase.js?v=20260773';
 import { initControlParticles } from './control-particles.js?v=20260766';
 import { initAuditParticles } from './audit-particles.js?v=20260768';
+import { initScatteredKnowledge, renderScatteredKnowledge } from './scattered-knowledge.js';
 import { initMarquee } from './integrations-marquee.js';
 import { initFaq } from './faq-accordion.js';
 import { initInternalReview, refreshInternalReview, isInternalReviewMode } from './internal-review.js';
@@ -24,6 +25,7 @@ function boot() {
   initTabs();
   initHeroComparison();
   initProblemComparison();
+  initScatteredKnowledge();
   initDemoShowcase();
   initControlParticles();
   initAuditParticles();
@@ -41,6 +43,7 @@ initLocaleSwitcher(() => {
   initReveal();
   refreshInternalReview();
   initMarquee();
+  renderScatteredKnowledge(document.querySelector('[data-scattered-knowledge]'));
   resetWorkflowComparison();
 });
 

@@ -137,6 +137,15 @@ export const home = {
       { title: 'Öffentliche KI erzeugt Unsicherheit', body: 'Nützliche Tools werden riskant, wenn sensibles Unternehmenswissen ohne klare Regeln genutzt wird.' },
     ],
     link: 'Praktische Anwendungsfälle ansehen →',
+    illustration: {
+      questions: {
+        latestVersion: 'Neueste Version?',
+        whoKnows: 'Wer weiss?',
+        alreadyDone: 'Schon erledigt?',
+        whereIsIt: 'Wo ist es?',
+        mark: '?',
+      },
+    },
   },
   different: {
     marker: 'Mehr als ein Chatbot',

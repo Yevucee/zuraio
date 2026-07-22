@@ -137,6 +137,15 @@ export const home = {
       { title: 'L\'IA pubblica crea incertezza', body: 'Strumenti utili diventano rischiosi quando know-how aziendale sensibile viene utilizzato senza regole chiare.' },
     ],
     link: 'Veda casi d\'uso pratici →',
+    illustration: {
+      questions: {
+        latestVersion: 'Ultima versione?',
+        whoKnows: 'Chi lo sa?',
+        alreadyDone: 'Già fatto?',
+        whereIsIt: 'Dov\'è?',
+        mark: '?',
+      },
+    },
   },
   different: {
     marker: 'Più di un chatbot',

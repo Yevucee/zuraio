@@ -1017,28 +1017,91 @@ h3 .headline-em {
   z-index: 2;
 }
 
-.pain__bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.pain__bg img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: right top;
-}
-
 .problem-hero {
-  margin-bottom: 46px;
   position: relative;
+  margin-bottom: 46px;
+  min-height: clamp(220px, 28vw, 320px);
 }
 
 .problem-copy {
-  max-width: 560px;
+  position: relative;
+  z-index: 2;
+  max-width: min(560px, 58%);
   transition: opacity 0.22s var(--ease);
+}
+
+.scattered-knowledge {
+  position: absolute;
+  top: clamp(-8px, -0.5vw, 6px);
+  right: clamp(-36px, -2vw, 0px);
+  width: min(56%, 520px);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.88;
+  -webkit-mask-image: radial-gradient(ellipse 88% 82% at 54% 48%, #000 24%, transparent 74%);
+  mask-image: radial-gradient(ellipse 88% 82% at 54% 48%, #000 24%, transparent 74%);
+}
+
+.scattered-knowledge__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.scattered-knowledge__tangle {
+  transform-origin: 52% 46%;
+  animation: skTangleDrift 32s ease-in-out infinite alternate;
+}
+
+.scattered-knowledge__icon {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: skIconBob 12s ease-in-out infinite;
+  animation-delay: var(--sk-delay, 0s);
+}
+
+.scattered-knowledge__question-wrap {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: skQuestionFloat 10s ease-in-out infinite;
+  animation-delay: var(--sk-delay, 0s);
+}
+
+@keyframes skTangleDrift {
+  from {
+    transform: translate(0, 0) rotate(-0.4deg);
+  }
+  to {
+    transform: translate(3px, -2px) rotate(0.5deg);
+  }
+}
+
+@keyframes skIconBob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes skQuestionFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2.5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scattered-knowledge__tangle,
+  .scattered-knowledge__icon,
+  .scattered-knowledge__question-wrap {
+    animation: none;
+  }
 }
 
 .problem-copy.is-changing,
@@ -1071,36 +1134,25 @@ h3 .headline-em {
   background: #ffffff;
 }
 
-#problem .pain__bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    ellipse 58% 72% at 78% 34%,
-    rgba(159, 175, 82, 0.08) 0%,
-    rgba(220, 230, 160, 0.03) 42%,
-    rgba(159, 175, 82, 0) 72%
-  );
-}
-
 @media (max-width: 999px) {
-  .pain__bg {
-    left: 0;
-    opacity: 0.5;
+  .problem-hero {
+    min-height: 0;
+    padding-top: 0;
   }
 
-  .pain__bg img {
-    object-fit: contain;
-    object-position: right top;
+  .problem-copy {
+    max-width: none;
   }
 
-  #problem .pain__bg::after {
-    background: radial-gradient(
-      ellipse 80% 60% at 70% 18%,
-      rgba(159, 175, 82, 0.06) 0%,
-      rgba(159, 175, 82, 0) 68%
-    );
+  .scattered-knowledge {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: min(100%, 420px);
+    margin: 28px auto 0;
+    opacity: 0.72;
+    -webkit-mask-image: radial-gradient(ellipse 92% 88% at 50% 48%, #000 18%, transparent 78%);
+    mask-image: radial-gradient(ellipse 92% 88% at 50% 48%, #000 18%, transparent 78%);
   }
 }
 

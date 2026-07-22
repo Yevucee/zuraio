@@ -137,6 +137,15 @@ export const home = {
       { title: 'L\u2019IA publique crée de l\u2019incertitude', body: 'Des outils utiles deviennent risqués lorsque des connaissances sensibles de l\u2019entreprise sont utilisées sans règles claires.' },
     ],
     link: 'Voir les cas d\u2019usage concrets →',
+    illustration: {
+      questions: {
+        latestVersion: 'Dernière version ?',
+        whoKnows: 'Qui sait ?',
+        alreadyDone: 'Déjà fait ?',
+        whereIsIt: 'Où est-ce ?',
+        mark: '?',
+      },
+    },
   },
   different: {
     marker: 'Plus qu\u2019un chatbot',
