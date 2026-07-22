@@ -530,6 +530,20 @@ header.nav.is-floating.scrolled {
   border-top: 1px solid var(--hairline);
 }
 
+header.nav .nav-actions .btn-primary {
+  background: var(--soft-olive);
+  color: var(--charcoal-soft);
+  border: 1px solid rgba(120, 138, 54, 0.28);
+  box-shadow: none;
+}
+
+header.nav .nav-actions .btn-primary:hover {
+  background: var(--soft-olive);
+  color: var(--olive-deep);
+  border-color: rgba(120, 138, 54, 0.42);
+  box-shadow: var(--shadow-sm);
+}
+
 .lang-dropdown {
   position: relative;
   flex-shrink: 0;
