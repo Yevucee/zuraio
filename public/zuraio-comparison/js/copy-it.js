@@ -128,7 +128,7 @@ export const home = {
   },
   problem: {
     marker: 'Le suona familiare?',
-    headingHtml: 'Zuraio aiuta i Suoi<br>collaboratori a trovare risposte<br>e portare avanti il lavoro.',
+    headingHtml: 'I Suoi collaboratori dedicano troppo<br>tempo alla ricerca di<br>informazioni.',
     body: 'Le conoscenze importanti sono distribuite tra e-mail, documenti, riunioni e sistemi aziendali. I collaboratori perdono tempo a cercare, preparare e ripetere lavoro già svolto.',
     cards: [
       { title: 'Le conoscenze sono disperse', body: 'Le informazioni importanti si trovano in caselle di posta, file, riunioni e sistemi aziendali.' },
@@ -146,6 +146,9 @@ export const home = {
         whichDocument: 'Quale documento?',
         whoHasAccess: 'Chi ha accesso?',
         wasUpdated: 'È stato aggiornato?',
+        whoHasContext: 'Chi ha il contesto?',
+        howLong: 'Quanto tempo ci vuole?',
+        doneBefore: 'Qualcuno l\'ha già fatto?',
       },
     },
   },

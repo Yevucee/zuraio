@@ -1017,19 +1017,18 @@ h3 .headline-em {
   position: relative;
   overflow: hidden;
   padding: 78px 0 72px;
-  background: linear-gradient(110deg, #fbfcf7 0%, #f5f8e9 55%, #eef4d7 100%);
+  background:
+    radial-gradient(
+      circle at 68% 48%,
+      rgba(199, 220, 120, 0.24) 0%,
+      rgba(225, 235, 183, 0.14) 35%,
+      transparent 68%
+    ),
+    linear-gradient(105deg, #fbfcf7 0%, #f7f9ee 40%, #eef4d8 100%);
 }
 
 .problem-section__glow {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    circle at 58% 48%,
-    rgba(186, 207, 104, 0.22),
-    rgba(223, 233, 183, 0.1) 38%,
-    transparent 70%
-  );
+  display: none;
 }
 
 .problem-section__wrap {
@@ -1039,9 +1038,9 @@ h3 .headline-em {
 
 .problem-hero {
   display: grid;
-  grid-template-columns: 45fr 55fr;
+  grid-template-columns: 41fr 59fr;
   align-items: center;
-  gap: clamp(20px, 3vw, 40px);
+  gap: clamp(16px, 2.5vw, 32px);
   min-height: clamp(640px, 72vh, 760px);
   position: relative;
 }
@@ -1082,10 +1081,11 @@ h3 .headline-em {
 .scattered-knowledge {
   position: relative;
   z-index: 1;
-  min-height: clamp(480px, 52vw, 620px);
-  margin-left: clamp(-24px, -4vw, -8px);
+  min-height: clamp(500px, 54vw, 660px);
+  margin-left: clamp(-32px, -5vw, -12px);
   margin-right: clamp(-28px, -2vw, 0px);
   pointer-events: none;
+  overflow: visible;
 }
 
 .scattered-knowledge__stage {
@@ -1133,12 +1133,22 @@ h3 .headline-em {
   width: 100%;
   height: 100%;
   color: #8ca33f;
-  opacity: 0.62;
+  opacity: 0.58;
 }
 
 .sk-fragment--hub .sk-fragment__icon {
   color: #788a36;
-  opacity: 0.72;
+  opacity: 0.68;
+}
+
+.sk-fragment--brain .sk-fragment__icon {
+  color: #8ca33f;
+  opacity: 0.58;
+}
+
+.sk-fragment--clock .sk-fragment__icon {
+  color: #9aa882;
+  opacity: 0.52;
 }
 
 .sk-fragment__icon svg {
@@ -1148,13 +1158,13 @@ h3 .headline-em {
 
 .sk-flash {
   position: absolute;
-  top: -2px;
-  right: -2px;
-  width: 7px;
-  height: 7px;
+  top: -3px;
+  right: -3px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: rgba(186, 207, 104, 0.55);
-  box-shadow: 0 0 10px rgba(186, 207, 104, 0.4);
+  background: rgba(186, 207, 104, 0.65);
+  box-shadow: 0 0 14px rgba(186, 207, 104, 0.45);
   opacity: 0;
 }
 
@@ -1166,36 +1176,48 @@ h3 .headline-em {
   font-family: "IBM Plex Sans", sans-serif;
   white-space: nowrap;
   pointer-events: none;
-  opacity: 0.35;
+  opacity: 0.18;
 }
 
 .sk-label--subtle {
   font-size: 11px;
   font-weight: 500;
-  color: rgba(108, 111, 102, 0.55);
+  color: rgba(108, 111, 102, 0.65);
 }
 
 .sk-label--medium {
   font-size: 12.5px;
   font-weight: 500;
-  color: rgba(70, 70, 70, 0.58);
+  color: rgba(70, 70, 70, 0.62);
 }
 
 .sk-label--emphasis {
   font-size: 13px;
   font-weight: 600;
-  color: rgba(38, 40, 35, 0.62);
+  color: rgba(38, 40, 35, 0.68);
 }
 
 .sk-label--large {
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 600;
-  color: rgba(70, 70, 70, 0.58);
+  color: rgba(70, 70, 70, 0.62);
   letter-spacing: -0.02em;
 }
 
 .sk-path {
-  opacity: 0.35;
+  opacity: 0.38;
+}
+
+.sk-path--static {
+  opacity: 0.32;
+}
+
+.sk-path--dashed {
+  stroke-dasharray: 0.06 0.04;
+}
+
+.sk-travel-dot {
+  opacity: 0;
 }
 
 /* Animations — start when section enters viewport */
@@ -1219,33 +1241,55 @@ h3 .headline-em {
   --drift-y: 6px;
 }
 
-.scattered-knowledge.is-active .sk-fragment__icon {
+.scattered-knowledge.is-active .sk-fragment:not(.sk-fragment--brain):not(.sk-fragment--clock) .sk-fragment__icon {
   animation: skIconPulse var(--pulse, 6.5s) ease-in-out infinite;
   animation-delay: var(--delay, 0s);
 }
 
-.scattered-knowledge.is-active .sk-label {
-  animation: skLabelFade var(--fade, 3.5s) ease-in-out infinite;
+.scattered-knowledge.is-active .sk-fragment--brain .sk-fragment__icon {
+  animation: skBrainPulse var(--brain-pulse, 5.5s) ease-in-out infinite;
   animation-delay: var(--delay, 0s);
 }
 
-.scattered-knowledge.is-active .sk-label--emphasis,
-.scattered-knowledge.is-active .sk-label--large {
-  animation-name: skLabelFadeStrong;
+.scattered-knowledge.is-active .sk-fragment--clock .sk-fragment__icon {
+  animation: skClockFade var(--clock-anim, 12s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.scattered-knowledge.is-active .sk-fragment--clock .sk-clock-hand--minute {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: skClockMinute var(--clock-anim, 12s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.scattered-knowledge.is-active .sk-label {
+  animation: questionFade var(--fade, 6s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
 }
 
 .scattered-knowledge.is-active .sk-path--draw {
-  animation: skPathDraw var(--path-duration, 8s) ease-in-out infinite alternate;
+  animation: skPathDraw var(--path-duration, 9s) ease-in-out infinite alternate;
   animation-delay: var(--path-delay, 0s);
 }
 
 .scattered-knowledge.is-active .sk-path--fade {
-  animation: skPathFade var(--path-duration, 7s) ease-in-out infinite;
+  animation: skPathFade var(--path-duration, 8s) ease-in-out infinite;
   animation-delay: var(--path-delay, 0s);
 }
 
+.scattered-knowledge.is-active .sk-path--travel {
+  animation: skPathTravel var(--path-duration, 11s) linear infinite;
+  animation-delay: var(--path-delay, 0s);
+}
+
+.scattered-knowledge.is-active .sk-travel-dot {
+  animation: skDotPulse var(--dot-duration, 10s) ease-in-out infinite;
+  animation-delay: var(--dot-delay, 0s);
+}
+
 .scattered-knowledge.is-active .sk-flash {
-  animation: skFlash 5.5s ease-in-out infinite;
+  animation: skFlash var(--flash-duration, 5.5s) ease-in-out infinite;
   animation-delay: var(--flash-delay, 0s);
 }
 
@@ -1265,6 +1309,82 @@ h3 .headline-em {
   }
   50% {
     transform: scale(1.03);
+  }
+}
+
+@keyframes skBrainPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 0.78;
+  }
+}
+
+@keyframes skClockFade {
+  0%,
+  100% {
+    opacity: 0.42;
+  }
+  40%,
+  60% {
+    opacity: 0.68;
+  }
+}
+
+@keyframes skClockMinute {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes questionFade {
+  0%,
+  100% {
+    opacity: 0.18;
+    transform: translate(-50%, -50%) translateY(2px);
+  }
+  35%,
+  65% {
+    opacity: 0.72;
+    transform: translate(-50%, -50%) translateY(0);
+  }
+}
+
+@keyframes skPathTravel {
+  from {
+    stroke-dashoffset: 1;
+    opacity: 0.28;
+  }
+  50% {
+    stroke-dashoffset: 0;
+    opacity: 0.55;
+  }
+  to {
+    stroke-dashoffset: -0.5;
+    opacity: 0.32;
+  }
+}
+
+.sk-path--travel {
+  stroke-dasharray: 0.08 0.06;
+  stroke-dashoffset: 1;
+}
+
+@keyframes skDotPulse {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  10%,
+  90% {
+    opacity: 0.65;
   }
 }
 
@@ -1339,13 +1459,16 @@ h3 .headline-em {
 }
 
 /* Static state for reduced motion */
-.scattered-knowledge.is-static .sk-label--emphasis,
 .scattered-knowledge.is-static .sk-label--large {
   opacity: 0.68;
 }
 
+.scattered-knowledge.is-static .sk-label--emphasis {
+  opacity: 0.58;
+}
+
 .scattered-knowledge.is-static .sk-label--medium {
-  opacity: 0.52;
+  opacity: 0.48;
 }
 
 .scattered-knowledge.is-static .sk-label--subtle {
@@ -1353,8 +1476,12 @@ h3 .headline-em {
 }
 
 .scattered-knowledge.is-static .sk-path {
-  opacity: 0.42;
+  opacity: 0.45;
   stroke-dashoffset: 0;
+}
+
+.scattered-knowledge.is-static .sk-fragment__icon {
+  opacity: 0.62;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1362,13 +1489,15 @@ h3 .headline-em {
   .scattered-knowledge.is-active .sk-fragment__icon,
   .scattered-knowledge.is-active .sk-label,
   .scattered-knowledge.is-active .sk-path,
-  .scattered-knowledge.is-active .sk-flash {
+  .scattered-knowledge.is-active .sk-flash,
+  .scattered-knowledge.is-active .sk-travel-dot,
+  .scattered-knowledge.is-active .sk-clock-hand--minute {
     animation: none !important;
   }
 }
 
 @media (max-width: 1099px) {
-  .sk-fragment--secondary {
+  .sk-fragment--secondary:not(.sk-fragment--brain):not(.sk-fragment--clock) {
     display: none;
   }
 }
@@ -1384,12 +1513,16 @@ h3 .headline-em {
     max-width: none;
   }
 
+  #problem .problem-copy h2 br {
+    display: none;
+  }
+
   .scattered-knowledge {
-    min-height: clamp(360px, 58vw, 420px);
+    min-height: clamp(380px, 62vw, 440px);
     margin: 32px 0 0;
   }
 
-  .scattered-knowledge__lines .sk-path:nth-child(n + 16) {
+  .scattered-knowledge__lines .sk-path:nth-child(n + 19) {
     display: none;
   }
 }

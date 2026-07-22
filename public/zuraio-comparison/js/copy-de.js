@@ -128,7 +128,7 @@ export const home = {
   },
   problem: {
     marker: 'Kommt Ihnen das bekannt vor?',
-    headingHtml: 'Zuraio hilft Ihren<br>Mitarbeitenden, Antworten<br>zu finden und Arbeit zu erledigen.',
+    headingHtml: 'Ihre Mitarbeitenden verbringen zu<br>viel Zeit mit der Informationssuche.',
     body: 'Wichtiges Wissen ist über E-Mails, Dokumente, Meetings und Geschäftssysteme verteilt. Teams verlieren Zeit mit Suchen, Vorbereiten und wiederholter Arbeit, die bereits erledigt wurde.',
     cards: [
       { title: 'Wissen ist verstreut', body: 'Wichtige Informationen liegen in Postfächern, Dateien, Meetings und Unternehmenssystemen.' },
@@ -146,6 +146,9 @@ export const home = {
         whichDocument: 'Welches Dokument?',
         whoHasAccess: 'Wer hat Zugriff?',
         wasUpdated: 'Wurde das aktualisiert?',
+        whoHasContext: 'Wer hat den Kontext?',
+        howLong: 'Wie lange dauert das?',
+        doneBefore: 'Hat das schon jemand gemacht?',
       },
     },
   },

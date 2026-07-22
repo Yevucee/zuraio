@@ -128,7 +128,7 @@ export const home = {
   },
   problem: {
     marker: 'Vous reconnaissez cela ?',
-    headingHtml: 'Zuraio aide vos<br>collaborateurs à trouver des réponses<br>et à faire avancer le travail.',
+    headingHtml: 'Vos collaborateurs passent trop<br>de temps à chercher des<br>informations.',
     body: 'Les connaissances importantes sont dispersées entre e-mails, documents, réunions et systèmes métier. Les collaborateurs perdent du temps à chercher, préparer et refaire un travail déjà accompli.',
     cards: [
       { title: 'Les connaissances sont dispersées', body: 'Les informations importantes se trouvent dans les boîtes de réception, les fichiers, les réunions et les systèmes de l\u2019entreprise.' },
@@ -146,6 +146,9 @@ export const home = {
         whichDocument: 'Quel document ?',
         whoHasAccess: 'Qui a accès ?',
         wasUpdated: 'Est-ce à jour ?',
+        whoHasContext: 'Qui a le contexte ?',
+        howLong: 'Combien de temps ?',
+        doneBefore: 'Quelqu\u2019un l\u2019a déjà fait ?',
       },
     },
   },

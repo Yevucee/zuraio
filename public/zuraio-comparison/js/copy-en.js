@@ -128,7 +128,7 @@ export const home = {
   },
   problem: {
     marker: 'Recognise this?',
-    headingHtml: 'Let Zuraio help your<br>employees find answers<br>and get work done.',
+    headingHtml: 'Your employees spend too<br>much time searching for<br>information.',
     body: 'Important knowledge is spread across emails, documents, meetings and business systems. People lose time searching, preparing and repeating work that has already been done.',
     cards: [
       { title: 'Knowledge is scattered', body: 'Important information sits across inboxes, files, meetings and company systems.' },
@@ -146,6 +146,9 @@ export const home = {
         whichDocument: 'Which document?',
         whoHasAccess: 'Who has access?',
         wasUpdated: 'Was this updated?',
+        whoHasContext: 'Who has the context?',
+        howLong: 'How long will this take?',
+        doneBefore: 'Has someone done this before?',
       },
     },
   },
