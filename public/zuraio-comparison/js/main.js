@@ -1,7 +1,7 @@
 import { renderHeader, renderFooter, initReveal, initTabs } from './site.js?v=20260750';
-import { initHeroComparison } from './hero-comparison.js?v=20260747';
+import { initHeroComparison } from './hero-comparison.js?v=20260773';
 import { initProblemComparison } from './problem-comparison.js?v=20260716';
-import { initDemoShowcase } from './demo-showcase.js?v=20260723';
+import { initDemoShowcase } from './demo-showcase.js?v=20260773';
 import { initControlParticles } from './control-particles.js?v=20260766';
 import { initAuditParticles } from './audit-particles.js?v=20260768';
 import { initMarquee } from './integrations-marquee.js';
@@ -10,7 +10,7 @@ import { initInternalReview, refreshInternalReview, isInternalReviewMode } from 
 import { initLogoWatermarks } from './logo-watermarks.js';
 import { SITE } from './config.js';
 import { initWorkflowComparison, resetWorkflowComparison } from './workflow-comparison.js?v=20260746';
-import { applyAllTranslations, getLocale, initLocaleSwitcher } from './i18n.js?v=20260767';
+import { applyAllTranslations, getLocale, initLocaleSwitcher } from './i18n.js?v=20260773';
 
 document.documentElement.lang = getLocale();
 
