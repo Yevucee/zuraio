@@ -531,16 +531,16 @@ header.nav.is-floating.scrolled {
 }
 
 header.nav .nav-actions .btn-primary {
-  background: var(--soft-olive);
+  background: var(--olive);
   color: var(--charcoal-soft);
-  border: 1px solid rgba(120, 138, 54, 0.28);
+  border: 1px solid rgba(120, 138, 54, 0.35);
   box-shadow: none;
 }
 
 header.nav .nav-actions .btn-primary:hover {
-  background: var(--soft-olive);
-  color: var(--olive-deep);
-  border-color: rgba(120, 138, 54, 0.42);
+  background: var(--olive-deep);
+  color: var(--charcoal-soft);
+  border-color: rgba(120, 138, 54, 0.5);
   box-shadow: var(--shadow-sm);
 }
 
