@@ -5325,6 +5325,17 @@ html {
 
 #integrations [data-marquee] {
   margin-top: 24px;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 2%,
+    #000 98%,
+    transparent
+  );
 }
 
 #integrations .clarify {
