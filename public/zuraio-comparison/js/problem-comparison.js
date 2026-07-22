@@ -87,12 +87,10 @@ export function initProblemComparison() {
     if (!root.contains(e.relatedTarget)) startAutoPlay();
   });
 
-  if (!PROBLEM_COMPARISON_ENABLED) {
-    goTo(DEFAULT_PROBLEM_OPTION);
-  } else {
-    render(current, false);
-    startAutoPlay();
-  }
+  if (!PROBLEM_COMPARISON_ENABLED) return;
+
+  render(current, false);
+  startAutoPlay();
 
   window.addEventListener('zuraio:locale', () => {
     render(current, false);

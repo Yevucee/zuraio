@@ -4,7 +4,7 @@ export const HERO_CONTROLS_VISIBLE = false;
 /** Auto-advance interval (ms) when controls are hidden. */
 export const HERO_AUTO_PLAY_MS = 7000;
 export const DEFAULT_HERO_OPTION = 1;
-export const PROBLEM_COMPARISON_ENABLED = true;
+export const PROBLEM_COMPARISON_ENABLED = false;
 /** Auto-advance interval (ms) for problem section title options. */
 export const PROBLEM_AUTO_PLAY_MS = 5000;
 export const DEFAULT_PROBLEM_OPTION = 1;

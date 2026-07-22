@@ -128,7 +128,7 @@ export const home = {
   },
   problem: {
     marker: 'Kommt Ihnen das bekannt vor?',
-    heading: 'Ihr Unternehmen hat die Antworten bereits. Sie sind nur schwer zu finden.',
+    headingHtml: 'Zuraio hilft Ihren<br>Mitarbeitenden, Antworten<br>zu finden und Arbeit zu erledigen.',
     body: 'Wichtiges Wissen ist über E-Mails, Dokumente, Meetings und Geschäftssysteme verteilt. Teams verlieren Zeit mit Suchen, Vorbereiten und wiederholter Arbeit, die bereits erledigt wurde.',
     cards: [
       { title: 'Wissen ist verstreut', body: 'Wichtige Informationen liegen in Postfächern, Dateien, Meetings und Unternehmenssystemen.' },
@@ -138,12 +138,14 @@ export const home = {
     ],
     link: 'Praktische Anwendungsfälle ansehen →',
     illustration: {
-      questions: {
-        latestVersion: 'Neueste Version?',
-        whoKnows: 'Wer weiss?',
-        alreadyDone: 'Schon erledigt?',
+      labels: {
         whereIsIt: 'Wo ist es?',
-        mark: '?',
+        whoKnows: 'Wer weiss?',
+        latestVersion: 'Neueste Version?',
+        alreadyDone: 'Schon erledigt?',
+        whichDocument: 'Welches Dokument?',
+        whoHasAccess: 'Wer hat Zugriff?',
+        wasUpdated: 'Wurde das aktualisiert?',
       },
     },
   },

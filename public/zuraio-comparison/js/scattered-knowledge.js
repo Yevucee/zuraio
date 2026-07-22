@@ -1,78 +1,105 @@
 import {
-  SCATTERED_ICONS,
-  SCATTERED_QUESTIONS,
-  ICON_RENDERERS,
-  generateTanglePaths,
+  SCATTERED_FRAGMENTS,
+  SCATTERED_LABELS,
+  SCATTERED_PATHS,
+  FRAGMENT_SVGS,
 } from './scattered-knowledge-data.js';
 import { getCopy } from './i18n.js';
 
-const VIEWBOX = { w: 480, h: 420 };
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let observer = null;
 
-const QUESTION_SIZES = {
-  sm: { font: 11, weight: 500 },
-  md: { font: 13, weight: 500 },
-  lg: { font: 22, weight: 600 },
-  xl: { font: 34, weight: 600 },
-};
+function renderFragment(fragment) {
+  const svg = FRAGMENT_SVGS[fragment.type] ?? '';
+  const classes = [
+    'sk-fragment',
+    `sk-fragment--${fragment.type}`,
+    fragment.secondary ? 'sk-fragment--secondary' : '',
+    fragment.hub ? 'sk-fragment--hub' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
 
-function renderTangle() {
-  const paths = generateTanglePaths(VIEWBOX.w, VIEWBOX.h);
-  return paths
-    .map(
-      (path, index) =>
-        `<path class="scattered-knowledge__line" data-sk-line="${index}" d="${path.d}" fill="none" stroke="${path.stroke}" stroke-width="${path.width.toFixed(2)}" stroke-linecap="round" opacity="${path.opacity.toFixed(2)}"/>`,
-    )
-    .join('');
+  const flash = fragment.flash
+    ? `<span class="sk-flash" style="--flash-delay:${(fragment.delay + 1.5).toFixed(1)}s"></span>`
+    : '';
+
+  return `<div class="${classes}" data-sk-fragment="${fragment.id}" style="--x:${fragment.x}%;--y:${fragment.y}%;--drift:${fragment.drift}s;--delay:${fragment.delay}s;--pulse:${fragment.pulse}s">${flash}<span class="sk-fragment__icon">${svg}</span></div>`;
 }
 
-function renderIcons() {
-  return SCATTERED_ICONS.map((icon, index) => {
-    const render = ICON_RENDERERS[icon.type];
-    if (!render) return '';
-    const x = icon.x * VIEWBOX.w;
-    const y = icon.y * VIEWBOX.h;
-    return `<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${icon.scale})" opacity="${icon.opacity}"><g class="scattered-knowledge__icon" data-sk-icon="${icon.id}" style="--sk-delay:${(index * 0.7).toFixed(1)}s">${render(1)}</g></g>`;
-  }).join('');
+function renderLabel(label, text) {
+  if (!text) return '';
+  return `<span class="sk-label sk-label--${label.tier}" data-sk-label="${label.id}" style="--x:${label.x}%;--y:${label.y}%;--fade:${label.fade}s;--delay:${label.delay}s">${text}</span>`;
 }
 
-function renderQuestions(questionsCopy = {}) {
-  return SCATTERED_QUESTIONS.map((item, index) => {
-    const text = questionsCopy[item.id] ?? '';
-    if (!text) return '';
-    const size = QUESTION_SIZES[item.size] ?? QUESTION_SIZES.md;
-    const x = item.x * VIEWBOX.w;
-    const y = item.y * VIEWBOX.h;
-    const rotate = item.rotate ?? 0;
-    const tone = item.size === 'xl' || item.size === 'lg' ? 'rgba(70, 70, 70, 0.55)' : 'rgba(108, 111, 102, 0.42)';
-    return `<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${rotate})"><g class="scattered-knowledge__question-wrap" data-sk-question="${item.id}" style="--sk-delay:${(index * 0.9 + 0.4).toFixed(1)}s"><text class="scattered-knowledge__question" x="0" y="0" text-anchor="middle" dominant-baseline="central" font-size="${size.font}" font-weight="${size.weight}" fill="${tone}" font-family="'IBM Plex Sans', sans-serif">${text}</text></g></g>`;
-  }).join('');
+function renderPath(path, index) {
+  const classes = [
+    'sk-path',
+    path.animate === 'draw' ? 'sk-path--draw' : 'sk-path--fade',
+    path.central ? 'sk-path--central' : '',
+    path.partial ? 'sk-path--partial' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  const dash = path.partial ? ` stroke-dasharray="${(path.partial * 100).toFixed(0)} 100"` : '';
+
+  return `<path class="${classes}" data-sk-path="${index}" d="${path.d}" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="${path.stroke}" stroke-width="${path.width}" stroke-linecap="round" opacity="${path.opacity}" style="--path-delay:${path.delay}s;--path-duration:${path.duration}s"${dash}/>`;
 }
 
-function buildSvg(questionsCopy) {
-  return `<svg class="scattered-knowledge__svg" viewBox="0 0 ${VIEWBOX.w} ${VIEWBOX.h}" role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <radialGradient id="sk-vignette" cx="52%" cy="46%" r="58%">
-        <stop offset="0%" stop-color="#fbfbf8" stop-opacity="0"/>
-        <stop offset="68%" stop-color="#fbfbf8" stop-opacity="0"/>
-        <stop offset="100%" stop-color="#fbfbf8" stop-opacity="1"/>
-      </radialGradient>
-    </defs>
-    <g class="scattered-knowledge__tangle" data-sk-tangle>${renderTangle()}</g>
-    <g class="scattered-knowledge__icons" data-sk-icons>${renderIcons()}</g>
-    <g class="scattered-knowledge__questions" data-sk-questions>${renderQuestions(questionsCopy)}</g>
-    <rect width="100%" height="100%" fill="url(#sk-vignette)" pointer-events="none"/>
-  </svg>`;
+function buildStage(labelsCopy) {
+  const fragments = SCATTERED_FRAGMENTS.map(renderFragment).join('');
+  const labels = SCATTERED_LABELS.map((label) => renderLabel(label, labelsCopy[label.id])).join('');
+  const paths = SCATTERED_PATHS.map(renderPath).join('');
+
+  return `<div class="scattered-knowledge__stage">
+    <svg class="scattered-knowledge__lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">${paths}</svg>
+    <div class="scattered-knowledge__fragments">${fragments}</div>
+    <div class="scattered-knowledge__labels">${labels}</div>
+  </div>`;
+}
+
+function observeStage(root) {
+  if (observer) observer.disconnect();
+
+  if (reduceMotion) {
+    root.classList.add('is-active', 'is-static');
+    return;
+  }
+
+  observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          root.classList.add('is-active');
+          observer?.unobserve(root);
+        }
+      });
+    },
+    { threshold: 0.18, rootMargin: '0px 0px -8% 0px' },
+  );
+
+  observer.observe(root);
 }
 
 export function renderScatteredKnowledge(root) {
   if (!root) return;
+
   const { home } = getCopy();
-  const questionsCopy = home?.problem?.illustration?.questions ?? {};
-  root.innerHTML = buildSvg(questionsCopy);
+  const labelsCopy = home?.problem?.illustration?.labels ?? {};
+
+  root.innerHTML = buildStage(labelsCopy);
+  root.classList.remove('is-active', 'is-static');
+  observeStage(root);
 }
 
 export function initScatteredKnowledge() {
   const root = document.querySelector('[data-scattered-knowledge]');
   if (!root) return;
   renderScatteredKnowledge(root);
+}
+
+export function destroyScatteredKnowledge() {
+  observer?.disconnect();
+  observer = null;
 }

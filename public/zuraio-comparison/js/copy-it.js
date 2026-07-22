@@ -128,7 +128,7 @@ export const home = {
   },
   problem: {
     marker: 'Le suona familiare?',
-    heading: 'La Sua azienda ha già le risposte. Sono solo difficili da trovare.',
+    headingHtml: 'Zuraio aiuta i Suoi<br>collaboratori a trovare risposte<br>e portare avanti il lavoro.',
     body: 'Le conoscenze importanti sono distribuite tra e-mail, documenti, riunioni e sistemi aziendali. I collaboratori perdono tempo a cercare, preparare e ripetere lavoro già svolto.',
     cards: [
       { title: 'Le conoscenze sono disperse', body: 'Le informazioni importanti si trovano in caselle di posta, file, riunioni e sistemi aziendali.' },
@@ -138,12 +138,14 @@ export const home = {
     ],
     link: 'Veda casi d\'uso pratici →',
     illustration: {
-      questions: {
-        latestVersion: 'Ultima versione?',
-        whoKnows: 'Chi lo sa?',
-        alreadyDone: 'Già fatto?',
+      labels: {
         whereIsIt: 'Dov\'è?',
-        mark: '?',
+        whoKnows: 'Chi lo sa?',
+        latestVersion: 'Ultima versione?',
+        alreadyDone: 'Già fatto?',
+        whichDocument: 'Quale documento?',
+        whoHasAccess: 'Chi ha accesso?',
+        wasUpdated: 'È stato aggiornato?',
       },
     },
   },

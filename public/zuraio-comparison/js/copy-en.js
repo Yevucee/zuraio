@@ -128,7 +128,7 @@ export const home = {
   },
   problem: {
     marker: 'Recognise this?',
-    heading: 'Your company already has the answers. They are just hard to find.',
+    headingHtml: 'Let Zuraio help your<br>employees find answers<br>and get work done.',
     body: 'Important knowledge is spread across emails, documents, meetings and business systems. People lose time searching, preparing and repeating work that has already been done.',
     cards: [
       { title: 'Knowledge is scattered', body: 'Important information sits across inboxes, files, meetings and company systems.' },
@@ -138,12 +138,14 @@ export const home = {
     ],
     link: 'See practical use cases →',
     illustration: {
-      questions: {
-        latestVersion: 'Latest version?',
-        whoKnows: 'Who knows?',
-        alreadyDone: 'Already done?',
+      labels: {
         whereIsIt: 'Where is it?',
-        mark: '?',
+        whoKnows: 'Who knows?',
+        latestVersion: 'Latest version?',
+        alreadyDone: 'Already done?',
+        whichDocument: 'Which document?',
+        whoHasAccess: 'Who has access?',
+        wasUpdated: 'Was this updated?',
       },
     },
   },

@@ -135,6 +135,7 @@ export function applyHomeTranslations() {
   if (home.meta?.title) document.title = home.meta.title;
 
   setText('#problem .marker', home.problem.marker);
+  setHtml('#problem [data-problem-headline]', home.problem.headingHtml || home.problem.heading);
   setText('#problem [data-problem-body], #problem .lede', home.problem.body);
   applyList('#problem .pain-grid', home.problem.cards, (c, i) =>
     `<div class="pain-card reveal${i ? ` d${i}` : ''}"><span class="pain-card__icon">${PAIN_CARD_ICONS[i] || ''}</span><span class="n">${c.title}</span><p>${c.body}</p></div>`,
