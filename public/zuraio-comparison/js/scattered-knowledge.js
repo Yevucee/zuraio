@@ -51,44 +51,22 @@ function renderLabel(label, text) {
 
 function renderPath(path, index) {
   const animate = path.animate || 'static';
-  const classes = [
-    'sk-path',
-    `sk-path--${animate}`,
-    path.dashed ? 'sk-path--dashed' : '',
-  ]
-    .filter(Boolean)
-    .join(' ');
+  const classes = ['sk-path', `sk-path--${animate}`].join(' ');
 
   const marker = path.arrow ? ' marker-end="url(#sk-arrow)"' : '';
 
-  return `<path class="${classes}" data-sk-path="${index}" d="${path.d}" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="${path.stroke}" stroke-width="${path.width}" stroke-linecap="round" style="opacity:${path.opacity};--path-delay:${path.delay}s;--path-duration:${path.duration}s"${marker}/>`;
-}
-
-function renderTravelDots() {
-  if (reduceMotion) return '';
-
-  const dotPaths = SCATTERED_PATHS.filter((p) => p.dot).slice(0, 4);
-  return dotPaths
-    .map(
-      (path, i) =>
-        `<circle class="sk-travel-dot" r="0.9" fill="#8ca33f" opacity="0.55" style="--dot-delay:${path.delay + i * 0.5}s;--dot-duration:${path.duration}s">
-          <animateMotion dur="${path.duration}s" begin="${path.delay}s" repeatCount="indefinite" path="${path.d}"/>
-        </circle>`,
-    )
-    .join('');
+  return `<path class="${classes}" data-sk-path="${index}" d="${path.d}" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="${path.stroke}" stroke-width="${path.width}" stroke-linecap="round" stroke-linejoin="round" style="opacity:${path.opacity};--path-delay:${path.delay}s;--path-duration:${path.duration}s"${marker}/>`;
 }
 
 function buildStage(labelsCopy) {
   const fragments = SCATTERED_FRAGMENTS.map(renderFragment).join('');
   const labels = SCATTERED_LABELS.map((label) => renderLabel(label, labelsCopy[label.id])).join('');
   const paths = SCATTERED_PATHS.map(renderPath).join('');
-  const dots = renderTravelDots();
 
   return `<div class="scattered-knowledge__stage">
     <svg class="scattered-knowledge__lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
       ${SVG_DEFS}
       ${paths}
-      ${dots}
     </svg>
     <div class="scattered-knowledge__fragments">${fragments}</div>
     <div class="scattered-knowledge__labels">${labels}</div>

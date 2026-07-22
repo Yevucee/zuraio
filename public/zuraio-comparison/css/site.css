@@ -1516,7 +1516,7 @@ h3 .headline-em {
     margin: 32px 0 0;
   }
 
-  .scattered-knowledge__lines .sk-path:nth-child(n + 28) {
+  .scattered-knowledge__lines .sk-path:nth-child(n + 22) {
     display: none;
   }
 }
