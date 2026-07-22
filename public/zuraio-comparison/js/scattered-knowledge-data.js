@@ -37,7 +37,6 @@ export const SCATTERED_LABELS = [
 
 /**
  * Whole curved paths — connect icons via open corridors; cross in centre but no partial strokes.
- * ~20 paths: tangled but readable.
  */
 export const SCATTERED_PATHS = [
   { d: 'M 16 14 Q 38 6 84 12', stroke: '#b8c878', width: 1.0, opacity: 0.46, animate: 'draw', delay: 0, duration: 10 },
@@ -62,6 +61,20 @@ export const SCATTERED_PATHS = [
   { d: 'M 8 78 Q 4 56 10 38', stroke: '#cfd6c3', width: 0.8, opacity: 0.36, animate: 'draw', delay: 1.5, duration: 13 },
   { d: 'M 90 54 Q 88 72 88 68', stroke: '#dce7b7', width: 0.85, opacity: 0.4, animate: 'fade', delay: 0.3, duration: 9 },
   { d: 'M 16 14 Q 32 30 50 44', stroke: '#b8c878', width: 0.9, opacity: 0.42, animate: 'travel', delay: 2.8, duration: 14, dashed: true, dot: true },
+  { d: 'M 44 8 Q 48 26 50 44', stroke: '#cfd6c3', width: 0.85, opacity: 0.4, animate: 'draw', delay: 1.3, duration: 10 },
+  { d: 'M 74 16 Q 64 30 50 44', stroke: '#b8c878', width: 0.85, opacity: 0.38, animate: 'fade', delay: 0.7, duration: 11 },
+  { d: 'M 16 14 Q 22 22 26 32', stroke: '#dce7b7', width: 0.8, opacity: 0.36, animate: 'draw', delay: 1.9, duration: 9 },
+  { d: 'M 94 28 Q 92 40 90 54', stroke: '#cfd6c3', width: 0.85, opacity: 0.4, animate: 'travel', delay: 2.3, duration: 12, dashed: true },
+  { d: 'M 34 78 Q 26 70 18 62', stroke: '#b8c878', width: 0.85, opacity: 0.38, animate: 'fade', delay: 0.4, duration: 10 },
+  { d: 'M 82 76 Q 72 82 56 86', stroke: '#8ca33f', width: 0.85, opacity: 0.4, animate: 'draw', delay: 1.7, duration: 11 },
+  { d: 'M 10 38 Q 14 50 18 62', stroke: '#cfd6c3', width: 0.8, opacity: 0.36, animate: 'fade', delay: 2.5, duration: 13 },
+  { d: 'M 50 44 Q 38 36 26 32', stroke: '#b8c878', width: 0.85, opacity: 0.38, animate: 'draw', delay: 1.0, duration: 10 },
+  { d: 'M 50 44 Q 62 36 74 16', stroke: '#dce7b7', width: 0.8, opacity: 0.36, animate: 'travel', delay: 3.0, duration: 14, dashed: true },
+  { d: 'M 30 46 Q 46 38 62 20', stroke: '#cfd6c3', width: 0.85, opacity: 0.4, animate: 'fade', delay: 0.6, duration: 12 },
+  { d: 'M 88 68 Q 84 82 82 76', stroke: '#b8c878', width: 0.8, opacity: 0.36, animate: 'draw', delay: 2.1, duration: 10 },
+  { d: 'M 8 78 Q 22 88 36 92', stroke: '#d8dcd5', width: 0.75, opacity: 0.34, animate: 'static', delay: 0, duration: 0 },
+  { d: 'M 50 44 Q 44 58 34 78', stroke: '#8ca33f', width: 0.9, opacity: 0.42, animate: 'draw', delay: 1.6, duration: 11 },
+  { d: 'M 50 44 Q 68 52 88 68', stroke: '#b8c878', width: 0.85, opacity: 0.4, animate: 'fade', delay: 2.7, duration: 12 },
 ];
 
 export const FRAGMENT_SVGS = {
