@@ -5332,6 +5332,10 @@ html {
   font-size: 13px;
 }
 
+#integrations .section-link {
+  margin-top: 20px;
+}
+
 /* ---------- Compact pillar band ---------- */
 .pillars--compact {
   background: var(--cloud);
