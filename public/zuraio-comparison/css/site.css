@@ -1099,7 +1099,7 @@ h3 .headline-em {
   content: '';
   position: absolute;
   inset: 8% 4%;
-  background: radial-gradient(ellipse 58% 52% at 50% 44%, rgba(210, 223, 165, 0.45), transparent 72%);
+  background: radial-gradient(ellipse 82% 78% at 50% 46%, rgba(210, 223, 165, 0.28), transparent 78%);
   pointer-events: none;
   z-index: 0;
 }
