@@ -75,6 +75,19 @@ export const SCATTERED_PATHS = [
   { d: 'M 8 78 Q 22 88 36 92', stroke: '#d8dcd5', width: 0.75, opacity: 0.34, animate: 'static', delay: 0, duration: 0 },
   { d: 'M 50 44 Q 44 58 34 78', stroke: '#8ca33f', width: 0.9, opacity: 0.42, animate: 'draw', delay: 1.6, duration: 11 },
   { d: 'M 50 44 Q 68 52 88 68', stroke: '#b8c878', width: 0.85, opacity: 0.4, animate: 'fade', delay: 2.7, duration: 12 },
+  /* Orbital arcs — wide curves around the outer field, always partly visible */
+  { d: 'M 4 8 C 28 -2 72 -2 96 8', stroke: '#8ca33f', width: 1.15, opacity: 0.56, animate: 'static', delay: 0, duration: 0 },
+  { d: 'M 6 92 C 32 102 68 102 94 92', stroke: '#b8c878', width: 1.1, opacity: 0.54, animate: 'static', delay: 0, duration: 0 },
+  { d: 'M 2 16 C -2 44 -2 56 4 84', stroke: '#cfd6c3', width: 1.05, opacity: 0.52, animate: 'draw', delay: 0.2, duration: 14 },
+  { d: 'M 98 16 C 102 44 102 56 96 84', stroke: '#cfd6c3', width: 1.05, opacity: 0.52, animate: 'draw', delay: 0.6, duration: 14 },
+  { d: 'M 10 12 C 30 48 70 48 90 88', stroke: '#8ca33f', width: 1.0, opacity: 0.5, animate: 'travel', delay: 1.4, duration: 18, dashed: true, dot: true },
+  { d: 'M 90 12 C 70 48 30 48 10 88', stroke: '#b8c878', width: 1.0, opacity: 0.48, animate: 'travel', delay: 2.0, duration: 19, dashed: true },
+  { d: 'M 16 14 C 50 2 84 14 94 28', stroke: '#dce7b7', width: 1.0, opacity: 0.5, animate: 'fade', delay: 0.4, duration: 13 },
+  { d: 'M 8 78 C 50 98 82 88 96 60', stroke: '#b8c878', width: 1.05, opacity: 0.5, animate: 'fade', delay: 1.0, duration: 14 },
+  { d: 'M 4 44 C 24 34 76 34 96 44', stroke: '#cfd6c3', width: 0.95, opacity: 0.46, animate: 'static', delay: 0, duration: 0 },
+  { d: 'M 4 58 C 24 68 76 68 96 58', stroke: '#cfd6c3', width: 0.95, opacity: 0.46, animate: 'static', delay: 0, duration: 0 },
+  { d: 'M 26 32 C 8 52 8 72 18 62', stroke: '#8ca33f', width: 0.95, opacity: 0.48, animate: 'draw', delay: 1.6, duration: 12 },
+  { d: 'M 74 16 C 92 36 92 72 88 68', stroke: '#8ca33f', width: 0.95, opacity: 0.48, animate: 'draw', delay: 2.2, duration: 12 },
 ];
 
 export const FRAGMENT_SVGS = {

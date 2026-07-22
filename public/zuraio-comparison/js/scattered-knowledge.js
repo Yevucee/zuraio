@@ -61,7 +61,7 @@ function renderPath(path, index) {
 
   const marker = path.arrow ? ' marker-end="url(#sk-arrow)"' : '';
 
-  return `<path class="${classes}" data-sk-path="${index}" d="${path.d}" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="${path.stroke}" stroke-width="${path.width}" stroke-linecap="round" opacity="${path.opacity}" style="--path-delay:${path.delay}s;--path-duration:${path.duration}s"${marker}/>`;
+  return `<path class="${classes}" data-sk-path="${index}" d="${path.d}" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="${path.stroke}" stroke-width="${path.width}" stroke-linecap="round" style="opacity:${path.opacity};--path-delay:${path.delay}s;--path-duration:${path.duration}s"${marker}/>`;
 }
 
 function renderTravelDots() {
