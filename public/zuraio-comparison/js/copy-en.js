@@ -128,7 +128,7 @@ export const home = {
   },
   problem: {
     marker: 'Recognise this?',
-    headingHtml: 'Your employees spend too<br>much time searching for<br>information.',
+    headingHtml: 'Your employees spend too much time<br>searching for information.',
     body: 'Important knowledge is spread across emails, documents, meetings and business systems. People lose time searching, preparing and repeating work that has already been done.',
     cards: [
       { title: 'Knowledge is scattered', body: 'Important information sits across inboxes, files, meetings and company systems.' },

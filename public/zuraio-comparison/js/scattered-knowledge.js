@@ -35,8 +35,7 @@ function renderFragment(fragment) {
     `--y:${fragment.y}%`,
     `--drift:${fragment.drift}s`,
     `--delay:${fragment.delay}s`,
-    `--pulse:${fragment.pulse ?? 6.5}s`,
-    isBrain ? `--brain-pulse:${fragment.brainPulse}s` : '',
+    `--icon-fade:${fragment.fade ?? 6.5}s`,
     isClock ? `--clock-anim:${fragment.clockAnim}s` : '',
   ]
     .filter(Boolean)

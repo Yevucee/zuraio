@@ -128,7 +128,7 @@ export const home = {
   },
   problem: {
     marker: 'Vous reconnaissez cela ?',
-    headingHtml: 'Vos collaborateurs passent trop<br>de temps à chercher des<br>informations.',
+    headingHtml: 'Vos collaborateurs passent trop de temps<br>à chercher des informations.',
     body: 'Les connaissances importantes sont dispersées entre e-mails, documents, réunions et systèmes métier. Les collaborateurs perdent du temps à chercher, préparer et refaire un travail déjà accompli.',
     cards: [
       { title: 'Les connaissances sont dispersées', body: 'Les informations importantes se trouvent dans les boîtes de réception, les fichiers, les réunions et les systèmes de l\u2019entreprise.' },

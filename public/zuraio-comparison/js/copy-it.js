@@ -128,7 +128,7 @@ export const home = {
   },
   problem: {
     marker: 'Le suona familiare?',
-    headingHtml: 'I Suoi collaboratori dedicano troppo<br>tempo alla ricerca di<br>informazioni.',
+    headingHtml: 'I Suoi collaboratori dedicano troppo tempo<br>alla ricerca di informazioni.',
     body: 'Le conoscenze importanti sono distribuite tra e-mail, documenti, riunioni e sistemi aziendali. I collaboratori perdono tempo a cercare, preparare e ripetere lavoro già svolto.',
     cards: [
       { title: 'Le conoscenze sono disperse', body: 'Le informazioni importanti si trovano in caselle di posta, file, riunioni e sistemi aziendali.' },
