@@ -55,17 +55,14 @@ function renderPath(path, index) {
   const classes = [
     'sk-path',
     `sk-path--${animate}`,
-    path.central ? 'sk-path--central' : '',
     path.dashed ? 'sk-path--dashed' : '',
-    path.partial ? 'sk-path--partial' : '',
   ]
     .filter(Boolean)
     .join(' ');
 
   const marker = path.arrow ? ' marker-end="url(#sk-arrow)"' : '';
-  const partialDash = path.partial ? ` stroke-dasharray="${path.partial} 1"` : '';
 
-  return `<path class="${classes}" data-sk-path="${index}" d="${path.d}" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="${path.stroke}" stroke-width="${path.width}" stroke-linecap="round" opacity="${path.opacity}" style="--path-delay:${path.delay}s;--path-duration:${path.duration}s"${marker}${partialDash}/>`;
+  return `<path class="${classes}" data-sk-path="${index}" d="${path.d}" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="${path.stroke}" stroke-width="${path.width}" stroke-linecap="round" opacity="${path.opacity}" style="--path-delay:${path.delay}s;--path-duration:${path.duration}s"${marker}/>`;
 }
 
 function renderTravelDots() {
