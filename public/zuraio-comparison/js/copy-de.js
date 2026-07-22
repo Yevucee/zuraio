@@ -203,12 +203,6 @@ export const home = {
         },
       ],
     },
-    integrationsStrip: {
-      title: 'Funktioniert mit den Tools, die Ihr Team bereits nutzt.',
-      link: 'Alle Integrationen ansehen →',
-      clarify: 'Verbindungen hängen von Ihrem Setup, genehmigten Tools und Deployment-Umfang ab.',
-      tools: ['microsoft-365', 'google-workspace', 'outlook', 'sharepoint', 'hubspot', 'salesforce'],
-    },
   },
   pillars: {
     heading: 'Alles, was Ihr Assistent braucht, um zu helfen.',
@@ -219,10 +213,10 @@ export const home = {
     ],
   },
   integrations: {
-    heading: 'Passt in die Tools, die Ihr Team bereits nutzt.',
+    heading: 'Funktioniert mit den Tools, die Ihr Team bereits nutzt.',
     body: 'Zuraio ist dafür konzipiert, neben Ihrer bestehenden E-Mail, Dokumenten, Meetings, Nachrichten und Geschäftssysteme zu arbeiten.',
-    clarify: 'Konkrete Verbindungen hängen von Ihrem Setup, genehmigten Tools und Deployment-Umfang ab.',
-    link: 'Integrationen ansehen →',
+    clarify: 'Verbindungen hängen von Ihrem Setup, genehmigten Tools und Deployment-Umfang ab.',
+    link: 'Alle Integrationen ansehen →',
   },
   demo: {
     heading: 'Sehen Sie Ihren Assistenten bei der Arbeit.',

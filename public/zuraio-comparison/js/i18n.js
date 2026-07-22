@@ -154,12 +154,10 @@ export function applyHomeTranslations() {
     applyComparePanel('with', home.different.with, WORKFLOW_ICONS_WITH, 'olive');
   }
 
-  const strip = home.different.integrationsStrip;
-  if (strip) {
-    setText('#different .integrations-strip__title', strip.title);
-    setText('#different .integrations-strip__link', strip.link);
-    setText('#different [data-integrations-clarify]', strip.clarify);
-  }
+  setText('#integrations h2', home.integrations.heading);
+  setText('#integrations .lede', home.integrations.body);
+  setText('#integrations [data-integrations-clarify]', home.integrations.clarify);
+  setHtml('#integrations .section-link a', home.integrations.link);
 
   const pillarItems = document.querySelectorAll('#pillars .pillar-item');
   home.pillars.items?.forEach((item, i) => {
