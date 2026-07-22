@@ -25,6 +25,7 @@ export const heroOptions = [
   },
   {
     headline: 'L\u2019espace de travail intelligent pour toute votre entreprise.',
+    emphasis: 'espace de travail',
     paragraph:
       'Recherchez les connaissances de l\u2019entreprise, créez des documents, analysez des informations et accomplissez le travail quotidien via un AI Hub sécurisé.',
     cta: 'Découvrez ce qu\u2019il peut faire',
@@ -32,6 +33,7 @@ export const heroOptions = [
   },
   {
     headline: 'Un assistant IA pour tous. Alimenté par votre entreprise.',
+    emphasis: 'assistant IA',
     paragraph:
       'Zuraio transforme vos connaissances métier en un soutien sécurisé et concret pour chaque collaborateur.',
     cta: 'Explorer Zuraio',
@@ -177,7 +179,7 @@ export const home = {
     },
     with: {
       title: 'Avec Zuraio',
-      titleEmphasis: 'Zuraio',
+      titleEmphasis: null,
       subtitle: 'Processus typique : moins d\u2019une minute',
       timeLabel: '<1 min',
       progressCompleting: 'En cours...',

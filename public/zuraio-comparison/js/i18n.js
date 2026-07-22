@@ -142,7 +142,7 @@ export function applyHomeTranslations() {
   setHtml('#problem .section-link a', home.problem.link);
 
   setText('#different .marker', home.different.marker);
-  setHeading('#different h2', home.different.heading, home.different.headingEmphasis);
+  setText('#different h2', home.different.heading);
   setText('#different .lede', home.different.body);
 
   const withoutPanel = document.querySelector('[data-compare-box="without"]');
@@ -176,9 +176,9 @@ export function applyHomeTranslations() {
     }
   });
 
-  setHeading('#pillars h2', home.pillars.heading, home.pillars.headingEmphasis);
+  setText('#pillars h2', home.pillars.heading);
 
-  setHeading('#assistant-demo h2', home.demo.heading, home.demo.headingEmphasis);
+  setText('#assistant-demo h2', home.demo.heading);
   setText('#assistant-demo .lede', home.demo.body);
   setText('#assistant-demo .demo-disclaimer', home.demo.disclaimer);
   const activeSlide = document.querySelector('#demo-showcase [data-demo-slide].is-active');
@@ -188,10 +188,10 @@ export function applyHomeTranslations() {
     setText('[data-demo-label]', slideCopy.label);
     setText('[data-demo-caption-text]', slideCopy.body);
     const headingEl = document.querySelector('[data-demo-heading]');
-    if (headingEl) setHeadlineHtml(headingEl, slideCopy.heading, slideCopy.emphasis);
+    if (headingEl) headingEl.textContent = slideCopy.heading;
   }
 
-  setHeading('#outcomes h2', home.outcomes.heading, home.outcomes.headingEmphasis);
+  setText('#outcomes h2', home.outcomes.heading);
   setText('#outcomes .lede', home.outcomes.body);
   const bentoCards = document.querySelectorAll('#outcomes .bcard');
   home.outcomes.cards?.forEach((card, i) => {
@@ -203,7 +203,7 @@ export function applyHomeTranslations() {
   });
 
   setText('#data-control .marker', home.dataControl.marker);
-  setHeading('#data-control h2', home.dataControl.heading, home.dataControl.headingEmphasis);
+  setText('#data-control h2', home.dataControl.heading);
   setText('#data-control .lede', home.dataControl.body);
   const ccards = document.querySelectorAll('#data-control .ccard');
   home.dataControl.cards?.forEach((card, i) => {
@@ -216,7 +216,7 @@ export function applyHomeTranslations() {
   setHtml('#data-control .section-link a', home.dataControl.link);
 
   setText('#reviewable .marker', home.reviewable.marker);
-  setHeading('#reviewable h2', home.reviewable.heading, home.reviewable.headingEmphasis);
+  setText('#reviewable h2', home.reviewable.heading);
   const reviewableLedes = document.querySelectorAll('#reviewable .lede');
   home.reviewable.bodyParagraphs?.forEach((paragraph, i) => {
     if (reviewableLedes[i]) reviewableLedes[i].textContent = paragraph;
@@ -235,7 +235,7 @@ export function applyHomeTranslations() {
   setHtml('#reviewable .section-link a', home.reviewable.link);
 
   setText('#origin .marker', home.origin.marker);
-  setHeading('#origin h2', home.origin.heading, home.origin.headingEmphasis);
+  setText('#origin h2', home.origin.heading);
   const originText = document.querySelector('#origin .origin-text');
   if (originText) {
     const paragraphs = originText.querySelectorAll('p:not(.section-link)');
@@ -249,7 +249,7 @@ export function applyHomeTranslations() {
   const originImg = document.querySelector('#origin img');
   if (originImg && home.origin.imageAlt) originImg.alt = home.origin.imageAlt;
 
-  setHeading('#final h2', home.final.heading, home.final.headingEmphasis);
+  setText('#final h2', home.final.heading);
   setText('#final p:not(.small)', home.final.body);
   const finalCtas = document.querySelectorAll('#final .cta-row a');
   if (finalCtas[0]) finalCtas[0].textContent = home.final.primaryCta;
