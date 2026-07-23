@@ -3610,11 +3610,11 @@ footer.site-footer {
   pointer-events: none;
   background: linear-gradient(
     90deg,
-    rgba(251, 251, 248, 0.72) 0%,
-    rgba(251, 251, 248, 0.58) 24%,
-    rgba(251, 251, 248, 0.38) 38%,
-    rgba(251, 251, 248, 0.16) 50%,
-    rgba(251, 251, 248, 0.05) 58%,
+    rgba(251, 251, 248, 0.36) 0%,
+    rgba(251, 251, 248, 0.29) 24%,
+    rgba(251, 251, 248, 0.19) 38%,
+    rgba(251, 251, 248, 0.08) 50%,
+    rgba(251, 251, 248, 0.025) 58%,
     rgba(251, 251, 248, 0) 66%
   );
 }
@@ -3622,11 +3622,11 @@ footer.site-footer {
 .hero-layered--composite .hero-layered__scrim {
   background: linear-gradient(
     90deg,
-    rgba(251, 251, 248, 0.88) 0%,
-    rgba(251, 251, 248, 0.72) 22%,
-    rgba(251, 251, 248, 0.48) 38%,
-    rgba(251, 251, 248, 0.22) 52%,
-    rgba(251, 251, 248, 0.08) 62%,
+    rgba(251, 251, 248, 0.44) 0%,
+    rgba(251, 251, 248, 0.36) 22%,
+    rgba(251, 251, 248, 0.24) 38%,
+    rgba(251, 251, 248, 0.11) 52%,
+    rgba(251, 251, 248, 0.04) 62%,
     rgba(251, 251, 248, 0) 72%
   );
 }
@@ -3938,9 +3938,9 @@ footer.site-footer {
   .hero-layered__scrim {
     background: linear-gradient(
       180deg,
-      rgba(251, 251, 248, 0.58) 0%,
-      rgba(251, 251, 248, 0.4) 38%,
-      rgba(251, 251, 248, 0.2) 62%,
+      rgba(251, 251, 248, 0.29) 0%,
+      rgba(251, 251, 248, 0.2) 38%,
+      rgba(251, 251, 248, 0.1) 62%,
       rgba(251, 251, 248, 0) 100%
     );
   }
@@ -3948,9 +3948,9 @@ footer.site-footer {
   .hero-layered--composite .hero-layered__scrim {
     background: linear-gradient(
       180deg,
-      rgba(251, 251, 248, 0.9) 0%,
-      rgba(251, 251, 248, 0.68) 42%,
-      rgba(251, 251, 248, 0.28) 68%,
+      rgba(251, 251, 248, 0.45) 0%,
+      rgba(251, 251, 248, 0.34) 42%,
+      rgba(251, 251, 248, 0.14) 68%,
       rgba(251, 251, 248, 0) 100%
     );
   }
