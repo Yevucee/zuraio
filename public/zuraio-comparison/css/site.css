@@ -849,11 +849,10 @@ h3 .headline-em {
 .hero-layered .hero-copy h1 .headline-em {
   color: var(--olive-deep);
   text-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.72),
-    0 1px 12px rgba(251, 251, 248, 0.88),
-    0 0 24px rgba(251, 251, 248, 0.5),
-    0 1px 3px rgba(0, 0, 0, 0.28),
-    0 2px 8px rgba(0, 0, 0, 0.12);
+    0 0 8px rgba(255, 255, 255, 0.88),
+    0 0 18px rgba(255, 255, 255, 0.58),
+    0 0 30px rgba(255, 255, 255, 0.28),
+    0 1px 2px rgba(0, 0, 0, 0.22);
 }
 
 .hero-comparison .sub,
@@ -3706,11 +3705,10 @@ footer.site-footer {
   color: #0f100e;
   margin: 0;
   text-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.68),
-    0 2px 14px rgba(255, 255, 255, 0.5),
-    0 4px 22px rgba(255, 255, 255, 0.28),
-    0 1px 2px rgba(15, 16, 14, 0.4),
-    0 2px 6px rgba(15, 16, 14, 0.15);
+    0 0 8px rgba(255, 255, 255, 0.88),
+    0 0 18px rgba(255, 255, 255, 0.58),
+    0 0 32px rgba(255, 255, 255, 0.28),
+    0 1px 2px rgba(15, 16, 14, 0.35);
 }
 
 .hero-layered .hero-lede,
@@ -3721,9 +3719,9 @@ footer.site-footer {
   max-width: 52ch;
   line-height: 1.55;
   text-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.62),
-    0 1px 12px rgba(255, 255, 255, 0.42),
-    0 1px 2px rgba(15, 16, 14, 0.28);
+    0 0 6px rgba(255, 255, 255, 0.82),
+    0 0 14px rgba(255, 255, 255, 0.48),
+    0 1px 2px rgba(15, 16, 14, 0.22);
 }
 
 .hero-layered .hero-copy .cta-row {
@@ -3738,8 +3736,8 @@ footer.site-footer {
 .hero-layered .hero-trust-pill {
   color: #1a1b18;
   text-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.55),
-    0 1px 6px rgba(255, 255, 255, 0.35);
+    0 0 4px rgba(255, 255, 255, 0.65),
+    0 0 10px rgba(255, 255, 255, 0.32);
 }
 
 .hero-trust li {
@@ -4145,22 +4143,8 @@ footer.site-footer {
 
 .hero-layered [data-hero-copy]::before,
 .hero-layered .hero-copy::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: -36px;
-  bottom: -36px;
-  left: -48px;
-  right: -16px;
-  pointer-events: none;
-  border-radius: 28px;
-  background: radial-gradient(
-    ellipse 90% 80% at 22% 45%,
-    rgba(251, 251, 248, 0.48) 0%,
-    rgba(251, 251, 248, 0.22) 50%,
-    rgba(251, 251, 248, 0) 78%
-  );
-  box-shadow: 0 0 48px 20px rgba(251, 251, 248, 0.18);
+  content: none;
+  display: none;
 }
 
 .hero-compare-copy h1,
