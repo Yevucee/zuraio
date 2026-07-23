@@ -849,8 +849,11 @@ h3 .headline-em {
 .hero-layered .hero-copy h1 .headline-em {
   color: var(--olive-deep);
   text-shadow:
-    0 1px 12px rgba(251, 251, 248, 0.85),
-    0 0 28px rgba(251, 251, 248, 0.45);
+    0 1px 0 rgba(255, 255, 255, 0.72),
+    0 1px 12px rgba(251, 251, 248, 0.88),
+    0 0 24px rgba(251, 251, 248, 0.5),
+    0 1px 3px rgba(0, 0, 0, 0.28),
+    0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 .hero-comparison .sub,
@@ -3703,9 +3706,11 @@ footer.site-footer {
   color: #0f100e;
   margin: 0;
   text-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.56),
-    0 2px 12px rgba(255, 255, 255, 0.38),
-    0 1px 3px rgba(0, 0, 0, 0.32);
+    0 1px 0 rgba(255, 255, 255, 0.68),
+    0 2px 14px rgba(255, 255, 255, 0.5),
+    0 4px 22px rgba(255, 255, 255, 0.28),
+    0 1px 2px rgba(15, 16, 14, 0.4),
+    0 2px 6px rgba(15, 16, 14, 0.15);
 }
 
 .hero-layered .hero-lede,
@@ -3716,8 +3721,9 @@ footer.site-footer {
   max-width: 52ch;
   line-height: 1.55;
   text-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.52),
-    0 1px 10px rgba(255, 255, 255, 0.32);
+    0 1px 0 rgba(255, 255, 255, 0.62),
+    0 1px 12px rgba(255, 255, 255, 0.42),
+    0 1px 2px rgba(15, 16, 14, 0.28);
 }
 
 .hero-layered .hero-copy .cta-row {
@@ -3731,6 +3737,9 @@ footer.site-footer {
 
 .hero-layered .hero-trust-pill {
   color: #1a1b18;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.55),
+    0 1px 6px rgba(255, 255, 255, 0.35);
 }
 
 .hero-trust li {
