@@ -218,14 +218,6 @@ export const home = {
       ],
     },
   },
-  pillars: {
-    heading: 'Tutto ciò di cui il Suo assistente ha bisogno per aiutare.',
-    items: [
-      { title: 'Conoscenze', body: 'Zuraio lavora con e-mail, documenti, contatti, note di riunione e sistemi aziendali approvati.', link: 'Esplori le conoscenze →', href: 'knowledge.html' },
-      { title: 'Connessioni', body: 'Lavora accanto agli strumenti che il Suo team utilizza già, senza obbligare a sostituirli.', link: 'Veda le connessioni →', href: 'integrations.html' },
-      { title: 'Sicurezza', body: 'Hosting, accesso, fonti e regole di revisione restano sotto controllo aziendale.', link: 'Scopra il controllo dei dati →', href: 'data-control.html' },
-    ],
-  },
   integrations: {
     heading: 'Funziona con gli strumenti che il Suo team utilizza già.',
     body: 'Zuraio è progettato per lavorare accanto alla Sua e-mail, ai documenti, alle riunioni, ai messaggi e ai sistemi aziendali esistenti.',

@@ -218,14 +218,6 @@ export const home = {
       ],
     },
   },
-  pillars: {
-    heading: 'Alles, was Ihr Assistent braucht, um zu helfen.',
-    items: [
-      { title: 'Wissen', body: 'Zuraio arbeitet mit genehmigten E-Mails, Dokumenten, Kontakten, Meeting-Notizen und Unternehmenssystemen.', link: 'Wissen erkunden →', href: 'knowledge.html' },
-      { title: 'Verbindungen', body: 'Es arbeitet mit den Tools, die Ihr Team bereits nutzt, statt Menschen zum Wechsel zu zwingen.', link: 'Verbindungen ansehen →', href: 'integrations.html' },
-      { title: 'Sicherheit', body: 'Hosting, Zugriff, Quellen und Prüfregeln bleiben unter Unternehmenskontrolle.', link: 'Datenkontrolle lesen →', href: 'data-control.html' },
-    ],
-  },
   integrations: {
     heading: 'Funktioniert mit den Tools, die Ihr Team bereits nutzt.',
     body: 'Zuraio ist dafür konzipiert, neben Ihrer bestehenden E-Mail, Dokumenten, Meetings, Nachrichten und Geschäftssysteme zu arbeiten.',
