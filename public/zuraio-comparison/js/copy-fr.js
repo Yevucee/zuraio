@@ -218,14 +218,6 @@ export const home = {
       ],
     },
   },
-  pillars: {
-    heading: 'Tout ce dont votre assistant a besoin pour vous aider.',
-    items: [
-      { title: 'Connaissances', body: 'Zuraio travaille avec les e-mails, documents, contacts, notes de réunion et systèmes approuvés de l\u2019entreprise.', link: 'Explorer les connaissances →', href: 'knowledge.html' },
-      { title: 'Connexions', body: 'Il s\u2019intègre aux outils que votre équipe utilise déjà, sans imposer de les remplacer.', link: 'Voir les connexions →', href: 'integrations.html' },
-      { title: 'Sécurité', body: 'L\u2019hébergement, l\u2019accès, les sources et les règles de validation restent sous le contrôle de l\u2019entreprise.', link: 'En savoir plus sur le contrôle des données →', href: 'data-control.html' },
-    ],
-  },
   integrations: {
     heading: 'Fonctionne avec les outils que votre équipe utilise déjà.',
     body: 'Zuraio est conçu pour fonctionner aux côtés de votre e-mail, de vos documents, réunions, messages et systèmes métier existants.',

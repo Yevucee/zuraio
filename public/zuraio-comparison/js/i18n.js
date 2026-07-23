@@ -160,23 +160,6 @@ export function applyHomeTranslations() {
   setText('#integrations [data-integrations-clarify]', home.integrations.clarify);
   setHtml('#integrations .section-link a', home.integrations.link);
 
-  const pillarItems = document.querySelectorAll('#pillars .pillar-item');
-  home.pillars.items?.forEach((item, i) => {
-    const el = pillarItems[i];
-    if (!el) return;
-    const title = el.querySelector('.pillar-title');
-    const body = el.querySelector('.pillar-body');
-    if (title) title.textContent = item.title;
-    if (body) body.textContent = item.body;
-    const link = el.querySelector('.text-link');
-    if (link) {
-      link.textContent = item.link;
-      link.href = item.href;
-    }
-  });
-
-  setText('#pillars h2', home.pillars.heading);
-
   setText('#assistant-demo h2', home.demo.heading);
   setText('#assistant-demo .lede', home.demo.body);
   setText('#assistant-demo .demo-disclaimer', home.demo.disclaimer);
