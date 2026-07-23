@@ -244,7 +244,7 @@ main#top > section + section:not(.hero-layered):not(.final) {
 }
 
 .btn-primary:hover {
-  background: var(--olive-deep);
+  background: var(--olive);
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
 }
@@ -538,8 +538,8 @@ header.nav .nav-actions .btn-primary {
 }
 
 header.nav .nav-actions .btn-primary:hover {
-  background: var(--olive-deep);
-  color: var(--charcoal-soft);
+  background: var(--olive);
+  color: #fff;
   border-color: rgba(120, 138, 54, 0.5);
   box-shadow: var(--shadow-sm);
 }
@@ -2893,7 +2893,7 @@ h3 .headline-em {
 }
 
 .final .btn-primary:hover {
-  background: var(--charcoal-soft);
+  background: var(--olive);
   color: #fff;
   box-shadow: var(--shadow-lg);
 }
