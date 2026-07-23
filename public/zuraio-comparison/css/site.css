@@ -4145,8 +4145,22 @@ footer.site-footer {
 
 .hero-layered [data-hero-copy]::before,
 .hero-layered .hero-copy::before {
-  content: none;
-  display: none;
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -36px;
+  bottom: -36px;
+  left: -48px;
+  right: -16px;
+  pointer-events: none;
+  border-radius: 28px;
+  background: radial-gradient(
+    ellipse 90% 80% at 22% 45%,
+    rgba(251, 251, 248, 0.48) 0%,
+    rgba(251, 251, 248, 0.22) 50%,
+    rgba(251, 251, 248, 0) 78%
+  );
+  box-shadow: 0 0 48px 20px rgba(251, 251, 248, 0.18);
 }
 
 .hero-compare-copy h1,
