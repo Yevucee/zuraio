@@ -847,11 +847,10 @@ h3 .headline-em {
 }
 
 .hero-layered .hero-copy h1 .headline-em {
-  color: #0f100e;
+  color: var(--olive-deep);
   text-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.56),
-    0 2px 12px rgba(255, 255, 255, 0.38),
-    0 1px 3px rgba(0, 0, 0, 0.32);
+    0 1px 12px rgba(251, 251, 248, 0.85),
+    0 0 28px rgba(251, 251, 248, 0.45);
 }
 
 .hero-comparison .sub,
