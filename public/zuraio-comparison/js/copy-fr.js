@@ -275,18 +275,6 @@ export const home = {
       },
     ],
   },
-  outcomes: {
-    heading: 'Moins d\u2019administration. Plus de travail à valeur ajoutée.',
-    headingEmphasis: 'valeur',
-    body: 'Zuraio aide les collaborateurs à consacrer moins de temps à chercher, synthétiser et préparer, afin qu\u2019ils puissent se concentrer sur les clients, les décisions et le travail pour lequel ils sont engagés.',
-    cards: [
-      { tag: 'Réunions', title: 'Arrivez préparé', body: 'Historique pertinent, décisions et actions ouvertes déjà préparés.' },
-      { tag: 'E-mail', title: 'Brouillons de réponse prêts', body: 'Brouillons basés sur le fil complet et le contexte pertinent de l\u2019entreprise.' },
-      { tag: 'Réponses', title: 'Interrogez avec preuves', body: 'Interrogez les connaissances approuvées et consultez les sources derrière la réponse.' },
-      { tag: 'Rapports', title: 'Premiers brouillons, plus rapidement', body: 'Transformez les informations existantes en premiers brouillons structurés.' },
-      { tag: 'Relances', title: 'Rien ne passe entre les mailles', body: 'Capturez les actions et prochaines étapes avant qu\u2019elles ne soient oubliées.' },
-    ],
-  },
   dataControl: {
     marker: 'Contrôle des données',
     heading: 'L\u2019IA, sans lui remettre les clés.',

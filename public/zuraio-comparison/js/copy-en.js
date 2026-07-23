@@ -275,18 +275,6 @@ export const home = {
       },
     ],
   },
-  outcomes: {
-    heading: 'Less administration. More valuable work.',
-    headingEmphasis: 'valuable',
-    body: 'Zuraio helps people spend less time searching, summarising and preparing, so they can focus on clients, decisions and the work they are employed to do.',
-    cards: [
-      { tag: 'Meetings', title: 'Walk in prepared', body: 'Relevant history, decisions and open actions already prepared.' },
-      { tag: 'Email', title: 'Draft replies ready', body: 'Drafts based on the full thread and relevant company context.' },
-      { tag: 'Answers', title: 'Ask with evidence', body: 'Ask across approved knowledge and see the sources behind the response.' },
-      { tag: 'Reports', title: 'First drafts, faster', body: 'Turn existing information into structured first drafts.' },
-      { tag: 'Follow-ups', title: 'Nothing slips', body: 'Capture actions and next steps before they are forgotten.' },
-    ],
-  },
   dataControl: {
     marker: 'Data control',
     heading: 'AI, without handing over the keys.',

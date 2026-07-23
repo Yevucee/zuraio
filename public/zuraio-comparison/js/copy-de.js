@@ -275,18 +275,6 @@ export const home = {
       },
     ],
   },
-  outcomes: {
-    heading: 'Weniger Administration. Mehr wertvolle Arbeit.',
-    headingEmphasis: 'wertvolle',
-    body: 'Zuraio hilft Menschen, weniger Zeit mit Suchen, Zusammenfassen und Vorbereiten zu verbringen, damit sie sich auf Kunden, Entscheidungen und ihre eigentliche Arbeit konzentrieren können.',
-    cards: [
-      { tag: 'Meetings', title: 'Vorbereitet ins Meeting', body: 'Relevante Historie, Entscheidungen und offene Aktionen bereits vorbereitet.' },
-      { tag: 'E-Mail', title: 'Antwortentwürfe bereit', body: 'Entwürfe basierend auf dem vollständigen Thread und relevantem Unternehmenskontext.' },
-      { tag: 'Antworten', title: 'Mit Nachweis fragen', body: 'Fragen über genehmigtes Wissen stellen und die Quellen hinter der Antwort sehen.' },
-      { tag: 'Berichte', title: 'Erste Entwürfe, schneller', body: 'Bestehende Informationen in strukturierte Erstentwürfe verwandeln.' },
-      { tag: 'Follow-ups', title: 'Nichts geht verloren', body: 'Aktionen und nächste Schritte erfassen, bevor sie vergessen werden.' },
-    ],
-  },
   dataControl: {
     marker: 'Datenkontrolle',
     heading: 'KI, ohne die Schlüssel abzugeben.',

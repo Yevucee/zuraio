@@ -173,17 +173,6 @@ export function applyHomeTranslations() {
     if (headingEl) headingEl.textContent = slideCopy.heading;
   }
 
-  setText('#outcomes h2', home.outcomes.heading);
-  setText('#outcomes .lede', home.outcomes.body);
-  const bentoCards = document.querySelectorAll('#outcomes .bcard');
-  home.outcomes.cards?.forEach((card, i) => {
-    const el = bentoCards[i];
-    if (!el) return;
-    el.querySelector('.tag').textContent = card.tag;
-    el.querySelector('h4').textContent = card.title;
-    el.querySelector('p').textContent = card.body;
-  });
-
   setText('#data-control .marker', home.dataControl.marker);
   setText('#data-control h2', home.dataControl.heading);
   setText('#data-control .lede', home.dataControl.body);

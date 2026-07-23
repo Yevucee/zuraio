@@ -275,18 +275,6 @@ export const home = {
       },
     ],
   },
-  outcomes: {
-    heading: 'Meno amministrazione. Più lavoro di valore.',
-    headingEmphasis: 'valore',
-    body: 'Zuraio aiuta i collaboratori a dedicare meno tempo a cercare, riassumere e preparare, così possono concentrarsi su clienti, decisioni e il lavoro per cui sono stati assunti.',
-    cards: [
-      { tag: 'Riunioni', title: 'Entri preparato', body: 'Cronologia pertinente, decisioni e azioni aperte già preparate.' },
-      { tag: 'E-mail', title: 'Bozze di risposta pronte', body: 'Bozze basate sull\'intero thread e sul contesto aziendale pertinente.' },
-      { tag: 'Risposte', title: 'Chieda con evidenze', body: 'Interroghi il know-how approvato e veda le fonti dietro la risposta.' },
-      { tag: 'Report', title: 'Prime bozze, più rapidamente', body: 'Trasformi le informazioni esistenti in prime bozze strutturate.' },
-      { tag: 'Follow-up', title: 'Nulla sfugge', body: 'Catturi azioni e prossimi passi prima che vengano dimenticati.' },
-    ],
-  },
   dataControl: {
     marker: 'Controllo dei dati',
     heading: 'IA, senza consegnare le chiavi.',
