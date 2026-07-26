@@ -1184,9 +1184,23 @@ h3 .headline-em {
   opacity: 0.52;
 }
 
-.sk-fragment__icon svg {
+.sk-fragment__icon svg,
+.sk-fragment__icon img {
   width: 100%;
   height: 100%;
+  object-fit: contain;
+}
+
+.sk-fragment--asset .sk-fragment__icon {
+  opacity: 0.72;
+}
+
+.sk-fragment--asset.sk-fragment--brain .sk-fragment__icon {
+  opacity: 0.68;
+}
+
+.sk-fragment--asset.sk-fragment--clock .sk-fragment__icon {
+  opacity: 0.62;
 }
 
 .sk-flash {

@@ -4,6 +4,8 @@ import {
   SCATTERED_PATHS,
   SCATTERED_HUB,
   FRAGMENT_SVGS,
+  FRAGMENT_ICON_SRC,
+  clockIconSrc,
   SVG_DEFS,
 } from './scattered-knowledge-data.js';
 import { getCopy } from './i18n.js';
@@ -11,10 +13,24 @@ import { getCopy } from './i18n.js';
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let observer = null;
 
+function renderIcon(fragment) {
+  if (fragment.type === 'clock') {
+    const src = clockIconSrc(fragment.clockVariant ?? 1);
+    return `<img src="${src}" alt="" class="sk-fragment__img" width="24" height="24" decoding="async" />`;
+  }
+
+  const src = FRAGMENT_ICON_SRC[fragment.type];
+  if (src) {
+    return `<img src="${src}" alt="" class="sk-fragment__img" width="24" height="24" decoding="async" />`;
+  }
+
+  return FRAGMENT_SVGS[fragment.type] ?? '';
+}
+
 function renderFragment(fragment) {
   const isClock = fragment.type === 'clock';
   const isBrain = fragment.type === 'brain';
-  const svg = FRAGMENT_SVGS[fragment.type] ?? '';
+  const isAsset = Boolean(FRAGMENT_ICON_SRC[fragment.type] || isClock);
 
   const classes = [
     'sk-fragment',
@@ -23,6 +39,7 @@ function renderFragment(fragment) {
     fragment.hub ? 'sk-fragment--hub' : '',
     isBrain ? 'sk-fragment--brain' : '',
     isClock ? 'sk-fragment--clock' : '',
+    isAsset ? 'sk-fragment--asset' : '',
   ]
     .filter(Boolean)
     .join(' ');
@@ -37,12 +54,12 @@ function renderFragment(fragment) {
     `--drift:${fragment.drift}s`,
     `--delay:${fragment.delay}s`,
     `--icon-fade:${fragment.fade ?? 6.5}s`,
-    isClock ? `--clock-anim:${fragment.clockAnim}s` : '',
+    isClock ? `--clock-anim:${fragment.clockAnim ?? 30}s` : '',
   ]
     .filter(Boolean)
     .join(';');
 
-  return `<div class="${classes}" data-sk-fragment="${fragment.id}" style="${style}">${flash}<span class="sk-fragment__icon">${svg}</span></div>`;
+  return `<div class="${classes}" data-sk-fragment="${fragment.id}" style="${style}">${flash}<span class="sk-fragment__icon">${renderIcon(fragment)}</span></div>`;
 }
 
 function renderLabel(label, text) {
