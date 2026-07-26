@@ -1,5 +1,9 @@
-/** Fragment positions — spread with ~14% minimum spacing; no stacked icons. */
+/** Search hub — dead centre of the diagram field. */
+export const SCATTERED_HUB = { x: 50, y: 50 };
+
+/** Fragment positions — spread around the centred search hub. */
 export const SCATTERED_FRAGMENTS = [
+  { id: 'magnifier', type: 'magnifier', x: 50, y: 50, drift: 5.5, delay: 0.3, fade: 7.8, hub: true },
   { id: 'document', type: 'document', x: 16, y: 14, drift: 6.2, delay: 0.1, fade: 6.4, flash: true },
   { id: 'email', type: 'email', x: 84, y: 12, drift: 6.8, delay: 0.6, fade: 7.2, flash: true },
   { id: 'folder', type: 'folder', x: 18, y: 62, drift: 5.8, delay: 1.1, fade: 5.6 },
@@ -7,18 +11,17 @@ export const SCATTERED_FRAGMENTS = [
   { id: 'calendar', type: 'calendar', x: 44, y: 8, drift: 6.4, delay: 1.8, fade: 7.6, secondary: true },
   { id: 'cloud', type: 'cloud', x: 94, y: 28, drift: 5.8, delay: 0.9, fade: 5.8 },
   { id: 'chat', type: 'chat', x: 8, y: 78, drift: 7.0, delay: 1.4, fade: 6.2, flash: true },
-  { id: 'magnifier', type: 'magnifier', x: 50, y: 44, drift: 5.5, delay: 0.3, fade: 7.8, hub: true },
   { id: 'browser', type: 'browser', x: 26, y: 32, drift: 6.1, delay: 2.0, fade: 6.9, secondary: true },
   { id: 'spreadsheet', type: 'spreadsheet', x: 82, y: 76, drift: 5.6, delay: 1.6, fade: 5.4, secondary: true },
   { id: 'video', type: 'video', x: 56, y: 86, drift: 7.2, delay: 0.7, fade: 6.6 },
   { id: 'grid', type: 'grid', x: 34, y: 78, drift: 6.3, delay: 1.2, fade: 5.9 },
   { id: 'brain-upper', type: 'brain', x: 62, y: 20, drift: 5.0, delay: 0.8, fade: 5.2 },
-  { id: 'brain-mid', type: 'brain', x: 30, y: 46, drift: 4.8, delay: 1.5, fade: 6.4 },
-  { id: 'brain-lower', type: 'brain', x: 88, y: 68, drift: 5.8, delay: 2.1, fade: 4.8 },
-  { id: 'clock-left', type: 'clock', x: 10, y: 38, drift: 6.2, delay: 0.4, fade: 7.0, clockAnim: 28 },
-  { id: 'clock-lower', type: 'clock', x: 36, y: 92, drift: 5.4, delay: 1.3, fade: 6.2, clockAnim: 32 },
-  { id: 'clock-right', type: 'clock', x: 96, y: 60, drift: 6.6, delay: 0.9, fade: 5.6, clockAnim: 26 },
-  { id: 'clock-upper', type: 'clock', x: 74, y: 16, drift: 5.9, delay: 1.7, fade: 7.4, clockAnim: 30, secondary: true },
+  { id: 'brain-ne', type: 'brain', x: 74, y: 16, drift: 5.9, delay: 1.7, fade: 7.4, secondary: true },
+  { id: 'brain-left', type: 'brain', x: 10, y: 38, drift: 6.2, delay: 0.4, fade: 7.0 },
+  { id: 'brain-sw', type: 'brain', x: 22, y: 58, drift: 4.8, delay: 1.5, fade: 6.4 },
+  { id: 'brain-lower', type: 'brain', x: 36, y: 92, drift: 5.4, delay: 1.3, fade: 6.2 },
+  { id: 'brain-right', type: 'brain', x: 96, y: 60, drift: 6.6, delay: 0.9, fade: 5.6 },
+  { id: 'brain-se', type: 'brain', x: 88, y: 68, drift: 5.8, delay: 2.1, fade: 4.8 },
 ];
 
 /** Labels placed in open gaps — never on icon coordinates. */
@@ -35,80 +38,91 @@ export const SCATTERED_LABELS = [
   { id: 'doneBefore', x: 76, y: 40, tier: 'emphasis', fade: 6.8, delay: 2.0 },
 ];
 
+const STROKES = ['#b5c07a', '#c2cda8', '#a8b86e', '#d0d8bc', '#9aab78'];
+const BEZIER_K = 0.5522847498;
+
+function fmt(value) {
+  return (Math.round(value * 10) / 10).toFixed(1).replace(/\.0$/, '');
+}
+
+/** Smooth closed ellipse — circular scribble loop. */
+function ellipseLoop(cx, cy, rx, ry) {
+  return [
+    `M ${fmt(cx)} ${fmt(cy - ry)}`,
+    `C ${fmt(cx + rx * BEZIER_K)} ${fmt(cy - ry)}, ${fmt(cx + rx)} ${fmt(cy - ry * BEZIER_K)}, ${fmt(cx + rx)} ${fmt(cy)}`,
+    `C ${fmt(cx + rx)} ${fmt(cy + ry * BEZIER_K)}, ${fmt(cx + rx * BEZIER_K)} ${fmt(cy + ry)}, ${fmt(cx)} ${fmt(cy + ry)}`,
+    `C ${fmt(cx - rx * BEZIER_K)} ${fmt(cy + ry)}, ${fmt(cx - rx)} ${fmt(cy + ry * BEZIER_K)}, ${fmt(cx - rx)} ${fmt(cy)}`,
+    `C ${fmt(cx - rx)} ${fmt(cy - ry * BEZIER_K)}, ${fmt(cx - rx * BEZIER_K)} ${fmt(cy - ry)}, ${fmt(cx)} ${fmt(cy - ry)}`,
+  ].join(' ');
+}
+
 /**
- * Reference-style light scribble — hairline cubic curves distributed across
- * the field. Small loops sit in open zones, not one dead-centre cluster.
+ * Even rings of smooth circular loops around the search hub —
+ * a muddle of overlapping thoughts, evenly distributed.
  */
-export const SCATTERED_PATHS = [
-  /* Mini loops — eight zones, evenly spread (avoid hub at 50, 44) */
-  { d: 'M 20 18 C 22 17, 24 19, 22 21 C 20 20, 18 19, 20 18', stroke: '#b5c07a', width: 0.54, opacity: 0.36, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 21 20 C 23 18, 25 20, 23 22 C 21 21, 19 20, 21 20', stroke: '#c2cda8', width: 0.52, opacity: 0.34, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 48 12 C 50 11, 52 13, 50 15 C 48 14, 46 13, 48 12', stroke: '#a8b86e', width: 0.53, opacity: 0.35, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 49 14 C 51 12, 53 14, 51 16 C 49 15, 47 14, 49 14', stroke: '#d0d8bc', width: 0.52, opacity: 0.33, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 78 18 C 80 17, 82 19, 80 21 C 78 20, 76 19, 78 18', stroke: '#b5c07a', width: 0.54, opacity: 0.36, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 77 20 C 79 18, 81 20, 79 22 C 77 21, 75 20, 77 20', stroke: '#c2cda8', width: 0.52, opacity: 0.34, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 10 48 C 12 47, 14 49, 12 51 C 10 50, 8 49, 10 48', stroke: '#a8b86e', width: 0.53, opacity: 0.35, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 11 50 C 13 48, 15 50, 13 52 C 11 51, 9 50, 11 50', stroke: '#d0d8bc', width: 0.52, opacity: 0.33, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 88 48 C 90 47, 92 49, 90 51 C 88 50, 86 49, 88 48', stroke: '#b5c07a', width: 0.54, opacity: 0.36, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 87 50 C 89 48, 91 50, 89 52 C 87 51, 85 50, 87 50', stroke: '#c2cda8', width: 0.52, opacity: 0.34, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 20 78 C 22 77, 24 79, 22 81 C 20 80, 18 79, 20 78', stroke: '#a8b86e', width: 0.53, opacity: 0.35, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 21 80 C 23 78, 25 80, 23 82 C 21 81, 19 80, 21 80', stroke: '#d0d8bc', width: 0.52, opacity: 0.33, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 48 86 C 50 85, 52 87, 50 89 C 48 88, 46 87, 48 86', stroke: '#b5c07a', width: 0.54, opacity: 0.36, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 49 88 C 51 86, 53 88, 51 90 C 49 89, 47 88, 49 88', stroke: '#c2cda8', width: 0.52, opacity: 0.34, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 78 78 C 80 77, 82 79, 80 81 C 78 80, 76 79, 78 78', stroke: '#a8b86e', width: 0.53, opacity: 0.35, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 77 80 C 79 78, 81 80, 79 82 C 77 81, 75 80, 77 80', stroke: '#d0d8bc', width: 0.52, opacity: 0.33, animate: 'static', delay: 0, duration: 0 },
-  /* Wide sweeps — varied crossing points, not all through dead centre */
-  { d: 'M 14 16 C 26 30, 38 40, 44 48 C 62 48, 74 34, 86 18', stroke: '#b5c07a', width: 0.55, opacity: 0.34, animate: 'fade', delay: 0.2, duration: 14 },
-  { d: 'M 12 72 C 24 60, 38 50, 46 52 C 62 38, 76 52, 88 74', stroke: '#c2cda8', width: 0.54, opacity: 0.33, animate: 'fade', delay: 0.6, duration: 15 },
-  { d: 'M 18 12 C 32 24, 42 36, 54 38 C 58 52, 70 64, 84 78', stroke: '#a8b86e', width: 0.55, opacity: 0.34, animate: 'fade', delay: 1.0, duration: 16 },
-  { d: 'M 88 14 C 74 26, 60 38, 56 40 C 40 50, 28 62, 16 78', stroke: '#d0d8bc', width: 0.54, opacity: 0.33, animate: 'fade', delay: 1.4, duration: 15 },
-  { d: 'M 86 72 C 72 58, 58 48, 42 46 C 42 40, 28 28, 14 14', stroke: '#b5c07a', width: 0.55, opacity: 0.34, animate: 'fade', delay: 1.8, duration: 14 },
-  { d: 'M 16 14 C 28 28, 40 38, 58 46 C 60 50, 72 60, 84 72', stroke: '#c2cda8', width: 0.54, opacity: 0.33, animate: 'fade', delay: 2.2, duration: 16 },
-  { d: 'M 84 12 C 70 22, 58 34, 48 36 C 42 54, 30 66, 18 82', stroke: '#a8b86e', width: 0.55, opacity: 0.34, animate: 'fade', delay: 0.4, duration: 15 },
-  { d: 'M 12 38 C 24 40, 36 42, 58 40 C 62 46, 76 44, 88 40', stroke: '#d0d8bc', width: 0.53, opacity: 0.32, animate: 'fade', delay: 0.8, duration: 13 },
-  { d: 'M 14 52 C 26 50, 38 48, 46 42 C 62 40, 74 36, 86 32', stroke: '#b5c07a', width: 0.54, opacity: 0.33, animate: 'fade', delay: 1.2, duration: 14 },
-  { d: 'M 20 20 C 34 32, 44 40, 54 42 C 56 48, 66 58, 78 70', stroke: '#c2cda8', width: 0.55, opacity: 0.34, animate: 'fade', delay: 1.6, duration: 15 },
-  { d: 'M 80 20 C 66 32, 56 40, 46 38 C 44 48, 34 58, 22 70', stroke: '#a8b86e', width: 0.54, opacity: 0.33, animate: 'fade', delay: 2.0, duration: 15 },
-  { d: 'M 22 82 C 34 68, 44 56, 52 50 C 56 32, 66 22, 78 12', stroke: '#d0d8bc', width: 0.55, opacity: 0.34, animate: 'fade', delay: 2.4, duration: 16 },
-  /* S-curves weaving through icon field */
-  { d: 'M 16 14 C 24 32, 36 44, 44 48 C 64 44, 76 32, 84 12', stroke: '#b5c07a', width: 0.54, opacity: 0.34, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 18 62 C 28 54, 40 48, 46 52 C 60 40, 72 48, 90 54', stroke: '#c2cda8', width: 0.53, opacity: 0.33, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 8 78 C 18 64, 28 52, 42 46 C 72 36, 82 48, 94 28', stroke: '#a8b86e', width: 0.54, opacity: 0.34, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 10 38 C 20 36, 30 40, 48 42 C 70 48, 80 44, 96 60', stroke: '#d0d8bc', width: 0.53, opacity: 0.32, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 26 32 C 34 38, 42 42, 40 36 C 58 46, 66 52, 74 16', stroke: '#b5c07a', width: 0.54, opacity: 0.34, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 34 78 C 40 66, 46 54, 58 52 C 54 34, 60 24, 62 20', stroke: '#c2cda8', width: 0.53, opacity: 0.33, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 56 86 C 52 72, 54 58, 46 62 C 48 30, 46 20, 44 8', stroke: '#a8b86e', width: 0.54, opacity: 0.34, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 82 76 C 74 64, 64 52, 56 40 C 36 36, 26 48, 18 62', stroke: '#d0d8bc', width: 0.53, opacity: 0.32, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 88 68 C 76 58, 62 50, 58 46 C 38 38, 24 28, 16 14', stroke: '#b5c07a', width: 0.54, opacity: 0.34, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 36 92 C 42 78, 48 62, 52 54 C 52 26, 58 14, 84 12', stroke: '#c2cda8', width: 0.53, opacity: 0.33, animate: 'static', delay: 0, duration: 0 },
-  /* Peripheral wisps — sparse outer curves */
-  { d: 'M 14 22 C 22 30, 30 36, 38 40', stroke: '#a8b86e', width: 0.52, opacity: 0.3, animate: 'fade', delay: 0.3, duration: 12 },
-  { d: 'M 86 18 C 78 26, 70 32, 62 36', stroke: '#d0d8bc', width: 0.52, opacity: 0.35, animate: 'fade', delay: 0.7, duration: 12 },
-  { d: 'M 16 68 C 24 60, 32 54, 40 50', stroke: '#b5c07a', width: 0.52, opacity: 0.3, animate: 'fade', delay: 1.1, duration: 11 },
-  { d: 'M 84 68 C 76 60, 68 54, 60 50', stroke: '#c2cda8', width: 0.52, opacity: 0.35, animate: 'fade', delay: 1.5, duration: 11 },
-  { d: 'M 22 84 C 30 74, 38 64, 46 56', stroke: '#a8b86e', width: 0.52, opacity: 0.3, animate: 'fade', delay: 1.9, duration: 12 },
-  { d: 'M 78 84 C 70 74, 62 64, 54 56', stroke: '#d0d8bc', width: 0.52, opacity: 0.35, animate: 'fade', delay: 2.3, duration: 12 },
-  { d: 'M 12 44 C 20 42, 28 40, 36 38', stroke: '#b5c07a', width: 0.52, opacity: 0.28, animate: 'fade', delay: 2.7, duration: 10 },
-  { d: 'M 88 48 C 80 46, 72 44, 64 42', stroke: '#c2cda8', width: 0.52, opacity: 0.28, animate: 'fade', delay: 0.5, duration: 10 },
-  /* Long flowing arcs */
-  { d: 'M 15 16 C 30 20, 42 32, 46 38 C 58 56, 68 68, 82 76', stroke: '#a8b86e', width: 0.54, opacity: 0.33, animate: 'fade', delay: 0.9, duration: 17 },
-  { d: 'M 85 16 C 70 22, 58 34, 54 42 C 42 54, 32 66, 18 76', stroke: '#d0d8bc', width: 0.54, opacity: 0.33, animate: 'fade', delay: 1.3, duration: 17 },
-  { d: 'M 16 14 C 32 18, 44 30, 52 44 C 56 58, 64 72, 72 84', stroke: '#b5c07a', width: 0.55, opacity: 0.34, animate: 'fade', delay: 1.7, duration: 18 },
-  { d: 'M 84 12 C 68 18, 56 30, 48 36 C 44 58, 36 72, 28 84', stroke: '#c2cda8', width: 0.54, opacity: 0.33, animate: 'fade', delay: 2.1, duration: 18 },
-  { d: 'M 10 40 C 22 38, 36 40, 52 44 C 64 48, 78 52, 90 58', stroke: '#a8b86e', width: 0.53, opacity: 0.32, animate: 'fade', delay: 2.5, duration: 14 },
-  { d: 'M 10 50 C 22 48, 36 46, 48 42 C 64 42, 78 40, 90 36', stroke: '#d0d8bc', width: 0.53, opacity: 0.32, animate: 'fade', delay: 0.1, duration: 14 },
-  { d: 'M 20 12 C 34 24, 44 36, 56 40 C 56 52, 64 64, 74 74', stroke: '#b5c07a', width: 0.54, opacity: 0.33, animate: 'fade', delay: 0.15, duration: 16 },
-  { d: 'M 80 12 C 66 24, 56 36, 44 40 C 44 52, 36 64, 26 74', stroke: '#c2cda8', width: 0.54, opacity: 0.33, animate: 'fade', delay: 2.9, duration: 16 },
-  /* Flowing arcs through open corridors */
-  { d: 'M 16 14 C 22 26, 28 38, 34 46 C 42 50, 38 48, 36 52', stroke: '#9aab78', width: 0.55, opacity: 0.36, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 84 12 C 78 24, 70 36, 62 44 C 56 48, 58 40, 64 38', stroke: '#a8b86e', width: 0.54, opacity: 0.35, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 18 62 C 26 56, 36 50, 44 46 C 48 44, 42 58, 38 62', stroke: '#b5c07a', width: 0.53, opacity: 0.34, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 90 54 C 82 50, 72 46, 62 44 C 56 44, 64 56, 70 62', stroke: '#9aab78', width: 0.54, opacity: 0.35, animate: 'static', delay: 0, duration: 0 },
-  { d: 'M 26 32 C 32 36, 40 40, 36 52 C 58 48, 66 54, 74 16', stroke: '#a8b86e', width: 0.53, opacity: 0.34, animate: 'fade', delay: 0.45, duration: 13 },
-  { d: 'M 62 20 C 58 28, 54 36, 42 38 C 46 52, 40 60, 34 78', stroke: '#b5c07a', width: 0.54, opacity: 0.35, animate: 'fade', delay: 1.05, duration: 14 },
-  { d: 'M 44 8 C 46 20, 48 32, 46 62 C 52 56, 54 68, 56 86', stroke: '#9aab78', width: 0.53, opacity: 0.34, animate: 'fade', delay: 1.65, duration: 15 },
-  { d: 'M 88 68 C 78 60, 66 52, 36 58 C 34 36, 22 28, 10 38', stroke: '#a8b86e', width: 0.54, opacity: 0.35, animate: 'fade', delay: 2.25, duration: 14 },
-];
+function generateMuddlePaths() {
+  const paths = [];
+  let idx = 0;
+  const { x: hubX, y: hubY } = SCATTERED_HUB;
+
+  const rings = [
+    { count: 12, radius: 15, loopR: [2.3, 2.7, 3.0] },
+    { count: 12, radius: 25, loopR: [2.5, 2.9, 3.2] },
+    { count: 10, radius: 35, loopR: [2.4, 2.8, 3.1] },
+  ];
+
+  for (const ring of rings) {
+    for (let i = 0; i < ring.count; i++) {
+      const angle = (i / ring.count) * Math.PI * 2 + ring.radius * 0.015;
+      const cx = hubX + Math.cos(angle) * ring.radius;
+      const cy = hubY + Math.sin(angle) * ring.radius;
+      const baseR = ring.loopR[i % ring.loopR.length];
+      const rx = baseR * (1 + (i % 3) * 0.05);
+      const ry = baseR * (1 + (i % 4) * 0.04);
+
+      paths.push({
+        d: ellipseLoop(cx, cy, rx, ry),
+        stroke: STROKES[idx % STROKES.length],
+        width: 0.5 + (idx % 4) * 0.012,
+        opacity: 0.3 + (idx % 5) * 0.016,
+        animate: idx % 6 === 0 ? 'fade' : 'static',
+        delay: (idx % 10) * 0.28,
+        duration: 11 + (idx % 7),
+      });
+      idx += 1;
+    }
+  }
+
+  const wisps = [
+    { cx: 32, cy: 32, rx: 5.4, ry: 4.1 },
+    { cx: 68, cy: 32, rx: 5.1, ry: 4.4 },
+    { cx: 28, cy: 58, rx: 5.6, ry: 3.9 },
+    { cx: 72, cy: 58, rx: 5.3, ry: 4.2 },
+    { cx: 38, cy: 72, rx: 4.7, ry: 4.9 },
+    { cx: 62, cy: 72, rx: 4.9, ry: 4.5 },
+    { cx: 50, cy: 20, rx: 5.8, ry: 3.6 },
+    { cx: 50, cy: 80, rx: 5.4, ry: 3.8 },
+    { cx: 18, cy: 50, rx: 4.0, ry: 5.3 },
+    { cx: 82, cy: 50, rx: 3.8, ry: 5.0 },
+  ];
+
+  for (const wisp of wisps) {
+    paths.push({
+      d: ellipseLoop(wisp.cx, wisp.cy, wisp.rx, wisp.ry),
+      stroke: STROKES[idx % STROKES.length],
+      width: 0.52,
+      opacity: 0.26 + (idx % 3) * 0.02,
+      animate: 'fade',
+      delay: (idx % 8) * 0.4,
+      duration: 13 + (idx % 5),
+    });
+    idx += 1;
+  }
+
+  return paths;
+}
+
+export const SCATTERED_PATHS = generateMuddlePaths();
 
 export const FRAGMENT_SVGS = {
   document: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h6l4 4v12H8z"/><path d="M14 4v4h4M10 12h6M10 16h4"/></svg>',
@@ -118,13 +132,12 @@ export const FRAGMENT_SVGS = {
   calendar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>',
   cloud: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17h10a4 4 0 0 0 .5-8 5.5 5.5 0 0 0-10.6-1.2A3.5 3.5 0 0 0 7 17z"/></svg>',
   chat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H9l-4 3v-3H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z"/></svg>',
-  magnifier: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m19 19-3.4-3.4"/></svg>',
+  magnifier: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="7.5"/><path d="m20 20-4.2-4.2"/></svg>',
   browser: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M7 7h.01M10 7h.01"/></svg>',
   spreadsheet: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M4 14h16M10 4v16M14 4v16"/></svg>',
   video: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="13" height="10" rx="2"/><path d="m16 10 5-3v10l-5-3z"/></svg>',
   grid: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/></svg>',
-  brain: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4C8 4 6 7 6 10c-2 1-2 4 0 5 1 3 3 5 6 5s5-2 6-5c2-1 2-4 0-5 0-3-2-6-6-6z"/><path d="M9 10h.01M15 10h.01M10 14c1 1 3 1 4 0"/></svg>',
-  clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><line class="sk-clock-hand sk-clock-hand--hour" x1="12" y1="12" x2="12" y2="7.5"/><line class="sk-clock-hand sk-clock-hand--minute" x1="12" y1="12" x2="16" y2="12"/></svg>',
+  brain: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 5C6.5 5 5.5 8 5.5 10.5c-1.2 1-1.2 3 0 4 .3 2.2 2.2 4 4.5 4.5 1 1.8 2.5 2.5 4.5 2.5s3.5-.7 4.5-2.5c2.3-.5 4.2-2.3 4.5-4.5 1.2-1 1.2-3 0-4C18.5 8 17.5 5 14.5 5c-1.2 0-2 .4-2.8 1.2C10.5 5.4 9.8 5 9.5 5z"/><path d="M12 5v14"/><path d="M8.5 10.5c1.2.5 2.5.7 3.5.7s2.3-.2 3.5-.7"/><path d="M8.5 13.5c1.2-.4 2.5-.6 3.5-.6s2.3.2 3.5.6"/><path d="M9 16.5c.9.4 1.9.6 3 .6s2.1-.2 3-.6"/></svg>',
 };
 
 export const SVG_DEFS = `<defs>

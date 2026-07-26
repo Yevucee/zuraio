@@ -1105,7 +1105,7 @@ h3 .headline-em {
   position: absolute;
   inset: 0;
   background: radial-gradient(
-    circle 34% at var(--hub-x, 50%) var(--hub-y, 44%),
+    circle 34% at var(--hub-x, 50%) var(--hub-y, 50%),
     rgba(210, 223, 165, 0.44) 0%,
     rgba(210, 223, 165, 0.24) 32%,
     rgba(210, 223, 165, 0.1) 52%,
@@ -1149,13 +1149,14 @@ h3 .headline-em {
 }
 
 .sk-fragment--hub {
-  width: 42px;
-  height: 42px;
+  z-index: 4;
+  width: 54px;
+  height: 54px;
 }
 
 .sk-fragment--magnifier .sk-fragment__icon {
   color: #6f8030;
-  opacity: 0.78;
+  opacity: 0.85;
 }
 
 .sk-fragment__icon {
