@@ -62,8 +62,10 @@ function buildStage(labelsCopy) {
   const fragments = SCATTERED_FRAGMENTS.map(renderFragment).join('');
   const labels = SCATTERED_LABELS.map((label) => renderLabel(label, labelsCopy[label.id])).join('');
   const paths = SCATTERED_PATHS.map(renderPath).join('');
+  const hub = SCATTERED_FRAGMENTS.find((fragment) => fragment.hub);
+  const hubStyle = hub ? `--hub-x:${hub.x}%;--hub-y:${hub.y}%;` : '';
 
-  return `<div class="scattered-knowledge__stage">
+  return `<div class="scattered-knowledge__stage" style="${hubStyle}">
     <svg class="scattered-knowledge__lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
       ${SVG_DEFS}
       ${paths}
