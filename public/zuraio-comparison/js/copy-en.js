@@ -131,10 +131,18 @@ export const home = {
     headingHtml: 'Your employees spend too much time<br>searching for information.',
     body: 'Important knowledge is spread across emails, documents, meetings and business systems. People lose time searching, preparing and repeating work that has already been done.',
     cards: [
-      { title: 'Knowledge is scattered', body: 'Important information sits across inboxes, files, meetings and company systems.' },
-      { title: 'Administration takes over', body: 'Summaries, reports, preparation and follow-ups take time away from real work.' },
-      { title: 'Answers lack context', body: 'People make slower decisions when they cannot see the full history or source.' },
-      { title: 'Public AI creates uncertainty', body: 'Useful tools become risky when sensitive company knowledge is used without clear rules.' },
+      {
+        title: 'Knowledge Is Scattered',
+        body: 'Important information is spread across emails, documents, meetings, and different systems. Finding what you need means searching through them all.',
+      },
+      {
+        title: 'Admin Work Takes Up Time',
+        body: 'Summaries, reports, preparation, and follow-ups take time away from the work that truly moves your business forward.',
+      },
+      {
+        title: 'Answers Lack Context',
+        body: 'Without a complete history, reliable sources, and the right context, finding answers takes longer—and decisions become less certain.',
+      },
     ],
     link: 'See practical use cases →',
     illustration: {

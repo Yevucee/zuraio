@@ -131,10 +131,18 @@ export const home = {
     headingHtml: 'Vos collaborateurs passent trop de temps<br>à chercher des informations.',
     body: 'Les connaissances importantes sont dispersées entre e-mails, documents, réunions et systèmes métier. Les collaborateurs perdent du temps à chercher, préparer et refaire un travail déjà accompli.',
     cards: [
-      { title: 'Les connaissances sont dispersées', body: 'Les informations importantes se trouvent dans les boîtes de réception, les fichiers, les réunions et les systèmes de l\u2019entreprise.' },
-      { title: 'L\u2019administration prend le dessus', body: 'Les synthèses, rapports, préparations et relances détournent du temps consacré au travail à valeur ajoutée.' },
-      { title: 'Les réponses manquent de contexte', body: 'Les décisions prennent plus de temps lorsque l\u2019on ne dispose pas de l\u2019historique complet ou de la source.' },
-      { title: 'L\u2019IA publique crée de l\u2019incertitude', body: 'Des outils utiles deviennent risqués lorsque des connaissances sensibles de l\u2019entreprise sont utilisées sans règles claires.' },
+      {
+        title: 'Les connaissances sont dispersées',
+        body: 'Les informations importantes sont réparties entre e-mails, documents, réunions et différents systèmes. Trouver ce dont vous avez besoin implique de tout parcourir.',
+      },
+      {
+        title: 'L\u2019administration prend du temps',
+        body: 'Les synthèses, rapports, préparations et relances détournent du temps consacré au travail qui fait réellement avancer votre entreprise.',
+      },
+      {
+        title: 'Les réponses manquent de contexte',
+        body: 'Sans historique complet, sources fiables et contexte adéquat, trouver des réponses prend plus de temps — et les décisions deviennent moins sûres.',
+      },
     ],
     link: 'Voir les cas d\u2019usage concrets →',
     illustration: {

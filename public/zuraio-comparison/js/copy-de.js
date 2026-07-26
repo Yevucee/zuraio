@@ -131,10 +131,18 @@ export const home = {
     headingHtml: 'Ihre Mitarbeitenden verbringen zu<br>viel Zeit mit der Informationssuche.',
     body: 'Wichtiges Wissen ist über E-Mails, Dokumente, Meetings und Geschäftssysteme verteilt. Teams verlieren Zeit mit Suchen, Vorbereiten und wiederholter Arbeit, die bereits erledigt wurde.',
     cards: [
-      { title: 'Wissen ist verstreut', body: 'Wichtige Informationen liegen in Postfächern, Dateien, Meetings und Unternehmenssystemen.' },
-      { title: 'Administration übernimmt', body: 'Zusammenfassungen, Berichte, Vorbereitung und Follow-ups nehmen Zeit von der eigentlichen Arbeit.' },
-      { title: 'Antworten fehlt der Kontext', body: 'Entscheidungen dauern länger, wenn die vollständige Historie oder Quelle nicht sichtbar ist.' },
-      { title: 'Öffentliche KI erzeugt Unsicherheit', body: 'Nützliche Tools werden riskant, wenn sensibles Unternehmenswissen ohne klare Regeln genutzt wird.' },
+      {
+        title: 'Wissen ist verstreut',
+        body: 'Wichtige Informationen verteilen sich über E-Mails, Dokumente, Meetings und verschiedene Systeme. Was Sie brauchen, finden Sie, indem Sie all das durchsuchen.',
+      },
+      {
+        title: 'Administration nimmt Zeit in Anspruch',
+        body: 'Zusammenfassungen, Berichte, Vorbereitung und Follow-ups nehmen Zeit von der Arbeit, die Ihr Unternehmen wirklich voranbringt.',
+      },
+      {
+        title: 'Antworten fehlt der Kontext',
+        body: 'Ohne vollständige Historie, verlässliche Quellen und den richtigen Kontext dauert die Suche länger – und Entscheidungen werden unsicherer.',
+      },
     ],
     link: 'Praktische Anwendungsfälle ansehen →',
     illustration: {

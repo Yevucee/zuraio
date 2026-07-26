@@ -131,10 +131,18 @@ export const home = {
     headingHtml: 'I Suoi collaboratori dedicano troppo tempo<br>alla ricerca di informazioni.',
     body: 'Le conoscenze importanti sono distribuite tra e-mail, documenti, riunioni e sistemi aziendali. I collaboratori perdono tempo a cercare, preparare e ripetere lavoro già svolto.',
     cards: [
-      { title: 'Le conoscenze sono disperse', body: 'Le informazioni importanti si trovano in caselle di posta, file, riunioni e sistemi aziendali.' },
-      { title: 'L\'amministrazione prende il sopravvento', body: 'Sintesi, report, preparazione e follow-up sottraggono tempo al lavoro vero.' },
-      { title: 'Le risposte mancano di contesto', body: 'Le decisioni rallentano quando non è possibile vedere la cronologia completa o la fonte.' },
-      { title: 'L\'IA pubblica crea incertezza', body: 'Strumenti utili diventano rischiosi quando know-how aziendale sensibile viene utilizzato senza regole chiare.' },
+      {
+        title: 'Le conoscenze sono disperse',
+        body: 'Le informazioni importanti sono distribuite tra e-mail, documenti, riunioni e diversi sistemi. Trovare ciò che serve significa cercare ovunque.',
+      },
+      {
+        title: 'Il lavoro amministrativo richiede tempo',
+        body: 'Sintesi, report, preparazione e follow-up sottraggono tempo al lavoro che fa davvero avanzare la vostra azienda.',
+      },
+      {
+        title: 'Le risposte mancano di contesto',
+        body: 'Senza una cronologia completa, fonti affidabili e il contesto giusto, trovare risposte richiede più tempo — e le decisioni diventano meno certe.',
+      },
     ],
     link: 'Veda casi d\'uso pratici →',
     illustration: {
