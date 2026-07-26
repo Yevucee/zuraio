@@ -40,20 +40,37 @@ export const SCATTERED_LABELS = [
 
 const STROKES = ['#b5c07a', '#c2cda8', '#a8b86e', '#d0d8bc', '#9aab78'];
 const BEZIER_K = 0.5522847498;
+const CLUSTER_RADIUS = 34;
 
 function fmt(value) {
   return (Math.round(value * 10) / 10).toFixed(1).replace(/\.0$/, '');
 }
 
-/** Nudge only when a point crosses the viewBox — no uniform inset box. */
-function softPoint(x, y, rand) {
-  let nx = x;
-  let ny = y;
-  if (nx < 5) nx = 5 + rand() * 5;
-  if (nx > 95) nx = 95 - rand() * 5;
-  if (ny < 5) ny = 5 + rand() * 5;
-  if (ny > 95) ny = 95 - rand() * 5;
-  return { x: nx, y: ny };
+function distFromHub(x, y) {
+  return Math.hypot(x - SCATTERED_HUB.x, y - SCATTERED_HUB.y);
+}
+
+/** Keep line geometry inside the central tangle — never near the diagram frame. */
+function keepInCluster(x, y, rand) {
+  const dist = distFromHub(x, y);
+  if (dist <= CLUSTER_RADIUS) return { x, y };
+
+  const angle = Math.atan2(y - SCATTERED_HUB.y, x - SCATTERED_HUB.x);
+  const r = CLUSTER_RADIUS - rand() * 4;
+  return {
+    x: SCATTERED_HUB.x + Math.cos(angle) * r,
+    y: SCATTERED_HUB.y + Math.sin(angle) * r,
+  };
+}
+
+function randomInCluster(rand) {
+  const angle = rand() * Math.PI * 2;
+  const r = Math.pow(rand(), 0.48) * CLUSTER_RADIUS;
+  return {
+    x: SCATTERED_HUB.x + Math.cos(angle) * r,
+    y: SCATTERED_HUB.y + Math.sin(angle) * r,
+    a: rand() * Math.PI * 2,
+  };
 }
 
 function createRng(seed) {
@@ -75,7 +92,7 @@ function ellipseLoop(cx, cy, rx, ry) {
   ].join(' ');
 }
 
-/** Continuous curvy scribble — short segments, high bend, no long straight spans. */
+/** Continuous curvy scribble — short bends, stays in the central cluster. */
 function scribbleStroke(rand, segments, startX, startY, startAngle) {
   let x = startX;
   let y = startY;
@@ -84,22 +101,33 @@ function scribbleStroke(rand, segments, startX, startY, startAngle) {
 
   for (let i = 0; i < segments; i++) {
     angle += (rand() - 0.5) * 3.2;
-    const len = 4.5 + rand() * 9;
+
+    const dist = distFromHub(x, y);
+    if (dist > CLUSTER_RADIUS * 0.72) {
+      const toHub = Math.atan2(SCATTERED_HUB.y - y, SCATTERED_HUB.x - x);
+      angle = angle * 0.35 + toHub * 0.65 + (rand() - 0.5) * 0.8;
+    }
+
+    const len = 4 + rand() * 8;
     const cpLen = len * (0.62 + rand() * 0.38);
     const wobble = (rand() - 0.5) * 2.0;
     const bend = (rand() - 0.5) * 1.6;
 
-    const cp1 = softPoint(
+    const cp1 = keepInCluster(
       x + Math.cos(angle - 0.75 + wobble) * cpLen,
       y + Math.sin(angle - 0.75 + wobble) * cpLen,
       rand,
     );
-    const cp2 = softPoint(
+    const cp2 = keepInCluster(
       x + Math.cos(angle + 0.85 + bend) * cpLen,
       y + Math.sin(angle + 0.85 + bend) * cpLen,
       rand,
     );
-    const end = softPoint(x + Math.cos(angle + bend * 0.4) * len, y + Math.sin(angle + bend * 0.4) * len, rand);
+    const end = keepInCluster(
+      x + Math.cos(angle + bend * 0.4) * len,
+      y + Math.sin(angle + bend * 0.4) * len,
+      rand,
+    );
 
     d += ` C ${fmt(cp1.x)} ${fmt(cp1.y)}, ${fmt(cp2.x)} ${fmt(cp2.y)}, ${fmt(end.x)} ${fmt(end.y)}`;
     x = end.x;
@@ -109,20 +137,12 @@ function scribbleStroke(rand, segments, startX, startY, startAngle) {
   return d;
 }
 
-function randomStart(rand) {
-  return {
-    x: 8 + rand() * 84,
-    y: 8 + rand() * 84,
-    a: rand() * Math.PI * 2,
-  };
-}
-
 /**
- * Messy smooth scribbles — long wandering curves crossing the field,
- * overlapping loops, chaotic but fluid (confusion / tangled thoughts).
+ * Central tangle of smooth scribbles — dense at the hub, sparse toward the
+ * cluster edge. Lines stay away from the diagram frame (see reference).
  */
 function generateConfusionPaths() {
-  const rand = createRng(626044);
+  const rand = createRng(626045);
   const paths = [];
   let idx = 0;
 
@@ -139,32 +159,27 @@ function generateConfusionPaths() {
     idx += 1;
   };
 
-  // Tangled scribbles — many short curved segments
-  for (let i = 0; i < 38; i++) {
-    const start = randomStart(rand);
+  for (let i = 0; i < 42; i++) {
+    const start = randomInCluster(rand);
     const segments = 5 + Math.floor(rand() * 4);
     push(scribbleStroke(rand, segments, start.x, start.y, start.a));
   }
 
-  // Knots and loops — small curved closed shapes
-  for (let i = 0; i < 32; i++) {
-    const cx = 10 + rand() * 80;
-    const cy = 10 + rand() * 80;
-    const r = 1.4 + rand() * 2.8;
-    push(ellipseLoop(cx, cy, r * (0.75 + rand() * 0.45), r * (0.75 + rand() * 0.45)), {
+  for (let i = 0; i < 36; i++) {
+    const start = randomInCluster(rand);
+    const r = 1.2 + rand() * 2.4;
+    push(ellipseLoop(start.x, start.y, r * (0.75 + rand() * 0.45), r * (0.75 + rand() * 0.45)), {
       opacity: 0.26 + rand() * 0.12,
       width: 0.5 + rand() * 0.04,
     });
   }
 
-  // Figure-eight tangles — two overlapping loops
-  for (let i = 0; i < 10; i++) {
-    const cx = 14 + rand() * 72;
-    const cy = 14 + rand() * 72;
-    const r = 2 + rand() * 2.2;
+  for (let i = 0; i < 12; i++) {
+    const start = randomInCluster(rand);
+    const r = 1.6 + rand() * 2;
     const gap = r * 0.55;
-    push(ellipseLoop(cx - gap, cy, r * 0.85, r * 1.05), { opacity: 0.3 + rand() * 0.08 });
-    push(ellipseLoop(cx + gap, cy, r * 0.9, r * 0.95), { opacity: 0.28 + rand() * 0.08 });
+    push(ellipseLoop(start.x - gap, start.y, r * 0.85, r * 1.05), { opacity: 0.3 + rand() * 0.08 });
+    push(ellipseLoop(start.x + gap, start.y, r * 0.9, r * 0.95), { opacity: 0.28 + rand() * 0.08 });
   }
 
   return paths;

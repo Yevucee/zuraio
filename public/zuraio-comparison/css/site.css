@@ -1105,11 +1105,11 @@ h3 .headline-em {
   position: absolute;
   inset: 0;
   background: radial-gradient(
-    circle 20% at var(--hub-x, 50%) var(--hub-y, 50%),
-    rgba(210, 223, 165, 0.4) 0%,
-    rgba(210, 223, 165, 0.2) 42%,
-    rgba(210, 223, 165, 0.06) 58%,
-    transparent 64%
+    circle 17% at var(--hub-x, 50%) var(--hub-y, 50%),
+    rgba(210, 223, 165, 0.36) 0%,
+    rgba(210, 223, 165, 0.16) 48%,
+    rgba(210, 223, 165, 0.04) 58%,
+    transparent 62%
   );
   pointer-events: none;
   z-index: 0;
@@ -1122,8 +1122,6 @@ h3 .headline-em {
   height: 100%;
   overflow: visible;
   z-index: 1;
-  -webkit-mask-image: radial-gradient(ellipse 98% 94% at 50% 48%, #000 52%, rgba(0, 0, 0, 0.55) 78%, transparent 100%);
-  mask-image: radial-gradient(ellipse 98% 94% at 50% 48%, #000 52%, rgba(0, 0, 0, 0.55) 78%, transparent 100%);
 }
 
 .scattered-knowledge__fragments {
