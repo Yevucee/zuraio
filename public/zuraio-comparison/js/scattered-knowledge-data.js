@@ -40,33 +40,20 @@ export const SCATTERED_LABELS = [
 
 const STROKES = ['#b5c07a', '#c2cda8', '#a8b86e', '#d0d8bc', '#9aab78'];
 const BEZIER_K = 0.5522847498;
-const FIELD_MIN = 14;
-const FIELD_MAX = 86;
 
 function fmt(value) {
   return (Math.round(value * 10) / 10).toFixed(1).replace(/\.0$/, '');
 }
 
-function clamp(value, min, max) {
-  return Math.max(min, Math.min(max, value));
-}
-
-function clampField(value) {
-  return clamp(value, FIELD_MIN, FIELD_MAX);
-}
-
-/** Pull coordinates inward when they drift too close to the diagram edge. */
-function insetPoint(x, y) {
-  let nx = clampField(x);
-  let ny = clampField(y);
-  const soft = 6;
-
-  if (x < FIELD_MIN + soft) nx = FIELD_MIN + soft * 0.4 + (x - FIELD_MIN) * 0.35;
-  if (x > FIELD_MAX - soft) nx = FIELD_MAX - soft * 0.4 - (FIELD_MAX - x) * 0.35;
-  if (y < FIELD_MIN + soft) ny = FIELD_MIN + soft * 0.4 + (y - FIELD_MIN) * 0.35;
-  if (y > FIELD_MAX - soft) ny = FIELD_MAX - soft * 0.4 - (FIELD_MAX - y) * 0.35;
-
-  return { x: clampField(nx), y: clampField(ny) };
+/** Nudge only when a point crosses the viewBox — no uniform inset box. */
+function softPoint(x, y, rand) {
+  let nx = x;
+  let ny = y;
+  if (nx < 5) nx = 5 + rand() * 5;
+  if (nx > 95) nx = 95 - rand() * 5;
+  if (ny < 5) ny = 5 + rand() * 5;
+  if (ny > 95) ny = 95 - rand() * 5;
+  return { x: nx, y: ny };
 }
 
 function createRng(seed) {
@@ -88,36 +75,31 @@ function ellipseLoop(cx, cy, rx, ry) {
   ].join(' ');
 }
 
-/** One continuous smooth scribble — stays inside the field, away from borders. */
+/** Continuous curvy scribble — short segments, high bend, no long straight spans. */
 function scribbleStroke(rand, segments, startX, startY, startAngle) {
-  let x = clampField(startX);
-  let y = clampField(startY);
+  let x = startX;
+  let y = startY;
   let angle = startAngle ?? rand() * Math.PI * 2;
   let d = `M ${fmt(x)} ${fmt(y)}`;
 
   for (let i = 0; i < segments; i++) {
-    angle += (rand() - 0.5) * 2.6;
+    angle += (rand() - 0.5) * 3.2;
+    const len = 4.5 + rand() * 9;
+    const cpLen = len * (0.62 + rand() * 0.38);
+    const wobble = (rand() - 0.5) * 2.0;
+    const bend = (rand() - 0.5) * 1.6;
 
-    // Bias direction toward centre when near an edge — avoids border-hugging
-    const edgeDist = Math.min(x - FIELD_MIN, FIELD_MAX - x, y - FIELD_MIN, FIELD_MAX - y);
-    if (edgeDist < 14) {
-      const toCenter = Math.atan2(50 - y, 50 - x);
-      angle = angle * 0.45 + toCenter * 0.55 + (rand() - 0.5) * 0.6;
-    }
-
-    const len = 10 + rand() * 18;
-    const cpLen = len * (0.42 + rand() * 0.28);
-    const wobble = (rand() - 0.5) * 1.4;
-
-    const cp1 = insetPoint(
-      x + Math.cos(angle - 0.45 + wobble) * cpLen,
-      y + Math.sin(angle - 0.45 + wobble) * cpLen,
+    const cp1 = softPoint(
+      x + Math.cos(angle - 0.75 + wobble) * cpLen,
+      y + Math.sin(angle - 0.75 + wobble) * cpLen,
+      rand,
     );
-    const cp2 = insetPoint(
-      x + Math.cos(angle + 0.55 - wobble) * cpLen,
-      y + Math.sin(angle + 0.55 - wobble) * cpLen,
+    const cp2 = softPoint(
+      x + Math.cos(angle + 0.85 + bend) * cpLen,
+      y + Math.sin(angle + 0.85 + bend) * cpLen,
+      rand,
     );
-    const end = insetPoint(x + Math.cos(angle) * len, y + Math.sin(angle) * len);
+    const end = softPoint(x + Math.cos(angle + bend * 0.4) * len, y + Math.sin(angle + bend * 0.4) * len, rand);
 
     d += ` C ${fmt(cp1.x)} ${fmt(cp1.y)}, ${fmt(cp2.x)} ${fmt(cp2.y)}, ${fmt(end.x)} ${fmt(end.y)}`;
     x = end.x;
@@ -127,10 +109,10 @@ function scribbleStroke(rand, segments, startX, startY, startAngle) {
   return d;
 }
 
-function interiorStart(rand) {
+function randomStart(rand) {
   return {
-    x: FIELD_MIN + 6 + rand() * (FIELD_MAX - FIELD_MIN - 12),
-    y: FIELD_MIN + 6 + rand() * (FIELD_MAX - FIELD_MIN - 12),
+    x: 8 + rand() * 84,
+    y: 8 + rand() * 84,
     a: rand() * Math.PI * 2,
   };
 }
@@ -140,7 +122,7 @@ function interiorStart(rand) {
  * overlapping loops, chaotic but fluid (confusion / tangled thoughts).
  */
 function generateConfusionPaths() {
-  const rand = createRng(626043);
+  const rand = createRng(626044);
   const paths = [];
   let idx = 0;
 
@@ -157,48 +139,32 @@ function generateConfusionPaths() {
     idx += 1;
   };
 
-  // Long traversing scribbles — start inside the field, wander inward
-  for (let i = 0; i < 26; i++) {
-    const start = interiorStart(rand);
-    const segments = 3 + Math.floor(rand() * 3);
+  // Tangled scribbles — many short curved segments
+  for (let i = 0; i < 38; i++) {
+    const start = randomStart(rand);
+    const segments = 5 + Math.floor(rand() * 4);
     push(scribbleStroke(rand, segments, start.x, start.y, start.a));
   }
 
-  // Mid-field tangles — start inside, loop back on themselves
-  for (let i = 0; i < 16; i++) {
-    const start = interiorStart(rand);
-    push(scribbleStroke(rand, 4 + Math.floor(rand() * 2), start.x, start.y));
-  }
-
-  // Loose loops and knots — small circular scribbles, inset from edges
-  for (let i = 0; i < 22; i++) {
-    const cx = FIELD_MIN + 4 + rand() * (FIELD_MAX - FIELD_MIN - 8);
-    const cy = FIELD_MIN + 4 + rand() * (FIELD_MAX - FIELD_MIN - 8);
-    const r = 1.6 + rand() * 2.6;
-    push(ellipseLoop(cx, cy, r * (0.8 + rand() * 0.4), r * (0.8 + rand() * 0.4)), {
+  // Knots and loops — small curved closed shapes
+  for (let i = 0; i < 32; i++) {
+    const cx = 10 + rand() * 80;
+    const cy = 10 + rand() * 80;
+    const r = 1.4 + rand() * 2.8;
+    push(ellipseLoop(cx, cy, r * (0.75 + rand() * 0.45), r * (0.75 + rand() * 0.45)), {
       opacity: 0.26 + rand() * 0.12,
       width: 0.5 + rand() * 0.04,
     });
   }
 
-  // Interior crossing arcs — span the field without hugging the border
-  const arcs = [
-    'M 22 26 C 34 20, 48 24, 58 36 C 68 48, 74 60, 76 72',
-    'M 78 24 C 66 30, 54 38, 46 48 C 38 58, 30 68, 24 76',
-    'M 24 44 C 32 32, 42 28, 54 34 C 66 40, 74 52, 78 66',
-    'M 76 42 C 68 34, 58 36, 46 48 C 36 58, 28 68, 22 74',
-    'M 28 22 C 38 28, 44 40, 48 50 C 52 60, 58 72, 68 78',
-    'M 72 22 C 62 28, 56 40, 52 50 C 48 60, 42 72, 32 78',
-    'M 20 52 C 28 46, 38 44, 50 48 C 62 52, 72 54, 80 50',
-    'M 80 48 C 72 44, 62 46, 50 48 C 38 50, 28 48, 20 46',
-    'M 26 28 C 34 38, 38 52, 36 64 C 34 72, 28 78, 22 82',
-    'M 74 28 C 66 38, 62 52, 64 64 C 66 72, 72 78, 78 82',
-    'M 24 32 C 32 40, 38 52, 42 64 C 46 74, 54 80, 64 82',
-    'M 76 32 C 68 40, 62 52, 58 64 C 54 74, 46 80, 36 82',
-  ];
-
-  for (const arc of arcs) {
-    push(arc, { opacity: 0.3 + rand() * 0.08, animate: idx % 3 === 0 ? 'fade' : 'static' });
+  // Figure-eight tangles — two overlapping loops
+  for (let i = 0; i < 10; i++) {
+    const cx = 14 + rand() * 72;
+    const cy = 14 + rand() * 72;
+    const r = 2 + rand() * 2.2;
+    const gap = r * 0.55;
+    push(ellipseLoop(cx - gap, cy, r * 0.85, r * 1.05), { opacity: 0.3 + rand() * 0.08 });
+    push(ellipseLoop(cx + gap, cy, r * 0.9, r * 0.95), { opacity: 0.28 + rand() * 0.08 });
   }
 
   return paths;

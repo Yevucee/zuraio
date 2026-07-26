@@ -1122,6 +1122,8 @@ h3 .headline-em {
   height: 100%;
   overflow: visible;
   z-index: 1;
+  -webkit-mask-image: radial-gradient(ellipse 98% 94% at 50% 48%, #000 52%, rgba(0, 0, 0, 0.55) 78%, transparent 100%);
+  mask-image: radial-gradient(ellipse 98% 94% at 50% 48%, #000 52%, rgba(0, 0, 0, 0.55) 78%, transparent 100%);
 }
 
 .scattered-knowledge__fragments {
