@@ -1105,11 +1105,11 @@ h3 .headline-em {
   position: absolute;
   inset: 0;
   background: radial-gradient(
-    circle 34% at var(--hub-x, 50%) var(--hub-y, 50%),
-    rgba(210, 223, 165, 0.44) 0%,
-    rgba(210, 223, 165, 0.24) 32%,
-    rgba(210, 223, 165, 0.1) 52%,
-    transparent 68%
+    circle 20% at var(--hub-x, 50%) var(--hub-y, 50%),
+    rgba(210, 223, 165, 0.4) 0%,
+    rgba(210, 223, 165, 0.2) 42%,
+    rgba(210, 223, 165, 0.06) 58%,
+    transparent 64%
   );
   pointer-events: none;
   z-index: 0;
@@ -1175,8 +1175,8 @@ h3 .headline-em {
 }
 
 .sk-fragment--brain .sk-fragment__icon {
-  color: #8ca33f;
-  opacity: 0.58;
+  color: #7a9238;
+  opacity: 0.62;
 }
 
 .sk-fragment--clock .sk-fragment__icon {

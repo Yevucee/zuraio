@@ -40,6 +40,8 @@ export const SCATTERED_LABELS = [
 
 const STROKES = ['#b5c07a', '#c2cda8', '#a8b86e', '#d0d8bc', '#9aab78'];
 const BEZIER_K = 0.5522847498;
+const FIELD_MIN = 14;
+const FIELD_MAX = 86;
 
 function fmt(value) {
   return (Math.round(value * 10) / 10).toFixed(1).replace(/\.0$/, '');
@@ -47,6 +49,24 @@ function fmt(value) {
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
+}
+
+function clampField(value) {
+  return clamp(value, FIELD_MIN, FIELD_MAX);
+}
+
+/** Pull coordinates inward when they drift too close to the diagram edge. */
+function insetPoint(x, y) {
+  let nx = clampField(x);
+  let ny = clampField(y);
+  const soft = 6;
+
+  if (x < FIELD_MIN + soft) nx = FIELD_MIN + soft * 0.4 + (x - FIELD_MIN) * 0.35;
+  if (x > FIELD_MAX - soft) nx = FIELD_MAX - soft * 0.4 - (FIELD_MAX - x) * 0.35;
+  if (y < FIELD_MIN + soft) ny = FIELD_MIN + soft * 0.4 + (y - FIELD_MIN) * 0.35;
+  if (y > FIELD_MAX - soft) ny = FIELD_MAX - soft * 0.4 - (FIELD_MAX - y) * 0.35;
+
+  return { x: clampField(nx), y: clampField(ny) };
 }
 
 function createRng(seed) {
@@ -68,40 +88,51 @@ function ellipseLoop(cx, cy, rx, ry) {
   ].join(' ');
 }
 
-/** One continuous smooth scribble — pen never lifts, direction wanders. */
+/** One continuous smooth scribble — stays inside the field, away from borders. */
 function scribbleStroke(rand, segments, startX, startY, startAngle) {
-  let x = startX;
-  let y = startY;
+  let x = clampField(startX);
+  let y = clampField(startY);
   let angle = startAngle ?? rand() * Math.PI * 2;
   let d = `M ${fmt(x)} ${fmt(y)}`;
 
   for (let i = 0; i < segments; i++) {
     angle += (rand() - 0.5) * 2.6;
-    const len = 11 + rand() * 22;
+
+    // Bias direction toward centre when near an edge — avoids border-hugging
+    const edgeDist = Math.min(x - FIELD_MIN, FIELD_MAX - x, y - FIELD_MIN, FIELD_MAX - y);
+    if (edgeDist < 14) {
+      const toCenter = Math.atan2(50 - y, 50 - x);
+      angle = angle * 0.45 + toCenter * 0.55 + (rand() - 0.5) * 0.6;
+    }
+
+    const len = 10 + rand() * 18;
     const cpLen = len * (0.42 + rand() * 0.28);
     const wobble = (rand() - 0.5) * 1.4;
 
-    const cp1x = clamp(x + Math.cos(angle - 0.45 + wobble) * cpLen, 2, 98);
-    const cp1y = clamp(y + Math.sin(angle - 0.45 + wobble) * cpLen, 2, 98);
-    const cp2x = clamp(x + Math.cos(angle + 0.55 - wobble) * cpLen, 2, 98);
-    const cp2y = clamp(y + Math.sin(angle + 0.55 - wobble) * cpLen, 2, 98);
-    const nx = clamp(x + Math.cos(angle) * len, 2, 98);
-    const ny = clamp(y + Math.sin(angle) * len, 2, 98);
+    const cp1 = insetPoint(
+      x + Math.cos(angle - 0.45 + wobble) * cpLen,
+      y + Math.sin(angle - 0.45 + wobble) * cpLen,
+    );
+    const cp2 = insetPoint(
+      x + Math.cos(angle + 0.55 - wobble) * cpLen,
+      y + Math.sin(angle + 0.55 - wobble) * cpLen,
+    );
+    const end = insetPoint(x + Math.cos(angle) * len, y + Math.sin(angle) * len);
 
-    d += ` C ${fmt(cp1x)} ${fmt(cp1y)}, ${fmt(cp2x)} ${fmt(cp2y)}, ${fmt(nx)} ${fmt(ny)}`;
-    x = nx;
-    y = ny;
+    d += ` C ${fmt(cp1.x)} ${fmt(cp1.y)}, ${fmt(cp2.x)} ${fmt(cp2.y)}, ${fmt(end.x)} ${fmt(end.y)}`;
+    x = end.x;
+    y = end.y;
   }
 
   return d;
 }
 
-function edgeStart(rand) {
-  const edge = Math.floor(rand() * 4);
-  if (edge === 0) return { x: 4 + rand() * 92, y: 3 + rand() * 10, a: Math.PI / 2 + (rand() - 0.5) };
-  if (edge === 1) return { x: 90 + rand() * 7, y: 4 + rand() * 92, a: Math.PI + (rand() - 0.5) };
-  if (edge === 2) return { x: 4 + rand() * 92, y: 90 + rand() * 7, a: -Math.PI / 2 + (rand() - 0.5) };
-  return { x: 3 + rand() * 10, y: 4 + rand() * 92, a: (rand() - 0.5) };
+function interiorStart(rand) {
+  return {
+    x: FIELD_MIN + 6 + rand() * (FIELD_MAX - FIELD_MIN - 12),
+    y: FIELD_MIN + 6 + rand() * (FIELD_MAX - FIELD_MIN - 12),
+    a: rand() * Math.PI * 2,
+  };
 }
 
 /**
@@ -109,7 +140,7 @@ function edgeStart(rand) {
  * overlapping loops, chaotic but fluid (confusion / tangled thoughts).
  */
 function generateConfusionPaths() {
-  const rand = createRng(626042);
+  const rand = createRng(626043);
   const paths = [];
   let idx = 0;
 
@@ -126,24 +157,23 @@ function generateConfusionPaths() {
     idx += 1;
   };
 
-  // Long traversing scribbles — enter from edges, wander across the diagram
+  // Long traversing scribbles — start inside the field, wander inward
   for (let i = 0; i < 26; i++) {
-    const start = edgeStart(rand);
+    const start = interiorStart(rand);
     const segments = 3 + Math.floor(rand() * 3);
     push(scribbleStroke(rand, segments, start.x, start.y, start.a));
   }
 
   // Mid-field tangles — start inside, loop back on themselves
   for (let i = 0; i < 16; i++) {
-    const x = 12 + rand() * 76;
-    const y = 12 + rand() * 76;
-    push(scribbleStroke(rand, 4 + Math.floor(rand() * 2), x, y));
+    const start = interiorStart(rand);
+    push(scribbleStroke(rand, 4 + Math.floor(rand() * 2), start.x, start.y));
   }
 
-  // Loose loops and knots — small circular scribbles at random positions
+  // Loose loops and knots — small circular scribbles, inset from edges
   for (let i = 0; i < 22; i++) {
-    const cx = 8 + rand() * 84;
-    const cy = 8 + rand() * 84;
+    const cx = FIELD_MIN + 4 + rand() * (FIELD_MAX - FIELD_MIN - 8);
+    const cy = FIELD_MIN + 4 + rand() * (FIELD_MAX - FIELD_MIN - 8);
     const r = 1.6 + rand() * 2.6;
     push(ellipseLoop(cx, cy, r * (0.8 + rand() * 0.4), r * (0.8 + rand() * 0.4)), {
       opacity: 0.26 + rand() * 0.12,
@@ -151,20 +181,20 @@ function generateConfusionPaths() {
     });
   }
 
-  // Wide crossing arcs — single smooth curves spanning the field
+  // Interior crossing arcs — span the field without hugging the border
   const arcs = [
-    'M 8 18 C 28 8, 48 14, 58 28 C 72 48, 82 62, 92 82',
-    'M 92 16 C 74 22, 58 32, 46 44 C 34 58, 22 72, 10 88',
-    'M 12 44 C 24 28, 38 22, 54 30 C 68 38, 78 52, 88 68',
-    'M 88 42 C 72 36, 58 40, 44 52 C 32 64, 20 76, 8 90',
-    'M 16 8 C 32 18, 42 34, 48 50 C 52 66, 58 82, 72 92',
-    'M 84 8 C 68 20, 56 36, 52 50 C 48 64, 40 80, 24 92',
-    'M 6 62 C 18 54, 32 48, 48 52 C 64 56, 78 60, 94 54',
-    'M 94 38 C 80 42, 66 46, 52 48 C 38 50, 24 46, 6 42',
-    'M 22 12 C 34 26, 40 42, 38 58 C 36 72, 28 84, 18 94',
-    'M 78 12 C 66 26, 60 42, 62 58 C 64 72, 72 84, 82 94',
-    'M 14 28 C 26 38, 36 52, 42 66 C 48 78, 58 86, 70 90',
-    'M 86 28 C 74 38, 64 52, 58 66 C 52 78, 42 86, 30 90',
+    'M 22 26 C 34 20, 48 24, 58 36 C 68 48, 74 60, 76 72',
+    'M 78 24 C 66 30, 54 38, 46 48 C 38 58, 30 68, 24 76',
+    'M 24 44 C 32 32, 42 28, 54 34 C 66 40, 74 52, 78 66',
+    'M 76 42 C 68 34, 58 36, 46 48 C 36 58, 28 68, 22 74',
+    'M 28 22 C 38 28, 44 40, 48 50 C 52 60, 58 72, 68 78',
+    'M 72 22 C 62 28, 56 40, 52 50 C 48 60, 42 72, 32 78',
+    'M 20 52 C 28 46, 38 44, 50 48 C 62 52, 72 54, 80 50',
+    'M 80 48 C 72 44, 62 46, 50 48 C 38 50, 28 48, 20 46',
+    'M 26 28 C 34 38, 38 52, 36 64 C 34 72, 28 78, 22 82',
+    'M 74 28 C 66 38, 62 52, 64 64 C 66 72, 72 78, 78 82',
+    'M 24 32 C 32 40, 38 52, 42 64 C 46 74, 54 80, 64 82',
+    'M 76 32 C 68 40, 62 52, 58 64 C 54 74, 46 80, 36 82',
   ];
 
   for (const arc of arcs) {
@@ -189,7 +219,7 @@ export const FRAGMENT_SVGS = {
   spreadsheet: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M4 14h16M10 4v16M14 4v16"/></svg>',
   video: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="13" height="10" rx="2"/><path d="m16 10 5-3v10l-5-3z"/></svg>',
   grid: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/></svg>',
-  brain: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 5C6.5 5 5.5 8 5.5 10.5c-1.2 1-1.2 3 0 4 .3 2.2 2.2 4 4.5 4.5 1 1.8 2.5 2.5 4.5 2.5s3.5-.7 4.5-2.5c2.3-.5 4.2-2.3 4.5-4.5 1.2-1 1.2-3 0-4C18.5 8 17.5 5 14.5 5c-1.2 0-2 .4-2.8 1.2C10.5 5.4 9.8 5 9.5 5z"/><path d="M12 5v14"/><path d="M8.5 10.5c1.2.5 2.5.7 3.5.7s2.3-.2 3.5-.7"/><path d="M8.5 13.5c1.2-.4 2.5-.6 3.5-.6s2.3.2 3.5.6"/><path d="M9 16.5c.9.4 1.9.6 3 .6s2.1-.2 3-.6"/></svg>',
+  brain: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 5.5C6 5.5 4.5 7.8 4.5 10.2c-1 .5-1.6 1.5-1.6 2.7 0 1.6 1.1 3 2.6 3.4.5 2.4 2.6 4.2 5.2 4.5"/><path d="M15.5 5.5C18 5.5 19.5 7.8 19.5 10.2c1 .5 1.6 1.5 1.6 2.7 0 1.6-1.1 3-2.6 3.4-.5 2.4-2.6 4.2-5.2 4.5"/><path d="M12 5.5v14"/><path d="M8 9.5c1 .6 2.2.9 3.3.7"/><path d="M16 9.5c-1 .6-2.2.9-3.3.7"/><path d="M7.5 13c1.2.8 2.6 1.2 4.1 1.1"/><path d="M16.5 13c-1.2.8-2.6 1.2-4.1 1.1"/><path d="M9 16.5c1 .5 2 .7 3 .7s2-.2 3-.7"/><path d="M9.5 7c.7-.4 1.5-.6 2.5-.5"/><path d="M14.5 7c-.7-.4-1.5-.6-2.5-.5"/></svg>',
 };
 
 export const SVG_DEFS = `<defs>
