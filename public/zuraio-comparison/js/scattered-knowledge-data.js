@@ -22,8 +22,53 @@ function dist(a, b) {
   return Math.hypot(a.x - b.x, a.y - b.y);
 }
 
-function nearHub(x, y) {
-  return dist({ x, y }, SCATTERED_HUB) < HUB_CLEAR;
+function nearHub(x, y, margin = 0) {
+  return dist({ x, y }, SCATTERED_HUB) < HUB_CLEAR + margin;
+}
+
+function shuffle(list, rand) {
+  for (let i = list.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [list[i], list[j]] = [list[j], list[i]];
+  }
+  return list;
+}
+
+/** Approximate label footprint radius in field % — accounts for text width. */
+function labelRadius(tier, scale = 1) {
+  const base = (() => {
+    switch (tier) {
+      case 'large':
+        return 13;
+      case 'emphasis':
+        return 10;
+      case 'medium':
+        return 8.5;
+      default:
+        return 7;
+    }
+  })();
+  return base * scale;
+}
+
+const ICON_RADIUS = 4.5;
+
+function isClearOfIcons(pt, tier, icons, scale = 1) {
+  const need = labelRadius(tier, scale) + ICON_RADIUS;
+  return icons.every((icon) => dist(pt, icon) >= need);
+}
+
+function isClearOfLabels(pt, tier, labels, scale = 1) {
+  return labels.every(
+    (label) => dist(pt, label) >= (labelRadius(tier, scale) + labelRadius(label.tier, scale)) * 0.72,
+  );
+}
+
+function isValidLabelSpot(pt, tier, icons, labels, scale = 1) {
+  if (nearHub(pt.x, pt.y, labelRadius(tier, scale) * 0.4)) return false;
+  if (!isClearOfIcons(pt, tier, icons, scale)) return false;
+  if (!isClearOfLabels(pt, tier, labels, scale)) return false;
+  return true;
 }
 
 /** Stratified grid slots shuffled — fills the field evenly, not just a ring. */
@@ -53,44 +98,72 @@ function buildGridSlots(cols, rows, rand, pad = 7) {
   return slots;
 }
 
-/** Pick label slots maximally separated from icon positions. */
-function pickLabelSlots(iconPts, candidateSlots, count, minDist) {
-  const remaining = [...candidateSlots];
-  const labels = [];
+/** Dedicated label grid — one phrase per cell, spread across the full field. */
+function placeLabelsEvenly(iconPts, labelDefs, rand) {
+  const cols = 5;
+  const rows = 3;
+  const pad = 5;
+  const w = (100 - pad * 2) / cols;
+  const h = (100 - pad * 2) / rows;
 
-  for (let i = 0; i < count && remaining.length; i++) {
-    let bestIdx = 0;
-    let bestScore = -1;
+  const cells = [];
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      const cx = pad + (col + 0.5) * w;
+      const cy = pad + (row + 0.5) * h;
+      if (nearHub(cx, cy, 12)) continue;
 
-    remaining.forEach((slot, idx) => {
-      const nearestIcon = Math.min(...iconPts.map((p) => dist(slot, p)));
-      const nearestLabel = labels.length
-        ? Math.min(...labels.map((p) => dist(slot, p)))
-        : minDist;
-      const score = Math.min(nearestIcon, nearestLabel);
-      if (score > bestScore) {
-        bestScore = score;
-        bestIdx = idx;
-      }
-    });
-
-    if (bestScore < minDist * 0.55 && remaining.length > 1) {
-      remaining.splice(bestIdx, 1);
-      i -= 1;
-      continue;
+      cells.push({ row, col, cx, cy, used: false });
     }
-
-    labels.push(remaining.splice(bestIdx, 1)[0]);
   }
 
-  return labels;
-}
+  shuffle(cells, rand);
 
-const layoutRng = createRng(626060);
-const allSlots = buildGridSlots(7, 6, layoutRng);
-const iconSlots = allSlots.slice(0, 20);
-const labelCandidates = allSlots.slice(20);
-const labelSlots = pickLabelSlots(iconSlots, labelCandidates, 10, 11);
+  const sorted = [...labelDefs].sort((a, b) => labelRadius(b.tier) - labelRadius(a.tier));
+  const placed = [];
+
+  function tryPlace(def, scale, allowUsedCells = false) {
+    let best = null;
+    let bestScore = -1;
+
+    for (const cell of cells) {
+      if (cell.used && !allowUsedCells) continue;
+
+      for (let gy = 0; gy < 8; gy++) {
+        for (let gx = 0; gx < 8; gx++) {
+          const pt = {
+            x: clampCoord(cell.cx + (gx / 7 - 0.5) * w * 0.82),
+            y: clampCoord(cell.cy + (gy / 7 - 0.5) * h * 0.82),
+          };
+
+          if (!isValidLabelSpot(pt, def.tier, iconPts, placed, scale)) continue;
+
+          const iconDist = Math.min(...iconPts.map((icon) => dist(pt, icon)));
+          const labelDist = placed.length ? Math.min(...placed.map((label) => dist(pt, label))) : 99;
+          const score = Math.min(iconDist, labelDist);
+
+          if (score > bestScore) {
+            bestScore = score;
+            best = { def, pt, cell };
+          }
+        }
+      }
+    }
+
+    return best;
+  }
+
+  for (const def of sorted) {
+    let match = tryPlace(def, 1) ?? tryPlace(def, 0.82) ?? tryPlace(def, 0.68, true);
+
+    if (!match) continue;
+
+    if (!match.cell.used) match.cell.used = true;
+    placed.push({ ...match.def, x: match.pt.x, y: match.pt.y });
+  }
+
+  return placed;
+}
 
 const FRAGMENT_DEFS = [
   { id: 'word-doc', type: 'word', drift: 6.2, delay: 0.1, fade: 6.4, flash: true },
@@ -128,17 +201,18 @@ const LABEL_DEFS = [
   { id: 'doneBefore', tier: 'emphasis', fade: 6.8, delay: 2.0 },
 ];
 
+const layoutRng = createRng(626060);
+const iconSlots = buildGridSlots(7, 6, layoutRng).slice(0, 20);
+const labelSlots = placeLabelsEvenly(iconSlots, LABEL_DEFS, createRng(626071));
+
 /** Fragment positions — stratified grid across the full field. */
 export const SCATTERED_FRAGMENTS = [
   { id: 'magnifier', type: 'magnifier', x: 50, y: 50, drift: 5.5, delay: 0.3, fade: 7.8, hub: true },
   ...FRAGMENT_DEFS.map((def, i) => ({ ...def, ...iconSlots[i] })),
 ];
 
-/** Labels — placed in remaining grid cells, spaced away from icons. */
-export const SCATTERED_LABELS = LABEL_DEFS.map((def, i) => ({
-  ...def,
-  ...labelSlots[i],
-}));
+/** Labels — dedicated grid, clearance from icons and each other. */
+export const SCATTERED_LABELS = labelSlots;
 
 const STROKES = ['#b5c07a', '#c2cda8', '#a8b86e', '#d0d8bc', '#9aab78'];
 
