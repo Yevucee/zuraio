@@ -45,7 +45,19 @@ function fmt(value) {
   return (Math.round(value * 10) / 10).toFixed(1).replace(/\.0$/, '');
 }
 
-/** Smooth closed ellipse — circular scribble loop. */
+function clamp(value, min, max) {
+  return Math.max(min, Math.min(max, value));
+}
+
+function createRng(seed) {
+  let state = seed >>> 0;
+  return () => {
+    state = (1664525 * state + 1013904223) >>> 0;
+    return state / 4294967296;
+  };
+}
+
+/** Smooth closed ellipse — small thought loop. */
 function ellipseLoop(cx, cy, rx, ry) {
   return [
     `M ${fmt(cx)} ${fmt(cy - ry)}`,
@@ -56,73 +68,113 @@ function ellipseLoop(cx, cy, rx, ry) {
   ].join(' ');
 }
 
-/**
- * Even rings of smooth circular loops around the search hub —
- * a muddle of overlapping thoughts, evenly distributed.
- */
-function generateMuddlePaths() {
-  const paths = [];
-  let idx = 0;
-  const { x: hubX, y: hubY } = SCATTERED_HUB;
+/** One continuous smooth scribble — pen never lifts, direction wanders. */
+function scribbleStroke(rand, segments, startX, startY, startAngle) {
+  let x = startX;
+  let y = startY;
+  let angle = startAngle ?? rand() * Math.PI * 2;
+  let d = `M ${fmt(x)} ${fmt(y)}`;
 
-  const rings = [
-    { count: 12, radius: 15, loopR: [2.3, 2.7, 3.0] },
-    { count: 12, radius: 25, loopR: [2.5, 2.9, 3.2] },
-    { count: 10, radius: 35, loopR: [2.4, 2.8, 3.1] },
-  ];
+  for (let i = 0; i < segments; i++) {
+    angle += (rand() - 0.5) * 2.6;
+    const len = 11 + rand() * 22;
+    const cpLen = len * (0.42 + rand() * 0.28);
+    const wobble = (rand() - 0.5) * 1.4;
 
-  for (const ring of rings) {
-    for (let i = 0; i < ring.count; i++) {
-      const angle = (i / ring.count) * Math.PI * 2 + ring.radius * 0.015;
-      const cx = hubX + Math.cos(angle) * ring.radius;
-      const cy = hubY + Math.sin(angle) * ring.radius;
-      const baseR = ring.loopR[i % ring.loopR.length];
-      const rx = baseR * (1 + (i % 3) * 0.05);
-      const ry = baseR * (1 + (i % 4) * 0.04);
+    const cp1x = clamp(x + Math.cos(angle - 0.45 + wobble) * cpLen, 2, 98);
+    const cp1y = clamp(y + Math.sin(angle - 0.45 + wobble) * cpLen, 2, 98);
+    const cp2x = clamp(x + Math.cos(angle + 0.55 - wobble) * cpLen, 2, 98);
+    const cp2y = clamp(y + Math.sin(angle + 0.55 - wobble) * cpLen, 2, 98);
+    const nx = clamp(x + Math.cos(angle) * len, 2, 98);
+    const ny = clamp(y + Math.sin(angle) * len, 2, 98);
 
-      paths.push({
-        d: ellipseLoop(cx, cy, rx, ry),
-        stroke: STROKES[idx % STROKES.length],
-        width: 0.5 + (idx % 4) * 0.012,
-        opacity: 0.3 + (idx % 5) * 0.016,
-        animate: idx % 6 === 0 ? 'fade' : 'static',
-        delay: (idx % 10) * 0.28,
-        duration: 11 + (idx % 7),
-      });
-      idx += 1;
-    }
+    d += ` C ${fmt(cp1x)} ${fmt(cp1y)}, ${fmt(cp2x)} ${fmt(cp2y)}, ${fmt(nx)} ${fmt(ny)}`;
+    x = nx;
+    y = ny;
   }
 
-  const wisps = [
-    { cx: 32, cy: 32, rx: 5.4, ry: 4.1 },
-    { cx: 68, cy: 32, rx: 5.1, ry: 4.4 },
-    { cx: 28, cy: 58, rx: 5.6, ry: 3.9 },
-    { cx: 72, cy: 58, rx: 5.3, ry: 4.2 },
-    { cx: 38, cy: 72, rx: 4.7, ry: 4.9 },
-    { cx: 62, cy: 72, rx: 4.9, ry: 4.5 },
-    { cx: 50, cy: 20, rx: 5.8, ry: 3.6 },
-    { cx: 50, cy: 80, rx: 5.4, ry: 3.8 },
-    { cx: 18, cy: 50, rx: 4.0, ry: 5.3 },
-    { cx: 82, cy: 50, rx: 3.8, ry: 5.0 },
-  ];
+  return d;
+}
 
-  for (const wisp of wisps) {
+function edgeStart(rand) {
+  const edge = Math.floor(rand() * 4);
+  if (edge === 0) return { x: 4 + rand() * 92, y: 3 + rand() * 10, a: Math.PI / 2 + (rand() - 0.5) };
+  if (edge === 1) return { x: 90 + rand() * 7, y: 4 + rand() * 92, a: Math.PI + (rand() - 0.5) };
+  if (edge === 2) return { x: 4 + rand() * 92, y: 90 + rand() * 7, a: -Math.PI / 2 + (rand() - 0.5) };
+  return { x: 3 + rand() * 10, y: 4 + rand() * 92, a: (rand() - 0.5) };
+}
+
+/**
+ * Messy smooth scribbles — long wandering curves crossing the field,
+ * overlapping loops, chaotic but fluid (confusion / tangled thoughts).
+ */
+function generateConfusionPaths() {
+  const rand = createRng(626042);
+  const paths = [];
+  let idx = 0;
+
+  const push = (d, opts = {}) => {
     paths.push({
-      d: ellipseLoop(wisp.cx, wisp.cy, wisp.rx, wisp.ry),
+      d,
       stroke: STROKES[idx % STROKES.length],
-      width: 0.52,
-      opacity: 0.26 + (idx % 3) * 0.02,
-      animate: 'fade',
-      delay: (idx % 8) * 0.4,
-      duration: 13 + (idx % 5),
+      width: opts.width ?? 0.52 + (idx % 4) * 0.012,
+      opacity: opts.opacity ?? 0.28 + rand() * 0.1,
+      animate: opts.animate ?? (idx % 5 === 0 ? 'fade' : 'static'),
+      delay: opts.delay ?? (idx % 12) * 0.22,
+      duration: opts.duration ?? 11 + (idx % 8),
     });
     idx += 1;
+  };
+
+  // Long traversing scribbles — enter from edges, wander across the diagram
+  for (let i = 0; i < 26; i++) {
+    const start = edgeStart(rand);
+    const segments = 3 + Math.floor(rand() * 3);
+    push(scribbleStroke(rand, segments, start.x, start.y, start.a));
+  }
+
+  // Mid-field tangles — start inside, loop back on themselves
+  for (let i = 0; i < 16; i++) {
+    const x = 12 + rand() * 76;
+    const y = 12 + rand() * 76;
+    push(scribbleStroke(rand, 4 + Math.floor(rand() * 2), x, y));
+  }
+
+  // Loose loops and knots — small circular scribbles at random positions
+  for (let i = 0; i < 22; i++) {
+    const cx = 8 + rand() * 84;
+    const cy = 8 + rand() * 84;
+    const r = 1.6 + rand() * 2.6;
+    push(ellipseLoop(cx, cy, r * (0.8 + rand() * 0.4), r * (0.8 + rand() * 0.4)), {
+      opacity: 0.26 + rand() * 0.12,
+      width: 0.5 + rand() * 0.04,
+    });
+  }
+
+  // Wide crossing arcs — single smooth curves spanning the field
+  const arcs = [
+    'M 8 18 C 28 8, 48 14, 58 28 C 72 48, 82 62, 92 82',
+    'M 92 16 C 74 22, 58 32, 46 44 C 34 58, 22 72, 10 88',
+    'M 12 44 C 24 28, 38 22, 54 30 C 68 38, 78 52, 88 68',
+    'M 88 42 C 72 36, 58 40, 44 52 C 32 64, 20 76, 8 90',
+    'M 16 8 C 32 18, 42 34, 48 50 C 52 66, 58 82, 72 92',
+    'M 84 8 C 68 20, 56 36, 52 50 C 48 64, 40 80, 24 92',
+    'M 6 62 C 18 54, 32 48, 48 52 C 64 56, 78 60, 94 54',
+    'M 94 38 C 80 42, 66 46, 52 48 C 38 50, 24 46, 6 42',
+    'M 22 12 C 34 26, 40 42, 38 58 C 36 72, 28 84, 18 94',
+    'M 78 12 C 66 26, 60 42, 62 58 C 64 72, 72 84, 82 94',
+    'M 14 28 C 26 38, 36 52, 42 66 C 48 78, 58 86, 70 90',
+    'M 86 28 C 74 38, 64 52, 58 66 C 52 78, 42 86, 30 90',
+  ];
+
+  for (const arc of arcs) {
+    push(arc, { opacity: 0.3 + rand() * 0.08, animate: idx % 3 === 0 ? 'fade' : 'static' });
   }
 
   return paths;
 }
 
-export const SCATTERED_PATHS = generateMuddlePaths();
+export const SCATTERED_PATHS = generateConfusionPaths();
 
 export const FRAGMENT_SVGS = {
   document: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h6l4 4v12H8z"/><path d="M14 4v4h4M10 12h6M10 16h4"/></svg>',
