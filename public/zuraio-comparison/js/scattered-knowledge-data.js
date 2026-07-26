@@ -13,60 +13,132 @@ function createRng(seed) {
 }
 
 function clampCoord(v) {
-  return Math.max(10, Math.min(90, Math.round(v * 10) / 10));
+  return Math.max(8, Math.min(92, Math.round(v * 10) / 10));
 }
 
-/** Even-but-random placement: golden-angle ring with jitter. */
-function placeOnRing(index, total, radius, rand, offset = 0) {
-  const golden = Math.PI * (3 - Math.sqrt(5));
-  const angle = offset + index * golden + (rand() - 0.5) * 0.65;
-  const r = radius + (rand() - 0.5) * 5;
-  return {
-    x: clampCoord(50 + Math.cos(angle) * r + (rand() - 0.5) * 4),
-    y: clampCoord(50 + Math.sin(angle) * r + (rand() - 0.5) * 4),
-  };
+const HUB_CLEAR = 10;
+
+function dist(a, b) {
+  return Math.hypot(a.x - b.x, a.y - b.y);
 }
 
-const rng = createRng(626060);
+function nearHub(x, y) {
+  return dist({ x, y }, SCATTERED_HUB) < HUB_CLEAR;
+}
 
-/** Fragment positions — evenly spread around the hub with organic jitter. */
+/** Stratified grid slots shuffled — fills the field evenly, not just a ring. */
+function buildGridSlots(cols, rows, rand, pad = 7) {
+  const slots = [];
+  const w = (100 - pad * 2) / cols;
+  const h = (100 - pad * 2) / rows;
+
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      const cx = pad + (col + 0.5) * w;
+      const cy = pad + (row + 0.5) * h;
+      if (nearHub(cx, cy)) continue;
+
+      slots.push({
+        x: clampCoord(cx + (rand() - 0.5) * w * 0.62),
+        y: clampCoord(cy + (rand() - 0.5) * h * 0.62),
+      });
+    }
+  }
+
+  for (let i = slots.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [slots[i], slots[j]] = [slots[j], slots[i]];
+  }
+
+  return slots;
+}
+
+/** Pick label slots maximally separated from icon positions. */
+function pickLabelSlots(iconPts, candidateSlots, count, minDist) {
+  const remaining = [...candidateSlots];
+  const labels = [];
+
+  for (let i = 0; i < count && remaining.length; i++) {
+    let bestIdx = 0;
+    let bestScore = -1;
+
+    remaining.forEach((slot, idx) => {
+      const nearestIcon = Math.min(...iconPts.map((p) => dist(slot, p)));
+      const nearestLabel = labels.length
+        ? Math.min(...labels.map((p) => dist(slot, p)))
+        : minDist;
+      const score = Math.min(nearestIcon, nearestLabel);
+      if (score > bestScore) {
+        bestScore = score;
+        bestIdx = idx;
+      }
+    });
+
+    if (bestScore < minDist * 0.55 && remaining.length > 1) {
+      remaining.splice(bestIdx, 1);
+      i -= 1;
+      continue;
+    }
+
+    labels.push(remaining.splice(bestIdx, 1)[0]);
+  }
+
+  return labels;
+}
+
+const layoutRng = createRng(626060);
+const allSlots = buildGridSlots(7, 6, layoutRng);
+const iconSlots = allSlots.slice(0, 20);
+const labelCandidates = allSlots.slice(20);
+const labelSlots = pickLabelSlots(iconSlots, labelCandidates, 10, 11);
+
+const FRAGMENT_DEFS = [
+  { id: 'word-doc', type: 'word', drift: 6.2, delay: 0.1, fade: 6.4, flash: true },
+  { id: 'gmail', type: 'gmail', drift: 6.8, delay: 0.6, fade: 7.2, flash: true },
+  { id: 'pdf', type: 'pdf', drift: 5.8, delay: 1.1, fade: 5.6 },
+  { id: 'database', type: 'database', drift: 7.0, delay: 0.4, fade: 6.8, flash: true },
+  { id: 'clock-upper', type: 'clock', clockVariant: 1, drift: 6.4, delay: 1.8, fade: 7.6, secondary: true },
+  { id: 'cloud', type: 'cloud', drift: 5.8, delay: 0.9, fade: 5.8 },
+  { id: 'slack', type: 'slack', drift: 7.0, delay: 1.4, fade: 6.2, flash: true },
+  { id: 'outlook', type: 'outlook', drift: 6.1, delay: 2.0, fade: 6.9, secondary: true },
+  { id: 'teams', type: 'teams', drift: 5.6, delay: 1.6, fade: 5.4, secondary: true },
+  { id: 'voice', type: 'voice', drift: 7.2, delay: 0.7, fade: 6.6 },
+  { id: 'sharepoint', type: 'sharepoint', drift: 6.3, delay: 1.2, fade: 5.9 },
+  { id: 'question', type: 'questionmark', drift: 4.5, delay: 0.5, fade: 8.0 },
+  { id: 'brain-upper', type: 'brain', drift: 5.0, delay: 0.8, fade: 5.2 },
+  { id: 'brain-ne', type: 'brain', drift: 5.9, delay: 1.7, fade: 7.4, secondary: true },
+  { id: 'brain-left', type: 'brain', drift: 6.2, delay: 0.4, fade: 7.0 },
+  { id: 'brain-sw', type: 'brain', drift: 4.8, delay: 1.5, fade: 6.4 },
+  { id: 'brain-lower', type: 'brain', drift: 5.4, delay: 1.3, fade: 6.2 },
+  { id: 'brain-right', type: 'brain', drift: 6.6, delay: 0.9, fade: 5.6 },
+  { id: 'brain-se', type: 'brain', drift: 5.8, delay: 2.1, fade: 4.8 },
+  { id: 'clock-left', type: 'clock', clockVariant: 2, drift: 6.2, delay: 0.4, fade: 6.0, clockAnim: 28 },
+];
+
+const LABEL_DEFS = [
+  { id: 'whereIsIt', tier: 'medium', fade: 5.2, delay: 0.3 },
+  { id: 'whoKnows', tier: 'large', fade: 7.4, delay: 1.1 },
+  { id: 'latestVersion', tier: 'subtle', fade: 6.1, delay: 2.4 },
+  { id: 'alreadyDone', tier: 'subtle', fade: 8.2, delay: 0.6 },
+  { id: 'whichDocument', tier: 'medium', fade: 5.8, delay: 1.8 },
+  { id: 'whoHasAccess', tier: 'emphasis', fade: 6.5, delay: 0.9 },
+  { id: 'wasUpdated', tier: 'subtle', fade: 7.8, delay: 2.8 },
+  { id: 'whoHasContext', tier: 'medium', fade: 5.5, delay: 1.5 },
+  { id: 'howLong', tier: 'subtle', fade: 8.6, delay: 3.2 },
+  { id: 'doneBefore', tier: 'emphasis', fade: 6.8, delay: 2.0 },
+];
+
+/** Fragment positions — stratified grid across the full field. */
 export const SCATTERED_FRAGMENTS = [
   { id: 'magnifier', type: 'magnifier', x: 50, y: 50, drift: 5.5, delay: 0.3, fade: 7.8, hub: true },
-  { id: 'word-doc', type: 'word', ...placeOnRing(0, 20, 34, rng), drift: 6.2, delay: 0.1, fade: 6.4, flash: true },
-  { id: 'gmail', type: 'gmail', ...placeOnRing(1, 20, 36, rng), drift: 6.8, delay: 0.6, fade: 7.2, flash: true },
-  { id: 'pdf', type: 'pdf', ...placeOnRing(2, 20, 32, rng), drift: 5.8, delay: 1.1, fade: 5.6 },
-  { id: 'database', type: 'database', ...placeOnRing(3, 20, 38, rng), drift: 7.0, delay: 0.4, fade: 6.8, flash: true },
-  { id: 'clock-upper', type: 'clock', clockVariant: 1, ...placeOnRing(4, 20, 30, rng), drift: 6.4, delay: 1.8, fade: 7.6, secondary: true },
-  { id: 'cloud', type: 'cloud', ...placeOnRing(5, 20, 35, rng), drift: 5.8, delay: 0.9, fade: 5.8 },
-  { id: 'slack', type: 'slack', ...placeOnRing(6, 20, 33, rng), drift: 7.0, delay: 1.4, fade: 6.2, flash: true },
-  { id: 'outlook', type: 'outlook', ...placeOnRing(7, 20, 37, rng), drift: 6.1, delay: 2.0, fade: 6.9, secondary: true },
-  { id: 'teams', type: 'teams', ...placeOnRing(8, 20, 31, rng), drift: 5.6, delay: 1.6, fade: 5.4, secondary: true },
-  { id: 'voice', type: 'voice', ...placeOnRing(9, 20, 36, rng), drift: 7.2, delay: 0.7, fade: 6.6 },
-  { id: 'sharepoint', type: 'sharepoint', ...placeOnRing(10, 20, 34, rng), drift: 6.3, delay: 1.2, fade: 5.9 },
-  { id: 'question', type: 'questionmark', ...placeOnRing(11, 20, 32, rng), drift: 4.5, delay: 0.5, fade: 8.0 },
-  { id: 'brain-upper', type: 'brain', ...placeOnRing(12, 20, 28, rng), drift: 5.0, delay: 0.8, fade: 5.2 },
-  { id: 'brain-ne', type: 'brain', ...placeOnRing(13, 20, 30, rng), drift: 5.9, delay: 1.7, fade: 7.4, secondary: true },
-  { id: 'brain-left', type: 'brain', ...placeOnRing(14, 20, 29, rng), drift: 6.2, delay: 0.4, fade: 7.0 },
-  { id: 'brain-sw', type: 'brain', ...placeOnRing(15, 20, 31, rng), drift: 4.8, delay: 1.5, fade: 6.4 },
-  { id: 'brain-lower', type: 'brain', ...placeOnRing(16, 20, 27, rng), drift: 5.4, delay: 1.3, fade: 6.2 },
-  { id: 'brain-right', type: 'brain', ...placeOnRing(17, 20, 33, rng), drift: 6.6, delay: 0.9, fade: 5.6 },
-  { id: 'brain-se', type: 'brain', ...placeOnRing(18, 20, 28, rng), drift: 5.8, delay: 2.1, fade: 4.8 },
-  { id: 'clock-left', type: 'clock', clockVariant: 2, ...placeOnRing(19, 20, 35, rng), drift: 6.2, delay: 0.4, fade: 6.0, clockAnim: 28 },
+  ...FRAGMENT_DEFS.map((def, i) => ({ ...def, ...iconSlots[i] })),
 ];
 
-/** Labels — offset ring so text fills gaps between icons. */
-export const SCATTERED_LABELS = [
-  { id: 'whereIsIt', ...placeOnRing(0, 10, 42, rng, 0.4), tier: 'medium', fade: 5.2, delay: 0.3 },
-  { id: 'whoKnows', ...placeOnRing(1, 10, 44, rng, 0.4), tier: 'large', fade: 7.4, delay: 1.1 },
-  { id: 'latestVersion', ...placeOnRing(2, 10, 40, rng, 0.4), tier: 'subtle', fade: 6.1, delay: 2.4 },
-  { id: 'alreadyDone', ...placeOnRing(3, 10, 43, rng, 0.4), tier: 'subtle', fade: 8.2, delay: 0.6 },
-  { id: 'whichDocument', ...placeOnRing(4, 10, 41, rng, 0.4), tier: 'medium', fade: 5.8, delay: 1.8 },
-  { id: 'whoHasAccess', ...placeOnRing(5, 10, 45, rng, 0.4), tier: 'emphasis', fade: 6.5, delay: 0.9 },
-  { id: 'wasUpdated', ...placeOnRing(6, 10, 39, rng, 0.4), tier: 'subtle', fade: 7.8, delay: 2.8 },
-  { id: 'whoHasContext', ...placeOnRing(7, 10, 42, rng, 0.4), tier: 'medium', fade: 5.5, delay: 1.5 },
-  { id: 'howLong', ...placeOnRing(8, 10, 44, rng, 0.4), tier: 'subtle', fade: 8.6, delay: 3.2 },
-  { id: 'doneBefore', ...placeOnRing(9, 10, 40, rng, 0.4), tier: 'emphasis', fade: 6.8, delay: 2.0 },
-];
+/** Labels — placed in remaining grid cells, spaced away from icons. */
+export const SCATTERED_LABELS = LABEL_DEFS.map((def, i) => ({
+  ...def,
+  ...labelSlots[i],
+}));
 
 const STROKES = ['#b5c07a', '#c2cda8', '#a8b86e', '#d0d8bc', '#9aab78'];
 
