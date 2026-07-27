@@ -89,7 +89,7 @@ const LABEL_DEFS = [
   { id: 'howLong', tier: 'subtle', fade: 8.6, delay: 3.2, x: 16, y: 36 },
   { id: 'whoHasAccess', tier: 'emphasis', fade: 6.5, delay: 0.9, x: 16, y: 74 },
   { id: 'doneBefore', tier: 'emphasis', fade: 6.8, delay: 2.0, x: 82, y: 14 },
-  { id: 'wasUpdated', tier: 'subtle', fade: 7.8, delay: 2.8, x: 38, y: 62 },
+  { id: 'wasUpdated', tier: 'subtle', fade: 7.8, delay: 2.8, x: 55, y: 68 },
   { id: 'whoKnows', tier: 'large', fade: 7.4, delay: 1.1, x: 82, y: 84 },
   { id: 'whichDocument', tier: 'medium', fade: 5.8, delay: 1.8, x: 50, y: 37 },
   { id: 'alreadyDone', tier: 'subtle', fade: 8.2, delay: 0.6, x: 54, y: 8 },
