@@ -1099,21 +1099,24 @@ h3 .headline-em {
   inset: 0;
   background:
     radial-gradient(
-      ellipse 38% 42% at var(--hub-x, 50%) var(--hub-y, 50%),
+      ellipse 72% 78% at var(--hub-x, 50%) var(--hub-y, 50%),
       rgba(214, 226, 168, 0.44) 0%,
-      rgba(210, 223, 165, 0.2) 32%,
-      rgba(210, 223, 165, 0.06) 52%,
-      transparent 68%
+      rgba(210, 223, 165, 0.22) 36%,
+      rgba(210, 223, 165, 0.08) 58%,
+      rgba(210, 223, 165, 0.02) 72%,
+      transparent 88%
     ),
     radial-gradient(
-      ellipse 32% 36% at calc(var(--hub-x, 50%) + 3%) calc(var(--hub-y, 50%) - 2%),
-      rgba(200, 218, 148, 0.22) 0%,
-      transparent 58%
+      ellipse 64% 70% at calc(var(--hub-x, 50%) + 3%) calc(var(--hub-y, 50%) - 2%),
+      rgba(200, 218, 148, 0.24) 0%,
+      rgba(200, 218, 148, 0.08) 48%,
+      transparent 82%
     ),
     radial-gradient(
-      ellipse 34% 30% at calc(var(--hub-x, 50%) - 2.5%) calc(var(--hub-y, 50%) + 2.5%),
-      rgba(205, 222, 158, 0.18) 0%,
-      transparent 56%
+      ellipse 66% 58% at calc(var(--hub-x, 50%) - 2.5%) calc(var(--hub-y, 50%) + 2.5%),
+      rgba(205, 222, 158, 0.2) 0%,
+      rgba(205, 222, 158, 0.06) 44%,
+      transparent 80%
     );
   pointer-events: none;
   z-index: 0;
@@ -1227,28 +1230,32 @@ h3 .headline-em {
   font-family: "IBM Plex Sans", sans-serif;
   white-space: nowrap;
   pointer-events: none;
-  opacity: 0.18;
+  opacity: 0.62;
 }
 
 .sk-label--subtle {
+  --label-peak: 0.62;
   font-size: 11px;
   font-weight: 500;
   color: #5c5f56;
 }
 
 .sk-label--medium {
+  --label-peak: 0.78;
   font-size: 12.5px;
   font-weight: 500;
   color: #3a3a3a;
 }
 
 .sk-label--emphasis {
+  --label-peak: 0.86;
   font-size: 13px;
   font-weight: 600;
   color: #222420;
 }
 
 .sk-label--large {
+  --label-peak: 0.92;
   font-size: 19px;
   font-weight: 600;
   color: #2e2e2e;
@@ -1309,7 +1316,7 @@ h3 .headline-em {
 }
 
 .scattered-knowledge.is-active .sk-label {
-  animation: questionFade var(--fade, 6s) ease-in-out infinite;
+  animation: labelPulse 7s ease-in-out infinite;
   animation-delay: var(--delay, 0s);
 }
 
@@ -1382,34 +1389,24 @@ h3 .headline-em {
   }
 }
 
-@keyframes questionFade {
+@keyframes labelPulse {
   0%,
+  36% {
+    opacity: var(--label-peak, 0.78);
+    transform: translate(-50%, -50%);
+  }
+  40% {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+  47% {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+  54%,
   100% {
-    opacity: 0.1;
-    transform: translate(-50%, -50%) translateY(2px);
-  }
-  40%,
-  60% {
-    opacity: 0.88;
-    transform: translate(-50%, -50%) translateY(0);
-  }
-}
-
-.scattered-knowledge.is-active .sk-label--emphasis,
-.scattered-knowledge.is-active .sk-label--large {
-  animation-name: questionFadeStrong;
-}
-
-@keyframes questionFadeStrong {
-  0%,
-  100% {
-    opacity: 0.12;
-    transform: translate(-50%, -50%) translateY(2px);
-  }
-  40%,
-  60% {
-    opacity: 0.94;
-    transform: translate(-50%, -50%) translateY(0);
+    opacity: var(--label-peak, 0.78);
+    transform: translate(-50%, -50%);
   }
 }
 
