@@ -1653,16 +1653,16 @@ h3 .headline-em {
   background:
     linear-gradient(
       180deg,
-      rgba(251, 251, 248, 0.58) 0%,
-      rgba(251, 251, 248, 0.16) 42%,
-      rgba(251, 251, 248, 0.38) 100%
+      rgba(251, 251, 248, 0.38) 0%,
+      rgba(251, 251, 248, 0.1) 42%,
+      rgba(251, 251, 248, 0.3) 100%
     ),
     linear-gradient(
       90deg,
-      rgba(251, 251, 248, 0.96) 0%,
-      rgba(251, 251, 248, 0.86) 24%,
-      rgba(251, 251, 248, 0.58) 44%,
-      rgba(251, 251, 248, 0.2) 64%,
+      rgba(251, 251, 248, 0.72) 0%,
+      rgba(251, 251, 248, 0.62) 24%,
+      rgba(251, 251, 248, 0.4) 44%,
+      rgba(251, 251, 248, 0.14) 64%,
       rgba(251, 251, 248, 0) 84%
     );
 }
@@ -1672,15 +1672,15 @@ h3 .headline-em {
     background:
       linear-gradient(
         180deg,
-        rgba(251, 251, 248, 0.72) 0%,
-        rgba(251, 251, 248, 0.52) 50%,
-        rgba(251, 251, 248, 0.28) 100%
+        rgba(251, 251, 248, 0.54) 0%,
+        rgba(251, 251, 248, 0.4) 50%,
+        rgba(251, 251, 248, 0.22) 100%
       ),
       linear-gradient(
         90deg,
-        rgba(251, 251, 248, 0.88) 0%,
-        rgba(251, 251, 248, 0.62) 40%,
-        rgba(251, 251, 248, 0.18) 72%,
+        rgba(251, 251, 248, 0.68) 0%,
+        rgba(251, 251, 248, 0.48) 40%,
+        rgba(251, 251, 248, 0.14) 72%,
         rgba(251, 251, 248, 0) 100%
       );
   }
@@ -5824,8 +5824,15 @@ html {
   max-width: 52ch;
 }
 
+#integrations > .wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: clamp(420px, 52vw, 580px);
+}
+
 #integrations [data-marquee] {
-  margin-top: 24px;
+  margin-top: auto;
+  padding-top: 36px;
   width: 100vw;
   max-width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -5864,7 +5871,7 @@ html {
 }
 
 #integrations .clarify {
-  margin-top: 12px;
+  margin-top: 24px;
   font-size: 13px;
   border-left-color: rgba(120, 138, 54, 0.55);
 }
