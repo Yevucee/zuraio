@@ -80,7 +80,6 @@ const FRAGMENT_DEFS = [
   { id: 'brain-sw', type: 'brain', drift: 4.8, delay: 1.5, fade: 6.4 },
   { id: 'brain-lower', type: 'brain', drift: 5.4, delay: 1.3, fade: 6.2 },
   { id: 'brain-right', type: 'brain', drift: 6.6, delay: 0.9, fade: 5.6 },
-  { id: 'brain-se', type: 'brain', drift: 5.8, delay: 2.1, fade: 4.8 },
   { id: 'clock-left', type: 'clock', clockVariant: 2, drift: 6.2, delay: 0.4, fade: 6.0, clockAnim: 28 },
 ];
 
