@@ -5834,6 +5834,31 @@ html {
   min-height: clamp(300px, 38vw, 420px);
 }
 
+#integrations .integrations-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  margin-left: -28px;
+}
+
+#integrations .integrations-copy::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -24px;
+  right: -72px;
+  bottom: -28px;
+  left: -52px;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 92% 82% at 14% 20%,
+      rgba(255, 255, 255, 0.82) 0%,
+      rgba(255, 255, 255, 0.52) 44%,
+      rgba(255, 255, 255, 0) 72%
+    );
+}
+
 #integrations [data-marquee] {
   margin-top: auto;
   padding-top: 24px;
@@ -5848,12 +5873,6 @@ html {
     #000 98%,
     transparent
   );
-}
-
-#integrations .head-block,
-#integrations .clarify,
-#integrations .section-link {
-  margin-left: -28px;
 }
 
 #integrations .head-block h2 {
@@ -5874,6 +5893,14 @@ html {
     0 1px 2px rgba(15, 16, 14, 0.22);
 }
 
+#integrations .section-link a {
+  color: #1a1b18;
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.82),
+    0 0 14px rgba(255, 255, 255, 0.48),
+    0 1px 2px rgba(15, 16, 14, 0.22);
+}
+
 #integrations .clarify {
   margin-top: 24px;
   font-size: 13px;
@@ -5885,10 +5912,15 @@ html {
 }
 
 @media (max-width: 680px) {
-  #integrations .head-block,
-  #integrations .clarify,
-  #integrations .section-link {
+  #integrations .integrations-copy {
     margin-left: -8px;
+  }
+
+  #integrations .integrations-copy::before {
+    top: -16px;
+    right: -24px;
+    bottom: -20px;
+    left: -20px;
   }
 }
 
