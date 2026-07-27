@@ -5824,15 +5824,19 @@ html {
   max-width: 52ch;
 }
 
+#integrations.pad {
+  padding: 62px 0 54px;
+}
+
 #integrations > .wrap {
   display: flex;
   flex-direction: column;
-  min-height: clamp(420px, 52vw, 580px);
+  min-height: clamp(300px, 38vw, 420px);
 }
 
 #integrations [data-marquee] {
   margin-top: auto;
-  padding-top: 36px;
+  padding-top: 24px;
   width: 100vw;
   max-width: 100vw;
   margin-left: calc(50% - 50vw);
