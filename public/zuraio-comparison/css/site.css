@@ -1653,28 +1653,36 @@ h3 .headline-em {
   background:
     linear-gradient(
       180deg,
-      rgba(251, 251, 248, 0.28) 0%,
-      rgba(251, 251, 248, 0.04) 42%,
-      rgba(251, 251, 248, 0.23) 100%
+      rgba(251, 251, 248, 0.58) 0%,
+      rgba(251, 251, 248, 0.16) 42%,
+      rgba(251, 251, 248, 0.38) 100%
     ),
     linear-gradient(
       90deg,
-      rgba(251, 251, 248, 0.48) 0%,
-      rgba(251, 251, 248, 0.42) 30%,
-      rgba(251, 251, 248, 0.26) 52%,
-      rgba(251, 251, 248, 0.06) 72%,
-      rgba(251, 251, 248, 0) 90%
+      rgba(251, 251, 248, 0.96) 0%,
+      rgba(251, 251, 248, 0.86) 24%,
+      rgba(251, 251, 248, 0.58) 44%,
+      rgba(251, 251, 248, 0.2) 64%,
+      rgba(251, 251, 248, 0) 84%
     );
 }
 
 @media (max-width: 999px) {
   .section-photo--integrations .section-photo__scrim {
-    background: linear-gradient(
-      180deg,
-      rgba(251, 251, 248, 0.46) 0%,
-      rgba(251, 251, 248, 0.36) 50%,
-      rgba(251, 251, 248, 0.18) 100%
-    );
+    background:
+      linear-gradient(
+        180deg,
+        rgba(251, 251, 248, 0.72) 0%,
+        rgba(251, 251, 248, 0.52) 50%,
+        rgba(251, 251, 248, 0.28) 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(251, 251, 248, 0.88) 0%,
+        rgba(251, 251, 248, 0.62) 40%,
+        rgba(251, 251, 248, 0.18) 72%,
+        rgba(251, 251, 248, 0) 100%
+      );
   }
 
   .section-photo--integrations .section-photo__bg img {
@@ -5831,13 +5839,46 @@ html {
   );
 }
 
+#integrations .head-block,
+#integrations .clarify,
+#integrations .section-link {
+  margin-left: -28px;
+}
+
+#integrations .head-block h2 {
+  color: #0f100e;
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.88),
+    0 0 18px rgba(255, 255, 255, 0.58),
+    0 0 32px rgba(255, 255, 255, 0.28),
+    0 1px 2px rgba(15, 16, 14, 0.35);
+}
+
+#integrations .head-block .lede,
+#integrations .clarify {
+  color: #1a1b18;
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.82),
+    0 0 14px rgba(255, 255, 255, 0.48),
+    0 1px 2px rgba(15, 16, 14, 0.22);
+}
+
 #integrations .clarify {
   margin-top: 12px;
   font-size: 13px;
+  border-left-color: rgba(120, 138, 54, 0.55);
 }
 
 #integrations .section-link {
   margin-top: 20px;
+}
+
+@media (max-width: 680px) {
+  #integrations .head-block,
+  #integrations .clarify,
+  #integrations .section-link {
+    margin-left: -8px;
+  }
 }
 
 /* ---------- Compact pillar band ---------- */
