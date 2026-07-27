@@ -34,43 +34,6 @@ function shuffle(list, rand) {
   return list;
 }
 
-/** Approximate label footprint radius in field % — accounts for text width. */
-function labelRadius(tier, scale = 1) {
-  const base = (() => {
-    switch (tier) {
-      case 'large':
-        return 13;
-      case 'emphasis':
-        return 10;
-      case 'medium':
-        return 8.5;
-      default:
-        return 7;
-    }
-  })();
-  return base * scale;
-}
-
-const ICON_RADIUS = 4.5;
-
-function isClearOfIcons(pt, tier, icons, scale = 1) {
-  const need = labelRadius(tier, scale) + ICON_RADIUS;
-  return icons.every((icon) => dist(pt, icon) >= need);
-}
-
-function isClearOfLabels(pt, tier, labels, scale = 1) {
-  return labels.every(
-    (label) => dist(pt, label) >= (labelRadius(tier, scale) + labelRadius(label.tier, scale)) * 0.72,
-  );
-}
-
-function isValidLabelSpot(pt, tier, icons, labels, scale = 1) {
-  if (nearHub(pt.x, pt.y, labelRadius(tier, scale) * 0.4)) return false;
-  if (!isClearOfIcons(pt, tier, icons, scale)) return false;
-  if (!isClearOfLabels(pt, tier, labels, scale)) return false;
-  return true;
-}
-
 /** Stratified grid slots shuffled — fills the field evenly, not just a ring. */
 function buildGridSlots(cols, rows, rand, pad = 7) {
   const slots = [];
@@ -98,73 +61,6 @@ function buildGridSlots(cols, rows, rand, pad = 7) {
   return slots;
 }
 
-/** Dedicated label grid — one phrase per cell, spread across the full field. */
-function placeLabelsEvenly(iconPts, labelDefs, rand) {
-  const cols = 5;
-  const rows = 3;
-  const pad = 5;
-  const w = (100 - pad * 2) / cols;
-  const h = (100 - pad * 2) / rows;
-
-  const cells = [];
-  for (let row = 0; row < rows; row++) {
-    for (let col = 0; col < cols; col++) {
-      const cx = pad + (col + 0.5) * w;
-      const cy = pad + (row + 0.5) * h;
-      if (nearHub(cx, cy, 12)) continue;
-
-      cells.push({ row, col, cx, cy, used: false });
-    }
-  }
-
-  shuffle(cells, rand);
-
-  const sorted = [...labelDefs].sort((a, b) => labelRadius(b.tier) - labelRadius(a.tier));
-  const placed = [];
-
-  function tryPlace(def, scale, allowUsedCells = false) {
-    let best = null;
-    let bestScore = -1;
-
-    for (const cell of cells) {
-      if (cell.used && !allowUsedCells) continue;
-
-      for (let gy = 0; gy < 8; gy++) {
-        for (let gx = 0; gx < 8; gx++) {
-          const pt = {
-            x: clampCoord(cell.cx + (gx / 7 - 0.5) * w * 0.82),
-            y: clampCoord(cell.cy + (gy / 7 - 0.5) * h * 0.82),
-          };
-
-          if (!isValidLabelSpot(pt, def.tier, iconPts, placed, scale)) continue;
-
-          const iconDist = Math.min(...iconPts.map((icon) => dist(pt, icon)));
-          const labelDist = placed.length ? Math.min(...placed.map((label) => dist(pt, label))) : 99;
-          const score = Math.min(iconDist, labelDist);
-
-          if (score > bestScore) {
-            bestScore = score;
-            best = { def, pt, cell };
-          }
-        }
-      }
-    }
-
-    return best;
-  }
-
-  for (const def of sorted) {
-    let match = tryPlace(def, 1) ?? tryPlace(def, 0.82) ?? tryPlace(def, 0.68, true);
-
-    if (!match) continue;
-
-    if (!match.cell.used) match.cell.used = true;
-    placed.push({ ...match.def, x: match.pt.x, y: match.pt.y });
-  }
-
-  return placed;
-}
-
 const FRAGMENT_DEFS = [
   { id: 'word-doc', type: 'word', drift: 6.2, delay: 0.1, fade: 6.4, flash: true },
   { id: 'gmail', type: 'gmail', drift: 6.8, delay: 0.6, fade: 7.2, flash: true },
@@ -189,21 +85,20 @@ const FRAGMENT_DEFS = [
 ];
 
 const LABEL_DEFS = [
-  { id: 'whereIsIt', tier: 'medium', fade: 5.2, delay: 0.3 },
-  { id: 'whoKnows', tier: 'large', fade: 7.4, delay: 1.1 },
-  { id: 'latestVersion', tier: 'subtle', fade: 6.1, delay: 2.4 },
-  { id: 'alreadyDone', tier: 'subtle', fade: 8.2, delay: 0.6 },
-  { id: 'whichDocument', tier: 'medium', fade: 5.8, delay: 1.8 },
-  { id: 'whoHasAccess', tier: 'emphasis', fade: 6.5, delay: 0.9 },
-  { id: 'wasUpdated', tier: 'subtle', fade: 7.8, delay: 2.8 },
-  { id: 'whoHasContext', tier: 'medium', fade: 5.5, delay: 1.5 },
-  { id: 'howLong', tier: 'subtle', fade: 8.6, delay: 3.2 },
-  { id: 'doneBefore', tier: 'emphasis', fade: 6.8, delay: 2.0 },
+  { id: 'whereIsIt', tier: 'medium', fade: 5.2, delay: 0.3, x: 16, y: 16 },
+  { id: 'howLong', tier: 'subtle', fade: 8.6, delay: 3.2, x: 16, y: 36 },
+  { id: 'whoHasAccess', tier: 'emphasis', fade: 6.5, delay: 0.9, x: 16, y: 74 },
+  { id: 'doneBefore', tier: 'emphasis', fade: 6.8, delay: 2.0, x: 82, y: 14 },
+  { id: 'wasUpdated', tier: 'subtle', fade: 7.8, delay: 2.8, x: 82, y: 44 },
+  { id: 'whoKnows', tier: 'large', fade: 7.4, delay: 1.1, x: 82, y: 84 },
+  { id: 'whichDocument', tier: 'medium', fade: 5.8, delay: 1.8, x: 36, y: 8 },
+  { id: 'alreadyDone', tier: 'subtle', fade: 8.2, delay: 0.6, x: 54, y: 8 },
+  { id: 'latestVersion', tier: 'subtle', fade: 6.1, delay: 2.4, x: 76, y: 8 },
+  { id: 'whoHasContext', tier: 'medium', fade: 5.5, delay: 1.5, x: 54, y: 92 },
 ];
 
 const layoutRng = createRng(626060);
 const iconSlots = buildGridSlots(7, 6, layoutRng).slice(0, 20);
-const labelSlots = placeLabelsEvenly(iconSlots, LABEL_DEFS, createRng(626071));
 
 /** Fragment positions — stratified grid across the full field. */
 export const SCATTERED_FRAGMENTS = [
@@ -211,8 +106,8 @@ export const SCATTERED_FRAGMENTS = [
   ...FRAGMENT_DEFS.map((def, i) => ({ ...def, ...iconSlots[i] })),
 ];
 
-/** Labels — dedicated grid, clearance from icons and each other. */
-export const SCATTERED_LABELS = labelSlots;
+/** Labels — fixed positions around the field, kept clear of each other. */
+export const SCATTERED_LABELS = LABEL_DEFS;
 
 const STROKES = ['#b5c07a', '#c2cda8', '#a8b86e', '#d0d8bc', '#9aab78'];
 
