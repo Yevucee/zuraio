@@ -12,6 +12,7 @@ import { setHeadlineHtml } from './headline-emphasis.js';
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function getHeroFromUrl() {
+  if (!HERO_COMPARISON_ENABLED) return DEFAULT_HERO_OPTION;
   const n = parseInt(new URLSearchParams(location.search).get('hero') || '', 10);
   return n >= 1 && n <= 5 ? n : DEFAULT_HERO_OPTION;
 }
@@ -52,6 +53,7 @@ export function initHeroComparison() {
   const nextBtn = root.querySelector('[data-hero-next]');
 
   function applyControlLabels() {
+    if (!HERO_COMPARISON_ENABLED) return;
     const ui = getCopy().ui;
     if (prevBtn) {
       prevBtn.textContent = ui.previous;
@@ -85,7 +87,7 @@ export function initHeroComparison() {
   }
 
   function render(option, animate) {
-    const { heroOptions, ui } = getCopy();
+    const { heroOptions } = getCopy();
     const data = heroOptions[option - 1];
     if (!data) return;
 
@@ -94,16 +96,18 @@ export function initHeroComparison() {
       paraEl.textContent = data.paragraph;
       ctaEl.textContent = data.cta;
       ctaEl.href = data.ctaHref;
-      statusEl.textContent = ui.optionOf(option);
+      if (statusEl) statusEl.textContent = getCopy().ui.optionOf(option);
       dots.forEach((dot) => {
         const n = parseInt(dot.dataset.heroDot, 10);
         dot.setAttribute('aria-pressed', n === option ? 'true' : 'false');
         dot.classList.toggle('is-active', n === option);
       });
-      const url = new URL(location.href);
-      url.searchParams.set('hero', String(option));
-      url.searchParams.set('lang', getLocale());
-      history.replaceState(null, '', url);
+      if (HERO_COMPARISON_ENABLED) {
+        const url = new URL(location.href);
+        url.searchParams.set('hero', String(option));
+        url.searchParams.set('lang', getLocale());
+        history.replaceState(null, '', url);
+      }
     };
 
     if (animate && !reduce && copyEl) {
@@ -118,48 +122,50 @@ export function initHeroComparison() {
   }
 
   function goTo(option) {
+    if (!HERO_COMPARISON_ENABLED) return;
     current = Math.max(1, Math.min(5, option));
     render(current, true);
   }
 
-  prevBtn?.addEventListener('click', () => goTo(current === 1 ? 5 : current - 1));
-  nextBtn?.addEventListener('click', () => goTo(current === 5 ? 1 : current + 1));
-  dots.forEach((dot) => {
-    dot.addEventListener('click', () => goTo(parseInt(dot.dataset.heroDot, 10)));
-  });
+  if (HERO_COMPARISON_ENABLED) {
+    prevBtn?.addEventListener('click', () => goTo(current === 1 ? 5 : current - 1));
+    nextBtn?.addEventListener('click', () => goTo(current === 5 ? 1 : current + 1));
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => goTo(parseInt(dot.dataset.heroDot, 10)));
+    });
 
-  root.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      goTo(current === 1 ? 5 : current - 1);
-      startAutoPlay();
-    }
-    if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      goTo(current === 5 ? 1 : current + 1);
-      startAutoPlay();
-    }
-  });
+    root.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        goTo(current === 1 ? 5 : current - 1);
+        startAutoPlay();
+      }
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        goTo(current === 5 ? 1 : current + 1);
+        startAutoPlay();
+      }
+    });
 
-  root.addEventListener('mouseenter', stopAutoPlay);
-  root.addEventListener('mouseleave', startAutoPlay);
-  root.addEventListener('focusin', stopAutoPlay);
-  root.addEventListener('focusout', (e) => {
-    if (!root.contains(e.relatedTarget)) startAutoPlay();
-  });
+    root.addEventListener('mouseenter', stopAutoPlay);
+    root.addEventListener('mouseleave', startAutoPlay);
+    root.addEventListener('focusin', stopAutoPlay);
+    root.addEventListener('focusout', (e) => {
+      if (!root.contains(e.relatedTarget)) startAutoPlay();
+    });
+  }
 
   applyControlLabels();
   renderTrustSignals();
 
   if (controlsEl) {
-    controlsEl.hidden = !(HERO_CONTROLS_VISIBLE || isInternalReviewMode());
+    controlsEl.hidden = !(HERO_COMPARISON_ENABLED && (HERO_CONTROLS_VISIBLE || isInternalReviewMode()));
   }
 
-  if (!HERO_COMPARISON_ENABLED && controlsEl) {
-    controlsEl.hidden = true;
-    goTo(DEFAULT_HERO_OPTION);
-  } else {
-    render(current, false);
+  current = DEFAULT_HERO_OPTION;
+  render(current, false);
+
+  if (HERO_COMPARISON_ENABLED) {
     startAutoPlay();
   }
 
@@ -169,8 +175,10 @@ export function initHeroComparison() {
     render(current, false);
   });
 
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) stopAutoPlay();
-    else startAutoPlay();
-  });
+  if (HERO_COMPARISON_ENABLED) {
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stopAutoPlay();
+      else startAutoPlay();
+    });
+  }
 }

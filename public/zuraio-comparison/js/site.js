@@ -1,6 +1,6 @@
 import { getLocale, setLocale, getCopy } from './i18n.js';
 import { SUPPORTED_LOCALES, getLocaleLabels } from './locales.js';
-import { SITE } from './config.js';
+import { SITE, HERO_COMPARISON_ENABLED } from './config.js';
 import { enhanceFooterWithReview } from './internal-review.js';
 
 function getNav() {
@@ -99,8 +99,10 @@ function langHref(path) {
   const hash = hashIndex >= 0 ? path.slice(hashIndex) : '';
   const params = new URLSearchParams();
   params.set('lang', locale);
-  const hero = new URLSearchParams(location.search).get('hero');
-  if (hero) params.set('hero', hero);
+  if (HERO_COMPARISON_ENABLED) {
+    const hero = new URLSearchParams(location.search).get('hero');
+    if (hero) params.set('hero', hero);
+  }
   return `${file}?${params.toString()}${hash}`;
 }
 

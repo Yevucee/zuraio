@@ -2,7 +2,7 @@
 
 ## Project overview
 
-Static marketing website for Zuraio AI Hub. Built with Vite, React, React Router, and Tailwind CSS.
+Marketing website for Zuraio AI Hub. The **canonical public site** is the static multi-page site in `public/zuraio-comparison/`. Vite also builds a legacy React app in `src/`, but production deploy redirects `/` to the static site.
 
 ## Common commands
 
@@ -13,16 +13,19 @@ Static marketing website for Zuraio AI Hub. Built with Vite, React, React Router
 
 ## Code layout
 
-- Pages: `src/app/pages`
-- Shared components: `src/app/components`
-- Routes: `src/app/routes.tsx`
+- **Main site:** `public/zuraio-comparison/` (HTML, `css/site.css`, `js/copy-*.js`, `js/config.js`)
+- Shared assets: `public/zuraio/assets/`
+- Legacy React app: `src/app/pages`, `src/app/components`, `src/app/routes.tsx`
 - Theme tokens: `src/styles/theme.css`
-- i18n messages: `src/i18n/messages`
+
+## Content editing
+
+Prefer updating copy in `public/zuraio-comparison/js/copy-en.js` (and `copy-de.js`, `copy-fr.js`, `copy-it.js`) rather than hardcoding text in HTML.
+
+Homepage hero is locked to option 1 (`HERO_COMPARISON_ENABLED = false` in `js/config.js`).
 
 ## Cursor Cloud specific instructions
 
-The cloud environment starts a Vite dev server on port 5173. Use the exposed web port to preview changes in the browser.
-
-When editing content, prefer updating i18n message files in `src/i18n/messages` rather than hardcoding copy in components.
+The cloud environment starts a Vite dev server on port 5173. Preview the marketing site at `/zuraio-comparison/index.html`.
 
 Before finishing a change, run `npm run build` to verify the production build succeeds.

@@ -1,8 +1,10 @@
-export const HERO_COMPARISON_ENABLED = true;
-/** Show prev/next/dots bar — off for public design; use ?hero=1–5 or arrow keys to compare. */
+/** Lock homepage to one hero message. Set true only for internal review. */
+export const HERO_COMPARISON_ENABLED = false;
+/** Show prev/next/dots bar — internal review only. */
 export const HERO_CONTROLS_VISIBLE = false;
-/** Auto-advance interval (ms) when controls are hidden. */
+/** Auto-advance interval (ms) when comparison mode is enabled. */
 export const HERO_AUTO_PLAY_MS = 7000;
+/** Option 1: A digital executive assistant for every employee. */
 export const DEFAULT_HERO_OPTION = 1;
 export const PROBLEM_COMPARISON_ENABLED = false;
 /** Auto-advance interval (ms) for problem section title options. */
@@ -21,7 +23,7 @@ export const LOGO_WATERMARKS_ENABLED = true;
 export const SITE = {
   name: 'Zuraio',
   tagline: 'AI for Swiss companies that need control of their data.',
-  internalLabel: 'Hero Comparison — Five Messaging Options',
+  internalLabel: 'Zuraio — AI for Swiss companies',
   heroBackground: '../zuraio/assets/260714_zuraio_hero_12.png',
   heroPopup: '../zuraio/assets/260707_UI_Apps_Vision.png',
   heroPlatform: '../zuraio/assets/zuraio-platform-ui.png',

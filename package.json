@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && node scripts/set-main-site.mjs",
     "dev": "vite",
     "preview": "vite preview",
     "sync:integration-logos": "node scripts/sync-integration-logos.mjs"
