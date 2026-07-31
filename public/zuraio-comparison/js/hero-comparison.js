@@ -29,8 +29,10 @@ function getHeroFromUrl() {
 }
 
 function renderTrustSignals() {
+  const bar = document.querySelector('[data-hero-trust-bar]');
   const list = document.querySelector('[data-hero-trust-bar] .hero-trust-bar__list');
-  const { trustSignals } = getCopy();
+  const { trustSignals, ui } = getCopy();
+  if (bar && ui?.trustAria) bar.setAttribute('aria-label', ui.trustAria);
   if (!list || !trustSignals) return;
   list.innerHTML = trustSignals
     .map((item) => {
@@ -111,7 +113,9 @@ export function initHeroComparison() {
       setHeadlineHtml(headlineEl, data.headline, data.emphasis);
       paraEl.textContent = data.paragraph;
       ctaEl.textContent = data.cta;
-      ctaEl.href = data.ctaHref;
+      ctaEl.href = trustHref(data.ctaHref);
+      const heroImg = document.querySelector('.hero-popup-img');
+      if (heroImg && data.imageAlt) heroImg.alt = data.imageAlt;
       if (statusEl) statusEl.textContent = getCopy().ui.optionOf(option);
       dots.forEach((dot) => {
         const n = parseInt(dot.dataset.heroDot, 10);

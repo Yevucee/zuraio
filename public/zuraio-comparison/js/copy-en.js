@@ -110,6 +110,8 @@ export const ui = {
   nextAria: 'Next hero option',
   heroOptionsGroup: 'Hero messaging options',
   trustAria: 'Trust signals',
+  primaryNavAria: 'Primary',
+  logoAlt: 'Zuraio – own your data',
   langEn: 'EN',
   langDe: 'DE',
   langFr: 'FR',
@@ -125,6 +127,8 @@ export const ui = {
 export const home = {
   meta: {
     title: 'Zuraio — AI for Swiss companies that need control of their data',
+    description:
+      'Zuraio — A digital executive assistant for every employee. AI for Swiss companies that need control of their data.',
   },
   problem: {
     marker: 'Recognise this?',
