@@ -16,6 +16,8 @@ function redirectHtml(target, title = 'Zuraio') {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="./zuraio-comparison/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./zuraio-comparison/assets/favicon.svg" />
   <meta http-equiv="refresh" content="0; url=${target}" />
   <link rel="canonical" href="${target}" />
   <title>${title}</title>
@@ -38,5 +40,11 @@ fs.writeFileSync(
   path.join(DIST, 'zuraio', 'index.html'),
   redirectHtml(`../${MAIN_SITE}`),
 );
+
+const faviconSrc = path.join(DIST, 'zuraio-comparison', 'assets', 'favicon.svg');
+const faviconDest = path.join(DIST, 'favicon.svg');
+if (fs.existsSync(faviconSrc)) {
+  fs.copyFileSync(faviconSrc, faviconDest);
+}
 
 console.log('set-main-site: root and /zuraio/ now redirect to', MAIN_SITE);
