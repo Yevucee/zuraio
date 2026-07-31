@@ -32,7 +32,6 @@
             <div class="cta-row">
               <a class="btn btn-primary btn-lg" data-hero-cta href="contact.html">Meet your company's AI assistant</a>
             </div>
-            <ul class="trustline hero-trust" aria-label="Trust signals"></ul>
           </div>
 
           <div class="hero-visual">
@@ -47,6 +46,9 @@
           </div>
         </div>
       </div>
+      <nav class="hero-trust-bar" data-hero-trust-bar aria-label="Trust signals">
+        <ul class="hero-trust-bar__list"></ul>
+      </nav>
     </div>
   </section>
 
@@ -63,9 +65,9 @@
         <div class="scattered-knowledge" data-scattered-knowledge aria-hidden="true"></div>
       </div>
       <div class="pain-grid">
-        <div class="pain-card reveal d1"><span class="pain-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="8.5" y="14" width="7" height="7" rx="1.5"/></svg></span><span class="n">Knowledge Is Scattered</span><p>Important information is spread across emails, documents, meetings, and different systems. Finding what you need means searching through them all.</p></div>
-        <div class="pain-card reveal d2"><span class="pain-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg></span><span class="n">Admin Work Takes Up Time</span><p>Summaries, reports, preparation, and follow-ups take time away from the work that truly moves your business forward.</p></div>
-        <div class="pain-card reveal d3"><span class="pain-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8.2 7.4 10.8 16M15.8 7.4 13.2 16M8.2 6.8h7.6"/></svg></span><span class="n">Answers Lack Context</span><p>Without a complete history, reliable sources, and the right context, finding answers takes longer—and decisions become less certain.</p></div>
+        <div class="pain-card reveal d1"><span class="pain-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="8.5" y="14" width="7" height="7" rx="1.5"/></svg></span><span class="n">Knowledge is scattered</span><p>Information is spread across emails, documents, meetings and business systems.</p></div>
+        <div class="pain-card reveal d2"><span class="pain-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg></span><span class="n">Routine work takes time</span><p>Employees spend hours preparing summaries, reports and follow-ups.</p></div>
+        <div class="pain-card reveal d3"><span class="pain-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8.2 7.4 10.8 16M15.8 7.4 13.2 16M8.2 6.8h7.6"/></svg></span><span class="n">Answers lack context</span><p>Without the right sources and history, answers are harder to find and trust.</p></div>
       </div>
       <p class="section-link reveal"><a href="how-it-helps.html">See practical use cases →</a></p>
     </div>
@@ -77,12 +79,13 @@
     <div class="wrap">
       <div class="head-block reveal">
         <span class="marker">Data control</span>
+        <p class="data-control__positioning">Built for Swiss SMEs that want the benefits of AI without losing control of company data.</p>
         <h2>AI, without handing over the keys.</h2>
-        <p class="lede">Zuraio gives companies control over where it runs, what information it can use, who can access it and how its work is reviewed.</p>
+        <p class="lede">Zuraio gives companies control over where it runs, which information it can use, who can access it and how its work is reviewed.</p>
       </div>
       <div class="ctrl-panel reveal d1">
         <div class="ctrl-grid">
-          <div class="ccard"><h4>Hosted in Switzerland</h4><p>A Swiss-hosted option for companies that want their environment and company data kept in Switzerland.</p></div>
+          <div class="ccard"><h4>Swiss hosting available</h4><p>A Swiss-hosted option for companies that want their environment and company data kept in Switzerland.</p></div>
           <div class="ccard"><h4>Access follows your rules</h4><p>People work only with the information they are permitted to use.</p></div>
           <div class="ccard"><h4>Answers show their sources</h4><p>Users can check where information came from before relying on it.</p></div>
           <div class="ccard"><h4>Built to be reviewed</h4><p>Requests, sources and outputs can be easier to trace according to the agreed setup.</p></div>
@@ -111,19 +114,10 @@
               </span>
               <div>
                 <h3 class="compare-box__title">Without Zuraio</h3>
-                <p class="compare-box__subtitle">Typical process: up to 20 minutes</p>
+                <p class="compare-box__subtitle">Multiple manual steps</p>
               </div>
             </div>
-            <span class="compare-box__time">~20 min</span>
           </header>
-          <div class="compare-box__progress-wrap">
-            <div class="compare-progress compare-progress--slow" data-compare-progress="without">
-              <div class="compare-progress__track">
-                <div class="compare-progress__fill"></div>
-              </div>
-            </div>
-            <p class="compare-box__status" data-compare-status="without" data-completing-label="Completing..." data-completed-label="Completed">Completing...</p>
-          </div>
           <div class="compare-steps compare-steps--long" data-workflow-steps="without"></div>
         </article>
 
@@ -135,25 +129,16 @@
               </span>
               <div>
                 <h3 class="compare-box__title">With Zuraio</h3>
-                <p class="compare-box__subtitle">Typical process: under 1 minute</p>
+                <p class="compare-box__subtitle">One connected workflow</p>
               </div>
             </div>
-            <span class="compare-box__time"> &lt;1 min</span>
           </header>
-          <div class="compare-box__progress-wrap">
-            <div class="compare-progress compare-progress--fast" data-compare-progress="with">
-              <div class="compare-progress__track">
-                <div class="compare-progress__fill"></div>
-                <span class="compare-progress__tick" hidden aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 9.5 17 19 7"/></svg>
-                </span>
-              </div>
-            </div>
-            <p class="compare-box__status" data-compare-status="with" data-completing-label="Completing..." data-completed-label="Completed.">Completing...</p>
-          </div>
           <div class="compare-steps" data-workflow-steps="with"></div>
         </article>
       </div>
+
+      <p class="compare-bridge reveal d2" data-compare-bridge>Behind the scenes, Zuraio can coordinate specialised AI assistants, suitable models and connected business systems. Employees work through one simple interface.</p>
+      <p class="section-link reveal d2"><a href="technical-architecture.html" data-compare-bridge-link>Explore the technical architecture →</a></p>
 
     </div>
   </section>
@@ -168,9 +153,9 @@
       <div class="integrations-copy">
         <div class="head-block reveal">
           <h2>Works with the tools your team already uses.</h2>
-          <p class="lede">Zuraio is designed to work alongside your existing email, documents, meetings, messages and business systems.</p>
+          <p class="lede">Zuraio works with the email, document, messaging and business tools your employees already use.</p>
         </div>
-        <p class="clarify reveal d2" data-integrations-clarify>Connections depend on your company setup, approved tools and deployment scope.</p>
+        <p class="clarify reveal d2" data-integrations-clarify>Connections are configured around your approved tools, permissions and deployment.</p>
         <p class="section-link reveal d3"><a href="integrations.html">View all integrations →</a></p>
       </div>
       <div class="marquee-track reveal d1" data-marquee tabindex="0" aria-label="Integration tools">
@@ -184,29 +169,25 @@
     <div class="wrap">
       <div class="head-block reveal">
         <h2>See your assistant working.</h2>
-        <p class="lede">Zuraio gathers the right company context, prepares the work and brings it back with sources for your approval.</p>
+        <p class="lede">Zuraio gathers relevant company context, prepares the work and shows its sources for your review.</p>
       </div>
 
-      <div
-        class="demo-showcase reveal d1"
-        id="demo-showcase"
-        tabindex="0"
-        aria-label="Platform demonstration"
-      >
-        <div class="demo-showcase__frame">
-          <div class="demo-showcase__stage" data-demo-slides aria-live="polite"></div>
-          <div class="demo-showcase__progress" aria-hidden="true">
-            <span class="demo-showcase__bar" data-demo-progress></span>
+      <div class="demo-static reveal d1" id="demo-static">
+        <div class="demo-static__layout">
+          <div class="demo-static__frame">
+            <img
+              data-demo-image
+              src="../zuraio/assets/zuraio-demo-mail.png?v=20260723c"
+              alt="Zuraio email assistant — draft reply prepared with company context and visible sources."
+              width="1586"
+              height="992"
+              decoding="async"
+              loading="lazy"
+            />
           </div>
+          <ol class="demo-static__steps" data-demo-steps></ol>
         </div>
-
-        <div class="demo-showcase__copy" data-demo-copy>
-          <span class="marker" data-demo-label>Email</span>
-          <h3 data-demo-heading>The reply is already waiting.</h3>
-          <p data-demo-caption-text>Long threads can be summarised and replies prepared using relevant company context. You review, edit and decide what gets sent.</p>
-        </div>
-
-        <p class="demo-disclaimer">Staged demonstration — capabilities depend on agreed deployment and permissions.</p>
+        <p class="demo-static__caption" data-demo-caption>Zuraio can prepare a customer reply using previous correspondence, current documents and relevant company information. The employee reviews the result and decides what happens next.</p>
       </div>
     </div>
   </section>
@@ -231,27 +212,38 @@
     </div>
   </section>
 
-  <!-- 10. Why we built it — paper band -->
+  <!-- 10. FAQ — compact accordion -->
+  <section class="pad section-band section-band--paper" id="faq-home">
+    <div class="wrap">
+      <div class="head-block reveal">
+        <h2>Common questions</h2>
+      </div>
+      <div class="faq-list faq-list--home" data-home-faq></div>
+      <p class="section-link reveal"><a href="faq.html" data-faq-home-link>View all questions →</a></p>
+    </div>
+  </section>
+
+  <!-- 11. Why we built it — paper band -->
   <section class="origin pad section-band section-band--paper" id="origin">
     <div class="wrap">
       <div class="origin-grid">
         <div class="origin-text reveal">
           <span class="marker">Why we built it</span>
           <h2>Made for the work we had to do ourselves.</h2>
-          <p class="first">Zuraio started because we needed a better way to prepare, search, summarise, draft and follow up in our own work.</p>
-          <p>Public AI tools were useful, but they were not enough for serious company work. We wanted AI connected to real business knowledge, with clear control over data, access and model choice.</p>
+          <p class="first">We built Zuraio because existing AI tools could generate answers, but they did not understand our company knowledge, access rules or working context.</p>
+          <p>We wanted an assistant that could work with real business information while keeping people in control of what it uses and produces.</p>
           <p>That became Zuraio.</p>
           <p class="section-link"><a href="about.html">Meet the team →</a></p>
         </div>
         <figure class="origin-photo reveal d1">
-          <img src="../zuraio/assets/zuraio-team.jpg" alt="The Zuraio team working together — laptop, notebooks and whiteboard with prepare, search, summarise, draft and follow up." />
+          <img src="../zuraio/assets/zuraio-team.jpg" alt="The Zuraio team at work — a restrained supporting photograph." />
           <figcaption class="cap">Built because we needed it ourselves.</figcaption>
         </figure>
       </div>
     </div>
   </section>
 
-  <!-- 11. Final CTA — soft olive accent band -->
+  <!-- 12. Final CTA — soft olive accent band -->
   <section class="final pad" id="final">
     <div class="wrap reveal">
       <h2>See what your own assistant could take off your desk.</h2>
