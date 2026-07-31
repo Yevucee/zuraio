@@ -21,8 +21,9 @@
 <section class="page-hero pad">
   <div class="wrap">
     <span class="marker">Deployment</span>
-    <h1>Deployment models for your data-control needs.</h1>
-    <p class="lede">Zuraio is designed to support deployment and storage choices that reflect company data-control needs. The right model depends on the organisation, use case, sensitivity of data and agreed technical setup.</p>
+    <h1>Local, hybrid or Swiss-hosted.</h1>
+    <p class="lede">Different companies have different requirements for data location, infrastructure, model choice, operations and cost. Zuraio supports deployment designs that can be adapted to those requirements.</p>
+    <p class="qualification">The availability of a specific model must be confirmed as part of the technical and commercial scope.</p>
   </div>
 </section>
 
@@ -30,43 +31,47 @@
   <div class="wrap">
     <span class="marker">Three models</span>
     <h2>Local, hybrid and Swiss-hosted options.</h2>
-    <p class="lede">These descriptions are illustrative. Specific capabilities, pricing and availability must be confirmed before customer communication.</p>
 
-    <div class="grid-cards cols-3" id="swiss-hosted">
+    <div class="grid-cards cols-3">
       <article class="pcard reveal">
-        <h3>Local</h3>
-        <p class="mono">On-premises or private cloud within your infrastructure.</p>
+        <span class="deploy-status deploy-status--available">Available by project — confirm scope</span>
+        <h3>Local or customer-controlled</h3>
+        <p>Selected Zuraio components, assistants or models can be designed to run in customer-controlled infrastructure or a private cloud.</p>
         <ul>
-          <li>Maximum control over where data is processed and stored</li>
-          <li>Suitable for organisations with strict residency or air-gap requirements</li>
-          <li>May require more internal IT involvement for setup and maintenance</li>
-          <li>Model routing can include local or approved cloud models depending on policy</li>
+          <li>Greater control over processing and storage locations</li>
+          <li>Suitable for selected confidential or internally governed workloads</li>
+          <li>Can use local models and approved cloud models according to policy</li>
+          <li>Requires additional customer IT involvement</li>
+          <li>Operational responsibility must be agreed</li>
         </ul>
-        <p class="mono status-note">TODO: Verify local deployment specifications and availability.</p>
+        <p class="qualification">Local deployment is not a single standard package. Component availability, hardware, support, updates, backups and model requirements must be confirmed for each project.</p>
       </article>
 
       <article class="pcard reveal d1">
+        <span class="deploy-status deploy-status--validation">Available by architecture — confirm components</span>
         <h3>Hybrid</h3>
-        <p class="mono">Mix of company-controlled storage and managed AI Hub services.</p>
+        <p>A hybrid design can place different data sources, assistants and models in different approved environments while coordinating them through a shared control layer.</p>
         <ul>
-          <li>Company knowledge may remain in approved internal systems</li>
-          <li>AI orchestration and selected processing in agreed locations</li>
-          <li>Flexible model routing between local and cloud options by task sensitivity</li>
-          <li>Often a practical starting point for mid-sized organisations</li>
+          <li>Sensitive knowledge can remain in customer-controlled systems</li>
+          <li>Selected processing can take place in approved managed environments</li>
+          <li>Model choice can vary by task and data classification</li>
+          <li>Individual assistants can operate close to the systems they use</li>
+          <li>Data flows and responsibilities must be documented</li>
         </ul>
-        <p class="mono status-note">TODO: Verify hybrid architecture details and data flow boundaries.</p>
       </article>
 
-      <article class="pcard reveal d2">
+      <article class="pcard reveal d2" id="swiss-hosted">
+        <span class="deploy-status deploy-status--specified">Hosting option — commercial and technical scope required</span>
         <h3>Swiss-hosted</h3>
-        <p class="mono">Managed deployment with data residency in Switzerland.</p>
+        <p>For companies with Swiss data-location requirements, selected Zuraio components and suitable models can be designed to operate in a Swiss server environment.</p>
         <ul>
-          <li>Designed for Swiss companies that want managed infrastructure with Swiss data residency</li>
-          <li>Reduced internal infrastructure burden compared to fully local deployment</li>
-          <li>Permissions, audit and model routing still configurable per organisation</li>
-          <li>Subject to agreed service terms and verified hosting details</li>
+          <li>Swiss processing and storage options for agreed components</li>
+          <li>Reduced internal infrastructure burden compared with fully local operation</li>
+          <li>Configurable permissions and model policies</li>
+          <li>Can form part of a wider hybrid architecture</li>
+          <li>Subject to agreed providers, services and contract terms</li>
         </ul>
-        <p class="mono status-note">TODO: Verify Swiss hosting provider, location and certification details.</p>
+        <p class="qualification">The exact operator, locations, model providers, subprocessors and data flows must be documented for the selected offer.</p>
       </article>
     </div>
   </div>
@@ -82,60 +87,78 @@
         <thead>
           <tr>
             <th scope="col">Aspect</th>
-            <th scope="col">Local</th>
+            <th scope="col">Local / customer-controlled</th>
             <th scope="col">Hybrid</th>
             <th scope="col">Swiss-hosted</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th scope="row">Data residency control</th>
-            <td>Highest — within your infrastructure</td>
-            <td>Configurable — split by component</td>
-            <td>Swiss residency — managed service</td>
-          </tr>
-          <tr>
-            <th scope="row">Setup complexity</th>
-            <td>Higher</td>
-            <td>Moderate</td>
-            <td>Lower</td>
+            <th scope="row">Data-location control</th>
+            <td>Defined within customer-controlled infrastructure</td>
+            <td>Defined by component and data flow</td>
+            <td>Defined for agreed Swiss-hosted components</td>
           </tr>
           <tr>
             <th scope="row">Internal IT involvement</th>
-            <td>Significant</td>
+            <td>Higher</td>
             <td>Moderate</td>
-            <td>Minimal to moderate</td>
+            <td>Lower to moderate</td>
           </tr>
           <tr>
-            <th scope="row">Model routing flexibility</th>
-            <td>Local and approved cloud models</td>
-            <td>Local and cloud by policy</td>
-            <td>Cloud and approved models in Swiss region</td>
+            <th scope="row">Model choice</th>
+            <td>Local and approved external models</td>
+            <td>Varies by task and policy</td>
+            <td>Approved models available within the agreed design</td>
+          </tr>
+          <tr>
+            <th scope="row">Operational responsibility</th>
+            <td>Primarily customer or shared</td>
+            <td>Shared</td>
+            <td>Primarily managed, subject to contract</td>
           </tr>
           <tr>
             <th scope="row">Typical fit</th>
-            <td>Strict residency, regulated sectors</td>
-            <td>Balanced control and practicality</td>
-            <td>Swiss SMEs wanting managed hosting</td>
+            <td>Selected confidential or internally governed workloads</td>
+            <td>Mixed requirements across systems and data classes</td>
+            <td>Companies seeking managed Swiss-hosted options</td>
           </tr>
           <tr>
             <th scope="row">Availability</th>
-            <td colspan="3" class="mono">TODO: Verify which models are currently available for new customers.</td>
+            <td>Confirm per project</td>
+            <td>Confirm per architecture</td>
+            <td>Confirm per offer</td>
           </tr>
         </tbody>
       </table>
     </div>
+  </div>
+</section>
 
-    <div class="todo-block data-internal-only reveal">
-      <p class="mono">TODO: Validate comparison table with product and sales team. Do not publish specific hosting or certification claims without verification.</p>
-    </div>
+<section class="pad">
+  <div class="wrap">
+    <span class="marker">Agreement</span>
+    <h2>What every deployment decision must define.</h2>
+    <ul>
+      <li>Operator and responsibilities</li>
+      <li>Processing and storage locations</li>
+      <li>Model providers</li>
+      <li>Network connections</li>
+      <li>Identity provider</li>
+      <li>Tenant and data-isolation model</li>
+      <li>Backup and recovery</li>
+      <li>Monitoring and support</li>
+      <li>Update and patch process</li>
+      <li>Retention and deletion rules</li>
+      <li>Permitted external services</li>
+    </ul>
   </div>
 </section>
 
 <section class="pad cta-band">
   <div class="wrap center">
     <h2>Which deployment model fits your company?</h2>
-    <p class="lede">We can discuss your data-control requirements, existing infrastructure and the most practical starting point.</p>
+    <p class="lede">We can review your data-control requirements, existing infrastructure and the most practical starting point.</p>
     <p style="margin-top:24px;">
       <a class="btn btn-primary btn-lg" href="contact.html">Book a private demo</a>
       <a class="btn btn-ghost btn-lg" href="technical-architecture.html">View technical architecture</a>

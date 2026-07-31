@@ -21,102 +21,124 @@
 <section class="page-hero pad">
   <div class="wrap">
     <span class="marker">AI governance</span>
-    <h1>Governance for responsible AI use in your company.</h1>
-    <p class="lede">Zuraio is designed to help companies use AI with clearer rules around access, sources, model choice and review — preparing for internal governance and future audit expectations.</p>
+    <h1>AI use that can be understood and reviewed.</h1>
+    <p class="lede">Responsible company AI requires more than a model. Organisations need clear rules for knowledge, access, models, actions, human review and operational records.</p>
   </div>
 </section>
 
 <section class="pad">
   <div class="wrap">
-    <span class="marker">Transparency</span>
-    <h2>Know what the system used and why.</h2>
-    <p class="lede">Trust in AI-assisted work depends on being able to understand how outputs were produced. Zuraio is designed with transparency in mind — though the exact capabilities depend on your deployment and configuration.</p>
+    <span class="marker">Governance</span>
+    <h2>Governance begins before an answer is generated.</h2>
+    <p class="lede">Zuraio can apply rules to the sources, skills, specialised assistants, models and actions used for a task. Approved process knowledge can be versioned in SkillOS, while critical changes or external actions can be prepared for human confirmation.</p>
 
     <div class="grid-cards cols-2">
       <article class="pcard reveal">
-        <h3>Source visibility</h3>
-        <p>Where internal knowledge is used, users may be able to see which documents or systems contributed to an answer. This is intended to support verification before acting on AI-generated content.</p>
+        <h3>Approved knowledge</h3>
+        <p>Released versions of company skills and guidance can be made available for operational use.</p>
       </article>
       <article class="pcard reveal d1">
-        <h3>Model routing visibility</h3>
-        <p>Organisations may be able to define and review which models handle which types of work, depending on sensitivity and policy. <!-- TODO: Verify model routing visibility features. --></p>
+        <h3>Defined access</h3>
+        <p>Identity, role and source permissions determine which information and capabilities may be used.</p>
       </article>
       <article class="pcard reveal d2">
-        <h3>Clear boundaries</h3>
-        <p>Zuraio is designed to operate within defined permissions and approved sources — not as an unrestricted gateway to all company data or external models.</p>
+        <h3>Controlled execution</h3>
+        <p>Tool inputs can be validated, and read-only work can be treated differently from actions that change information or communicate externally.</p>
       </article>
       <article class="pcard reveal d3">
-        <h3>Human review</h3>
-        <p>Outputs are intended to be reviewed by the people responsible for the work. AI assists; humans decide what is sent, shared or acted on.</p>
+        <h3>Human confirmation</h3>
+        <p>Sensitive or writing actions can be held as drafts or proposals where the relevant component supports this workflow.</p>
       </article>
-    </div>
-
-    <div class="todo-block data-internal-only reveal">
-      <p class="mono">TODO: Confirm transparency features and UI copy with product and legal teams before publication.</p>
+      <article class="pcard reveal d4">
+        <h3>Relevant records</h3>
+        <p>Requests, sources, versions, actions and approvals can be retained where supported by the selected component and deployment.</p>
+      </article>
     </div>
   </div>
 </section>
 
 <section class="pad cloud-bg">
   <div class="wrap">
-    <span class="marker">Oversight</span>
-    <h2>Oversight built into the workflow.</h2>
-    <p class="lede">AI governance is not a separate compliance exercise — it should be part of how work gets done. Zuraio is designed to support oversight at several levels.</p>
+    <span class="marker">Skill lifecycle</span>
+    <h2>Keep company guidance current and controlled.</h2>
+    <p class="lede">SkillOS manages knowledge and process skills through a defined lifecycle. Proposed changes can be reviewed before a new version becomes available for operational use.</p>
 
-    <div class="grid-cards cols-3">
-      <article class="pcard reveal">
-        <h3>Administrative controls</h3>
-        <ul>
-          <li>Define which sources are connected</li>
-          <li>Configure user and role permissions</li>
-          <li>Set model routing policies by task type</li>
-          <li>Manage deployment and access boundaries</li>
-        </ul>
-      </article>
-      <article class="pcard reveal d1">
-        <h3>Activity review</h3>
-        <ul>
-          <li>Log requests and model usage according to agreed audit model</li>
-          <li>Review which sources were accessed</li>
-          <li>Support internal audit and governance processes</li>
-          <li><!-- TODO: Verify log retention and export capabilities --></li>
-        </ul>
-      </article>
-      <article class="pcard reveal d2">
-        <h3>Gradual rollout</h3>
-        <ul>
-          <li>Start with selected use cases and users</li>
-          <li>Pilot before company-wide deployment</li>
-          <li>Review results and refine policies</li>
-          <li>Expand based on proven value and governance readiness</li>
-        </ul>
-      </article>
+    <div class="lifecycle-flow" aria-label="Skill lifecycle stages">
+      <span>Draft</span>
+      <span class="lifecycle-arrow" aria-hidden="true">→</span>
+      <span>In review</span>
+      <span class="lifecycle-arrow" aria-hidden="true">→</span>
+      <span>Approved</span>
+      <span class="lifecycle-arrow" aria-hidden="true">→</span>
+      <span>Released</span>
+      <span class="lifecycle-arrow" aria-hidden="true">→</span>
+      <span>Deprecated</span>
+      <span class="lifecycle-arrow" aria-hidden="true">→</span>
+      <span>Archived</span>
     </div>
+
+    <ul>
+      <li>Quality checks before status changes</li>
+      <li>Separate proposal and approval steps</li>
+      <li>Protection of released skills from uncontrolled edits</li>
+      <li>Version history and snapshots</li>
+      <li>Escalation when quality issues are detected</li>
+    </ul>
   </div>
 </section>
 
 <section class="pad">
   <div class="wrap">
-    <span class="marker">Regulatory context</span>
-    <h2>Preparing for evolving expectations.</h2>
-    <p class="lede">AI governance requirements are evolving in Switzerland and the EU. Zuraio is designed to help companies prepare for internal review and future audit expectations — but we do not claim compliance with any specific regulation unless verified.</p>
-
-    <div class="todo-block data-internal-only reveal">
-      <p class="mono">TODO: Add verified regulatory positioning (e.g. EU AI Act readiness, Swiss data protection) only after legal review. Do not invent compliance claims.</p>
-    </div>
+    <span class="marker">Draft-first</span>
+    <h2>AI can prepare. People remain responsible.</h2>
+    <p class="lede">EmailAI implements a draft-first principle for actions that change information or communicate externally. The system can prepare a response or proposed action, show the intended result and wait for confirmation where required.</p>
+    <p class="qualification">The available approval and action controls vary by component. Full Office document-change workflows remain specified or in development.</p>
   </div>
 </section>
 
 <section class="pad cloud-bg">
   <div class="wrap">
-    <span class="marker">Disclaimer</span>
+    <span class="marker">Review</span>
+    <h2>Review the information that matters.</h2>
+
+    <div class="grid-cards cols-2">
+      <article class="pcard reveal">
+        <h3>The request</h3>
+        <p>What question was asked or task was started.</p>
+      </article>
+      <article class="pcard reveal d1">
+        <h3>The sources</h3>
+        <p>Which approved company information contributed, where source tracking is supported.</p>
+      </article>
+      <article class="pcard reveal d2">
+        <h3>The process</h3>
+        <p>Which released skill, assistant or tool was used, where recorded by the component.</p>
+      </article>
+      <article class="pcard reveal d3">
+        <h3>The result</h3>
+        <p>What answer, draft or proposed action was produced.</p>
+      </article>
+      <article class="pcard reveal d4">
+        <h3>The review</h3>
+        <p>Who reviewed or confirmed an action, where the workflow supports approval records.</p>
+      </article>
+    </div>
+
+    <p class="qualification">The exact log contents, retention, export options and user-interface visibility depend on the selected component and audit configuration.</p>
+    <p style="margin-top:20px;"><a href="data-control.html">Explore data control →</a></p>
+  </div>
+</section>
+
+<section class="pad">
+  <div class="wrap">
+    <span class="marker">Limitations</span>
     <h2>Important limitations.</h2>
 
     <div class="pcard reveal">
-      <p>AI-generated outputs may contain errors, omissions or outdated information. Users should verify important information against original sources before acting on it.</p>
-      <p style="margin-top:16px;">Zuraio is a tool to assist human work — not a substitute for professional judgement, legal advice, financial advice or other qualified expertise.</p>
-      <p style="margin-top:16px;">The descriptions on this website reflect design intentions and planned capabilities. Actual features, performance and availability depend on your agreed deployment, configuration and contract.</p>
-      <p style="margin-top:16px;" class="mono">Nothing on this page constitutes legal, regulatory or compliance advice. Consult qualified advisers for your specific situation.</p>
+      <p>AI-generated results may contain errors, omissions or outdated information. Important information should be checked against original sources before it is used.</p>
+      <p style="margin-top:16px;">Zuraio assists human work. It does not replace professional judgement, legal advice, financial advice or other qualified expertise.</p>
+      <p style="margin-top:16px;">The available functions depend on the selected deployment, configuration, component maturity and contract.</p>
+      <p style="margin-top:16px;">Nothing on this page constitutes legal, regulatory or compliance advice.</p>
     </div>
   </div>
 </section>
@@ -124,7 +146,7 @@
 <section class="pad cta-band">
   <div class="wrap center">
     <h2>Discuss AI governance for your company.</h2>
-    <p class="lede">We can walk through your governance requirements, access model and a careful path to practical AI adoption.</p>
+    <p class="lede">We can review your access model, approval requirements and a controlled path towards practical AI adoption.</p>
     <p style="margin-top:24px;"><a class="btn btn-primary btn-lg" href="contact.html">Book a private demo</a></p>
   </div>
 </section>

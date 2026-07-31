@@ -21,125 +21,106 @@
 <section class="page-hero pad">
   <div class="wrap">
     <span class="marker">Knowledge</span>
-    <h1>Your company knowledge, connected and searchable.</h1>
-    <p class="lede">Zuraio is designed to connect approved internal sources so employees can ask questions and receive answers backed by the documents and systems your company already uses.</p>
+    <h1>Turn scattered company information into governed, usable context.</h1>
+    <p class="lede">Important knowledge is often spread across inboxes, shared drives, meeting notes and business systems. Zuraio brings approved information and working methods together so employees and specialised assistants can use them more effectively.</p>
   </div>
 </section>
 
-<section class="pad">
+<section class="pad" id="skillos">
   <div class="wrap">
-    <span class="marker">What can be connected</span>
-    <h2>Approved sources for company-specific answers.</h2>
-    <p class="lede">The right sources depend on your organisation, permissions and agreed setup. Zuraio is designed to work with selected internal knowledge — not public internet data alone.</p>
+    <span class="marker">SkillOS</span>
+    <h2>From stored information to governed company knowledge.</h2>
+    <p class="lede">Zuraio’s SkillOS manages approved knowledge and process instructions as versioned, reusable skills. A skill can define the information to use, the process to follow, the responsible roles, the permitted tools and the expected result.</p>
+    <p class="lede">This means Zuraio does more than search documents. It can provide a specialised assistant with the approved knowledge and working method required for a particular company task.</p>
 
     <div class="grid-cards cols-3">
       <article class="pcard reveal">
-        <h3>Documents and files</h3>
-        <p>Policies, standards, proposals, project files, templates and shared folders from approved storage locations.</p>
-        <p class="mono status-note">Examples may include SharePoint, OneDrive, Google Drive — subject to integration availability.</p>
+        <h3>Versioned knowledge</h3>
+        <p>Skills have defined versions and lifecycle states, so approved guidance can be reviewed and updated outside the AI model.</p>
       </article>
       <article class="pcard reveal d1">
-        <h3>Email and calendar</h3>
-        <p>Relevant threads, meeting context and correspondence where access permissions allow — for briefings, follow-ups and search.</p>
-        <p class="mono status-note">Examples may include Outlook, Gmail — subject to integration availability.</p>
+        <h3>Connected context</h3>
+        <p>Retrieval can combine keywords, structured metadata, semantic similarity and relationships between related skills.</p>
       </article>
       <article class="pcard reveal d2">
-        <h3>Business systems</h3>
-        <p>CRM records, ERP data, project tools and other approved systems that hold operational context.</p>
-        <p class="mono status-note">See <a href="integrations.html">integrations</a> for current status by category.</p>
+        <h3>Governed changes</h3>
+        <p>New or changed skills can pass through review and approval before being made available for operational use.</p>
       </article>
-      <article class="pcard reveal d3">
-        <h3>Meeting notes and transcripts</h3>
-        <p>Notes, summaries and recorded context from meetings — where your company chooses to connect them.</p>
-      </article>
-      <article class="pcard reveal d4">
-        <h3>Internal wikis and knowledge bases</h3>
-        <p>Structured internal documentation, FAQs and team knowledge repositories.</p>
-      </article>
-      <article class="pcard reveal d5">
-        <h3>Custom and API sources</h3>
-        <p>Additional sources via APIs or custom connectors, depending on your deployment and requirements.</p>
-      </article>
-    </div>
-
-    <div class="todo-block data-internal-only reveal">
-      <p class="mono">TODO: Confirm the definitive list of connectable source types and integration status before publication.</p>
     </div>
   </div>
 </section>
 
 <section class="pad cloud-bg">
   <div class="wrap">
-    <span class="marker">Sourced answers</span>
-    <h2>Answers you can trace back to a source.</h2>
-    <p class="lede">Generic AI can sound confident without showing where information came from. Zuraio is designed so that, where internal sources are used, users can see references to the documents or systems behind an answer — making it easier to check, share and trust.</p>
-
-    <div class="grid-cards cols-2">
-      <article class="pcard reveal">
-        <h3>Why sources matter</h3>
-        <ul>
-          <li>Verify claims before acting on them</li>
-          <li>Share answers with colleagues who need the original context</li>
-          <li>Reduce reliance on unverified model memory</li>
-          <li>Support internal review and governance expectations</li>
-        </ul>
-      </article>
-      <article class="pcard reveal d1">
-        <h3>What users may see</h3>
-        <ul>
-          <li>Document name and location (where permissions allow)</li>
-          <li>Relevant excerpt or reference pointer</li>
-          <li>Date or version indicator where available</li>
-          <li>Indication when an answer is not source-backed</li>
-        </ul>
-      </article>
-    </div>
-
-    <div class="todo-block data-internal-only reveal">
-      <p class="mono">TODO: Verify exact source-display behaviour and UI copy with product team before publication.</p>
-    </div>
+    <span class="marker">Skills</span>
+    <h2>Company knowledge includes how work should be done.</h2>
+    <p class="lede">A Zuraio skill can contain more than reference material. It can describe the approved process and the conditions under which it should be used.</p>
+    <ul>
+      <li>Required process steps</li>
+      <li>Roles and responsibilities</li>
+      <li>Inputs, dependencies and expected results</li>
+      <li>Templates and formatting requirements</li>
+      <li>Quality checks and review points</li>
+      <li>Permitted sources, assistants and tools</li>
+      <li>Version, validity and replacement of earlier guidance</li>
+    </ul>
   </div>
 </section>
 
 <section class="pad">
   <div class="wrap">
-    <span class="marker">How it works</span>
-    <h2>From scattered knowledge to a connected answer.</h2>
+    <span class="marker">Approved sources</span>
+    <h2>Approved sources for company-specific answers.</h2>
+    <p class="lede">The connected sources depend on the organisation, permissions and agreed integration scope. Zuraio is designed to use selected company information rather than relying only on public model knowledge.</p>
 
-    <div class="diagram-box reveal">
-      <div class="knowledge-flow">
-        <div class="flow-row sources">
-          <div class="flow-node">Email</div>
-          <div class="flow-node">Documents</div>
-          <div class="flow-node">CRM / ERP</div>
-          <div class="flow-node">Meeting notes</div>
-        </div>
-        <div class="flow-connector" aria-hidden="true">
-          <span class="flow-line"></span>
-          <span class="flow-arrow">↓</span>
-        </div>
-        <div class="flow-row hub">
-          <div class="flow-node hub-node">Zuraio AI Hub</div>
-        </div>
-        <div class="flow-connector" aria-hidden="true">
-          <span class="flow-line"></span>
-          <span class="flow-arrow">↓</span>
-        </div>
-        <div class="flow-row outputs">
-          <div class="flow-node output">Source-backed answer</div>
-          <div class="flow-node output">Meeting brief</div>
-          <div class="flow-node output">Draft / summary</div>
-        </div>
-      </div>
-      <p class="mono diagram-caption">Diagram: illustrative flow — not a technical specification. Permissions and routing apply at each step.</p>
+    <div class="grid-cards cols-2">
+      <article class="pcard reveal">
+        <h3>Documents and files</h3>
+        <p>Policies, standards, proposals, project files, templates and approved shared folders.</p>
+      </article>
+      <article class="pcard reveal d1">
+        <h3>E-mail and calendar</h3>
+        <p>Relevant communication, meeting context and correspondence where access permissions and integration status allow.</p>
+      </article>
+      <article class="pcard reveal d2">
+        <h3>Business systems</h3>
+        <p>CRM, ERP, project and specialist systems that contain operational context.</p>
+      </article>
+      <article class="pcard reveal d3">
+        <h3>Process knowledge</h3>
+        <p>Released SkillOS skills containing approved procedures, templates and quality rules.</p>
+      </article>
+      <article class="pcard reveal d4">
+        <h3>Custom sources</h3>
+        <p>Additional information made available through approved APIs or customer-specific connectors.</p>
+      </article>
     </div>
+
+    <p class="qualification">The exact sources and integration status are confirmed for each customer setup.</p>
+  </div>
+</section>
+
+<section class="pad cloud-bg">
+  <div class="wrap">
+    <span class="marker">Traceability</span>
+    <h2>Answers that can be checked against their sources.</h2>
+    <p class="lede">Where source-backed company knowledge is used, Zuraio can retain and present source information according to the selected workflow and interface. This helps employees verify important information before using it.</p>
+    <ul>
+      <li>Check important claims against original information</li>
+      <li>Understand which documents or systems contributed</li>
+      <li>Reduce reliance on unsupported model memory</li>
+      <li>Support internal review and governance</li>
+      <li>Identify the relevant version or date where available</li>
+    </ul>
+    <p class="qualification">Source presentation differs by assistant, interface and deployment. Not every output is necessarily source-backed.</p>
+    <p style="margin-top:20px;"><a href="technical-architecture.html">Explore the technical architecture →</a></p>
   </div>
 </section>
 
 <section class="pad cta-band">
   <div class="wrap center">
-    <h2>See how knowledge could connect in your company.</h2>
-    <p class="lede">We can walk through your current sources, access model and the first questions your teams would want to ask.</p>
+    <h2>See how your company knowledge could connect.</h2>
+    <p class="lede">We can review your current sources, permission model and the first questions your teams need to answer.</p>
     <p style="margin-top:24px;"><a class="btn btn-primary btn-lg" href="contact.html">Book a private demo</a></p>
   </div>
 </section>
