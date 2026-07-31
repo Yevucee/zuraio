@@ -67,6 +67,23 @@ function setHtml(selector, html) {
   });
 }
 
+function langHref(path) {
+  if (!path || path.startsWith('#') || path.startsWith('http') || path.startsWith('../')) return path;
+  const hashIndex = path.indexOf('#');
+  const file = hashIndex >= 0 ? path.slice(0, hashIndex) : path;
+  const hash = hashIndex >= 0 ? path.slice(hashIndex) : '';
+  const params = new URLSearchParams();
+  params.set('lang', getLocale());
+  return `${file}?${params.toString()}${hash}`;
+}
+
+function setLinkHref(selector, path) {
+  if (!path) return;
+  document.querySelectorAll(selector).forEach((el) => {
+    if (el.tagName === 'A') el.href = langHref(path);
+  });
+}
+
 function applyList(selector, items, template) {
   const container = document.querySelector(selector);
   if (!container || !items) return;
@@ -94,15 +111,18 @@ function applyComparePanel(panelKey, panelCopy, icons, tone) {
   const panel = document.querySelector(`[data-compare-box="${panelKey}"]`);
   if (!panel || !panelCopy) return;
 
-  panel.querySelector('.compare-box__title').innerHTML = formatHeadline(
-    panelCopy.title,
-    panelCopy.titleEmphasis,
-  );
-  panel.querySelector('.compare-box__subtitle').textContent = panelCopy.subtitle;
-  panel.querySelector('.compare-box__time').textContent = panelCopy.timeLabel;
+  const titleEl = panel.querySelector('.compare-box__title');
+  if (titleEl) {
+    titleEl.innerHTML = formatHeadline(panelCopy.title, panelCopy.titleEmphasis);
+  }
+  const subtitleEl = panel.querySelector('.compare-box__subtitle');
+  if (subtitleEl) subtitleEl.textContent = panelCopy.subtitle;
+
+  const timeEl = panel.querySelector('.compare-box__time');
+  if (timeEl && panelCopy.timeLabel) timeEl.textContent = panelCopy.timeLabel;
 
   const status = panel.querySelector(`[data-compare-status="${panelKey}"]`);
-  if (status) {
+  if (status && panelCopy.progressCompleting) {
     status.dataset.completingLabel = panelCopy.progressCompleting;
     status.dataset.completedLabel = panelCopy.progressCompleted;
     if (!status.classList.contains('is-complete')) {
@@ -114,6 +134,22 @@ function applyComparePanel(panelKey, panelCopy, icons, tone) {
   if (stepsEl) {
     stepsEl.innerHTML = renderWorkflowSteps(panelCopy.steps, icons, tone);
   }
+}
+
+function renderHomeFaq(items, limit = 6) {
+  if (!items?.length) return '';
+  return items
+    .slice(0, limit)
+    .map(
+      (item, i) => `
+    <div class="faq-item reveal${i ? ` d${Math.min(i, 3)}` : ''}">
+      <button class="faq-q" type="button" aria-expanded="false">${item.question}</button>
+      <div class="faq-a" hidden>
+        <p>${item.answer}</p>
+      </div>
+    </div>`,
+    )
+    .join('');
 }
 
 export function applyDataI18n() {
@@ -155,6 +191,10 @@ export function applyHomeTranslations() {
     applyComparePanel('with', home.different.with, WORKFLOW_ICONS_WITH, 'olive');
   }
 
+  setText('[data-compare-bridge]', home.different.bridge);
+  setHtml('[data-compare-bridge-link]', home.different.bridgeLink);
+  setLinkHref('[data-compare-bridge-link]', 'technical-architecture.html');
+
   setText('#integrations h2', home.integrations.heading);
   setText('#integrations .lede', home.integrations.body);
   setText('#integrations [data-integrations-clarify]', home.integrations.clarify);
@@ -162,18 +202,22 @@ export function applyHomeTranslations() {
 
   setText('#assistant-demo h2', home.demo.heading);
   setText('#assistant-demo .lede', home.demo.body);
-  setText('#assistant-demo .demo-disclaimer', home.demo.disclaimer);
-  const activeSlide = document.querySelector('#demo-showcase [data-demo-slide].is-active');
-  const slideIndex = activeSlide ? parseInt(activeSlide.dataset.demoSlide, 10) : 0;
-  const slideCopy = home.demo.slides?.[slideIndex];
-  if (slideCopy) {
-    setText('[data-demo-label]', slideCopy.label);
-    setText('[data-demo-caption-text]', slideCopy.body);
-    const headingEl = document.querySelector('[data-demo-heading]');
-    if (headingEl) headingEl.textContent = slideCopy.heading;
+  const demoImage = document.querySelector('[data-demo-image]');
+  if (demoImage && home.demo.image) demoImage.src = `${home.demo.image}?v=20260723c`;
+  if (demoImage && home.demo.imageAlt) demoImage.alt = home.demo.imageAlt;
+  const demoSteps = document.querySelector('[data-demo-steps]');
+  if (demoSteps && home.demo.steps) {
+    demoSteps.innerHTML = home.demo.steps
+      .map(
+        (step, index) =>
+          `<li class="demo-static__step"><span class="demo-static__step-num">${index + 1}</span><span class="demo-static__step-text">${step.title}</span></li>`,
+      )
+      .join('');
   }
+  setText('[data-demo-caption]', home.demo.caption);
 
   setText('#data-control .marker', home.dataControl.marker);
+  setText('#data-control .data-control__positioning', home.dataControl.positioning);
   setText('#data-control h2', home.dataControl.heading);
   setText('#data-control .lede', home.dataControl.body);
   const ccards = document.querySelectorAll('#data-control .ccard');
@@ -219,6 +263,14 @@ export function applyHomeTranslations() {
   if (cap) cap.textContent = home.origin.caption;
   const originImg = document.querySelector('#origin img');
   if (originImg && home.origin.imageAlt) originImg.alt = home.origin.imageAlt;
+
+  setText('#faq-home h2', home.faq?.heading);
+  const faqHome = document.querySelector('[data-home-faq]');
+  if (faqHome && home.faq?.items) {
+    faqHome.innerHTML = renderHomeFaq(home.faq.items, 6);
+  }
+  setHtml('[data-faq-home-link]', home.faq?.link);
+  setLinkHref('[data-faq-home-link]', 'faq.html');
 
   setText('#final h2', home.final.heading);
   setText('#final p:not(.small)', home.final.body);

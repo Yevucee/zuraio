@@ -60,9 +60,9 @@ export const problemOptions = [
 ];
 
 export const trustSignals = [
-  { label: 'Swiss hosted', href: 'deployment-models.html' },
+  { label: 'Swiss hosting available', href: 'deployment-models.html#swiss-hosted' },
   { label: 'Sources shown', href: 'knowledge.html' },
-  { label: 'Company knowledge connected', href: 'knowledge.html' },
+  { label: 'Approved company knowledge', href: 'knowledge.html' },
   { label: 'You remain in control', href: 'data-control.html' },
 ];
 
@@ -132,31 +132,27 @@ export const home = {
     body: 'Important knowledge is spread across emails, documents, meetings and business systems. People lose time searching, preparing and repeating work that has already been done.',
     cards: [
       {
-        title: 'Knowledge Is Scattered',
-        body: 'Important information is spread across emails, documents, meetings, and different systems. Finding what you need means searching through them all.',
+        title: 'Knowledge is scattered',
+        body: 'Information is spread across emails, documents, meetings and business systems.',
       },
       {
-        title: 'Admin Work Takes Up Time',
-        body: 'Summaries, reports, preparation, and follow-ups take time away from the work that truly moves your business forward.',
+        title: 'Routine work takes time',
+        body: 'Employees spend hours preparing summaries, reports and follow-ups.',
       },
       {
-        title: 'Answers Lack Context',
-        body: 'Without a complete history, reliable sources, and the right context, finding answers takes longer—and decisions become less certain.',
+        title: 'Answers lack context',
+        body: 'Without the right sources and history, answers are harder to find and trust.',
       },
     ],
     link: 'See practical use cases →',
     illustration: {
       labels: {
         whereIsIt: 'Where is it?',
-        whoKnows: 'Who knows?',
-        latestVersion: 'Latest version?',
-        alreadyDone: 'Already done?',
         whichDocument: 'Which document?',
+        latestVersion: 'Is this the latest version?',
+        whoKnows: 'Who knows?',
+        doneBefore: 'Has this been done before?',
         whoHasAccess: 'Who has access?',
-        wasUpdated: 'Was this updated?',
-        whoHasContext: 'Who has the context?',
-        howLong: 'How long will this take?',
-        doneBefore: 'Has someone done this before?',
       },
     },
   },
@@ -165,131 +161,91 @@ export const home = {
     heading: 'Your company knowledge, working for your people.',
     headingEmphasis: 'company knowledge',
     body: 'Generic AI only knows what someone manually provides. Zuraio securely connects to approved company knowledge, understands the context of the person asking and prepares sourced work for review.',
+    bridge:
+      'Behind the scenes, Zuraio can coordinate specialised AI assistants, suitable models and connected business systems. Employees work through one simple interface.',
+    bridgeLink: 'Explore the technical architecture →',
     without: {
       title: 'Without Zuraio',
       titleEmphasis: null,
-      subtitle: 'Typical process: up to 20 minutes',
-      timeLabel: '~20 min',
-      progressCompleting: 'Completing...',
-      progressCompleted: 'Completed',
+      subtitle: 'Multiple manual steps',
       steps: [
         {
-          title: 'Ask generic AI',
-          body: 'Start a new conversation',
+          title: 'Start a new conversation',
+          body: 'Ask a generic AI tool.',
         },
         {
-          title: 'Add context manually',
-          body: 'Find and upload files or explain the situation',
+          title: 'Find and add the relevant files',
+          body: 'Search for documents and upload them manually.',
         },
         {
-          title: 'Check generic output',
-          body: 'Review and verify information',
+          title: 'Explain the company context',
+          body: 'Provide the background the AI does not know.',
         },
         {
-          title: 'Refine and ask again',
-          body: 'Add more details and clarify',
+          title: 'Check the answer',
+          body: 'Verify the information against the original sources.',
         },
         {
-          title: 'Verify and compile',
-          body: 'Cross-check and pull information together',
+          title: 'Refine and compile',
+          body: 'Correct the result and bring the information together.',
         },
         {
           title: 'Repeat next time',
-          body: 'Start over with a new conversation',
+          body: 'Start again when a new conversation begins.',
         },
       ],
     },
     with: {
       title: 'With Zuraio',
       titleEmphasis: null,
-      subtitle: 'Typical process: under 1 minute',
-      timeLabel: '<1 min',
-      progressCompleting: 'Completing...',
-      progressCompleted: 'Completed.',
+      subtitle: 'One connected workflow',
       steps: [
         {
           title: 'Ask Zuraio',
-          body: 'Ask your question in natural language',
+          body: 'Ask your question in natural language.',
         },
         {
-          title: 'Uses approved knowledge',
-          body: 'Automatically connects to your company sources',
+          title: 'Uses permitted company knowledge',
+          body: 'Connects to the information the employee is allowed to access.',
         },
         {
-          title: 'Creates sourced work',
-          body: 'Generates answers and drafts with references',
+          title: 'Prepares an answer with sources',
+          body: 'Creates an answer, document or summary and shows the sources used.',
         },
         {
-          title: 'Review and act',
-          body: 'You review, verify and take action with confidence',
+          title: 'Review and decide',
+          body: 'The employee checks the result and decides what happens next.',
         },
       ],
     },
   },
   integrations: {
     heading: 'Works with the tools your team already uses.',
-    body: 'Zuraio is designed to work alongside your existing email, documents, meetings, messages and business systems.',
-    clarify: 'Connections depend on your company setup, approved tools and deployment scope.',
+    body: 'Zuraio works with the email, document, messaging and business tools your employees already use.',
+    clarify: 'Connections are configured around your approved tools, permissions and deployment.',
     link: 'View all integrations →',
   },
   demo: {
     heading: 'See your assistant working.',
-    headingEmphasis: 'working',
-    body: 'Zuraio gathers the right company context, prepares the work and brings it back with sources for your approval.',
-    disclaimer: 'Staged demonstration — capabilities depend on agreed deployment and permissions.',
-    slides: [
-      {
-        id: 'mail',
-        label: 'Email',
-        heading: 'The reply is already waiting.',
-        emphasis: 'reply',
-        body: 'Long threads can be summarised and replies prepared using relevant company context. You review, edit and decide what gets sent.',
-        alt: 'Zuraio email assistant — incoming mail with draft reply and sources.',
-      },
-      {
-        id: 'project-summary',
-        label: 'Project summary',
-        heading: 'The full picture, already assembled.',
-        body: 'Zuraio pulls together project context from emails, documents and notes so your team can see status without searching.',
-        alt: 'Zuraio project summary — consolidated project overview with key details and sources.',
-      },
-      {
-        id: 'appointment-reply',
-        label: 'Appointment & reply',
-        heading: 'Scheduling handled with context.',
-        body: 'A client request is matched with calendar availability, relevant history and a draft reply ready for your approval.',
-        alt: 'Zuraio appointment workflow — suggested times and draft reply prepared from company context.',
-      },
-      {
-        id: 'meeting-transcript',
-        label: 'Meeting transcript',
-        heading: 'Every meeting, captured and usable.',
-        body: 'Transcripts are summarised with decisions, actions and follow-ups so nothing depends on memory alone.',
-        alt: 'Zuraio meeting transcript — summarised discussion with actions and follow-ups.',
-      },
-      {
-        id: 'tasks',
-        label: 'Tasks',
-        heading: 'Nothing slips through.',
-        body: 'Actions are extracted from emails, meetings and messages so follow-ups are visible before they are forgotten.',
-        alt: 'Zuraio tasks view — open actions gathered from recent company activity.',
-      },
-      {
-        id: 'briefing',
-        label: 'Briefing',
-        heading: 'Walk in prepared.',
-        body: 'Relevant emails, notes, documents, decisions and open actions gathered before you sit down.',
-        alt: 'Zuraio meeting brief — client history, related files and talking points prepared.',
-      },
+    body: 'Zuraio gathers relevant company context, prepares the work and shows its sources for your review.',
+    caption:
+      'Zuraio can prepare a customer reply using previous correspondence, current documents and relevant company information. The employee reviews the result and decides what happens next.',
+    image: '../zuraio/assets/zuraio-demo-mail.png',
+    imageAlt: 'Zuraio email assistant — draft reply prepared with company context and visible sources.',
+    steps: [
+      { title: 'Ask a question', body: null },
+      { title: 'Zuraio gathers permitted company context', body: null },
+      { title: 'Review the answer and its sources', body: null },
     ],
   },
   dataControl: {
     marker: 'Data control',
+    positioning: 'Built for Swiss SMEs that want the benefits of AI without losing control of company data.',
     heading: 'AI, without handing over the keys.',
     headingEmphasis: 'keys',
-    body: 'Zuraio gives companies control over where it runs, what information it can use, who can access it and how its work is reviewed.',
+    body: 'Zuraio gives companies control over where it runs, which information it can use, who can access it and how its work is reviewed.',
     cards: [
-      { title: 'Hosted in Switzerland', body: 'A Swiss-hosted option for companies that want their environment and company data kept in Switzerland.' },
+      { title: 'Swiss hosting available', body: 'A Swiss-hosted option for companies that want their environment and company data kept in Switzerland.' },
       { title: 'Access follows your rules', body: 'People work only with the information they are permitted to use.' },
       { title: 'Answers show their sources', body: 'Users can check where information came from before relying on it.' },
       { title: 'Built to be reviewed', body: 'Requests, sources and outputs can be easier to trace according to the agreed setup.' },
@@ -317,13 +273,69 @@ export const home = {
     marker: 'Why we built it',
     heading: 'Made for the work we had to do ourselves.',
     paragraphs: [
-      'Zuraio started because we needed a better way to prepare, search, summarise, draft and follow up in our own work.',
-      'Public AI tools were useful, but they were not enough for serious company work. We wanted AI connected to real business knowledge, with clear control over data, access and model choice.',
+      'We built Zuraio because existing AI tools could generate answers, but they did not understand our company knowledge, access rules or working context.',
+      'We wanted an assistant that could work with real business information while keeping people in control of what it uses and produces.',
       'That became Zuraio.',
     ],
     link: 'Meet the team →',
     caption: 'Built because we needed it ourselves.',
-    imageAlt: 'The Zuraio team working together — laptop, notebooks and whiteboard with prepare, search, summarise, draft and follow up.',
+    imageAlt: 'The Zuraio team at work — a restrained supporting photograph.',
+  },
+  faq: {
+    heading: 'Common questions',
+    link: 'View all questions →',
+    items: [
+      {
+        question: 'What is Zuraio?',
+        answer:
+          'Zuraio is designed as a controlled AI layer for companies — connecting approved internal knowledge and business systems to practical workflows for meetings, email, reports, search and follow-up. It is intended for companies that want AI benefits while keeping control of data, access and model choice.',
+      },
+      {
+        question: 'Is our company data kept in Switzerland?',
+        answer:
+          'This depends on your chosen deployment model. Zuraio is designed to support local, hybrid and Swiss-hosted options with configurable data residency. See deployment models for an overview of what can be agreed for your setup.',
+      },
+      {
+        question: 'Can employees access information they are not permitted to see?',
+        answer:
+          'Zuraio is designed around permissions, roles and approved data sources so that AI assistance reflects your company\u2019s access model, not a separate unrestricted layer. The exact behaviour depends on how sources and permissions are configured.',
+      },
+      {
+        question: 'Can we see where an answer came from?',
+        answer:
+          'Where internal knowledge sources are connected, Zuraio is designed to show references to the documents or systems behind an answer. The exact display depends on your configuration and connected sources.',
+      },
+      {
+        question: 'Does Zuraio make decisions or send things automatically?',
+        answer:
+          'Zuraio is designed to prepare work for review. What can be sent, approved or acted on automatically depends on your agreed setup, permissions and workflow rules.',
+      },
+      {
+        question: 'Which tools can Zuraio connect to?',
+        answer:
+          'Zuraio is designed to integrate with email, document storage, collaboration tools, CRM, ERP and other business systems. Integration availability varies by tool and deployment. See integrations for category status.',
+      },
+      {
+        question: 'Do we have to replace our existing systems?',
+        answer:
+          'No. Zuraio is designed to work alongside existing tools rather than replace them. Connections are configured around your approved systems, permissions and deployment scope.',
+      },
+      {
+        question: 'How long does implementation take?',
+        answer:
+          'Implementation scope depends on your systems, data sources, permissions model and deployment choice. A typical path starts with selected use cases and expands carefully after review. Contact us to discuss your setup.',
+      },
+      {
+        question: 'Do you provide training and ongoing support?',
+        answer:
+          'Training and support arrangements depend on your deployment and commercial agreement. These should be confirmed before publication as part of your setup plan.',
+      },
+      {
+        question: 'Is Zuraio intended for Swiss SMEs?',
+        answer:
+          'Zuraio is designed for Swiss companies and mid-sized organisations that need control over data, access, AI model choice and internal knowledge — including owner-managed businesses and teams that want practical AI rather than abstract experiments.',
+      },
+    ],
   },
   final: {
     heading: 'See what your own assistant could take off your desk.',

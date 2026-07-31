@@ -8,8 +8,19 @@ import { getCopy } from './i18n.js';
 import { getLocale } from './i18n.js';
 import { isInternalReviewMode } from './internal-review.js';
 import { setHeadlineHtml } from './headline-emphasis.js';
+import { SITE } from './config.js';
 
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function trustHref(path) {
+  if (!path || path.startsWith('#') || path.startsWith('http') || path.startsWith('../')) return path;
+  const hashIndex = path.indexOf('#');
+  const file = hashIndex >= 0 ? path.slice(0, hashIndex) : path;
+  const hash = hashIndex >= 0 ? path.slice(hashIndex) : '';
+  const params = new URLSearchParams();
+  params.set('lang', getLocale());
+  return `${file}?${params.toString()}${hash}`;
+}
 
 function getHeroFromUrl() {
   if (!HERO_COMPARISON_ENABLED) return DEFAULT_HERO_OPTION;
@@ -18,21 +29,26 @@ function getHeroFromUrl() {
 }
 
 function renderTrustSignals() {
-  const list = document.querySelector('.hero-trust');
+  const list = document.querySelector('[data-hero-trust-bar] .hero-trust-bar__list');
   const { trustSignals } = getCopy();
-  const ui = getCopy().ui;
   if (!list || !trustSignals) return;
-  list.setAttribute('aria-label', ui.trustAria);
   list.innerHTML = trustSignals
     .map((item) => {
       const label = typeof item === 'string' ? item : item.label;
       const href = typeof item === 'string' ? null : item.href;
-      if (href) {
-        return `<li><a class="hero-trust-pill" href="${href}">${label}</a></li>`;
+      if (!href) {
+        return `<li><span class="hero-trust-bar__link hero-trust-bar__link--static"><span>${label}</span></span></li>`;
       }
-      return `<li><span class="hero-trust-pill">${label}</span></li>`;
+      return `<li><a class="hero-trust-bar__link" href="${trustHref(href)}"><span>${label}</span><svg class="hero-trust-bar__arrow" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 3.5 10.5 8 5 12.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>`;
     })
     .join('');
+}
+
+function updateHeroVisual() {
+  const img = document.querySelector('.hero-popup-img');
+  if (img && SITE.heroPopup) {
+    img.src = `${SITE.heroPopup}?v=20260756`;
+  }
 }
 
 export function initHeroComparison() {
@@ -157,6 +173,7 @@ export function initHeroComparison() {
 
   applyControlLabels();
   renderTrustSignals();
+  updateHeroVisual();
 
   if (controlsEl) {
     controlsEl.hidden = !(HERO_COMPARISON_ENABLED && (HERO_CONTROLS_VISIBLE || isInternalReviewMode()));
@@ -172,6 +189,7 @@ export function initHeroComparison() {
   window.addEventListener('zuraio:locale', () => {
     applyControlLabels();
     renderTrustSignals();
+    updateHeroVisual();
     render(current, false);
   });
 
