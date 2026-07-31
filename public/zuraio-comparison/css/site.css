@@ -3692,7 +3692,7 @@ footer.site-footer {
   z-index: 2;
   width: 100%;
   flex: 1 1 auto;
-  padding: clamp(88px, 11vh, 120px) 0 clamp(36px, 5vh, 56px);
+  padding: clamp(64px, 8.5vh, 92px) 0 clamp(36px, 5vh, 56px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -3725,8 +3725,8 @@ footer.site-footer {
     align-self: start;
     justify-content: flex-start;
     min-height: 0;
-    margin-top: clamp(16px, 2.5vh, 32px);
-    transform: translateY(2%);
+    margin-top: 0;
+    transform: translateY(-1.5%);
   }
 
   .hero-layered--composite .hero-grid {
@@ -3857,10 +3857,10 @@ footer.site-footer {
   justify-self: end;
   align-self: start;
   width: 100%;
-  max-width: min(54vw, 780px);
-  margin-right: clamp(-72px, -7vw, -28px);
-  margin-top: clamp(16px, 2.5vh, 32px);
-  transform: translate(14%, 4%) scale(1.12);
+  max-width: min(48vw, 680px);
+  margin-right: clamp(16px, 3vw, 36px);
+  margin-top: 0;
+  transform: translate(4%, -1.5%) scale(1.02);
   transform-origin: top right;
 }
 
