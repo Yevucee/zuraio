@@ -218,11 +218,7 @@ export function renderFooter() {
         </div>
         <div class="foot-bottom">
           <a class="brand foot-brand" href="${langHref('index.html')}" aria-label="${uiData.zuraioHome}">
-            ${LOGO_SVG.replace('fill:#464646', 'fill:#fff')}
-            <span class="foot-brand__lockup">
-              <span class="wm">Zuraio</span>
-              <span class="foot-brand__claim">Own your data</span>
-            </span>
+            <img class="brand-logo" src="${SITE.logo}" alt="Zuraio — own your data" width="4796" height="1465" decoding="async" />
           </a>
           <p class="foot-tagline">${getSiteTagline()}</p>
         </div>
