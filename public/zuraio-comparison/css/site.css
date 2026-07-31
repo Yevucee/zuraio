@@ -3040,19 +3040,19 @@ footer.site-footer {
 
 .foot-brand .wm {
   color: #fff;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+}
+
+.foot-brand {
+  gap: 10px;
 }
 
 .foot-brand svg {
   width: 28px;
   height: 28px;
-}
-
-.foot-brand__logo {
-  display: block;
-  height: 36px;
-  width: auto;
-  max-width: min(140px, 38vw);
-  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .foot-tagline {
@@ -3666,11 +3666,11 @@ footer.site-footer {
   pointer-events: none;
   background: linear-gradient(
     90deg,
-    rgba(251, 251, 248, 0.25) 0%,
-    rgba(251, 251, 248, 0.2) 24%,
-    rgba(251, 251, 248, 0.13) 38%,
-    rgba(251, 251, 248, 0.06) 50%,
-    rgba(251, 251, 248, 0.018) 58%,
+    rgba(251, 251, 248, 0.42) 0%,
+    rgba(251, 251, 248, 0.32) 24%,
+    rgba(251, 251, 248, 0.2) 38%,
+    rgba(251, 251, 248, 0.08) 50%,
+    rgba(251, 251, 248, 0.02) 58%,
     rgba(251, 251, 248, 0) 66%
   );
 }
@@ -4199,8 +4199,22 @@ footer.site-footer {
 
 .hero-layered [data-hero-copy]::before,
 .hero-layered .hero-copy::before {
-  content: none;
-  display: none;
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -40px;
+  bottom: -40px;
+  left: -100vw;
+  right: -32px;
+  background: linear-gradient(
+    90deg,
+    rgba(251, 251, 248, 0.94) 0%,
+    rgba(251, 251, 248, 0.82) 38%,
+    rgba(251, 251, 248, 0.48) 58%,
+    rgba(251, 251, 248, 0.12) 76%,
+    rgba(251, 251, 248, 0) 92%
+  );
+  pointer-events: none;
 }
 
 .hero-compare-copy h1,
