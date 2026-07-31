@@ -169,6 +169,8 @@ export function applyHomeTranslations() {
   if (!home) return;
 
   if (home.meta?.title) document.title = home.meta.title;
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc && home.meta?.description) metaDesc.setAttribute('content', home.meta.description);
 
   setText('#problem .marker', home.problem.marker);
   setHtml('#problem [data-problem-headline]', home.problem.headingHtml || home.problem.heading);

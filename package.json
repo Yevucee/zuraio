@@ -7,7 +7,8 @@
     "build": "vite build && node scripts/set-main-site.mjs",
     "dev": "vite",
     "preview": "vite preview",
-    "sync:integration-logos": "node scripts/sync-integration-logos.mjs"
+    "sync:integration-logos": "node scripts/sync-integration-logos.mjs",
+    "generate:favicons": "node scripts/generate-favicons.mjs"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",
