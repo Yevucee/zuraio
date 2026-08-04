@@ -1,10 +1,24 @@
-import {
-  statusLabels,
-  deployStatusLabels,
-  technicalPages,
-  faqItems,
-  faqCta,
-} from './copy-de-technical.js';
+import * as deBundle from './copy-de-technical.js';
+import * as frBundle from './copy-fr-technical.js';
+
+const BUNDLES = { de: deBundle, fr: frBundle };
+
+let statusLabels;
+let deployStatusLabels;
+let technicalPages;
+let faqItems;
+let faqCta;
+
+function setActiveBundle(locale) {
+  const bundle = BUNDLES[locale];
+  if (!bundle) return false;
+  statusLabels = bundle.statusLabels;
+  deployStatusLabels = bundle.deployStatusLabels;
+  technicalPages = bundle.technicalPages;
+  faqItems = bundle.faqItems;
+  faqCta = bundle.faqCta;
+  return true;
+}
 
 function langHref(path, locale) {
   if (!path || path.startsWith('#') || path.startsWith('http') || path.startsWith('../')) return path;
@@ -364,7 +378,10 @@ function applyAiGovernance(locale) {
         return parts;
       })
       .join('');
-    flow.setAttribute('aria-label', 'Skill-Lifecycle-Phasen');
+    flow.setAttribute(
+      'aria-label',
+      locale === 'fr' ? 'Phases du cycle de vie SkillOS' : 'Skill-Lifecycle-Phasen',
+    );
   }
   fillList(lifecycle?.querySelector('ul'), copy.lifecycle.items);
 
@@ -475,12 +492,14 @@ const pageHandlers = {
 };
 
 export function applyTechnicalTranslations(locale) {
-  if (locale !== 'de') {
+  if (locale !== 'de' && locale !== 'fr') {
     document.querySelectorAll('[data-i18n-en-only]').forEach((el) => {
       el.hidden = false;
     });
     return false;
   }
+
+  if (!setActiveBundle(locale)) return false;
 
   const pageId = document.body.dataset.page;
   const handler = pageHandlers[pageId];
@@ -492,5 +511,5 @@ export function applyTechnicalTranslations(locale) {
 }
 
 export function needsFaqReinit(locale, pageId) {
-  return locale === 'de' && pageId === 'faq';
+  return (locale === 'de' || locale === 'fr') && pageId === 'faq';
 }
