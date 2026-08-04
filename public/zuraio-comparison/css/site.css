@@ -3740,7 +3740,9 @@ footer.site-footer {
   }
 
   .hero-layered--office .hero-copy {
-    padding-left: 1.5ch;
+    --hero-headline-size: clamp(34px, 5.2vw, 56px);
+    /* ch on .hero-copy used body font (~17px); scale inset to headline character width */
+    padding-left: calc(var(--hero-headline-size) * 0.75);
   }
 
   .hero-layered--composite .hero-grid {
@@ -3767,6 +3769,10 @@ footer.site-footer {
   .hero-layered .hero-grid {
     grid-template-columns: minmax(0, 500px) minmax(0, 1fr);
     gap: clamp(36px, 4vw, 72px);
+  }
+
+  .hero-layered--office .hero-copy {
+    padding-left: calc(var(--hero-headline-size, clamp(34px, 5.2vw, 56px)) * 0.85);
   }
 }
 
