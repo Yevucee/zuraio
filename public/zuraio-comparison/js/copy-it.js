@@ -171,7 +171,7 @@ export const home = {
     headingEmphasis: 'conoscenza aziendale',
     body: 'Un’IA generica conosce soltanto le informazioni che le vengono fornite manualmente. Zuraio accede in modo sicuro alla conoscenza aziendale approvata, considera il contesto della persona che pone la domanda e prepara risposte e documenti corredati dalle relative fonti.',
     bridge:
-      'Dietro le quinte, Zuraio può coordinare assistenti IA specializzati, modelli adatti e sistemi aziendali collegati. I collaboratori utilizzano un’unica interfaccia chiara.',
+      'Dietro le quinte, Zuraio è progettato per coordinare assistenti IA specializzati, modelli adatti e sistemi aziendali collegati. I collaboratori utilizzano un’unica interfaccia chiara.',
     bridgeLink: 'Scoprite l’architettura tecnica →',
     without: {
       title: 'Senza Zuraio',
@@ -380,66 +380,59 @@ export const pages = {
     },
   },
   knowledge: {
-    title: 'Conoscenza aziendale — Zuraio',
+    title: 'Conoscenza e SkillOS — Zuraio',
     hero: {
-      marker: 'Conoscenza aziendale',
-      heading: 'Trasformate informazioni aziendali disperse in contesto utilizzabile.',
-      headingEmphasis: 'utilizzabile',
-      lede: 'Le conoscenze importanti sono spesso distribuite tra caselle di posta, drive condivisi, note di riunione, record CRM e sistemi aziendali. Zuraio è progettato per riunire le informazioni approvate, così i collaboratori possono trovarle, comprenderle e utilizzarle in modo più efficace.',
+      marker: 'Conoscenza',
+      heading: 'Trasformare informazioni disperse in un contesto governato e utilizzabile.',
+      lede: 'Le conoscenze importanti sono spesso distribuite tra caselle di posta, archivi condivisi, verbali di riunioni e sistemi aziendali. Zuraio riunisce informazioni e modalità di lavoro approvate affinché collaboratori e assistenti specializzati possano utilizzarle in modo più efficace.',
     },
   },
   integrations: {
     title: 'Integrazioni — Zuraio',
     hero: {
       marker: 'Integrazioni',
-      heading: 'Funziona accanto ai sistemi che il vostro team utilizza già.',
-      headingEmphasis: 'già',
-      lede: 'Zuraio è progettato per collegare conoscenza aziendale e flussi di lavoro senza obbligare i team a sostituire sistemi che già funzionano.',
+      heading: 'Funziona con i sistemi che il vostro team utilizza già.',
+      lede: 'Zuraio è progettato per collegare conoscenza e processi aziendali senza imporre la sostituzione di sistemi che funzionano già.',
     },
   },
   dataControl: {
-    title: 'Controllo dei dati e sicurezza — Zuraio',
+    title: 'Controllo dei dati — Zuraio',
     hero: {
-      marker: 'Controllo dei dati e sicurezza',
-      heading: 'I vostri dati. Le vostre regole. La vostra implementazione.',
-      headingEmphasis: 'regole',
-      lede: 'Zuraio è progettato per aiutare le aziende a utilizzare l’IA senza rinunciare al controllo sulla conoscenza aziendale, sulle autorizzazioni o sulle scelte infrastrutturali.',
+      marker: 'Controllo dei dati',
+      heading: 'I vostri dati restano sotto il vostro controllo.',
+      lede: 'Zuraio è progettato per trattare le informazioni aziendali entro i limiti dell’implementazione e del contratto concordati. Proprietà, usi consentiti, conservazione e condizioni di elaborazione devono essere documentati per la soluzione e i fornitori di modelli selezionati.',
     },
   },
   deploymentModels: {
-    title: 'Modelli di implementazione — Zuraio',
+    title: 'Modalità di implementazione — Zuraio',
     hero: {
-      marker: 'Modelli di implementazione',
-      heading: 'Locale, ibrido o cloud svizzero.',
-      headingEmphasis: 'svizzero',
-      lede: 'Le aziende hanno requisiti diversi per controllo, prestazioni, infrastruttura e costi. Zuraio può essere configurato intorno al modello di implementazione concordato con il cliente.',
+      marker: 'Implementazione',
+      heading: 'Locale, ibrida o con hosting in Svizzera.',
+      lede: 'Le aziende hanno esigenze diverse per quanto riguarda ubicazione dei dati, infrastruttura, scelta dei modelli, gestione operativa e costi. Zuraio supporta architetture di implementazione adattabili a tali esigenze.',
     },
   },
   technicalArchitecture: {
     title: 'Architettura tecnica — Zuraio',
     hero: {
       marker: 'Architettura tecnica',
-      heading: 'Un percorso controllato dalla richiesta al risultato verificato.',
-      headingEmphasis: 'controllato',
-      lede: 'Zuraio collega utenti, fonti aziendali approvate, strumenti di business e modelli IA attraverso un livello di esecuzione governato. L’architettura esatta dipende dall’ambiente del cliente e dal modello di implementazione.',
+      heading: 'Una piattaforma IA controllabile per conoscenza aziendale, assistenti specializzati e processi operativi.',
+      lede: 'Zuraio riunisce un’interfaccia centrale, la gestione delle identità e degli accessi, la conoscenza aziendale, assistenti IA specializzati, la selezione dei modelli e le integrazioni con i sistemi esistenti. Il livello di orchestrazione coordina questi componenti, consentendo ai collaboratori di lavorare in un ambiente coerente.',
     },
   },
   aiGovernance: {
     title: 'Governance dell’IA — Zuraio',
     hero: {
       marker: 'Governance dell’IA',
-      heading: 'Utilizzo dell’IA comprensibile e verificabile.',
-      headingEmphasis: 'verificabile',
-      lede: 'Un’IA aziendale responsabile richiede più di un modello. Le organizzazioni necessitano di regole chiare per accesso, utilizzo dei dati, revisione umana, registrazione e responsabilità.',
+      heading: 'Un utilizzo dell’IA che rimane comprensibile e verificabile.',
+      lede: 'Un uso responsabile dell’IA in azienda richiede più di un modello. Le organizzazioni hanno bisogno di regole chiare per conoscenza, accessi, modelli, azioni, verifica umana e registrazioni operative.',
     },
   },
   faq: {
     title: 'FAQ — Zuraio',
     hero: {
       marker: 'FAQ',
-      heading: 'Domande pratiche sull’utilizzo di Zuraio al lavoro.',
-      headingEmphasis: 'pratiche',
-      lede: 'Risposte alle domande più frequenti su implementazione, autorizzazioni, controllo dei dati e utilizzo quotidiano.',
+      heading: 'Domande pratiche sull’utilizzo di Zuraio in azienda.',
+      lede: 'Risposte alle domande frequenti su conoscenza aziendale, implementazione, autorizzazioni, modelli e utilizzo quotidiano.',
     },
   },
   about: {

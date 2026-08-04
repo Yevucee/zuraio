@@ -1,7 +1,8 @@
 import * as deBundle from './copy-de-technical.js';
 import * as frBundle from './copy-fr-technical.js';
+import * as itBundle from './copy-it-technical.js';
 
-const BUNDLES = { de: deBundle, fr: frBundle };
+const BUNDLES = { de: deBundle, fr: frBundle, it: itBundle };
 
 let statusLabels;
 let deployStatusLabels;
@@ -380,7 +381,11 @@ function applyAiGovernance(locale) {
       .join('');
     flow.setAttribute(
       'aria-label',
-      locale === 'fr' ? 'Phases du cycle de vie SkillOS' : 'Skill-Lifecycle-Phasen',
+      locale === 'it'
+        ? 'Fasi del ciclo di vita SkillOS'
+        : locale === 'fr'
+          ? 'Phases du cycle de vie SkillOS'
+          : 'Skill-Lifecycle-Phasen',
     );
   }
   fillList(lifecycle?.querySelector('ul'), copy.lifecycle.items);
@@ -492,7 +497,7 @@ const pageHandlers = {
 };
 
 export function applyTechnicalTranslations(locale) {
-  if (locale !== 'de' && locale !== 'fr') {
+  if (locale !== 'de' && locale !== 'fr' && locale !== 'it') {
     document.querySelectorAll('[data-i18n-en-only]').forEach((el) => {
       el.hidden = false;
     });
@@ -511,5 +516,5 @@ export function applyTechnicalTranslations(locale) {
 }
 
 export function needsFaqReinit(locale, pageId) {
-  return (locale === 'de' || locale === 'fr') && pageId === 'faq';
+  return (locale === 'de' || locale === 'fr' || locale === 'it') && pageId === 'faq';
 }
