@@ -10,6 +10,7 @@ import {
 } from './workflow-icons.js';
 import { applyTechnicalTranslations } from './apply-technical-i18n.js';
 import { setHeadlineHtml, formatHeadline } from './headline-emphasis.js';
+import { HERO_COMPARISON_ENABLED } from './config.js';
 
 const LOCALE_KEY = 'zuraio-locale';
 
@@ -68,14 +69,38 @@ function setHtml(selector, html) {
   });
 }
 
-function langHref(path) {
-  if (!path || path.startsWith('#') || path.startsWith('http') || path.startsWith('../')) return path;
+export function langHref(path) {
+  if (!path || path.startsWith('http') || path.startsWith('../')) return path;
+  if (path.startsWith('#') && !path.includes('.html')) return path;
   const hashIndex = path.indexOf('#');
   const file = hashIndex >= 0 ? path.slice(0, hashIndex) : path;
   const hash = hashIndex >= 0 ? path.slice(hashIndex) : '';
+  if (!file.endsWith('.html')) return path;
   const params = new URLSearchParams();
   params.set('lang', getLocale());
+  if (HERO_COMPARISON_ENABLED) {
+    const hero = new URLSearchParams(location.search).get('hero');
+    if (hero) params.set('hero', hero);
+  }
   return `${file}?${params.toString()}${hash}`;
+}
+
+function shouldLocalizeHref(href) {
+  if (!href) return false;
+  if (href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('http') || href.startsWith('../')) {
+    return false;
+  }
+  if (href.startsWith('#') && !href.includes('.html')) return false;
+  const file = href.split('#')[0];
+  return file.endsWith('.html');
+}
+
+export function applyInternalLinkLocales(root = document) {
+  root.querySelectorAll('a[href]').forEach((anchor) => {
+    const href = anchor.getAttribute('href');
+    if (!shouldLocalizeHref(href)) return;
+    anchor.setAttribute('href', langHref(href));
+  });
 }
 
 function setLinkHref(selector, path) {
@@ -180,6 +205,7 @@ export function applyHomeTranslations() {
     `<div class="pain-card reveal${i ? ` d${i}` : ''}"><span class="pain-card__icon">${PAIN_CARD_ICONS[i] || ''}</span><span class="n">${c.title}</span><p>${c.body}</p></div>`,
   );
   setHtml('#problem .section-link a', home.problem.link);
+  setLinkHref('#problem .section-link a', 'how-it-helps.html');
 
   setText('#different .marker', home.different.marker);
   setText('#different h2', home.different.heading);
@@ -200,8 +226,8 @@ export function applyHomeTranslations() {
 
   setText('#integrations h2', home.integrations.heading);
   setText('#integrations .lede', home.integrations.body);
-  setText('#integrations [data-integrations-clarify]', home.integrations.clarify);
   setHtml('#integrations .section-link a', home.integrations.link);
+  setLinkHref('#integrations .section-link a', 'integrations.html');
 
   setText('#assistant-demo h2', home.demo.heading);
   setText('#assistant-demo .lede', home.demo.body);
@@ -232,6 +258,7 @@ export function applyHomeTranslations() {
   });
   setHtml('#data-control .ctrl-note span:last-child', home.dataControl.note);
   setHtml('#data-control .section-link a', home.dataControl.link);
+  setLinkHref('#data-control .section-link a', 'data-control.html');
 
   setText('#reviewable .marker', home.reviewable.marker);
   setText('#reviewable h2', home.reviewable.heading);
@@ -251,6 +278,7 @@ export function applyHomeTranslations() {
     if (body) body.textContent = step.body;
   });
   setHtml('#reviewable .section-link a', home.reviewable.link);
+  setLinkHref('#reviewable .section-link a', 'ai-governance.html');
 
   setText('#origin .marker', home.origin.marker);
   setText('#origin h2', home.origin.heading);
@@ -262,6 +290,7 @@ export function applyHomeTranslations() {
     });
   }
   setHtml('#origin .section-link a', home.origin.link);
+  setLinkHref('#origin .section-link a', 'about.html');
   const cap = document.querySelector('#origin .cap');
   if (cap) cap.textContent = home.origin.caption;
   const originImg = document.querySelector('#origin img');
@@ -278,7 +307,10 @@ export function applyHomeTranslations() {
   setText('#final h2', home.final.heading);
   setText('#final p:not(.small)', home.final.body);
   const finalCtas = document.querySelectorAll('#final .cta-row a');
-  if (finalCtas[0]) finalCtas[0].textContent = home.final.primaryCta;
+  if (finalCtas[0]) {
+    finalCtas[0].textContent = home.final.primaryCta;
+    finalCtas[0].href = langHref('contact.html');
+  }
   if (finalCtas[1]) finalCtas[1].textContent = home.final.secondaryCta;
   setText('#final .small', home.final.supporting);
 }
@@ -304,6 +336,7 @@ export function applyAllTranslations() {
   applyPageTranslations();
   applyTechnicalTranslations(locale);
   applyDataI18n();
+  applyInternalLinkLocales();
 }
 
 export function initLocaleSwitcher(onChange) {

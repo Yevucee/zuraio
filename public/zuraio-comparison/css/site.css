@@ -3048,7 +3048,7 @@ footer.site-footer {
   display: block;
   height: 42px;
   width: auto;
-  max-width: min(168px, 42vw);
+  max-width: min(220px, 52vw);
   object-fit: contain;
 }
 

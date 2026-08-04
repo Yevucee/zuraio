@@ -164,7 +164,7 @@ export const home = {
     marker: 'More than a chatbot',
     heading: 'Your company knowledge, working for your people.',
     headingEmphasis: 'company knowledge',
-    body: 'Generic AI only knows what someone manually provides. Zuraio securely connects to approved company knowledge, understands the context of the person asking and prepares sourced work for review.',
+    body: 'Generic AI only knows what someone provides in each conversation. Zuraio securely connects to approved company knowledge, considers the context of the person asking and prepares answers and documents with sources for review.',
     bridge:
       'Behind the scenes, Zuraio is designed to coordinate specialised AI assistants, suitable models and connected business systems. Employees work through one simple interface.',
     bridgeLink: 'Explore the technical architecture →',
@@ -224,9 +224,8 @@ export const home = {
     },
   },
   integrations: {
-    heading: 'Works with the tools your team already uses.',
-    body: 'Zuraio works with the email, document, messaging and business tools your employees already use.',
-    clarify: 'Connections are configured around your approved tools, permissions and deployment.',
+    heading: 'Designed to work with the tools your team already uses.',
+    body: 'Zuraio can connect to approved email, document, messaging and business systems. Available integrations depend on your company setup, deployment and current product status.',
     link: 'View all integrations →',
   },
   demo: {
