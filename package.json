@@ -8,7 +8,8 @@
     "dev": "vite",
     "preview": "vite preview",
     "sync:integration-logos": "node scripts/sync-integration-logos.mjs",
-    "generate:favicons": "node scripts/generate-favicons.mjs"
+    "generate:favicons": "node scripts/generate-favicons.mjs",
+    "audit:anchors": "node scripts/audit-anchor-links.mjs"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",
