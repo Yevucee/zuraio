@@ -9,6 +9,7 @@ import {
   WORKFLOW_ICONS_WITH,
 } from './workflow-icons.js';
 import { applyTechnicalTranslations } from './apply-technical-i18n.js';
+import { setHeadlineHtml, formatHeadline } from './headline-emphasis.js';
 
 const LOCALE_KEY = 'zuraio-locale';
 
