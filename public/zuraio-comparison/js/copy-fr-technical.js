@@ -579,7 +579,7 @@ export const aiGovernance = {
     qualification: "Les contrôles disponibles varient selon le composant. Les processus complets de modification de documents Office restent spécifiés ou en développement.",
   },
   review: {
-    marker: "Contrôle",
+    marker: 'Contrôle',
     heading: "Contrôler les éléments qui comptent.",
     cards: [
       {
@@ -608,8 +608,8 @@ export const aiGovernance = {
     linkHref: "data-control.html",
   },
   limitations: {
-    marker: "Limites importantes",
-    heading: "Limites importantes.",
+    marker: 'Limites',
+    heading: 'Limites importantes.',
     paragraphs: [
       "Les résultats générés par l'IA peuvent contenir des erreurs, des omissions ou des informations obsolètes. Les informations importantes doivent être vérifiées à partir des sources d'origine avant d'être utilisées.",
       "Zuraio assiste le travail humain. Il ne remplace ni le jugement professionnel, ni les conseils juridiques ou financiers, ni toute autre expertise qualifiée.",
