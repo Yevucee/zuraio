@@ -3739,6 +3739,10 @@ footer.site-footer {
     transform: translateY(-1.5%);
   }
 
+  .hero-layered--office .hero-copy {
+    padding-left: 1.5ch;
+  }
+
   .hero-layered--composite .hero-grid {
     grid-template-columns: minmax(0, 1fr);
     max-width: 560px;
