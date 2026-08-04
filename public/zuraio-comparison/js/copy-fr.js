@@ -95,11 +95,11 @@ export const nav = {
     { label: 'Contrôle des données', href: 'data-control.html' },
   ],
   technical: [
-    { label: 'Modes de déploiement', href: 'deployment-models.html' },
     { label: 'Architecture technique', href: 'technical-architecture.html' },
+    { label: 'Modes de déploiement', href: 'deployment-models.html' },
     { label: 'Gouvernance de l’IA', href: 'ai-governance.html' },
-    { label: 'Ressources', href: 'resources.html' },
-    { label: 'FAQ', href: 'faq.html' },
+    { label: 'Contrôle des données', href: 'data-control.html' },
+    { label: 'Connaissances et SkillOS', href: 'knowledge.html#skillos' },
   ],
   about: { label: 'À propos', href: 'about.html' },
 };

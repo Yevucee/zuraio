@@ -20,9 +20,14 @@
 
 <section class="page-hero pad">
   <div class="wrap">
-    <span class="marker">Technical</span>
-    <h1>Technical architecture for controlled AI adoption.</h1>
-    <p class="lede">A deeper look at how Zuraio AI Hub is designed to manage routing, agents, models, permissions, data access and auditability.</p>
+    <span class="marker">Technical architecture</span>
+    <h1>A controlled AI platform for company knowledge, specialised assistants and business processes.</h1>
+    <p class="lede">Zuraio brings together a central user interface, identity and access controls, company knowledge, specialised AI assistants, model selection and system integrations. Its orchestration layer coordinates these components so employees can work through one consistent environment.</p>
+    <p class="hero-note">The precise architecture depends on the selected deployment, connected systems and approved models.</p>
+    <p class="cta-row" style="margin-top:28px;">
+      <a class="btn btn-primary btn-lg" href="contact.html">Discuss your technical requirements</a>
+      <a class="btn btn-ghost btn-lg" href="deployment-models.html">Compare deployment models</a>
+    </p>
   </div>
 </section>
 
@@ -31,143 +36,190 @@
     <p class="mono toc-title">On this page</p>
     <nav>
       <a href="#overview">Architecture overview</a>
-      <a href="#request-flow">Request flow</a>
-      <a href="#deployment">Deployment</a>
-      <a href="#routing">Model routing</a>
-      <a href="#permissions">Permissions</a>
-      <a href="#knowledge">Internal knowledge</a>
-      <a href="#audit">Audit and logging</a>
-      <a href="#integrations">Integrations</a>
-      <a href="#rollout">Implementation</a>
+      <a href="#request-flow">Request-to-result flow</a>
+      <a href="#maturity">Product maturity</a>
+      <a href="#models">Model choice</a>
+      <a href="#integration-layer">Integration layer</a>
+      <a href="#rollout">Start controlled</a>
     </nav>
   </aside>
 
   <div class="tech-main">
 
     <section id="overview" class="reveal">
-      <span class="marker">Overview</span>
-      <h2>Architecture diagram.</h2>
-      <p class="lede">Illustrative high-level architecture — not a binding technical specification. Component names and boundaries may vary by deployment model.</p>
+      <span class="marker">Architecture overview</span>
+      <h2>One platform. Seven controlled layers.</h2>
+      <p class="lede">Zuraio separates the employee experience from the technical complexity underneath it. Each layer has a defined role in controlling access, context, execution and review.</p>
 
-      <div class="diagram-box">
-        <svg class="arch-svg" viewBox="0 0 720 480" role="img" aria-labelledby="arch-title arch-desc">
-          <title id="arch-title">Zuraio AI Hub architecture diagram</title>
-          <desc id="arch-desc">Illustrative diagram showing users, governance layer, AI Hub orchestration, agents and models, company systems, and audit layer.</desc>
-          <!-- Users -->
-          <rect x="280" y="16" width="160" height="44" rx="8" fill="#EAF0D6" stroke="#9FAF52" stroke-width="1.5"/>
-          <text x="360" y="44" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#464646">Users</text>
-          <!-- Arrow down -->
-          <line x1="360" y1="60" x2="360" y2="88" stroke="#2F8F8A" stroke-width="1.5" marker-end="url(#arrow)"/>
-          <!-- Governance -->
-          <rect x="240" y="88" width="240" height="44" rx="8" fill="#F5F6F2" stroke="#464646" stroke-width="1.5"/>
-          <text x="360" y="116" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">Governance &amp; permissions</text>
-          <!-- Arrow down -->
-          <line x1="360" y1="132" x2="360" y2="160" stroke="#2F8F8A" stroke-width="1.5" marker-end="url(#arrow)"/>
-          <!-- AI Hub -->
-          <rect x="200" y="160" width="320" height="56" rx="10" fill="#9FAF52" stroke="#788A36" stroke-width="1.5"/>
-          <text x="360" y="184" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="600" fill="#fff">Zuraio AI Hub</text>
-          <text x="360" y="202" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#fff" opacity="0.9">Orchestration · routing · audit</text>
-          <!-- Branches -->
-          <line x1="360" y1="216" x2="360" y2="248" stroke="#464646" stroke-width="1.5"/>
-          <line x1="120" y1="248" x2="600" y2="248" stroke="#464646" stroke-width="1.5"/>
-          <line x1="120" y1="248" x2="120" y2="268" stroke="#464646" stroke-width="1.5" marker-end="url(#arrow-dark)"/>
-          <line x1="360" y1="248" x2="360" y2="268" stroke="#464646" stroke-width="1.5" marker-end="url(#arrow-dark)"/>
-          <line x1="600" y1="248" x2="600" y2="268" stroke="#464646" stroke-width="1.5" marker-end="url(#arrow-dark)"/>
-          <!-- Three columns -->
-          <rect x="40" y="268" width="160" height="52" rx="8" fill="#F5F6F2" stroke="#464646" stroke-width="1.5"/>
-          <text x="120" y="292" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">Agents</text>
-          <text x="120" y="308" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#6C6F66">email · knowledge · reports</text>
-          <rect x="280" y="268" width="160" height="52" rx="8" fill="#F5F6F2" stroke="#464646" stroke-width="1.5"/>
-          <text x="360" y="292" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">Models</text>
-          <text x="360" y="308" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#6C6F66">cloud · open-source · local</text>
-          <rect x="520" y="268" width="160" height="52" rx="8" fill="#F5F6F2" stroke="#464646" stroke-width="1.5"/>
-          <text x="600" y="292" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">Company systems</text>
-          <text x="600" y="308" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#6C6F66">email · docs · CRM · ERP</text>
-          <!-- Output -->
-          <line x1="360" y1="320" x2="360" y2="348" stroke="#2F8F8A" stroke-width="1.5" marker-end="url(#arrow)"/>
-          <rect x="220" y="348" width="280" height="44" rx="8" fill="#EAF0D6" stroke="#9FAF52" stroke-width="1.5"/>
-          <text x="360" y="376" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">Source-backed outputs</text>
-          <!-- Audit -->
-          <line x1="360" y1="392" x2="360" y2="420" stroke="#464646" stroke-width="1.5" marker-end="url(#arrow-dark)"/>
-          <rect x="240" y="420" width="240" height="44" rx="8" fill="#F5F6F2" stroke="#464646" stroke-width="1.5"/>
-          <text x="360" y="448" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">Audit &amp; review layer</text>
+      <div class="layer-grid">
+        <article class="layer-card">
+          <h3>Layer 1 — Access and user interfaces</h3>
+          <p>Employees can work through the Zuraio interface or through approved connected applications and clients. The available functions can vary by role, deployment and device.</p>
+        </article>
+        <article class="layer-card">
+          <h3>Layer 2 — Identity, permissions and policies</h3>
+          <p>Identity, role and permission information is checked before company knowledge, tools or actions are made available. Zuraio can work with Microsoft or Google identity structures, with additional Zuraio roles where required.</p>
+        </article>
+        <article class="layer-card">
+          <h3>Layer 3 — Orchestration</h3>
+          <p>The orchestration layer interprets the task, identifies the relevant workflow and coordinates permitted knowledge, assistants, tools and models. It can divide more complex work into controlled steps and bring the results together.</p>
+        </article>
+        <article class="layer-card">
+          <h3>Layer 4 — SkillOS and company knowledge</h3>
+          <p>SkillOS provides approved process knowledge, relevant company context, templates and quality rules. Skills are versioned outside the AI model so they can be reviewed, updated and governed.</p>
+        </article>
+        <article class="layer-card">
+          <h3>Layer 5 — Specialised assistants and integrations</h3>
+          <p>Specialised assistants provide clearly defined capabilities for communication, knowledge, documents and customer-specific tasks. MCP, APIs, webhooks and connectors provide controlled access to approved business systems.</p>
+        </article>
+        <article class="layer-card">
+          <h3>Layer 6 — Model gateway</h3>
+          <p>Different permitted AI models can be selected according to the task, data classification, required processing location, quality and cost. The available models depend on the deployment and approved providers.</p>
+        </article>
+        <article class="layer-card">
+          <h3>Layer 7 — Logging, review and operations</h3>
+          <p>Relevant requests, sources, actions and technical events can be retained according to the capabilities and audit model of the selected components. Operational controls vary by deployment and maturity status.</p>
+        </article>
+      </div>
+
+      <div class="diagram-box" style="margin-top:32px;">
+        <svg class="arch-svg" viewBox="0 0 480 720" role="img" aria-labelledby="arch-title arch-desc">
+          <title id="arch-title">Zuraio platform architecture — seven controlled layers</title>
+          <desc id="arch-desc">Illustrative vertical flow: user or connected application, identity and policies, orchestration, SkillOS assistants and integrations, model gateway, result and sources, review and operational records.</desc>
           <defs>
             <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#2F8F8A"/></marker>
-            <marker id="arrow-dark" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#464646"/></marker>
           </defs>
+          <rect x="40" y="16" width="400" height="44" rx="8" fill="#EAF0D6" stroke="#9FAF52" stroke-width="1.5"/>
+          <text x="240" y="44" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">User or connected application</text>
+          <line x1="240" y1="60" x2="240" y2="76" stroke="#2F8F8A" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <rect x="40" y="76" width="400" height="44" rx="8" fill="#F5F6F2" stroke="#464646" stroke-width="1.5"/>
+          <text x="240" y="104" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">Identity and policies</text>
+          <line x1="240" y1="120" x2="240" y2="136" stroke="#2F8F8A" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <rect x="40" y="136" width="400" height="44" rx="8" fill="#9FAF52" stroke="#788A36" stroke-width="1.5"/>
+          <text x="240" y="164" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="12" font-weight="600" fill="#fff">Orchestration</text>
+          <line x1="240" y1="180" x2="240" y2="196" stroke="#2F8F8A" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <rect x="40" y="196" width="400" height="56" rx="8" fill="#F5F6F2" stroke="#464646" stroke-width="1.5"/>
+          <text x="240" y="220" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">SkillOS / assistants / integrations</text>
+          <line x1="240" y1="252" x2="240" y2="268" stroke="#2F8F8A" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <rect x="40" y="268" width="400" height="44" rx="8" fill="#F5F6F2" stroke="#464646" stroke-width="1.5"/>
+          <text x="240" y="296" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">Model gateway</text>
+          <line x1="240" y1="312" x2="240" y2="328" stroke="#2F8F8A" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <rect x="40" y="328" width="400" height="44" rx="8" fill="#EAF0D6" stroke="#9FAF52" stroke-width="1.5"/>
+          <text x="240" y="356" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">Result and sources</text>
+          <line x1="240" y1="372" x2="240" y2="388" stroke="#2F8F8A" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <rect x="40" y="388" width="400" height="44" rx="8" fill="#F5F6F2" stroke="#464646" stroke-width="1.5"/>
+          <text x="240" y="416" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">Review and operational records</text>
         </svg>
-        <p class="mono diagram-caption">TODO: Validate architecture diagram against current product documentation before publication.</p>
+        <p class="mono diagram-caption">Illustrative platform architecture. Component boundaries and operating locations vary by customer deployment.</p>
       </div>
     </section>
 
     <section id="request-flow" class="reveal">
-      <span class="marker">Request flow</span>
-      <h2>A controlled route from request to output.</h2>
+      <span class="marker">Request-to-result flow</span>
+      <h2>A controlled route from request to result.</h2>
+      <p class="lede">Zuraio is designed to apply company context, permissions and policies throughout a task rather than treating them as a final check.</p>
       <ol class="flow-steps">
-        <li><strong>User request</strong> — employee asks a question or triggers a workflow</li>
-        <li><strong>Governance and permissions</strong> — access rules and policies are applied</li>
-        <li><strong>AI Hub orchestration</strong> — request is routed to the appropriate agent and model</li>
-        <li><strong>Agents / models / tools</strong> — work is performed using approved sources and models</li>
-        <li><strong>Source-backed output</strong> — draft, answer or action is returned with references where applicable</li>
-        <li><strong>Audit and review layer</strong> — activity is logged according to the agreed audit model</li>
+        <li><strong>Receive the request</strong> — An employee asks a question or starts a workflow through Zuraio or an approved connected application.</li>
+        <li><strong>Check identity and permissions</strong> — Zuraio identifies the user, tenant, role and permitted sources or actions.</li>
+        <li><strong>Select the process and context</strong> — SkillOS can provide approved company knowledge, process steps, templates and quality requirements.</li>
+        <li><strong>Coordinate the required capabilities</strong> — The orchestration layer selects the appropriate specialised assistants, tools, data sources and permitted model.</li>
+        <li><strong>Prepare the result</strong> — Information from authorised sources is brought together into an answer, draft or proposed action.</li>
+        <li><strong>Review before critical action</strong> — Writing or externally visible actions can be held as drafts or proposals for confirmation.</li>
+        <li><strong>Retain relevant records</strong> — Sources, versions, actions and technical events are retained where supported by the selected component and audit configuration.</li>
       </ol>
-      <div class="todo-block data-internal-only">
-        <p class="mono">TODO: Add verified technical detail on each flow step (APIs, latency, failure modes) before publication.</p>
-      </div>
     </section>
 
-    <section id="deployment" class="reveal">
-      <span class="marker">Deployment</span>
-      <h2>Designed for configurable deployment choices.</h2>
-      <p class="lede">Zuraio is designed to support deployment and storage choices that reflect company data-control needs. See <a href="deployment-models.html">deployment models</a> for local, hybrid and Swiss-hosted options.</p>
+    <section id="maturity" class="reveal">
+      <span class="marker">Current product maturity</span>
+      <h2>Current product maturity.</h2>
+      <p class="lede">Zuraio is being built in components. The status below distinguishes implemented functions from capabilities that are still being validated or developed.</p>
+
+      <article class="maturity-panel">
+        <span class="maturity-label maturity-label--available">Available now</span>
+        <h3>SkillOS</h3>
+        <ul>
+          <li>Versioned knowledge and process skills</li>
+          <li>Governance lifecycle and roles</li>
+          <li>Hybrid retrieval and knowledge relationships</li>
+          <li>Role-based MCP access</li>
+          <li>Backup, restore, maintenance and health functions</li>
+          <li>Tested core with unit and integration coverage</li>
+        </ul>
+      </article>
+
+      <article class="maturity-panel">
+        <span class="maturity-label maturity-label--validation">In validation</span>
+        <h3>EmailAI</h3>
+        <ul>
+          <li>E-mail search, retrieval and classification</li>
+          <li>Response drafts</li>
+          <li>Tasks, appointments, contacts and memos</li>
+          <li>Communication knowledge graph</li>
+          <li>Draft-first handling of writing actions</li>
+          <li>Web, mobile and voice access</li>
+        </ul>
+        <p class="qualification">Full Microsoft 365 production operation, central monitoring, automated backups and complete multi-user and tenant separation remain under validation or development.</p>
+      </article>
+
+      <article class="maturity-panel">
+        <span class="maturity-label maturity-label--specified">Specified / in development</span>
+        <h3>MSConnector and Office automation</h3>
+        <ul>
+          <li>Controlled Word, Excel and PowerPoint changes</li>
+          <li>Office add-ins</li>
+          <li>Document Twin and semantic anchors</li>
+          <li>Living Documents</li>
+          <li>Cross-document consistency</li>
+          <li>Visual document validation</li>
+          <li>Tenant-appliance deployment</li>
+        </ul>
+        <p class="qualification">These capabilities form part of the specified target architecture. They must not be presented as generally available until implementation and pilot validation are complete.</p>
+      </article>
     </section>
 
-    <section id="routing" class="reveal">
-      <span class="marker">Model routing</span>
-      <h2>Use the right model for the right task.</h2>
-      <p class="lede">Zuraio is designed to route work to different AI models depending on sensitivity, task type, policy and deployment model. This may include cloud, open-source or local model options where appropriate.</p>
-      <div class="todo-block data-internal-only">
-        <p class="mono">TODO: List supported model providers and routing rules once verified.</p>
-      </div>
+    <section id="models" class="reveal">
+      <span class="marker">Model choice</span>
+      <h2>Use an appropriate model for each task.</h2>
+      <p class="lede">Zuraio separates company processes, skills and integrations from the individual AI model. This allows the architecture to consider the nature of the task, required quality, data classification, permitted processing location, availability and cost before selecting an approved model.</p>
+      <ul>
+        <li>Local models for selected confidential or controlled tasks</li>
+        <li>Swiss-hosted model services where included in the agreed deployment</li>
+        <li>Private or public cloud models where approved</li>
+        <li>More capable models for complex reasoning or high language-quality requirements</li>
+        <li>Smaller models for clearly defined routine processes</li>
+        <li>Policy-based restrictions on which data may be sent to each model</li>
+      </ul>
+      <p class="qualification">The models and providers available to a customer depend on the agreed deployment, technical validation and commercial terms.</p>
+      <p style="margin-top:20px;"><a href="deployment-models.html">Compare deployment models →</a></p>
     </section>
 
-    <section id="permissions" class="reveal">
-      <span class="marker">Permissions</span>
-      <h2>Access should follow company rules.</h2>
-      <p class="lede">Zuraio is designed around permissions, roles and approved data sources so that AI assistance reflects the company's access model.</p>
-    </section>
-
-    <section id="knowledge" class="reveal">
-      <span class="marker">Internal knowledge</span>
-      <h2>Company-specific answers need company-specific sources.</h2>
-      <p class="lede">Zuraio can connect approved documents and sources to AI assistance so that users receive source-backed answers based on relevant internal knowledge. See <a href="knowledge.html">knowledge</a> for more.</p>
-    </section>
-
-    <section id="audit" class="reveal">
-      <span class="marker">Audit</span>
-      <h2>Designed for reviewable workflows.</h2>
-      <p class="lede">Requests, model calls and source usage are designed to be logged according to the agreed deployment and audit model, helping companies review how AI-assisted work is produced.</p>
-      <div class="todo-block data-internal-only">
-        <p class="mono">TODO: Specify audit log format, retention period and export options once verified.</p>
-      </div>
-    </section>
-
-    <section id="integrations" class="reveal">
-      <span class="marker">Integrations</span>
-      <h2>Built to connect with business systems.</h2>
-      <p class="lede">Zuraio is designed to connect with tools such as email, Microsoft 365, SharePoint, CRM, ERP, APIs and future integrations. See <a href="integrations.html">integrations</a> for category status.</p>
+    <section id="integration-layer" class="reveal">
+      <span class="marker">Open integration layer</span>
+      <h2>Designed to connect, not create another silo.</h2>
+      <p class="lede">Zuraio is designed as an orchestration layer above existing company systems rather than a replacement for the systems that remain authoritative. It can expose or consume approved capabilities through MCP, APIs, webhooks and customer-specific connectors.</p>
+      <ul>
+        <li>Microsoft and Google identity and data environments</li>
+        <li>Document and file repositories</li>
+        <li>E-mail, calendar and communication systems</li>
+        <li>CRM, ERP, DMS and specialist applications</li>
+        <li>Internal databases and APIs</li>
+        <li>Customer-specific assistants and tools</li>
+      </ul>
+      <p class="qualification">The availability and maturity of individual integrations must be confirmed separately.</p>
+      <p style="margin-top:20px;"><a href="integrations.html">View integration categories →</a></p>
     </section>
 
     <section id="rollout" class="reveal">
-      <span class="marker">Implementation</span>
-      <h2>Start controlled. Expand carefully.</h2>
+      <span class="marker">Start controlled</span>
+      <h2>Start controlled. Expand based on evidence.</h2>
       <ol class="flow-steps">
-        <li><strong>Select first use cases</strong> — identify the most valuable initial applications</li>
-        <li><strong>Review systems and data sources</strong> — map existing systems and knowledge sources</li>
-        <li><strong>Configure permissions and deployment model</strong> — set up governance and access controls</li>
-        <li><strong>Pilot with selected users</strong> — test with a controlled group</li>
-        <li><strong>Review results</strong> — evaluate outcomes and refine approach</li>
-        <li><strong>Expand into further workflows</strong> — scale based on proven value</li>
+        <li><strong>Select the first use cases.</strong></li>
+        <li><strong>Review systems, identities and data sources.</strong></li>
+        <li><strong>Agree the deployment and model boundaries.</strong></li>
+        <li><strong>Configure permissions and review requirements.</strong></li>
+        <li><strong>Pilot with selected users.</strong></li>
+        <li><strong>Review results, risks and operational readiness.</strong></li>
+        <li><strong>Expand into additional workflows where value has been demonstrated.</strong></li>
       </ol>
     </section>
 

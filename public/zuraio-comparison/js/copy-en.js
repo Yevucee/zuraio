@@ -90,11 +90,11 @@ export const nav = {
     { label: 'Data control', href: 'data-control.html' },
   ],
   technical: [
-    { label: 'Deployment models', href: 'deployment-models.html' },
     { label: 'Technical architecture', href: 'technical-architecture.html' },
+    { label: 'Deployment models', href: 'deployment-models.html' },
     { label: 'AI governance', href: 'ai-governance.html' },
-    { label: 'Resources', href: 'resources.html' },
-    { label: 'FAQ', href: 'faq.html' },
+    { label: 'Data control', href: 'data-control.html' },
+    { label: 'Knowledge and SkillOS', href: 'knowledge.html#skillos' },
   ],
   about: { label: 'About', href: 'about.html' },
 };
@@ -166,7 +166,7 @@ export const home = {
     headingEmphasis: 'company knowledge',
     body: 'Generic AI only knows what someone manually provides. Zuraio securely connects to approved company knowledge, understands the context of the person asking and prepares sourced work for review.',
     bridge:
-      'Behind the scenes, Zuraio can coordinate specialised AI assistants, suitable models and connected business systems. Employees work through one simple interface.',
+      'Behind the scenes, Zuraio is designed to coordinate specialised AI assistants, suitable models and connected business systems. Employees work through one simple interface.',
     bridgeLink: 'Explore the technical architecture →',
     without: {
       title: 'Without Zuraio',
@@ -292,32 +292,32 @@ export const home = {
       {
         question: 'What is Zuraio?',
         answer:
-          'Zuraio is designed as a controlled AI layer for companies — connecting approved internal knowledge and business systems to practical workflows for meetings, email, reports, search and follow-up. It is intended for companies that want AI benefits while keeping control of data, access and model choice.',
+          'Zuraio is a digital assistant for companies. It helps employees find information, answer questions and prepare documents using approved company knowledge and connected tools.',
       },
       {
         question: 'Is our company data kept in Switzerland?',
         answer:
-          'This depends on your chosen deployment model. Zuraio is designed to support local, hybrid and Swiss-hosted options with configurable data residency. See deployment models for an overview of what can be agreed for your setup.',
+          'Zuraio offers a Swiss hosting option for companies that want to keep their environment and company data in Switzerland. Other deployment requirements are defined according to your company\u2019s needs.',
       },
       {
         question: 'Can employees access information they are not permitted to see?',
         answer:
-          'Zuraio is designed around permissions, roles and approved data sources so that AI assistance reflects your company\u2019s access model, not a separate unrestricted layer. The exact behaviour depends on how sources and permissions are configured.',
+          'Zuraio is designed to respect your company\u2019s existing access rules. Employees should only be able to use information they are permitted to access. The exact implementation depends on connected systems and the agreed configuration.',
       },
       {
         question: 'Can we see where an answer came from?',
         answer:
-          'Where internal knowledge sources are connected, Zuraio is designed to show references to the documents or systems behind an answer. The exact display depends on your configuration and connected sources.',
+          'Where source-backed company knowledge is used, Zuraio can retain and present source information according to the selected assistant and interface. Not every output is necessarily source-backed, and the exact presentation varies by component.',
       },
       {
         question: 'Does Zuraio make decisions or send things automatically?',
         answer:
-          'Zuraio is designed to prepare work for review. What can be sent, approved or acted on automatically depends on your agreed setup, permissions and workflow rules.',
+          'Zuraio can prepare answers, drafts and proposed actions for review. Which actions may be executed automatically depends on the component, permissions, approval rules and selected configuration.',
       },
       {
         question: 'Which tools can Zuraio connect to?',
         answer:
-          'Zuraio is designed to integrate with email, document storage, collaboration tools, CRM, ERP and other business systems. Integration availability varies by tool and deployment. See integrations for category status.',
+          'Zuraio is designed to work with existing email, document, communication and business systems. Available connections depend on approved tools and the agreed scope.',
       },
       {
         question: 'Do we have to replace our existing systems?',
@@ -357,31 +357,31 @@ export const pages = {
   },
   knowledge: {
     title: 'Knowledge — Zuraio',
-    hero: { marker: 'Knowledge', heading: 'Turn scattered company information into usable context.', headingEmphasis: 'usable', lede: 'Important knowledge is often spread across inboxes, shared drives, meeting notes, CRM records and business systems. Zuraio is designed to bring approved information together so people can find, understand and use it more effectively.' },
+    hero: { marker: 'Knowledge', heading: 'Turn scattered company information into governed, usable context.', headingEmphasis: 'governed', lede: 'Important knowledge is often spread across inboxes, shared drives, meeting notes and business systems. Zuraio brings approved information and working methods together so employees and specialised assistants can use them more effectively.' },
   },
   integrations: {
     title: 'Integrations — Zuraio',
-    hero: { marker: 'Integrations', heading: 'Works alongside the systems your team already uses.', headingEmphasis: 'already', lede: 'Zuraio is designed to connect company knowledge and workflows without forcing teams to replace systems that already work.' },
+    hero: { marker: 'Integrations', heading: 'Works alongside the systems your team already uses.', headingEmphasis: 'already', lede: 'Zuraio is designed to connect company knowledge and workflows without forcing teams to replace the systems that already work.' },
   },
   dataControl: {
     title: 'Data control & security — Zuraio',
-    hero: { marker: 'Data control & security', heading: 'Your data. Your rules. Your deployment.', headingEmphasis: 'rules', lede: 'Zuraio is designed to help companies use AI without giving up control over company knowledge, permissions or infrastructure choices.' },
+    hero: { marker: 'Data control', heading: 'Keep control of company data while using AI.', headingEmphasis: 'control', lede: 'Zuraio is designed for companies that want AI benefits without uncontrolled data exposure, unclear model routing or generic external processing.' },
   },
   deploymentModels: {
     title: 'Deployment models — Zuraio',
-    hero: { marker: 'Deployment models', heading: 'Local, hybrid or Swiss-hosted cloud.', headingEmphasis: 'Swiss-hosted', lede: 'Different companies have different requirements for control, performance, infrastructure and cost. Zuraio can be configured around the deployment model agreed for the customer.' },
+    hero: { marker: 'Deployment', heading: 'Local, hybrid or Swiss-hosted.', headingEmphasis: 'Swiss-hosted', lede: 'Different companies have different requirements for data location, infrastructure, model choice, operations and cost. Zuraio supports deployment designs that can be adapted to those requirements.' },
   },
   technicalArchitecture: {
     title: 'Technical architecture — Zuraio',
-    hero: { marker: 'Technical architecture', heading: 'A controlled path from request to reviewed output.', headingEmphasis: 'controlled', lede: 'Zuraio connects users, approved company sources, business tools and AI models through a governed execution layer. The exact architecture depends on the customer environment and deployment model.' },
+    hero: { marker: 'Technical architecture', heading: 'A controlled AI platform for company knowledge, specialised assistants and business processes.', headingEmphasis: 'controlled', lede: 'Zuraio brings together a central user interface, identity and access controls, company knowledge, specialised AI assistants, model selection and system integrations. Its orchestration layer coordinates these components so employees can work through one consistent environment.' },
   },
   aiGovernance: {
     title: 'AI governance — Zuraio',
-    hero: { marker: 'AI governance', heading: 'AI use that can be understood and reviewed.', headingEmphasis: 'reviewed', lede: 'Responsible company AI requires more than a model. Organisations need clear rules for access, data use, human review, logging and accountability.' },
+    hero: { marker: 'AI governance', heading: 'AI use that can be understood and reviewed.', headingEmphasis: 'reviewed', lede: 'Responsible company AI requires more than a model. Organisations need clear rules for knowledge, access, models, actions, human review and operational records.' },
   },
   faq: {
     title: 'FAQ — Zuraio',
-    hero: { marker: 'FAQ', heading: 'Practical questions about using Zuraio at work.', headingEmphasis: 'Practical', lede: 'Answers to common questions about deployment, permissions, data control and everyday use.' },
+    hero: { marker: 'FAQ', heading: 'Practical questions about using Zuraio at work.', headingEmphasis: 'Practical', lede: 'Answers to common questions about company knowledge, deployment, permissions, models and everyday use.' },
   },
   about: {
     title: 'About — Zuraio',

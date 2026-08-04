@@ -95,11 +95,11 @@ export const nav = {
     { label: 'Controllo dei dati', href: 'data-control.html' },
   ],
   technical: [
-    { label: 'Modelli di implementazione', href: 'deployment-models.html' },
     { label: 'Architettura tecnica', href: 'technical-architecture.html' },
+    { label: 'Modelli di implementazione', href: 'deployment-models.html' },
     { label: 'Governance dell’IA', href: 'ai-governance.html' },
-    { label: 'Risorse', href: 'resources.html' },
-    { label: 'FAQ', href: 'faq.html' },
+    { label: 'Controllo dei dati', href: 'data-control.html' },
+    { label: 'Conoscenza e SkillOS', href: 'knowledge.html#skillos' },
   ],
   about: { label: 'Chi siamo', href: 'about.html' },
 };

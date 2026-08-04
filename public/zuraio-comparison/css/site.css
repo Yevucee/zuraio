@@ -5030,6 +5030,126 @@ footer.site-footer {
   color: var(--teal);
 }
 
+/* Product maturity status labels */
+.maturity-label,
+.deploy-status {
+  display: inline-block;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--hairline);
+  margin-bottom: 12px;
+}
+
+.maturity-label--available,
+.deploy-status--available {
+  background: #eef6ef;
+  border-color: #c5dfc9;
+  color: var(--success);
+}
+
+.maturity-label--validation,
+.deploy-status--validation {
+  background: #faf6ec;
+  border-color: #e8d9a8;
+  color: var(--warning);
+}
+
+.maturity-label--specified,
+.deploy-status--specified {
+  background: var(--cloud);
+  border-color: var(--hairline);
+  color: var(--muted);
+}
+
+.maturity-panel {
+  padding: 24px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md, 12px);
+  background: var(--white, #fff);
+}
+
+.maturity-panel + .maturity-panel {
+  margin-top: 20px;
+}
+
+.maturity-panel h3 {
+  margin: 0 0 12px;
+  font-size: 1.125rem;
+}
+
+.maturity-panel ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.maturity-panel li + li {
+  margin-top: 6px;
+}
+
+.qualification {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--muted);
+  max-width: 65ch;
+}
+
+.layer-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.layer-card {
+  padding: 20px 24px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md, 12px);
+  background: var(--cloud);
+}
+
+.layer-card h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.layer-card p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--charcoal-soft);
+}
+
+.lifecycle-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin: 20px 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  color: var(--charcoal-soft);
+}
+
+.lifecycle-flow span:not(.lifecycle-arrow) {
+  padding: 6px 12px;
+  border: 1px solid var(--hairline);
+  border-radius: 6px;
+  background: var(--cloud);
+}
+
+.lifecycle-arrow {
+  color: var(--muted);
+}
+
+.hero-note {
+  margin-top: 16px;
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 58ch;
+}
+
 .status-legend {
   display: grid;
   gap: 12px;
