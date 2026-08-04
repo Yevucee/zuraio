@@ -171,7 +171,7 @@ export const home = {
     headingEmphasis: 'Unternehmenswissen',
     body: 'Herkömmliche KI kennt nur die Informationen, die ihr jemand manuell zur Verfügung stellt. Zuraio greift sicher auf freigegebenes Unternehmenswissen zu, berücksichtigt den Kontext der fragenden Person und bereitet Antworten und Dokumente mit Quellen zur Prüfung vor.',
     bridge:
-      'Im Hintergrund kann Zuraio spezialisierte KI-Assistenten, geeignete Modelle und angebundene Geschäftssysteme koordinieren. Die Mitarbeitenden nutzen dafür eine einzige, übersichtliche Oberfläche.',
+      'Im Hintergrund ist Zuraio darauf ausgelegt, spezialisierte KI-Assistenten, geeignete Modelle und angebundene Geschäftssysteme zu koordinieren. Die Mitarbeitenden arbeiten über eine einzige, übersichtliche Oberfläche.',
     bridgeLink: 'Technische Architektur entdecken →',
     without: {
       title: 'Ohne Zuraio',
@@ -380,66 +380,59 @@ export const pages = {
     },
   },
   knowledge: {
-    title: 'Wissen — Zuraio',
+    title: 'Wissen und SkillOS — Zuraio',
     hero: {
       marker: 'Wissen',
-      heading: 'Verstreute Unternehmensinformationen in nutzbaren Kontext verwandeln.',
-      headingEmphasis: 'nutzbaren',
-      lede: 'Wichtiges Wissen liegt oft in Postfächern, Shared Drives, Meeting-Notizen, CRM-Daten und Geschäftssystemen. Zuraio ist dafür konzipiert, freigegebene Informationen zusammenzuführen, damit Menschen sie leichter finden, verstehen und nutzen können.',
+      heading: 'Verteilte Unternehmensinformationen werden zu kontrolliert nutzbarem Kontext.',
+      lede: 'Wichtiges Wissen liegt häufig verteilt in Postfächern, gemeinsamen Ablagen, Besprechungsnotizen und Geschäftssystemen. Zuraio führt freigegebene Informationen und Arbeitsweisen zusammen, damit Mitarbeitende und spezialisierte Assistenten sie wirksamer nutzen können.',
     },
   },
   integrations: {
     title: 'Integrationen — Zuraio',
     hero: {
       marker: 'Integrationen',
-      heading: 'Arbeitet neben den Systemen, die Ihr Team bereits nutzt.',
-      headingEmphasis: 'bereits',
-      lede: 'Zuraio ist dafür konzipiert, Unternehmenswissen und Workflows zu verbinden, ohne Teams zum Ersatz funktionierender Systeme zu zwingen.',
+      heading: 'Funktioniert mit den Systemen, die Ihr Team bereits nutzt.',
+      lede: 'Zuraio ist darauf ausgelegt, Unternehmenswissen und Arbeitsabläufe zu verbinden, ohne funktionierende bestehende Systeme ersetzen zu müssen.',
     },
   },
   dataControl: {
-    title: 'Datenkontrolle und Sicherheit — Zuraio',
+    title: 'Datenkontrolle — Zuraio',
     hero: {
-      marker: 'Datenkontrolle und Sicherheit',
-      heading: 'Ihre Daten. Ihre Regeln. Ihre Bereitstellung.',
-      headingEmphasis: 'Regeln',
-      lede: 'Zuraio ist dafür konzipiert, Unternehmen bei der Nutzung von KI zu helfen, ohne die Kontrolle über Unternehmenswissen, Berechtigungen oder Infrastrukturentscheidungen aufzugeben.',
+      marker: 'Datenkontrolle',
+      heading: 'Ihre Daten bleiben unter Ihrer Kontrolle.',
+      lede: 'Zuraio ist darauf ausgelegt, Unternehmensinformationen innerhalb der Grenzen der vereinbarten Bereitstellung und des Vertrags zu verarbeiten. Eigentum, zulässige Nutzung, Aufbewahrung und Verarbeitungsbedingungen müssen für die gewählte Lösung und die eingesetzten Modellanbieter dokumentiert werden.',
     },
   },
   deploymentModels: {
     title: 'Bereitstellungsmodelle — Zuraio',
     hero: {
-      marker: 'Bereitstellungsmodelle',
-      heading: 'Lokal, hybrid oder Schweizer Cloud.',
-      headingEmphasis: 'Schweizer',
-      lede: 'Unternehmen haben unterschiedliche Anforderungen an Kontrolle, Performance, Infrastruktur und Kosten. Zuraio kann um das für den Kunden vereinbarte Bereitstellungsmodell konfiguriert werden.',
+      marker: 'Bereitstellung',
+      heading: 'Lokal, hybrid oder in der Schweiz gehostet.',
+      lede: 'Unternehmen stellen unterschiedliche Anforderungen an Datenstandort, Infrastruktur, Modellwahl, Betrieb und Kosten. Zuraio unterstützt Bereitstellungsarchitekturen, die an diese Anforderungen angepasst werden können.',
     },
   },
   technicalArchitecture: {
     title: 'Technische Architektur — Zuraio',
     hero: {
       marker: 'Technische Architektur',
-      heading: 'Ein kontrollierter Weg von der Anfrage zum geprüften Ergebnis.',
-      headingEmphasis: 'kontrollierter',
-      lede: 'Zuraio verbindet Nutzer, freigegebene Unternehmensquellen, Geschäftstools und KI-Modelle über eine gesteuerte Ausführungsschicht. Die genaue Architektur hängt von der Kundenumgebung und dem Bereitstellungsmodell ab.',
+      heading: 'Eine kontrollierbare KI-Plattform für Unternehmenswissen, spezialisierte Assistenten und Geschäftsprozesse.',
+      lede: 'Zuraio verbindet eine zentrale Benutzeroberfläche mit Identitäts- und Zugriffssteuerung, Unternehmenswissen, spezialisierten KI-Assistenten, Modellwahl und Systemintegrationen. Die Orchestrierungsschicht koordiniert diese Komponenten, damit Mitarbeitende in einer einheitlichen Arbeitsumgebung arbeiten können.',
     },
   },
   aiGovernance: {
     title: 'KI-Governance — Zuraio',
     hero: {
       marker: 'KI-Governance',
-      heading: 'KI-Nutzung, die verstanden und geprüft werden kann.',
-      headingEmphasis: 'geprüft',
-      lede: 'Verantwortungsvolle Unternehmens-KI braucht mehr als ein Modell. Organisationen benötigen klare Regeln für Zugriff, Datennutzung, menschliche Prüfung, Protokollierung und Verantwortlichkeit.',
+      heading: 'KI-Nutzung, die verständlich und überprüfbar bleibt.',
+      lede: 'Verantwortungsvolle KI im Unternehmen erfordert mehr als ein Modell. Organisationen benötigen klare Regeln für Wissen, Zugriffe, Modelle, Aktionen, menschliche Prüfung und betriebliche Nachweise.',
     },
   },
   faq: {
     title: 'FAQ — Zuraio',
     hero: {
       marker: 'FAQ',
-      heading: 'Praktische Fragen zur Nutzung von Zuraio im Arbeitsalltag.',
-      headingEmphasis: 'Praktische',
-      lede: 'Antworten auf häufige Fragen zu Bereitstellung, Berechtigungen, Datenkontrolle und alltäglicher Nutzung.',
+      heading: 'Praktische Fragen zum Einsatz von Zuraio im Unternehmen.',
+      lede: 'Antworten auf häufige Fragen zu Unternehmenswissen, Bereitstellung, Berechtigungen, Modellen und dem Einsatz im Arbeitsalltag.',
     },
   },
   about: {

@@ -11,7 +11,17 @@ import { initInternalReview, refreshInternalReview, isInternalReviewMode } from 
 import { initLogoWatermarks } from './logo-watermarks.js';
 import { SITE } from './config.js';
 import { initWorkflowComparison, resetWorkflowComparison } from './workflow-comparison.js?v=20260746';
-import { applyAllTranslations, getLocale, initLocaleSwitcher } from './i18n.js?v=20260773';
+import { applyAllTranslations, getLocale, initLocaleSwitcher } from './i18n.js?v=20260774';
+
+const TECHNICAL_PAGES = new Set([
+  'technicalArchitecture',
+  'knowledge',
+  'dataControl',
+  'deploymentModels',
+  'aiGovernance',
+  'integrations',
+  'faq',
+]);
 
 document.documentElement.lang = getLocale();
 
@@ -37,6 +47,11 @@ function boot() {
 boot();
 
 initLocaleSwitcher(() => {
+  const pageId = document.body.dataset.page;
+  if (pageId && TECHNICAL_PAGES.has(pageId)) {
+    location.reload();
+    return;
+  }
   renderHeader();
   renderFooter();
   applyAllTranslations();
