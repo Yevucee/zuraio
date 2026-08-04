@@ -47,13 +47,14 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + var(--nav-float-top) + 12px);
 }
 
 /* Keep anchored sections visible below the fixed nav */
 section[id],
 article[id],
 form[id] {
-  scroll-margin-top: calc(var(--nav-h) + 20px);
+  scroll-margin-top: calc(var(--nav-h) + var(--nav-float-top) + 12px);
 }
 
 body {
