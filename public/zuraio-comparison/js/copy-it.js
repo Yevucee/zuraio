@@ -66,9 +66,9 @@ export const problemOptions = [
 
 export const trustSignals = [
   { label: 'Hosting in Svizzera disponibile', href: 'deployment-models.html#swiss-hosted' },
-  { label: 'Fonti visibili', href: 'knowledge.html' },
-  { label: 'Conoscenza aziendale approvata', href: 'knowledge.html' },
-  { label: 'Mantenete il controllo', href: 'data-control.html' },
+  { label: 'Fonti visibili', href: 'knowledge.html#traceability' },
+  { label: 'Conoscenza aziendale approvata', href: 'knowledge.html#skillos' },
+  { label: 'Mantenete il controllo', href: 'data-control.html#data-ownership' },
 ];
 
 export const integrations = [
