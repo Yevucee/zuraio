@@ -8,7 +8,7 @@ import {
   WORKFLOW_ICONS_WITHOUT,
   WORKFLOW_ICONS_WITH,
 } from './workflow-icons.js';
-import { formatHeadline, setHeadlineHtml } from './headline-emphasis.js';
+import { applyTechnicalTranslations } from './apply-technical-i18n.js';
 
 const LOCALE_KEY = 'zuraio-locale';
 
@@ -297,9 +297,11 @@ export function applyPageTranslations() {
 }
 
 export function applyAllTranslations() {
-  document.documentElement.lang = getLocale();
+  const locale = getLocale();
+  document.documentElement.lang = locale;
   applyHomeTranslations();
   applyPageTranslations();
+  applyTechnicalTranslations(locale);
   applyDataI18n();
 }
 
