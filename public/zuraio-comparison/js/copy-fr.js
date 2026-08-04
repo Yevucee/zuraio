@@ -169,7 +169,7 @@ export const home = {
     marker: 'Plus qu’un chatbot',
     heading: 'Les connaissances de votre entreprise au service de vos équipes.',
     headingEmphasis: 'connaissances de votre entreprise',
-    body: 'Une IA générique ne connaît que les informations qui lui sont fournies manuellement. Zuraio accède de manière sécurisée aux connaissances d’entreprise approuvées, tient compte du contexte de la personne qui pose la question et prépare des réponses et des documents accompagnés de leurs sources.',
+    body: 'Une IA générique ne connaît que ce qui est fourni dans chaque conversation. Zuraio accède de manière sécurisée aux connaissances d’entreprise approuvées, tient compte du contexte de la personne qui pose la question et prépare des réponses et des documents accompagnés de leurs sources.',
     bridge:
       'En arrière-plan, Zuraio est conçu pour coordonner des assistants IA spécialisés, des modèles adaptés et des systèmes métier connectés. Les collaborateurs utilisent une seule interface claire.',
     bridgeLink: 'Découvrir l’architecture technique →',
@@ -229,9 +229,8 @@ export const home = {
     },
   },
   integrations: {
-    heading: 'Fonctionne avec les outils que votre équipe utilise déjà.',
-    body: 'Zuraio fonctionne avec les outils de messagerie, de gestion documentaire, de communication et de gestion que vos collaborateurs utilisent déjà.',
-    clarify: 'Les connexions sont configurées en fonction de vos outils approuvés, de vos autorisations et du mode de déploiement choisi.',
+    heading: 'Conçu pour fonctionner avec les outils que votre équipe utilise déjà.',
+    body: 'Zuraio peut se connecter à des systèmes de messagerie, de gestion documentaire, de communication et métier approuvés. Les intégrations disponibles dépendent de la configuration de votre entreprise, du déploiement et de l’état actuel du produit.',
     link: 'Voir toutes les intégrations →',
   },
   demo: {

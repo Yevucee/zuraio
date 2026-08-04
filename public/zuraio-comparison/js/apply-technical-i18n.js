@@ -200,7 +200,9 @@ function applyKnowledge(locale) {
   copy.skillos.ledes.forEach((text, i) => setText(skillosLedes?.[i], text));
   fillCards(skillos?.querySelector('.grid-cards'), copy.skillos.cards);
 
-  const [skillsSection, sourcesSection, traceSection] = contentSections();
+  const [skillsSection, sourcesSection, traceSection] = contentSections().filter(
+    (section) => section.id !== 'skillos',
+  );
   if (skillsSection) {
     fillSection(skillsSection, copy.skills);
     fillList(skillsSection.querySelector('ul'), copy.skills.items);
@@ -234,7 +236,7 @@ function applyKnowledge(locale) {
 
 function applyDataControl(locale) {
   document.querySelectorAll('[data-i18n-en-only]').forEach((el) => {
-    el.hidden = true;
+    el.remove();
   });
 
   const copy = technicalPages.dataControl;
@@ -287,9 +289,7 @@ function applyDeploymentModels(locale) {
   const copy = technicalPages.deploymentModels;
   setText(document.querySelector('.page-hero .qualification'), copy.heroQualification);
 
-  const [modelsSection, agreementSection] = [...document.querySelectorAll('main > section.pad')].filter(
-    (section) => !section.classList.contains('page-hero'),
-  );
+  const [modelsSection, comparisonSection, agreementSection] = contentSections();
   fillSection(modelsSection, copy.models);
 
   modelsSection?.querySelectorAll('.pcard').forEach((card, i) => {
@@ -314,7 +314,6 @@ function applyDeploymentModels(locale) {
     }
   });
 
-  const comparisonSection = document.querySelector('main > section.pad.cloud-bg');
   fillSection(comparisonSection, copy.comparison);
   const table = comparisonSection?.querySelector('.compare-table');
   if (table) {

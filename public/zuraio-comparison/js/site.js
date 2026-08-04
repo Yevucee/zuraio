@@ -1,6 +1,6 @@
-import { getLocale, setLocale, getCopy } from './i18n.js';
+import { getLocale, setLocale, getCopy, langHref } from './i18n.js';
 import { SUPPORTED_LOCALES, getLocaleLabels } from './locales.js';
-import { SITE, HERO_COMPARISON_ENABLED } from './config.js';
+import { SITE } from './config.js';
 import { enhanceFooterWithReview } from './internal-review.js';
 
 function getNav() {
@@ -89,21 +89,6 @@ function bindDropdown(root, dropdownEl, onSelect) {
 function href(path) {
   if (path.startsWith('#') || path.startsWith('http') || path.startsWith('../')) return path;
   return path;
-}
-
-function langHref(path) {
-  if (path.startsWith('#') || path.startsWith('http') || path.startsWith('../')) return path;
-  const locale = getLocale();
-  const hashIndex = path.indexOf('#');
-  const file = hashIndex >= 0 ? path.slice(0, hashIndex) : path;
-  const hash = hashIndex >= 0 ? path.slice(hashIndex) : '';
-  const params = new URLSearchParams();
-  params.set('lang', locale);
-  if (HERO_COMPARISON_ENABLED) {
-    const hero = new URLSearchParams(location.search).get('hero');
-    if (hero) params.set('hero', hero);
-  }
-  return `${file}?${params.toString()}${hash}`;
 }
 
 export function renderHeader() {

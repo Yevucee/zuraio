@@ -4,23 +4,12 @@ import {
   HERO_AUTO_PLAY_MS,
   DEFAULT_HERO_OPTION,
 } from './config.js';
-import { getCopy } from './i18n.js';
-import { getLocale } from './i18n.js';
+import { getCopy, getLocale, langHref } from './i18n.js';
 import { isInternalReviewMode } from './internal-review.js';
 import { setHeadlineHtml } from './headline-emphasis.js';
 import { SITE } from './config.js';
 
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-function trustHref(path) {
-  if (!path || path.startsWith('#') || path.startsWith('http') || path.startsWith('../')) return path;
-  const hashIndex = path.indexOf('#');
-  const file = hashIndex >= 0 ? path.slice(0, hashIndex) : path;
-  const hash = hashIndex >= 0 ? path.slice(hashIndex) : '';
-  const params = new URLSearchParams();
-  params.set('lang', getLocale());
-  return `${file}?${params.toString()}${hash}`;
-}
 
 function getHeroFromUrl() {
   if (!HERO_COMPARISON_ENABLED) return DEFAULT_HERO_OPTION;
@@ -41,7 +30,7 @@ function renderTrustSignals() {
       if (!href) {
         return `<li><span class="hero-trust-bar__link hero-trust-bar__link--static"><span>${label}</span></span></li>`;
       }
-      return `<li><a class="hero-trust-bar__link" href="${trustHref(href)}"><span>${label}</span><svg class="hero-trust-bar__arrow" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 3.5 10.5 8 5 12.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>`;
+      return `<li><a class="hero-trust-bar__link" href="${langHref(href)}"><span>${label}</span><svg class="hero-trust-bar__arrow" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 3.5 10.5 8 5 12.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>`;
     })
     .join('');
 }
@@ -113,7 +102,7 @@ export function initHeroComparison() {
       setHeadlineHtml(headlineEl, data.headline, data.emphasis);
       paraEl.textContent = data.paragraph;
       ctaEl.textContent = data.cta;
-      ctaEl.href = trustHref(data.ctaHref);
+      ctaEl.href = langHref(data.ctaHref);
       const heroImg = document.querySelector('.hero-popup-img');
       if (heroImg && data.imageAlt) heroImg.alt = data.imageAlt;
       if (statusEl) statusEl.textContent = getCopy().ui.optionOf(option);

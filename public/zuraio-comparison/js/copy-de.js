@@ -169,7 +169,7 @@ export const home = {
     marker: 'Mehr als ein Chatbot',
     heading: 'Unternehmenswissen, das Ihre Mitarbeitenden weiterbringt.',
     headingEmphasis: 'Unternehmenswissen',
-    body: 'Herkömmliche KI kennt nur die Informationen, die ihr jemand manuell zur Verfügung stellt. Zuraio greift sicher auf freigegebenes Unternehmenswissen zu, berücksichtigt den Kontext der fragenden Person und bereitet Antworten und Dokumente mit Quellen zur Prüfung vor.',
+    body: 'Herkömmliche KI kennt nur das, was in jeder einzelnen Unterhaltung bereitgestellt wird. Zuraio greift sicher auf freigegebenes Unternehmenswissen zu, berücksichtigt den Kontext der fragenden Person und bereitet Antworten und Dokumente mit Quellen zur Prüfung vor.',
     bridge:
       'Im Hintergrund ist Zuraio darauf ausgelegt, spezialisierte KI-Assistenten, geeignete Modelle und angebundene Geschäftssysteme zu koordinieren. Die Mitarbeitenden arbeiten über eine einzige, übersichtliche Oberfläche.',
     bridgeLink: 'Technische Architektur entdecken →',
@@ -229,9 +229,8 @@ export const home = {
     },
   },
   integrations: {
-    heading: 'Funktioniert mit den Tools, die Ihr Team bereits nutzt.',
-    body: 'Zuraio arbeitet mit den E-Mail-, Dokumenten-, Kommunikations- und Geschäftsanwendungen, die Ihre Mitarbeitenden bereits nutzen.',
-    clarify: 'Die Anbindungen werden passend zu Ihren freigegebenen Tools, Berechtigungen und der gewählten Bereitstellung eingerichtet.',
+    heading: 'Entwickelt für die Tools, die Ihr Team bereits nutzt.',
+    body: 'Zuraio kann an freigegebene E-Mail-, Dokumenten-, Kommunikations- und Geschäftssysteme angebunden werden. Verfügbare Integrationen hängen von Ihrer Unternehmenskonfiguration, der Bereitstellung und dem aktuellen Produktstatus ab.',
     link: 'Alle Integrationen ansehen →',
   },
   demo: {
