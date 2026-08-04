@@ -49,6 +49,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Keep anchored sections visible below the fixed nav */
+section[id],
+article[id],
+form[id] {
+  scroll-margin-top: calc(var(--nav-h) + 20px);
+}
+
 body {
   margin: 0;
   padding-top: var(--nav-h);
