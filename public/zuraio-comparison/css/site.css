@@ -6455,7 +6455,8 @@ html {
   box-shadow: var(--shadow-md);
 }
 
-.demo-static__frame img {
+.demo-static__frame img,
+.demo-static__frame video {
   display: block;
   width: 100%;
   height: auto;

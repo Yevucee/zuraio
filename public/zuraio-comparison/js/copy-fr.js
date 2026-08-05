@@ -238,8 +238,9 @@ export const home = {
     body: 'Zuraio rassemble le contexte pertinent de l’entreprise, prépare le travail et présente les sources utilisées pour vérification.',
     caption:
       'Zuraio peut préparer une réponse à un client à partir des échanges précédents, des documents actuels et des informations pertinentes de l’entreprise. Les collaborateurs vérifient le résultat et décident de la suite.',
-    image: '../zuraio/assets/zuraio-demo-mail.png',
-    imageAlt:
+    video: '../zuraio/assets/zuraio-demo.mp4',
+    poster: '../zuraio/assets/zuraio-demo-mail.png',
+    videoAlt:
       'Assistant e-mail Zuraio avec projet de réponse, contexte d’entreprise et sources visibles.',
     steps: [
       { title: 'Poser une question', body: null },
