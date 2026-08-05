@@ -231,9 +231,12 @@ export function applyHomeTranslations() {
 
   setText('#assistant-demo h2', home.demo.heading);
   setText('#assistant-demo .lede', home.demo.body);
-  const demoImage = document.querySelector('[data-demo-image]');
-  if (demoImage && home.demo.image) demoImage.src = `${home.demo.image}?v=20260723c`;
-  if (demoImage && home.demo.imageAlt) demoImage.alt = home.demo.imageAlt;
+  const demoVideo = document.querySelector('[data-demo-video]');
+  if (demoVideo) {
+    if (home.demo.video) demoVideo.src = `${home.demo.video}?v=20260805`;
+    if (home.demo.poster) demoVideo.poster = `${home.demo.poster}?v=20260805`;
+    if (home.demo.videoAlt) demoVideo.setAttribute('aria-label', home.demo.videoAlt);
+  }
   const demoSteps = document.querySelector('[data-demo-steps]');
   if (demoSteps && home.demo.steps) {
     demoSteps.innerHTML = home.demo.steps

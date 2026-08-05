@@ -1,19 +1,35 @@
 import { getCopy } from './i18n.js';
 
+const DEMO_CACHE = '20260805';
+
+function applyDemoMedia(root, demo) {
+  const videoEl = root.querySelector('[data-demo-video]');
+  if (!videoEl) return;
+
+  if (demo.video) videoEl.src = `${demo.video}?v=${DEMO_CACHE}`;
+  if (demo.poster) videoEl.poster = `${demo.poster}?v=${DEMO_CACHE}`;
+  if (demo.videoAlt) videoEl.setAttribute('aria-label', demo.videoAlt);
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) {
+    videoEl.removeAttribute('autoplay');
+    videoEl.pause();
+    return;
+  }
+
+  videoEl.play().catch(() => {});
+}
+
 export function initDemoStatic() {
   const root = document.getElementById('demo-static');
   if (!root) return;
 
-  const imageEl = root.querySelector('[data-demo-image]');
   const stepsEl = root.querySelector('[data-demo-steps]');
   const captionEl = root.querySelector('[data-demo-caption]');
   const demo = getCopy().home?.demo;
   if (!demo) return;
 
-  if (imageEl) {
-    if (demo.image) imageEl.src = `${demo.image}?v=20260723c`;
-    if (demo.imageAlt) imageEl.alt = demo.imageAlt;
-  }
+  applyDemoMedia(root, demo);
 
   if (stepsEl && demo.steps?.length) {
     stepsEl.innerHTML = demo.steps
@@ -27,4 +43,11 @@ export function initDemoStatic() {
   if (captionEl && demo.caption) {
     captionEl.textContent = demo.caption;
   }
+}
+
+export function refreshDemoStatic() {
+  const root = document.getElementById('demo-static');
+  const demo = getCopy().home?.demo;
+  if (!root || !demo) return;
+  applyDemoMedia(root, demo);
 }

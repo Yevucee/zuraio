@@ -4,7 +4,8 @@ Platform screenshots for the **See your assistant working** carousel on the comp
 
 | File | Use case |
 |------|----------|
-| `zuraio-demo-mail.png` | Email |
+| `zuraio-demo.mp4` | **Primary demo video** — See your assistant working (homepage) |
+| `zuraio-demo-mail.png` | Email (poster frame / fallback) |
 | `zuraio-demo-project-summary.png` | Project summary |
 | `zuraio-demo-appointment-reply.png` | Appointment & reply |
 | `zuraio-demo-meeting-transcript.png` | Meeting transcript |

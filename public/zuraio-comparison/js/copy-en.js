@@ -233,8 +233,9 @@ export const home = {
     body: 'Zuraio gathers relevant company context, prepares the work and shows its sources for your review.',
     caption:
       'Zuraio can prepare a customer reply using previous correspondence, current documents and relevant company information. The employee reviews the result and decides what happens next.',
-    image: '../zuraio/assets/zuraio-demo-mail.png',
-    imageAlt: 'Zuraio email assistant — draft reply prepared with company context and visible sources.',
+    video: '../zuraio/assets/zuraio-demo.mp4',
+    poster: '../zuraio/assets/zuraio-demo-mail.png',
+    videoAlt: 'Zuraio email assistant — draft reply prepared with company context and visible sources.',
     steps: [
       { title: 'Ask a question', body: null },
       { title: 'Zuraio gathers permitted company context', body: null },
