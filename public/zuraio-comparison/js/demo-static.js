@@ -1,6 +1,6 @@
 import { getCopy } from './i18n.js';
 
-const DEMO_CACHE = '20260805';
+const DEMO_CACHE = '20260805v2';
 
 function applyDemoMedia(root, demo) {
   const videoEl = root.querySelector('[data-demo-video]');

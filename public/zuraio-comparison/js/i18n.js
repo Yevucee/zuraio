@@ -233,8 +233,8 @@ export function applyHomeTranslations() {
   setText('#assistant-demo .lede', home.demo.body);
   const demoVideo = document.querySelector('[data-demo-video]');
   if (demoVideo) {
-    if (home.demo.video) demoVideo.src = `${home.demo.video}?v=20260805`;
-    if (home.demo.poster) demoVideo.poster = `${home.demo.poster}?v=20260805`;
+    if (home.demo.video) demoVideo.src = `${home.demo.video}?v=20260805v2`;
+    if (home.demo.poster) demoVideo.poster = `${home.demo.poster}?v=20260805v2`;
     if (home.demo.videoAlt) demoVideo.setAttribute('aria-label', home.demo.videoAlt);
   }
   const demoSteps = document.querySelector('[data-demo-steps]');
