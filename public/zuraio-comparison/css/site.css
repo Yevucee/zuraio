@@ -164,6 +164,68 @@ main#top > section + section:not(.hero-layered):not(.final) {
   font-size: 18px;
   color: var(--muted);
   max-width: 60ch;
+  line-height: 1.65;
+}
+
+/* Subpage section content — knowledge, data control, deployment, etc. */
+.pad:not(.cta-band):not(.page-hero):not(.section-photo) > .wrap > h2 {
+  font-size: clamp(24px, 3vw, 30px);
+  margin-top: 14px;
+  max-width: 28ch;
+  line-height: 1.2;
+}
+
+.pad:not(.cta-band):not(.page-hero):not(.section-photo) > .wrap > .lede,
+.pad:not(.cta-band):not(.page-hero):not(.section-photo) > .wrap > p.lede {
+  margin-top: 16px;
+}
+
+.pad:not(.cta-band):not(.page-hero):not(.section-photo) > .wrap > p:not(.qualification) {
+  margin-top: 14px;
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: var(--charcoal-soft);
+  max-width: 65ch;
+}
+
+.pad:not(.cta-band):not(.page-hero):not(.section-photo) > .wrap > ul,
+.pad:not(.cta-band):not(.page-hero):not(.section-photo) > .wrap > ol {
+  margin-top: 22px;
+  padding-left: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  max-width: 65ch;
+}
+
+.pad:not(.cta-band):not(.page-hero):not(.section-photo) > .wrap > ul li,
+.pad:not(.cta-band):not(.page-hero):not(.section-photo) > .wrap > ol li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: var(--charcoal-soft);
+}
+
+.pad:not(.cta-band):not(.page-hero):not(.section-photo) > .wrap > ul li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  margin-top: 0.58em;
+  border-radius: 50%;
+  background: var(--olive);
+}
+
+.pad:not(.cta-band):not(.page-hero):not(.section-photo) > .wrap > .qualification {
+  margin-top: 24px;
+  line-height: 1.6;
+}
+
+.pad:not(.cta-band):not(.page-hero):not(.section-photo) > .wrap > .grid-cards,
+.pad:not(.cta-band):not(.page-hero):not(.section-photo) > .wrap > .table-wrap {
+  margin-top: 28px;
 }
 
 .head-block {
