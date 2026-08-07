@@ -125,7 +125,9 @@
                 <path class="routes-lane__path routes-lane__path--without" data-route-path="without" fill="none"></path>
                 <circle class="routes-lane__dot routes-lane__dot--without" data-route-dot="without" r="5"></circle>
               </svg>
-              <ol class="routes-lane__stops" data-routes-stops="without"></ol>
+              <div class="routes-lane__track">
+                <ol class="routes-lane__stops" data-routes-stops="without"></ol>
+              </div>
             </div>
           </section>
 
@@ -144,13 +146,15 @@
                 <path class="routes-lane__path routes-lane__path--with" data-route-path="with" fill="none"></path>
                 <circle class="routes-lane__dot routes-lane__dot--with" data-route-dot="with" r="5"></circle>
               </svg>
-              <ol class="routes-lane__stops" data-routes-stops="with"></ol>
-              <div class="routes-lane__outcome" data-routes-outcome="with">
-                <div class="routes-stop routes-stop--outcome">
-                  <span class="routes-stop__marker routes-stop__marker--outcome">
-                    <span class="routes-stop__icon" data-routes-outcome-icon aria-hidden="true"></span>
-                  </span>
-                  <span class="routes-stop__label routes-stop__label--outcome" data-routes-outcome-label>You remain in control</span>
+              <div class="routes-lane__track">
+                <ol class="routes-lane__stops" data-routes-stops="with"></ol>
+                <div class="routes-lane__outcome" data-routes-outcome="with">
+                  <div class="routes-stop routes-stop--outcome">
+                    <span class="routes-stop__marker routes-stop__marker--outcome">
+                      <span class="routes-stop__icon" data-routes-outcome-icon aria-hidden="true"></span>
+                    </span>
+                    <span class="routes-stop__label routes-stop__label--outcome" data-routes-outcome-label>You remain in control</span>
+                  </div>
                 </div>
               </div>
             </div>
