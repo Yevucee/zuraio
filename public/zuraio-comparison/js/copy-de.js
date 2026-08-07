@@ -175,57 +175,24 @@ export const home = {
     bridgeLink: 'Technische Architektur entdecken →',
     without: {
       title: 'Ohne Zuraio',
-      titleEmphasis: null,
-      subtitle: 'Mehrere manuelle Schritte',
+      subtitle: 'Ein fragmentierter Prozess',
       steps: [
-        {
-          title: 'Ein neues Gespräch beginnen',
-          body: 'Eine allgemeine KI-Anwendung öffnen und die Anfrage neu stellen.',
-        },
-        {
-          title: 'Relevante Dateien suchen',
-          body: 'Dokumente zusammensuchen und manuell hochladen.',
-        },
-        {
-          title: 'Unternehmenskontext erklären',
-          body: 'Hintergrundinformationen ergänzen, welche die KI nicht kennt.',
-        },
-        {
-          title: 'Antwort prüfen',
-          body: 'Die Angaben mit den ursprünglichen Quellen abgleichen.',
-        },
-        {
-          title: 'Ergebnis überarbeiten',
-          body: 'Fehler korrigieren und die Informationen zusammenführen.',
-        },
-        {
-          title: 'Beim nächsten Mal neu beginnen',
-          body: 'Bei einer neuen Unterhaltung den Ablauf wiederholen.',
-        },
+        { title: 'Allgemeine KI fragen' },
+        { title: 'Dateien suchen und hinzufügen' },
+        { title: 'Kontext erklären' },
+        { title: 'Prüfen, zusammenstellen und wiederholen' },
       ],
     },
     with: {
       title: 'Mit Zuraio',
-      titleEmphasis: null,
-      subtitle: 'Ein verbundener Arbeitsablauf',
+      subtitle: 'Ein verbundener Ablauf',
       steps: [
-        {
-          title: 'Zuraio fragen',
-          body: 'Die Frage in natürlicher Sprache stellen.',
-        },
-        {
-          title: 'Nutzt berechtigtes Unternehmenswissen',
-          body: 'Zuraio greift auf die Informationen zu, die die betreffende Person verwenden darf.',
-        },
-        {
-          title: 'Bereitet eine Antwort mit Quellen vor',
-          body: 'Zuraio erstellt eine Antwort, ein Dokument oder eine Zusammenfassung und zeigt die verwendeten Quellen.',
-        },
-        {
-          title: 'Prüfen und entscheiden',
-          body: 'Die Mitarbeitenden prüfen das Ergebnis und entscheiden über die nächsten Schritte.',
-        },
+        { title: 'Zuraio fragen' },
+        { title: 'Freigegebenes Wissen' },
+        { title: 'Antwort mit Quellen' },
+        { title: 'Prüfen und entscheiden' },
       ],
+      outcome: 'Sie behalten die Kontrolle',
     },
   },
   integrations: {

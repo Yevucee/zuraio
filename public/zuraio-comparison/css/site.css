@@ -4544,6 +4544,335 @@ footer.site-footer {
   max-width: 640px;
 }
 
+/* ---------- Two-routes comparison diagram (homepage) ---------- */
+.routes-diagram {
+  margin-top: 48px;
+}
+
+.routes-diagram__panel {
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  overflow: hidden;
+}
+
+.routes-diagram__divider {
+  height: 1px;
+  background: var(--hairline);
+}
+
+.routes-lane {
+  display: grid;
+  grid-template-columns: minmax(148px, 190px) minmax(0, 1fr);
+  gap: 20px 28px;
+  padding: 28px 28px 32px;
+  align-items: start;
+}
+
+.routes-lane--without {
+  background: linear-gradient(180deg, #ffffff 0%, #fbfbfa 100%);
+}
+
+.routes-lane--with {
+  background: linear-gradient(180deg, #ffffff 0%, #fafcf6 100%);
+}
+
+.routes-lane__intro {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+}
+
+.routes-lane__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.routes-lane__badge svg {
+  width: 16px;
+  height: 16px;
+}
+
+.routes-lane__badge--neutral {
+  background: #f0f0ee;
+  border: 1px solid rgba(70, 70, 70, 0.08);
+  color: #8a8a86;
+}
+
+.routes-lane__badge--olive {
+  background: rgba(159, 175, 82, 0.14);
+  border: 1px solid rgba(159, 175, 82, 0.22);
+  color: var(--olive-deep);
+}
+
+.routes-lane__title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  line-height: 1.35;
+}
+
+.routes-lane--with .routes-lane__title {
+  color: var(--olive-deep);
+}
+
+.routes-lane__subtitle {
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.routes-lane--with .routes-lane__subtitle {
+  color: rgba(120, 138, 54, 0.92);
+}
+
+.routes-lane--without .routes-lane__flow {
+  min-height: 118px;
+  padding-bottom: 24px;
+}
+
+.routes-lane--with .routes-lane__flow {
+  padding-right: 118px;
+}
+
+.routes-lane__flow {
+  position: relative;
+  min-width: 0;
+  min-height: 108px;
+  padding-top: 8px;
+}
+
+.routes-lane__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.routes-lane__path--without {
+  stroke: #c8c8c2;
+  stroke-width: 2;
+  stroke-dasharray: 7 8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.routes-lane__path--with {
+  stroke: var(--olive);
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.routes-lane__dot--without {
+  fill: #9a9a94;
+}
+
+.routes-lane__dot--with {
+  fill: var(--olive-deep);
+}
+
+.routes-lane__stops {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+  padding: 0 0 8px;
+  list-style: none;
+}
+
+.routes-lane__outcome {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.routes-stop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 132px;
+  text-align: center;
+}
+
+.routes-stop__marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px solid rgba(70, 70, 70, 0.12);
+  transition:
+    border-color 0.25s var(--ease),
+    background-color 0.25s var(--ease),
+    transform 0.25s var(--ease);
+}
+
+.routes-lane--with .routes-stop__marker {
+  border-color: rgba(159, 175, 82, 0.24);
+}
+
+.routes-stop__marker--outcome {
+  width: 48px;
+  height: 48px;
+  border-width: 2px;
+  border-color: rgba(159, 175, 82, 0.45);
+}
+
+.routes-stop__icon svg {
+  width: 18px;
+  height: 18px;
+  color: #8a8a86;
+}
+
+.routes-lane--with .routes-stop__icon svg,
+.routes-stop--outcome .routes-stop__icon svg {
+  color: var(--olive-deep);
+}
+
+.routes-stop__label {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--charcoal-soft);
+}
+
+.routes-stop__label--outcome {
+  color: var(--olive-deep);
+  font-weight: 500;
+}
+
+.routes-stop.is-active .routes-stop__marker {
+  border-color: rgba(70, 70, 70, 0.22);
+  transform: scale(1.04);
+}
+
+.routes-lane--with .routes-stop.is-active .routes-stop__marker,
+.routes-stop--outcome.is-active .routes-stop__marker {
+  border-color: rgba(159, 175, 82, 0.55);
+  background: rgba(234, 240, 214, 0.55);
+}
+
+.routes-stop.is-passed .routes-stop__marker {
+  border-color: rgba(70, 70, 70, 0.16);
+}
+
+.routes-lane--with .routes-stop.is-passed .routes-stop__marker {
+  border-color: rgba(159, 175, 82, 0.3);
+}
+
+.routes-lane.is-vertical {
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.routes-lane.is-vertical .routes-lane__flow {
+  min-height: 420px;
+  padding-top: 0;
+}
+
+.routes-lane.is-vertical .routes-lane__stops {
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 360px;
+  padding: 8px 0 0;
+}
+
+.routes-lane.is-vertical .routes-stop {
+  max-width: 240px;
+}
+
+.routes-lane.is-vertical .routes-lane__outcome {
+  position: relative;
+  right: auto;
+  top: auto;
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 899px) {
+  .routes-lane {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 24px 20px 28px;
+  }
+
+  .routes-lane--with .routes-lane__flow {
+    padding-right: 0;
+  }
+
+  .routes-lane__flow {
+    min-height: 420px;
+  }
+
+  .routes-lane__stops {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 360px;
+    padding-bottom: 0;
+  }
+
+  .routes-stop {
+    max-width: 240px;
+  }
+
+  .routes-lane__outcome {
+    position: relative;
+    right: auto;
+    top: auto;
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1099px) {
+  .routes-lane {
+    grid-template-columns: minmax(132px, 160px) minmax(0, 1fr);
+    gap: 16px 20px;
+    padding: 24px 22px 28px;
+  }
+
+  .routes-stop {
+    max-width: 108px;
+  }
+
+  .routes-stop__label {
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .routes-lane__dot {
+    display: none;
+  }
+
+  .routes-stop__marker {
+    transition: none;
+  }
+}
+
 .compare-pair {
   display: grid;
   grid-template-columns: 1fr;

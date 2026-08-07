@@ -175,57 +175,24 @@ export const home = {
     bridgeLink: 'Scoprite l’architettura tecnica →',
     without: {
       title: 'Senza Zuraio',
-      titleEmphasis: null,
-      subtitle: 'Diversi passaggi manuali',
+      subtitle: 'Un processo frammentato',
       steps: [
-        {
-          title: 'Avviare una nuova conversazione',
-          body: 'Aprire uno strumento di IA generica e formulare nuovamente la richiesta.',
-        },
-        {
-          title: 'Cercare i file pertinenti',
-          body: 'Trovare i documenti e caricarli manualmente.',
-        },
-        {
-          title: 'Spiegare il contesto aziendale',
-          body: 'Aggiungere le informazioni di base che l’IA non conosce.',
-        },
-        {
-          title: 'Verificare la risposta',
-          body: 'Confrontare le informazioni con le fonti originali.',
-        },
-        {
-          title: 'Correggere e riunire le informazioni',
-          body: 'Correggere il risultato e combinare le informazioni utili.',
-        },
-        {
-          title: 'Ricominciare la volta successiva',
-          body: 'Ripetere il processo quando si avvia una nuova conversazione.',
-        },
+        { title: 'Chiedere a un’IA generica' },
+        { title: 'Trovare e aggiungere file' },
+        { title: 'Spiegare il contesto' },
+        { title: 'Verificare, compilare e ripetere' },
       ],
     },
     with: {
       title: 'Con Zuraio',
-      titleEmphasis: null,
-      subtitle: 'Un processo di lavoro integrato',
+      subtitle: 'Un percorso connesso',
       steps: [
-        {
-          title: 'Chiedere a Zuraio',
-          body: 'Porre la domanda in linguaggio naturale.',
-        },
-        {
-          title: 'Utilizzare la conoscenza autorizzata',
-          body: 'Zuraio accede alle informazioni che la persona è autorizzata a consultare.',
-        },
-        {
-          title: 'Preparare una risposta con le fonti',
-          body: 'Zuraio crea una risposta, un documento o un riepilogo e mostra le fonti utilizzate.',
-        },
-        {
-          title: 'Verificare e decidere',
-          body: 'I collaboratori verificano il risultato e decidono i passaggi successivi.',
-        },
+        { title: 'Chiedere a Zuraio' },
+        { title: 'Conoscenza approvata' },
+        { title: 'Risposta con fonti' },
+        { title: 'Verificare e decidere' },
       ],
+      outcome: 'Mantenete il controllo',
     },
   },
   integrations: {

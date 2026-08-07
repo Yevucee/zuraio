@@ -110,36 +110,52 @@
         <p class="lede">Generic AI only knows what someone provides in each conversation. Zuraio securely connects to approved company knowledge, considers the context of the person asking and prepares answers and documents with sources for review.</p>
       </div>
 
-      <div class="compare-pair reveal d1" data-workflow-compare>
-        <article class="compare-box compare-box--without" data-compare-box="without">
-          <header class="compare-box__head">
-            <div class="compare-box__head-main">
-              <span class="compare-box__icon compare-box__icon--clock" data-compare-header-icon="without" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 8v4.5l3 2"/></svg>
-              </span>
-              <div>
-                <h3 class="compare-box__title">Without Zuraio</h3>
-                <p class="compare-box__subtitle">Multiple manual steps</p>
+      <div class="routes-diagram reveal d1" data-routes-diagram>
+        <div class="routes-diagram__panel">
+          <section class="routes-lane routes-lane--without" data-route-lane="without" aria-label="Without Zuraio">
+            <header class="routes-lane__intro">
+              <span class="routes-lane__badge routes-lane__badge--neutral" data-routes-badge aria-hidden="true"></span>
+              <div class="routes-lane__titles">
+                <h3 class="routes-lane__title" data-routes-title="without">Without Zuraio</h3>
+                <p class="routes-lane__subtitle" data-routes-subtitle="without">A fragmented process</p>
               </div>
+            </header>
+            <div class="routes-lane__flow" data-routes-flow>
+              <svg class="routes-lane__svg" data-routes-svg aria-hidden="true">
+                <path class="routes-lane__path routes-lane__path--without" data-route-path="without" fill="none"></path>
+                <circle class="routes-lane__dot routes-lane__dot--without" data-route-dot="without" r="5"></circle>
+              </svg>
+              <ol class="routes-lane__stops" data-routes-stops="without"></ol>
             </div>
-          </header>
-          <div class="compare-steps compare-steps--long" data-workflow-steps="without"></div>
-        </article>
+          </section>
 
-        <article class="compare-box compare-box--with" data-compare-box="with">
-          <header class="compare-box__head">
-            <div class="compare-box__head-main">
-              <span class="compare-box__icon compare-box__icon--lightning" data-compare-header-icon="with" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 10-14h-7l0-6z"/></svg>
-              </span>
-              <div>
-                <h3 class="compare-box__title">With Zuraio</h3>
-                <p class="compare-box__subtitle">One connected workflow</p>
+          <div class="routes-diagram__divider" role="presentation"></div>
+
+          <section class="routes-lane routes-lane--with" data-route-lane="with" aria-label="With Zuraio">
+            <header class="routes-lane__intro">
+              <span class="routes-lane__badge routes-lane__badge--olive" data-routes-badge aria-hidden="true"></span>
+              <div class="routes-lane__titles">
+                <h3 class="routes-lane__title" data-routes-title="with">With Zuraio</h3>
+                <p class="routes-lane__subtitle" data-routes-subtitle="with">One connected route</p>
+              </div>
+            </header>
+            <div class="routes-lane__flow" data-routes-flow>
+              <svg class="routes-lane__svg" data-routes-svg aria-hidden="true">
+                <path class="routes-lane__path routes-lane__path--with" data-route-path="with" fill="none"></path>
+                <circle class="routes-lane__dot routes-lane__dot--with" data-route-dot="with" r="5"></circle>
+              </svg>
+              <ol class="routes-lane__stops" data-routes-stops="with"></ol>
+              <div class="routes-lane__outcome" data-routes-outcome="with">
+                <div class="routes-stop routes-stop--outcome">
+                  <span class="routes-stop__marker routes-stop__marker--outcome">
+                    <span class="routes-stop__icon" data-routes-outcome-icon aria-hidden="true"></span>
+                  </span>
+                  <span class="routes-stop__label routes-stop__label--outcome" data-routes-outcome-label>You remain in control</span>
+                </div>
               </div>
             </div>
-          </header>
-          <div class="compare-steps" data-workflow-steps="with"></div>
-        </article>
+          </section>
+        </div>
       </div>
 
       <p class="compare-bridge reveal d2" data-compare-bridge>Behind the scenes, Zuraio can coordinate specialised AI assistants, suitable models and connected business systems. Employees work through one simple interface.</p>

@@ -175,57 +175,24 @@ export const home = {
     bridgeLink: 'Découvrir l’architecture technique →',
     without: {
       title: 'Sans Zuraio',
-      titleEmphasis: null,
-      subtitle: 'Plusieurs étapes manuelles',
+      subtitle: 'Un processus fragmenté',
       steps: [
-        {
-          title: 'Commencer une nouvelle conversation',
-          body: 'Ouvrir un outil d’IA générique et formuler une nouvelle demande.',
-        },
-        {
-          title: 'Rechercher les fichiers utiles',
-          body: 'Retrouver les documents et les téléverser manuellement.',
-        },
-        {
-          title: 'Expliquer le contexte de l’entreprise',
-          body: 'Ajouter les informations générales que l’IA ne connaît pas.',
-        },
-        {
-          title: 'Vérifier la réponse',
-          body: 'Comparer les informations avec les sources d’origine.',
-        },
-        {
-          title: 'Corriger et regrouper',
-          body: 'Corriger le résultat et réunir les informations utiles.',
-        },
-        {
-          title: 'Recommencer la prochaine fois',
-          body: 'Répéter le processus lors d’une nouvelle conversation.',
-        },
+        { title: 'Interroger une IA générique' },
+        { title: 'Trouver et ajouter des fichiers' },
+        { title: 'Expliquer le contexte' },
+        { title: 'Vérifier, compiler et recommencer' },
       ],
     },
     with: {
       title: 'Avec Zuraio',
-      titleEmphasis: null,
-      subtitle: 'Un processus de travail unifié',
+      subtitle: 'Un parcours connecté',
       steps: [
-        {
-          title: 'Interroger Zuraio',
-          body: 'Poser la question en langage naturel.',
-        },
-        {
-          title: 'Utiliser les connaissances autorisées',
-          body: 'Zuraio accède aux informations que la personne est autorisée à consulter.',
-        },
-        {
-          title: 'Préparer une réponse avec ses sources',
-          body: 'Zuraio crée une réponse, un document ou une synthèse et indique les sources utilisées.',
-        },
-        {
-          title: 'Vérifier et décider',
-          body: 'Les collaborateurs vérifient le résultat et décident de la suite.',
-        },
+        { title: 'Interroger Zuraio' },
+        { title: 'Connaissances approuvées' },
+        { title: 'Réponse avec sources' },
+        { title: 'Examiner et décider' },
       ],
+      outcome: 'Vous gardez le contrôle',
     },
   },
   integrations: {

@@ -4,10 +4,7 @@ import * as fr from './copy-fr.js';
 import * as it from './copy-it.js';
 import { isSupportedLocale } from './locales.js';
 import { PAIN_CARD_ICONS } from './pain-card-icons.js';
-import {
-  WORKFLOW_ICONS_WITHOUT,
-  WORKFLOW_ICONS_WITH,
-} from './workflow-icons.js';
+import { refreshRoutesDiagram } from './routes-diagram.js';
 import { applyTechnicalTranslations } from './apply-technical-i18n.js';
 import { setHeadlineHtml, formatHeadline } from './headline-emphasis.js';
 import { HERO_COMPARISON_ENABLED } from './config.js';
@@ -116,52 +113,6 @@ function applyList(selector, items, template) {
   container.innerHTML = items.map(template).join('');
 }
 
-function renderWorkflowSteps(steps, icons, tone) {
-  if (!steps?.length) return '';
-  return steps
-    .map((step, i) => {
-      const arrow =
-        i < steps.length - 1
-          ? `<span class="compare-step-arrow compare-step-arrow--${tone}" aria-hidden="true"></span>`
-          : '';
-      return `<article class="compare-step compare-step--${tone}">
-        <span class="compare-step__icon">${icons[i] || ''}</span>
-        <h4 class="compare-step__title">${step.title}</h4>
-        <p class="compare-step__body">${step.body}</p>
-      </article>${arrow}`;
-    })
-    .join('');
-}
-
-function applyComparePanel(panelKey, panelCopy, icons, tone) {
-  const panel = document.querySelector(`[data-compare-box="${panelKey}"]`);
-  if (!panel || !panelCopy) return;
-
-  const titleEl = panel.querySelector('.compare-box__title');
-  if (titleEl) {
-    titleEl.innerHTML = formatHeadline(panelCopy.title, panelCopy.titleEmphasis);
-  }
-  const subtitleEl = panel.querySelector('.compare-box__subtitle');
-  if (subtitleEl) subtitleEl.textContent = panelCopy.subtitle;
-
-  const timeEl = panel.querySelector('.compare-box__time');
-  if (timeEl && panelCopy.timeLabel) timeEl.textContent = panelCopy.timeLabel;
-
-  const status = panel.querySelector(`[data-compare-status="${panelKey}"]`);
-  if (status && panelCopy.progressCompleting) {
-    status.dataset.completingLabel = panelCopy.progressCompleting;
-    status.dataset.completedLabel = panelCopy.progressCompleted;
-    if (!status.classList.contains('is-complete')) {
-      status.textContent = panelCopy.progressCompleting;
-    }
-  }
-
-  const stepsEl = panel.querySelector(`[data-workflow-steps="${panelKey}"]`);
-  if (stepsEl) {
-    stepsEl.innerHTML = renderWorkflowSteps(panelCopy.steps, icons, tone);
-  }
-}
-
 function renderHomeFaq(items, limit = 6) {
   if (!items?.length) return '';
   return items
@@ -211,14 +162,7 @@ export function applyHomeTranslations() {
   setText('#different h2', home.different.heading);
   setText('#different .lede', home.different.body);
 
-  const withoutPanel = document.querySelector('[data-compare-box="without"]');
-  const withPanel = document.querySelector('[data-compare-box="with"]');
-  if (withoutPanel && home.different.without) {
-    applyComparePanel('without', home.different.without, WORKFLOW_ICONS_WITHOUT, 'neutral');
-  }
-  if (withPanel && home.different.with) {
-    applyComparePanel('with', home.different.with, WORKFLOW_ICONS_WITH, 'olive');
-  }
+  refreshRoutesDiagram();
 
   setText('[data-compare-bridge]', home.different.bridge);
   setHtml('[data-compare-bridge-link]', home.different.bridgeLink);
