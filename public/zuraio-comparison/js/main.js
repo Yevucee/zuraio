@@ -10,8 +10,8 @@ import { initFaq } from './faq-accordion.js';
 import { initInternalReview, refreshInternalReview, isInternalReviewMode } from './internal-review.js';
 import { initLogoWatermarks } from './logo-watermarks.js';
 import { SITE } from './config.js';
-import { initWorkflowComparison, resetWorkflowComparison } from './workflow-comparison.js?v=20260746';
-import { applyAllTranslations, getLocale, initLocaleSwitcher } from './i18n.js?v=20260804b';
+import { initRoutesDiagram, refreshRoutesDiagram } from './routes-diagram.js?v=20260807';
+import { applyAllTranslations, getLocale, initLocaleSwitcher } from './i18n.js?v=20260807';
 
 const TECHNICAL_PAGES = new Set([
   'technicalArchitecture',
@@ -41,7 +41,7 @@ function boot() {
   initAuditParticles();
   initMarquee();
   initFaq();
-  initWorkflowComparison();
+  initRoutesDiagram();
 }
 
 boot();
@@ -60,7 +60,7 @@ initLocaleSwitcher(() => {
   initMarquee();
   renderScatteredKnowledge(document.querySelector('[data-scattered-knowledge]'));
   initFaq();
-  resetWorkflowComparison();
+  refreshRoutesDiagram();
   initDemoStatic();
 });
 

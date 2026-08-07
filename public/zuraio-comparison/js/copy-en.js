@@ -170,57 +170,24 @@ export const home = {
     bridgeLink: 'Explore the technical architecture →',
     without: {
       title: 'Without Zuraio',
-      titleEmphasis: null,
-      subtitle: 'Multiple manual steps',
+      subtitle: 'A fragmented process',
       steps: [
-        {
-          title: 'Start a new conversation',
-          body: 'Ask a generic AI tool.',
-        },
-        {
-          title: 'Find and add the relevant files',
-          body: 'Search for documents and upload them manually.',
-        },
-        {
-          title: 'Explain the company context',
-          body: 'Provide the background the AI does not know.',
-        },
-        {
-          title: 'Check the answer',
-          body: 'Verify the information against the original sources.',
-        },
-        {
-          title: 'Refine and compile',
-          body: 'Correct the result and bring the information together.',
-        },
-        {
-          title: 'Repeat next time',
-          body: 'Start again when a new conversation begins.',
-        },
+        { title: 'Ask a generic AI' },
+        { title: 'Find and add files' },
+        { title: 'Explain the context' },
+        { title: 'Check, compile and repeat' },
       ],
     },
     with: {
       title: 'With Zuraio',
-      titleEmphasis: null,
-      subtitle: 'One connected workflow',
+      subtitle: 'One connected route',
       steps: [
-        {
-          title: 'Ask Zuraio',
-          body: 'Ask your question in natural language.',
-        },
-        {
-          title: 'Uses permitted company knowledge',
-          body: 'Connects to the information the employee is allowed to access.',
-        },
-        {
-          title: 'Prepares an answer with sources',
-          body: 'Creates an answer, document or summary and shows the sources used.',
-        },
-        {
-          title: 'Review and decide',
-          body: 'The employee checks the result and decides what happens next.',
-        },
+        { title: 'Ask Zuraio' },
+        { title: 'Approved knowledge' },
+        { title: 'Answer with sources' },
+        { title: 'Review and decide' },
       ],
+      outcome: 'You remain in control',
     },
   },
   integrations: {
