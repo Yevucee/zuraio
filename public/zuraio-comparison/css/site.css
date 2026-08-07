@@ -4640,15 +4640,38 @@ footer.site-footer {
   padding-bottom: 24px;
 }
 
-.routes-lane--with .routes-lane__flow {
-  padding-right: 118px;
-}
-
 .routes-lane__flow {
   position: relative;
   min-width: 0;
   min-height: 108px;
   padding-top: 8px;
+}
+
+.routes-lane__track {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 0 0 8px;
+}
+
+.routes-lane__stops {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.routes-lane__outcome {
+  flex: 0 0 auto;
+  width: 128px;
+  margin-left: 4px;
 }
 
 .routes-lane__svg {
@@ -4683,24 +4706,6 @@ footer.site-footer {
   fill: var(--olive-deep);
 }
 
-.routes-lane__stops {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  margin: 0;
-  padding: 0 0 8px;
-  list-style: none;
-}
-
-.routes-lane__outcome {
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 2;
-}
-
 .routes-stop {
   display: flex;
   flex-direction: column;
@@ -4731,9 +4736,15 @@ footer.site-footer {
   border-color: rgba(159, 175, 82, 0.24);
 }
 
+.routes-stop--outcome {
+  max-width: 128px;
+  flex: 0 0 auto;
+}
+
 .routes-stop__marker--outcome {
   width: 48px;
   height: 48px;
+  margin-top: -2px;
   border-width: 2px;
   border-color: rgba(159, 175, 82, 0.45);
 }
@@ -4789,12 +4800,19 @@ footer.site-footer {
   padding-top: 0;
 }
 
+.routes-lane.is-vertical .routes-lane__track {
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
 .routes-lane.is-vertical .routes-lane__stops {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   min-height: 360px;
   padding: 8px 0 0;
+  width: 100%;
 }
 
 .routes-lane.is-vertical .routes-stop {
@@ -4802,10 +4820,9 @@ footer.site-footer {
 }
 
 .routes-lane.is-vertical .routes-lane__outcome {
-  position: relative;
-  right: auto;
-  top: auto;
-  margin-top: 8px;
+  width: auto;
+  margin-left: 0;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
 }
@@ -4817,8 +4834,10 @@ footer.site-footer {
     padding: 24px 20px 28px;
   }
 
-  .routes-lane--with .routes-lane__flow {
-    padding-right: 0;
+  .routes-lane__track {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
   }
 
   .routes-lane__flow {
@@ -4831,6 +4850,7 @@ footer.site-footer {
     justify-content: space-between;
     min-height: 360px;
     padding-bottom: 0;
+    width: 100%;
   }
 
   .routes-stop {
@@ -4838,10 +4858,9 @@ footer.site-footer {
   }
 
   .routes-lane__outcome {
-    position: relative;
-    right: auto;
-    top: auto;
-    margin-top: 8px;
+    width: auto;
+    margin-left: 0;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
   }
