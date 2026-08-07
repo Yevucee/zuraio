@@ -7,7 +7,7 @@ import {
   ROUTES_OUTCOME_CHECK,
 } from './workflow-icons.js';
 
-const WITHOUT_DURATION = 8000;
+const WITHOUT_DURATION = 12000;
 const WITH_DURATION = 2800;
 const WITH_DELAY = 400;
 const STOP_PAUSE = 220;
