@@ -1,22 +1,27 @@
 import * as deBundle from './copy-de-technical.js';
 import * as frBundle from './copy-fr-technical.js';
 import * as itBundle from './copy-it-technical.js';
+import * as enBundle from './copy-en.js';
 
-const BUNDLES = { de: deBundle, fr: frBundle, it: itBundle };
+const BUNDLES = { en: enBundle, de: deBundle, fr: frBundle, it: itBundle };
 
 let statusLabels;
 let deployStatusLabels;
 let technicalPages;
 let faqItems;
+let faqItHeading;
+let faqItItems;
 let faqCta;
 
 function setActiveBundle(locale) {
-  const bundle = BUNDLES[locale];
+  const bundle = BUNDLES[locale] ?? BUNDLES.en;
   if (!bundle) return false;
   statusLabels = bundle.statusLabels;
   deployStatusLabels = bundle.deployStatusLabels;
   technicalPages = bundle.technicalPages;
   faqItems = bundle.faqItems;
+  faqItHeading = bundle.faqItHeading;
+  faqItItems = bundle.faqItItems;
   faqCta = bundle.faqCta;
   return true;
 }
@@ -474,8 +479,21 @@ function renderFaqItem(item, index) {
 
 function applyFaq(locale) {
   const list = document.querySelector('.faq-list');
-  if (!list) return;
-  list.innerHTML = faqItems.map((item, i) => renderFaqItem(item, i)).join('');
+  if (list && faqItems) {
+    list.innerHTML = faqItems.map((item, i) => renderFaqItem(item, i)).join('');
+  }
+
+  const itSection = document.querySelector('#it-questions');
+  if (itSection && faqItItems) {
+    const heading = itSection.querySelector('[data-faq-it-heading]');
+    if (heading && faqItHeading) heading.textContent = faqItHeading;
+    const itList = itSection.querySelector('.faq-list');
+    if (itList) {
+      itList.innerHTML = faqItItems
+        .map((item, i) => renderFaqItem(item, i))
+        .join('');
+    }
+  }
 
   const cta = document.querySelector('.cta-band');
   setText(cta?.querySelector('h2'), faqCta.heading);
@@ -496,22 +514,19 @@ const pageHandlers = {
 };
 
 export function applyTechnicalTranslations(locale) {
-  if (locale !== 'de' && locale !== 'fr' && locale !== 'it') {
-    document.querySelectorAll('[data-i18n-en-only]').forEach((el) => {
-      el.hidden = false;
-    });
-    return false;
-  }
-
   if (!setActiveBundle(locale)) return false;
+
+  document.querySelectorAll('[data-i18n-en-only]').forEach((el) => {
+    el.hidden = locale !== 'en';
+  });
 
   const pageId = document.body.dataset.page;
   const handler = pageHandlers[pageId];
-  if (handler) {
-    handler(locale);
-    return true;
-  }
-  return false;
+  if (!handler) return false;
+  if (locale === 'en' && pageId !== 'faq') return false;
+
+  handler(locale);
+  return true;
 }
 
 export function needsFaqReinit(locale, pageId) {

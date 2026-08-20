@@ -726,6 +726,41 @@ export const faqItems = [
   },
 ];
 
+export const faqItHeading = 'Fragen, die Ihr IT-Team stellen wird';
+
+export const faqItItems = [
+  {
+    question: 'Wo werden unsere Daten gespeichert?',
+    answer:
+      'Speicher- und Verarbeitungsstandorte hängen von der gewählten Bereitstellung ab. Zuraio unterstützt kundenseitig kontrollierte Infrastruktur, Private Cloud, Schweizer Hosting und hybride Kombinationen. Die konkreten Standorte und Datenflüsse werden für die vereinbarte Kundenumgebung dokumentiert. Siehe <a href="deployment-models.html">Bereitstellungsmodelle</a> für einen Überblick.',
+  },
+  {
+    question: 'Verlassen Unternehmensdaten die gewählte Umgebung?',
+    answer:
+      'Zuraio ist darauf ausgelegt, richtlinienbasierte Beschränkungen festzulegen, welche Daten an jedes freigegebene Modell gesendet werden dürfen. In hybriden Bereitstellungen können unterschiedliche Komponenten und Modelle in unterschiedlichen freigegebenen Umgebungen betrieben werden – gemäss der vereinbarten Konfiguration.',
+  },
+  {
+    question: 'Können externe Cloud-KI-Modelle deaktiviert werden?',
+    answer:
+      'Welche Modelle einem Kunden zur Verfügung stehen, hängt von der vereinbarten Bereitstellung, der technischen Validierung und den kommerziellen Bedingungen ab. Architekturen können lokale Modelle, in der Schweiz gehostete Dienste und freigegebene Cloud-Modelle kombinieren, wobei Richtlinien festlegen, welche Daten wohin gesendet werden dürfen.',
+  },
+  {
+    question: 'Werden Anfragen von Mitarbeitenden gespeichert?',
+    answer:
+      'Relevante Anfragen, Quellen, Aktionen und technische Ereignisse können entsprechend den Fähigkeiten und dem Audit-Modell der gewählten Komponenten aufbewahrt werden. Das konkrete Aufbewahrungsverhalten hängt von Bereitstellung, Komponente und vereinbarter Konfiguration ab.',
+  },
+  {
+    question: 'Stehen Audit-Protokolle zur Verfügung?',
+    answer:
+      'Zuraio ist auf nachvollziehbare KI-Nutzung ausgelegt. Relevante Anfragen, Quellen und Aktionen können aufbewahrt werden, sofern dies von der gewählten Komponente und Audit-Konfiguration unterstützt wird. Der genaue Umfang variiert je nach Bereitstellung und Reifegrad der Komponente.',
+  },
+  {
+    question: 'Wie werden bestehende Zugriffsrechte angewendet?',
+    answer:
+      'Zuraio kann Identitäten, Gruppen und Berechtigungen von Microsoft oder Google einbinden und bei Bedarf durch zusätzliche Zuraio-Rollen ergänzen. Identitäts- und Berechtigungskontext kann an den relevanten Assistenten und die Datenquelle weitergegeben werden, damit der Zugriff bei der Informationsabfrage oder bei angeforderten Aktionen geprüft wird.',
+  },
+];
+
 export const faqCta = {
   heading: 'Noch Fragen?',
   lede: 'Buchen Sie eine private Demo. Gemeinsam besprechen wir Ihre Systeme, Anforderungen an die Datenkontrolle und erste Arbeitsabläufe.',

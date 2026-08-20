@@ -37,7 +37,7 @@ export const commonEn = {
     privacy: 'Privacy',
     terms: 'Terms',
     imprint: 'Imprint',
-    contactLine: 'hello@zuraio.ch · Switzerland',
+    contactLine: 'michael.wili@zuraio.ch · Switzerland',
     copyright: '© 2026 Zuraio',
   },
   comparison: {
@@ -108,7 +108,7 @@ export const commonDe = {
     privacy: 'Datenschutz',
     terms: 'AGB',
     imprint: 'Impressum',
-    contactLine: 'hello@zuraio.ch · Schweiz',
+    contactLine: 'michael.wili@zuraio.ch · Schweiz',
     copyright: '© 2026 Zuraio',
   },
   comparison: {

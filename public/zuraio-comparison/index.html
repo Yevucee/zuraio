@@ -9,19 +9,22 @@
 <link rel="shortcut icon" href="assets/favicon.ico">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <!-- Zuraio marketing homepage -->
-<meta name="description" content="Zuraio — A digital executive assistant for every employee. AI for Swiss companies that need control of their data." />
-<title>Zuraio — A digital executive assistant for every employee</title>
+<meta name="description" content="Zuraio is a digital executive assistant for Swiss SMEs. It works with approved company knowledge, shows its sources and keeps employees in control." />
+<meta property="og:title" content="Zuraio – AI assistant for Swiss SMEs with data control" />
+<meta property="og:description" content="Zuraio is a digital executive assistant for Swiss SMEs. It works with approved company knowledge, shows its sources and keeps employees in control." />
+<meta property="og:type" content="website" />
+<title>Zuraio – AI assistant for Swiss SMEs with data control</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=20260804c">
+<link rel="stylesheet" href="css/site.css?v=20260820">
 </head>
 <body>
 
 <div id="site-header"></div>
 
 <main id="top">
-  <!-- 1. Hero — office photo background with live copy + popup overlay -->
+  <!-- 1. Hero -->
   <section class="hero-layered hero-layered--office" id="hero-comparison" tabindex="0" aria-label="Hero">
     <div class="hero-layered__stage">
       <div class="hero-layered__bg" aria-hidden="true">
@@ -32,6 +35,7 @@
       <div class="wrap hero-layered__content">
         <div class="hero-grid">
           <div class="hero-copy" data-hero-copy aria-live="polite">
+            <span class="marker hero-eyebrow" data-hero-eyebrow>AI ASSISTANT FOR SWISS SMEs</span>
             <h1 data-hero-headline>A digital executive <span class="headline-em">assistant</span> for every employee.</h1>
             <p class="hero-lede" data-hero-paragraph>Zuraio gives everyone in your company an intelligent assistant that can find information, answer questions, prepare documents and help get work done.</p>
             <div class="cta-row">
@@ -57,7 +61,7 @@
     </div>
   </section>
 
-  <!-- 2. Business problem -->
+  <!-- 2. Recognise this? -->
   <section class="problem-section" id="problem">
     <div class="problem-section__glow" aria-hidden="true"></div>
     <div class="wrap problem-section__wrap">
@@ -78,30 +82,7 @@
     </div>
   </section>
 
-  <!-- 3. Data control — dark accent band -->
-  <section class="control pad" id="data-control">
-    <canvas class="control-particles" data-control-particles aria-hidden="true"></canvas>
-    <div class="wrap">
-      <div class="head-block reveal">
-        <span class="marker">Data control</span>
-        <p class="data-control__positioning">Built for Swiss SMEs that want the benefits of AI without losing control of company data.</p>
-        <h2>AI, without handing over the keys.</h2>
-        <p class="lede">Zuraio gives companies control over where it runs, which information it can use, who can access it and how its work is reviewed.</p>
-      </div>
-      <div class="ctrl-panel reveal d1">
-        <div class="ctrl-grid">
-          <div class="ccard"><h4>Swiss hosting available</h4><p>A Swiss-hosted option for companies that want their environment and company data kept in Switzerland.</p></div>
-          <div class="ccard"><h4>Access follows your rules</h4><p>People work only with the information they are permitted to use.</p></div>
-          <div class="ccard"><h4>Answers show their sources</h4><p>Users can check where information came from before relying on it.</p></div>
-          <div class="ccard"><h4>Built to be reviewed</h4><p>Requests, sources and outputs can be easier to trace according to the agreed setup.</p></div>
-        </div>
-        <p class="ctrl-note"><span style="color:var(--soft-olive);">▣</span><span><b>Need stronger control?</b> On-premise options and model choice can be discussed for companies with stricter internal requirements.</span></p>
-      </div>
-      <p class="section-link reveal"><a href="data-control.html">Explore data control and security →</a></p>
-    </div>
-  </section>
-
-  <!-- 4. Workflow comparison — paper band -->
+  <!-- 3. More than a chatbot -->
   <section class="pad section-band section-band--paper" id="different">
     <div class="wrap">
       <div class="head-block reveal">
@@ -162,39 +143,62 @@
         </div>
       </div>
 
+      <div class="compare-trio reveal d2" data-compare-trio>
+        <h3 class="compare-trio__heading" data-compare-trio-heading>How Zuraio compares</h3>
+        <div class="compare-trio__grid">
+          <article class="compare-trio__col">
+            <h4 class="compare-trio__name" data-compare-name="chatgpt">ChatGPT</h4>
+            <p class="compare-trio__body" data-compare-body="chatgpt">General-purpose AI for questions, writing and analysis. Company context is provided in the conversation or through separately configured connections.</p>
+          </article>
+          <article class="compare-trio__col">
+            <h4 class="compare-trio__name" data-compare-name="copilot">Microsoft Copilot</h4>
+            <p class="compare-trio__body" data-compare-body="copilot">AI integrated into the Microsoft ecosystem. Its scope and access are determined by the Microsoft products, licences, permissions and configuration in use.</p>
+          </article>
+          <article class="compare-trio__col compare-trio__col--zuraio">
+            <h4 class="compare-trio__name" data-compare-name="zuraio">Zuraio</h4>
+            <p class="compare-trio__body" data-compare-body="zuraio">A company-controlled assistant that connects approved knowledge, business systems and a choice of AI models, with sources and employee review.</p>
+          </article>
+        </div>
+      </div>
+
       <p class="compare-bridge reveal d2" data-compare-bridge>Behind the scenes, Zuraio can coordinate specialised AI assistants, suitable models and connected business systems. Employees work through one simple interface.</p>
       <p class="section-link reveal d2"><a href="technical-architecture.html" data-compare-bridge-link>Explore the technical architecture →</a></p>
 
     </div>
   </section>
 
-  <!-- 5. Integrations — photo band -->
-  <section class="pad section-photo section-photo--integrations" id="integrations">
-    <div class="section-photo__bg" aria-hidden="true">
-      <img src="../zuraio/assets/260707-fits-into-the-tools.png?v=20260722" alt="" width="1672" height="941" decoding="async" />
-    </div>
-    <div class="section-photo__scrim" aria-hidden="true"></div>
+  <!-- 4. Data control -->
+  <section class="control pad" id="data-control">
+    <canvas class="control-particles" data-control-particles aria-hidden="true"></canvas>
     <div class="wrap">
-      <div class="integrations-copy">
-        <div class="head-block reveal">
-          <h2>Designed to work with the tools your team already uses.</h2>
-          <p class="lede">Zuraio can connect to approved email, document, messaging and business systems. Available integrations depend on your company setup, deployment and current product status.</p>
+      <div class="head-block reveal">
+        <span class="marker">Data control</span>
+        <p class="data-control__positioning">Built for Swiss SMEs that want the benefits of AI without losing control of company data.</p>
+        <h2>AI, without handing over the keys.</h2>
+        <p class="lede">Zuraio gives companies control over where it runs, which information it can use, who can access it and how its work is reviewed.</p>
+      </div>
+      <div class="ctrl-panel reveal d1">
+        <div class="ctrl-grid">
+          <div class="ccard"><h4>Swiss hosting with Infomaniak</h4><p>Zuraio's Swiss-hosted option uses infrastructure in Switzerland provided by <a href="https://www.infomaniak.com/en/certifications" rel="noopener noreferrer">Infomaniak</a>. Infomaniak is ISO 27001:2022 certified and holds the Swiss Hosting label.</p></div>
+          <div class="ccard"><h4>Access follows your rules</h4><p>People work only with the information they are permitted to use.</p></div>
+          <div class="ccard"><h4>Answers show their sources</h4><p>Users can check where information came from before relying on it.</p></div>
+          <div class="ccard"><h4>Built to be reviewed</h4><p>Requests, sources and outputs can be easier to trace according to the agreed setup.</p></div>
         </div>
-        <p class="section-link reveal d3"><a href="integrations.html">View all integrations →</a></p>
+        <p class="ctrl-note"><span style="color:var(--soft-olive);">▣</span><span><b>Need stronger control?</b> On-premise options and model choice can be discussed for companies with stricter internal requirements.</span></p>
       </div>
-      <div class="marquee-track reveal d1" data-marquee tabindex="0" aria-label="Integration tools">
-        <div class="marquee-inner"></div>
-      </div>
+      <p class="section-link reveal"><a href="data-control.html">Explore data control and security →</a></p>
     </div>
   </section>
 
-  <!-- 6. See the assistant working — cloud band -->
+  <!-- 5. See your assistant working -->
   <section class="demo pad section-band section-band--cloud" id="assistant-demo">
     <div class="wrap">
       <div class="head-block reveal">
         <h2>See your assistant working.</h2>
         <p class="lede">Zuraio gathers relevant company context, prepares the work and shows its sources for your review.</p>
       </div>
+
+      <ul class="demo-examples reveal d1" data-demo-examples aria-label="Example questions"></ul>
 
       <div class="demo-static reveal d1" id="demo-static">
         <div class="demo-static__layout">
@@ -214,20 +218,39 @@
               aria-label="Zuraio assistant demonstration — draft reply prepared with company context and visible sources."
             ></video>
           </div>
-          <ol class="demo-static__steps" data-demo-steps></ol>
         </div>
         <p class="demo-static__caption" data-demo-caption>Zuraio can prepare a customer reply using previous correspondence, current documents and relevant company information. The employee reviews the result and decides what happens next.</p>
       </div>
     </div>
   </section>
 
-  <!-- 9. Reviewable AI — dark accent band -->
+  <!-- 6. Integrations -->
+  <section class="pad section-photo section-photo--integrations" id="integrations">
+    <div class="section-photo__bg" aria-hidden="true">
+      <img src="../zuraio/assets/260707-fits-into-the-tools.png?v=20260722" alt="" width="1672" height="941" decoding="async" />
+    </div>
+    <div class="section-photo__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="integrations-copy">
+        <div class="head-block reveal">
+          <h2>Designed to work with the tools your team already uses.</h2>
+          <p class="lede">Zuraio connects with Microsoft 365, SharePoint, Exchange and Teams, as well as CRM and ERP systems. MCP and REST APIs provide flexible connections to additional company tools.</p>
+        </div>
+        <p class="section-link reveal d3"><a href="integrations.html">View all integrations →</a></p>
+      </div>
+      <div class="marquee-track reveal d1" data-marquee tabindex="0" aria-label="Integration tools">
+        <div class="marquee-inner"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. AI governance -->
   <section class="control pad" id="reviewable">
     <canvas class="control-particles audit-particles" data-audit-particles aria-hidden="true"></canvas>
     <div class="wrap">
       <div class="head-block reveal">
         <span class="marker">AI governance</span>
-        <h2>AI you can explain later.</h2>
+        <h2>A clear record from request to approval.</h2>
         <p class="lede">AI use is becoming easier to scrutinise. Customers, auditors and regulators will increasingly expect companies to explain where information came from and how AI was used.</p>
         <p class="lede">Zuraio helps you stay prepared with source-backed answers and reviewable AI.</p>
       </div>
@@ -241,7 +264,7 @@
     </div>
   </section>
 
-  <!-- 10. FAQ — compact accordion -->
+  <!-- 8. FAQ -->
   <section class="pad section-band section-band--paper" id="faq-home">
     <div class="wrap">
       <div class="head-block reveal">
@@ -249,10 +272,11 @@
       </div>
       <div class="faq-list faq-list--home" data-home-faq></div>
       <p class="section-link reveal"><a href="faq.html" data-faq-home-link>View all questions →</a></p>
+      <p class="section-link reveal"><a href="faq.html#it-questions" data-faq-it-link>Questions your IT team will ask →</a></p>
     </div>
   </section>
 
-  <!-- 11. Why we built it — paper band -->
+  <!-- 9. Why we built it -->
   <section class="origin pad section-band section-band--paper" id="origin">
     <div class="wrap">
       <div class="origin-grid">
@@ -272,7 +296,7 @@
     </div>
   </section>
 
-  <!-- 12. Final CTA — soft olive accent band -->
+  <!-- 10. Final CTA -->
   <section class="final pad" id="final">
     <div class="wrap reveal">
       <h2>See what your own assistant could take off your desk.</h2>
@@ -287,6 +311,6 @@
 </main>
 
 <div id="site-footer"></div>
-<script type="module" src="js/main.js?v=20260808"></script>
+<script type="module" src="js/main.js?v=20260820"></script>
 </body>
 </html>

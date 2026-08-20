@@ -11,7 +11,7 @@ import { initInternalReview, refreshInternalReview, isInternalReviewMode } from 
 import { initLogoWatermarks } from './logo-watermarks.js';
 import { SITE } from './config.js';
 import { initRoutesDiagram, refreshRoutesDiagram } from './routes-diagram.js?v=20260807';
-import { applyAllTranslations, getLocale, initLocaleSwitcher } from './i18n.js?v=20260807';
+import { applyAllTranslations, getLocale, initLocaleSwitcher } from './i18n.js?v=20260820';
 
 const TECHNICAL_PAGES = new Set([
   'technicalArchitecture',

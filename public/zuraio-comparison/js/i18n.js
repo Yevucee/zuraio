@@ -148,7 +148,12 @@ export function applyHomeTranslations() {
   if (home.meta?.title) document.title = home.meta.title;
   const metaDesc = document.querySelector('meta[name="description"]');
   if (metaDesc && home.meta?.description) metaDesc.setAttribute('content', home.meta.description);
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle && home.meta?.ogTitle) ogTitle.setAttribute('content', home.meta.ogTitle);
+  const ogDesc = document.querySelector('meta[property="og:description"]');
+  if (ogDesc && home.meta?.ogDescription) ogDesc.setAttribute('content', home.meta.ogDescription);
 
+  setText('[data-hero-eyebrow]', home.heroEyebrow);
   setText('#problem .marker', home.problem.marker);
   setHtml('#problem [data-problem-headline]', home.problem.headingHtml || home.problem.heading);
   setText('#problem [data-problem-body], #problem .lede', home.problem.body);
@@ -168,6 +173,15 @@ export function applyHomeTranslations() {
   setHtml('[data-compare-bridge-link]', home.different.bridgeLink);
   setLinkHref('[data-compare-bridge-link]', 'technical-architecture.html');
 
+  if (home.different.compareTrio) {
+    setText('[data-compare-trio-heading]', home.different.compareTrio.heading);
+    setText('[data-compare-name="chatgpt"]', home.different.compareTrio.chatgpt.name);
+    setText('[data-compare-body="chatgpt"]', home.different.compareTrio.chatgpt.body);
+    setText('[data-compare-name="copilot"]', home.different.compareTrio.copilot.name);
+    setText('[data-compare-body="copilot"]', home.different.compareTrio.copilot.body);
+    setText('[data-compare-name="zuraio"]', home.different.compareTrio.zuraio.name);
+    setText('[data-compare-body="zuraio"]', home.different.compareTrio.zuraio.body);
+  }
   setText('#integrations h2', home.integrations.heading);
   setText('#integrations .lede', home.integrations.body);
   setHtml('#integrations .section-link a', home.integrations.link);
@@ -180,6 +194,15 @@ export function applyHomeTranslations() {
     if (home.demo.video) demoVideo.src = `${home.demo.video}?v=20260805v2`;
     if (home.demo.poster) demoVideo.poster = `${home.demo.poster}?v=20260805v2`;
     if (home.demo.videoAlt) demoVideo.setAttribute('aria-label', home.demo.videoAlt);
+  }
+  const demoExamples = document.querySelector('[data-demo-examples]');
+  if (demoExamples && home.demo.examples) {
+    demoExamples.innerHTML = home.demo.examples
+      .map(
+        (example) =>
+          `<li class="demo-example"><span class="demo-example__label">${example.label}</span><p class="demo-example__prompt">${example.prompt}</p></li>`,
+      )
+      .join('');
   }
   const demoSteps = document.querySelector('[data-demo-steps]');
   if (demoSteps && home.demo.steps) {
@@ -201,7 +224,11 @@ export function applyHomeTranslations() {
     const el = ccards[i];
     if (!el) return;
     el.querySelector('h4').textContent = card.title;
-    el.querySelector('p').textContent = card.body;
+    const body = el.querySelector('p');
+    if (body) {
+      if (card.bodyHtml) body.innerHTML = card.bodyHtml;
+      else if (card.body) body.textContent = card.body;
+    }
   });
   setHtml('#data-control .ctrl-note span:last-child', home.dataControl.note);
   setHtml('#data-control .section-link a', home.dataControl.link);
@@ -250,7 +277,8 @@ export function applyHomeTranslations() {
   }
   setHtml('[data-faq-home-link]', home.faq?.link);
   setLinkHref('[data-faq-home-link]', 'faq.html');
-
+  setHtml('[data-faq-it-link]', home.faq?.itLink);
+  setLinkHref('[data-faq-it-link]', 'faq.html#it-questions');
   setText('#final h2', home.final.heading);
   setText('#final p:not(.small)', home.final.body);
   const finalCtas = document.querySelectorAll('#final .cta-row a');
@@ -268,6 +296,14 @@ export function applyPageTranslations() {
   const page = getCopy().pages?.[pageId];
   if (!page) return;
   if (page.title) document.title = page.title;
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc && page.description) metaDesc.setAttribute('content', page.description);
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle && (page.ogTitle || page.title)) ogTitle.setAttribute('content', page.ogTitle || page.title);
+  const ogDesc = document.querySelector('meta[property="og:description"]');
+  if (ogDesc && (page.ogDescription || page.description)) {
+    ogDesc.setAttribute('content', page.ogDescription || page.description);
+  }
   if (page.hero) {
     setText('.page-hero .marker', page.hero.marker);
     setHeading('.page-hero h1', page.hero.heading, page.hero.headingEmphasis);

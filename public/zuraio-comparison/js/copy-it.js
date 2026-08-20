@@ -68,6 +68,7 @@ export const trustSignals = [
   { label: 'Hosting in Svizzera disponibile', href: 'deployment-models.html#swiss-hosted' },
   { label: 'Fonti visibili', href: 'knowledge.html#traceability' },
   { label: 'Conoscenza aziendale approvata', href: 'knowledge.html#skillos' },
+  { label: 'Scelta del modello di IA', href: 'technical-architecture.html#models' },
   { label: 'Mantenete il controllo', href: 'data-control.html#data-ownership' },
 ];
 
@@ -131,10 +132,14 @@ export const ui = {
 
 export const home = {
   meta: {
-    title: 'Zuraio — Un assistente di direzione digitale per ogni collaboratore',
+    title: 'Zuraio – Assistente IA per PMI svizzere, con controllo dei dati',
     description:
-      'Zuraio — Un assistente di direzione digitale per ogni collaboratore. IA per le aziende svizzere che vogliono mantenere il controllo dei propri dati.',
+      'Zuraio è un assistente digitale per le PMI svizzere. Utilizza conoscenze aziendali approvate, mostra le fonti e lascia il controllo ai collaboratori.',
+    ogTitle: 'Zuraio – Assistente IA per PMI svizzere, con controllo dei dati',
+    ogDescription:
+      'Zuraio è un assistente digitale per le PMI svizzere. Utilizza conoscenze aziendali approvate, mostra le fonti e lascia il controllo ai collaboratori.',
   },
+  heroEyebrow: 'ASSISTENTE IA PER LE PMI SVIZZERE',
   problem: {
     marker: 'Vi sembra familiare?',
     headingHtml: 'I vostri collaboratori dedicano troppo tempo alla ricerca di informazioni.',
@@ -171,8 +176,23 @@ export const home = {
     headingEmphasis: 'conoscenza aziendale',
     body: 'Un’IA generica conosce soltanto ciò che le viene fornito in ogni conversazione. Zuraio accede in modo sicuro alla conoscenza aziendale approvata, considera il contesto della persona che pone la domanda e prepara risposte e documenti corredati dalle relative fonti.',
     bridge:
-      'Dietro le quinte, Zuraio è progettato per coordinare assistenti IA specializzati, modelli adatti e sistemi aziendali collegati. I collaboratori utilizzano un’unica interfaccia chiara.',
+      'Dietro le quinte, Zuraio può coordinare assistenti IA specializzati, modelli adatti e sistemi aziendali collegati. I collaboratori utilizzano un’unica interfaccia chiara.',
     bridgeLink: 'Scoprite l’architettura tecnica →',
+    compareTrio: {
+      heading: 'Zuraio a confronto',
+      chatgpt: {
+        name: 'ChatGPT',
+        body: 'Un’IA generalista per domande, testi e analisi. Il contesto aziendale viene fornito nella conversazione o tramite collegamenti configurati separatamente.',
+      },
+      copilot: {
+        name: 'Microsoft Copilot',
+        body: 'Un’IA integrata nell’ecosistema Microsoft. Funzioni e accessi sono determinati dai prodotti Microsoft, dalle licenze, dalle autorizzazioni e dalla configurazione in uso.',
+      },
+      zuraio: {
+        name: 'Zuraio',
+        body: 'Un assistente sotto il controllo dell’azienda, che collega conoscenze approvate, sistemi aziendali e diversi modelli di IA, con fonti indicate e verifica da parte dei collaboratori.',
+      },
+    },
     without: {
       title: 'Senza Zuraio',
       subtitle: 'Un processo frammentato',
@@ -197,7 +217,7 @@ export const home = {
   },
   integrations: {
     heading: 'Progettato per funzionare con gli strumenti che il vostro team utilizza già.',
-    body: 'Zuraio può collegarsi a sistemi di posta elettronica, gestione documentale, comunicazione e gestione aziendale approvati. Le integrazioni disponibili dipendono dalla configurazione aziendale, dall’implementazione e dallo stato attuale del prodotto.',
+    body: 'Zuraio si collega a Microsoft 365, SharePoint, Exchange e Teams, oltre che ai sistemi CRM ed ERP. MCP e le API REST consentono collegamenti flessibili ad altri strumenti aziendali.',
     link: 'Visualizzate tutte le integrazioni →',
   },
   demo: {
@@ -209,10 +229,19 @@ export const home = {
     poster: '../zuraio/assets/zuraio-demo-mail.png',
     videoAlt:
       'Assistente e-mail Zuraio con bozza di risposta, contesto aziendale e fonti visibili.',
-    steps: [
-      { title: 'Porre una domanda', body: null },
-      { title: 'Zuraio riunisce il contesto aziendale autorizzato', body: null },
-      { title: 'Verificare la risposta e le relative fonti', body: null },
+    examples: [
+      {
+        label: 'Stato del progetto',
+        prompt: 'Qual è lo stato attuale del progetto X e quali attività sono ancora aperte?',
+      },
+      {
+        label: 'Preparazione dell’incontro',
+        prompt: 'Prepara un briefing per l’incontro di domani con il cliente utilizzando le e-mail, i documenti e le informazioni CRM più recenti.',
+      },
+      {
+        label: 'Comunicazione con il cliente',
+        prompt: 'Prepara una risposta al cliente utilizzando le nostre condizioni approvate e la corrispondenza precedente.',
+      },
     ],
   },
   dataControl: {
@@ -224,8 +253,9 @@ export const home = {
     body: 'Con Zuraio, le aziende stabiliscono dove viene gestita la soluzione, quali informazioni può utilizzare, chi può accedervi e come vengono verificati i risultati.',
     cards: [
       {
-        title: 'Hosting in Svizzera disponibile',
-        body: 'È disponibile un’opzione di hosting in Svizzera per le aziende che desiderano mantenere in Svizzera il proprio ambiente Zuraio e i dati aziendali.',
+        title: 'Hosting svizzero con Infomaniak',
+        bodyHtml:
+          'L’opzione Zuraio con hosting in Svizzera utilizza l’infrastruttura di <a href="https://www.infomaniak.com/en/certifications" rel="noopener noreferrer">Infomaniak</a> situata in Svizzera. Infomaniak è certificata ISO 27001:2022 e dispone del marchio Swiss Hosting.',
       },
       {
         title: 'Accesso secondo le vostre regole',
@@ -245,7 +275,7 @@ export const home = {
   },
   reviewable: {
     marker: 'Governance dell’IA',
-    heading: 'Un’IA che resta verificabile nel tempo.',
+    heading: 'Un percorso chiaro, dalla richiesta all’approvazione.',
     headingEmphasis: 'verificabile',
     bodyParagraphs: [
       'L’utilizzo dell’IA è sottoposto a un’attenzione crescente. Clienti, organi di revisione e autorità si aspettano sempre più che le aziende sappiano spiegare da dove provengono le informazioni e come è stata utilizzata l’IA.',
@@ -274,6 +304,7 @@ export const home = {
   faq: {
     heading: 'Domande frequenti',
     link: 'Visualizzate tutte le domande →',
+    itLink: 'Domande del vostro team IT →',
     items: [
       {
         question: 'Che cos’è Zuraio?',

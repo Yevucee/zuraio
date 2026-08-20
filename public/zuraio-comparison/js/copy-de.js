@@ -68,6 +68,7 @@ export const trustSignals = [
   { label: 'Schweizer Hosting verfügbar', href: 'deployment-models.html#swiss-hosted' },
   { label: 'Quellen sichtbar', href: 'knowledge.html#traceability' },
   { label: 'Freigegebenes Unternehmenswissen', href: 'knowledge.html#skillos' },
+  { label: 'Wahl des KI-Modells', href: 'technical-architecture.html#models' },
   { label: 'Sie behalten die Kontrolle', href: 'data-control.html#data-ownership' },
 ];
 
@@ -131,10 +132,14 @@ export const ui = {
 
 export const home = {
   meta: {
-    title: 'Zuraio — Ein digitaler Executive Assistant für alle Mitarbeitenden',
+    title: 'Zuraio – KI-Assistent für Schweizer KMU mit Datenkontrolle',
     description:
-      'Zuraio — Ein digitaler Executive Assistant für alle Mitarbeitenden. KI für Schweizer Unternehmen, die die Kontrolle über ihre Daten behalten wollen.',
+      'Zuraio ist ein digitaler Assistent für Schweizer KMU. Er arbeitet mit freigegebenem Unternehmenswissen, weist Quellen aus und lässt die Kontrolle bei den Mitarbeitenden.',
+    ogTitle: 'Zuraio – KI-Assistent für Schweizer KMU mit Datenkontrolle',
+    ogDescription:
+      'Zuraio ist ein digitaler Assistent für Schweizer KMU. Er arbeitet mit freigegebenem Unternehmenswissen, weist Quellen aus und lässt die Kontrolle bei den Mitarbeitenden.',
   },
+  heroEyebrow: 'KI-ASSISTENT FÜR SCHWEIZER KMU',
   problem: {
     marker: 'Kommt Ihnen das bekannt vor?',
     headingHtml: 'Ihre Mitarbeitenden verbringen zu viel Zeit mit der Suche nach Informationen.',
@@ -171,8 +176,23 @@ export const home = {
     headingEmphasis: 'Unternehmenswissen',
     body: 'Herkömmliche KI kennt nur das, was in jeder einzelnen Unterhaltung bereitgestellt wird. Zuraio greift sicher auf freigegebenes Unternehmenswissen zu, berücksichtigt den Kontext der fragenden Person und bereitet Antworten und Dokumente mit Quellen zur Prüfung vor.',
     bridge:
-      'Im Hintergrund ist Zuraio darauf ausgelegt, spezialisierte KI-Assistenten, geeignete Modelle und angebundene Geschäftssysteme zu koordinieren. Die Mitarbeitenden arbeiten über eine einzige, übersichtliche Oberfläche.',
+      'Im Hintergrund kann Zuraio spezialisierte KI-Assistenten, geeignete Modelle und angebundene Geschäftssysteme koordinieren. Die Mitarbeitenden arbeiten über eine einzige, übersichtliche Oberfläche.',
     bridgeLink: 'Technische Architektur entdecken →',
+    compareTrio: {
+      heading: 'Zuraio im Vergleich',
+      chatgpt: {
+        name: 'ChatGPT',
+        body: 'Allgemeine KI für Fragen, Texte und Analysen. Unternehmenskontext wird im Gespräch bereitgestellt oder über separat eingerichtete Verbindungen eingebunden.',
+      },
+      copilot: {
+        name: 'Microsoft Copilot',
+        body: 'KI innerhalb des Microsoft-Ökosystems. Umfang und Zugriff richten sich nach den eingesetzten Microsoft-Produkten, Lizenzen, Berechtigungen und der Konfiguration.',
+      },
+      zuraio: {
+        name: 'Zuraio',
+        body: 'Ein vom Unternehmen kontrollierter Assistent, der freigegebenes Wissen, Geschäftssysteme und verschiedene KI-Modelle verbindet – mit Quellenangaben und Prüfung durch Mitarbeitende.',
+      },
+    },
     without: {
       title: 'Ohne Zuraio',
       subtitle: 'Ein fragmentierter Prozess',
@@ -197,7 +217,7 @@ export const home = {
   },
   integrations: {
     heading: 'Entwickelt für die Tools, die Ihr Team bereits nutzt.',
-    body: 'Zuraio kann an freigegebene E-Mail-, Dokumenten-, Kommunikations- und Geschäftssysteme angebunden werden. Verfügbare Integrationen hängen von Ihrer Unternehmenskonfiguration, der Bereitstellung und dem aktuellen Produktstatus ab.',
+    body: 'Zuraio verbindet Microsoft 365, SharePoint, Exchange und Teams ebenso wie CRM- und ERP-Systeme. MCP und REST-APIs ermöglichen flexible Anbindungen an weitere Unternehmenswerkzeuge.',
     link: 'Alle Integrationen ansehen →',
   },
   demo: {
@@ -209,10 +229,19 @@ export const home = {
     poster: '../zuraio/assets/zuraio-demo-mail.png',
     videoAlt:
       'Zuraio E-Mail-Assistent mit vorbereitetem Antwortentwurf, Unternehmenskontext und sichtbaren Quellen.',
-    steps: [
-      { title: 'Eine Frage stellen', body: null },
-      { title: 'Zuraio stellt den berechtigten Unternehmenskontext zusammen', body: null },
-      { title: 'Antwort und Quellen prüfen', body: null },
+    examples: [
+      {
+        label: 'Projektstatus',
+        prompt: 'Wie ist der aktuelle Stand von Projekt X und welche Aufgaben sind noch offen?',
+      },
+      {
+        label: 'Besprechungsvorbereitung',
+        prompt: 'Erstelle ein Briefing für das morgige Kundengespräch anhand der neuesten E-Mails, Dokumente und CRM-Informationen.',
+      },
+      {
+        label: 'Kundenkommunikation',
+        prompt: 'Entwirf eine Antwort an den Kunden auf Grundlage unserer freigegebenen Bedingungen und der bisherigen Korrespondenz.',
+      },
     ],
   },
   dataControl: {
@@ -224,8 +253,9 @@ export const home = {
     body: 'Mit Zuraio bestimmen Unternehmen, wo die Lösung betrieben wird, welche Informationen sie nutzen darf, wer darauf zugreifen kann und wie Ergebnisse geprüft werden.',
     cards: [
       {
-        title: 'Schweizer Hosting verfügbar',
-        body: 'Für Unternehmen, die ihre Zuraio-Umgebung und Unternehmensdaten in der Schweiz halten möchten, steht eine Schweizer Hosting-Option zur Verfügung.',
+        title: 'Schweizer Hosting mit Infomaniak',
+        bodyHtml:
+          'Die in der Schweiz gehostete Zuraio-Option nutzt Infrastruktur von <a href="https://www.infomaniak.com/en/certifications" rel="noopener noreferrer">Infomaniak</a> in der Schweiz. Infomaniak ist nach ISO 27001:2022 zertifiziert und trägt das Label Swiss Hosting.',
       },
       {
         title: 'Zugriff nach Ihren Regeln',
@@ -245,7 +275,7 @@ export const home = {
   },
   reviewable: {
     marker: 'KI-Governance',
-    heading: 'KI, die auch später nachvollziehbar bleibt.',
+    heading: 'Klar nachvollziehbar – von der Anfrage bis zur Freigabe.',
     headingEmphasis: 'nachvollziehbar',
     bodyParagraphs: [
       'Der Einsatz von KI wird zunehmend genauer geprüft. Kunden, Revisionsstellen und Behörden erwarten vermehrt, dass Unternehmen erklären können, woher Informationen stammen und wie KI eingesetzt wurde.',
@@ -274,6 +304,7 @@ export const home = {
   faq: {
     heading: 'Häufige Fragen',
     link: 'Alle Fragen ansehen →',
+    itLink: 'Fragen Ihres IT-Teams →',
     items: [
       {
         question: 'Was ist Zuraio?',

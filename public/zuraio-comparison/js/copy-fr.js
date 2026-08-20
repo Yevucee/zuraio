@@ -68,6 +68,7 @@ export const trustSignals = [
   { label: 'Hébergement en Suisse disponible', href: 'deployment-models.html#swiss-hosted' },
   { label: 'Sources visibles', href: 'knowledge.html#traceability' },
   { label: 'Connaissances d’entreprise approuvées', href: 'knowledge.html#skillos' },
+  { label: 'Choix du modèle d’IA', href: 'technical-architecture.html#models' },
   { label: 'Vous gardez le contrôle', href: 'data-control.html#data-ownership' },
 ];
 
@@ -131,10 +132,14 @@ export const ui = {
 
 export const home = {
   meta: {
-    title: 'Zuraio — Un assistant de direction numérique pour chaque collaborateur',
+    title: 'Zuraio – Assistant IA pour PME suisses, avec contrôle des données',
     description:
-      'Zuraio — Un assistant de direction numérique pour chaque collaborateur. L’IA pour les entreprises suisses qui veulent garder le contrôle de leurs données.',
+      'Zuraio est un assistant numérique destiné aux PME suisses. Il s’appuie sur les connaissances approuvées de l’entreprise, indique ses sources et laisse le contrôle aux collaborateurs.',
+    ogTitle: 'Zuraio – Assistant IA pour PME suisses, avec contrôle des données',
+    ogDescription:
+      'Zuraio est un assistant numérique destiné aux PME suisses. Il s’appuie sur les connaissances approuvées de l’entreprise, indique ses sources et laisse le contrôle aux collaborateurs.',
   },
+  heroEyebrow: 'ASSISTANT IA POUR LES PME SUISSES',
   problem: {
     marker: 'Cela vous semble familier ?',
     headingHtml: 'Vos collaborateurs passent trop de temps à chercher des informations.',
@@ -171,8 +176,23 @@ export const home = {
     headingEmphasis: 'connaissances de votre entreprise',
     body: 'Une IA générique ne connaît que ce qui est fourni dans chaque conversation. Zuraio accède de manière sécurisée aux connaissances d’entreprise approuvées, tient compte du contexte de la personne qui pose la question et prépare des réponses et des documents accompagnés de leurs sources.',
     bridge:
-      'En arrière-plan, Zuraio est conçu pour coordonner des assistants IA spécialisés, des modèles adaptés et des systèmes métier connectés. Les collaborateurs utilisent une seule interface claire.',
+      'En arrière-plan, Zuraio peut coordonner des assistants IA spécialisés, des modèles adaptés et des systèmes métier connectés. Les collaborateurs utilisent une seule interface claire.',
     bridgeLink: 'Découvrir l’architecture technique →',
+    compareTrio: {
+      heading: 'Zuraio en comparaison',
+      chatgpt: {
+        name: 'ChatGPT',
+        body: 'Une IA généraliste pour les questions, la rédaction et l’analyse. Le contexte de l’entreprise est fourni dans la conversation ou relié par des connexions configurées séparément.',
+      },
+      copilot: {
+        name: 'Microsoft Copilot',
+        body: 'Une IA intégrée à l’écosystème Microsoft. Son périmètre et ses accès sont déterminés par les produits Microsoft, les licences, les autorisations et la configuration en place.',
+      },
+      zuraio: {
+        name: 'Zuraio',
+        body: 'Un assistant sous le contrôle de l’entreprise, qui relie les connaissances approuvées, les systèmes métier et différents modèles d’IA, avec indication des sources et validation par les collaborateurs.',
+      },
+    },
     without: {
       title: 'Sans Zuraio',
       subtitle: 'Un processus fragmenté',
@@ -197,7 +217,7 @@ export const home = {
   },
   integrations: {
     heading: 'Conçu pour fonctionner avec les outils que votre équipe utilise déjà.',
-    body: 'Zuraio peut se connecter à des systèmes de messagerie, de gestion documentaire, de communication et métier approuvés. Les intégrations disponibles dépendent de la configuration de votre entreprise, du déploiement et de l’état actuel du produit.',
+    body: 'Zuraio se connecte à Microsoft 365, SharePoint, Exchange et Teams, ainsi qu’aux systèmes CRM et ERP. MCP et les API REST permettent de relier d’autres outils de l’entreprise avec souplesse.',
     link: 'Voir toutes les intégrations →',
   },
   demo: {
@@ -209,10 +229,19 @@ export const home = {
     poster: '../zuraio/assets/zuraio-demo-mail.png',
     videoAlt:
       'Assistant e-mail Zuraio avec projet de réponse, contexte d’entreprise et sources visibles.',
-    steps: [
-      { title: 'Poser une question', body: null },
-      { title: 'Zuraio rassemble le contexte d’entreprise autorisé', body: null },
-      { title: 'Vérifier la réponse et ses sources', body: null },
+    examples: [
+      {
+        label: 'Statut du projet',
+        prompt: 'Quel est l’état actuel du projet X et quelles actions restent ouvertes ?',
+      },
+      {
+        label: 'Préparation de réunion',
+        prompt: 'Prépare un briefing pour la réunion client de demain à partir des derniers e-mails, documents et informations CRM.',
+      },
+      {
+        label: 'Communication client',
+        prompt: 'Rédige une réponse au client à partir de nos conditions approuvées et des échanges précédents.',
+      },
     ],
   },
   dataControl: {
@@ -224,8 +253,9 @@ export const home = {
     body: 'Avec Zuraio, les entreprises déterminent où la solution est exploitée, quelles informations elle peut utiliser, qui peut y accéder et comment les résultats sont contrôlés.',
     cards: [
       {
-        title: 'Hébergement en Suisse disponible',
-        body: 'Une option d’hébergement en Suisse est disponible pour les entreprises qui souhaitent conserver leur environnement Zuraio et leurs données d’entreprise en Suisse.',
+        title: 'Hébergement suisse avec Infomaniak',
+        bodyHtml:
+          'L’option Zuraio hébergée en Suisse utilise l’infrastructure d’<a href="https://www.infomaniak.com/en/certifications" rel="noopener noreferrer">Infomaniak</a> située en Suisse. Infomaniak est certifiée ISO 27001:2022 et détient le label Swiss Hosting.',
       },
       {
         title: 'Des accès selon vos règles',
@@ -245,7 +275,7 @@ export const home = {
   },
   reviewable: {
     marker: 'Gouvernance de l’IA',
-    heading: 'Une utilisation de l’IA qui reste traçable.',
+    heading: 'Une trace claire, de la demande à la validation.',
     headingEmphasis: 'traçable',
     bodyParagraphs: [
       'L’utilisation de l’IA fait l’objet d’une attention croissante. Les clients, les organes de révision et les autorités attendent de plus en plus des entreprises qu’elles puissent expliquer l’origine des informations et la manière dont l’IA a été utilisée.',
@@ -274,6 +304,7 @@ export const home = {
   faq: {
     heading: 'Questions fréquentes',
     link: 'Voir toutes les questions →',
+    itLink: 'Questions de votre équipe informatique →',
     items: [
       {
         question: 'Qu’est-ce que Zuraio ?',

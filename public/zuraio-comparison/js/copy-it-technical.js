@@ -792,6 +792,41 @@ export const faqItems = [
   },
 ];
 
+export const faqItHeading = 'Le domande che il vostro team IT farà';
+
+export const faqItItems = [
+  {
+    question: 'Dove vengono archiviati i nostri dati?',
+    answer:
+      'Le ubicazioni di archiviazione e di elaborazione dipendono dall’implementazione scelta. Zuraio supporta infrastrutture controllate dal cliente, cloud privato, hosting in Svizzera e combinazioni ibride. Le ubicazioni e i flussi di dati esatti sono documentati per l’ambiente concordato. Consultate <a href="deployment-models.html">modalità di implementazione</a> per una panoramica.',
+  },
+  {
+    question: 'I dati aziendali escono dall’ambiente scelto?',
+    answer:
+      'Zuraio è progettato per applicare restrizioni basate su policy su quali dati possono essere inviati a ciascun modello approvato. Nelle implementazioni ibride, componenti e modelli diversi possono operare in ambienti approvati diversi secondo la configurazione concordata.',
+  },
+  {
+    question: 'È possibile disattivare i modelli di IA cloud esterni?',
+    answer:
+      'I modelli disponibili per un cliente dipendono dall’implementazione concordata, dalla validazione tecnica e dalle condizioni commerciali. Le architetture possono combinare modelli locali, servizi con hosting in Svizzera e modelli cloud approvati, con policy che definiscono quali dati possono essere inviati a ciascuno.',
+  },
+  {
+    question: 'Le richieste dei collaboratori vengono conservate?',
+    answer:
+      'Richieste, fonti, azioni ed eventi tecnici pertinenti possono essere conservati secondo le capacità e il modello di audit dei componenti selezionati. Il comportamento esatto di conservazione dipende dall’implementazione, dal componente e dalla configurazione concordata.',
+  },
+  {
+    question: 'Sono disponibili registri di audit?',
+    answer:
+      'Zuraio è progettato per supportare un utilizzo verificabile dell’IA. Richieste, fonti e azioni pertinenti possono essere conservate quando supportato dal componente selezionato e dalla configurazione di audit. L’ambito esatto varia in base all’implementazione e alla maturità del componente.',
+  },
+  {
+    question: 'Come vengono applicati i diritti di accesso esistenti?',
+    answer:
+      'Zuraio può integrare identità, gruppi e autorizzazioni Microsoft o Google, con ruoli Zuraio aggiuntivi se necessario. Il contesto di identità e autorizzazione può essere trasmesso all’assistente e alla fonte dati pertinenti, così l’accesso viene verificato al momento del recupero delle informazioni o delle azioni richieste.',
+  },
+];
+
 export const faqCta = {
   heading: 'Avete altre domande?',
   lede: 'Prenotate una demo privata per discutere i vostri sistemi, i requisiti di controllo dei dati e i primi processi.',

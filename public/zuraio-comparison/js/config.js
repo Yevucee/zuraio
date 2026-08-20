@@ -30,7 +30,7 @@ export const SITE = {
   problemDiagram: '../zuraio/assets/zuraio_knowledge_background_right_aligned.png',
   integrationsBackground: '../zuraio/assets/260707-fits-into-the-tools.png',
   heroImage: '../zuraio/assets/zuraio-hero.jpg',
-  contactEmail: 'hello@zuraio.ch',
+  contactEmail: 'michael.wili@zuraio.ch',
   logo: 'assets/zuraio-logo.png',
 };
 
