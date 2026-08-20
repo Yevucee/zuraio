@@ -6873,7 +6873,8 @@ html {
   background: #fff;
   box-shadow: var(--shadow-md);
   width: 100%;
-  max-width: 100%;
+  max-width: min(100%, 1280px);
+  margin-inline: auto;
   line-height: 0;
   overflow: hidden;
   aspect-ratio: 16 / 9;
