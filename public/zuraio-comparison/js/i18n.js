@@ -14,6 +14,7 @@ import {
   getLocaleFromPathname,
   isInLocaleSubdir as pathIsInLocaleSubdir,
   langHrefForLocale,
+  homePathForLocale,
 } from './path-locale.js';
 
 const LOCALE_KEY = 'zuraio-locale';
@@ -50,6 +51,10 @@ export function setLocale(locale) {
   const page = getCurrentPageFile();
   const hash = location.hash;
   const base = SITE_BASE || '';
+  if (page === 'index.html') {
+    location.href = `${homePathForLocale(locale, base)}${hash}`;
+    return;
+  }
   if (locale === 'en') {
     location.href = `${base}/${page}${hash}`;
     return;

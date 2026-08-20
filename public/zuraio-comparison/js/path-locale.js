@@ -20,6 +20,27 @@ export function isInLocaleSubdir(pathname = location.pathname) {
   return getLocaleFromPathname(pathname) !== null;
 }
 
+function isHomePageFile(file) {
+  return file === 'index.html' || file === '' || file === '/';
+}
+
+function joinUrl(prefix, path, hash = '') {
+  const base = prefix ? `${prefix}${path}` : path;
+  const normalized = base.replace(/\/{2,}/g, '/');
+  if (!normalized.startsWith('/') && !normalized.startsWith('http')) {
+    return `${normalized}${hash}`;
+  }
+  return `${normalized}${hash}`;
+}
+
+/** Canonical homepage path for a locale (leading slash, trailing slash). */
+export function homePathForLocale(locale, siteBase = detectSiteBase()) {
+  if (locale === 'en') {
+    return siteBase ? `${siteBase}/` : '/';
+  }
+  return siteBase ? `${siteBase}/${locale}/` : `/${locale}/`;
+}
+
 export function langHrefForLocale(path, locale, siteBase = detectSiteBase()) {
   if (!path || path.startsWith('http') || path.startsWith('../') || path.startsWith('mailto:') || path.startsWith('tel:')) {
     return path;
@@ -29,15 +50,20 @@ export function langHrefForLocale(path, locale, siteBase = detectSiteBase()) {
   const hashIndex = path.indexOf('#');
   const file = hashIndex >= 0 ? path.slice(0, hashIndex) : path;
   const hash = hashIndex >= 0 ? path.slice(hashIndex) : '';
+
+  if (isHomePageFile(file)) {
+    return joinUrl('', homePathForLocale(locale, siteBase), hash);
+  }
+
   if (!file.endsWith('.html')) return path;
 
-  const rootPrefix = siteBase ? `${siteBase}/` : '';
+  const rootPrefix = siteBase ? `${siteBase}/` : '/';
   const inSubdir = isInLocaleSubdir();
 
   if (locale === 'en') {
-    if (inSubdir) return `../${file}${hash}`;
-    return rootPrefix ? `${rootPrefix}${file}${hash}` : `${file}${hash}`;
+    if (inSubdir) return joinUrl('', `../${file}`, hash);
+    return joinUrl('', siteBase ? `${siteBase}/${file}` : file, hash);
   }
-  if (inSubdir) return `${file}${hash}`;
-  return rootPrefix ? `${rootPrefix}${locale}/${file}${hash}` : `${locale}/${file}${hash}`;
+  if (inSubdir) return joinUrl('', file, hash);
+  return joinUrl('', siteBase ? `${siteBase}/${locale}/${file}` : `${locale}/${file}`, hash);
 }

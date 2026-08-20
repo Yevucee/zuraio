@@ -187,6 +187,7 @@ export function postprocessHtml(html, locale, page) {
 
   let out = rewriteAssetPaths(html, locale);
   out = rewriteLangLinks(out, locale);
+  out = normalizeHomeLinks(out, locale);
 
   out = out.replace(/<html lang="[^"]*">/, `<html lang="${locale}">`);
 
@@ -223,17 +224,22 @@ ${altLocales.map((l) => `  <meta property="og:locale:alternate" content="${l}">`
   return out;
 }
 
+function normalizeHomeLinks(html, locale) {
+  const home = locale === 'en' ? '/' : `/${locale}/`;
+  return html.replace(/href="index\.html(#[^"]*)?"/g, (_, hash = '') => `href="${home}${hash}"`);
+}
+
 export function injectLangRedirect(html) {
   const snippet = `<script>
 (function(){var p=new URLSearchParams(location.search),l=p.get('lang');
-if(!l||l==='en'||!['de','fr','it'].includes(l))return;
+if(!l||!['en','de','fr','it'].includes(l))return;
 var seg=location.pathname.split('/').filter(Boolean),base=seg[0]==='zuraio'?'/zuraio':'';
-if(base&&['de','fr','it'].includes(seg[1]))return;
-if(!base&&['de','fr','it'].includes(seg[0]))return;
-var f=location.pathname.split('/').pop()||'index.html';
-if(!f.endsWith('.html'))f='index.html';
-p.delete('lang');var q=p.toString();
-location.replace(base+'/'+l+'/'+f+(q?'?'+q:'')+location.hash);
+var localeIdx=base?1:0;
+var f=location.pathname.split('/').pop()||'';
+var isHome=!f||f==='index.html'||(['de','fr','it'].includes(f)&&seg.length===localeIdx+1);
+p.delete('lang');var q=p.toString(),suffix=(q?'?'+q:'')+location.hash;
+if(l==='en'){location.replace((base||'/')+(isHome?'':('/'+f))+suffix);return;}
+location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
 })();
 </script>`;
   return html.replace('</head>', `${snippet}\n</head>`);
