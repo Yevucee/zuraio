@@ -117,7 +117,7 @@ export const ui = {
   heroOptionsGroup: 'Hero-Messaging-Optionen',
   trustAria: 'Vertrauen und Datenkontrolle',
   primaryNavAria: 'Hauptnavigation',
-  logoAlt: 'Zuraio – own your data',
+  logoAlt: 'Zuraio – Ihre Daten unter Ihrer Kontrolle',
   langEn: 'EN',
   langDe: 'DE',
   langFr: 'FR',

@@ -117,7 +117,7 @@ export const ui = {
   heroOptionsGroup: 'Opzioni di messaging hero',
   trustAria: 'Fiducia e controllo dei dati',
   primaryNavAria: 'Navigazione principale',
-  logoAlt: 'Zuraio – own your data',
+  logoAlt: 'Zuraio – i vostri dati sotto il vostro controllo',
   langEn: 'EN',
   langDe: 'DE',
   langFr: 'FR',
@@ -127,7 +127,7 @@ export const ui = {
   languageActive: 'attivo',
   openMenu: 'Apri menu',
   closeMenu: 'Chiudi menu',
-  zuraioHome: 'Home page Zuraio',
+  zuraioHome: 'Pagina iniziale Zuraio',
 };
 
 export const home = {
