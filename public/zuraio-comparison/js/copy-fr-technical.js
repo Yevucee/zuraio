@@ -764,32 +764,32 @@ export const faqItItems = [
   {
     question: 'Où nos données sont-elles stockées ?',
     answer:
-      'Les emplacements de stockage et de traitement dépendent du déploiement choisi. Zuraio prend en charge une infrastructure contrôlée par le client, un cloud privé, un hébergement suisse et des combinaisons hybrides. Les emplacements et flux de données exacts sont documentés pour l’environnement client convenu. Voir <a href="deployment-models.html">modes de déploiement</a> pour un aperçu.',
+      'Le lieu de traitement dépend du déploiement choisi. Zuraio prend en charge des architectures utilisant une infrastructure contrôlée par le client, un cloud privé, un hébergement suisse et des combinaisons hybrides. Les emplacements, fournisseurs de modèles et flux de données exacts sont documentés pour l’environnement client convenu. Voir <a href="deployment-models.html">modes de déploiement</a> pour un aperçu.',
   },
   {
     question: 'Les données de l’entreprise quittent-elles l’environnement choisi ?',
     answer:
-      'Zuraio est conçu pour appliquer des restrictions basées sur les politiques concernant les données pouvant être envoyées à chaque modèle approuvé. Dans les déploiements hybrides, différents composants et modèles peuvent fonctionner dans différents environnements approuvés selon la configuration convenue.',
+      'Les politiques peuvent tenir compte de la tâche, de la classification des données, du lieu de traitement autorisé et du fournisseur de modèle approuvé. Les emplacements et flux de données exacts sont documentés pour l’environnement client convenu.',
   },
   {
     question: 'Peut-on désactiver les modèles d’IA cloud externes ?',
     answer:
-      'Les modèles disponibles pour un client dépendent du déploiement convenu, de la validation technique et des conditions commerciales. Les architectures peuvent combiner des modèles locaux, des services hébergés en Suisse et des modèles cloud approuvés, avec des politiques définissant quelles données peuvent être envoyées à chacun.',
+      'Les modèles disponibles et les données pouvant être envoyées à chaque modèle sont définis dans le déploiement convenu et les politiques de modèles. La disponibilité d’un modèle précis doit être confirmée dans le cadre du périmètre technique et commercial.',
   },
   {
     question: 'Les requêtes des collaborateurs sont-elles conservées ?',
     answer:
-      'Les demandes, sources, actions et événements techniques pertinents peuvent être conservés selon les capacités et le modèle d’audit des composants sélectionnés. Le comportement exact de conservation dépend du déploiement, du composant et de la configuration convenue.',
+      'Les demandes, sources et actions pertinentes peuvent être conservées selon le modèle d’audit convenu et la maturité de chaque composant. Le comportement exact de conservation dépend des composants sélectionnés et de la configuration convenue.',
   },
   {
     question: 'Des journaux d’audit sont-ils disponibles ?',
     answer:
-      'Zuraio est conçu pour prendre en charge une utilisation de l’IA vérifiable. Les demandes, sources et actions pertinentes peuvent être conservées lorsque le composant sélectionné et la configuration d’audit le permettent. L’étendue exacte varie selon le déploiement et la maturité du composant.',
+      'Les demandes, sources et actions pertinentes peuvent être conservées selon le modèle d’audit convenu et la maturité de chaque composant. L’étendue exacte dépend des composants sélectionnés et de la configuration convenue.',
   },
   {
     question: 'Comment les droits d’accès existants sont-ils appliqués ?',
     answer:
-      'Zuraio peut fonctionner avec les identités, groupes et autorisations Microsoft ou Google, avec des rôles Zuraio supplémentaires si nécessaire. Le contexte d’identité et d’autorisation peut être transmis à l’assistant et à la source de données concernés afin que l’accès soit vérifié lors de la récupération d’informations ou d’actions demandées.',
+      'Zuraio peut fonctionner avec les identités, groupes et autorisations Microsoft ou Google établis. Le contexte d’identité et d’autorisation peut être transmis à l’assistant et à la source de données concernés afin que l’accès soit vérifié lors de la récupération d’informations ou d’actions demandées. Le comportement exact des autorisations dépend du système connecté, de la méthode d’intégration et du déploiement convenu.',
   },
 ];
 

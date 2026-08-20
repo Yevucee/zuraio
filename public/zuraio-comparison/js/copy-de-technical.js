@@ -732,32 +732,32 @@ export const faqItItems = [
   {
     question: 'Wo werden unsere Daten gespeichert?',
     answer:
-      'Speicher- und Verarbeitungsstandorte hängen von der gewählten Bereitstellung ab. Zuraio unterstützt kundenseitig kontrollierte Infrastruktur, Private Cloud, Schweizer Hosting und hybride Kombinationen. Die konkreten Standorte und Datenflüsse werden für die vereinbarte Kundenumgebung dokumentiert. Siehe <a href="deployment-models.html">Bereitstellungsmodelle</a> für einen Überblick.',
+      'Der Verarbeitungsort hängt von der gewählten Bereitstellung ab. Zuraio unterstützt Architekturen mit kundenseitig kontrollierter Infrastruktur, Private Cloud, Schweizer Hosting und hybriden Kombinationen. Konkrete Standorte, Modellanbieter und Datenflüsse werden für die vereinbarte Kundenumgebung dokumentiert. Siehe <a href="deployment-models.html">Bereitstellungsmodelle</a> für einen Überblick.',
   },
   {
     question: 'Verlassen Unternehmensdaten die gewählte Umgebung?',
     answer:
-      'Zuraio ist darauf ausgelegt, richtlinienbasierte Beschränkungen festzulegen, welche Daten an jedes freigegebene Modell gesendet werden dürfen. In hybriden Bereitstellungen können unterschiedliche Komponenten und Modelle in unterschiedlichen freigegebenen Umgebungen betrieben werden – gemäss der vereinbarten Konfiguration.',
+      'Richtlinien können Aufgabe, Datenklassifikation, zulässigen Verarbeitungsort und freigegebenen Modellanbieter berücksichtigen. Konkrete Standorte und Datenflüsse werden für die vereinbarte Kundenumgebung dokumentiert.',
   },
   {
     question: 'Können externe Cloud-KI-Modelle deaktiviert werden?',
     answer:
-      'Welche Modelle einem Kunden zur Verfügung stehen, hängt von der vereinbarten Bereitstellung, der technischen Validierung und den kommerziellen Bedingungen ab. Architekturen können lokale Modelle, in der Schweiz gehostete Dienste und freigegebene Cloud-Modelle kombinieren, wobei Richtlinien festlegen, welche Daten wohin gesendet werden dürfen.',
+      'Welche Modelle verfügbar sind und welche Daten an jedes Modell gesendet werden dürfen, wird in der vereinbarten Bereitstellung und den Modellrichtlinien festgelegt. Die Verfügbarkeit eines bestimmten Modells muss im technischen und kommerziellen Umfang bestätigt werden.',
   },
   {
     question: 'Werden Anfragen von Mitarbeitenden gespeichert?',
     answer:
-      'Relevante Anfragen, Quellen, Aktionen und technische Ereignisse können entsprechend den Fähigkeiten und dem Audit-Modell der gewählten Komponenten aufbewahrt werden. Das konkrete Aufbewahrungsverhalten hängt von Bereitstellung, Komponente und vereinbarter Konfiguration ab.',
+      'Relevante Anfragen, Quellen und Aktionen können gemäss dem vereinbarten Audit-Modell und dem Reifegrad der jeweiligen Komponente aufbewahrt werden. Das konkrete Aufbewahrungsverhalten hängt von den gewählten Komponenten und der vereinbarten Konfiguration ab.',
   },
   {
     question: 'Stehen Audit-Protokolle zur Verfügung?',
     answer:
-      'Zuraio ist auf nachvollziehbare KI-Nutzung ausgelegt. Relevante Anfragen, Quellen und Aktionen können aufbewahrt werden, sofern dies von der gewählten Komponente und Audit-Konfiguration unterstützt wird. Der genaue Umfang variiert je nach Bereitstellung und Reifegrad der Komponente.',
+      'Relevante Anfragen, Quellen und Aktionen können gemäss dem vereinbarten Audit-Modell und dem Reifegrad der jeweiligen Komponente aufbewahrt werden. Der genaue Umfang hängt von den gewählten Komponenten und der vereinbarten Konfiguration ab.',
   },
   {
     question: 'Wie werden bestehende Zugriffsrechte angewendet?',
     answer:
-      'Zuraio kann Identitäten, Gruppen und Berechtigungen von Microsoft oder Google einbinden und bei Bedarf durch zusätzliche Zuraio-Rollen ergänzen. Identitäts- und Berechtigungskontext kann an den relevanten Assistenten und die Datenquelle weitergegeben werden, damit der Zugriff bei der Informationsabfrage oder bei angeforderten Aktionen geprüft wird.',
+      'Zuraio kann etablierte Microsoft- oder Google-Identitäten, Gruppen und Berechtigungen einbinden. Identitäts- und Berechtigungskontext kann an den relevanten Assistenten und die Datenquelle weitergegeben werden, damit der Zugriff bei der Informationsabfrage oder bei angeforderten Aktionen geprüft wird. Das konkrete Berechtigungsverhalten hängt vom angebundenen System, der Integrationsmethode und der vereinbarten Bereitstellung ab.',
   },
 ];
 

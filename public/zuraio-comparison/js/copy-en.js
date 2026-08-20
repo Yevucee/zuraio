@@ -420,32 +420,32 @@ export const faqItItems = [
   {
     question: 'Where is our data stored?',
     answer:
-      'Storage and processing locations depend on the selected deployment. Zuraio supports customer-controlled infrastructure, private cloud, Swiss hosting and hybrid combinations. The exact locations and data flows are documented for the agreed customer setup. See <a href="deployment-models.html">deployment models</a> for an overview.',
+      'The processing location depends on the selected deployment. Zuraio supports architectures using customer-controlled infrastructure, private cloud, Swiss hosting and hybrid combinations. The exact locations, model providers and data flows are documented for the agreed customer setup. See <a href="deployment-models.html">deployment models</a> for an overview.',
   },
   {
     question: 'Does company data leave the selected environment?',
     answer:
-      'Zuraio is designed to apply policy-based restrictions on which data may be sent to each approved model. In hybrid deployments, different components and models can operate in different approved environments according to the agreed configuration.',
+      'Policies can take account of the task, data classification, permitted processing location and approved model provider. The exact locations and data flows are documented for the agreed customer setup.',
   },
   {
     question: 'Can external cloud AI models be disabled?',
     answer:
-      'The models available to a customer depend on the agreed deployment, technical validation and commercial terms. Architectures can combine local models, Swiss-hosted services and approved cloud models, with policies defining which data may be sent to each.',
+      'Which models are available, and which data may be sent to each, are defined in the agreed deployment and model policies. The availability of a specific model must be confirmed as part of the technical and commercial scope.',
   },
   {
     question: 'Are employee queries stored?',
     answer:
-      'Relevant requests, sources, actions and technical events can be retained according to the capabilities and audit model of the selected components. The exact retention behaviour depends on the deployment, component and agreed configuration.',
+      'Relevant requests, sources and actions can be retained according to the agreed audit model and the maturity of each component. The exact retention behaviour depends on the selected components and agreed configuration.',
   },
   {
     question: 'Are audit records available?',
     answer:
-      'Zuraio is designed to support reviewable AI use. Relevant requests, sources and actions can be retained where supported by the selected component and audit configuration. The exact scope varies by deployment and component maturity.',
+      'Relevant requests, sources and actions can be retained according to the agreed audit model and the maturity of each component. The exact scope depends on the selected components and agreed configuration.',
   },
   {
     question: 'How are existing access permissions applied?',
     answer:
-      'Zuraio can work with Microsoft or Google identities, groups and permissions, with additional Zuraio roles where required. Identity and permission context can be passed to the relevant assistant and data source so access is checked when information is retrieved or an action is requested.',
+      'Zuraio can work with established Microsoft or Google identities, groups and permissions. Identity and permission context can be passed to the relevant assistant and data source so access can be checked when information is retrieved or an action is requested. The exact permission behaviour depends on the connected system, integration method and agreed deployment.',
   },
 ];
 

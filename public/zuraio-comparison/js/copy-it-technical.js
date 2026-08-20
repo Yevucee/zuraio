@@ -798,32 +798,32 @@ export const faqItItems = [
   {
     question: 'Dove vengono archiviati i nostri dati?',
     answer:
-      'Le ubicazioni di archiviazione e di elaborazione dipendono dall’implementazione scelta. Zuraio supporta infrastrutture controllate dal cliente, cloud privato, hosting in Svizzera e combinazioni ibride. Le ubicazioni e i flussi di dati esatti sono documentati per l’ambiente concordato. Consultate <a href="deployment-models.html">modalità di implementazione</a> per una panoramica.',
+      'Il luogo di elaborazione dipende dall’implementazione scelta. Zuraio supporta architetture con infrastruttura controllata dal cliente, cloud privato, hosting in Svizzera e combinazioni ibride. Le ubicazioni, i fornitori di modelli e i flussi di dati esatti sono documentati per l’ambiente concordato. Consultate <a href="deployment-models.html">modalità di implementazione</a> per una panoramica.',
   },
   {
     question: 'I dati aziendali escono dall’ambiente scelto?',
     answer:
-      'Zuraio è progettato per applicare restrizioni basate su policy su quali dati possono essere inviati a ciascun modello approvato. Nelle implementazioni ibride, componenti e modelli diversi possono operare in ambienti approvati diversi secondo la configurazione concordata.',
+      'Le policy possono tenere conto dell’attività, della classificazione dei dati, del luogo di elaborazione consentito e del fornitore di modelli approvato. Le ubicazioni e i flussi di dati esatti sono documentati per l’ambiente concordato.',
   },
   {
     question: 'È possibile disattivare i modelli di IA cloud esterni?',
     answer:
-      'I modelli disponibili per un cliente dipendono dall’implementazione concordata, dalla validazione tecnica e dalle condizioni commerciali. Le architetture possono combinare modelli locali, servizi con hosting in Svizzera e modelli cloud approvati, con policy che definiscono quali dati possono essere inviati a ciascuno.',
+      'Quali modelli sono disponibili e quali dati possono essere inviati a ciascun modello sono definiti nell’implementazione concordata e nelle policy sui modelli. La disponibilità di un modello specifico deve essere confermata nell’ambito tecnico e commerciale.',
   },
   {
     question: 'Le richieste dei collaboratori vengono conservate?',
     answer:
-      'Richieste, fonti, azioni ed eventi tecnici pertinenti possono essere conservati secondo le capacità e il modello di audit dei componenti selezionati. Il comportamento esatto di conservazione dipende dall’implementazione, dal componente e dalla configurazione concordata.',
+      'Richieste, fonti e azioni pertinenti possono essere conservate secondo il modello di audit concordato e la maturità di ciascun componente. Il comportamento esatto di conservazione dipende dai componenti selezionati e dalla configurazione concordata.',
   },
   {
     question: 'Sono disponibili registri di audit?',
     answer:
-      'Zuraio è progettato per supportare un utilizzo verificabile dell’IA. Richieste, fonti e azioni pertinenti possono essere conservate quando supportato dal componente selezionato e dalla configurazione di audit. L’ambito esatto varia in base all’implementazione e alla maturità del componente.',
+      'Richieste, fonti e azioni pertinenti possono essere conservate secondo il modello di audit concordato e la maturità di ciascun componente. L’ambito esatto dipende dai componenti selezionati e dalla configurazione concordata.',
   },
   {
     question: 'Come vengono applicati i diritti di accesso esistenti?',
     answer:
-      'Zuraio può integrare identità, gruppi e autorizzazioni Microsoft o Google, con ruoli Zuraio aggiuntivi se necessario. Il contesto di identità e autorizzazione può essere trasmesso all’assistente e alla fonte dati pertinenti, così l’accesso viene verificato al momento del recupero delle informazioni o delle azioni richieste.',
+      'Zuraio può integrare identità, gruppi e autorizzazioni Microsoft o Google consolidate. Il contesto di identità e autorizzazione può essere trasmesso all’assistente e alla fonte dati pertinenti, così l’accesso viene verificato al momento del recupero delle informazioni o delle azioni richieste. Il comportamento esatto delle autorizzazioni dipende dal sistema collegato, dal metodo di integrazione e dall’implementazione concordata.',
   },
 ];
 
