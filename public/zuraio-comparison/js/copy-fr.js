@@ -461,35 +461,43 @@ export const pages = {
     },
   },
   privacy: {
-    title: 'Protection des données — Zuraio',
+    title: 'Confidentialité — Zuraio',
+    description:
+      'Cette page constitue un modèle structuré. Une politique de confidentialité complète doit être préparée et examinée par un conseil juridique qualifié avant publication.',
     hero: {
-      marker: 'Mentions légales',
-      heading: 'Politique de protection des données.',
-      lede: 'Cette page est un espace réservé structuré. Une politique complète doit être préparée et examinée par un conseil juridique qualifié avant publication.',
+      marker: 'JURIDIQUE',
+      heading: 'Politique de confidentialité.',
+      lede: 'Cette page constitue un modèle structuré. Une politique de confidentialité complète doit être préparée et examinée par un conseil juridique qualifié avant publication.',
     },
   },
   impressum: {
-    title: 'Impressum — Zuraio',
+    title: 'Mentions légales — Zuraio',
+    description:
+      'Cette page constitue un modèle structuré. Toutes les informations relatives à l’entreprise ci-dessous doivent être vérifiées et complétées avant publication.',
     hero: {
-      marker: 'Mentions légales',
-      heading: 'Impressum.',
-      lede: 'Cette page est un espace réservé structuré. Toutes les informations de l’entreprise ci-dessous doivent être vérifiées et insérées avant publication.',
+      marker: 'JURIDIQUE',
+      heading: 'Mentions légales.',
+      lede: 'Cette page constitue un modèle structuré. Toutes les informations relatives à l’entreprise ci-dessous doivent être vérifiées et complétées avant publication.',
     },
   },
   terms: {
     title: 'Conditions d’utilisation — Zuraio',
+    description:
+      'Cette page constitue un modèle structuré. Des conditions complètes doivent être préparées et examinées par un conseil juridique qualifié avant publication.',
     hero: {
-      marker: 'Mentions légales',
+      marker: 'JURIDIQUE',
       heading: 'Conditions d’utilisation.',
-      lede: 'Cette page est un espace réservé structuré. Des conditions complètes doivent être préparées et examinées par un conseil juridique qualifié avant publication.',
+      lede: 'Cette page constitue un modèle structuré. Des conditions complètes doivent être préparées et examinées par un conseil juridique qualifié avant publication.',
     },
   },
   cookies: {
     title: 'Paramètres des cookies — Zuraio',
+    description:
+      'Cette page constitue un modèle structuré. Les catégories de cookies réellement utilisées et les options de contrôle seront publiées après examen juridique et technique.',
     hero: {
-      marker: 'Mentions légales',
+      marker: 'JURIDIQUE',
       heading: 'Paramètres des cookies.',
-      lede: 'Cette page est un espace réservé structuré. Les catégories et contrôles de cookies réels seront publiés après examen juridique et technique.',
+      lede: 'Cette page constitue un modèle structuré. Les catégories de cookies réellement utilisées et les options de contrôle seront publiées après examen juridique et technique.',
     },
   },
 };
@@ -532,8 +540,8 @@ export const footerGroups = [
   {
     title: 'Mentions légales',
     links: [
-      { label: 'Impressum', href: 'impressum.html' },
-      { label: 'Protection des données', href: 'privacy.html' },
+      { label: 'Mentions légales', href: 'impressum.html' },
+      { label: 'Confidentialité', href: 'privacy.html' },
       { label: 'Paramètres des cookies', href: 'cookies.html' },
       { label: 'Conditions d’utilisation', href: 'terms.html' },
     ],

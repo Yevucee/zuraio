@@ -461,35 +461,43 @@ export const pages = {
     },
   },
   privacy: {
-    title: 'Protezione dei dati — Zuraio',
+    title: 'Privacy — Zuraio',
+    description:
+      'Questa pagina costituisce un modello strutturato. Prima della pubblicazione dovrà essere predisposta un’informativa completa sulla privacy e sottoposta alla revisione di un consulente legale qualificato.',
     hero: {
-      marker: 'Note legali',
-      heading: 'Informativa sulla protezione dei dati.',
-      lede: 'Questa pagina è un segnaposto strutturato. Un’informativa completa deve essere preparata e revisionata da consulenti legali qualificati prima della pubblicazione.',
+      marker: 'INFORMAZIONI LEGALI',
+      heading: 'Informativa sulla privacy.',
+      lede: 'Questa pagina costituisce un modello strutturato. Prima della pubblicazione dovrà essere predisposta un’informativa completa sulla privacy e sottoposta alla revisione di un consulente legale qualificato.',
     },
   },
   impressum: {
-    title: 'Impressum — Zuraio',
+    title: 'Note legali — Zuraio',
+    description:
+      'Questa pagina costituisce un modello strutturato. Tutti i dati aziendali riportati di seguito devono essere verificati e completati prima della pubblicazione.',
     hero: {
-      marker: 'Note legali',
-      heading: 'Impressum.',
-      lede: 'Questa pagina è un segnaposto strutturato. Tutti i dati aziendali riportati di seguito devono essere verificati e inseriti prima della pubblicazione.',
+      marker: 'INFORMAZIONI LEGALI',
+      heading: 'Note legali.',
+      lede: 'Questa pagina costituisce un modello strutturato. Tutti i dati aziendali riportati di seguito devono essere verificati e completati prima della pubblicazione.',
     },
   },
   terms: {
     title: 'Condizioni d’uso — Zuraio',
+    description:
+      'Questa pagina costituisce un modello strutturato. Prima della pubblicazione dovranno essere predisposte condizioni complete e sottoposte alla revisione di un consulente legale qualificato.',
     hero: {
-      marker: 'Note legali',
+      marker: 'INFORMAZIONI LEGALI',
       heading: 'Condizioni d’uso.',
-      lede: 'Questa pagina è un segnaposto strutturato. Condizioni d’uso complete devono essere preparate e revisionate da consulenti legali qualificati prima della pubblicazione.',
+      lede: 'Questa pagina costituisce un modello strutturato. Prima della pubblicazione dovranno essere predisposte condizioni complete e sottoposte alla revisione di un consulente legale qualificato.',
     },
   },
   cookies: {
     title: 'Impostazioni dei cookie — Zuraio',
+    description:
+      'Questa pagina costituisce un modello strutturato. Le categorie di cookie effettivamente utilizzate e le relative opzioni di controllo saranno pubblicate dopo la revisione legale e tecnica.',
     hero: {
-      marker: 'Note legali',
+      marker: 'INFORMAZIONI LEGALI',
       heading: 'Impostazioni dei cookie.',
-      lede: 'Questa pagina è un segnaposto strutturato. Le categorie e i controlli cookie effettivi saranno pubblicati dopo revisione legale e tecnica.',
+      lede: 'Questa pagina costituisce un modello strutturato. Le categorie di cookie effettivamente utilizzate e le relative opzioni di controllo saranno pubblicate dopo la revisione legale e tecnica.',
     },
   },
 };
@@ -532,8 +540,8 @@ export const footerGroups = [
   {
     title: 'Note legali',
     links: [
-      { label: 'Impressum', href: 'impressum.html' },
-      { label: 'Protezione dei dati', href: 'privacy.html' },
+      { label: 'Note legali', href: 'impressum.html' },
+      { label: 'Privacy', href: 'privacy.html' },
       { label: 'Impostazioni dei cookie', href: 'cookies.html' },
       { label: 'Condizioni d’uso', href: 'terms.html' },
     ],

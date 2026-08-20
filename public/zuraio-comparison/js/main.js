@@ -23,6 +23,8 @@ const TECHNICAL_PAGES = new Set([
   'faq',
 ]);
 
+const LEGAL_PAGES = new Set(['impressum', 'privacy', 'terms', 'cookies']);
+
 document.documentElement.lang = getLocale();
 
 function boot() {
@@ -48,7 +50,7 @@ boot();
 
 initLocaleSwitcher(() => {
   const pageId = document.body.dataset.page;
-  if (pageId && TECHNICAL_PAGES.has(pageId)) {
+  if (pageId && (TECHNICAL_PAGES.has(pageId) || LEGAL_PAGES.has(pageId))) {
     location.reload();
     return;
   }

@@ -462,34 +462,42 @@ export const pages = {
   },
   privacy: {
     title: 'Datenschutz — Zuraio',
+    description:
+      'Diese Seite ist eine strukturierte Vorlage. Vor der Veröffentlichung muss eine vollständige Datenschutzerklärung erstellt und von einer qualifizierten Rechtsberatung geprüft werden.',
     hero: {
-      marker: 'Rechtliches',
+      marker: 'RECHTLICHES',
       heading: 'Datenschutzerklärung.',
-      lede: 'Diese Seite ist ein strukturierter Platzhalter. Eine vollständige Datenschutzerklärung muss von qualifizierten Rechtsberaterinnen und Rechtsberatern erstellt und geprüft werden, bevor sie veröffentlicht wird.',
+      lede: 'Diese Seite ist eine strukturierte Vorlage. Vor der Veröffentlichung muss eine vollständige Datenschutzerklärung erstellt und von einer qualifizierten Rechtsberatung geprüft werden.',
     },
   },
   impressum: {
     title: 'Impressum — Zuraio',
+    description:
+      'Diese Seite ist eine strukturierte Vorlage. Sämtliche nachstehenden Unternehmensangaben müssen überprüft und vor der Veröffentlichung ergänzt werden.',
     hero: {
-      marker: 'Rechtliches',
+      marker: 'RECHTLICHES',
       heading: 'Impressum.',
-      lede: 'Diese Seite ist ein strukturierter Platzhalter. Alle Unternehmensangaben unten müssen verifiziert und eingefügt werden, bevor sie veröffentlicht werden.',
+      lede: 'Diese Seite ist eine strukturierte Vorlage. Sämtliche nachstehenden Unternehmensangaben müssen überprüft und vor der Veröffentlichung ergänzt werden.',
     },
   },
   terms: {
     title: 'Nutzungsbedingungen — Zuraio',
+    description:
+      'Diese Seite ist eine strukturierte Vorlage. Vollständige Nutzungsbedingungen müssen vor der Veröffentlichung erstellt und von einer qualifizierten Rechtsberatung geprüft werden.',
     hero: {
-      marker: 'Rechtliches',
+      marker: 'RECHTLICHES',
       heading: 'Nutzungsbedingungen.',
-      lede: 'Diese Seite ist ein strukturierter Platzhalter. Vollständige Nutzungsbedingungen müssen von qualifizierten Rechtsberaterinnen und Rechtsberatern erstellt und geprüft werden, bevor sie veröffentlicht werden.',
+      lede: 'Diese Seite ist eine strukturierte Vorlage. Vollständige Nutzungsbedingungen müssen vor der Veröffentlichung erstellt und von einer qualifizierten Rechtsberatung geprüft werden.',
     },
   },
   cookies: {
     title: 'Cookie-Einstellungen — Zuraio',
+    description:
+      'Diese Seite ist eine strukturierte Vorlage. Die tatsächlich verwendeten Cookie-Kategorien und Einstellungsmöglichkeiten werden nach Abschluss der rechtlichen und technischen Prüfung veröffentlicht.',
     hero: {
-      marker: 'Rechtliches',
+      marker: 'RECHTLICHES',
       heading: 'Cookie-Einstellungen.',
-      lede: 'Diese Seite ist ein strukturierter Platzhalter. Tatsächliche Cookie-Kategorien und Steuerungen werden nach rechtlicher und technischer Prüfung veröffentlicht.',
+      lede: 'Diese Seite ist eine strukturierte Vorlage. Die tatsächlich verwendeten Cookie-Kategorien und Einstellungsmöglichkeiten werden nach Abschluss der rechtlichen und technischen Prüfung veröffentlicht.',
     },
   },
 };

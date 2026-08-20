@@ -6,6 +6,7 @@ import { isSupportedLocale } from './locales.js';
 import { PAIN_CARD_ICONS } from './pain-card-icons.js';
 import { refreshRoutesDiagram } from './routes-diagram.js';
 import { applyTechnicalTranslations } from './apply-technical-i18n.js';
+import { applyLegalTranslations } from './apply-legal-i18n.js';
 import { setHeadlineHtml, formatHeadline } from './headline-emphasis.js';
 import { HERO_COMPARISON_ENABLED } from './config.js';
 
@@ -318,6 +319,7 @@ export function applyAllTranslations() {
   applyHomeTranslations();
   applyPageTranslations();
   applyTechnicalTranslations(locale);
+  applyLegalTranslations(locale);
   applyDataI18n();
   applyInternalLinkLocales();
 }

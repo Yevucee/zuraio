@@ -13,6 +13,7 @@
 - Named integration categories: Microsoft 365, SharePoint, Exchange, Teams, CRM, ERP, MCP, REST API
 - Clearer AI Governance heading: “A clear record from request to approval” (localized)
 - IT FAQ subsection on the full FAQ page with homepage link
+- Legal page bodies localized in German, French and Italian (Impressum, Privacy, Terms, Cookies) using approved translations
 
 ## Deliberate decisions
 
@@ -21,14 +22,15 @@
 - Data Control remains early because control of company data is a central Zuraio selling point.
 - AI Governance remains separate from Data Control because it explains reviewability and audit history rather than deployment and access control.
 - The `?lang=` URL structure remains until a planned SEO migration is undertaken.
+- Legal page translations preserve placeholder status and provisional warnings. They are not a legal review or approval.
 
 ## Outstanding before launch
 
-- Replace the legal-address placeholder `[[LEGAL ADDRESS – CONFIRM BEFORE LAUNCH]]` with the complete legal address (see Impressum).
+- Replace Impressum registered-address TODO fields with the complete legal address (visible `[[LEGAL ADDRESS – CONFIRM BEFORE LAUNCH]]` removed in pre-merge review; TODO fields remain).
 - Confirm that `michael.wili@zuraio.ch` receives mail (mailbox testing required — not performed in this implementation).
 - Select and approve a new genuine team photograph.
 - Confirm any FAQ answers not fully supported by approved technical documentation (see Technical confirmation required below).
-- Confirm there is no visible English text on German, French or Italian pages.
+- Qualified legal review still required for all legal page content (Impressum, Privacy, Terms, Cookies). Localized bodies remain provisional placeholders.
 
 ## Technical confirmation required
 
