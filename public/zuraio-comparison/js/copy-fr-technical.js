@@ -758,6 +758,41 @@ export const faqItems = [
   }
 ];
 
+export const faqItHeading = 'Les questions que votre équipe informatique posera';
+
+export const faqItItems = [
+  {
+    question: 'Où nos données sont-elles stockées ?',
+    answer:
+      'Le lieu de traitement dépend du déploiement choisi. Zuraio prend en charge des architectures utilisant une infrastructure contrôlée par le client, un cloud privé, un hébergement suisse et des combinaisons hybrides. Les emplacements, fournisseurs de modèles et flux de données exacts sont documentés pour l’environnement client convenu. Voir <a href="deployment-models.html">modes de déploiement</a> pour un aperçu.',
+  },
+  {
+    question: 'Les données de l’entreprise quittent-elles l’environnement choisi ?',
+    answer:
+      'Les politiques peuvent tenir compte de la tâche, de la classification des données, du lieu de traitement autorisé et du fournisseur de modèle approuvé. Les emplacements et flux de données exacts sont documentés pour l’environnement client convenu.',
+  },
+  {
+    question: 'Peut-on désactiver les modèles d’IA cloud externes ?',
+    answer:
+      'Les modèles disponibles et les données pouvant être envoyées à chaque modèle sont définis dans le déploiement convenu et les politiques de modèles. La disponibilité d’un modèle précis doit être confirmée dans le cadre du périmètre technique et commercial.',
+  },
+  {
+    question: 'Les requêtes des collaborateurs sont-elles conservées ?',
+    answer:
+      'Les demandes, sources et actions pertinentes peuvent être conservées selon le modèle d’audit convenu et la maturité de chaque composant. Le comportement exact de conservation dépend des composants sélectionnés et de la configuration convenue.',
+  },
+  {
+    question: 'Des journaux d’audit sont-ils disponibles ?',
+    answer:
+      'Les demandes, sources et actions pertinentes peuvent être conservées selon le modèle d’audit convenu et la maturité de chaque composant. L’étendue exacte dépend des composants sélectionnés et de la configuration convenue.',
+  },
+  {
+    question: 'Comment les droits d’accès existants sont-ils appliqués ?',
+    answer:
+      'Zuraio peut fonctionner avec les identités, groupes et autorisations Microsoft ou Google établis. Le contexte d’identité et d’autorisation peut être transmis à l’assistant et à la source de données concernés afin que l’accès soit vérifié lors de la récupération d’informations ou d’actions demandées. Le comportement exact des autorisations dépend du système connecté, de la méthode d’intégration et du déploiement convenu.',
+  },
+];
+
 export const faqCta = {
   heading: "Encore des questions ?",
   lede: "Réservez une démonstration privée afin de discuter de vos systèmes, de vos exigences de contrôle des données et de vos premiers processus.",

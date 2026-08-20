@@ -726,6 +726,41 @@ export const faqItems = [
   },
 ];
 
+export const faqItHeading = 'Fragen, die Ihr IT-Team stellen wird';
+
+export const faqItItems = [
+  {
+    question: 'Wo werden unsere Daten gespeichert?',
+    answer:
+      'Der Verarbeitungsort hängt von der gewählten Bereitstellung ab. Zuraio unterstützt Architekturen mit kundenseitig kontrollierter Infrastruktur, Private Cloud, Schweizer Hosting und hybriden Kombinationen. Konkrete Standorte, Modellanbieter und Datenflüsse werden für die vereinbarte Kundenumgebung dokumentiert. Siehe <a href="deployment-models.html">Bereitstellungsmodelle</a> für einen Überblick.',
+  },
+  {
+    question: 'Verlassen Unternehmensdaten die gewählte Umgebung?',
+    answer:
+      'Richtlinien können Aufgabe, Datenklassifikation, zulässigen Verarbeitungsort und freigegebenen Modellanbieter berücksichtigen. Konkrete Standorte und Datenflüsse werden für die vereinbarte Kundenumgebung dokumentiert.',
+  },
+  {
+    question: 'Können externe Cloud-KI-Modelle deaktiviert werden?',
+    answer:
+      'Welche Modelle verfügbar sind und welche Daten an jedes Modell gesendet werden dürfen, wird in der vereinbarten Bereitstellung und den Modellrichtlinien festgelegt. Die Verfügbarkeit eines bestimmten Modells muss im technischen und kommerziellen Umfang bestätigt werden.',
+  },
+  {
+    question: 'Werden Anfragen von Mitarbeitenden gespeichert?',
+    answer:
+      'Relevante Anfragen, Quellen und Aktionen können gemäss dem vereinbarten Audit-Modell und dem Reifegrad der jeweiligen Komponente aufbewahrt werden. Das konkrete Aufbewahrungsverhalten hängt von den gewählten Komponenten und der vereinbarten Konfiguration ab.',
+  },
+  {
+    question: 'Stehen Audit-Protokolle zur Verfügung?',
+    answer:
+      'Relevante Anfragen, Quellen und Aktionen können gemäss dem vereinbarten Audit-Modell und dem Reifegrad der jeweiligen Komponente aufbewahrt werden. Der genaue Umfang hängt von den gewählten Komponenten und der vereinbarten Konfiguration ab.',
+  },
+  {
+    question: 'Wie werden bestehende Zugriffsrechte angewendet?',
+    answer:
+      'Zuraio kann etablierte Microsoft- oder Google-Identitäten, Gruppen und Berechtigungen einbinden. Identitäts- und Berechtigungskontext kann an den relevanten Assistenten und die Datenquelle weitergegeben werden, damit der Zugriff bei der Informationsabfrage oder bei angeforderten Aktionen geprüft wird. Das konkrete Berechtigungsverhalten hängt vom angebundenen System, der Integrationsmethode und der vereinbarten Bereitstellung ab.',
+  },
+];
+
 export const faqCta = {
   heading: 'Noch Fragen?',
   lede: 'Buchen Sie eine private Demo. Gemeinsam besprechen wir Ihre Systeme, Anforderungen an die Datenkontrolle und erste Arbeitsabläufe.',
