@@ -8,13 +8,36 @@ import { refreshRoutesDiagram } from './routes-diagram.js';
 import { applyTechnicalTranslations } from './apply-technical-i18n.js';
 import { applyLegalTranslations } from './apply-legal-i18n.js';
 import { setHeadlineHtml, formatHeadline } from './headline-emphasis.js';
-import { HERO_COMPARISON_ENABLED } from './config.js';
+import { HERO_COMPARISON_ENABLED, SITE_BASE } from './config.js';
+import {
+  LOCALE_SEGMENTS,
+  getLocaleFromPathname,
+  isInLocaleSubdir as pathIsInLocaleSubdir,
+  langHrefForLocale,
+  homePathForLocale,
+} from './path-locale.js';
 
 const LOCALE_KEY = 'zuraio-locale';
 
 const copies = { en, de, fr, it };
 
+export function getLocaleFromPath() {
+  return getLocaleFromPathname();
+}
+
+export function isInLocaleSubdir() {
+  return pathIsInLocaleSubdir();
+}
+
+export function getCurrentPageFile() {
+  const segments = location.pathname.split('/').filter(Boolean);
+  const last = segments[segments.length - 1] || 'index.html';
+  return last.endsWith('.html') ? last : 'index.html';
+}
+
 export function getLocale() {
+  const fromPath = getLocaleFromPath();
+  if (fromPath) return fromPath;
   const fromUrl = new URLSearchParams(location.search).get('lang');
   if (isSupportedLocale(fromUrl)) return fromUrl;
   const stored = localStorage.getItem(LOCALE_KEY);
@@ -25,11 +48,18 @@ export function getLocale() {
 export function setLocale(locale) {
   if (!isSupportedLocale(locale)) return;
   localStorage.setItem(LOCALE_KEY, locale);
-  document.documentElement.lang = locale;
-  const url = new URL(location.href);
-  url.searchParams.set('lang', locale);
-  history.replaceState(null, '', url);
-  window.dispatchEvent(new CustomEvent('zuraio:locale', { detail: locale }));
+  const page = getCurrentPageFile();
+  const hash = location.hash;
+  const base = SITE_BASE || '';
+  if (page === 'index.html') {
+    location.href = `${homePathForLocale(locale, base)}${hash}`;
+    return;
+  }
+  if (locale === 'en') {
+    location.href = `${base}/${page}${hash}`;
+    return;
+  }
+  location.href = `${base}/${locale}/${page}${hash}`;
 }
 
 export function getCopy() {
@@ -68,19 +98,7 @@ function setHtml(selector, html) {
 }
 
 export function langHref(path) {
-  if (!path || path.startsWith('http') || path.startsWith('../')) return path;
-  if (path.startsWith('#') && !path.includes('.html')) return path;
-  const hashIndex = path.indexOf('#');
-  const file = hashIndex >= 0 ? path.slice(0, hashIndex) : path;
-  const hash = hashIndex >= 0 ? path.slice(hashIndex) : '';
-  if (!file.endsWith('.html')) return path;
-  const params = new URLSearchParams();
-  params.set('lang', getLocale());
-  if (HERO_COMPARISON_ENABLED) {
-    const hero = new URLSearchParams(location.search).get('hero');
-    if (hero) params.set('hero', hero);
-  }
-  return `${file}?${params.toString()}${hash}`;
+  return langHrefForLocale(path, getLocale(), SITE_BASE);
 }
 
 function shouldLocalizeHref(href) {
@@ -190,12 +208,6 @@ export function applyHomeTranslations() {
 
   setText('#assistant-demo h2', home.demo.heading);
   setText('#assistant-demo .lede', home.demo.body);
-  const demoVideo = document.querySelector('[data-demo-video]');
-  if (demoVideo) {
-    if (home.demo.video) demoVideo.src = `${home.demo.video}?v=20260805v2`;
-    if (home.demo.poster) demoVideo.poster = `${home.demo.poster}?v=20260805v2`;
-    if (home.demo.videoAlt) demoVideo.setAttribute('aria-label', home.demo.videoAlt);
-  }
   const demoExamples = document.querySelector('[data-demo-examples]');
   if (demoExamples && home.demo.examples) {
     demoExamples.innerHTML = home.demo.examples

@@ -2,6 +2,7 @@ import * as deBundle from './copy-de-technical.js';
 import * as frBundle from './copy-fr-technical.js';
 import * as itBundle from './copy-it-technical.js';
 import * as enBundle from './copy-en.js';
+import { langHrefForLocale } from './path-locale.js';
 
 const BUNDLES = { en: enBundle, de: deBundle, fr: frBundle, it: itBundle };
 
@@ -27,13 +28,7 @@ function setActiveBundle(locale) {
 }
 
 function langHref(path, locale) {
-  if (!path || path.startsWith('#') || path.startsWith('http') || path.startsWith('../')) return path;
-  const hashIndex = path.indexOf('#');
-  const file = hashIndex >= 0 ? path.slice(0, hashIndex) : path;
-  const hash = hashIndex >= 0 ? path.slice(hashIndex) : '';
-  const params = new URLSearchParams();
-  params.set('lang', locale);
-  return `${file}?${params.toString()}${hash}`;
+  return langHrefForLocale(path, locale);
 }
 
 function setText(el, text) {
