@@ -402,6 +402,13 @@ export function initRoutesDiagram() {
   const root = document.querySelector('[data-routes-diagram]');
   if (!root) return;
 
+  // Prerender captures observer flags and hidden stroke offsets; reset before client init.
+  delete root.dataset.routesObserverBound;
+  delete root.dataset.routesAnimated;
+  root.querySelectorAll('[data-route-path]').forEach((path) => {
+    path.removeAttribute('style');
+  });
+
   renderRoutesDiagram(root);
   layoutAndMaybeAnimate(root);
 

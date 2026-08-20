@@ -188,6 +188,7 @@ export function postprocessHtml(html, locale, page) {
   let out = rewriteAssetPaths(html, locale);
   out = rewriteLangLinks(out, locale);
   out = normalizeHomeLinks(out, locale);
+  out = stripClientRuntimeState(out);
 
   out = out.replace(/<html lang="[^"]*">/, `<html lang="${locale}">`);
 
@@ -227,6 +228,13 @@ ${altLocales.map((l) => `  <meta property="og:locale:alternate" content="${l}">`
 function normalizeHomeLinks(html, locale) {
   const home = locale === 'en' ? '/' : `/${locale}/`;
   return html.replace(/href="index\.html(#[^"]*)?"/g, (_, hash = '') => `href="${home}${hash}"`);
+}
+
+function stripClientRuntimeState(html) {
+  return html
+    .replace(/\sdata-routes-observer-bound="[^"]*"/g, '')
+    .replace(/\sdata-routes-animated="[^"]*"/g, '')
+    .replace(/(<path[^>]*data-route-path="[^"]+"[^>]*)\sstyle="stroke-dasharray:[^"]*"/g, '$1');
 }
 
 export function injectLangRedirect(html) {
