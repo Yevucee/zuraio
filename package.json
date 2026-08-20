@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "build": "vite build && node scripts/set-main-site.mjs",
+    "build": "node scripts/optimize-hero-images.mjs && vite build && node scripts/set-main-site.mjs && node scripts/prerender-site.mjs && node scripts/generate-seo-files.mjs",
+    "build:app": "vite build && node scripts/set-main-site.mjs",
     "dev": "vite",
     "preview": "vite preview",
     "sync:integration-logos": "node scripts/sync-integration-logos.mjs",
@@ -74,6 +75,9 @@
   "devDependencies": {
     "@tailwindcss/vite": "4.1.12",
     "@vitejs/plugin-react": "4.7.0",
+    "playwright": "^1.62.1",
+    "serve": "^14.2.4",
+    "sharp": "^0.35.3",
     "tailwindcss": "4.1.12",
     "vite": "^6.4.2"
   },

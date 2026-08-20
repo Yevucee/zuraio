@@ -1,23 +1,14 @@
 import * as deLegal from './copy-de-legal.js';
 import * as frLegal from './copy-fr-legal.js';
 import * as itLegal from './copy-it-legal.js';
+import { langHrefForLocale } from './path-locale.js';
 
 const BUNDLES = { de: deLegal, fr: frLegal, it: itLegal };
 
 const LEGAL_PAGE_IDS = new Set(['impressum', 'privacy', 'terms', 'cookies']);
 
 function localizeHref(href, locale) {
-  if (!href || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('http') || href.startsWith('../')) {
-    return href;
-  }
-  if (href.startsWith('#') && !href.includes('.html')) return href;
-  const hashIndex = href.indexOf('#');
-  const file = hashIndex >= 0 ? href.slice(0, hashIndex) : href;
-  const hash = hashIndex >= 0 ? href.slice(hashIndex) : '';
-  if (!file.endsWith('.html')) return href;
-  const params = new URLSearchParams();
-  params.set('lang', locale);
-  return `${file}?${params.toString()}${hash}`;
+  return langHrefForLocale(href, locale);
 }
 
 function applyLinkLocales(root, locale) {

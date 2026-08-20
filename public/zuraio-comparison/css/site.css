@@ -7172,3 +7172,37 @@ html {
 #it-questions .faq-list {
   margin-top: 24px;
 }
+
+/* Mobile hero overflow fix — FR/IT headline clipping at ~390px */
+@media (max-width: 640px) {
+  .hero-layered .hero-copy {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .hero-layered .hero-copy h1 {
+    max-width: 100%;
+  }
+
+  .hero-layered .hero-copy h1 .headline-em {
+    white-space: normal;
+  }
+
+  .hero-layered .hero-lede,
+  .hero-layered [data-hero-paragraph] {
+    max-width: 100%;
+  }
+
+  .hero-layered .hero-copy .cta-row {
+    width: 100%;
+  }
+
+  .hero-layered .hero-copy .cta-row .btn {
+    max-width: 100%;
+    box-sizing: border-box;
+    white-space: normal;
+    text-align: center;
+    justify-content: center;
+  }
+}

@@ -28,7 +28,26 @@
   <section class="hero-layered hero-layered--office" id="hero-comparison" tabindex="0" aria-label="Hero">
     <div class="hero-layered__stage">
       <div class="hero-layered__bg" aria-hidden="true">
-        <img src="../zuraio/assets/260714_zuraio_hero_12.png?v=20260756" alt="" width="5504" height="3072" decoding="async" fetchpriority="high" />
+        <picture>
+          <source
+            type="image/avif"
+            srcset="../zuraio/assets/hero/hero-640.avif 640w, ../zuraio/assets/hero/hero-960.avif 960w, ../zuraio/assets/hero/hero-1440.avif 1440w, ../zuraio/assets/hero/hero-1920.avif 1920w"
+            sizes="100vw"
+          />
+          <source
+            type="image/webp"
+            srcset="../zuraio/assets/hero/hero-640.webp 640w, ../zuraio/assets/hero/hero-960.webp 960w, ../zuraio/assets/hero/hero-1440.webp 1440w, ../zuraio/assets/hero/hero-1920.webp 1920w"
+            sizes="100vw"
+          />
+          <img
+            src="../zuraio/assets/260714_zuraio_hero_12.png?v=20260756"
+            alt=""
+            width="5504"
+            height="3072"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </picture>
       </div>
       <div class="hero-layered__scrim" aria-hidden="true"></div>
 
@@ -206,16 +225,15 @@
             <div class="demo-static__frame">
               <video
                 data-demo-video
-                src="../zuraio/assets/zuraio-demo.mp4?v=20260805v2"
+                data-src="../zuraio/assets/zuraio-demo.mp4?v=20260805v2"
                 poster="../zuraio/assets/zuraio-demo-mail.png?v=20260805v2"
                 width="1280"
                 height="720"
-                autoplay
                 muted
                 loop
                 playsinline
                 controls
-                preload="metadata"
+                preload="none"
                 aria-label="Zuraio assistant demonstration — draft reply prepared with company context and visible sources."
               ></video>
             </div>
@@ -229,7 +247,7 @@
   <!-- 6. Integrations -->
   <section class="pad section-photo section-photo--integrations" id="integrations">
     <div class="section-photo__bg" aria-hidden="true">
-      <img src="../zuraio/assets/260707-fits-into-the-tools.png?v=20260722" alt="" width="1672" height="941" decoding="async" />
+      <img src="../zuraio/assets/260707-fits-into-the-tools.png?v=20260722" alt="" width="1672" height="941" decoding="async" loading="lazy" />
     </div>
     <div class="section-photo__scrim" aria-hidden="true"></div>
     <div class="wrap">
@@ -291,7 +309,7 @@
           <p class="section-link"><a href="about.html">Meet the team →</a></p>
         </div>
         <figure class="origin-photo reveal d1">
-          <img src="../zuraio/assets/zuraio-team.jpg" alt="The Zuraio team at work — a restrained supporting photograph." />
+          <img src="../zuraio/assets/zuraio-team.jpg" alt="The Zuraio team at work — a restrained supporting photograph." width="640" height="480" loading="lazy" decoding="async" />
           <figcaption class="cap">Built because we needed it ourselves.</figcaption>
         </figure>
       </div>

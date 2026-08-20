@@ -1,3 +1,8 @@
+import { detectSiteBase } from './path-locale.js';
+
+/** GitHub Pages project-site prefix (`/zuraio`); empty on zuraio.ch root. */
+export const SITE_BASE = detectSiteBase();
+
 /** Lock homepage to one hero message. Set true only for internal review. */
 export const HERO_COMPARISON_ENABLED = false;
 /** Show prev/next/dots bar — internal review only. */
