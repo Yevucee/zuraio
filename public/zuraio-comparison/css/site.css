@@ -295,6 +295,7 @@ main#top > section + section:not(.hero-layered):not(.final) {
   font-family: inherit;
   font-size: 14.5px;
   font-weight: 600;
+  line-height: 1.25;
   cursor: pointer;
   padding: 11px 20px;
   border-radius: 10px;
@@ -7205,5 +7206,9 @@ html {
     white-space: normal;
     text-align: center;
     justify-content: center;
+    line-height: 1.25;
+    height: auto;
+    min-height: 0;
+    padding-inline: clamp(16px, 4.5vw, 26px);
   }
 }

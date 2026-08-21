@@ -36,17 +36,25 @@ export const HTML_PAGES = [
   'cookies.html',
 ];
 
-export function pageUrl(locale, page) {
+/** Production path only — never includes GitHub preview base. */
+export function canonicalPagePath(locale, page) {
   const dir = LOCALE_DIRS[locale];
-  const base = SITE_BASE_PATH;
   if (page === 'index.html') {
-    return dir ? `${base}/${dir}/` : `${base}/`;
+    return dir ? `/${dir}/` : '/';
   }
-  return dir ? `${base}/${dir}/${page}` : `${base}/${page}`;
+  return dir ? `/${dir}/${page}` : `/${page}`;
+}
+
+/** Preview or production navigation path (includes SITE_BASE_PATH on GitHub Pages). */
+export function pageUrl(locale, page) {
+  const path = canonicalPagePath(locale, page);
+  if (!SITE_BASE_PATH) return path;
+  if (path === '/') return `${SITE_BASE_PATH}/`;
+  return `${SITE_BASE_PATH}${path}`;
 }
 
 export function canonicalUrl(locale, page) {
-  return `${CANONICAL_BASE}${pageUrl(locale, page)}`;
+  return `${CANONICAL_BASE}${canonicalPagePath(locale, page)}`;
 }
 
 export const SOFTWARE_APP_PAGES = new Set([
