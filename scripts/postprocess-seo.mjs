@@ -345,7 +345,7 @@ var inLoc=['de','fr','it'].includes(curLoc);
 var f=location.pathname.split('/').pop()||'';
 var isHome=!f||f==='index.html'||(inLoc&&seg.length===localeIdx+1);
 p.delete('lang');var q=p.toString(),suffix=(q?'?'+q:'')+location.hash;
-if(l==='en'){location.replace((base||'/')+(isHome?'':('/'+f))+suffix);return;}
+if(l==='en'){location.replace((isHome?(base?base+'/':'/'):(base?base+'/':'/')+f)+suffix);return;}
 location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
 })();
 </script>`;
