@@ -11,7 +11,9 @@
     "sync:integration-logos": "node scripts/sync-integration-logos.mjs",
     "generate:favicons": "node scripts/generate-favicons.mjs",
     "audit:anchors": "node scripts/audit-anchor-links.mjs",
-    "audit:preview-base": "node scripts/audit-preview-base.mjs"
+    "audit:preview-base": "node scripts/audit-preview-base.mjs",
+    "audit:seo-no-preview-base": "node scripts/audit-seo-no-preview-base.mjs",
+    "audit:hero-cta-mobile": "node scripts/audit-hero-cta-mobile.mjs"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",
