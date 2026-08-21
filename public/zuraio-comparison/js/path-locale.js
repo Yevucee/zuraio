@@ -108,10 +108,14 @@ export function langHrefForLocale(path, locale, siteBase = detectSiteBase()) {
   return joinUrl('', base ? `${base}/${locale}/${file}` : `/${locale}/${file}`, hash);
 }
 
+<<<<<<< HEAD
 /**
  * Deployment-aware asset URL from site root.
  * Accepts logical paths like `assets/logo.png` or `zuraio/assets/hero.png`.
  */
+=======
+/** Deployment-aware asset URL from site root. */
+>>>>>>> cursor/fix-asset-href-media-path-d1af
 export function assetHref(relativePath, siteBase = detectSiteBase()) {
   if (!relativePath) return relativePath;
   if (/^(https?:|data:|mailto:|tel:)/.test(relativePath)) return relativePath;
@@ -125,6 +129,7 @@ export function assetHref(relativePath, siteBase = detectSiteBase()) {
   const suffix = relativePath.slice(splitAt);
   let path = relativePath.slice(0, splitAt);
 
+<<<<<<< HEAD
   path = path.replace(/^(\.\.\/)+/, '').replace(/^\//, '');
 
   const base = normalizeSiteBase(siteBase);
@@ -136,5 +141,14 @@ export function assetHref(relativePath, siteBase = detectSiteBase()) {
     return `${base}/${path}${suffix}`;
   }
 
+=======
+  const base = normalizeSiteBase(siteBase);
+  if (base && path.startsWith(`${base}/`)) return `${path}${suffix}`;
+  if (!base && path.startsWith('/')) return `${path}${suffix}`;
+
+  path = path.replace(/^(\.\.\/)+/, '').replace(/^\//, '');
+
+  if (base) return `${base}/${path}${suffix}`;
+>>>>>>> cursor/fix-asset-href-media-path-d1af
   return `/${path}${suffix}`;
 }
