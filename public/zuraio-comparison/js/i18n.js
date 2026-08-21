@@ -14,7 +14,6 @@ import {
   getLocaleFromPathname,
   isInLocaleSubdir as pathIsInLocaleSubdir,
   langHrefForLocale,
-  homePathForLocale,
 } from './path-locale.js';
 
 const LOCALE_KEY = 'zuraio-locale';
@@ -36,10 +35,10 @@ export function getCurrentPageFile() {
 }
 
 export function getLocale() {
-  const fromPath = getLocaleFromPath();
-  if (fromPath) return fromPath;
   const fromUrl = new URLSearchParams(location.search).get('lang');
   if (isSupportedLocale(fromUrl)) return fromUrl;
+  const fromPath = getLocaleFromPath();
+  if (fromPath) return fromPath;
   const stored = localStorage.getItem(LOCALE_KEY);
   if (isSupportedLocale(stored)) return stored;
   return 'en';
@@ -50,16 +49,8 @@ export function setLocale(locale) {
   localStorage.setItem(LOCALE_KEY, locale);
   const page = getCurrentPageFile();
   const hash = location.hash;
-  const base = SITE_BASE || '';
-  if (page === 'index.html') {
-    location.href = `${homePathForLocale(locale, base)}${hash}`;
-    return;
-  }
-  if (locale === 'en') {
-    location.href = `${base}/${page}${hash}`;
-    return;
-  }
-  location.href = `${base}/${locale}/${page}${hash}`;
+  const target = page === 'index.html' ? 'index.html' : page;
+  location.href = `${langHrefForLocale(target, locale, SITE_BASE)}${hash}`;
 }
 
 export function getCopy() {

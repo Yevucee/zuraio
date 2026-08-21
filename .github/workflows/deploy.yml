@@ -38,6 +38,7 @@ jobs:
         run: npm run build
         env:
           CANONICAL_BASE: https://zuraio.ch
+          SITE_BASE_PATH: /zuraio
           SITEMAP_LASTMOD: '2026-08-20'
 
       - name: Upload artifact

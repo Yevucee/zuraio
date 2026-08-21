@@ -225,8 +225,8 @@ export const home = {
     body: 'Zuraio stellt den relevanten Unternehmenskontext zusammen, bereitet die Arbeit vor und zeigt die verwendeten Quellen zur Prüfung an.',
     caption:
       'Zuraio kann eine Antwort an einen Kunden vorbereiten und dabei frühere Korrespondenz, aktuelle Dokumente und relevante Unternehmensinformationen berücksichtigen. Die Mitarbeitenden prüfen das Ergebnis und entscheiden über die nächsten Schritte.',
-    video: '../zuraio/assets/zuraio-demo.mp4',
-    poster: '../zuraio/assets/zuraio-demo-mail.png',
+    video: 'zuraio/assets/zuraio-demo.mp4',
+    poster: 'zuraio/assets/zuraio-demo-mail.png',
     videoAlt:
       'Zuraio E-Mail-Assistent mit vorbereitetem Antwortentwurf, Unternehmenskontext und sichtbaren Quellen.',
     examples: [

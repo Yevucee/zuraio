@@ -11,6 +11,7 @@ import {
   OG_IMAGE_PATH,
   OG_LOCALE,
   SOFTWARE_APP_PAGES,
+  SITE_BASE_PATH,
   canonicalUrl,
 } from './seo-config.mjs';
 
@@ -135,7 +136,92 @@ function rewriteAssetPaths(html, locale) {
     .replace(/\bhref="zuraio\//g, 'href="../zuraio/')
     .replace(/\bsrc="zuraio\//g, 'src="../zuraio/')
     .replace(/srcset="\.\.\/zuraio\//g, 'srcset="../zuraio/')
-    .replace(/srcset="zuraio\//g, 'srcset="../zuraio/');
+    .replace(/srcset="zuraio\//g, 'srcset="../zuraio/')
+    .replace(/data-src="zuraio\//g, 'data-src="../zuraio/')
+    .replace(/poster="zuraio\//g, 'poster="../zuraio/');
+}
+
+/** Convert relative asset URLs to deployment-root absolute paths (GitHub Pages preview). */
+function rewriteAbsoluteAssetPaths(html) {
+  if (!SITE_BASE_PATH) return html;
+  const base = SITE_BASE_PATH.replace(/\/$/, '');
+  const prefix = `${base}/`;
+
+  let out = html;
+  out = out.replace(/\b(href|src)="(?:\.\.\/)+/g, `$1="${prefix}`);
+  out = out.replace(/\b(href|src=")(assets\/)/g, `$1${prefix}$2`);
+  out = out.replace(/\b(href|src=")(zuraio\/)/g, `$1${prefix}$2`);
+  out = out.replace(/\b(href|src=")(css\/)/g, `$1${prefix}$2`);
+  out = out.replace(/\bsrc="js\//g, `src="${prefix}js/`);
+  out = out.replace(/srcset="(?:\.\.\/)+/g, `srcset="${prefix}`);
+  out = out.replace(/srcset="(zuraio\/)/g, `srcset="${prefix}$1`);
+  out = out.replace(/data-src="(?:\.\.\/)+/g, `data-src="${prefix}`);
+  out = out.replace(/data-src="(zuraio\/)/g, `data-src="${prefix}$1`);
+  out = out.replace(/poster="(?:\.\.\/)+/g, `poster="${prefix}`);
+  out = out.replace(/poster="(zuraio\/)/g, `poster="${prefix}$1`);
+  return out;
+}
+
+function rewriteAbsolutePageLinks(html, locale) {
+  if (!SITE_BASE_PATH) return html;
+  const base = SITE_BASE_PATH.replace(/\/$/, '');
+  const home = locale === 'en' ? `${base}/` : `${base}/${locale}/`;
+
+  let out = html.replace(/\bhref="\/"/g, `href="${home}"`);
+  out = out.replace(/\bhref="\/([^"]*\.html[^"]*)"/g, (_, rest) => {
+    if (locale === 'en') return `href="${base}/${rest}"`;
+    return `href="${base}/${locale}/${rest}"`;
+  });
+  return out;
+}
+
+function isRootAssetPath(pathAfterAssets) {
+  return /^(?:favicon|apple-touch|zuraio-logo|integrations\/)/.test(pathAfterAssets);
+}
+
+/** On GitHub preview, media lives under /zuraio/zuraio/assets/ not /zuraio/assets/. */
+function fixPreviewMediaAssetPaths(html) {
+  if (!SITE_BASE_PATH) return html;
+  const base = SITE_BASE_PATH.replace(/\/$/, '');
+
+  let out = html.replace(
+    /(\b(?:href|src|data-src|poster)=")\/zuraio\/assets\/([^"]+)"/g,
+    (match, prefix, rest) => {
+      if (isRootAssetPath(rest)) return `${prefix}${base}/assets/${rest}"`;
+      return `${prefix}${base}/zuraio/assets/${rest}"`;
+    },
+  );
+
+  out = out.replace(/srcset="([^"]+)"/g, (_, value) => {
+    const parts = value.split(',').map((part) => {
+      const trimmed = part.trim();
+      const m = trimmed.match(/^(\S+)(\s+.+)?$/);
+      if (!m) return trimmed;
+      let url = m[1];
+      const descriptor = m[2] ?? '';
+      if (url.startsWith('http')) return trimmed;
+      url = url.replace(/^(\.\.\/)+/, '');
+      if (url.startsWith('/')) {
+        if (url.startsWith(`${base}/`)) return `${url}${descriptor}`;
+        if (url.startsWith('/zuraio/assets/')) {
+          const rest = url.slice('/zuraio/assets/'.length);
+          url = isRootAssetPath(rest) ? `${base}/assets/${rest}` : `${base}/zuraio/assets/${rest}`;
+        } else if (url.startsWith('/assets/')) {
+          url = `${base}${url}`;
+        } else if (url.startsWith('/zuraio/')) {
+          url = `${base}${url}`;
+        }
+      } else if (url.startsWith('zuraio/')) {
+        url = `${base}/${url}`;
+      } else if (url.startsWith('assets/')) {
+        url = `${base}/${url}`;
+      }
+      return `${url}${descriptor}`;
+    });
+    return `srcset="${parts.join(', ')}"`;
+  });
+
+  return out;
 }
 
 function normalizeLocaleLinks(html, locale) {
@@ -188,6 +274,9 @@ export function postprocessHtml(html, locale, page) {
   let out = rewriteAssetPaths(html, locale);
   out = rewriteLangLinks(out, locale);
   out = normalizeHomeLinks(out, locale);
+  out = rewriteAbsoluteAssetPaths(out);
+  out = rewriteAbsolutePageLinks(out, locale);
+  out = fixPreviewMediaAssetPaths(out);
   out = stripClientRuntimeState(out);
 
   out = out.replace(/<html lang="[^"]*">/, `<html lang="${locale}">`);
@@ -226,7 +315,15 @@ ${altLocales.map((l) => `  <meta property="og:locale:alternate" content="${l}">`
 }
 
 function normalizeHomeLinks(html, locale) {
-  const home = locale === 'en' ? '/' : `/${locale}/`;
+  const base = SITE_BASE_PATH.replace(/\/$/, '');
+  const home =
+    locale === 'en'
+      ? base
+        ? `${base}/`
+        : '/'
+      : base
+        ? `${base}/${locale}/`
+        : `/${locale}/`;
   return html.replace(/href="index\.html(#[^"]*)?"/g, (_, hash = '') => `href="${home}${hash}"`);
 }
 
@@ -241,12 +338,14 @@ export function injectLangRedirect(html) {
   const snippet = `<script>
 (function(){var p=new URLSearchParams(location.search),l=p.get('lang');
 if(!l||!['en','de','fr','it'].includes(l))return;
+try{localStorage.setItem('zuraio-locale',l);}catch(e){}
 var seg=location.pathname.split('/').filter(Boolean),base=seg[0]==='zuraio'?'/zuraio':'';
-var localeIdx=base?1:0;
+var localeIdx=base?1:0,curLoc=seg[localeIdx];
+var inLoc=['de','fr','it'].includes(curLoc);
 var f=location.pathname.split('/').pop()||'';
-var isHome=!f||f==='index.html'||(['de','fr','it'].includes(f)&&seg.length===localeIdx+1);
+var isHome=!f||f==='index.html'||(inLoc&&seg.length===localeIdx+1);
 p.delete('lang');var q=p.toString(),suffix=(q?'?'+q:'')+location.hash;
-if(l==='en'){location.replace((base||'/')+(isHome?'':('/'+f))+suffix);return;}
+if(l==='en'){location.replace((isHome?(base?base+'/':'/'):(base?base+'/':'/')+f)+suffix);return;}
 location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
 })();
 </script>`;

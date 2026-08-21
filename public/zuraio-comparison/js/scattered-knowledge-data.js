@@ -2,7 +2,7 @@
 export const SCATTERED_HUB = { x: 50, y: 50 };
 
 /** Icon assets from the shared Icon-cloud library. */
-const ICON = '../zuraio/assets/Icon-cloud';
+const ICON = 'zuraio/assets/Icon-cloud';
 
 function createRng(seed) {
   let state = seed >>> 0;

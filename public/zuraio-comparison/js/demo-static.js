@@ -1,4 +1,5 @@
 import { getCopy } from './i18n.js';
+import { assetHref } from './path-locale.js';
 
 const DEMO_CACHE = '20260805v2';
 
@@ -8,15 +9,15 @@ function cacheBust(url) {
 }
 
 function applyDemoPoster(videoEl, demo) {
-  if (demo.poster) videoEl.poster = cacheBust(demo.poster);
+  if (demo.poster) videoEl.poster = cacheBust(assetHref(demo.poster));
   if (demo.videoAlt) videoEl.setAttribute('aria-label', demo.videoAlt);
 }
 
 function loadDemoVideoSource(videoEl, demo) {
   if (videoEl.dataset.loaded === 'true') return;
-  const src = videoEl.dataset.src || demo.video;
-  if (!src) return;
-  videoEl.src = cacheBust(src);
+  const raw = videoEl.dataset.src || demo.video;
+  if (!raw) return;
+  videoEl.src = cacheBust(assetHref(raw));
   videoEl.dataset.loaded = 'true';
 }
 

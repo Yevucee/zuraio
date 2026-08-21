@@ -161,9 +161,7 @@ for (const locale of LOCALES) {
     let html = await page.content();
 
     html = postprocessHtml(html, locale, htmlPage);
-    if (locale === 'en') {
-      html = injectLangRedirect(html);
-    }
+    html = injectLangRedirect(html);
 
     const dirKey = LOCALE_DIRS[locale];
     const outDir = dirKey ? path.join(DIST, dirKey) : DIST;

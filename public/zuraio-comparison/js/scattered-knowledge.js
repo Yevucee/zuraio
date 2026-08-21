@@ -9,19 +9,20 @@ import {
   SVG_DEFS,
 } from './scattered-knowledge-data.js';
 import { getCopy } from './i18n.js';
+import { assetHref } from './path-locale.js';
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let observer = null;
 
 function renderIcon(fragment) {
   if (fragment.type === 'clock') {
-    const src = clockIconSrc(fragment.clockVariant ?? 1);
+    const src = assetHref(clockIconSrc(fragment.clockVariant ?? 1));
     return `<img src="${src}" alt="" class="sk-fragment__img" width="24" height="24" decoding="async" />`;
   }
 
   const src = FRAGMENT_ICON_SRC[fragment.type];
   if (src) {
-    return `<img src="${src}" alt="" class="sk-fragment__img" width="24" height="24" decoding="async" />`;
+    return `<img src="${assetHref(src)}" alt="" class="sk-fragment__img" width="24" height="24" decoding="async" />`;
   }
 
   return FRAGMENT_SVGS[fragment.type] ?? '';

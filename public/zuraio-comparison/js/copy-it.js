@@ -225,8 +225,8 @@ export const home = {
     body: 'Zuraio riunisce il contesto aziendale pertinente, prepara il lavoro e mostra le fonti utilizzate per la verifica.',
     caption:
       'Zuraio può preparare una risposta a un cliente utilizzando la corrispondenza precedente, i documenti aggiornati e le informazioni aziendali pertinenti. I collaboratori verificano il risultato e decidono i passaggi successivi.',
-    video: '../zuraio/assets/zuraio-demo.mp4',
-    poster: '../zuraio/assets/zuraio-demo-mail.png',
+    video: 'zuraio/assets/zuraio-demo.mp4',
+    poster: 'zuraio/assets/zuraio-demo-mail.png',
     videoAlt:
       'Assistente e-mail Zuraio con bozza di risposta, contesto aziendale e fonti visibili.',
     examples: [
