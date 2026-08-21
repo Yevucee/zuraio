@@ -8,6 +8,7 @@ import { getCopy, getLocale, langHref } from './i18n.js';
 import { isInternalReviewMode } from './internal-review.js';
 import { setHeadlineHtml } from './headline-emphasis.js';
 import { SITE } from './config.js';
+import { assetHref } from './path-locale.js';
 
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -38,7 +39,7 @@ function renderTrustSignals() {
 function updateHeroVisual() {
   const img = document.querySelector('.hero-popup-img');
   if (img && SITE.heroPopup) {
-    img.src = `${SITE.heroPopup}?v=20260756`;
+    img.src = `${assetHref(SITE.heroPopup)}?v=20260756`;
   }
 }
 

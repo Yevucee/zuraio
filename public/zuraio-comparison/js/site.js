@@ -1,6 +1,7 @@
 import { getLocale, setLocale, getCopy, langHref } from './i18n.js';
 import { SUPPORTED_LOCALES, getLocaleLabels } from './locales.js';
 import { SITE } from './config.js';
+import { assetHref } from './path-locale.js';
 import { enhanceFooterWithReview } from './internal-review.js';
 
 function getNav() {
@@ -107,7 +108,7 @@ export function renderHeader() {
     <header class="nav" id="nav">
       <div class="wrap nav-in">
         <a class="brand" href="${langHref('index.html')}" aria-label="${uiData.zuraioHome}">
-          <img class="brand-logo" src="${SITE.logo}" alt="${uiData.logoAlt ?? 'Zuraio – own your data'}" width="4796" height="1465" decoding="async" />
+          <img class="brand-logo" src="${assetHref(SITE.logo)}" alt="${uiData.logoAlt ?? 'Zuraio – own your data'}" width="4796" height="1465" decoding="async" />
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="${uiData.openMenu}">
           <span></span><span></span><span></span>
@@ -203,7 +204,7 @@ export function renderFooter() {
         </div>
         <div class="foot-bottom">
           <a class="brand foot-brand" href="${langHref('index.html')}" aria-label="${uiData.zuraioHome}">
-            <img class="brand-logo" src="${SITE.logo}" alt="${uiData.logoAlt ?? 'Zuraio – own your data'}" width="4796" height="1465" decoding="async" />
+            <img class="brand-logo" src="${assetHref(SITE.logo)}" alt="${uiData.logoAlt ?? 'Zuraio – own your data'}" width="4796" height="1465" decoding="async" />
           </a>
           <p class="foot-tagline">${getSiteTagline()}</p>
         </div>
