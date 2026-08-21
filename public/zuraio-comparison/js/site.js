@@ -215,6 +215,24 @@ export function renderFooter() {
   enhanceFooterWithReview();
 }
 
+function revealThroughHashTarget() {
+  const { hash } = window.location;
+  if (!hash) return;
+  const target = document.querySelector(hash);
+  if (!target) return;
+
+  const reveals = [...document.querySelectorAll('.reveal')];
+  const targetIndex = reveals.indexOf(target);
+  if (targetIndex >= 0) {
+    reveals.slice(0, targetIndex + 1).forEach((el) => el.classList.add('in'));
+    return;
+  }
+
+  if (target.classList.contains('reveal')) {
+    target.classList.add('in');
+  }
+}
+
 export function initReveal() {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const els = document.querySelectorAll('.reveal');
@@ -222,6 +240,9 @@ export function initReveal() {
     els.forEach((el) => el.classList.add('in'));
     return;
   }
+
+  revealThroughHashTarget();
+
   const io = new IntersectionObserver(
     (entries) => {
       entries.forEach((e) => {
@@ -233,7 +254,9 @@ export function initReveal() {
     },
     { threshold: 0.12, rootMargin: '0px 0px -8% 0px' },
   );
-  els.forEach((el) => io.observe(el));
+  els.forEach((el) => {
+    if (!el.classList.contains('in')) io.observe(el);
+  });
 }
 
 export function initTabs() {

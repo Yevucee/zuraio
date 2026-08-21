@@ -5816,6 +5816,108 @@ footer.site-footer {
   margin-top: 14px;
 }
 
+/* Technical architecture — section rhythm (.tech-main) */
+.tech-main section + section {
+  margin-top: 48px;
+  padding-top: 8px;
+}
+
+.tech-main .marker + h2 {
+  margin-top: 14px;
+}
+
+.tech-main .lede {
+  margin-top: 16px;
+}
+
+.tech-main ul,
+.tech-main ol {
+  margin-top: 22px;
+  padding-left: 0;
+  display: grid;
+  gap: 12px;
+  max-width: 65ch;
+}
+
+.tech-main ul li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.tech-main ul li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  margin-top: 0.58em;
+  border-radius: 50%;
+  background: var(--olive);
+}
+
+.tech-main .qualification {
+  margin-top: 24px;
+  line-height: 1.6;
+}
+
+.tech-main .diagram-box,
+.tech-main .layer-grid {
+  margin-top: 28px;
+}
+
+.flow-steps {
+  margin-top: 22px;
+  padding-left: 0;
+  display: grid;
+  gap: 14px;
+  max-width: 65ch;
+  counter-reset: flow-step;
+  list-style: none;
+}
+
+.flow-steps li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px 14px;
+  align-items: start;
+  counter-increment: flow-step;
+}
+
+.flow-steps li::before {
+  content: counter(flow-step);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--olive-deep);
+  background: var(--soft-olive-tint);
+  border: 1px solid var(--olive);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.cta-inline {
+  margin-top: 56px;
+  padding: 32px 28px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md, 12px);
+  background: var(--cloud);
+}
+
+.cta-inline h2 {
+  margin-top: 0;
+  font-size: clamp(22px, 2.5vw, 26px);
+}
+
+.cta-inline p {
+  margin-top: 16px;
+}
+
 .toc-title {
   font-family: "IBM Plex Mono", monospace;
   font-size: 10.5px;
