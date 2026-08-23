@@ -924,6 +924,7 @@ h3 .headline-em {
 
 .hero-layered .hero-copy h1 .headline-em {
   color: var(--olive-deep);
+  white-space: normal;
   text-shadow:
     0 0 8px rgba(255, 255, 255, 0.88),
     0 0 18px rgba(255, 255, 255, 0.58),
@@ -3806,6 +3807,7 @@ footer.site-footer {
     align-self: start;
     justify-content: flex-start;
     min-height: 0;
+    min-width: 0;
     margin-top: 0;
     transform: translateY(-1.5%);
   }
@@ -3883,6 +3885,8 @@ footer.site-footer {
   letter-spacing: -0.02em;
   color: #0f100e;
   margin: 0;
+  max-width: 100%;
+  overflow-wrap: break-word;
   text-shadow:
     0 0 8px rgba(255, 255, 255, 0.88),
     0 0 18px rgba(255, 255, 255, 0.58),
