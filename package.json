@@ -12,7 +12,8 @@
     "generate:favicons": "node scripts/generate-favicons.mjs",
     "audit:anchors": "node scripts/audit-anchor-links.mjs",
     "audit:preview-base": "node scripts/audit-preview-base.mjs",
-    "audit:hero-cta-mobile": "node scripts/audit-hero-cta-mobile.mjs"
+    "audit:hero-cta-mobile": "node scripts/audit-hero-cta-mobile.mjs",
+    "audit:nav-logo": "node scripts/audit-nav-logo.mjs"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",

@@ -59,6 +59,9 @@ function isBrokenPreviewPath(href) {
     href.includes('/de/zuraio/') ||
     href.includes('/fr/zuraio/') ||
     href.includes('/it/zuraio/') ||
+    href.includes('/zuraio/fr/fr/') ||
+    href.includes('/zuraio/de/de/') ||
+    href.includes('/zuraio/it/it/') ||
     href.includes('/zuraio/de/assets/') ||
     href.includes('/zuraio/fr/assets/') ||
     href.includes('/zuraio/it/assets/') ||
