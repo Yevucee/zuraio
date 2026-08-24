@@ -757,9 +757,18 @@ header.nav .nav-actions .btn-primary:hover {
   .nav-links {
     flex-direction: row;
     align-items: center;
-    gap: 26px;
+    gap: clamp(16px, 2vw, 26px);
     flex: 1;
     justify-content: center;
+    flex-wrap: nowrap;
+    min-width: 0;
+  }
+
+  .nav-links a,
+  .nav-dropdown,
+  .nav-dropdown-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .nav-links a {
@@ -803,6 +812,17 @@ header.nav .nav-actions .btn-primary:hover {
     padding: 0;
     border: none;
     gap: 12px;
+  }
+}
+
+@media (min-width: 980px) and (max-width: 1199px) {
+  .nav-links a,
+  .nav-dropdown-btn {
+    font-size: 13.5px;
+  }
+
+  .nav-menu {
+    gap: 20px;
   }
 }
 

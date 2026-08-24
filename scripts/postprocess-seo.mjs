@@ -159,7 +159,20 @@ function rewriteAbsoluteAssetPaths(html) {
   out = out.replace(/data-src="(zuraio\/)/g, `data-src="${prefix}$1`);
   out = out.replace(/poster="(?:\.\.\/)+/g, `poster="${prefix}`);
   out = out.replace(/poster="(zuraio\/)/g, `poster="${prefix}$1`);
+  // Prerender captures root-absolute /assets/... from runtime JS; prefix for GitHub preview.
+  out = out.replace(
+    /(\b(?:href|src|data-src|poster)=")\/assets\//g,
+    `$1${base}/assets/`,
+  );
   return out;
+}
+
+function stripLocalePrefixFromPath(pathSegment) {
+  for (const loc of LOCALES) {
+    if (pathSegment === loc || pathSegment === `${loc}/`) return '';
+    if (pathSegment.startsWith(`${loc}/`)) return pathSegment.slice(loc.length + 1);
+  }
+  return pathSegment;
 }
 
 function rewriteAbsolutePageLinks(html, locale) {
@@ -168,9 +181,15 @@ function rewriteAbsolutePageLinks(html, locale) {
   const home = locale === 'en' ? `${base}/` : `${base}/${locale}/`;
 
   let out = html.replace(/\bhref="\/"/g, `href="${home}"`);
+
+  for (const loc of LOCALES) {
+    out = out.replace(new RegExp(`\\bhref="/${loc}/"`, 'g'), `href="${base}/${loc}/"`);
+  }
+
   out = out.replace(/\bhref="\/([^"]*\.html[^"]*)"/g, (_, rest) => {
-    if (locale === 'en') return `href="${base}/${rest}"`;
-    return `href="${base}/${locale}/${rest}"`;
+    const file = stripLocalePrefixFromPath(rest);
+    if (locale === 'en') return `href="${base}/${file}"`;
+    return `href="${base}/${locale}/${file}"`;
   });
   return out;
 }
