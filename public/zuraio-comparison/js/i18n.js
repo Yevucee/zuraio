@@ -262,15 +262,13 @@ export function applyHomeTranslations() {
   setText('#origin h2', home.origin.heading);
   const originText = document.querySelector('#origin .origin-text');
   if (originText) {
-    const paragraphs = originText.querySelectorAll('p:not(.section-link)');
+    const paragraphs = originText.querySelectorAll('p:not(.origin-cta)');
     home.origin.paragraphs?.forEach((p, i) => {
       if (paragraphs[i]) paragraphs[i].textContent = p;
     });
   }
-  setHtml('#origin .section-link a', home.origin.link);
-  setLinkHref('#origin .section-link a', 'about.html');
-  const cap = document.querySelector('#origin .cap');
-  if (cap) cap.textContent = home.origin.caption;
+  setHtml('#origin .origin-cta a', home.origin.link);
+  setLinkHref('#origin .origin-cta a', 'about.html');
 
   setText('#faq-home h2', home.faq?.heading);
   const faqHome = document.querySelector('[data-home-faq]');

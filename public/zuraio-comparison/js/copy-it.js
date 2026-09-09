@@ -291,14 +291,13 @@ export const home = {
   },
   origin: {
     marker: 'Perché abbiamo creato Zuraio',
-    heading: 'Progettato per le attività che svolgiamo ogni giorno.',
+    heading: 'Progettato per il lavoro che facciamo ogni giorno.',
     paragraphs: [
-      'Abbiamo creato Zuraio perché gli strumenti di IA esistenti potevano generare risposte, ma non conoscevano le nostre informazioni aziendali, le regole di accesso o il contesto di lavoro.',
-      'Volevamo un assistente capace di lavorare con informazioni aziendali reali, lasciando alle persone il controllo sulle informazioni utilizzate e sui risultati prodotti.',
+      'Abbiamo creato Zuraio perché l’IA poteva generare risposte, ma non comprendeva le nostre informazioni aziendali, le regole di accesso o il contesto di lavoro.',
+      'Volevamo un assistente che lavori con informazioni aziendali reali e lasci le persone in controllo.',
       'È così che è nato Zuraio.',
     ],
     link: 'Conoscete il nostro team →',
-    caption: 'Le persone dietro Zuraio.',
   },
   faq: {
     heading: 'Domande frequenti',

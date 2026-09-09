@@ -274,15 +274,14 @@ export const home = {
     link: 'Learn about AI governance →',
   },
   origin: {
-    marker: 'Why we built it',
-    heading: 'Made for the work we had to do ourselves.',
+    marker: 'Why we built Zuraio',
+    heading: 'Built for the work we do every day.',
     paragraphs: [
-      'We built Zuraio because existing AI tools could generate answers, but they did not understand our company knowledge, access rules or working context.',
-      'We wanted an assistant that could work with real business information while keeping people in control of what it uses and produces.',
+      'We built Zuraio because AI could generate answers, but it didn’t understand our company knowledge, access rules or working context.',
+      'We wanted an assistant that works with real business information and keeps people in control.',
       'That became Zuraio.',
     ],
     link: 'Meet the team →',
-    caption: 'The people behind Zuraio.',
   },
   faq: {
     heading: 'Common questions',
