@@ -291,14 +291,13 @@ export const home = {
   },
   origin: {
     marker: 'Warum wir Zuraio entwickelt haben',
-    heading: 'Entwickelt für Aufgaben, die wir selbst täglich erledigen.',
+    heading: 'Entwickelt für die Arbeit, die wir täglich leisten.',
     paragraphs: [
-      'Wir haben Zuraio entwickelt, weil bestehende KI-Anwendungen zwar Antworten erzeugen konnten, aber unser Unternehmenswissen, unsere Zugriffsregeln und unseren Arbeitskontext nicht kannten.',
-      'Wir wollten einen Assistenten, der mit echten Geschäftsinformationen arbeiten kann – und bei dem die Menschen die Kontrolle darüber behalten, welche Informationen verwendet und welche Ergebnisse erstellt werden.',
+      'Wir haben Zuraio entwickelt, weil KI zwar Antworten erzeugen konnte, aber unser Unternehmenswissen, unsere Zugriffsregeln und unseren Arbeitskontext nicht verstand.',
+      'Wir wollten einen Assistenten, der mit echten Geschäftsinformationen arbeitet und bei dem die Menschen die Kontrolle behalten.',
       'So entstand Zuraio.',
     ],
     link: 'Unser Team kennenlernen →',
-    caption: 'Die Menschen hinter Zuraio.',
   },
   faq: {
     heading: 'Häufige Fragen',

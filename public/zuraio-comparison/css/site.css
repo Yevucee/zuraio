@@ -2915,25 +2915,30 @@ h3 .headline-em {
   background: var(--olive);
 }
 
-/* Origin */
+/* Origin — Why we built Zuraio */
 .origin.section-band--paper {
   background: var(--paper);
+}
+
+.origin-wrap {
+  max-width: 1200px;
+}
+
+#origin.origin.pad {
+  padding: clamp(56px, 8vw, 88px) 0;
 }
 
 .origin-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px;
+  gap: clamp(36px, 6vw, 56px);
   align-items: center;
 }
 
-@media (min-width: 920px) {
+@media (min-width: 960px) {
   .origin-grid {
-    grid-template-columns: 1.1fr 0.9fr;
-  }
-
-  .origin-portraits {
-    margin-top: 0;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(48px, 5vw, 64px);
   }
 }
 
@@ -2951,46 +2956,6 @@ h3 .headline-em {
   height: auto;
 }
 
-.origin-portraits {
-  position: relative;
-  margin-top: 42px;
-  padding: 10px;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--hairline);
-  box-shadow: var(--shadow-md);
-  background: #fff;
-}
-
-.origin-portraits__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
-  overflow: hidden;
-  border-radius: calc(var(--radius-lg) - 4px);
-}
-
-.origin-portraits__grid picture {
-  display: block;
-  line-height: 0;
-}
-
-.origin-portraits__grid img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 0;
-  border: none;
-}
-
-.origin-portraits .cap,
-.origin-photo .cap {
-  margin: 14px 4px 0;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 11px;
-  color: var(--muted);
-  text-align: center;
-}
-
 .origin-photo .cap {
   position: absolute;
   left: 18px;
@@ -3002,18 +2967,78 @@ h3 .headline-em {
   border-radius: 8px;
   backdrop-filter: blur(3px);
   text-align: left;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+}
+
+.origin-text .marker {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+}
+
+.origin-text h2 {
+  margin-top: 14px;
+  font-size: clamp(2rem, 4.2vw, 3.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  max-width: 14ch;
 }
 
 .origin-text p {
-  margin-top: 18px;
-  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 0;
+  font-size: clamp(1.0625rem, 1.35vw, 1.25rem);
+  line-height: 1.58;
   color: var(--charcoal-soft);
-  max-width: 54ch;
+  max-width: 36em;
 }
 
-.origin-text p.first {
-  font-size: 18px;
-  color: var(--charcoal);
+.origin-cta {
+  margin-top: clamp(24px, 3vw, 32px);
+  margin-bottom: 0;
+}
+
+.origin-cta .btn-primary {
+  padding: 13px 22px;
+  font-size: 15px;
+}
+
+.origin-cta .btn-primary:hover {
+  background: var(--olive-deep);
+}
+
+.origin-portraits {
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+.origin-portraits__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.origin-portraits__cell {
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.origin-portraits__cell picture {
+  display: block;
+  line-height: 0;
+}
+
+.origin-portraits__cell img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: none;
 }
 
 .still {
