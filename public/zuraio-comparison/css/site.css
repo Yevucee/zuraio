@@ -2931,6 +2931,10 @@ h3 .headline-em {
   .origin-grid {
     grid-template-columns: 1.1fr 0.9fr;
   }
+
+  .origin-portraits {
+    margin-top: 0;
+  }
 }
 
 .origin-photo {
@@ -2947,17 +2951,55 @@ h3 .headline-em {
   height: auto;
 }
 
+.origin-portraits {
+  position: relative;
+  margin-top: 42px;
+  padding: 14px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--hairline);
+  box-shadow: var(--shadow-md);
+  background: #fff;
+}
+
+.origin-portraits__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.origin-portraits__grid picture {
+  display: block;
+}
+
+.origin-portraits__grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--hairline);
+}
+
+.origin-portraits .cap,
+.origin-photo .cap {
+  margin: 14px 4px 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+}
+
 .origin-photo .cap {
   position: absolute;
   left: 18px;
   bottom: 16px;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 11px;
+  margin: 0;
   color: #fff;
   background: rgba(38, 40, 35, 0.5);
   padding: 6px 11px;
   border-radius: 8px;
   backdrop-filter: blur(3px);
+  text-align: left;
 }
 
 .origin-text p {
@@ -5725,6 +5767,10 @@ footer.site-footer {
   gap: 40px;
 }
 
+.team-section h2 {
+  margin-top: 8px;
+}
+
 .team-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -5735,7 +5781,39 @@ footer.site-footer {
 @media (min-width: 680px) {
   .team-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
+}
+
+@media (min-width: 1024px) {
+  .team-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+}
+
+.team-member {
+  padding: 18px 16px 20px;
+}
+
+.team-member .team-portrait,
+.team-member picture {
+  display: block;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.team-member .team-portrait {
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--hairline);
+  box-shadow: var(--shadow-sm);
+}
+
+.team-member h3 {
+  font-size: 17px;
+  margin: 0 0 4px;
 }
 
 .team-grid .role {

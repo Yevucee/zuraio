@@ -298,8 +298,7 @@ export const home = {
       'So entstand Zuraio.',
     ],
     link: 'Unser Team kennenlernen →',
-    caption: 'Entwickelt, weil wir es selbst brauchten.',
-    imageAlt: 'Das Zuraio-Team bei der Arbeit.',
+    caption: 'Die Menschen hinter Zuraio.',
   },
   faq: {
     heading: 'Häufige Fragen',
