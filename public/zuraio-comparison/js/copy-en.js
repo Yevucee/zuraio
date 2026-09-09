@@ -497,7 +497,7 @@ export const pages = {
   about: {
     title: 'About — Zuraio',
     description: 'Why Zuraio was built and the team behind the platform.',
-    hero: { marker: 'About Zuraio', heading: 'Built by people who needed a better way to work.', headingEmphasis: 'better', lede: 'Zuraio began with a practical problem. Existing AI tools were useful, but they did not combine company knowledge, data control and everyday work in the way we needed.' },
+    hero: { marker: 'About Zuraio', heading: 'Practical AI. Built around people.' },
   },
   contact: {
     title: 'Contact — Zuraio',
