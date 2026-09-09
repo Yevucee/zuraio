@@ -29,7 +29,10 @@ for (const name of TEAM) {
   const tmp = path.join(ASSETS, `${name}.optimized.png`);
   await sharp(src)
     .rotate()
-    .resize(OUTPUT_SIZE, OUTPUT_SIZE, { fit: 'cover', position: 'centre' })
+    .resize(OUTPUT_SIZE, OUTPUT_SIZE, {
+      fit: 'inside',
+      withoutEnlargement: true,
+    })
     .png({ compressionLevel: 9, palette: true, quality: 82 })
     .toFile(tmp);
 
