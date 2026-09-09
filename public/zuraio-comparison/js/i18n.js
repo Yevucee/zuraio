@@ -271,8 +271,6 @@ export function applyHomeTranslations() {
   setLinkHref('#origin .section-link a', 'about.html');
   const cap = document.querySelector('#origin .cap');
   if (cap) cap.textContent = home.origin.caption;
-  const originImg = document.querySelector('#origin img');
-  if (originImg && home.origin.imageAlt) originImg.alt = home.origin.imageAlt;
 
   setText('#faq-home h2', home.faq?.heading);
   const faqHome = document.querySelector('[data-home-faq]');

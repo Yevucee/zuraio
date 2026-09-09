@@ -282,8 +282,7 @@ export const home = {
       'That became Zuraio.',
     ],
     link: 'Meet the team →',
-    caption: 'Built because we needed it ourselves.',
-    imageAlt: 'The Zuraio team at work — a restrained supporting photograph.',
+    caption: 'The people behind Zuraio.',
   },
   faq: {
     heading: 'Common questions',
