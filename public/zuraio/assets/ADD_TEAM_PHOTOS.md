@@ -11,6 +11,8 @@ Individual portraits used on the About page and homepage “Why we built it” s
 
 Referenced from the marketing site as `../zuraio/assets/Michael.png` (and `.webp` in `<picture>`).
 
-Run `node scripts/optimize-team-images.mjs` (included in `npm run build`) to resize to 800×800 and compress.
+**Source files:** Put full-resolution originals in `team-source/` (same filenames). The build script crops each face to a consistent head size, then writes optimized `Name.png` + `Name.webp` here.
 
-Replace a portrait by overwriting the PNG in this folder, then rebuild.
+Run `node scripts/optimize-team-images.mjs` (included in `npm run build`) to apply face-normalized 800×800 crops and compress.
+
+Replace a portrait by overwriting the PNG in `team-source/`, then rebuild.
