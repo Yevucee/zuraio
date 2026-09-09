@@ -435,9 +435,7 @@ export const pages = {
     title: 'Über uns — Zuraio',
     hero: {
       marker: 'Über Zuraio',
-      heading: 'Entwickelt von Menschen, die einen besseren Weg arbeiten wollten.',
-      headingEmphasis: 'besseren',
-      lede: 'Zuraio begann mit einem praktischen Problem. Bestehende KI-Tools waren nützlich, verbanden aber Unternehmenswissen, Datenkontrolle und Alltagsarbeit nicht so, wie wir es brauchten.',
+      heading: 'Praktische KI. Gebaut für Menschen.',
     },
   },
   contact: {

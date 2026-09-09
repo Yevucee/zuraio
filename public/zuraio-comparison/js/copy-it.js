@@ -435,9 +435,7 @@ export const pages = {
     title: 'Chi siamo — Zuraio',
     hero: {
       marker: 'Su Zuraio',
-      heading: 'Creato da persone che cercavano un modo migliore di lavorare.',
-      headingEmphasis: 'migliore',
-      lede: 'Zuraio è nato da un problema concreto. Gli strumenti di IA esistenti erano utili, ma non combinavano conoscenza aziendale, controllo dei dati e lavoro quotidiano nel modo di cui avevamo bisogno.',
+      heading: 'IA pratica. Costruita intorno alle persone.',
     },
   },
   contact: {
