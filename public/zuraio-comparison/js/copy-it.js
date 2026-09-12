@@ -86,6 +86,14 @@ export const integrations = [
   'Salesforce',
   'WhatsApp',
   'Note vocali',
+  'Abacus',
+  'bexio',
+  'SAP',
+  'Dynamics 365',
+  'Odoo',
+  'Sage',
+  'Proffix',
+  'Klara',
 ];
 
 export const nav = {

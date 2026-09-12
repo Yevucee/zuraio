@@ -38,6 +38,14 @@ const OUTPUT_FILES = {
   salesforce: 'salesforce.svg',
   whatsapp: 'whatsapp.svg',
   'voice-notes': 'voice-notes.svg',
+  abacus: 'abacus.svg',
+  bexio: 'bexio.svg',
+  sap: 'sap.svg',
+  'microsoft-dynamics': 'microsoft-dynamics.svg',
+  odoo: 'odoo.svg',
+  sage: 'sage.svg',
+  proffix: 'proffix.svg',
+  klara: 'klara.svg',
 };
 
 /** Alternate source filenames (Roland repo + common variants) */
@@ -55,6 +63,14 @@ const SOURCE_ALIASES = {
   salesforce: ['salesforce.svg'],
   whatsapp: ['whatsapp.svg'],
   'voice-notes': ['voice-notes.svg', 'voicenotes.svg', 'voice_notes.svg'],
+  abacus: ['abacus.svg'],
+  bexio: ['bexio.svg'],
+  sap: ['sap.svg'],
+  'microsoft-dynamics': ['microsoft-dynamics.svg', 'dynamics.svg', 'dynamics365.svg'],
+  odoo: ['odoo.svg'],
+  sage: ['sage.svg'],
+  proffix: ['proffix.svg'],
+  klara: ['klara.svg'],
 };
 
 const REMOTE_BASE =
