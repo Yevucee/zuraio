@@ -40,6 +40,14 @@ Use these filenames (or aliases listed in `scripts/sync-integration-logos.mjs`):
 | `salesforce.svg` | Salesforce |
 | `whatsapp.svg` | WhatsApp |
 | `voice-notes.svg` | Voice notes |
+| `abacus.svg` | Abacus |
+| `bexio.svg` | bexio |
+| `sap.svg` | SAP |
+| `microsoft-dynamics.svg` | Dynamics 365 |
+| `odoo.svg` | Odoo |
+| `sage.svg` | Sage |
+| `proffix.svg` | Proffix |
+| `klara.svg` | Klara |
 
 Run `npm run sync:integration-logos` again after adding files.
 
