@@ -4,7 +4,7 @@ The cloud agent cannot push to `Mcwili/zuraio` (403). Use **either** the GitHub 
 
 ## Option A — GitHub Action (recommended)
 
-1. Create a **fine-grained PAT** (your GitHub user) with **Contents: Read and write** on `Mcwili/zuraio`, or a classic token with `repo` access to that repository.
+1. Create a **classic PAT** at [New personal access token (classic)](https://github.com/settings/tokens/new): note e.g. `MCWILI_PUSH_TOKEN`, set expiration, enable the **`repo`** scope (full control of private repositories). Fine-grained tokens only work when you can select the resource owner that owns `Mcwili/zuraio`; if you are a **collaborator** but not an owner of that org/user, use classic **`repo`** instead (see comment in `.github/workflows/sync-to-mcwili.yml`).
 2. **Yevucee/zuraio → Settings → Secrets and variables → Actions → New secret:** `MCWILI_PUSH_TOKEN` = the PAT.
 3. **Actions → Sync to Mcwili production → Run workflow** (leave “backup legacy” on `true` the first time).
 4. On **Mcwili/zuraio**: **Settings → Pages → Source: GitHub Actions**, then run **Deploy to GitHub Pages** on `main` (or wait for push if you add the same workflow there later).
