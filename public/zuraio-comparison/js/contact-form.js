@@ -4,7 +4,7 @@ import { isInternalReviewMode } from './internal-review.js';
 
 function formMessages() {
   const copy = getCopy();
-  const form = copy.contact?.form ?? {};
+  const form = copy.pages?.contact?.form ?? copy.contact?.form ?? {};
   return {
     sending: form.sending ?? 'Sending…',
     success: form.success ?? 'Thank you. We received your enquiry and will respond within a few business days.',
@@ -14,6 +14,7 @@ function formMessages() {
     validationMessageOrInterest:
       form.validationMessageOrInterest ?? 'Please add a message or select a main interest.',
     validationEmail: form.validationEmail ?? 'Please enter a valid email address.',
+    internalReviewNotice: form.internalReviewNotice,
   };
 }
 
@@ -101,9 +102,8 @@ export function initContactForm() {
     if (isInternalReviewMode()) {
       setNotice(
         notice,
-        getLocale() === 'de'
-          ? 'Entwicklungshinweis: Formular-Backend ist in Internal Review sichtbar.'
-          : 'Development notice: form backend visible in internal review mode.',
+        formMessages().internalReviewNotice ??
+          'Development notice: form backend visible in internal review mode.',
         true,
       );
       return;

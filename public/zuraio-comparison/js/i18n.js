@@ -7,6 +7,7 @@ import { PAIN_CARD_ICONS } from './pain-card-icons.js';
 import { refreshRoutesDiagram } from './routes-diagram.js';
 import { applyTechnicalTranslations } from './apply-technical-i18n.js';
 import { applyLegalTranslations } from './apply-legal-i18n.js';
+import { applyContactPageTranslations } from './contact-page-i18n.js';
 import { setHeadlineHtml, formatHeadline } from './headline-emphasis.js';
 import { HERO_COMPARISON_ENABLED, SITE_BASE } from './config.js';
 import {
@@ -41,7 +42,25 @@ export function getLocale() {
   if (fromPath) return fromPath;
   const stored = localStorage.getItem(LOCALE_KEY);
   if (isSupportedLocale(stored)) return stored;
-  return 'en';
+  return 'de';
+}
+
+/** First visit: Swiss default locale is German (`/de/`). Respects saved language choice. */
+export function ensureDefaultLocaleRoute() {
+  const host = location.hostname;
+  if (host === 'localhost' || host === '127.0.0.1') return;
+
+  const params = new URLSearchParams(location.search);
+  if (params.get('lang')) return;
+
+  if (getLocaleFromPath()) return;
+
+  const stored = localStorage.getItem(LOCALE_KEY);
+  const preferred = isSupportedLocale(stored) ? stored : 'de';
+  if (preferred === 'en') return;
+
+  const page = getCurrentPageFile();
+  location.replace(`${langHrefForLocale(page, preferred, SITE_BASE)}${location.hash}`);
 }
 
 export function setLocale(locale) {
@@ -319,6 +338,7 @@ export function applyAllTranslations() {
   applyPageTranslations();
   applyTechnicalTranslations(locale);
   applyLegalTranslations(locale);
+  applyContactPageTranslations();
   applyDataI18n();
   applyInternalLinkLocales();
 }
