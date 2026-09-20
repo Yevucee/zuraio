@@ -1,0 +1,34 @@
+# Zuraio
+
+> Zuraio is a digital executive assistant for Swiss SMEs. It works with approved company knowledge, shows its sources, and keeps employees in control of company data.
+
+Canonical homepage: https://zuraio.ch/
+
+## English
+- Homepage: https://zuraio.ch/
+- Data control: https://zuraio.ch/data-control.html
+- Technical architecture: https://zuraio.ch/technical-architecture.html
+- Deployment models: https://zuraio.ch/deployment-models.html
+- AI governance: https://zuraio.ch/ai-governance.html
+- Integrations: https://zuraio.ch/integrations.html
+- FAQ: https://zuraio.ch/faq.html
+
+## German
+- Homepage: https://zuraio.ch/de/
+- Datenschutz / Data control: https://zuraio.ch/de/data-control.html
+- Technische Architektur: https://zuraio.ch/de/technical-architecture.html
+- FAQ: https://zuraio.ch/de/faq.html
+
+## French
+- Homepage: https://zuraio.ch/fr/
+- Contrôle des données: https://zuraio.ch/fr/data-control.html
+- Architecture technique: https://zuraio.ch/fr/technical-architecture.html
+- FAQ: https://zuraio.ch/fr/faq.html
+
+## Italian
+- Homepage: https://zuraio.ch/it/
+- Controllo dei dati: https://zuraio.ch/it/data-control.html
+- Architettura tecnica: https://zuraio.ch/it/technical-architecture.html
+- FAQ: https://zuraio.ch/it/faq.html
+
+Contact: michael.wili@zuraio.ch

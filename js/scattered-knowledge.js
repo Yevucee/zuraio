@@ -1,0 +1,140 @@
+import {
+  SCATTERED_FRAGMENTS,
+  SCATTERED_LABELS,
+  SCATTERED_PATHS,
+  SCATTERED_HUB,
+  FRAGMENT_SVGS,
+  FRAGMENT_ICON_SRC,
+  clockIconSrc,
+  SVG_DEFS,
+} from './scattered-knowledge-data.js';
+import { getCopy } from './i18n.js';
+import { assetHref } from './path-locale.js';
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let observer = null;
+
+function renderIcon(fragment) {
+  if (fragment.type === 'clock') {
+    const src = assetHref(clockIconSrc(fragment.clockVariant ?? 1));
+    return `<img src="${src}" alt="" class="sk-fragment__img" width="24" height="24" decoding="async" />`;
+  }
+
+  const src = FRAGMENT_ICON_SRC[fragment.type];
+  if (src) {
+    return `<img src="${assetHref(src)}" alt="" class="sk-fragment__img" width="24" height="24" decoding="async" />`;
+  }
+
+  return FRAGMENT_SVGS[fragment.type] ?? '';
+}
+
+function renderFragment(fragment) {
+  const isClock = fragment.type === 'clock';
+  const isBrain = fragment.type === 'brain';
+  const isAsset = Boolean(FRAGMENT_ICON_SRC[fragment.type] || isClock);
+
+  const classes = [
+    'sk-fragment',
+    `sk-fragment--${fragment.type}`,
+    fragment.secondary ? 'sk-fragment--secondary' : '',
+    fragment.hub ? 'sk-fragment--hub' : '',
+    isBrain ? 'sk-fragment--brain' : '',
+    isClock ? 'sk-fragment--clock' : '',
+    isAsset ? 'sk-fragment--asset' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  const flash = fragment.flash
+    ? `<span class="sk-flash" style="--flash-delay:${(fragment.delay + 2.1).toFixed(1)}s;--flash-duration:${(4.5 + fragment.delay).toFixed(1)}s"></span>`
+    : '';
+
+  const style = [
+    `--x:${fragment.x}%`,
+    `--y:${fragment.y}%`,
+    `--drift:${fragment.drift}s`,
+    `--delay:${fragment.delay}s`,
+    `--icon-fade:${fragment.fade ?? 6.5}s`,
+    isClock ? `--clock-anim:${fragment.clockAnim ?? 30}s` : '',
+  ]
+    .filter(Boolean)
+    .join(';');
+
+  return `<div class="${classes}" data-sk-fragment="${fragment.id}" style="${style}">${flash}<span class="sk-fragment__icon">${renderIcon(fragment)}</span></div>`;
+}
+
+function renderLabel(label, text) {
+  if (!text) return '';
+  return `<span class="sk-label sk-label--${label.tier}" data-sk-label="${label.id}" style="--x:${label.x}%;--y:${label.y}%;--fade:${label.fade}s;--delay:${label.delay}s">${text}</span>`;
+}
+
+function renderPath(path, index) {
+  const animate = path.animate || 'static';
+  const classes = ['sk-path', `sk-path--${animate}`].join(' ');
+
+  const marker = path.arrow ? ' marker-end="url(#sk-arrow)"' : '';
+
+  return `<path class="${classes}" data-sk-path="${index}" d="${path.d}" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="${path.stroke}" stroke-width="${path.width}" stroke-linecap="round" stroke-linejoin="round" style="opacity:${path.opacity};--path-delay:${path.delay}s;--path-duration:${path.duration}s"${marker}/>`;
+}
+
+function buildStage(labelsCopy) {
+  const fragments = SCATTERED_FRAGMENTS.map(renderFragment).join('');
+  const labels = SCATTERED_LABELS.map((label) => renderLabel(label, labelsCopy[label.id])).join('');
+  const paths = SCATTERED_PATHS.map(renderPath).join('');
+  const hub = SCATTERED_FRAGMENTS.find((fragment) => fragment.hub) ?? SCATTERED_HUB;
+  const hubStyle = `--hub-x:${hub.x}%;--hub-y:${hub.y}%;`;
+
+  return `<div class="scattered-knowledge__stage" style="${hubStyle}">
+    <svg class="scattered-knowledge__lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      ${SVG_DEFS}
+      ${paths}
+    </svg>
+    <div class="scattered-knowledge__fragments">${fragments}</div>
+    <div class="scattered-knowledge__labels">${labels}</div>
+  </div>`;
+}
+
+function observeStage(root) {
+  if (observer) observer.disconnect();
+
+  if (reduceMotion) {
+    root.classList.add('is-active', 'is-static');
+    return;
+  }
+
+  observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          root.classList.add('is-active');
+          observer?.unobserve(root);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: '0px 0px -5% 0px' },
+  );
+
+  observer.observe(root);
+}
+
+export function renderScatteredKnowledge(root) {
+  if (!root) return;
+
+  const { home } = getCopy();
+  const labelsCopy = home?.problem?.illustration?.labels ?? {};
+
+  root.innerHTML = buildStage(labelsCopy);
+  root.classList.remove('is-active', 'is-static');
+  observeStage(root);
+}
+
+export function initScatteredKnowledge() {
+  const root = document.querySelector('[data-scattered-knowledge]');
+  if (!root) return;
+  renderScatteredKnowledge(root);
+}
+
+export function destroyScatteredKnowledge() {
+  observer?.disconnect();
+  observer = null;
+}

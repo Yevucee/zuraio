@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://zuraio.ch/</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/about.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/about.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/about.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/about.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/about.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/how-it-helps.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/how-it-helps.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/how-it-helps.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/how-it-helps.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/how-it-helps.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/how-it-helps.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/contact.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/contact.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/resources.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/resources.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/resources.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/resources.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/resources.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/resources.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/technical-architecture.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/technical-architecture.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/technical-architecture.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/technical-architecture.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/technical-architecture.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/technical-architecture.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/knowledge.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/knowledge.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/knowledge.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/knowledge.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/knowledge.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/knowledge.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/data-control.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/data-control.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/data-control.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/data-control.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/data-control.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/data-control.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/deployment-models.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/deployment-models.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/deployment-models.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/deployment-models.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/deployment-models.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/deployment-models.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/ai-governance.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/ai-governance.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/ai-governance.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/ai-governance.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/ai-governance.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/ai-governance.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/integrations.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/integrations.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/integrations.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/integrations.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/integrations.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/integrations.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/faq.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/faq.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/impressum.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/impressum.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/privacy.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/terms.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/terms.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/cookies.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/cookies.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/de/</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/de/about.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/about.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/about.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/about.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/about.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/de/how-it-helps.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/how-it-helps.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/how-it-helps.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/how-it-helps.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/how-it-helps.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/how-it-helps.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/de/contact.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/contact.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/de/resources.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/resources.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/resources.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/resources.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/resources.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/resources.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/de/technical-architecture.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/technical-architecture.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/technical-architecture.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/technical-architecture.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/technical-architecture.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/technical-architecture.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/de/knowledge.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/knowledge.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/knowledge.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/knowledge.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/knowledge.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/knowledge.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/de/data-control.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/data-control.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/data-control.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/data-control.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/data-control.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/data-control.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/de/deployment-models.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/deployment-models.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/deployment-models.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/deployment-models.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/deployment-models.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/deployment-models.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/de/ai-governance.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/ai-governance.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/ai-governance.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/ai-governance.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/ai-governance.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/ai-governance.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/de/integrations.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/integrations.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/integrations.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/integrations.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/integrations.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/integrations.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/de/faq.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/faq.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/de/impressum.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/impressum.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/de/privacy.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/de/terms.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/terms.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/de/cookies.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/cookies.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/fr/</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/fr/about.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/about.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/about.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/about.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/about.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/fr/how-it-helps.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/how-it-helps.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/how-it-helps.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/how-it-helps.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/how-it-helps.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/how-it-helps.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/fr/contact.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/contact.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/fr/resources.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/resources.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/resources.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/resources.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/resources.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/resources.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/fr/technical-architecture.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/technical-architecture.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/technical-architecture.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/technical-architecture.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/technical-architecture.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/technical-architecture.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/fr/knowledge.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/knowledge.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/knowledge.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/knowledge.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/knowledge.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/knowledge.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/fr/data-control.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/data-control.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/data-control.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/data-control.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/data-control.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/data-control.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/fr/deployment-models.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/deployment-models.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/deployment-models.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/deployment-models.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/deployment-models.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/deployment-models.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/fr/ai-governance.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/ai-governance.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/ai-governance.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/ai-governance.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/ai-governance.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/ai-governance.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/fr/integrations.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/integrations.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/integrations.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/integrations.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/integrations.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/integrations.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/fr/faq.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/faq.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/fr/impressum.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/impressum.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/fr/privacy.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/fr/terms.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/terms.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/fr/cookies.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/cookies.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/it/</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/it/about.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/about.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/about.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/about.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/about.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/it/how-it-helps.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/how-it-helps.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/how-it-helps.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/how-it-helps.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/how-it-helps.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/how-it-helps.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/it/contact.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/contact.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/it/resources.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/resources.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/resources.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/resources.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/resources.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/resources.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/it/technical-architecture.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/technical-architecture.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/technical-architecture.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/technical-architecture.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/technical-architecture.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/technical-architecture.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/it/knowledge.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/knowledge.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/knowledge.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/knowledge.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/knowledge.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/knowledge.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/it/data-control.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/data-control.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/data-control.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/data-control.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/data-control.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/data-control.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/it/deployment-models.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/deployment-models.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/deployment-models.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/deployment-models.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/deployment-models.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/deployment-models.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/it/ai-governance.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/ai-governance.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/ai-governance.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/ai-governance.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/ai-governance.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/ai-governance.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/it/integrations.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/integrations.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/integrations.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/integrations.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/integrations.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/integrations.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/it/faq.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/faq.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/it/impressum.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/impressum.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/it/privacy.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/it/terms.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/terms.html"/>
+  </url>
+  <url>
+    <loc>https://zuraio.ch/it/cookies.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zuraio.ch/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://zuraio.ch/de/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://zuraio.ch/it/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zuraio.ch/cookies.html"/>
+  </url>
+</urlset>

@@ -1,0 +1,239 @@
+<!DOCTYPE html><html lang="fr"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="../assets/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="shortcut icon" href="../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<title>Contrôle des données — Zuraio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/site.css">
+  <meta name="description" content="Zuraio est conçu pour traiter les informations de l’entreprise dans les limites du déploiement et du contrat convenus. La propriété, les usages autorisés, la conservation et les conditions de traitement doivent être documentés pour la solution et les fournisseurs de modèles sélectionnés.">
+
+  <link rel="canonical" href="https://zuraio.ch/fr/data-control.html">
+  <link rel="alternate" hreflang="en" href="https://zuraio.ch/data-control.html">
+<link rel="alternate" hreflang="de" href="https://zuraio.ch/de/data-control.html">
+<link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/data-control.html">
+<link rel="alternate" hreflang="it" href="https://zuraio.ch/it/data-control.html">
+  <link rel="alternate" hreflang="x-default" href="https://zuraio.ch/data-control.html">
+  <meta property="og:title" content="Contrôle des données — Zuraio">
+  <meta property="og:description" content="Zuraio est conçu pour traiter les informations de l’entreprise dans les limites du déploiement et du contrat convenus. La propriété, les usages autorisés, la conservation et les conditions de traitement doivent être documentés pour la solution et les fournisseurs de modèles sélectionnés.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zuraio.ch/fr/data-control.html">
+  <meta property="og:image" content="https://zuraio.ch/zuraio/assets/zuraio-og-share.png">
+  <meta property="og:locale" content="fr_CH">
+  <meta property="og:locale:alternate" content="en_CH">
+  <meta property="og:locale:alternate" content="de_CH">
+  <meta property="og:locale:alternate" content="it_CH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Zuraio","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://zuraio.ch/fr/data-control.html","description":"Zuraio est conçu pour traiter les informations de l’entreprise dans les limites du déploiement et du contrat convenus. La propriété, les usages autorisés, la conservation et les conditions de traitement doivent être documentés pour la solution et les fournisseurs de modèles sélectionnés.","provider":{"@type":"Organization","name":"Zuraio","url":"https://zuraio.ch/"}}</script>
+<script>
+(function(){var p=new URLSearchParams(location.search),l=p.get('lang');
+if(!l||!['en','de','fr','it'].includes(l))return;
+try{localStorage.setItem('zuraio-locale',l);}catch(e){}
+var seg=location.pathname.split('/').filter(Boolean),base=seg[0]==='zuraio'?'/zuraio':'';
+var localeIdx=base?1:0,curLoc=seg[localeIdx];
+var inLoc=['de','fr','it'].includes(curLoc);
+var f=location.pathname.split('/').pop()||'';
+var isHome=!f||f==='index.html'||(inLoc&&seg.length===localeIdx+1);
+p.delete('lang');var q=p.toString(),suffix=(q?'?'+q:'')+location.hash;
+if(l==='en'){location.replace((isHome?(base?base+'/':'/'):(base?base+'/':'/')+f)+suffix);return;}
+location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
+})();
+</script>
+</head>
+<body data-page="dataControl" class="public-mode">
+<div id="site-header" data-dropdown-dismiss-bound="true" data-scroll-bound="true">
+    <header class="nav" id="nav">
+      <div class="wrap nav-in">
+        <a class="brand" href="/fr/" aria-label="Accueil Zuraio">
+          <img class="brand-logo" src="/assets/zuraio-logo.png" alt="Zuraio – vos données sous votre contrôle" width="4796" height="1465" decoding="async">
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav-menu" id="nav-menu">
+          <nav class="nav-links" aria-label="Navigation principale">
+            <a href="/fr/how-it-helps.html">Comment Zuraio vous aide</a><a href="/fr/knowledge.html">Connaissances</a><a href="/fr/integrations.html">Intégrations</a><a href="/fr/data-control.html">Contrôle des données</a>
+            <div class="nav-dropdown">
+              <button type="button" class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">Technique</button>
+              <div class="nav-dropdown-menu" role="menu"><a href="/fr/technical-architecture.html" role="menuitem">Architecture technique</a><a href="/fr/deployment-models.html" role="menuitem">Modes de déploiement</a><a href="/fr/ai-governance.html" role="menuitem">Gouvernance de l’IA</a><a href="/fr/data-control.html" role="menuitem">Contrôle des données</a><a href="/fr/knowledge.html#skillos" role="menuitem">Connaissances et SkillOS</a></div>
+            </div>
+            <a href="/fr/about.html">À propos</a>
+          </nav>
+          <div class="nav-actions">
+            
+    <div class="lang-dropdown">
+      <button type="button" class="lang-dropdown-btn" aria-expanded="false" aria-haspopup="listbox" aria-label="Langue">
+        <span class="lang-dropdown-current">FR</span>
+      </button>
+      <div class="lang-dropdown-menu" role="listbox" aria-label="Langue">
+        <button type="button" class="lang-dropdown-option" role="option" data-lang="en" aria-selected="false">EN</button><button type="button" class="lang-dropdown-option" role="option" data-lang="de" aria-selected="false">DE</button><button type="button" class="lang-dropdown-option is-active" role="option" data-lang="fr" aria-selected="true">FR</button><button type="button" class="lang-dropdown-option" role="option" data-lang="it" aria-selected="false">IT</button>
+      </div>
+    </div>
+            <a class="btn btn-primary" href="/fr/contact.html">Réserver une démonstration</a>
+          </div>
+        </div>
+      </div>
+    </header></div>
+<main>
+
+<section class="page-hero pad">
+  <div class="wrap">
+    <span class="marker">Contrôle des données</span>
+    <h1>Vos données restent sous votre contrôle.</h1>
+    <p class="lede">Zuraio est conçu pour traiter les informations de l’entreprise dans les limites du déploiement et du contrat convenus. La propriété, les usages autorisés, la conservation et les conditions de traitement doivent être documentés pour la solution et les fournisseurs de modèles sélectionnés.</p>
+  </div>
+</section>
+
+
+
+<section class="pad cloud-bg" id="data-ownership">
+  <div class="wrap">
+    <span class="marker">Propriété des données</span>
+    <h2>Vos données restent sous votre contrôle.</h2>
+    <p class="lede">Zuraio est conçu pour traiter les informations de l'entreprise dans les limites du déploiement et du contrat convenus. La propriété, les usages autorisés, la conservation et les conditions de traitement doivent être documentés pour la solution et les fournisseurs de modèles sélectionnés.</p>
+
+    <div class="grid-cards cols-2">
+      <article class="pcard reveal">
+        <h3>L'entreprise conserve la propriété</h3>
+        <p>Vos documents, e-mails, dossiers commerciaux et connaissances internes restent votre propriété. Zuraio ne revendique aucun droit de propriété sur les contenus des clients.</p>
+      </article>
+      <article class="pcard reveal d1">
+        <h3>Les conditions des fournisseurs sont définies avant la connexion</h3>
+        <p>La conservation des informations ou leur éventuelle utilisation à des fins d'entraînement par un fournisseur externe dépend du modèle, du fournisseur et des conditions contractuelles. Ces éléments doivent être définis avant de connecter des informations d'entreprise.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="pad">
+  <div class="wrap">
+    <span class="marker">Identité et autorisations</span>
+    <h2>Les accès doivent respecter les règles existantes de l'entreprise.</h2>
+    <p class="lede">Zuraio peut utiliser les identités, groupes et autorisations Microsoft ou Google déjà en place. Lorsque ces intégrations ne sont pas utilisées, des rôles et contrôles d'accès supplémentaires peuvent être gérés dans Zuraio.</p>
+
+    <div class="grid-cards cols-3">
+      <article class="pcard reveal">
+        <h3>Structures d'identité existantes</h3>
+        <p>Les informations d'identité Microsoft ou Google peuvent servir de base organisationnelle pour les utilisateurs, les groupes et les rôles.</p>
+      </article>
+      <article class="pcard reveal d1">
+        <h3>Vérification des autorisations</h3>
+        <p>Le contexte d'identité et d'autorisation peut être transmis à l'assistant et à la source de données concernés afin de vérifier l'accès au moment où une information est consultée ou une action demandée.</p>
+      </article>
+      <article class="pcard reveal d2">
+        <h3>Contrôles Zuraio supplémentaires</h3>
+        <p>Des règles Zuraio peuvent limiter les modèles, outils, classes de données et actions sans remplacer le système d'identité existant.</p>
+      </article>
+    </div>
+
+    <p class="qualification">Le comportement précis dépend du système connecté, de la méthode d'intégration et du déploiement convenu.</p>
+  </div>
+</section>
+
+<section class="pad cloud-bg">
+  <div class="wrap">
+    <span class="marker">Actions contrôlées</span>
+    <h2>Lire une information et la modifier ne sont pas la même chose.</h2>
+    <p class="lede">Zuraio est conçu pour distinguer les opérations de lecture des actions qui modifient un document, un système ou une communication externe. Les actions critiques ou d'écriture peuvent être préparées sous forme de projet ou de proposition avant confirmation.</p>
+    <ul><li>Lire des informations approuvées dans les limites des autorisations</li><li>Préparer une réponse ou une modification proposée</li><li>Présenter l'action prévue avant son exécution</li><li>Exiger une confirmation lorsque cela est configuré</li><li>Conserver les informations pertinentes sur l'action et l'approbation lorsque le composant le permet</li></ul>
+    <p class="qualification">Le principe « projet avant exécution » est implémenté dans EmailAI. Les contrôles d'action plus larges dépendent du composant et de son degré de maturité.</p>
+  </div>
+</section>
+
+<section class="pad">
+  <div class="wrap">
+    <span class="marker">Règles de modèles et de localisation</span>
+    <h2>Déterminer quelles données peuvent être transmises à quel modèle et dans quel lieu.</h2>
+    <p class="lede">Les règles peuvent tenir compte de la tâche, de la classification des données, du lieu de traitement autorisé et du fournisseur de modèle approuvé. Elles permettent des architectures combinant des composants locaux, suisses et cloud autorisés.</p>
+    <p style="margin-top:20px;"><a href="/fr/deployment-models.html">Comparer les modes de déploiement →</a></p>
+  </div>
+</section>
+
+<section class="pad cloud-bg">
+  <div class="wrap">
+    <span class="marker">Sécurité</span>
+    <h2>La sécurité dépend du déploiement choisi.</h2>
+    <p class="lede">Les déploiements Zuraio sont conçus pour protéger les données en transit et au repos. Le chiffrement, la gestion des clés, le stockage, la journalisation, les sauvegardes et la restauration doivent être documentés pour les composants et le déploiement retenus.</p>
+
+    <div class="grid-cards cols-2">
+      <article class="pcard reveal">
+        <h3>Authentification et autorisation</h3>
+        <p>Les accès sont contrôlés par les identités, les rôles, les périmètres d'autorisation et les droits propres à chaque composant.</p>
+      </article>
+      <article class="pcard reveal d1">
+        <h3>Séparation des tenants et des données</h3>
+        <p>Le modèle d'isolation requis est défini pour le déploiement et les composants sélectionnés.</p>
+      </article>
+      <article class="pcard reveal d2">
+        <h3>Journalisation et contrôle</h3>
+        <p>Les demandes, sources et actions pertinentes peuvent être conservées selon le modèle d'audit convenu et la maturité de chaque composant.</p>
+      </article>
+      <article class="pcard reveal d3">
+        <h3>Mesures propres au déploiement</h3>
+        <p>Les contrôles réseau, stockage, sauvegarde et exploitation sont convenus dans le cadre de la conception du déploiement.</p>
+      </article>
+    </div>
+
+    <p class="qualification">Toute affirmation concernant le droit suisse de la protection des données, le RGPD, la réglementation de l'IA, les certifications ou les sous-traitants nécessite une validation juridique et technique séparée.</p>
+    <p style="margin-top:20px;"><a href="/fr/ai-governance.html">Gouvernance de l'IA →</a></p>
+  </div>
+</section>
+
+<section class="pad cta-band">
+  <div class="wrap center">
+    <h2>Parlons de vos exigences en matière de contrôle des données.</h2>
+    <p class="lede">Nous pouvons examiner vos classes de données, systèmes d'identité, contraintes d'infrastructure et la limite de déploiement la plus appropriée.</p>
+    <p style="margin-top:24px;">
+      <a class="btn btn-primary btn-lg" href="/fr/deployment-models.html">Voir les modes de déploiement</a>
+      <a class="btn btn-ghost btn-lg" href="/fr/contact.html">Réserver une démonstration privée</a>
+    </p>
+  </div>
+</section>
+
+</main>
+<div id="site-footer">
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="foot-grid">
+          
+      <div class="foot-col">
+        <h3 class="foot-col-title">Produit</h3>
+        <ul class="foot-col-links"><li><a href="/fr/how-it-helps.html">Comment Zuraio vous aide</a></li><li><a href="/fr/knowledge.html">Connaissances</a></li><li><a href="/fr/integrations.html">Intégrations</a></li><li><a href="/fr/how-it-helps.html#use-cases">Cas d’usage</a></li><li><a href="/fr/contact.html">Réserver une démonstration</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h3 class="foot-col-title">Données et sécurité</h3>
+        <ul class="foot-col-links"><li><a href="/fr/data-control.html">Contrôle des données</a></li><li><a href="/fr/deployment-models.html#swiss-hosted">Hébergement en Suisse</a></li><li><a href="/fr/deployment-models.html">Modes de déploiement</a></li><li><a href="/fr/technical-architecture.html">Architecture technique</a></li><li><a href="/fr/ai-governance.html">Gouvernance de l’IA</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h3 class="foot-col-title">Entreprise</h3>
+        <ul class="foot-col-links"><li><a href="/fr/about.html">À propos</a></li><li><a href="/fr/contact.html">Contact</a></li><li><a href="/fr/resources.html">Ressources</a></li><li><a href="/fr/contact.html#partnerships">Partenaires</a></li><li><a href="/fr/resources.html#pressroom">Médias</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h3 class="foot-col-title">Mentions légales</h3>
+        <ul class="foot-col-links"><li><a href="/fr/impressum.html">Mentions légales</a></li><li><a href="/fr/privacy.html">Confidentialité</a></li><li><a href="/fr/cookies.html">Paramètres des cookies</a></li><li><a href="/fr/terms.html">Conditions d’utilisation</a></li></ul>
+      </div>
+          <div class="foot-col">
+            <h3 class="foot-col-title">Langue et contact</h3>
+            <ul class="foot-col-links">
+              <li><span class="foot-muted">EN</span></li><li><span class="foot-muted">DE</span></li><li><span class="foot-muted">FR (actif)</span></li><li><span class="foot-muted">IT</span></li>
+              <li><a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot-bottom">
+          <a class="brand foot-brand" href="/fr/" aria-label="Accueil Zuraio">
+            <img class="brand-logo" src="/assets/zuraio-logo.png" alt="Zuraio – vos données sous votre contrôle" width="4796" height="1465" decoding="async">
+          </a>
+          <p class="foot-tagline">L’IA pour les entreprises suisses qui veulent garder le contrôle de leurs données.</p>
+        </div>
+        <div id="footer-review-notes" data-internal-only="" hidden="" aria-hidden="true"></div>
+      </div>
+    </footer></div>
+<script type="module" src="../js/main.js"></script>
+
+
+<div id="internal-review-panel" hidden=""></div></body></html>

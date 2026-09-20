@@ -1,0 +1,279 @@
+<!DOCTYPE html><html lang="it"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="../assets/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="shortcut icon" href="../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<title>Architettura tecnica — Zuraio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/site.css">
+  <meta name="description" content="Zuraio riunisce un’interfaccia centrale, la gestione delle identità e degli accessi, la conoscenza aziendale, assistenti IA specializzati, la selezione dei modelli e le integrazioni con i sistemi esistenti. Il livello di orchestrazione coordina questi componenti, consentendo ai collaboratori di lavorare in un ambiente coerente.">
+
+  <link rel="canonical" href="https://zuraio.ch/it/technical-architecture.html">
+  <link rel="alternate" hreflang="en" href="https://zuraio.ch/technical-architecture.html">
+<link rel="alternate" hreflang="de" href="https://zuraio.ch/de/technical-architecture.html">
+<link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/technical-architecture.html">
+<link rel="alternate" hreflang="it" href="https://zuraio.ch/it/technical-architecture.html">
+  <link rel="alternate" hreflang="x-default" href="https://zuraio.ch/technical-architecture.html">
+  <meta property="og:title" content="Architettura tecnica — Zuraio">
+  <meta property="og:description" content="Zuraio riunisce un’interfaccia centrale, la gestione delle identità e degli accessi, la conoscenza aziendale, assistenti IA specializzati, la selezione dei modelli e le integrazioni con i sistemi esistenti. Il livello di orchestrazione coordina questi componenti, consentendo ai collaboratori di lavorare in un ambiente coerente.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zuraio.ch/it/technical-architecture.html">
+  <meta property="og:image" content="https://zuraio.ch/zuraio/assets/zuraio-og-share.png">
+  <meta property="og:locale" content="it_CH">
+  <meta property="og:locale:alternate" content="en_CH">
+  <meta property="og:locale:alternate" content="de_CH">
+  <meta property="og:locale:alternate" content="fr_CH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Zuraio","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://zuraio.ch/it/technical-architecture.html","description":"Zuraio riunisce un’interfaccia centrale, la gestione delle identità e degli accessi, la conoscenza aziendale, assistenti IA specializzati, la selezione dei modelli e le integrazioni con i sistemi esistenti. Il livello di orchestrazione coordina questi componenti, consentendo ai collaboratori di lavorare in un ambiente coerente.","provider":{"@type":"Organization","name":"Zuraio","url":"https://zuraio.ch/"}}</script>
+<script>
+(function(){var p=new URLSearchParams(location.search),l=p.get('lang');
+if(!l||!['en','de','fr','it'].includes(l))return;
+try{localStorage.setItem('zuraio-locale',l);}catch(e){}
+var seg=location.pathname.split('/').filter(Boolean),base=seg[0]==='zuraio'?'/zuraio':'';
+var localeIdx=base?1:0,curLoc=seg[localeIdx];
+var inLoc=['de','fr','it'].includes(curLoc);
+var f=location.pathname.split('/').pop()||'';
+var isHome=!f||f==='index.html'||(inLoc&&seg.length===localeIdx+1);
+p.delete('lang');var q=p.toString(),suffix=(q?'?'+q:'')+location.hash;
+if(l==='en'){location.replace((isHome?(base?base+'/':'/'):(base?base+'/':'/')+f)+suffix);return;}
+location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
+})();
+</script>
+</head>
+<body data-page="technicalArchitecture" class="public-mode">
+<div id="site-header" data-dropdown-dismiss-bound="true" data-scroll-bound="true">
+    <header class="nav" id="nav">
+      <div class="wrap nav-in">
+        <a class="brand" href="/it/" aria-label="Pagina iniziale Zuraio">
+          <img class="brand-logo" src="/assets/zuraio-logo.png" alt="Zuraio – i vostri dati sotto il vostro controllo" width="4796" height="1465" decoding="async">
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Apri menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav-menu" id="nav-menu">
+          <nav class="nav-links" aria-label="Navigazione principale">
+            <a href="/it/how-it-helps.html">Come aiuta Zuraio</a><a href="/it/knowledge.html">Conoscenza aziendale</a><a href="/it/integrations.html">Integrazioni</a><a href="/it/data-control.html">Controllo dei dati</a>
+            <div class="nav-dropdown">
+              <button type="button" class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">Tecnologia</button>
+              <div class="nav-dropdown-menu" role="menu"><a href="/it/technical-architecture.html" role="menuitem">Architettura tecnica</a><a href="/it/deployment-models.html" role="menuitem">Modelli di implementazione</a><a href="/it/ai-governance.html" role="menuitem">Governance dell’IA</a><a href="/it/data-control.html" role="menuitem">Controllo dei dati</a><a href="/it/knowledge.html#skillos" role="menuitem">Conoscenza e SkillOS</a></div>
+            </div>
+            <a href="/it/about.html">Chi siamo</a>
+          </nav>
+          <div class="nav-actions">
+            
+    <div class="lang-dropdown">
+      <button type="button" class="lang-dropdown-btn" aria-expanded="false" aria-haspopup="listbox" aria-label="Lingua">
+        <span class="lang-dropdown-current">IT</span>
+      </button>
+      <div class="lang-dropdown-menu" role="listbox" aria-label="Lingua">
+        <button type="button" class="lang-dropdown-option" role="option" data-lang="en" aria-selected="false">EN</button><button type="button" class="lang-dropdown-option" role="option" data-lang="de" aria-selected="false">DE</button><button type="button" class="lang-dropdown-option" role="option" data-lang="fr" aria-selected="false">FR</button><button type="button" class="lang-dropdown-option is-active" role="option" data-lang="it" aria-selected="true">IT</button>
+      </div>
+    </div>
+            <a class="btn btn-primary" href="/it/contact.html">Prenotate una demo</a>
+          </div>
+        </div>
+      </div>
+    </header></div>
+<main>
+
+<section class="page-hero pad">
+  <div class="wrap">
+    <span class="marker">Architettura tecnica</span>
+    <h1>Una piattaforma IA controllabile per conoscenza aziendale, assistenti specializzati e processi operativi.</h1>
+    <p class="lede">Zuraio riunisce un’interfaccia centrale, la gestione delle identità e degli accessi, la conoscenza aziendale, assistenti IA specializzati, la selezione dei modelli e le integrazioni con i sistemi esistenti. Il livello di orchestrazione coordina questi componenti, consentendo ai collaboratori di lavorare in un ambiente coerente.</p>
+    <p class="hero-note">L’architettura concreta dipende dalla modalità di implementazione, dai sistemi collegati e dai modelli autorizzati.</p>
+    <p class="cta-row" style="margin-top:28px;">
+      <a class="btn btn-primary btn-lg" href="/it/contact.html">Discutere i requisiti tecnici</a>
+      <a class="btn btn-ghost btn-lg" href="/it/deployment-models.html">Confrontare le modalità di implementazione</a>
+    </p>
+  </div>
+</section>
+
+<div class="wrap-tech pad">
+  <aside class="tech-toc" aria-label="In questa pagina">
+    <p class="mono toc-title">In questa pagina</p>
+    <nav><a href="#overview">Architettura tecnica</a><a href="#request-flow">Percorso dalla richiesta al risultato</a><a href="#maturity">Livello di maturità attuale</a><a href="#models">Scelta dei modelli</a><a href="#integration-layer">Livello di integrazione</a><a href="#rollout">Implementazione controllata</a></nav>
+  </aside>
+
+  <div class="tech-main">
+
+    <section id="overview" class="reveal">
+      <span class="marker">Architettura tecnica</span>
+      <h2>Una piattaforma. Sette livelli controllati.</h2>
+      <p class="lede">Zuraio separa l’esperienza dei collaboratori dalla complessità tecnica sottostante. Ogni livello svolge un ruolo definito nel controllo degli accessi, del contesto, dell’esecuzione e della verifica.</p>
+
+      <div class="layer-grid">
+        <article class="layer-card">
+          <h3>1. Accessi e interfacce utente</h3>
+          <p>I collaboratori utilizzano l’interfaccia Zuraio oppure applicazioni e client collegati e approvati. Le funzioni disponibili possono variare in base al ruolo, all’implementazione e al dispositivo.</p>
+        </article>
+        <article class="layer-card">
+          <h3>2. Identità, autorizzazioni e regole</h3>
+          <p>Prima di rendere disponibili conoscenze aziendali, strumenti o azioni, Zuraio verifica identità, ruolo e autorizzazioni. Le strutture di identità Microsoft o Google possono essere integrate e, se necessario, completate con ruoli specifici di Zuraio.</p>
+        </article>
+        <article class="layer-card">
+          <h3>3. Orchestrazione</h3>
+          <p>Il livello di orchestrazione interpreta l’attività, individua il processo appropriato e coordina conoscenze, assistenti, strumenti e modelli autorizzati. Può suddividere le attività più complesse in passaggi controllati e riunire successivamente i risultati.</p>
+        </article>
+        <article class="layer-card">
+          <h3>4. SkillOS e conoscenza aziendale</h3>
+          <p>SkillOS fornisce processi approvati, contesto aziendale pertinente, modelli di documenti e regole di qualità. Gli Skill vengono versionati al di fuori del modello IA, in modo da poter essere verificati, aggiornati e gestiti in modo controllato.</p>
+        </article>
+        <article class="layer-card">
+          <h3>5. Assistenti specializzati e integrazioni</h3>
+          <p>Gli assistenti specializzati offrono capacità chiaramente delimitate per comunicazione, conoscenza, documenti e attività specifiche del cliente. MCP, API, webhook e connettori forniscono accesso controllato ai sistemi aziendali approvati.</p>
+        </article>
+        <article class="layer-card">
+          <h3>6. Gateway dei modelli</h3>
+          <p>È possibile selezionare diversi modelli IA autorizzati in funzione dell’attività, della classificazione dei dati, del luogo di elaborazione consentito, della qualità richiesta e dei costi. I modelli disponibili dipendono dall’implementazione e dai fornitori approvati.</p>
+        </article>
+        <article class="layer-card">
+          <h3>7. Registrazione, verifica e gestione operativa</h3>
+          <p>Richieste, fonti, azioni ed eventi tecnici pertinenti possono essere conservati in base alle capacità dei componenti scelti e al modello di audit concordato. I controlli operativi variano in funzione dell’implementazione e del livello di maturità.</p>
+        </article>
+      </div>
+
+      <div class="diagram-box" style="margin-top:32px;">
+        <svg class="arch-svg" viewBox="0 0 480 720" role="img" aria-labelledby="arch-title arch-desc">
+          <title id="arch-title">I sette livelli dell’architettura Zuraio: accessi, identità e regole, orchestrazione, SkillOS, assistenti e integrazioni, gateway dei modelli, verifica e gestione operativa.</title>
+          <desc id="arch-desc">Flusso verticale illustrativo: utente o applicazione collegata, identità e regole, orchestrazione, SkillOS, assistenti e integrazioni, gateway dei modelli, risultato e fonti, verifica e gestione operativa.</desc>
+          <defs>
+            <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#2F8F8A"></path></marker>
+          </defs>
+          <rect x="40" y="16" width="400" height="44" rx="8" fill="#EAF0D6" stroke="#9FAF52" stroke-width="1.5"></rect>
+          <text x="240" y="44" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">Utente o applicazione collegata</text>
+          <line x1="240" y1="60" x2="240" y2="76" stroke="#2F8F8A" stroke-width="1.5" marker-end="url(#arrow)"></line>
+          <rect x="40" y="76" width="400" height="44" rx="8" fill="#F5F6F2" stroke="#464646" stroke-width="1.5"></rect>
+          <text x="240" y="104" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">Identità e regole</text>
+          <line x1="240" y1="120" x2="240" y2="136" stroke="#2F8F8A" stroke-width="1.5" marker-end="url(#arrow)"></line>
+          <rect x="40" y="136" width="400" height="44" rx="8" fill="#9FAF52" stroke="#788A36" stroke-width="1.5"></rect>
+          <text x="240" y="164" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="12" font-weight="600" fill="#fff">Orchestrazione</text>
+          <line x1="240" y1="180" x2="240" y2="196" stroke="#2F8F8A" stroke-width="1.5" marker-end="url(#arrow)"></line>
+          <rect x="40" y="196" width="400" height="56" rx="8" fill="#F5F6F2" stroke="#464646" stroke-width="1.5"></rect>
+          <text x="240" y="220" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">SkillOS / assistenti / integrazioni</text>
+          <line x1="240" y1="252" x2="240" y2="268" stroke="#2F8F8A" stroke-width="1.5" marker-end="url(#arrow)"></line>
+          <rect x="40" y="268" width="400" height="44" rx="8" fill="#F5F6F2" stroke="#464646" stroke-width="1.5"></rect>
+          <text x="240" y="296" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">Gateway dei modelli</text>
+          <line x1="240" y1="312" x2="240" y2="328" stroke="#2F8F8A" stroke-width="1.5" marker-end="url(#arrow)"></line>
+          <rect x="40" y="328" width="400" height="44" rx="8" fill="#EAF0D6" stroke="#9FAF52" stroke-width="1.5"></rect>
+          <text x="240" y="356" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">Risultato e fonti</text>
+          <line x1="240" y1="372" x2="240" y2="388" stroke="#2F8F8A" stroke-width="1.5" marker-end="url(#arrow)"></line>
+          <rect x="40" y="388" width="400" height="44" rx="8" fill="#F5F6F2" stroke="#464646" stroke-width="1.5"></rect>
+          <text x="240" y="416" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">Verifica e gestione operativa</text>
+        </svg>
+        <p class="mono diagram-caption">Architettura della piattaforma a scopo illustrativo. I confini dei componenti e i relativi luoghi di esecuzione variano in base all’ambiente del cliente.</p>
+      </div>
+    </section>
+
+    <section id="request-flow" class="reveal">
+      <span class="marker">Percorso dalla richiesta al risultato</span>
+      <h2>Un percorso controllato dalla richiesta al risultato.</h2>
+      <p class="lede">Zuraio è progettato per applicare il contesto aziendale, le autorizzazioni e le regole durante l’intero svolgimento di un’attività, non soltanto durante una verifica finale.</p>
+      <ol class="flow-steps"><li><strong>Ricevere la richiesta</strong> — Un collaboratore pone una domanda o avvia un processo tramite Zuraio o un’applicazione approvata.</li><li><strong>Verificare identità e autorizzazioni</strong> — Zuraio identifica l’utente, il tenant, il ruolo e le fonti o azioni consentite.</li><li><strong>Determinare processo e contesto</strong> — SkillOS può fornire conoscenze approvate, fasi del processo, modelli e requisiti di qualità.</li><li><strong>Coordinare le capacità necessarie</strong> — Il livello di orchestrazione seleziona gli assistenti, gli strumenti, le fonti di dati e il modello autorizzato più adatti.</li><li><strong>Preparare il risultato</strong> — Le informazioni provenienti da fonti autorizzate vengono riunite in una risposta, una bozza o un’azione proposta.</li><li><strong>Verificare le azioni critiche</strong> — Le azioni di scrittura o con effetto esterno possono essere presentate come bozze o proposte prima della conferma.</li><li><strong>Conservare le informazioni pertinenti</strong> — Fonti, versioni, azioni ed eventi tecnici vengono documentati quando il componente e la configurazione di audit lo consentono.</li></ol>
+    </section>
+
+    <section id="maturity" class="reveal">
+      <span class="marker">Livello di maturità attuale</span>
+      <h2>Livello di maturità attuale.</h2>
+      <p class="lede">Zuraio è composto da più componenti. Gli stati seguenti distinguono le funzioni disponibili da quelle ancora in validazione produttiva o tuttora specificate e in fase di sviluppo.</p>
+
+      <article class="maturity-panel">
+        <span class="maturity-label maturity-label--available">Disponibile oggi</span>
+        <h3>SkillOS</h3>
+        <ul><li>Conoscenze e Skill di processo versionati</li><li>Ciclo di governance e ruoli</li><li>Ricerca ibrida e relazioni tra conoscenze</li><li>Accesso MCP basato sui ruoli</li><li>Funzioni di backup, ripristino, manutenzione e controllo dello stato</li><li>Nucleo verificato con test unitari e di integrazione</li></ul>
+      </article>
+
+      <article class="maturity-panel">
+        <span class="maturity-label maturity-label--validation">In validazione</span>
+        <h3>EmailAI</h3>
+        <ul><li>Ricerca, consultazione e classificazione delle e-mail</li><li>Preparazione di bozze di risposta</li><li>Attività, appuntamenti, contatti e memo</li><li>Grafo della conoscenza delle comunicazioni</li><li>Principio «prima la bozza» per le azioni di scrittura</li><li>Accesso web, mobile e vocale</li></ul>
+        <p class="qualification">La piena operatività con Microsoft 365, il monitoraggio centralizzato, i backup automatici e la separazione completa di utenti e tenant restano in validazione o in fase di sviluppo.</p>
+      </article>
+
+      <article class="maturity-panel">
+        <span class="maturity-label maturity-label--specified">Specificato / in sviluppo</span>
+        <h3>MSConnector e automazione Office</h3>
+        <ul><li>Modifiche controllate in Word, Excel e PowerPoint</li><li>Componenti aggiuntivi Office</li><li>Document Twin e ancoraggi semantici</li><li>Living Documents</li><li>Coerenza tra più documenti</li><li>Verifica visiva dei documenti</li><li>Implementazione come appliance dedicata al tenant</li></ul>
+        <p class="qualification">Queste capacità fanno parte dell’architettura di destinazione specificata. Non devono essere presentate come generalmente disponibili prima del completamento dell’implementazione e della validazione pilota.</p>
+      </article>
+    </section>
+
+    <section id="models" class="reveal">
+      <span class="marker">Scelta dei modelli</span>
+      <h2>Utilizzare il modello adatto a ogni attività.</h2>
+      <p class="lede">Zuraio separa i processi aziendali, gli Skill e le integrazioni dal singolo modello IA. L’architettura può quindi considerare l’attività, la qualità richiesta, la classificazione dei dati, il luogo di elaborazione consentito, la disponibilità e i costi prima di selezionare un modello approvato.</p>
+      <ul><li>Modelli locali per determinate attività riservate o controllate</li><li>Servizi di modelli svizzeri quando inclusi nell’implementazione concordata</li><li>Modelli approvati in cloud privati o pubblici</li><li>Modelli più potenti per ragionamenti complessi o requisiti linguistici elevati</li><li>Modelli più contenuti per processi di routine chiaramente definiti</li><li>Regole che stabiliscono quali dati possono essere trasmessi a ciascun modello</li></ul>
+      <p class="qualification">I modelli e i fornitori disponibili dipendono dall’implementazione concordata, dalla validazione tecnica e dalle condizioni commerciali.</p>
+      <p style="margin-top:20px;"><a href="/it/deployment-models.html">Confrontare le modalità di implementazione →</a></p>
+    </section>
+
+    <section id="integration-layer" class="reveal">
+      <span class="marker">Livello di integrazione</span>
+      <h2>Progettato per integrarsi, non per creare un nuovo silo.</h2>
+      <p class="lede">Zuraio è progettato come livello di orchestrazione sopra i sistemi esistenti e non sostituisce i sistemi che restano le fonti di riferimento. Le capacità approvate possono essere utilizzate o esposte tramite MCP, API, webhook e connettori specifici.</p>
+      <ul><li>Ambienti di identità e dati Microsoft e Google</li><li>Archivi di documenti e file</li><li>Sistemi di posta elettronica, calendario e comunicazione</li><li>CRM, ERP, DMS e applicazioni specialistiche</li><li>Database e API interni</li><li>Assistenti e strumenti specifici del cliente</li></ul>
+      <p class="qualification">La disponibilità e il grado di maturità di ogni integrazione devono essere confermati separatamente.</p>
+      <p style="margin-top:20px;"><a href="/it/integrations.html">Visualizzare le categorie di integrazione →</a></p>
+    </section>
+
+    <section id="rollout" class="reveal">
+      <span class="marker">Implementazione controllata</span>
+      <h2>Iniziare in modo controllato. Ampliare sulla base dei risultati.</h2>
+      <ol class="flow-steps"><li><strong>Selezionare i primi casi d’uso.</strong></li><li><strong>Esaminare sistemi, identità e fonti di dati.</strong></li><li><strong>Definire l’implementazione e i limiti applicabili ai modelli.</strong></li><li><strong>Configurare autorizzazioni e requisiti di verifica.</strong></li><li><strong>Avviare un progetto pilota con utenti selezionati.</strong></li><li><strong>Valutare risultati, rischi e preparazione operativa.</strong></li><li><strong>Ampliare l’uso quando il valore è stato dimostrato.</strong></li></ol>
+    </section>
+
+    <section class="cta-inline reveal">
+      <h2>Parliamo della vostra architettura tecnica.</h2>
+      <p><a class="btn btn-primary" href="/it/contact.html">Fissare un colloquio tecnico</a></p>
+    </section>
+
+  </div>
+</div>
+
+</main>
+<div id="site-footer">
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="foot-grid">
+          
+      <div class="foot-col">
+        <h3 class="foot-col-title">Prodotto</h3>
+        <ul class="foot-col-links"><li><a href="/it/how-it-helps.html">Come aiuta Zuraio</a></li><li><a href="/it/knowledge.html">Conoscenza aziendale</a></li><li><a href="/it/integrations.html">Integrazioni</a></li><li><a href="/it/how-it-helps.html#use-cases">Casi d’uso</a></li><li><a href="/it/contact.html">Prenotate una demo</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h3 class="foot-col-title">Dati e sicurezza</h3>
+        <ul class="foot-col-links"><li><a href="/it/data-control.html">Controllo dei dati</a></li><li><a href="/it/deployment-models.html#swiss-hosted">Hosting in Svizzera</a></li><li><a href="/it/deployment-models.html">Modelli di implementazione</a></li><li><a href="/it/technical-architecture.html">Architettura tecnica</a></li><li><a href="/it/ai-governance.html">Governance dell’IA</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h3 class="foot-col-title">Azienda</h3>
+        <ul class="foot-col-links"><li><a href="/it/about.html">Chi siamo</a></li><li><a href="/it/contact.html">Contatti</a></li><li><a href="/it/resources.html">Risorse</a></li><li><a href="/it/contact.html#partnerships">Partner</a></li><li><a href="/it/resources.html#pressroom">Media</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h3 class="foot-col-title">Note legali</h3>
+        <ul class="foot-col-links"><li><a href="/it/impressum.html">Note legali</a></li><li><a href="/it/privacy.html">Privacy</a></li><li><a href="/it/cookies.html">Impostazioni dei cookie</a></li><li><a href="/it/terms.html">Condizioni d’uso</a></li></ul>
+      </div>
+          <div class="foot-col">
+            <h3 class="foot-col-title">Lingua e contatti</h3>
+            <ul class="foot-col-links">
+              <li><span class="foot-muted">EN</span></li><li><span class="foot-muted">DE</span></li><li><span class="foot-muted">FR</span></li><li><span class="foot-muted">IT (attivo)</span></li>
+              <li><a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot-bottom">
+          <a class="brand foot-brand" href="/it/" aria-label="Pagina iniziale Zuraio">
+            <img class="brand-logo" src="/assets/zuraio-logo.png" alt="Zuraio – i vostri dati sotto il vostro controllo" width="4796" height="1465" decoding="async">
+          </a>
+          <p class="foot-tagline">IA per le aziende svizzere che vogliono mantenere il controllo dei propri dati.</p>
+        </div>
+        <div id="footer-review-notes" data-internal-only="" hidden="" aria-hidden="true"></div>
+      </div>
+    </footer></div>
+<script type="module" src="../js/main.js"></script>
+
+
+<div id="internal-review-panel" hidden=""></div></body></html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html><html lang="it"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="../assets/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="shortcut icon" href="../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<title>Governance dell’IA — Zuraio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/site.css">
+  <meta name="description" content="Un uso responsabile dell’IA in azienda richiede più di un modello. Le organizzazioni hanno bisogno di regole chiare per conoscenza, accessi, modelli, azioni, verifica umana e registrazioni operative.">
+
+  <link rel="canonical" href="https://zuraio.ch/it/ai-governance.html">
+  <link rel="alternate" hreflang="en" href="https://zuraio.ch/ai-governance.html">
+<link rel="alternate" hreflang="de" href="https://zuraio.ch/de/ai-governance.html">
+<link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/ai-governance.html">
+<link rel="alternate" hreflang="it" href="https://zuraio.ch/it/ai-governance.html">
+  <link rel="alternate" hreflang="x-default" href="https://zuraio.ch/ai-governance.html">
+  <meta property="og:title" content="Governance dell’IA — Zuraio">
+  <meta property="og:description" content="Un uso responsabile dell’IA in azienda richiede più di un modello. Le organizzazioni hanno bisogno di regole chiare per conoscenza, accessi, modelli, azioni, verifica umana e registrazioni operative.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zuraio.ch/it/ai-governance.html">
+  <meta property="og:image" content="https://zuraio.ch/zuraio/assets/zuraio-og-share.png">
+  <meta property="og:locale" content="it_CH">
+  <meta property="og:locale:alternate" content="en_CH">
+  <meta property="og:locale:alternate" content="de_CH">
+  <meta property="og:locale:alternate" content="fr_CH">
+  
+<script>
+(function(){var p=new URLSearchParams(location.search),l=p.get('lang');
+if(!l||!['en','de','fr','it'].includes(l))return;
+try{localStorage.setItem('zuraio-locale',l);}catch(e){}
+var seg=location.pathname.split('/').filter(Boolean),base=seg[0]==='zuraio'?'/zuraio':'';
+var localeIdx=base?1:0,curLoc=seg[localeIdx];
+var inLoc=['de','fr','it'].includes(curLoc);
+var f=location.pathname.split('/').pop()||'';
+var isHome=!f||f==='index.html'||(inLoc&&seg.length===localeIdx+1);
+p.delete('lang');var q=p.toString(),suffix=(q?'?'+q:'')+location.hash;
+if(l==='en'){location.replace((isHome?(base?base+'/':'/'):(base?base+'/':'/')+f)+suffix);return;}
+location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
+})();
+</script>
+</head>
+<body data-page="aiGovernance" class="public-mode">
+<div id="site-header" data-dropdown-dismiss-bound="true" data-scroll-bound="true">
+    <header class="nav" id="nav">
+      <div class="wrap nav-in">
+        <a class="brand" href="/it/" aria-label="Pagina iniziale Zuraio">
+          <img class="brand-logo" src="/assets/zuraio-logo.png" alt="Zuraio – i vostri dati sotto il vostro controllo" width="4796" height="1465" decoding="async">
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Apri menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav-menu" id="nav-menu">
+          <nav class="nav-links" aria-label="Navigazione principale">
+            <a href="/it/how-it-helps.html">Come aiuta Zuraio</a><a href="/it/knowledge.html">Conoscenza aziendale</a><a href="/it/integrations.html">Integrazioni</a><a href="/it/data-control.html">Controllo dei dati</a>
+            <div class="nav-dropdown">
+              <button type="button" class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">Tecnologia</button>
+              <div class="nav-dropdown-menu" role="menu"><a href="/it/technical-architecture.html" role="menuitem">Architettura tecnica</a><a href="/it/deployment-models.html" role="menuitem">Modelli di implementazione</a><a href="/it/ai-governance.html" role="menuitem">Governance dell’IA</a><a href="/it/data-control.html" role="menuitem">Controllo dei dati</a><a href="/it/knowledge.html#skillos" role="menuitem">Conoscenza e SkillOS</a></div>
+            </div>
+            <a href="/it/about.html">Chi siamo</a>
+          </nav>
+          <div class="nav-actions">
+            
+    <div class="lang-dropdown">
+      <button type="button" class="lang-dropdown-btn" aria-expanded="false" aria-haspopup="listbox" aria-label="Lingua">
+        <span class="lang-dropdown-current">IT</span>
+      </button>
+      <div class="lang-dropdown-menu" role="listbox" aria-label="Lingua">
+        <button type="button" class="lang-dropdown-option" role="option" data-lang="en" aria-selected="false">EN</button><button type="button" class="lang-dropdown-option" role="option" data-lang="de" aria-selected="false">DE</button><button type="button" class="lang-dropdown-option" role="option" data-lang="fr" aria-selected="false">FR</button><button type="button" class="lang-dropdown-option is-active" role="option" data-lang="it" aria-selected="true">IT</button>
+      </div>
+    </div>
+            <a class="btn btn-primary" href="/it/contact.html">Prenotate una demo</a>
+          </div>
+        </div>
+      </div>
+    </header></div>
+<main>
+
+<section class="page-hero pad">
+  <div class="wrap">
+    <span class="marker">Governance dell’IA</span>
+    <h1>Un utilizzo dell’IA che rimane comprensibile e verificabile.</h1>
+    <p class="lede">Un uso responsabile dell’IA in azienda richiede più di un modello. Le organizzazioni hanno bisogno di regole chiare per conoscenza, accessi, modelli, azioni, verifica umana e registrazioni operative.</p>
+  </div>
+</section>
+
+<section class="pad">
+  <div class="wrap">
+    <span class="marker">Governance</span>
+    <h2>La governance inizia prima che venga generata una risposta.</h2>
+    <p class="lede">Zuraio può applicare regole a fonti, Skill, assistenti specializzati, modelli e azioni. I processi approvati possono essere versionati in SkillOS, mentre modifiche critiche o azioni esterne possono essere preparate per la conferma umana.</p>
+
+    <div class="grid-cards cols-2">
+      <article class="pcard reveal">
+        <h3>Conoscenza approvata</h3>
+        <p>Le versioni pubblicate di Skill e direttive aziendali possono essere messe a disposizione per l’uso operativo.</p>
+      </article>
+      <article class="pcard reveal d1">
+        <h3>Accessi definiti</h3>
+        <p>Identità, ruolo e autorizzazioni sulle fonti determinano quali informazioni e capacità possono essere utilizzate.</p>
+      </article>
+      <article class="pcard reveal d2">
+        <h3>Esecuzione controllata</h3>
+        <p>I parametri degli strumenti possono essere convalidati e le operazioni di lettura possono essere trattate diversamente dalle azioni che modificano informazioni o comunicano all’esterno.</p>
+      </article>
+      <article class="pcard reveal d3">
+        <h3>Conferma umana</h3>
+        <p>Le azioni sensibili o di scrittura possono essere trattenute come bozze o proposte quando il componente supporta questo processo.</p>
+      </article>
+      <article class="pcard reveal d4">
+        <h3>Registrazioni pertinenti</h3>
+        <p>Richieste, fonti, versioni, azioni e approvazioni possono essere conservate quando il componente e l’implementazione lo consentono.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="pad cloud-bg">
+  <div class="wrap">
+    <span class="marker">Skill-Lifecycle</span>
+    <h2>Mantenere aggiornate e sotto controllo le direttive aziendali.</h2>
+    <p class="lede">SkillOS gestisce gli Skill di conoscenza e di processo secondo un ciclo definito. Le modifiche proposte possono essere verificate prima che una nuova versione diventi disponibile per l’uso operativo.</p>
+
+    <div class="lifecycle-flow" aria-label="Fasi del ciclo di vita SkillOS"><span>Bozza</span><span class="lifecycle-arrow" aria-hidden="true">→</span><span>In revisione</span><span class="lifecycle-arrow" aria-hidden="true">→</span><span>Approvato</span><span class="lifecycle-arrow" aria-hidden="true">→</span><span>Pubblicato</span><span class="lifecycle-arrow" aria-hidden="true">→</span><span>Obsoleto</span><span class="lifecycle-arrow" aria-hidden="true">→</span><span>Archiviato</span></div>
+
+    <ul><li>Controlli di qualità prima dei cambi di stato</li><li>Fasi distinte di proposta e approvazione</li><li>Protezione degli Skill pubblicati da modifiche non controllate</li><li>Cronologia delle versioni e snapshot</li><li>Escalation quando vengono rilevati problemi di qualità</li></ul>
+  </div>
+</section>
+
+<section class="pad">
+  <div class="wrap">
+    <span class="marker">Draft-First</span>
+    <h2>L’IA può preparare. Le persone restano responsabili.</h2>
+    <p class="lede">EmailAI applica il principio «prima la bozza» alle azioni che modificano informazioni o comunicano all’esterno. Il sistema può preparare una risposta o un’azione, mostrare il risultato previsto e attendere una conferma quando necessario.</p>
+    <p class="qualification">I controlli disponibili variano in base al componente. I processi completi di modifica dei documenti Office restano specificati o in fase di sviluppo.</p>
+  </div>
+</section>
+
+<section class="pad cloud-bg">
+  <div class="wrap">
+    <span class="marker">Verifica</span>
+    <h2>Verificare gli elementi rilevanti.</h2>
+
+    <div class="grid-cards cols-2">
+      <article class="pcard reveal">
+        <h3>La richiesta</h3>
+        <p>La domanda posta o l’attività avviata.</p>
+      </article>
+      <article class="pcard reveal d1">
+        <h3>Le fonti</h3>
+        <p>Le informazioni aziendali approvate che hanno contribuito, quando il tracciamento delle fonti è supportato.</p>
+      </article>
+      <article class="pcard reveal d2">
+        <h3>Il processo</h3>
+        <p>Lo Skill pubblicato, l’assistente o lo strumento utilizzato, quando il componente lo registra.</p>
+      </article>
+      <article class="pcard reveal d3">
+        <h3>Il risultato</h3>
+        <p>La risposta, la bozza o l’azione proposta che è stata prodotta.</p>
+      </article>
+      <article class="pcard reveal d4">
+        <h3>La verifica</h3>
+        <p>La persona che ha verificato o confermato un’azione, quando il processo conserva le approvazioni.</p>
+      </article>
+    </div>
+
+    <p class="qualification">Il contenuto dei log, la durata della conservazione, le possibilità di esportazione e la visibilità nell’interfaccia dipendono dal componente e dalla configurazione di audit.</p>
+    <p style="margin-top:20px;"><a href="/it/data-control.html">Scoprire il controllo dei dati →</a></p>
+  </div>
+</section>
+
+<section class="pad">
+  <div class="wrap">
+    <span class="marker">Limitazioni</span>
+    <h2>Limitazioni importanti.</h2>
+
+    <div class="pcard reveal">
+      <p>I risultati generati dall’IA possono contenere errori, omissioni o informazioni non aggiornate. Le informazioni importanti devono essere confrontate con le fonti originali prima di essere utilizzate.</p>
+      <p style="margin-top:16px;">Zuraio assiste il lavoro umano. Non sostituisce il giudizio professionale, la consulenza legale o finanziaria né altre competenze qualificate.</p>
+      <p style="margin-top:16px;">Le funzioni disponibili dipendono dall’implementazione, dalla configurazione, dalla maturità dei componenti e dal contratto.</p>
+      <p style="margin-top:16px;">Questa pagina non costituisce consulenza legale, normativa o di conformità.</p>
+    </div>
+  </div>
+</section>
+
+<section class="pad cta-band">
+  <div class="wrap center">
+    <h2>Parliamo della governance dell’IA nella vostra azienda.</h2>
+    <p class="lede">Possiamo esaminare il modello di accesso, i requisiti di approvazione e un percorso controllato verso un utilizzo pratico dell’IA.</p>
+    <p style="margin-top:24px;"><a class="btn btn-primary btn-lg" href="/it/contact.html">Prenotare una demo privata</a></p>
+  </div>
+</section>
+
+</main>
+<div id="site-footer">
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="foot-grid">
+          
+      <div class="foot-col">
+        <h3 class="foot-col-title">Prodotto</h3>
+        <ul class="foot-col-links"><li><a href="/it/how-it-helps.html">Come aiuta Zuraio</a></li><li><a href="/it/knowledge.html">Conoscenza aziendale</a></li><li><a href="/it/integrations.html">Integrazioni</a></li><li><a href="/it/how-it-helps.html#use-cases">Casi d’uso</a></li><li><a href="/it/contact.html">Prenotate una demo</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h3 class="foot-col-title">Dati e sicurezza</h3>
+        <ul class="foot-col-links"><li><a href="/it/data-control.html">Controllo dei dati</a></li><li><a href="/it/deployment-models.html#swiss-hosted">Hosting in Svizzera</a></li><li><a href="/it/deployment-models.html">Modelli di implementazione</a></li><li><a href="/it/technical-architecture.html">Architettura tecnica</a></li><li><a href="/it/ai-governance.html">Governance dell’IA</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h3 class="foot-col-title">Azienda</h3>
+        <ul class="foot-col-links"><li><a href="/it/about.html">Chi siamo</a></li><li><a href="/it/contact.html">Contatti</a></li><li><a href="/it/resources.html">Risorse</a></li><li><a href="/it/contact.html#partnerships">Partner</a></li><li><a href="/it/resources.html#pressroom">Media</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h3 class="foot-col-title">Note legali</h3>
+        <ul class="foot-col-links"><li><a href="/it/impressum.html">Note legali</a></li><li><a href="/it/privacy.html">Privacy</a></li><li><a href="/it/cookies.html">Impostazioni dei cookie</a></li><li><a href="/it/terms.html">Condizioni d’uso</a></li></ul>
+      </div>
+          <div class="foot-col">
+            <h3 class="foot-col-title">Lingua e contatti</h3>
+            <ul class="foot-col-links">
+              <li><span class="foot-muted">EN</span></li><li><span class="foot-muted">DE</span></li><li><span class="foot-muted">FR</span></li><li><span class="foot-muted">IT (attivo)</span></li>
+              <li><a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot-bottom">
+          <a class="brand foot-brand" href="/it/" aria-label="Pagina iniziale Zuraio">
+            <img class="brand-logo" src="/assets/zuraio-logo.png" alt="Zuraio – i vostri dati sotto il vostro controllo" width="4796" height="1465" decoding="async">
+          </a>
+          <p class="foot-tagline">IA per le aziende svizzere che vogliono mantenere il controllo dei propri dati.</p>
+        </div>
+        <div id="footer-review-notes" data-internal-only="" hidden="" aria-hidden="true"></div>
+      </div>
+    </footer></div>
+<script type="module" src="../js/main.js"></script>
+
+
+<div id="internal-review-panel" hidden=""></div></body></html>

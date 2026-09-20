@@ -1,0 +1,665 @@
+<!DOCTYPE html><html lang="de"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="../assets/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="shortcut icon" href="../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- Zuraio marketing homepage -->
+<meta name="description" content="Zuraio ist ein digitaler Assistent für Schweizer KMU. Er arbeitet mit freigegebenem Unternehmenswissen, weist Quellen aus und lässt die Kontrolle bei den Mitarbeitenden.">
+<title>Zuraio – KI-Assistent für Schweizer KMU mit Datenkontrolle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/site.css?v=20260909-origin">
+
+  <link rel="canonical" href="https://zuraio.ch/de/">
+  <link rel="alternate" hreflang="en" href="https://zuraio.ch/">
+<link rel="alternate" hreflang="de" href="https://zuraio.ch/de/">
+<link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/">
+<link rel="alternate" hreflang="it" href="https://zuraio.ch/it/">
+  <link rel="alternate" hreflang="x-default" href="https://zuraio.ch/">
+  <meta property="og:title" content="Zuraio – KI-Assistent für Schweizer KMU mit Datenkontrolle">
+  <meta property="og:description" content="Zuraio ist ein digitaler Assistent für Schweizer KMU. Er arbeitet mit freigegebenem Unternehmenswissen, weist Quellen aus und lässt die Kontrolle bei den Mitarbeitenden.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zuraio.ch/de/">
+  <meta property="og:image" content="https://zuraio.ch/zuraio/assets/zuraio-og-share.png">
+  <meta property="og:locale" content="de_CH">
+  <meta property="og:locale:alternate" content="en_CH">
+  <meta property="og:locale:alternate" content="fr_CH">
+  <meta property="og:locale:alternate" content="it_CH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Zuraio","url":"https://zuraio.ch/","email":"michael.wili@zuraio.ch","description":"Zuraio ist ein digitaler Assistent für Schweizer KMU. Er arbeitet mit freigegebenem Unternehmenswissen, weist Quellen aus und lässt die Kontrolle bei den Mitarbeitenden."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Zuraio","url":"https://zuraio.ch/","inLanguage":"de","description":"Zuraio ist ein digitaler Assistent für Schweizer KMU. Er arbeitet mit freigegebenem Unternehmenswissen, weist Quellen aus und lässt die Kontrolle bei den Mitarbeitenden."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Zuraio","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://zuraio.ch/de/","description":"Zuraio ist ein digitaler Assistent für Schweizer KMU. Er arbeitet mit freigegebenem Unternehmenswissen, weist Quellen aus und lässt die Kontrolle bei den Mitarbeitenden.","provider":{"@type":"Organization","name":"Zuraio","url":"https://zuraio.ch/"}}</script>
+<script>
+(function(){var p=new URLSearchParams(location.search),l=p.get('lang');
+if(!l||!['en','de','fr','it'].includes(l))return;
+try{localStorage.setItem('zuraio-locale',l);}catch(e){}
+var seg=location.pathname.split('/').filter(Boolean),base=seg[0]==='zuraio'?'/zuraio':'';
+var localeIdx=base?1:0,curLoc=seg[localeIdx];
+var inLoc=['de','fr','it'].includes(curLoc);
+var f=location.pathname.split('/').pop()||'';
+var isHome=!f||f==='index.html'||(inLoc&&seg.length===localeIdx+1);
+p.delete('lang');var q=p.toString(),suffix=(q?'?'+q:'')+location.hash;
+if(l==='en'){location.replace((isHome?(base?base+'/':'/'):(base?base+'/':'/')+f)+suffix);return;}
+location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
+})();
+</script>
+</head>
+<body class="public-mode">
+
+<div id="site-header" data-dropdown-dismiss-bound="true" data-scroll-bound="true">
+    <header class="nav" id="nav">
+      <div class="wrap nav-in">
+        <a class="brand" href="/de/" aria-label="Zuraio Startseite">
+          <img class="brand-logo" src="/assets/zuraio-logo.png" alt="Zuraio – Ihre Daten unter Ihrer Kontrolle" width="4796" height="1465" decoding="async">
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menü öffnen">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav-menu" id="nav-menu">
+          <nav class="nav-links" aria-label="Hauptnavigation">
+            <a href="/de/how-it-helps.html">So hilft Zuraio</a><a href="/de/knowledge.html">Wissen</a><a href="/de/integrations.html">Integrationen</a><a href="/de/data-control.html">Datenkontrolle</a>
+            <div class="nav-dropdown">
+              <button type="button" class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">Technik</button>
+              <div class="nav-dropdown-menu" role="menu"><a href="/de/technical-architecture.html" role="menuitem">Technische Architektur</a><a href="/de/deployment-models.html" role="menuitem">Bereitstellungsmodelle</a><a href="/de/ai-governance.html" role="menuitem">KI-Governance</a><a href="/de/data-control.html" role="menuitem">Datenkontrolle</a><a href="/de/knowledge.html#skillos" role="menuitem">Wissen und SkillOS</a></div>
+            </div>
+            <a href="/de/about.html">Über uns</a>
+          </nav>
+          <div class="nav-actions">
+            
+    <div class="lang-dropdown">
+      <button type="button" class="lang-dropdown-btn" aria-expanded="false" aria-haspopup="listbox" aria-label="Sprache">
+        <span class="lang-dropdown-current">DE</span>
+      </button>
+      <div class="lang-dropdown-menu" role="listbox" aria-label="Sprache">
+        <button type="button" class="lang-dropdown-option" role="option" data-lang="en" aria-selected="false">EN</button><button type="button" class="lang-dropdown-option is-active" role="option" data-lang="de" aria-selected="true">DE</button><button type="button" class="lang-dropdown-option" role="option" data-lang="fr" aria-selected="false">FR</button><button type="button" class="lang-dropdown-option" role="option" data-lang="it" aria-selected="false">IT</button>
+      </div>
+    </div>
+            <a class="btn btn-primary" href="/de/contact.html">Demo buchen</a>
+          </div>
+        </div>
+      </div>
+    </header></div>
+
+<main id="top">
+  <!-- 1. Hero -->
+  <section class="hero-layered hero-layered--office" id="hero-comparison" tabindex="0" aria-label="Hero">
+    <div class="hero-layered__stage">
+      <div class="hero-layered__bg" aria-hidden="true">
+        <picture>
+          <source type="image/avif" srcset="../zuraio/assets/hero/hero-640.avif 640w, zuraio/assets/hero/hero-960.avif 960w, zuraio/assets/hero/hero-1440.avif 1440w, zuraio/assets/hero/hero-1920.avif 1920w" sizes="100vw">
+          <source type="image/webp" srcset="../zuraio/assets/hero/hero-640.webp 640w, zuraio/assets/hero/hero-960.webp 960w, zuraio/assets/hero/hero-1440.webp 1440w, zuraio/assets/hero/hero-1920.webp 1920w" sizes="100vw">
+          <img src="../zuraio/assets/260714_zuraio_hero_12.png?v=20260756" alt="" width="5504" height="3072" decoding="async" fetchpriority="high">
+        </picture>
+      </div>
+      <div class="hero-layered__scrim" aria-hidden="true"></div>
+
+      <div class="wrap hero-layered__content">
+        <div class="hero-grid">
+          <div class="hero-copy" data-hero-copy="" aria-live="polite">
+            <span class="marker hero-eyebrow" data-hero-eyebrow="">KI-ASSISTENT FÜR SCHWEIZER KMU</span>
+            <h1 data-hero-headline="">Ein digitaler <span class="headline-em">Executive Assistant</span> für alle Mitarbeitenden.</h1>
+            <p class="hero-lede" data-hero-paragraph="">Zuraio stellt allen Mitarbeitenden einen intelligenten Assistenten zur Seite, der Informationen findet, Fragen beantwortet, Dokumente vorbereitet und sie bei ihrer täglichen Arbeit unterstützt.</p>
+            <div class="cta-row">
+              <a class="btn btn-primary btn-lg" data-hero-cta="" href="/de/contact.html">Lernen Sie Ihren KI-Assistenten kennen</a>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <img class="hero-popup-img" src="/zuraio/assets/260707_UI_Apps_Vision.png?v=20260756" alt="Zuraio AI Hub mit Anwendungen und Chat-Oberfläche." width="2850" height="1744" decoding="async">
+          </div>
+        </div>
+      </div>
+      <nav class="hero-trust-bar" data-hero-trust-bar="" aria-label="Vertrauen und Datenkontrolle">
+        <ul class="hero-trust-bar__list"><li><a class="hero-trust-bar__link" href="/de/deployment-models.html#swiss-hosted"><span>Schweizer Hosting verfügbar</span><svg class="hero-trust-bar__arrow" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 3.5 10.5 8 5 12.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></li><li><a class="hero-trust-bar__link" href="/de/knowledge.html#traceability"><span>Quellen sichtbar</span><svg class="hero-trust-bar__arrow" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 3.5 10.5 8 5 12.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></li><li><a class="hero-trust-bar__link" href="/de/knowledge.html#skillos"><span>Freigegebenes Unternehmenswissen</span><svg class="hero-trust-bar__arrow" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 3.5 10.5 8 5 12.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></li><li><a class="hero-trust-bar__link" href="/de/technical-architecture.html#models"><span>Wahl des KI-Modells</span><svg class="hero-trust-bar__arrow" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 3.5 10.5 8 5 12.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></li><li><a class="hero-trust-bar__link" href="/de/data-control.html#data-ownership"><span>Sie behalten die Kontrolle</span><svg class="hero-trust-bar__arrow" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 3.5 10.5 8 5 12.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></li></ul>
+      </nav>
+    </div>
+  </section>
+
+  <!-- 2. Recognise this? -->
+  <section class="problem-section" id="problem">
+    <div class="problem-section__glow" aria-hidden="true"></div>
+    <div class="wrap problem-section__wrap">
+      <div class="problem-hero reveal" id="problem-comparison" tabindex="0" aria-label="Problem section">
+        <div class="problem-copy" data-problem-copy="" aria-live="polite">
+          <span class="marker">Kommt Ihnen das bekannt vor?</span>
+          <h2 data-problem-headline="">Ihre Mitarbeitenden verbringen zu viel Zeit mit der Suche nach Informationen.</h2>
+          <p class="lede" data-problem-body="">Wichtiges Wissen ist über E-Mails, Dokumente, Meetings und Geschäftssysteme verteilt. Mitarbeitende verlieren Zeit mit Suchen, Vorbereiten und Arbeiten, die anderswo bereits erledigt wurden.</p>
+        </div>
+        <div class="scattered-knowledge" data-scattered-knowledge="" aria-hidden="true"><div class="scattered-knowledge__stage" style="--hub-x:50%;--hub-y:50%;">
+    <svg class="scattered-knowledge__lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+  <marker id="sk-arrow" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="4" markerHeight="4" orient="auto">
+    <path d="M0 0 L6 3 L0 6 Z" fill="#b8c878" opacity="0.55"></path>
+  </marker>
+</defs>
+      <path class="sk-path sk-path--fade" data-sk-path="0" d="M 77.5 81.7 C 76.6 78.1, 79.1 85.1, 80.6 79.8 C 81.8 76.8, 83.8 79.9, 84.1 77.5 C 79 75.7, 81.4 72.7, 79.6 74.5 C 76.1 69.8, 82.4 79.6, 86.2 69.7 C 87.5 65.6, 87.1 73.2, 86.1 65.1 C 81.5 64.2, 86.1 60.4, 83.5 60.2 C 83.3 58.2, 84.9 61.4, 86.7 60.3 C 84.6 67.4, 86.1 67.7, 87.7 70.5" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#b5c07a" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.3279781128186733;--path-delay:0s;--path-duration:11s"></path><path class="sk-path sk-path--static" data-sk-path="1" d="M 81.8 76.7 C 75.6 69.1, 85.6 73.2, 83.3 67.4 C 81 63.5, 80.8 63.7, 79.9 64.3 C 74.7 64.3, 75.4 61.7, 74.8 65.4 C 75.7 67.2, 74.9 67.4, 76.8 68 C 78.2 66.7, 76.6 69.9, 80.1 68.3 C 84.6 59.5, 86.2 60.5, 84.7 58.9 C 86.3 51.8, 85 53.1, 85.8 50 C 83.1 44, 85 44.8, 87 42.7" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#c2cda8" stroke-width="0.512" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.3308936783717945;--path-delay:0.22s;--path-duration:12s"></path><path class="sk-path sk-path--static" data-sk-path="2" d="M 29.9 86.1 C 39.4 87.6, 40.1 85.7, 39.3 83 C 43.3 87.3, 41.3 87.5, 43.9 85.6 C 38.4 86.5, 48.2 80.9, 43.7 79 C 45.5 82.3, 41.6 75.9, 39.6 79.9 C 43.5 83, 36.1 76.2, 34.1 85.9 C 26.6 87.3, 41.5 78.9, 26.9 77.9 C 24.6 69.9, 34.8 80.4, 33.4 69.8 C 21.4 71.3, 43.3 76.7, 39 59.4 C 38.7 49.9, 46.1 53.2, 42.4 48" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#a8b86e" stroke-width="0.524" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.32932819541543723;--path-delay:0.44s;--path-duration:13s"></path><path class="sk-path sk-path--static" data-sk-path="3" d="M 40.9 60.7 C 43.4 58.2, 44.4 60.3, 46 57.3 C 44.9 52.6, 49.5 54, 45.5 51.7 C 42.3 50.1, 44.3 48.3, 40.7 48.1 C 30.4 44.3, 34.9 38.8, 31 42.4 C 22.8 49.7, 36.8 33, 23.5 34.2" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#d0d8bc" stroke-width="0.536" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.28584159597754477;--path-delay:0.66s;--path-duration:14s"></path><path class="sk-path sk-path--static" data-sk-path="4" d="M 16.7 49.7 C 18.1 55, 14.6 48, 15.2 55.6 C 18.8 57.8, 12.1 53, 12.6 59.1 C 20.4 66, 17.6 68.2, 19.5 66.9 C 17 63, 22.2 63.1, 21.4 62.7 C 20.4 60.5, 23.8 61.9, 22.2 58.5 C 16.5 57.3, 24.5 53.1, 19.7 52.8 C 18.6 45.2, 25.4 57.9, 29.8 49.6 C 29.9 56.7, 24.5 54.3, 28.1 57.5" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#9aab78" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.26159116555005313;--path-delay:0.88s;--path-duration:15s"></path><path class="sk-path sk-path--fade" data-sk-path="5" d="M 56.4 28.6 C 52.2 32.4, 51.4 25.8, 50.2 35.4 C 43.8 35, 45.4 31.3, 43.7 34.1 C 36.1 35.6, 48.1 27.8, 34.8 29.2 C 33.9 31.6, 37.1 27.8, 33.2 26.4 C 29.9 22.7, 38.1 26.4, 35.2 20.4 C 37.6 13.7, 41.3 16.6, 39.1 13.5 C 32.2 14.8, 44.9 13.8, 40.2 14.2 C 35.7 18.9, 34.4 17, 34.8 22.7" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#b5c07a" stroke-width="0.512" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.30063232527114453;--path-delay:1.1s;--path-duration:16s"></path><path class="sk-path sk-path--static" data-sk-path="6" d="M 46.1 85.9 C 45.8 86.4, 40.9 79.6, 38.5 85 C 31.4 79.5, 45.3 79.2, 34.5 76.5 C 36.1 72.9, 36.4 73, 35.3 71.9 C 41.6 81.3, 25.6 66.2, 30.1 82.6 C 39.6 79.7, 20.4 84.7, 29.2 85.7 C 34.6 87.6, 24.5 86.5, 35.8 86.7 C 36.6 80, 41.8 85.7, 39.5 80.3 C 31.8 75.2, 48.4 82.7, 40.9 70" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#c2cda8" stroke-width="0.524" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.28059928234666587;--path-delay:1.32s;--path-duration:17s"></path><path class="sk-path sk-path--static" data-sk-path="7" d="M 45.5 68.9 C 40.5 78.5, 43.3 58.3, 34.1 68.4 C 30 69.6, 29.9 67.8, 29.1 68.8 C 20 68.3, 22.5 62.6, 17.4 67.5 C 13.9 58.7, 20.5 58.5, 15.4 55.8 C 22.8 55.7, 22.7 56.7, 25.2 52.4 C 24.5 59.7, 18.6 55.6, 25.2 59.4 C 36.4 57.8, 29.6 69.8, 33.8 67.4" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#a8b86e" stroke-width="0.536" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.27201488906517624;--path-delay:1.54s;--path-duration:18s"></path><path class="sk-path sk-path--static" data-sk-path="8" d="M 17.2 24.6 C 17.7 29.6, 16.4 19.6, 12.7 22.4 C 14.4 30.6, 13.4 19.1, 12.9 29.1 C 12.9 37, 14.6 24.6, 12.9 36.5 C 12.3 40.9, 14.5 33.9, 13.2 40.8 C 16.9 44.7, 12.5 46.2, 15 45.8 C 24.7 50.6, 12.6 38, 13.3 53.7 C 17.8 50.9, 17.2 57.3, 21.5 55.6 C 32.1 55.2, 27.1 64.5, 28.4 62.9" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#d0d8bc" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.32878037706483154;--path-delay:1.76s;--path-duration:11s"></path><path class="sk-path sk-path--static" data-sk-path="9" d="M 73.4 35.4 C 74.3 40.2, 73.7 40.3, 77.2 40.2 C 82.3 48.1, 77.2 49.6, 80.9 50.1 C 84 47.3, 84.9 51.4, 84.3 44.6 C 77.6 44.6, 87.4 38.7, 78.4 38.7 C 78.5 43, 78.3 34.3, 73.1 37.5" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#9aab78" stroke-width="0.512" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35820521955844015;--path-delay:1.98s;--path-duration:12s"></path><path class="sk-path sk-path--fade" data-sk-path="10" d="M 62.7 42.9 C 65.2 39.7, 61.1 46.8, 64.7 46.4 C 66.8 38.7, 69.9 52.6, 73.2 42.1 C 74.5 37.4, 75.4 46.4, 79.9 45.1 C 88 46.1, 72.4 48.7, 79.7 55.5 C 71.9 64, 68.1 55.7, 70.2 61.9 C 69.9 68.4, 64.3 64.7, 68.5 71.9 C 62.6 68.2, 75.5 71.3, 68.2 64" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#b5c07a" stroke-width="0.524" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.34388822809793057;--path-delay:2.2s;--path-duration:13s"></path><path class="sk-path sk-path--static" data-sk-path="11" d="M 70.1 12.7 C 74.5 17.8, 64.1 12.3, 61.7 19.2 C 52.7 19.6, 70.2 16.3, 60 12.8 C 53.1 14.3, 56 13, 54.1 13.6 C 52.5 16.3, 53.2 12.9, 50.8 14.3 C 45.1 15.8, 44.9 14.2, 42.6 20.1 C 34.4 27, 37.9 14.9, 33.4 15.8" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#c2cda8" stroke-width="0.536" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.26880128163844347;--path-delay:2.42s;--path-duration:14s"></path><path class="sk-path sk-path--static" data-sk-path="12" d="M 70.5 26.7 C 81.9 22.9, 58.5 28.6, 70.5 38.2 C 70.2 42, 67.9 40.9, 68.4 41.7 C 62.9 43.2, 64.5 37.5, 61.7 38.3 C 69.4 35.2, 53.4 38, 59.8 47.1 C 58 51.7, 56.1 43.9, 55.6 49.4 C 62.8 49.2, 57.4 56.4, 60.7 54.6 C 57.5 56.7, 56.9 53.9, 57.8 57.3" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#a8b86e" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.2681377610098571;--path-delay:0s;--path-duration:15s"></path><path class="sk-path sk-path--static" data-sk-path="13" d="M 35 75.7 C 36.1 79.5, 32.1 78.5, 31.5 80.6 C 27.5 72.7, 38.8 75.6, 37.1 73.8 C 42.8 72.2, 38.8 79.5, 45.1 74.2 C 47.5 75.8, 46 76.9, 47.7 77.4 C 52.6 74.6, 48.3 83, 52.6 81.5 C 50.1 83.7, 50.8 78.7, 48.9 83.4" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#d0d8bc" stroke-width="0.512" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.3156555431103334;--path-delay:0.22s;--path-duration:16s"></path><path class="sk-path sk-path--static" data-sk-path="14" d="M 62.5 41.6 C 59.1 40.6, 64.8 38.9, 62.6 38.1 C 55.8 36, 66.5 32, 64.6 27 C 69.3 28.9, 60.7 30.1, 65 32.3 C 69.7 27.3, 58.9 35.3, 67.6 40.7 C 70.9 51.3, 62.5 50.6, 70.4 52.1 C 79.7 57.9, 63 60.1, 76.6 61.3 C 73.8 53.2, 81.7 68.3, 84.1 58.1" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#9aab78" stroke-width="0.524" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.3264326095720753;--path-delay:0.44s;--path-duration:17s"></path><path class="sk-path sk-path--fade" data-sk-path="15" d="M 59.9 43.3 C 65.5 44.3, 56 47.4, 62.7 49.2 C 60.3 51.9, 64.3 45.8, 59.3 47.8 C 60.6 52.9, 60.1 42.5, 53.1 45.2 C 49.7 51.5, 47.5 40.8, 43.7 52 C 40.5 47.8, 45.7 47.1, 38.4 45.6 C 43 41.4, 44.3 47.6, 43.6 37.8 C 52 42.8, 36.1 31.5, 37.1 44.8" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#b5c07a" stroke-width="0.536" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.33566545403096826;--path-delay:0.66s;--path-duration:18s"></path><path class="sk-path sk-path--static" data-sk-path="16" d="M 60.2 37.4 C 64.7 39.3, 61.1 42.2, 65 42.2 C 67.8 41.8, 62.2 42.1, 63.4 46 C 73.5 42.9, 52.9 45.9, 63.4 56.7 C 68 56.9, 62.7 61.3, 69.2 60.3 C 65.6 55.6, 72.9 55.8, 70.9 54.6 C 72.4 50.6, 75.2 53.8, 73.6 50 C 68 50.1, 74.8 44.5, 71.4 42.1" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#c2cda8" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.2680043842783198;--path-delay:0.88s;--path-duration:11s"></path><path class="sk-path sk-path--static" data-sk-path="17" d="M 28.2 49.9 C 26.5 49, 29.9 48.8, 28.3 46.9 C 33 47.2, 26.7 51.4, 34 49.2 C 32 47, 35.7 46.7, 34.2 46.2 C 33.6 50.5, 38.2 44.5, 31.5 41.6 C 29.6 35.8, 35 36.6, 27.9 35 C 24.8 29.3, 34.2 36.4, 29.9 27.5 C 21.9 32.7, 22.1 21.9, 18 28.2" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#a8b86e" stroke-width="0.512" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.27576099132653326;--path-delay:1.1s;--path-duration:12s"></path><path class="sk-path sk-path--static" data-sk-path="18" d="M 78.6 64.8 C 74.9 67.8, 76.7 60.3, 73.7 59.9 C 68 58, 78.8 56.8, 74.8 53.6 C 80.1 48.9, 80 58.5, 82.4 55.8 C 87.3 59.4, 78.2 62.3, 85.8 66.7 C 86 59.2, 78.7 72.2, 87.6 77.1 C 86.7 72.9, 85.9 73.7, 86.7 72.2 C 85.8 68.2, 88 78.6, 86.2 77.4 C 83.8 74.7, 88 80.6, 85.7 75.8 C 84 79.2, 87.8 72.6, 83.3 71.8 C 77.8 68.2, 85.6 74, 85.1 67.2" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#d0d8bc" stroke-width="0.524" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.3160809165704995;--path-delay:1.32s;--path-duration:13s"></path><path class="sk-path sk-path--static" data-sk-path="19" d="M 20.6 51.8 C 14.7 45.1, 31.6 54, 28.1 43.2 C 27.1 40.2, 31 41.7, 29.8 38.7 C 30.9 35.7, 33 38.8, 30.9 34.7 C 20.7 36, 40.7 31.5, 30 24 C 37.6 30.7, 28.6 14.1, 20.2 26.4 C 19.7 34.9, 22.4 34.6, 25.2 34 C 29.8 33.2, 26.8 38.5, 31 34.6" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#9aab78" stroke-width="0.536" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.2885416105529294;--path-delay:1.54s;--path-duration:14s"></path><path class="sk-path sk-path--fade" data-sk-path="20" d="M 48.4 35.7 C 54 30.4, 50.9 43, 54.3 40.3 C 60.2 43.3, 48.1 42.8, 52.1 48.8 C 60.4 52.2, 43.2 47.9, 50.1 58 C 49 63.6, 46.1 62.1, 46.8 65.1 C 45.2 61.2, 51 65.7, 50.8 62.4 C 46.6 57.6, 44.8 60.1, 44.7 61.7 C 41.6 67.4, 38.4 60.5, 35.9 62.6 C 35 67, 31.4 61.7, 32.3 66.5 C 32.7 56.4, 41.3 61.8, 30.7 55.9 C 39 59.3, 21.8 55.6, 31.2 66.7" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#b5c07a" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.27982699437066916;--path-delay:1.76s;--path-duration:15s"></path><path class="sk-path sk-path--static" data-sk-path="21" d="M 51.1 69.7 C 48.5 73.9, 46.5 67.8, 44.6 75.1 C 47.4 83.1, 41.4 82.9, 43.5 85.1 C 45.5 86.1, 42.9 85.9, 46 85 C 41.3 87.7, 41.8 76.4, 37.6 80 C 34.1 79.9, 40.6 78.2, 36.4 74.4 C 32.1 69.3, 39.8 68.7, 32 65.1 C 25.9 65.1, 35.2 59.8, 24 60.8" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#c2cda8" stroke-width="0.512" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.33872746798675507;--path-delay:1.98s;--path-duration:16s"></path><path class="sk-path sk-path--static" data-sk-path="22" d="M 59.3 17.2 C 55.7 14.9, 62.9 14.9, 57.1 12.5 C 54.5 12.5, 54.5 13.2, 53.7 13.4 C 51.7 15.9, 51.6 12.4, 50.1 13.7 C 51.5 16.2, 48.1 12.8, 46.1 14.4 C 44.1 20.8, 41.4 12.7, 39.9 12" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#a8b86e" stroke-width="0.524" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.2979554022103548;--path-delay:2.2s;--path-duration:17s"></path><path class="sk-path sk-path--static" data-sk-path="23" d="M 42 65.3 C 47.1 67.7, 43.6 70.6, 46 68.9 C 42.2 66, 49.7 72, 51.6 65.3 C 53.7 64.5, 51.7 67.6, 55.3 65.1 C 56.8 60.5, 52.5 69.1, 58.3 68.6 C 61 71.5, 54.3 68.5, 54.6 71.8" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#d0d8bc" stroke-width="0.536" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.2639257945958525;--path-delay:2.42s;--path-duration:18s"></path><path class="sk-path sk-path--static" data-sk-path="24" d="M 17.2 65.5 C 20.1 64.6, 19.5 67.5, 20.6 65.9 C 16.5 67.4, 23.9 63.1, 20.6 60.8 C 28.4 56.8, 24.8 68.4, 31.1 55.8 C 32.9 56.1, 31.8 57.5, 32.9 58.2 C 38.8 53.5, 40.1 60.3, 42.1 56.5" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#9aab78" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.26049300722312185;--path-delay:0s;--path-duration:11s"></path><path class="sk-path sk-path--fade" data-sk-path="25" d="M 47.3 16.8 C 53.3 21.2, 39.9 16.7, 40.9 22.1 C 42.4 17.7, 45 24.1, 46.5 22 C 49.3 14, 51.3 12.8, 46.6 14 C 38.8 14, 42.4 12.9, 36.9 13 C 38.6 15.8, 36.2 12.2, 32.3 12.6 C 37.1 17.2, 25.6 12.5, 33.2 20.2 C 32.4 27.9, 25.7 17.9, 28.2 28.3 C 22.5 27.6, 30.8 23.3, 24.9 21.6 C 19.9 18.6, 28.2 16.9, 19.2 13.6" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#b5c07a" stroke-width="0.512" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.32915072321426125;--path-delay:0.22s;--path-duration:12s"></path><path class="sk-path sk-path--static" data-sk-path="26" d="M 35.7 65.9 C 35.7 58, 35.6 58, 33 56.7 C 28.6 58.4, 30.7 52.6, 30.1 53.2 C 27.7 53.9, 27.6 53.7, 27.2 54.5 C 23.8 55.2, 24 53.2, 23.9 54.2 C 25.8 48.9, 25.5 48.8, 22.9 47 C 30.6 37.8, 30 37.4, 26 35.6 C 24.4 33.8, 26.7 33.3, 24.6 32" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#c2cda8" stroke-width="0.524" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.3522062222147361;--path-delay:0.44s;--path-duration:13s"></path><path class="sk-path sk-path--static" data-sk-path="27" d="M 77.1 23.6 C 83.3 21.8, 83.5 23.6, 83.2 18.2 C 87.3 12.9, 87.8 13, 86.4 12.4 C 87.8 15.6, 83.1 13.2, 86.7 15.8 C 83.9 23.3, 79.2 18.6, 84 24 C 86 23.3, 74.7 24.2, 78.6 34 C 79.7 42.2, 70.3 34.7, 73.7 41.7 C 66.4 44.9, 67 37.2, 65.3 47.5 C 55.4 47.4, 55.4 47.3, 55.3 49.7 C 48.4 50.8, 56.5 42.9, 46.8 44.1" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#a8b86e" stroke-width="0.536" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.3508376448089257;--path-delay:0.66s;--path-duration:14s"></path><path class="sk-path sk-path--static" data-sk-path="28" d="M 53.3 26.4 C 48.2 27.2, 56.7 22.5, 51.5 19.6 C 45.6 12.6, 60.7 20, 57.7 13.8 C 55.8 15.6, 58.4 14.2, 54 12.1 C 61.3 18.4, 45.3 12.8, 44.4 18.8 C 36.2 20.7, 37.1 14.5, 35.3 22.7 C 23.8 23.9, 23.8 21.4, 24.5 27.9 C 21.4 19.7, 23.1 19.3, 17.1 21.6" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#d0d8bc" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.355445897243917;--path-delay:0.88s;--path-duration:15s"></path><path class="sk-path sk-path--static" data-sk-path="29" d="M 16.3 58.1 C 17.8 65.8, 12.8 60.3, 12.1 65.4 C 15.7 69.7, 13.2 70.1, 18.3 70.7 C 21.9 67.5, 20 75.2, 24.9 70.1 C 33.8 68.1, 16.5 73.6, 23.4 79.2 C 27.4 81.3, 19.1 80.8, 21.2 83.6 C 21.1 85.6, 17.5 85.2, 23.4 87.4" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#9aab78" stroke-width="0.512" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.2780748858023435;--path-delay:1.1s;--path-duration:16s"></path><path class="sk-path sk-path--fade" data-sk-path="30" d="M 29.4 55.9 C 27.2 54.5, 31.9 55.3, 29.2 52.8 C 25.2 47.9, 35 50.2, 27.4 44.4 C 22.3 43, 28.7 39.3, 21 42.4 C 15.4 39.3, 26.2 46, 26.3 33.3 C 22.2 33.4, 26.1 29.3, 24.5 27.3 C 25.2 21.9, 22.8 32.4, 32.6 29.6 C 28.7 27.5, 34.8 33.4, 37.2 26.2 C 39.2 27.9, 35.2 27.9, 37.2 29.5 C 40.6 28, 33.8 28.1, 35.8 33.4" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#b5c07a" stroke-width="0.524" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.2745323684439063;--path-delay:1.32s;--path-duration:17s"></path><path class="sk-path sk-path--static" data-sk-path="31" d="M 22.8 23.8 C 29.1 25.7, 17.2 27.5, 24.2 32.9 C 25.1 35.6, 25 30.1, 21.2 32.3 C 16.4 31.5, 16.4 31.6, 16.2 33 C 14.7 39.1, 13.3 27.4, 12 31.7 C 14.4 36.6, 13.4 27.8, 14.2 35.4" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#c2cda8" stroke-width="0.536" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.2635976992920041;--path-delay:1.54s;--path-duration:18s"></path><path class="sk-path sk-path--static" data-sk-path="32" d="M 75.9 72.6 C 79.1 75.9, 71.2 73.4, 76.7 77.9 C 85.5 78.4, 67.9 79.4, 76.9 85.3 C 83.3 81.8, 75.1 87.9, 82.3 86.1 C 86.9 84.4, 81.3 86.5, 84.6 88 C 84.1 83.4, 87 86.4, 87.6 85 C 83.2 81.1, 86.3 80.8, 87.4 78.1 C 88 74.9, 85.9 78.6, 87.2 75.1 C 84.8 75, 85.3 74.9, 87.9 72.2 C 85.4 71.6, 85.9 70.5, 84.7 70.5" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#a8b86e" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.3343177564349026;--path-delay:1.76s;--path-duration:11s"></path><path class="sk-path sk-path--static" data-sk-path="33" d="M 78.2 71.6 C 71.6 75, 81.4 64.9, 67.9 68.2 C 59.6 62.7, 72.1 59.2, 63.4 58.2 C 69.5 52.6, 70.1 63.1, 73.2 56.6 C 79 57.9, 69.2 61.1, 78 62.5 C 68.3 59.8, 78.7 52.5, 74.5 53.3 C 74.4 44.5, 81.2 59.1, 82.4 48.9 C 80.2 38.6, 86.6 44.9, 87.4 39.4 C 85.1 38.5, 86.5 48.7, 85.9 44.8 C 78.8 44, 87 48.7, 86.8 36.1" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#d0d8bc" stroke-width="0.512" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35519272544421254;--path-delay:1.98s;--path-duration:12s"></path><path class="sk-path sk-path--static" data-sk-path="34" d="M 84.1 86 C 82.9 82.3, 87.6 84.2, 87.1 80.8 C 82.2 79.8, 86.2 76.8, 87.5 75.5 C 78.4 71.8, 86.8 69.4, 87.7 65.4 C 82.5 60.9, 87.5 64.3, 87.3 55.4 C 87.8 62.2, 87.3 48.8, 77.4 51.5 C 72.4 45.9, 83.1 46.6, 79.4 41.4 C 79.1 38.1, 81.6 38.9, 78.9 37.7" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#9aab78" stroke-width="0.524" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.26488560446538034;--path-delay:2.2s;--path-duration:13s"></path><path class="sk-path sk-path--fade" data-sk-path="35" d="M 38.1 25.8 C 31.3 18.1, 47.9 29, 42.6 16.9 C 51.2 19.7, 39 25.2, 50.4 23 C 44.8 17, 56.3 28.8, 58.5 19.4 C 66.1 14.9, 50.1 16.9, 56.1 27.6 C 56.6 32.8, 53 31.8, 54.5 35.8" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#b5c07a" stroke-width="0.536" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.32860058815218507;--path-delay:2.42s;--path-duration:14s"></path><path class="sk-path sk-path--static" data-sk-path="36" d="M 25.4 25 C 22.8 33.5, 17 28, 23.4 34.1 C 16.4 38.9, 16.6 39.2, 19.4 43.1 C 24.3 39.6, 17.7 48.9, 24.4 45.8 C 23.3 37.4, 32.3 49, 32.1 41.3 C 36.5 43.2, 28.2 44.2, 35.7 47.9 C 36.8 45.6, 36.2 50.4, 38.2 50.4" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#c2cda8" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.29750749402679505;--path-delay:0s;--path-duration:15s"></path><path class="sk-path sk-path--static" data-sk-path="37" d="M 76.7 20.5 C 72.9 15.7, 80.9 16, 74.8 13.2 C 77.7 13.8, 74.1 16.7, 76.8 16.5 C 74.2 19.9, 72.6 17.4, 74.2 20.7 C 67.3 29.6, 68.8 30.6, 71.2 32.3 C 73.4 37.8, 65.4 30.7, 67 36.5 C 71 37.5, 66.9 40.7, 70.8 40.8 C 69.5 32.1, 72.2 49.6, 79.9 43.5" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#a8b86e" stroke-width="0.512" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.2754887270880863;--path-delay:0.22s;--path-duration:16s"></path><path class="sk-path sk-path--static" data-sk-path="38" d="M 85.8 65.5 C 83.8 69.1, 85 61.5, 79.2 67.7 C 86.5 73.5, 76.6 58.8, 71.1 71.4 C 65.9 70.6, 73.9 66.9, 65.1 64.6 C 70.1 70.4, 58.8 69.2, 62.3 73.2 C 73.8 71.5, 50.8 71, 60.1 84.4" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#d0d8bc" stroke-width="0.524" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.3271226441394538;--path-delay:0.44s;--path-duration:17s"></path><path class="sk-path sk-path--static" data-sk-path="39" d="M 44.6 15.1 C 47.7 14.2, 47.1 19.1, 50.9 15.2 C 60 13.7, 53.1 24.1, 59.6 16.9 C 58.2 12.7, 63.3 14.4, 64.1 13.8 C 69.8 14.9, 64.9 20.5, 69.2 21.5 C 73.8 25.5, 63.5 23.4, 68.2 27.9 C 72.2 28.3, 69.9 31.6, 71.7 32.3 C 77.3 38.7, 71.6 40.8, 81 39.1 C 81.6 44.7, 75.6 37.7, 76.7 43.6" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#9aab78" stroke-width="0.536" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.3225492620514706;--path-delay:0.66s;--path-duration:18s"></path><path class="sk-path sk-path--fade" data-sk-path="40" d="M 37.9 82.8 C 42.5 83.9, 38.5 87.6, 44.2 87.2 C 40 79.2, 45 78.2, 40.4 77.4 C 51.4 75.2, 49.3 84.2, 50.3 73.1 C 47.8 77.1, 46.4 70.5, 45 75.5 C 40 84.8, 40 66.2, 33.9 76.8" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#b5c07a" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.3086485792556778;--path-delay:0.88s;--path-duration:11s"></path><path class="sk-path sk-path--static" data-sk-path="41" d="M 88 85.8 C 87.6 86.6, 85.2 88, 87.7 87.5 C 85.2 81.5, 87 85, 86.6 85.7 C 82.9 83.6, 84.7 81.9, 81.1 83.5 C 76.5 83.9, 80.9 79, 76.3 83.4 C 73.8 83, 76.1 80.9, 73.9 81.3 C 64.6 79.3, 76.6 72.2, 64.6 79.2" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#c2cda8" stroke-width="0.512" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.353532225326635;--path-delay:1.1s;--path-duration:12s"></path><path class="sk-path sk-path--static" data-sk-path="42" d="M 50.7 54.8 C 46.4 52.2, 55.6 53.2, 54.8 50.1 C 47.5 42.9, 64.5 47, 62.1 43.2 C 65.4 37.4, 62 49.8, 72.7 43.1 C 64.3 43.8, 74.1 34.8, 67.3 34.6 C 58.5 34.9, 70.4 26.3, 58.4 28.2 C 54.2 22, 65.3 25.2, 55.3 18.4 C 53.4 24.1, 52.3 23.6, 53.4 26.1 C 47.6 32.6, 45.6 22.3, 42.3 28.7" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#a8b86e" stroke-width="0.524" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.3057229633582756;--path-delay:1.32s;--path-duration:13s"></path><path class="sk-path sk-path--static" data-sk-path="43" d="M 41.8 69.1 C 40.6 74.7, 39.2 63.9, 34.8 71.6 C 26.9 70.4, 30.4 65, 26.5 67.4 C 19.4 62, 35.3 67.2, 35.9 61.1 C 29.6 59.4, 39.5 55.6, 34.9 53.8 C 34.7 58.2, 30.7 52.6, 30.6 54.2 C 24.2 58.5, 31.3 46.4, 23.2 53.2 C 27.6 51.5, 20.3 56.8, 23.5 59.6 C 26.7 59.3, 20.3 60.3, 22.7 63.4 C 22.6 57, 26 68.9, 31.4 65.9" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#d0d8bc" stroke-width="0.536" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.26577746343333275;--path-delay:1.54s;--path-duration:14s"></path><path class="sk-path sk-path--static" data-sk-path="44" d="M 54.5 52.5 C 52.3 60.8, 45.9 51.3, 44.9 53.5 C 42.5 61.7, 37.2 49.9, 33.7 52.8 C 32.5 55, 31.9 51.1, 31.1 55.4 C 36.9 53.2, 26.7 59.8, 33.4 60.9 C 36.5 61.9, 36.4 62.2, 38.9 60.5 C 34.2 58.1, 42 56.4, 41.9 52.6 C 35.7 49.4, 48.2 55.6, 49.6 44.2 C 43.6 42.8, 51.3 38.3, 42 39 C 37.3 41.7, 38.2 35, 37.3 42.9" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#9aab78" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.2991697757644579;--path-delay:1.76s;--path-duration:15s"></path><path class="sk-path sk-path--fade" data-sk-path="45" d="M 83.9 25.2 C 80.1 27.3, 82.7 21, 79.2 26.3 C 82.7 32, 72.8 28, 72.7 30.8 C 76.2 35.1, 73.5 36.3, 77.6 36.4 C 77 29.8, 74.1 42.1, 84.5 40.3 C 82.6 43.2, 81.7 38.3, 81.9 44.8 C 85.9 44.6, 78.7 47.1, 81.1 50.1 C 85.3 47.8, 81.3 54.9, 87.6 52.4 C 77.6 54.3, 87.2 45.4, 85.4 40.8 C 87.8 36.4, 85.6 45.9, 85.6 42.1" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#b5c07a" stroke-width="0.512" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.26559121747501196;--path-delay:1.98s;--path-duration:16s"></path><path class="sk-path sk-path--static" data-sk-path="46" d="M 46.1 65.3 C 47.6 62.7, 45.6 68.3, 49.4 69.1 C 45.4 70.7, 50.2 64.8, 42.9 66.1 C 32.3 69.7, 42.9 54.9, 31.9 62.7 C 26.1 63.6, 36.2 58.7, 27.5 56.4 C 25.4 51.1, 33.1 57.3, 28.1 50.5 C 24.7 58.8, 34.9 44.6, 22.6 42 C 20.9 35.9, 24.2 35.9, 22.6 33.6" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#c2cda8" stroke-width="0.524" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.32953132469207047;--path-delay:2.2s;--path-duration:17s"></path><path class="sk-path sk-path--static" data-sk-path="47" d="M 51.4 70.1 C 43.6 68.4, 47.2 63.3, 44.1 65.9 C 34.7 58.4, 41.9 54.1, 38.6 55.7 C 35.3 54.3, 37.9 52.2, 34.3 53 C 31.1 42.7, 45.1 52.7, 42.3 45.6 C 48 45.2, 46.2 49.7, 51 45.5 C 54.8 40.5, 56.6 48.2, 59.3 45.2" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#a8b86e" stroke-width="0.536" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.2713693430321291;--path-delay:2.42s;--path-duration:18s"></path><path class="sk-path sk-path--static" data-sk-path="48" d="M 72.3 41.6 C 71.5 48.5, 67.9 36.2, 65.5 44.2 C 72.5 46, 66.9 51.3, 69.5 50.4 C 73 53.7, 70.6 55.2, 75.9 54.1 C 79.6 62.2, 67.4 57, 69.4 60.7 C 64.2 61.1, 67.1 56, 62.5 56.9 C 55.2 58.2, 60.6 49.7, 52.7 57.5" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#d0d8bc" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.2605405331030488;--path-delay:0s;--path-duration:11s"></path><path class="sk-path sk-path--static" data-sk-path="49" d="M 53.4 49.5 C 53.6 54.3, 49.4 52.2, 52.5 54.9 C 54.9 50.6, 50.5 59.5, 55.2 59.6 C 50 59.4, 51.7 55.7, 50.3 61.2 C 50.8 67.7, 43.7 61.3, 48.4 71.2 C 53.5 67.4, 49.9 77.4, 58 73.6 C 52.8 75.3, 61.8 69.7, 56.7 68" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#9aab78" stroke-width="0.512" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.2752603335911408;--path-delay:0.22s;--path-duration:12s"></path><path class="sk-path sk-path--fade" data-sk-path="50" d="M 35.1 75.2 C 28.2 79.3, 37.1 67.5, 30.3 69.3 C 27.8 70.2, 32.9 69.7, 31.5 65.1 C 23.8 62.6, 27.6 58, 23 62.2 C 19.8 58.4, 23.6 57.3, 17.6 58.1 C 13.2 64, 13.1 63.4, 12.1 66.2 C 16.6 72.6, 16.7 72.5, 21.5 73.3 C 25.9 70.2, 17.2 76.6, 25.9 78.7 C 33.4 75.7, 33.7 80.9, 34.4 71.1 C 37.3 69.9, 37.3 72.3, 37.5 71.6" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#b5c07a" stroke-width="0.524" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.271147172213532;--path-delay:0.44s;--path-duration:13s"></path><path class="sk-path sk-path--static" data-sk-path="51" d="M 65.5 26.2 C 67.7 31.1, 60.3 25.4, 60.7 32.3 C 62.4 43.5, 49.4 31.4, 61.3 43.1 C 67.7 46.5, 59.3 36.3, 54.5 45.5 C 52.2 41.3, 59.3 46.2, 58.3 42.8 C 60.6 37.7, 59.6 48.3, 62.5 46.9 C 63.7 44.9, 64.1 48.5, 66.4 47.4 C 65.2 42.8, 71.1 46.7, 68.5 42.1 C 62.8 41.7, 74.1 40.5, 65.9 35.9 C 71.4 33.8, 65.2 41.8, 71.4 42.6 C 71.9 35.3, 76.9 47.5, 81 37" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#c2cda8" stroke-width="0.536" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.294718339657411;--path-delay:0.66s;--path-duration:14s"></path><path class="sk-path sk-path--static" data-sk-path="52" d="M 63.6 62.4 C 64.7 65.5, 63.3 65.7, 66.4 66.5 C 60.1 64.4, 71.1 61.8, 68.7 60.6 C 62.8 53.8, 74.7 67.2, 77.4 58.9 C 70.4 55.1, 72.6 52.6, 68.4 55.8 C 61.9 50.5, 60.6 53, 60.5 55.8 C 61.2 64, 54 50.7, 52.2 64.2 C 55.9 63, 50 67.2, 53.1 67.7 C 54.3 74.2, 51.8 74.2, 54.7 75.9 C 51.1 76.7, 51.3 74.4, 50.3 75 C 49.2 71.2, 48.9 71.3, 47.4 71.3" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#a8b86e" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.3405173324653879;--path-delay:0.88s;--path-duration:15s"></path><path class="sk-path sk-path--static" data-sk-path="53" d="M 39.7 75.7 C 33.1 79.2, 44.6 70, 32.2 67.7 C 25.9 68.4, 26.3 65.3, 26.1 70.1 C 21.4 67.5, 23.1 65.7, 20.9 69.5 C 19.5 74.2, 16.6 67.3, 14.4 72.5 C 16.3 75.6, 13.5 76, 15.1 77.5 C 19.2 80.1, 12.2 81.2, 21.8 81.9 C 19 75.6, 24.3 85.3, 30.8 78.7 C 32.7 77.2, 30 80.9, 33.5 80.3 C 34.7 87.3, 26.5 81.6, 29.6 85.1" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#d0d8bc" stroke-width="0.512" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.3520246695401147;--path-delay:1.1s;--path-duration:16s"></path><path class="sk-path sk-path--static" data-sk-path="54" d="M 77.9 82.9 C 78.3 86.8, 74.6 80.9, 75.2 85.5 C 78.7 81.2, 73.9 87.8, 81.9 86.1 C 79 87.5, 84 83.8, 81.9 82.2 C 77.8 78.2, 78 78, 74.9 80.8 C 75.7 85.5, 72.7 76.7, 67.8 79.4 C 74.9 79.6, 60.8 78.7, 67.7 85.5 C 60.6 87.1, 60.7 83.4, 57.5 84.5 C 57 87.1, 58.6 82.1, 54.9 82.6 C 55.5 73.8, 63.5 84.3, 59 74.6" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#9aab78" stroke-width="0.524" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.3402228295477107;--path-delay:1.32s;--path-duration:17s"></path><path class="sk-path sk-path--fade" data-sk-path="55" d="M 42.6 79.2 C 43.1 73.3, 45.1 73.8, 44.2 70.6 C 39.8 70.6, 39.8 70.5, 38.7 71.7 C 37 66.3, 37.4 66.2, 34.2 66 C 32 71.1, 28.9 64.4, 28.8 70.1 C 31.3 74.4, 26.4 65.8, 21.5 73.5 C 15.6 65.4, 18.6 63.9, 15.7 65.8 C 20.3 69.4, 14.2 69.3, 13.9 72.1" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#b5c07a" stroke-width="0.536" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.2963709583133459;--path-delay:1.54s;--path-duration:18s"></path><path class="sk-path sk-path--static" data-sk-path="56" d="M 34.8 70.1 C 35.8 61.2, 37.8 61.6, 31.8 60.2 C 28.9 56.5, 34.9 56.7, 32.8 55.2 C 40.5 56, 40.5 55.5, 39.9 53.3 C 44 51.6, 39.2 57.7, 42.7 57.1 C 51.3 63.3, 44.6 67.5, 52.3 60.9" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#c2cda8" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.24762264743447304;--path-delay:1.76s;--path-duration:11s"></path><path class="sk-path sk-path--static" data-sk-path="57" d="M 16.4 32.5 C 21.2 32.4, 14 36.6, 22.5 37 C 22.5 33.7, 24.2 39.8, 25.6 37.5 C 30.4 40.9, 22.1 42.2, 28.9 45.1 C 27.9 37.6, 35.6 48.7, 38.3 42.4 C 36.2 40.4, 39.8 39.9, 36.8 39.1 C 41 30, 40.1 29.7, 34.9 28.5 C 29.1 34.4, 29.7 22, 26.1 21.9" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#a8b86e" stroke-width="0.512" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.2696671747975051;--path-delay:1.98s;--path-duration:12s"></path><path class="sk-path sk-path--static" data-sk-path="58" d="M 37.6 57.6 C 29.7 57.4, 35.5 49.9, 29.5 58.4 C 34.5 61.6, 24 60.4, 26.8 65.4 C 28.5 62.2, 27.2 69, 30.1 67.7 C 26.3 63.9, 35.3 68.6, 32.3 61.6 C 25.4 61.3, 36.2 56.1, 23.7 55.8" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#d0d8bc" stroke-width="0.524" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.23006011934950948;--path-delay:2.2s;--path-duration:13s"></path><path class="sk-path sk-path--static" data-sk-path="59" d="M 47.3 14.3 C 53.4 19.9, 40.9 19.5, 43.4 24.5 C 32 28.3, 37.5 14.1, 32.9 19.3 C 31 21.1, 30.6 17.9, 29.4 19.1 C 28.3 15.9, 32.8 19.8, 29.7 15.8" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#9aab78" stroke-width="0.536" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.221872028503567;--path-delay:2.42s;--path-duration:14s"></path><path class="sk-path sk-path--fade" data-sk-path="60" d="M 46.9 36.7 C 54.9 36.7, 41.2 42.2, 51.1 44.1 C 52 35.3, 58 49.7, 58.9 35.8 C 66 37.7, 52.2 38.4, 63.6 44.1 C 60.4 45.7, 60.3 45.6, 60.7 48.2 C 55.6 43.3, 67.6 49.6, 67.1 40.2 C 63.9 39.2, 70.3 39.5, 69.3 36.7 C 76.9 45.2, 62 45.5, 67.9 47.8" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#b5c07a" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.28355580104514955;--path-delay:0s;--path-duration:15s"></path><path class="sk-path sk-path--static" data-sk-path="61" d="M 76.4 47.1 C 74.4 44.8, 77 50.2, 81.5 46.5 C 73.3 54.7, 72.9 38.8, 71.4 50.9 C 66.4 56.8, 64 48.7, 62.4 57.9 C 58.8 59.7, 65.6 55.4, 60.5 53.7 C 60.2 43.7, 59.9 63.7, 71.3 53.1" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#c2cda8" stroke-width="0.512" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.2727203667908907;--path-delay:0.22s;--path-duration:16s"></path><path class="sk-path sk-path--static" data-sk-path="62" d="M 54.5 43.2 C 54.8 48.5, 53.3 37.9, 48.2 41.3 C 53.2 45.8, 46.5 34.9, 41.4 42.6 C 35.2 45.6, 43.1 35.9, 34.9 37 C 36.5 26.9, 44.8 39.3, 39.3 27.4 C 39.5 23, 43.2 25.3, 41.3 23.2 C 50 27.5, 40.1 32.8, 51.4 29 C 44.1 22, 50.3 18.9, 44 23" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#a8b86e" stroke-width="0.524" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.2875719087570906;--path-delay:0.44s;--path-duration:17s"></path><path class="sk-path sk-path--static" data-sk-path="63" d="M 37.5 61.9 C 36.5 59, 38 58.9, 35.7 57.2 C 34.6 49.7, 42.8 54.6, 33.8 49.6 C 37.5 53.4, 28.7 48.2, 30 55.7 C 26.1 57.8, 32.8 52.3, 27.5 51.6 C 21.4 59.9, 33.6 43.3, 22.7 41.6" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#d0d8bc" stroke-width="0.536" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.28527001839131116;--path-delay:0.66s;--path-duration:18s"></path><path class="sk-path sk-path--static" data-sk-path="64" d="M 85.3 39.3 C 83.4 38.9, 85.6 37.3, 82.9 37.2 C 85.2 42.7, 75.5 42, 77.2 43.5 C 87.9 41.2, 70 51.7, 75.8 54.3 C 72 48.4, 78.2 61, 85.2 53.5 C 86 54.9, 83.7 64.1, 85.5 54.7" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#9aab78" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.2713004592806101;--path-delay:0.88s;--path-duration:11s"></path><path class="sk-path sk-path--fade" data-sk-path="65" d="M 38.4 53.9 C 34.4 53.8, 40.5 57.3, 41.8 51.2 C 43.3 40.9, 52.1 49.3, 48 41.8 C 51.2 41.3, 45.5 43.7, 50.4 44.4 C 53 48.4, 50.3 49.1, 51.7 49 C 55.8 53.6, 55.6 53.7, 57.3 52" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#b5c07a" stroke-width="0.512" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.26905950751155616;--path-delay:1.1s;--path-duration:12s"></path><path class="sk-path sk-path--static" data-sk-path="66" d="M 76.7 40.4 C 83.2 40.1, 71.1 43.7, 77.8 48.5 C 80.2 54.5, 73.7 53.5, 75.5 56.3 C 75.6 59.1, 72.9 57, 72.6 58 C 68.8 54, 73.9 52.6, 66.7 54.6 C 65.9 57.6, 67.2 51.6, 64.1 52.8 C 61.3 48.4, 69 51.1, 68.2 49.8" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#c2cda8" stroke-width="0.524" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.24954729864373804;--path-delay:1.32s;--path-duration:13s"></path><path class="sk-path sk-path--static" data-sk-path="67" d="M 72.3 43.1 C 65.1 40.3, 76.8 36.8, 74.5 33.1 C 71.7 36.4, 78.9 33.1, 73.8 27.8 C 72.2 33.1, 77 23.4, 66.6 23.5 C 62.7 32.5, 60.6 15.8, 57 28.9" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#a8b86e" stroke-width="0.536" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.23740443885326384;--path-delay:1.54s;--path-duration:14s"></path><path class="sk-path sk-path--static" data-sk-path="68" d="M 55.6 21.7 C 52.7 28.7, 49.8 16.9, 46.2 17.6 C 41.5 22.8, 39.5 15.7, 38 19.4 C 41.8 14.1, 43.3 23.3, 44.2 13.3 C 46.3 13.8, 47.2 17.1, 51 13.9 C 52.2 14.6, 50.6 17.7, 55.8 14.6 C 59.8 16.6, 53.4 18.4, 62.5 18.2" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#d0d8bc" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.2217298744432628;--path-delay:1.76s;--path-duration:15s"></path><path class="sk-path sk-path--static" data-sk-path="69" d="M 81.2 45.4 C 79.4 42.7, 83.5 47.7, 84.7 44 C 87.9 46.4, 85.1 51.5, 85 51 C 84.2 47.9, 85 54.2, 87.6 51.1 C 86.9 47.5, 85.8 51.8, 86.7 47.2 C 85.1 42.7, 84 52.2, 85.6 55.3 C 82.2 55.4, 86.8 54.1, 84.9 52 C 82.3 48.8, 87.8 49.1, 86.2 46" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#9aab78" stroke-width="0.512" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.29993373053148387;--path-delay:1.98s;--path-duration:16s"></path><path class="sk-path sk-path--fade" data-sk-path="70" d="M 42.1 56.1 C 34.8 57, 48.2 52.2, 36.5 46.5 C 25.1 44.4, 43.2 37, 34.2 35.5 C 41 33.1, 31.1 42, 40.1 42.2 C 31.7 45.5, 32.1 46.4, 34.2 51.2 C 34 55.3, 35.9 47.4, 30.2 48.3" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#b5c07a" stroke-width="0.524" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.23170288821682333;--path-delay:2.2s;--path-duration:17s"></path><path class="sk-path sk-path--static" data-sk-path="71" d="M 60 58.4 C 59.8 48.7, 69.6 58.1, 66 48.7 C 66.6 53.9, 64.7 53.8, 68.2 55.8 C 66.7 46.5, 75.1 62.1, 77 54.8 C 83.9 57.2, 70 57, 74.2 61.3 C 63.4 63.1, 63.5 58.9, 65.5 66.9" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#c2cda8" stroke-width="0.536" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.2465189521946013;--path-delay:2.42s;--path-duration:18s"></path><path class="sk-path sk-path--static" data-sk-path="72" d="M 39.9 51.8 C 38.4 47.3, 44.6 50.8, 43.4 48.5 C 43.6 53.6, 38.3 48.4, 39.4 56.1 C 39.8 58.3, 38.6 58.2, 40.4 59.5 C 42.5 56.3, 37.7 62.3, 42.3 62.9" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#a8b86e" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.25858375389128924;--path-delay:0s;--path-duration:11s"></path><path class="sk-path sk-path--static" data-sk-path="73" d="M 24.9 46.4 C 22.4 47.8, 23.4 43.9, 21.1 46.3 C 19.2 43.7, 24.1 45.1, 23.6 42.5 C 29.4 35.8, 26 51, 33 46.7 C 34.6 45.1, 35.2 46.4, 36.2 45.7 C 35.1 50.4, 34.6 50.2, 37.5 50.8 C 34.5 53.5, 40.1 47.5, 36.6 46.6 C 32.7 43.1, 38.4 41.7, 31.6 43.8" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#d0d8bc" stroke-width="0.512" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.28968840368092064;--path-delay:0.22s;--path-duration:12s"></path><path class="sk-path sk-path--static" data-sk-path="74" d="M 43.2 58 C 47.2 59.3, 40.8 61.5, 49.2 61.8 C 45.1 55.8, 53.8 67.5, 59 57.4 C 64.7 54.1, 52.6 56.3, 56.5 67.2 C 54.6 73.3, 58.4 61.2, 48.6 63.7 C 50.2 65.9, 45.8 63.2, 46 65.9 C 43.5 70, 48.4 61.8, 41.1 62.4 C 40.9 64.8, 39.1 61, 39.3 65.3" pathLength="1" vector-effect="non-scaling-stroke" fill="none" stroke="#9aab78" stroke-width="0.524" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.2796783047169447;--path-delay:0.44s;--path-duration:13s"></path>
+    </svg>
+    <div class="scattered-knowledge__fragments"><div class="sk-fragment sk-fragment--magnifier sk-fragment--hub" data-sk-fragment="magnifier" style="--x:50%;--y:50%;--drift:5.5s;--delay:0.3s;--icon-fade:7.8s"><span class="sk-fragment__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="7.5"></circle><path d="m20 20-4.2-4.2"></path></svg></span></div><div class="sk-fragment sk-fragment--word sk-fragment--asset" data-sk-fragment="word-doc" style="--x:63.8%;--y:16.7%;--drift:6.2s;--delay:0.1s;--icon-fade:6.4s"><span class="sk-flash" style="--flash-delay:2.2s;--flash-duration:4.6s"></span><span class="sk-fragment__icon"><img src="/zuraio/assets/Icon-cloud/word.svg" alt="" class="sk-fragment__img" width="24" height="24" decoding="async"></span></div><div class="sk-fragment sk-fragment--gmail sk-fragment--asset" data-sk-fragment="gmail" style="--x:75.6%;--y:56.5%;--drift:6.8s;--delay:0.6s;--icon-fade:7.2s"><span class="sk-flash" style="--flash-delay:2.7s;--flash-duration:5.1s"></span><span class="sk-fragment__icon"><img src="/zuraio/assets/Icon-cloud/gmail.svg" alt="" class="sk-fragment__img" width="24" height="24" decoding="async"></span></div><div class="sk-fragment sk-fragment--pdf sk-fragment--asset" data-sk-fragment="pdf" style="--x:23%;--y:81.8%;--drift:5.8s;--delay:1.1s;--icon-fade:5.6s"><span class="sk-fragment__icon"><img src="/zuraio/assets/Icon-cloud/pdf.svg" alt="" class="sk-fragment__img" width="24" height="24" decoding="async"></span></div><div class="sk-fragment sk-fragment--database sk-fragment--asset" data-sk-fragment="database" style="--x:10.6%;--y:87.8%;--drift:7s;--delay:0.4s;--icon-fade:6.8s"><span class="sk-flash" style="--flash-delay:2.5s;--flash-duration:4.9s"></span><span class="sk-fragment__icon"><img src="/zuraio/assets/Icon-cloud/database.svg" alt="" class="sk-fragment__img" width="24" height="24" decoding="async"></span></div><div class="sk-fragment sk-fragment--clock sk-fragment--secondary sk-fragment--clock sk-fragment--asset" data-sk-fragment="clock-upper" style="--x:25.9%;--y:46.3%;--drift:6.4s;--delay:1.8s;--icon-fade:7.6s;--clock-anim:30s"><span class="sk-fragment__icon"><img src="/zuraio/assets/Icon-cloud/clock-1.svg" alt="" class="sk-fragment__img" width="24" height="24" decoding="async"></span></div><div class="sk-fragment sk-fragment--cloud sk-fragment--asset" data-sk-fragment="cloud" style="--x:39.6%;--y:42.3%;--drift:5.8s;--delay:0.9s;--icon-fade:5.8s"><span class="sk-fragment__icon"><img src="/zuraio/assets/Icon-cloud/cloud.svg" alt="" class="sk-fragment__img" width="24" height="24" decoding="async"></span></div><div class="sk-fragment sk-fragment--slack sk-fragment--asset" data-sk-fragment="slack" style="--x:23.8%;--y:10.9%;--drift:7s;--delay:1.4s;--icon-fade:6.2s"><span class="sk-flash" style="--flash-delay:3.5s;--flash-duration:5.9s"></span><span class="sk-fragment__icon"><img src="/zuraio/assets/Icon-cloud/slack.svg" alt="" class="sk-fragment__img" width="24" height="24" decoding="async"></span></div><div class="sk-fragment sk-fragment--outlook sk-fragment--secondary sk-fragment--asset" data-sk-fragment="outlook" style="--x:73.2%;--y:41.7%;--drift:6.1s;--delay:2s;--icon-fade:6.9s"><span class="sk-fragment__icon"><img src="/zuraio/assets/Icon-cloud/outlook.svg" alt="" class="sk-fragment__img" width="24" height="24" decoding="async"></span></div><div class="sk-fragment sk-fragment--teams sk-fragment--secondary sk-fragment--asset" data-sk-fragment="teams" style="--x:87.9%;--y:30.3%;--drift:5.6s;--delay:1.6s;--icon-fade:5.4s"><span class="sk-fragment__icon"><img src="/zuraio/assets/Icon-cloud/teams.svg" alt="" class="sk-fragment__img" width="24" height="24" decoding="async"></span></div><div class="sk-fragment sk-fragment--voice sk-fragment--asset" data-sk-fragment="voice" style="--x:84.2%;--y:60.6%;--drift:7.2s;--delay:0.7s;--icon-fade:6.6s"><span class="sk-fragment__icon"><img src="/zuraio/assets/Icon-cloud/voice.svg" alt="" class="sk-fragment__img" width="24" height="24" decoding="async"></span></div><div class="sk-fragment sk-fragment--sharepoint sk-fragment--asset" data-sk-fragment="sharepoint" style="--x:40.9%;--y:81.6%;--drift:6.3s;--delay:1.2s;--icon-fade:5.9s"><span class="sk-fragment__icon"><img src="/zuraio/assets/Icon-cloud/sharepoint.svg" alt="" class="sk-fragment__img" width="24" height="24" decoding="async"></span></div><div class="sk-fragment sk-fragment--questionmark sk-fragment--asset" data-sk-fragment="question" style="--x:60.5%;--y:59.5%;--drift:4.5s;--delay:0.5s;--icon-fade:8s"><span class="sk-fragment__icon"><img src="/zuraio/assets/Icon-cloud/questionmark.svg" alt="" class="sk-fragment__img" width="24" height="24" decoding="async"></span></div><div class="sk-fragment sk-fragment--brain sk-fragment--brain sk-fragment--asset" data-sk-fragment="brain-upper" style="--x:9.7%;--y:69.6%;--drift:5s;--delay:0.8s;--icon-fade:5.2s"><span class="sk-fragment__icon"><img src="/zuraio/assets/Icon-cloud/brain.svg" alt="" class="sk-fragment__img" width="24" height="24" decoding="async"></span></div><div class="sk-fragment sk-fragment--brain sk-fragment--secondary sk-fragment--brain sk-fragment--asset" data-sk-fragment="brain-ne" style="--x:71%;--y:28.6%;--drift:5.9s;--delay:1.7s;--icon-fade:7.4s"><span class="sk-fragment__icon"><img src="/zuraio/assets/Icon-cloud/brain.svg" alt="" class="sk-fragment__img" width="24" height="24" decoding="async"></span></div><div class="sk-fragment sk-fragment--brain sk-fragment--brain sk-fragment--asset" data-sk-fragment="brain-left" style="--x:22.6%;--y:54.9%;--drift:6.2s;--delay:0.4s;--icon-fade:7s"><span class="sk-fragment__icon"><img src="/zuraio/assets/Icon-cloud/brain.svg" alt="" class="sk-fragment__img" width="24" height="24" decoding="async"></span></div><div class="sk-fragment sk-fragment--brain sk-fragment--brain sk-fragment--asset" data-sk-fragment="brain-sw" style="--x:9.7%;--y:43.8%;--drift:4.8s;--delay:1.5s;--icon-fade:6.4s"><span class="sk-fragment__icon"><img src="/zuraio/assets/Icon-cloud/brain.svg" alt="" class="sk-fragment__img" width="24" height="24" decoding="async"></span></div><div class="sk-fragment sk-fragment--brain sk-fragment--brain sk-fragment--asset" data-sk-fragment="brain-lower" style="--x:87.4%;--y:40.1%;--drift:5.4s;--delay:1.3s;--icon-fade:6.2s"><span class="sk-fragment__icon"><img src="/zuraio/assets/Icon-cloud/brain.svg" alt="" class="sk-fragment__img" width="24" height="24" decoding="async"></span></div><div class="sk-fragment sk-fragment--brain sk-fragment--brain sk-fragment--asset" data-sk-fragment="brain-right" style="--x:34%;--y:29.3%;--drift:6.6s;--delay:0.9s;--icon-fade:5.6s"><span class="sk-fragment__icon"><img src="/zuraio/assets/Icon-cloud/brain.svg" alt="" class="sk-fragment__img" width="24" height="24" decoding="async"></span></div><div class="sk-fragment sk-fragment--clock sk-fragment--clock sk-fragment--asset" data-sk-fragment="clock-left" style="--x:60.6%;--y:29.8%;--drift:6.2s;--delay:0.4s;--icon-fade:6s;--clock-anim:28s"><span class="sk-fragment__icon"><img src="/zuraio/assets/Icon-cloud/clock-2.svg" alt="" class="sk-fragment__img" width="24" height="24" decoding="async"></span></div></div>
+    <div class="scattered-knowledge__labels"><span class="sk-label sk-label--medium" data-sk-label="whereIsIt" style="--x:16%;--y:16%;--fade:5.2s;--delay:0.3s">Wo finde ich das?</span><span class="sk-label sk-label--medium" data-sk-label="whichDocument" style="--x:50%;--y:37%;--fade:5.8s;--delay:1.8s">Welches Dokument ist das richtige?</span><span class="sk-label sk-label--subtle" data-sk-label="latestVersion" style="--x:76%;--y:8%;--fade:6.1s;--delay:2.4s">Ist das die aktuelle Version?</span><span class="sk-label sk-label--large" data-sk-label="whoKnows" style="--x:82%;--y:84%;--fade:7.4s;--delay:1.1s">Wer weiss Bescheid?</span><span class="sk-label sk-label--emphasis" data-sk-label="doneBefore" style="--x:82%;--y:14%;--fade:6.8s;--delay:2s">Hat das schon jemand gemacht?</span><span class="sk-label sk-label--emphasis" data-sk-label="whoHasAccess" style="--x:16%;--y:74%;--fade:6.5s;--delay:0.9s">Wer hat Zugriff?</span></div>
+  </div></div>
+      </div>
+      <div class="pain-grid"><div class="pain-card reveal"><span class="pain-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="8.5" y="14" width="7" height="7" rx="1.5"></rect></svg></span><span class="n">Wissen ist verstreut</span><p>Informationen sind über E-Mails, Dokumente, Meetings und Geschäftssysteme verteilt.</p></div><div class="pain-card reveal d1"><span class="pain-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"></path><rect x="9" y="3" width="6" height="4" rx="1"></rect><path d="M9 12h6M9 16h4"></path></svg></span><span class="n">Routinearbeit kostet Zeit</span><p>Mitarbeitende verbringen viel Zeit mit Zusammenfassungen, Berichten und Nachfassarbeiten.</p></div><div class="pain-card reveal d2"><span class="pain-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"></circle><circle cx="18" cy="6" r="2.5"></circle><circle cx="12" cy="18" r="2.5"></circle><path d="M8.2 7.4 10.8 16M15.8 7.4 13.2 16M8.2 6.8h7.6"></path></svg></span><span class="n">Antworten fehlt der Kontext</span><p>Ohne die richtigen Quellen und Zusammenhänge sind Antworten schwieriger zu finden und zu beurteilen.</p></div></div>
+      <p class="section-link reveal"><a href="/de/how-it-helps.html">Praxisbeispiele ansehen →</a></p>
+    </div>
+  </section>
+
+  <!-- 3. More than a chatbot -->
+  <section class="pad section-band section-band--paper" id="different">
+    <div class="wrap">
+      <div class="head-block reveal">
+        <span class="marker">Mehr als ein Chatbot</span>
+        <h2>Unternehmenswissen, das Ihre Mitarbeitenden weiterbringt.</h2>
+        <p class="lede">Herkömmliche KI kennt nur das, was in jeder einzelnen Unterhaltung bereitgestellt wird. Zuraio greift sicher auf freigegebenes Unternehmenswissen zu, berücksichtigt den Kontext der fragenden Person und bereitet Antworten und Dokumente mit Quellen zur Prüfung vor.</p>
+      </div>
+
+      <div class="routes-diagram reveal d1" data-routes-diagram="">
+        <div class="routes-diagram__panel">
+          <section class="routes-lane routes-lane--without" data-route-lane="without" aria-label="Without Zuraio">
+            <header class="routes-lane__intro">
+              <span class="routes-lane__badge routes-lane__badge--neutral" data-routes-badge="" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.25"></circle><circle cx="18" cy="6" r="2.25"></circle><circle cx="6" cy="18" r="2.25"></circle><circle cx="18" cy="18" r="2.25"></circle><path d="M8 6h8M6 8v8M18 8v8M8 18h8"></path></svg></span>
+              <div class="routes-lane__titles">
+                <h3 class="routes-lane__title" data-routes-title="without">Ohne Zuraio</h3>
+                <p class="routes-lane__subtitle" data-routes-subtitle="without">Ein fragmentierter Prozess</p>
+              </div>
+            </header>
+            <div class="routes-lane__flow" data-routes-flow="">
+              <svg class="routes-lane__svg" data-routes-svg="" aria-hidden="true" viewBox="0 0 848 149" width="848" height="149">
+                <path class="routes-lane__path routes-lane__path--without" data-route-path="without" fill="none" d="M 66 30 C 185.3359375 44, 185.3359375 44, 304.671875 30 C 424 16, 424 16, 543.328125 30 C 662.6640625 44, 662.6640625 44, 782 30 C 818 56, 30 56, 54 30"></path>
+                <circle class="routes-lane__dot routes-lane__dot--without" data-route-dot="without" r="5" cx="66" cy="30"></circle>
+              </svg>
+              <div class="routes-lane__track">
+                <ol class="routes-lane__stops" data-routes-stops="without">
+        <li class="routes-stop" data-stop-index="0">
+          <span class="routes-stop__marker">
+            <span class="routes-stop__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9.5a4.5 4.5 0 0 1 9 0c0 2.2-1.2 3.4-2.4 4.2-.9.6-1.6 1-1.6 2.3V17"></path><circle cx="12" cy="20" r="1"></circle></svg></span>
+          </span>
+          <span class="routes-stop__label">Allgemeine KI fragen</span>
+        </li>
+        <li class="routes-stop" data-stop-index="1">
+          <span class="routes-stop__marker">
+            <span class="routes-stop__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4m0 0 4 4m-4-4-4 4"></path><rect x="4" y="16" width="16" height="4" rx="1"></rect></svg></span>
+          </span>
+          <span class="routes-stop__label">Dateien suchen und hinzufügen</span>
+        </li>
+        <li class="routes-stop" data-stop-index="2">
+          <span class="routes-stop__marker">
+            <span class="routes-stop__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-3.2-3.2"></path></svg></span>
+          </span>
+          <span class="routes-stop__label">Kontext erklären</span>
+        </li>
+        <li class="routes-stop" data-stop-index="3">
+          <span class="routes-stop__marker">
+            <span class="routes-stop__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></span>
+          </span>
+          <span class="routes-stop__label">Prüfen, zusammenstellen und wiederholen</span>
+        </li></ol>
+              </div>
+            </div>
+          </section>
+
+          <div class="routes-diagram__divider" role="presentation"></div>
+
+          <section class="routes-lane routes-lane--with" data-route-lane="with" aria-label="With Zuraio">
+            <header class="routes-lane__intro">
+              <span class="routes-lane__badge routes-lane__badge--olive" data-routes-badge="" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 10-14h-7l0-6z"></path></svg></span>
+              <div class="routes-lane__titles">
+                <h3 class="routes-lane__title" data-routes-title="with">Mit Zuraio</h3>
+                <p class="routes-lane__subtitle" data-routes-subtitle="with">Ein verbundener Ablauf</p>
+              </div>
+            </header>
+            <div class="routes-lane__flow" data-routes-flow="">
+              <svg class="routes-lane__svg" data-routes-svg="" aria-hidden="true" viewBox="0 0 848 108" width="848" height="108">
+                <path class="routes-lane__path routes-lane__path--with" data-route-path="with" fill="none" d="M 66 30 L 251.328125 30 L 436.671875 30 L 622 30 L 784 30 L 784 30"></path>
+                <circle class="routes-lane__dot routes-lane__dot--with" data-route-dot="with" r="5" cx="66" cy="30"></circle>
+              </svg>
+              <div class="routes-lane__track">
+                <ol class="routes-lane__stops" data-routes-stops="with">
+        <li class="routes-stop" data-stop-index="0">
+          <span class="routes-stop__marker">
+            <span class="routes-stop__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9.5a4.5 4.5 0 0 1 9 0c0 2.2-1.2 3.4-2.4 4.2-.9.6-1.6 1-1.6 2.3V17"></path><circle cx="12" cy="20" r="1"></circle></svg></span>
+          </span>
+          <span class="routes-stop__label">Zuraio fragen</span>
+        </li>
+        <li class="routes-stop" data-stop-index="1">
+          <span class="routes-stop__marker">
+            <span class="routes-stop__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"></circle><circle cx="18" cy="6" r="2.5"></circle><circle cx="12" cy="18" r="2.5"></circle><path d="M8.2 7.4 10.8 16M15.8 7.4 13.2 16"></path></svg></span>
+          </span>
+          <span class="routes-stop__label">Freigegebenes Wissen</span>
+        </li>
+        <li class="routes-stop" data-stop-index="2">
+          <span class="routes-stop__marker">
+            <span class="routes-stop__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="m9 14 2 2 4-4"></path></svg></span>
+          </span>
+          <span class="routes-stop__label">Antwort mit Quellen</span>
+        </li>
+        <li class="routes-stop" data-stop-index="3">
+          <span class="routes-stop__marker">
+            <span class="routes-stop__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6.5V11c0 4.4 3.1 8.5 8 9.5 4.9-1 8-5.1 8-9.5V6.5L12 3z"></path><path d="m9 12 2 2 4-4"></path></svg></span>
+          </span>
+          <span class="routes-stop__label">Prüfen und entscheiden</span>
+        </li></ol>
+                <div class="routes-lane__outcome" data-routes-outcome="with">
+                  <div class="routes-stop routes-stop--outcome">
+                    <span class="routes-stop__marker routes-stop__marker--outcome">
+                      <span class="routes-stop__icon" data-routes-outcome-icon="" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"></path></svg></span>
+                    </span>
+                    <span class="routes-stop__label routes-stop__label--outcome" data-routes-outcome-label="">Sie behalten die Kontrolle</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="compare-trio reveal d2" data-compare-trio="">
+        <h3 class="compare-trio__heading" data-compare-trio-heading="">Zuraio im Vergleich</h3>
+        <div class="compare-trio__grid">
+          <article class="compare-trio__col">
+            <h4 class="compare-trio__name" data-compare-name="chatgpt">ChatGPT</h4>
+            <p class="compare-trio__body" data-compare-body="chatgpt">Allgemeine KI für Fragen, Texte und Analysen. Unternehmenskontext wird im Gespräch bereitgestellt oder über separat eingerichtete Verbindungen eingebunden.</p>
+          </article>
+          <article class="compare-trio__col">
+            <h4 class="compare-trio__name" data-compare-name="copilot">Microsoft Copilot</h4>
+            <p class="compare-trio__body" data-compare-body="copilot">KI innerhalb des Microsoft-Ökosystems. Umfang und Zugriff richten sich nach den eingesetzten Microsoft-Produkten, Lizenzen, Berechtigungen und der Konfiguration.</p>
+          </article>
+          <article class="compare-trio__col compare-trio__col--zuraio">
+            <h4 class="compare-trio__name" data-compare-name="zuraio">Zuraio</h4>
+            <p class="compare-trio__body" data-compare-body="zuraio">Ein vom Unternehmen kontrollierter Assistent, der freigegebenes Wissen, Geschäftssysteme und verschiedene KI-Modelle verbindet – mit Quellenangaben und Prüfung durch Mitarbeitende.</p>
+          </article>
+        </div>
+      </div>
+
+      <p class="compare-bridge reveal d2" data-compare-bridge="">Im Hintergrund kann Zuraio spezialisierte KI-Assistenten, geeignete Modelle und angebundene Geschäftssysteme koordinieren. Die Mitarbeitenden arbeiten über eine einzige, übersichtliche Oberfläche.</p>
+      <p class="section-link reveal d2"><a href="/de/technical-architecture.html" data-compare-bridge-link="">Technische Architektur entdecken →</a></p>
+
+    </div>
+  </section>
+
+  <!-- 4. Data control -->
+  <section class="control pad" id="data-control">
+    <canvas class="control-particles" data-control-particles="" aria-hidden="true" width="1280" height="886" style="width: 1280px; height: 886px;"></canvas>
+    <div class="wrap">
+      <div class="head-block reveal">
+        <span class="marker">Datenkontrolle</span>
+        <p class="data-control__positioning">Für Schweizer KMU, die KI nutzen möchten, ohne die Kontrolle über ihre Unternehmensdaten aus der Hand zu geben.</p>
+        <h2>KI nutzen. Kontrolle behalten.</h2>
+        <p class="lede">Mit Zuraio bestimmen Unternehmen, wo die Lösung betrieben wird, welche Informationen sie nutzen darf, wer darauf zugreifen kann und wie Ergebnisse geprüft werden.</p>
+      </div>
+      <div class="ctrl-panel reveal d1">
+        <div class="ctrl-grid">
+          <div class="ccard"><h4>Schweizer Hosting mit Infomaniak</h4><p>Die in der Schweiz gehostete Zuraio-Option nutzt Infrastruktur von <a href="https://www.infomaniak.com/en/certifications" rel="noopener noreferrer">Infomaniak</a> in der Schweiz. Infomaniak ist nach ISO 27001:2022 zertifiziert und trägt das Label Swiss Hosting.</p></div>
+          <div class="ccard"><h4>Zugriff nach Ihren Regeln</h4><p>Mitarbeitende arbeiten nur mit Informationen, für die sie eine entsprechende Berechtigung haben.</p></div>
+          <div class="ccard"><h4>Antworten mit Quellen</h4><p>Nutzerinnen und Nutzer sehen, woher die verwendeten Informationen stammen, und können sie vor der weiteren Verwendung prüfen.</p></div>
+          <div class="ccard"><h4>Für nachvollziehbare Prozesse</h4><p>Je nach gewählter Konfiguration lassen sich Anfragen, Quellen und Ergebnisse nachvollziehen.</p></div>
+        </div>
+        <p class="ctrl-note"><span style="color:var(--soft-olive);">▣</span><span><b>Benötigen Sie zusätzliche Kontrolle?</b> Für Unternehmen mit erhöhten internen Anforderungen können On-Premise-Optionen und die Wahl der eingesetzten Modelle besprochen werden.</span></p>
+      </div>
+      <p class="section-link reveal"><a href="/de/data-control.html">Datenkontrolle und Sicherheit entdecken →</a></p>
+    </div>
+  </section>
+
+  <!-- 5. See your assistant working -->
+  <section class="demo pad section-band section-band--cloud" id="assistant-demo">
+    <div class="wrap">
+      <div class="head-block reveal">
+        <h2>Sehen Sie Zuraio bei der Arbeit.</h2>
+        <p class="lede">Zuraio stellt den relevanten Unternehmenskontext zusammen, bereitet die Arbeit vor und zeigt die verwendeten Quellen zur Prüfung an.</p>
+      </div>
+
+      <div class="demo-stage reveal d1">
+        <ul class="demo-examples" data-demo-examples="" aria-label="Example questions"><li class="demo-example"><span class="demo-example__label">Projektstatus</span><p class="demo-example__prompt">Wie ist der aktuelle Stand von Projekt X und welche Aufgaben sind noch offen?</p></li><li class="demo-example"><span class="demo-example__label">Besprechungsvorbereitung</span><p class="demo-example__prompt">Erstelle ein Briefing für das morgige Kundengespräch anhand der neuesten E-Mails, Dokumente und CRM-Informationen.</p></li><li class="demo-example"><span class="demo-example__label">Kundenkommunikation</span><p class="demo-example__prompt">Entwirf eine Antwort an den Kunden auf Grundlage unserer freigegebenen Bedingungen und der bisherigen Korrespondenz.</p></li></ul>
+
+        <div class="demo-static" id="demo-static">
+          <div class="demo-static__layout">
+            <div class="demo-static__frame">
+              <video data-demo-video="" data-src="../zuraio/assets/zuraio-demo.mp4?v=20260805v2" poster="/zuraio/assets/zuraio-demo-mail.png?v=20260805v2" width="1280" height="720" muted="" loop="" playsinline="" controls="" preload="none" aria-label="Zuraio E-Mail-Assistent mit vorbereitetem Antwortentwurf, Unternehmenskontext und sichtbaren Quellen."></video>
+            </div>
+          </div>
+          <p class="demo-static__caption" data-demo-caption="">Zuraio kann eine Antwort an einen Kunden vorbereiten und dabei frühere Korrespondenz, aktuelle Dokumente und relevante Unternehmensinformationen berücksichtigen. Die Mitarbeitenden prüfen das Ergebnis und entscheiden über die nächsten Schritte.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Integrations -->
+  <section class="pad section-photo section-photo--integrations" id="integrations">
+    <div class="section-photo__bg" aria-hidden="true">
+      <img src="../zuraio/assets/260707-fits-into-the-tools.png?v=20260722" alt="" width="1672" height="941" decoding="async" loading="lazy">
+    </div>
+    <div class="section-photo__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="integrations-copy">
+        <div class="head-block reveal">
+          <h2>Entwickelt für die Tools, die Ihr Team bereits nutzt.</h2>
+          <p class="lede">Zuraio verbindet Microsoft 365, SharePoint, Exchange und Teams ebenso wie CRM- und ERP-Systeme. MCP und REST-APIs ermöglichen flexible Anbindungen an weitere Unternehmenswerkzeuge.</p>
+        </div>
+        <p class="section-link reveal d3"><a href="/de/integrations.html">Alle Integrationen ansehen →</a></p>
+      </div>
+      <div class="marquee-track reveal d1" data-marquee="" tabindex="0" aria-label="Integration tools" data-marquee-ready="true">
+        <div class="marquee-inner"><span class="tool integration-item has-logo" data-integration="microsoft-365">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/microsoft-365.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">Microsoft 365</span>
+    
+    <span class="visually-hidden">Microsoft 365</span>
+  </span><span class="tool integration-item has-logo" data-integration="sharepoint">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/sharepoint.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">SharePoint</span>
+    
+    <span class="visually-hidden">SharePoint</span>
+  </span><span class="tool integration-item has-logo" data-integration="exchange">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/outlook.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">Exchange</span>
+    
+    <span class="visually-hidden">Microsoft Exchange</span>
+  </span><span class="tool integration-item has-logo" data-integration="teams">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/teams.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">Teams</span>
+    
+    <span class="visually-hidden">Microsoft Teams</span>
+  </span><span class="tool integration-item has-logo" data-integration="hubspot">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/hubspot.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">HubSpot</span>
+    
+    <span class="visually-hidden">HubSpot</span>
+  </span><span class="tool integration-item has-logo" data-integration="salesforce">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/salesforce.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">Salesforce</span>
+    
+    <span class="visually-hidden">Salesforce</span>
+  </span><span class="tool integration-item has-logo" data-integration="abacus">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/abacus.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">Abacus</span>
+    
+    <span class="visually-hidden">Abacus</span>
+  </span><span class="tool integration-item has-logo" data-integration="bexio">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/bexio.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">bexio</span>
+    
+    <span class="visually-hidden">bexio</span>
+  </span><span class="tool integration-item has-logo" data-integration="sap">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/sap.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">SAP</span>
+    
+    <span class="visually-hidden">SAP</span>
+  </span><span class="tool integration-item has-logo" data-integration="microsoft-dynamics">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/microsoft-dynamics.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">Dynamics 365</span>
+    
+    <span class="visually-hidden">Microsoft Dynamics 365</span>
+  </span><span class="tool integration-item has-logo" data-integration="odoo">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/odoo.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">Odoo</span>
+    
+    <span class="visually-hidden">Odoo</span>
+  </span><span class="tool integration-item has-logo" data-integration="sage">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/sage.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">Sage</span>
+    
+    <span class="visually-hidden">Sage</span>
+  </span><span class="tool integration-item has-logo" data-integration="proffix">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/proffix.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">Proffix</span>
+    
+    <span class="visually-hidden">Proffix</span>
+  </span><span class="tool integration-item has-logo" data-integration="klara">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/klara.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">Klara</span>
+    
+    <span class="visually-hidden">Klara</span>
+  </span><span class="tool integration-item has-logo" data-integration="apis-mcp">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/apis-mcp.png" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">APIs &amp; MCP</span>
+    
+    <span class="visually-hidden">REST-APIs und Model Context Protocol</span>
+  </span><span class="tool integration-item has-logo" data-integration="microsoft-365">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/microsoft-365.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">Microsoft 365</span>
+    
+    <span class="visually-hidden">Microsoft 365</span>
+  </span><span class="tool integration-item has-logo" data-integration="sharepoint">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/sharepoint.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">SharePoint</span>
+    
+    <span class="visually-hidden">SharePoint</span>
+  </span><span class="tool integration-item has-logo" data-integration="exchange">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/outlook.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">Exchange</span>
+    
+    <span class="visually-hidden">Microsoft Exchange</span>
+  </span><span class="tool integration-item has-logo" data-integration="teams">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/teams.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">Teams</span>
+    
+    <span class="visually-hidden">Microsoft Teams</span>
+  </span><span class="tool integration-item has-logo" data-integration="hubspot">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/hubspot.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">HubSpot</span>
+    
+    <span class="visually-hidden">HubSpot</span>
+  </span><span class="tool integration-item has-logo" data-integration="salesforce">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/salesforce.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">Salesforce</span>
+    
+    <span class="visually-hidden">Salesforce</span>
+  </span><span class="tool integration-item has-logo" data-integration="abacus">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/abacus.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">Abacus</span>
+    
+    <span class="visually-hidden">Abacus</span>
+  </span><span class="tool integration-item has-logo" data-integration="bexio">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/bexio.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">bexio</span>
+    
+    <span class="visually-hidden">bexio</span>
+  </span><span class="tool integration-item has-logo" data-integration="sap">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/sap.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">SAP</span>
+    
+    <span class="visually-hidden">SAP</span>
+  </span><span class="tool integration-item has-logo" data-integration="microsoft-dynamics">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/microsoft-dynamics.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">Dynamics 365</span>
+    
+    <span class="visually-hidden">Microsoft Dynamics 365</span>
+  </span><span class="tool integration-item has-logo" data-integration="odoo">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/odoo.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">Odoo</span>
+    
+    <span class="visually-hidden">Odoo</span>
+  </span><span class="tool integration-item has-logo" data-integration="sage">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/sage.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">Sage</span>
+    
+    <span class="visually-hidden">Sage</span>
+  </span><span class="tool integration-item has-logo" data-integration="proffix">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/proffix.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">Proffix</span>
+    
+    <span class="visually-hidden">Proffix</span>
+  </span><span class="tool integration-item has-logo" data-integration="klara">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/klara.svg" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">Klara</span>
+    
+    <span class="visually-hidden">Klara</span>
+  </span><span class="tool integration-item has-logo" data-integration="apis-mcp">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/apis-mcp.png" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+    <span class="integration-name">APIs &amp; MCP</span>
+    
+    <span class="visually-hidden">REST-APIs und Model Context Protocol</span>
+  </span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. AI governance -->
+  <section class="control pad" id="reviewable">
+    <canvas class="control-particles audit-particles" data-audit-particles="" aria-hidden="true" width="1280" height="759" style="width: 1280px; height: 759px;"></canvas>
+    <div class="wrap">
+      <div class="head-block reveal">
+        <span class="marker">KI-Governance</span>
+        <h2>Klar nachvollziehbar – von der Anfrage bis zur Freigabe.</h2>
+        <p class="lede">Der Einsatz von KI wird zunehmend genauer geprüft. Kunden, Revisionsstellen und Behörden erwarten vermehrt, dass Unternehmen erklären können, woher Informationen stammen und wie KI eingesetzt wurde.</p>
+        <p class="lede">Zuraio unterstützt Sie dabei mit Antworten, deren Quellen sichtbar sind, und KI-Prozessen, die sich prüfen lassen.</p>
+      </div>
+      <div class="audit">
+        <div class="acol reveal d1"><span class="step">Was wurde gefragt?</span><h4>Die Anfrage</h4><p>Halten Sie fest, welche Frage gestellt oder welche Aufgabe erteilt wurde.</p></div>
+        <div class="acol reveal d2"><span class="step">Welche Informationen wurden verwendet?</span><h4>Die Quellen</h4><p>Sehen Sie, welche freigegebenen Unternehmensinformationen verwendet wurden.</p></div>
+        <div class="acol reveal d3"><span class="step">Was wurde erstellt?</span><h4>Das Ergebnis</h4><p>Prüfen Sie die erstellte Antwort, den Entwurf oder die Zusammenfassung.</p></div>
+        <div class="acol reveal d4"><span class="step">Wer hat das Ergebnis geprüft?</span><h4>Die Prüfung</h4><p>Sehen Sie, wer das Ergebnis geprüft, bearbeitet oder freigegeben hat.</p></div>
+      </div>
+      <p class="section-link reveal"><a href="/de/ai-governance.html">Mehr zur KI-Governance →</a></p>
+    </div>
+  </section>
+
+  <!-- 8. FAQ -->
+  <section class="pad section-band section-band--paper" id="faq-home">
+    <div class="wrap">
+      <div class="head-block reveal">
+        <h2>Häufige Fragen</h2>
+      </div>
+      <div class="faq-list faq-list--home" data-home-faq="">
+    <div class="faq-item reveal">
+      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Was ist Zuraio?</button>
+      <div class="faq-a" hidden="">
+        <p>Zuraio ist ein digitaler Assistent für Unternehmen. Er hilft Mitarbeitenden, Informationen zu finden, Fragen zu beantworten und Dokumente auf Grundlage von freigegebenem Unternehmenswissen und angebundenen Geschäftsanwendungen vorzubereiten.</p>
+      </div>
+    </div>
+    <div class="faq-item reveal d1">
+      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Bleiben unsere Unternehmensdaten in der Schweiz?</button>
+      <div class="faq-a" hidden="">
+        <p>Zuraio bietet eine Schweizer Hosting-Option für Unternehmen, die ihre Umgebung und Unternehmensdaten in der Schweiz halten möchten. Weitere Anforderungen an die Bereitstellung werden anhand der Bedürfnisse Ihres Unternehmens geklärt.</p>
+      </div>
+    </div>
+    <div class="faq-item reveal d2">
+      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Können Mitarbeitende auf Informationen zugreifen, für die sie keine Berechtigung haben?</button>
+      <div class="faq-a" hidden="">
+        <p>Zuraio ist darauf ausgelegt, die bestehenden Zugriffsregeln Ihres Unternehmens zu berücksichtigen. Mitarbeitende sollen nur Informationen verwenden können, für die sie eine entsprechende Berechtigung haben. Die genaue Umsetzung hängt von den angebundenen Systemen und der vereinbarten Konfiguration ab.</p>
+      </div>
+    </div>
+    <div class="faq-item reveal d3">
+      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Können wir sehen, auf welchen Quellen eine Antwort basiert?</button>
+      <div class="faq-a" hidden="">
+        <p>Ja. Zuraio kann anzeigen, welche Unternehmensquellen für eine Antwort, ein Dokument oder eine Zusammenfassung verwendet wurden. So können Mitarbeitende die Informationen prüfen, bevor sie sie weiterverwenden.</p>
+      </div>
+    </div>
+    <div class="faq-item reveal d3">
+      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Trifft Zuraio selbstständig Entscheidungen oder versendet es Inhalte automatisch?</button>
+      <div class="faq-a" hidden="">
+        <p>Zuraio kann Antworten, Dokumente und nächste Schritte zur Prüfung vorbereiten. Welche Aktionen automatisch ausgeführt werden dürfen, richtet sich nach den Berechtigungen, Freigaberegeln und der gewählten Konfiguration Ihres Unternehmens.</p>
+      </div>
+    </div>
+    <div class="faq-item reveal d3">
+      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Mit welchen Anwendungen kann Zuraio verbunden werden?</button>
+      <div class="faq-a" hidden="">
+        <p>Zuraio ist dafür ausgelegt, mit bestehenden E-Mail-, Dokumenten-, Kommunikations- und Geschäftsanwendungen zusammenzuarbeiten. Welche Anbindungen verfügbar sind, hängt von den freigegebenen Tools und dem vereinbarten Umfang ab.</p>
+      </div>
+    </div></div>
+      <p class="section-link reveal"><a href="/de/faq.html" data-faq-home-link="">Alle Fragen ansehen →</a></p>
+      <p class="section-link reveal"><a href="/de/faq.html#it-questions" data-faq-it-link="">Fragen Ihres IT-Teams →</a></p>
+    </div>
+  </section>
+
+  <!-- 9. Why we built it -->
+  <section class="origin pad section-band section-band--paper" id="origin">
+    <div class="wrap origin-wrap">
+      <div class="origin-grid">
+        <div class="origin-text reveal">
+          <span class="marker">Warum wir Zuraio entwickelt haben</span>
+          <h2>Entwickelt für die Arbeit, die wir täglich leisten.</h2>
+          <p>Wir haben Zuraio entwickelt, weil KI zwar Antworten erzeugen konnte, aber unser Unternehmenswissen, unsere Zugriffsregeln und unseren Arbeitskontext nicht verstand.</p>
+          <p>Wir wollten einen Assistenten, der mit echten Geschäftsinformationen arbeitet und bei dem die Menschen die Kontrolle behalten.</p>
+          <p>So entstand Zuraio.</p>
+          <p class="origin-cta"><a class="btn btn-primary" href="/de/about.html">Unser Team kennenlernen →</a></p>
+        </div>
+        <div class="origin-portraits reveal d1" aria-label="The Zuraio team">
+          <div class="origin-portraits__grid">
+            <div class="origin-portraits__cell">
+              <picture>
+                <source type="image/webp" srcset="../zuraio/assets/Michael.webp">
+                <img src="../zuraio/assets/Michael.png" alt="Portrait of Michael C. Wili" width="800" height="800" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="origin-portraits__cell">
+              <picture>
+                <source type="image/webp" srcset="../zuraio/assets/Marcelo.webp">
+                <img src="../zuraio/assets/Marcelo.png" alt="Portrait of Marcelo Zanette" width="800" height="800" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="origin-portraits__cell">
+              <picture>
+                <source type="image/webp" srcset="../zuraio/assets/Samuel.webp">
+                <img src="../zuraio/assets/Samuel.png" alt="Portrait of Samuel A. Polley" width="800" height="800" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="origin-portraits__cell">
+              <picture>
+                <source type="image/webp" srcset="../zuraio/assets/Roland.webp">
+                <img src="../zuraio/assets/Roland.png" alt="Portrait of Roland Steiner" width="800" height="800" loading="lazy" decoding="async">
+              </picture>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Final CTA -->
+  <section class="final pad" id="final">
+    <div class="wrap reveal">
+      <h2>Entdecken Sie, was Ihr eigener Assistent Ihnen abnehmen kann.</h2>
+      <p>Gemeinsam betrachten wir Ihre bestehenden Tools, Ihr Unternehmenswissen und Ihre Anforderungen an die Datenkontrolle. Anschliessend zeigen wir Ihnen, wo Zuraio Ihr Unternehmen zuerst unterstützen kann.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary btn-lg" href="/de/contact.html">Private Demo buchen</a>
+        <a class="btn btn-ghost btn-lg" href="#assistant-demo">Zuraio bei der Arbeit sehen</a>
+      </div>
+      <p class="small">Ihr Unternehmen. Ihre Informationen. Ihre Entscheidung.</p>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer">
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="foot-grid">
+          
+      <div class="foot-col">
+        <h3 class="foot-col-title">Produkt</h3>
+        <ul class="foot-col-links"><li><a href="/de/how-it-helps.html">So hilft Zuraio</a></li><li><a href="/de/knowledge.html">Wissen</a></li><li><a href="/de/integrations.html">Integrationen</a></li><li><a href="/de/how-it-helps.html#use-cases">Anwendungsfälle</a></li><li><a href="/de/contact.html">Demo buchen</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h3 class="foot-col-title">Daten und Sicherheit</h3>
+        <ul class="foot-col-links"><li><a href="/de/data-control.html">Datenkontrolle</a></li><li><a href="/de/deployment-models.html#swiss-hosted">Schweizer Hosting</a></li><li><a href="/de/deployment-models.html">Bereitstellungsmodelle</a></li><li><a href="/de/technical-architecture.html">Technische Architektur</a></li><li><a href="/de/ai-governance.html">KI-Governance</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h3 class="foot-col-title">Unternehmen</h3>
+        <ul class="foot-col-links"><li><a href="/de/about.html">Über uns</a></li><li><a href="/de/contact.html">Kontakt</a></li><li><a href="/de/resources.html">Ressourcen</a></li><li><a href="/de/contact.html#partnerships">Partner</a></li><li><a href="/de/resources.html#pressroom">Medien</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h3 class="foot-col-title">Rechtliches</h3>
+        <ul class="foot-col-links"><li><a href="/de/impressum.html">Impressum</a></li><li><a href="/de/privacy.html">Datenschutz</a></li><li><a href="/de/cookies.html">Cookie-Einstellungen</a></li><li><a href="/de/terms.html">Nutzungsbedingungen</a></li></ul>
+      </div>
+          <div class="foot-col">
+            <h3 class="foot-col-title">Sprache und Kontakt</h3>
+            <ul class="foot-col-links">
+              <li><span class="foot-muted">EN</span></li><li><span class="foot-muted">DE (aktiv)</span></li><li><span class="foot-muted">FR</span></li><li><span class="foot-muted">IT</span></li>
+              <li><a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot-bottom">
+          <a class="brand foot-brand" href="/de/" aria-label="Zuraio Startseite">
+            <img class="brand-logo" src="/assets/zuraio-logo.png" alt="Zuraio – Ihre Daten unter Ihrer Kontrolle" width="4796" height="1465" decoding="async">
+          </a>
+          <p class="foot-tagline">KI für Schweizer Unternehmen, die die Kontrolle über ihre Daten behalten wollen.</p>
+        </div>
+        <div id="footer-review-notes" data-internal-only="" hidden="" aria-hidden="true"></div>
+      </div>
+    </footer></div>
+<script type="module" src="../js/main.js?v=20260913"></script>
+
+
+<div id="internal-review-panel" hidden=""></div></body></html>

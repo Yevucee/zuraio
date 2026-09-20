@@ -1,0 +1,279 @@
+<!DOCTYPE html><html lang="de"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="../assets/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="shortcut icon" href="../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<title>Technische Architektur — Zuraio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/site.css">
+  <meta name="description" content="Zuraio verbindet eine zentrale Benutzeroberfläche mit Identitäts- und Zugriffssteuerung, Unternehmenswissen, spezialisierten KI-Assistenten, Modellwahl und Systemintegrationen. Die Orchestrierungsschicht koordiniert diese Komponenten, damit Mitarbeitende in einer einheitlichen Arbeitsumgebung arbeiten können.">
+
+  <link rel="canonical" href="https://zuraio.ch/de/technical-architecture.html">
+  <link rel="alternate" hreflang="en" href="https://zuraio.ch/technical-architecture.html">
+<link rel="alternate" hreflang="de" href="https://zuraio.ch/de/technical-architecture.html">
+<link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/technical-architecture.html">
+<link rel="alternate" hreflang="it" href="https://zuraio.ch/it/technical-architecture.html">
+  <link rel="alternate" hreflang="x-default" href="https://zuraio.ch/technical-architecture.html">
+  <meta property="og:title" content="Technische Architektur — Zuraio">
+  <meta property="og:description" content="Zuraio verbindet eine zentrale Benutzeroberfläche mit Identitäts- und Zugriffssteuerung, Unternehmenswissen, spezialisierten KI-Assistenten, Modellwahl und Systemintegrationen. Die Orchestrierungsschicht koordiniert diese Komponenten, damit Mitarbeitende in einer einheitlichen Arbeitsumgebung arbeiten können.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zuraio.ch/de/technical-architecture.html">
+  <meta property="og:image" content="https://zuraio.ch/zuraio/assets/zuraio-og-share.png">
+  <meta property="og:locale" content="de_CH">
+  <meta property="og:locale:alternate" content="en_CH">
+  <meta property="og:locale:alternate" content="fr_CH">
+  <meta property="og:locale:alternate" content="it_CH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Zuraio","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://zuraio.ch/de/technical-architecture.html","description":"Zuraio verbindet eine zentrale Benutzeroberfläche mit Identitäts- und Zugriffssteuerung, Unternehmenswissen, spezialisierten KI-Assistenten, Modellwahl und Systemintegrationen. Die Orchestrierungsschicht koordiniert diese Komponenten, damit Mitarbeitende in einer einheitlichen Arbeitsumgebung arbeiten können.","provider":{"@type":"Organization","name":"Zuraio","url":"https://zuraio.ch/"}}</script>
+<script>
+(function(){var p=new URLSearchParams(location.search),l=p.get('lang');
+if(!l||!['en','de','fr','it'].includes(l))return;
+try{localStorage.setItem('zuraio-locale',l);}catch(e){}
+var seg=location.pathname.split('/').filter(Boolean),base=seg[0]==='zuraio'?'/zuraio':'';
+var localeIdx=base?1:0,curLoc=seg[localeIdx];
+var inLoc=['de','fr','it'].includes(curLoc);
+var f=location.pathname.split('/').pop()||'';
+var isHome=!f||f==='index.html'||(inLoc&&seg.length===localeIdx+1);
+p.delete('lang');var q=p.toString(),suffix=(q?'?'+q:'')+location.hash;
+if(l==='en'){location.replace((isHome?(base?base+'/':'/'):(base?base+'/':'/')+f)+suffix);return;}
+location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
+})();
+</script>
+</head>
+<body data-page="technicalArchitecture" class="public-mode">
+<div id="site-header" data-dropdown-dismiss-bound="true" data-scroll-bound="true">
+    <header class="nav" id="nav">
+      <div class="wrap nav-in">
+        <a class="brand" href="/de/" aria-label="Zuraio Startseite">
+          <img class="brand-logo" src="/assets/zuraio-logo.png" alt="Zuraio – Ihre Daten unter Ihrer Kontrolle" width="4796" height="1465" decoding="async">
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menü öffnen">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav-menu" id="nav-menu">
+          <nav class="nav-links" aria-label="Hauptnavigation">
+            <a href="/de/how-it-helps.html">So hilft Zuraio</a><a href="/de/knowledge.html">Wissen</a><a href="/de/integrations.html">Integrationen</a><a href="/de/data-control.html">Datenkontrolle</a>
+            <div class="nav-dropdown">
+              <button type="button" class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">Technik</button>
+              <div class="nav-dropdown-menu" role="menu"><a href="/de/technical-architecture.html" role="menuitem">Technische Architektur</a><a href="/de/deployment-models.html" role="menuitem">Bereitstellungsmodelle</a><a href="/de/ai-governance.html" role="menuitem">KI-Governance</a><a href="/de/data-control.html" role="menuitem">Datenkontrolle</a><a href="/de/knowledge.html#skillos" role="menuitem">Wissen und SkillOS</a></div>
+            </div>
+            <a href="/de/about.html">Über uns</a>
+          </nav>
+          <div class="nav-actions">
+            
+    <div class="lang-dropdown">
+      <button type="button" class="lang-dropdown-btn" aria-expanded="false" aria-haspopup="listbox" aria-label="Sprache">
+        <span class="lang-dropdown-current">DE</span>
+      </button>
+      <div class="lang-dropdown-menu" role="listbox" aria-label="Sprache">
+        <button type="button" class="lang-dropdown-option" role="option" data-lang="en" aria-selected="false">EN</button><button type="button" class="lang-dropdown-option is-active" role="option" data-lang="de" aria-selected="true">DE</button><button type="button" class="lang-dropdown-option" role="option" data-lang="fr" aria-selected="false">FR</button><button type="button" class="lang-dropdown-option" role="option" data-lang="it" aria-selected="false">IT</button>
+      </div>
+    </div>
+            <a class="btn btn-primary" href="/de/contact.html">Demo buchen</a>
+          </div>
+        </div>
+      </div>
+    </header></div>
+<main>
+
+<section class="page-hero pad">
+  <div class="wrap">
+    <span class="marker">Technische Architektur</span>
+    <h1>Eine kontrollierbare KI-Plattform für Unternehmenswissen, spezialisierte Assistenten und Geschäftsprozesse.</h1>
+    <p class="lede">Zuraio verbindet eine zentrale Benutzeroberfläche mit Identitäts- und Zugriffssteuerung, Unternehmenswissen, spezialisierten KI-Assistenten, Modellwahl und Systemintegrationen. Die Orchestrierungsschicht koordiniert diese Komponenten, damit Mitarbeitende in einer einheitlichen Arbeitsumgebung arbeiten können.</p>
+    <p class="hero-note">Die konkrete Architektur richtet sich nach der gewählten Bereitstellung, den angebundenen Systemen und den freigegebenen Modellen.</p>
+    <p class="cta-row" style="margin-top:28px;">
+      <a class="btn btn-primary btn-lg" href="/de/contact.html">Technische Anforderungen besprechen</a>
+      <a class="btn btn-ghost btn-lg" href="/de/deployment-models.html">Bereitstellungsmodelle vergleichen</a>
+    </p>
+  </div>
+</section>
+
+<div class="wrap-tech pad">
+  <aside class="tech-toc" aria-label="Auf dieser Seite">
+    <p class="mono toc-title">Auf dieser Seite</p>
+    <nav><a href="#overview">Architekturüberblick</a><a href="#request-flow">Anfrage-zu-Ergebnis-Ablauf</a><a href="#maturity">Produktreifegrad</a><a href="#models">Modellwahl</a><a href="#integration-layer">Integrationsschicht</a><a href="#rollout">Kontrolliert starten</a></nav>
+  </aside>
+
+  <div class="tech-main">
+
+    <section id="overview" class="reveal">
+      <span class="marker">Architekturüberblick</span>
+      <h2>Eine Plattform. Sieben kontrollierte Ebenen.</h2>
+      <p class="lede">Zuraio trennt die Arbeitsoberfläche für Mitarbeitende von der technischen Komplexität im Hintergrund. Jede Ebene übernimmt eine klar definierte Aufgabe bei der Steuerung von Zugriff, Kontext, Ausführung und Prüfung.</p>
+
+      <div class="layer-grid">
+        <article class="layer-card">
+          <h3>1. Zugänge und Benutzeroberflächen</h3>
+          <p>Mitarbeitende greifen über die Zuraio-Oberfläche oder über freigegebene, angebundene Anwendungen und Clients auf die Plattform zu. Welche Funktionen verfügbar sind, kann je nach Rolle, Bereitstellung und Endgerät variieren.</p>
+        </article>
+        <article class="layer-card">
+          <h3>2. Identitäten, Berechtigungen und Richtlinien</h3>
+          <p>Bevor Unternehmenswissen, Werkzeuge oder Aktionen verfügbar werden, prüft Zuraio Identität, Rolle und Berechtigungen. Bestehende Identitätsstrukturen von Microsoft oder Google können eingebunden und bei Bedarf durch zusätzliche Zuraio-Rollen ergänzt werden.</p>
+        </article>
+        <article class="layer-card">
+          <h3>3. Orchestrierung</h3>
+          <p>Die Orchestrierungsschicht interpretiert die Aufgabe, ermittelt den passenden Arbeitsablauf und koordiniert zulässiges Wissen, Assistenten, Werkzeuge und Modelle. Komplexere Aufgaben können in kontrollierte Teilschritte zerlegt und die Ergebnisse anschliessend zusammengeführt werden.</p>
+        </article>
+        <article class="layer-card">
+          <h3>4. SkillOS und Unternehmenswissen</h3>
+          <p>SkillOS stellt freigegebenes Prozesswissen, relevanten Unternehmenskontext, Vorlagen und Qualitätsregeln bereit. Skills werden ausserhalb des KI-Modells versioniert und können dadurch geprüft, aktualisiert und kontrolliert verwaltet werden.</p>
+        </article>
+        <article class="layer-card">
+          <h3>5. Spezialisierte Assistenten und Integrationen</h3>
+          <p>Spezialisierte Assistenten stellen klar abgegrenzte Fähigkeiten für Kommunikation, Wissen, Dokumente und kundenspezifische Aufgaben bereit. MCP, APIs, Webhooks und Connectoren ermöglichen einen kontrollierten Zugriff auf freigegebene Geschäftssysteme.</p>
+        </article>
+        <article class="layer-card">
+          <h3>6. Modell-Gateway</h3>
+          <p>Je nach Aufgabe, Datenklassifikation, zulässigem Verarbeitungsort, Qualitätsanforderung und Kosten können unterschiedliche freigegebene KI-Modelle eingesetzt werden. Welche Modelle verfügbar sind, hängt von der gewählten Bereitstellung und den zugelassenen Anbietern ab.</p>
+        </article>
+        <article class="layer-card">
+          <h3>7. Protokollierung, Prüfung und Betrieb</h3>
+          <p>Relevante Anfragen, Quellen, Aktionen und technische Ereignisse können entsprechend den Fähigkeiten der eingesetzten Komponenten und dem vereinbarten Audit-Modell festgehalten werden. Die betrieblichen Kontrollmöglichkeiten unterscheiden sich je nach Bereitstellung und Reifegrad.</p>
+        </article>
+      </div>
+
+      <div class="diagram-box" style="margin-top:32px;">
+        <svg class="arch-svg" viewBox="0 0 480 720" role="img" aria-labelledby="arch-title arch-desc">
+          <title id="arch-title">Sieben Ebenen der Zuraio-Architektur: Zugänge, Identitäten und Richtlinien, Orchestrierung, SkillOS, spezialisierte Assistenten und Integrationen, Modell-Gateway sowie Prüfung und Betrieb.</title>
+          <desc id="arch-desc">Schematischer Ablauf: Benutzer oder angebundene Anwendung, Identitäten und Richtlinien, Orchestrierung, SkillOS, Assistenten und Integrationen, Modell-Gateway, Ergebnis und Quellen, Prüfung und Betriebsnachweise.</desc>
+          <defs>
+            <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#2F8F8A"></path></marker>
+          </defs>
+          <rect x="40" y="16" width="400" height="44" rx="8" fill="#EAF0D6" stroke="#9FAF52" stroke-width="1.5"></rect>
+          <text x="240" y="44" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">Benutzer oder angebundene Anwendung</text>
+          <line x1="240" y1="60" x2="240" y2="76" stroke="#2F8F8A" stroke-width="1.5" marker-end="url(#arrow)"></line>
+          <rect x="40" y="76" width="400" height="44" rx="8" fill="#F5F6F2" stroke="#464646" stroke-width="1.5"></rect>
+          <text x="240" y="104" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">Identitäten und Richtlinien</text>
+          <line x1="240" y1="120" x2="240" y2="136" stroke="#2F8F8A" stroke-width="1.5" marker-end="url(#arrow)"></line>
+          <rect x="40" y="136" width="400" height="44" rx="8" fill="#9FAF52" stroke="#788A36" stroke-width="1.5"></rect>
+          <text x="240" y="164" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="12" font-weight="600" fill="#fff">Orchestrierung</text>
+          <line x1="240" y1="180" x2="240" y2="196" stroke="#2F8F8A" stroke-width="1.5" marker-end="url(#arrow)"></line>
+          <rect x="40" y="196" width="400" height="56" rx="8" fill="#F5F6F2" stroke="#464646" stroke-width="1.5"></rect>
+          <text x="240" y="220" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">SkillOS / Assistenten / Integrationen</text>
+          <line x1="240" y1="252" x2="240" y2="268" stroke="#2F8F8A" stroke-width="1.5" marker-end="url(#arrow)"></line>
+          <rect x="40" y="268" width="400" height="44" rx="8" fill="#F5F6F2" stroke="#464646" stroke-width="1.5"></rect>
+          <text x="240" y="296" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">Modell-Gateway</text>
+          <line x1="240" y1="312" x2="240" y2="328" stroke="#2F8F8A" stroke-width="1.5" marker-end="url(#arrow)"></line>
+          <rect x="40" y="328" width="400" height="44" rx="8" fill="#EAF0D6" stroke="#9FAF52" stroke-width="1.5"></rect>
+          <text x="240" y="356" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">Ergebnis und Quellen</text>
+          <line x1="240" y1="372" x2="240" y2="388" stroke="#2F8F8A" stroke-width="1.5" marker-end="url(#arrow)"></line>
+          <rect x="40" y="388" width="400" height="44" rx="8" fill="#F5F6F2" stroke="#464646" stroke-width="1.5"></rect>
+          <text x="240" y="416" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#464646">Prüfung und Betriebsnachweise</text>
+        </svg>
+        <p class="mono diagram-caption">Schematische Plattformarchitektur. Komponentengrenzen und Betriebsorte unterscheiden sich je nach Kundenumgebung.</p>
+      </div>
+    </section>
+
+    <section id="request-flow" class="reveal">
+      <span class="marker">Anfrage-zu-Ergebnis-Ablauf</span>
+      <h2>Ein kontrollierter Weg von der Anfrage zum Ergebnis.</h2>
+      <p class="lede">Zuraio ist darauf ausgelegt, Unternehmenskontext, Berechtigungen und Richtlinien während des gesamten Ablaufs anzuwenden – nicht erst bei einer abschliessenden Kontrolle.</p>
+      <ol class="flow-steps"><li><strong>Anfrage entgegennehmen</strong> — Ein Mitarbeitender stellt über Zuraio oder eine freigegebene Anwendung eine Frage oder startet einen Arbeitsablauf.</li><li><strong>Identität und Berechtigungen prüfen</strong> — Zuraio ermittelt Benutzer, Mandant, Rolle sowie zulässige Quellen und Aktionen.</li><li><strong>Prozess und Kontext bestimmen</strong> — SkillOS kann freigegebenes Unternehmenswissen, Prozessschritte, Vorlagen und Qualitätsanforderungen bereitstellen.</li><li><strong>Benötigte Fähigkeiten koordinieren</strong> — Die Orchestrierungsschicht wählt geeignete spezialisierte Assistenten, Werkzeuge, Datenquellen und ein zulässiges Modell aus.</li><li><strong>Ergebnis vorbereiten</strong> — Informationen aus berechtigten Quellen werden zu einer Antwort, einem Entwurf oder einer vorgeschlagenen Aktion zusammengeführt.</li><li><strong>Kritische Aktionen prüfen</strong> — Schreibende oder nach aussen wirksame Aktionen können als Entwurf oder Vorschlag zur Bestätigung vorgelegt werden.</li><li><strong>Relevante Nachweise festhalten</strong> — Quellen, Versionen, Aktionen und technische Ereignisse werden dort dokumentiert, wo dies von der jeweiligen Komponente und Audit-Konfiguration unterstützt wird.</li></ol>
+    </section>
+
+    <section id="maturity" class="reveal">
+      <span class="marker">Aktueller Produktreifegrad</span>
+      <h2>Aktueller Produktreifegrad.</h2>
+      <p class="lede">Zuraio wird aus mehreren Komponenten aufgebaut. Die folgenden Statusangaben unterscheiden zwischen implementierten Funktionen, laufender Produktionsvalidierung und noch in Entwicklung befindlichen Fähigkeiten.</p>
+
+      <article class="maturity-panel">
+        <span class="maturity-label maturity-label--available">Heute verfügbar</span>
+        <h3>SkillOS</h3>
+        <ul><li>Versioniertes Wissen und versionierte Prozess-Skills</li><li>Governance-Lifecycle und Rollenmodell</li><li>Hybrides Retrieval und Wissensbeziehungen</li><li>Rollenbasierter MCP-Zugriff</li><li>Backup-, Restore-, Wartungs- und Health-Funktionen</li><li>Getesteter Kern mit Unit- und Integrationstests</li></ul>
+      </article>
+
+      <article class="maturity-panel">
+        <span class="maturity-label maturity-label--validation">In Validierung</span>
+        <h3>EmailAI</h3>
+        <ul><li>E-Mails suchen, abrufen und klassifizieren</li><li>Antwortentwürfe vorbereiten</li><li>Aufgaben, Termine, Kontakte und Memos verknüpfen</li><li>Kommunikations-Wissensgraph</li><li>Draft-First-Prinzip für schreibende Aktionen</li><li>Web-, Mobile- und Voice-Zugänge</li></ul>
+        <p class="qualification">Der vollständige Microsoft-365-Produktivbetrieb, zentrales Monitoring, automatisierte Backups sowie die vollständige Mehrbenutzer- und Mandantentrennung befinden sich weiterhin in Validierung oder Entwicklung.</p>
+      </article>
+
+      <article class="maturity-panel">
+        <span class="maturity-label maturity-label--specified">Spezifiziert / in Entwicklung</span>
+        <h3>MSConnector und Office-Automatisierung</h3>
+        <ul><li>Kontrollierte Änderungen in Word, Excel und PowerPoint</li><li>Office Add-ins</li><li>Document Twin und semantische Anker</li><li>Living Documents</li><li>Dokumentenübergreifende Konsistenz</li><li>Visuelle Dokumentenprüfung</li><li>Tenant-Appliance-Bereitstellung</li></ul>
+        <p class="qualification">Diese Fähigkeiten gehören zur spezifizierten Zielarchitektur. Bis zum Abschluss von Implementierung und Pilotvalidierung dürfen sie nicht als allgemein verfügbar dargestellt werden.</p>
+      </article>
+    </section>
+
+    <section id="models" class="reveal">
+      <span class="marker">Modellwahl</span>
+      <h2>Für jede Aufgabe ein geeignetes Modell.</h2>
+      <p class="lede">Zuraio trennt Unternehmensprozesse, Skills und Integrationen vom jeweils eingesetzten KI-Modell. Dadurch kann die Architektur vor der Modellwahl die Aufgabe, die geforderte Qualität, die Datenklassifikation, den zulässigen Verarbeitungsort, die Verfügbarkeit und die Kosten berücksichtigen.</p>
+      <ul><li>Lokale Modelle für ausgewählte vertrauliche oder kontrollierte Aufgaben</li><li>Schweizer Modellangebote, sofern sie Teil der vereinbarten Bereitstellung sind</li><li>Freigegebene Modelle in Private oder Public Clouds</li><li>Leistungsfähigere Modelle für komplexe Schlussfolgerungen und hohe sprachliche Anforderungen</li><li>Kleinere Modelle für klar definierte Routineprozesse</li><li>Richtlinien, die festlegen, welche Daten an welches Modell übermittelt werden dürfen</li></ul>
+      <p class="qualification">Die für einen Kunden verfügbaren Modelle und Anbieter richten sich nach der vereinbarten Bereitstellung, der technischen Validierung und den kommerziellen Bedingungen.</p>
+      <p style="margin-top:20px;"><a href="/de/deployment-models.html">Bereitstellungsmodelle vergleichen →</a></p>
+    </section>
+
+    <section id="integration-layer" class="reveal">
+      <span class="marker">Offene Integrationsschicht</span>
+      <h2>Für Integration konzipiert – nicht als neues Silo.</h2>
+      <p class="lede">Zuraio ist als Orchestrierungsebene über bestehenden Unternehmenssystemen konzipiert. Es ersetzt nicht die Systeme, die weiterhin die führenden Datenquellen bleiben. Freigegebene Funktionen können über MCP, APIs, Webhooks und kundenspezifische Connectoren genutzt oder bereitgestellt werden.</p>
+      <ul><li>Microsoft- und Google-Identitäts- und Datenumgebungen</li><li>Dokument- und Dateiablagen</li><li>E-Mail-, Kalender- und Kommunikationssysteme</li><li>CRM-, ERP-, DMS- und Fachanwendungen</li><li>Interne Datenbanken und APIs</li><li>Kundenspezifische Assistenten und Werkzeuge</li></ul>
+      <p class="qualification">Verfügbarkeit und Reifegrad einzelner Integrationen müssen separat bestätigt werden.</p>
+      <p style="margin-top:20px;"><a href="/de/integrations.html">Integrationskategorien ansehen →</a></p>
+    </section>
+
+    <section id="rollout" class="reveal">
+      <span class="marker">Kontrolliert starten</span>
+      <h2>Kontrolliert starten. Auf Basis von Ergebnissen ausbauen.</h2>
+      <ol class="flow-steps"><li><strong>Erste Anwendungsfälle auswählen.</strong></li><li><strong>Systeme, Identitäten und Datenquellen prüfen.</strong></li><li><strong>Bereitstellung und Modellgrenzen vereinbaren.</strong></li><li><strong>Berechtigungen und Prüfanforderungen konfigurieren.</strong></li><li><strong>Mit ausgewählten Benutzern pilotieren.</strong></li><li><strong>Ergebnisse, Risiken und Betriebsbereitschaft prüfen.</strong></li><li><strong>Nachgewiesenen Nutzen auf weitere Arbeitsabläufe übertragen.</strong></li></ol>
+    </section>
+
+    <section class="cta-inline reveal">
+      <h2>Besprechen Sie die technische Architektur mit uns.</h2>
+      <p><a class="btn btn-primary" href="/de/contact.html">Technisches Gespräch vereinbaren</a></p>
+    </section>
+
+  </div>
+</div>
+
+</main>
+<div id="site-footer">
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="foot-grid">
+          
+      <div class="foot-col">
+        <h3 class="foot-col-title">Produkt</h3>
+        <ul class="foot-col-links"><li><a href="/de/how-it-helps.html">So hilft Zuraio</a></li><li><a href="/de/knowledge.html">Wissen</a></li><li><a href="/de/integrations.html">Integrationen</a></li><li><a href="/de/how-it-helps.html#use-cases">Anwendungsfälle</a></li><li><a href="/de/contact.html">Demo buchen</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h3 class="foot-col-title">Daten und Sicherheit</h3>
+        <ul class="foot-col-links"><li><a href="/de/data-control.html">Datenkontrolle</a></li><li><a href="/de/deployment-models.html#swiss-hosted">Schweizer Hosting</a></li><li><a href="/de/deployment-models.html">Bereitstellungsmodelle</a></li><li><a href="/de/technical-architecture.html">Technische Architektur</a></li><li><a href="/de/ai-governance.html">KI-Governance</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h3 class="foot-col-title">Unternehmen</h3>
+        <ul class="foot-col-links"><li><a href="/de/about.html">Über uns</a></li><li><a href="/de/contact.html">Kontakt</a></li><li><a href="/de/resources.html">Ressourcen</a></li><li><a href="/de/contact.html#partnerships">Partner</a></li><li><a href="/de/resources.html#pressroom">Medien</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h3 class="foot-col-title">Rechtliches</h3>
+        <ul class="foot-col-links"><li><a href="/de/impressum.html">Impressum</a></li><li><a href="/de/privacy.html">Datenschutz</a></li><li><a href="/de/cookies.html">Cookie-Einstellungen</a></li><li><a href="/de/terms.html">Nutzungsbedingungen</a></li></ul>
+      </div>
+          <div class="foot-col">
+            <h3 class="foot-col-title">Sprache und Kontakt</h3>
+            <ul class="foot-col-links">
+              <li><span class="foot-muted">EN</span></li><li><span class="foot-muted">DE (aktiv)</span></li><li><span class="foot-muted">FR</span></li><li><span class="foot-muted">IT</span></li>
+              <li><a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot-bottom">
+          <a class="brand foot-brand" href="/de/" aria-label="Zuraio Startseite">
+            <img class="brand-logo" src="/assets/zuraio-logo.png" alt="Zuraio – Ihre Daten unter Ihrer Kontrolle" width="4796" height="1465" decoding="async">
+          </a>
+          <p class="foot-tagline">KI für Schweizer Unternehmen, die die Kontrolle über ihre Daten behalten wollen.</p>
+        </div>
+        <div id="footer-review-notes" data-internal-only="" hidden="" aria-hidden="true"></div>
+      </div>
+    </footer></div>
+<script type="module" src="../js/main.js"></script>
+
+
+<div id="internal-review-panel" hidden=""></div></body></html>

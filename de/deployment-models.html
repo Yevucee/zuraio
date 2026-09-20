@@ -1,0 +1,201 @@
+<!DOCTYPE html><html lang="de"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="../assets/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="shortcut icon" href="../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<title>Bereitstellungsmodelle — Zuraio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/site.css">
+  <meta name="description" content="Unternehmen stellen unterschiedliche Anforderungen an Datenstandort, Infrastruktur, Modellwahl, Betrieb und Kosten. Zuraio unterstützt Bereitstellungsarchitekturen, die an diese Anforderungen angepasst werden können.">
+
+  <link rel="canonical" href="https://zuraio.ch/de/deployment-models.html">
+  <link rel="alternate" hreflang="en" href="https://zuraio.ch/deployment-models.html">
+<link rel="alternate" hreflang="de" href="https://zuraio.ch/de/deployment-models.html">
+<link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/deployment-models.html">
+<link rel="alternate" hreflang="it" href="https://zuraio.ch/it/deployment-models.html">
+  <link rel="alternate" hreflang="x-default" href="https://zuraio.ch/deployment-models.html">
+  <meta property="og:title" content="Bereitstellungsmodelle — Zuraio">
+  <meta property="og:description" content="Unternehmen stellen unterschiedliche Anforderungen an Datenstandort, Infrastruktur, Modellwahl, Betrieb und Kosten. Zuraio unterstützt Bereitstellungsarchitekturen, die an diese Anforderungen angepasst werden können.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zuraio.ch/de/deployment-models.html">
+  <meta property="og:image" content="https://zuraio.ch/zuraio/assets/zuraio-og-share.png">
+  <meta property="og:locale" content="de_CH">
+  <meta property="og:locale:alternate" content="en_CH">
+  <meta property="og:locale:alternate" content="fr_CH">
+  <meta property="og:locale:alternate" content="it_CH">
+  
+<script>
+(function(){var p=new URLSearchParams(location.search),l=p.get('lang');
+if(!l||!['en','de','fr','it'].includes(l))return;
+try{localStorage.setItem('zuraio-locale',l);}catch(e){}
+var seg=location.pathname.split('/').filter(Boolean),base=seg[0]==='zuraio'?'/zuraio':'';
+var localeIdx=base?1:0,curLoc=seg[localeIdx];
+var inLoc=['de','fr','it'].includes(curLoc);
+var f=location.pathname.split('/').pop()||'';
+var isHome=!f||f==='index.html'||(inLoc&&seg.length===localeIdx+1);
+p.delete('lang');var q=p.toString(),suffix=(q?'?'+q:'')+location.hash;
+if(l==='en'){location.replace((isHome?(base?base+'/':'/'):(base?base+'/':'/')+f)+suffix);return;}
+location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
+})();
+</script>
+</head>
+<body data-page="deploymentModels" class="public-mode">
+<div id="site-header" data-dropdown-dismiss-bound="true" data-scroll-bound="true">
+    <header class="nav" id="nav">
+      <div class="wrap nav-in">
+        <a class="brand" href="/de/" aria-label="Zuraio Startseite">
+          <img class="brand-logo" src="/assets/zuraio-logo.png" alt="Zuraio – Ihre Daten unter Ihrer Kontrolle" width="4796" height="1465" decoding="async">
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menü öffnen">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav-menu" id="nav-menu">
+          <nav class="nav-links" aria-label="Hauptnavigation">
+            <a href="/de/how-it-helps.html">So hilft Zuraio</a><a href="/de/knowledge.html">Wissen</a><a href="/de/integrations.html">Integrationen</a><a href="/de/data-control.html">Datenkontrolle</a>
+            <div class="nav-dropdown">
+              <button type="button" class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">Technik</button>
+              <div class="nav-dropdown-menu" role="menu"><a href="/de/technical-architecture.html" role="menuitem">Technische Architektur</a><a href="/de/deployment-models.html" role="menuitem">Bereitstellungsmodelle</a><a href="/de/ai-governance.html" role="menuitem">KI-Governance</a><a href="/de/data-control.html" role="menuitem">Datenkontrolle</a><a href="/de/knowledge.html#skillos" role="menuitem">Wissen und SkillOS</a></div>
+            </div>
+            <a href="/de/about.html">Über uns</a>
+          </nav>
+          <div class="nav-actions">
+            
+    <div class="lang-dropdown">
+      <button type="button" class="lang-dropdown-btn" aria-expanded="false" aria-haspopup="listbox" aria-label="Sprache">
+        <span class="lang-dropdown-current">DE</span>
+      </button>
+      <div class="lang-dropdown-menu" role="listbox" aria-label="Sprache">
+        <button type="button" class="lang-dropdown-option" role="option" data-lang="en" aria-selected="false">EN</button><button type="button" class="lang-dropdown-option is-active" role="option" data-lang="de" aria-selected="true">DE</button><button type="button" class="lang-dropdown-option" role="option" data-lang="fr" aria-selected="false">FR</button><button type="button" class="lang-dropdown-option" role="option" data-lang="it" aria-selected="false">IT</button>
+      </div>
+    </div>
+            <a class="btn btn-primary" href="/de/contact.html">Demo buchen</a>
+          </div>
+        </div>
+      </div>
+    </header></div>
+<main>
+
+<section class="page-hero pad">
+  <div class="wrap">
+    <span class="marker">Bereitstellung</span>
+    <h1>Lokal, hybrid oder in der Schweiz gehostet.</h1>
+    <p class="lede">Unternehmen stellen unterschiedliche Anforderungen an Datenstandort, Infrastruktur, Modellwahl, Betrieb und Kosten. Zuraio unterstützt Bereitstellungsarchitekturen, die an diese Anforderungen angepasst werden können.</p>
+    <p class="qualification">Die Verfügbarkeit eines konkreten Modells muss im technischen und kommerziellen Umfang bestätigt werden.</p>
+  </div>
+</section>
+
+<section class="pad" id="swiss-hosted">
+  <div class="wrap">
+    <span class="marker">Drei Modelle</span>
+    <h2>Lokal, hybrid und Schweizer Hosting.</h2>
+
+    <div class="grid-cards cols-3">
+      <article class="pcard reveal">
+        <span class="deploy-status deploy-status--available">Projektbezogen verfügbar – Umfang bestätigen</span>
+        <h3>Lokal oder kundenseitig kontrolliert</h3>
+        <p>Ausgewählte Zuraio-Komponenten, Assistenten oder Modelle können für den Betrieb in kundenseitig kontrollierter Infrastruktur oder einer Private Cloud ausgelegt werden.</p>
+        <ul><li>Mehr Kontrolle über Verarbeitungs- und Speicherorte</li><li>Geeignet für ausgewählte vertrauliche oder intern regulierte Aufgaben</li><li>Lokale und freigegebene Cloud-Modelle gemäss Richtlinie möglich</li><li>Höherer Einbezug der internen IT</li><li>Betriebliche Verantwortung muss vereinbart werden</li></ul>
+        <p class="qualification">Eine lokale Bereitstellung ist kein einheitliches Standardpaket. Komponenten, Hardware, Support, Updates, Backups und Modellanforderungen müssen pro Projekt bestätigt werden.</p>
+      </article>
+
+      <article class="pcard reveal d1">
+        <span class="deploy-status deploy-status--validation">Architekturbezogen verfügbar – Komponenten bestätigen</span>
+        <h3>Hybrid</h3>
+        <p>In einer hybriden Architektur können Datenquellen, Assistenten und Modelle in unterschiedlichen freigegebenen Umgebungen betrieben und über eine gemeinsame Kontrollschicht koordiniert werden.</p>
+        <ul><li>Sensibles Wissen kann in kundenseitig kontrollierten Systemen verbleiben</li><li>Ausgewählte Verarbeitung kann in freigegebenen, verwalteten Umgebungen stattfinden</li><li>Modellwahl kann sich nach Aufgabe und Datenklassifikation richten</li><li>Assistenten können nahe bei den verwendeten Systemen betrieben werden</li><li>Datenflüsse und Verantwortlichkeiten müssen dokumentiert werden</li></ul>
+      </article>
+
+      <article class="pcard reveal d2">
+        <span class="deploy-status deploy-status--specified">Hosting-Option – technischer und kommerzieller Umfang erforderlich</span>
+        <h3>Schweizer Hosting</h3>
+        <p>Für Unternehmen mit Anforderungen an einen Schweizer Datenstandort können ausgewählte Zuraio-Komponenten und geeignete Modelle für den Betrieb in einer Schweizer Serverumgebung ausgelegt werden.</p>
+        <ul><li>Schweizer Verarbeitungs- und Speicheroptionen für vereinbarte Komponenten</li><li>Geringerer interner Infrastrukturaufwand als bei einem vollständig lokalen Betrieb</li><li>Konfigurierbare Berechtigungen und Modellrichtlinien</li><li>Als Bestandteil einer hybriden Architektur einsetzbar</li><li>Abhängig von vereinbarten Anbietern, Leistungen und Vertragsbedingungen</li></ul>
+        <p class="qualification">Betreiber, Standorte, Modellanbieter, Unterauftragsbearbeiter und Datenflüsse müssen für das gewählte Angebot dokumentiert werden.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="pad cloud-bg">
+  <div class="wrap">
+    <span class="marker">Vergleich</span>
+    <h2>Vergleich</h2>
+
+    <div class="table-wrap reveal">
+      <table class="compare-table">
+        <thead>
+          <tr><th scope="col">Aspekt</th><th scope="col">Lokal / kundenseitig kontrolliert</th><th scope="col">Hybrid</th><th scope="col">Schweizer Hosting</th></tr>
+        </thead>
+        <tbody><tr><th scope="row">Kontrolle des Datenstandorts</th><td>Innerhalb der kundenseitig kontrollierten Infrastruktur definiert</td><td>Nach Komponente und Datenfluss definiert</td><td>Für vereinbarte Schweizer Komponenten definiert</td></tr><tr><th scope="row">Einbezug der internen IT</th><td>Höher</td><td>Mittel</td><td>Gering bis mittel</td></tr><tr><th scope="row">Modellwahl</th><td>Lokale und freigegebene externe Modelle</td><td>Je nach Aufgabe und Richtlinie</td><td>Im vereinbarten Design verfügbare Modelle</td></tr><tr><th scope="row">Betriebsverantwortung</th><td>Überwiegend Kunde oder geteilt</td><td>Geteilt</td><td>Überwiegend verwaltet, gemäss Vertrag</td></tr><tr><th scope="row">Typische Eignung</th><td>Vertrauliche oder intern regulierte Aufgaben</td><td>Unterschiedliche Anforderungen nach System und Datenklasse</td><td>Unternehmen mit Bedarf an verwaltetem Schweizer Hosting</td></tr><tr><th scope="row">Verfügbarkeit</th><td>Pro Projekt bestätigen</td><td>Pro Architektur bestätigen</td><td>Pro Angebot bestätigen</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="pad">
+  <div class="wrap">
+    <span class="marker">Vereinbarung</span>
+    <h2>Was bei jeder Bereitstellung festgelegt werden muss.</h2>
+    <ul><li>Betreiber und Verantwortlichkeiten</li><li>Verarbeitungs- und Speicherorte</li><li>Modellanbieter</li><li>Netzwerkverbindungen</li><li>Identity Provider</li><li>Mandanten- und Datenisolation</li><li>Backup und Wiederherstellung</li><li>Monitoring und Support</li><li>Update- und Patchprozess</li><li>Aufbewahrungs- und Löschregeln</li><li>Zulässige externe Dienste</li></ul>
+  </div>
+</section>
+
+<section class="pad cta-band">
+  <div class="wrap center">
+    <h2>Welches Bereitstellungsmodell passt zu Ihrem Unternehmen?</h2>
+    <p class="lede">Wir prüfen gemeinsam Ihre Anforderungen an Datenkontrolle, bestehende Infrastruktur und den sinnvollsten Einstieg.</p>
+    <p style="margin-top:24px;">
+      <a class="btn btn-primary btn-lg" href="/de/contact.html">Private Demo buchen</a>
+      <a class="btn btn-ghost btn-lg" href="/de/technical-architecture.html">Technische Architektur ansehen</a>
+    </p>
+  </div>
+</section>
+
+</main>
+<div id="site-footer">
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="foot-grid">
+          
+      <div class="foot-col">
+        <h3 class="foot-col-title">Produkt</h3>
+        <ul class="foot-col-links"><li><a href="/de/how-it-helps.html">So hilft Zuraio</a></li><li><a href="/de/knowledge.html">Wissen</a></li><li><a href="/de/integrations.html">Integrationen</a></li><li><a href="/de/how-it-helps.html#use-cases">Anwendungsfälle</a></li><li><a href="/de/contact.html">Demo buchen</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h3 class="foot-col-title">Daten und Sicherheit</h3>
+        <ul class="foot-col-links"><li><a href="/de/data-control.html">Datenkontrolle</a></li><li><a href="/de/deployment-models.html#swiss-hosted">Schweizer Hosting</a></li><li><a href="/de/deployment-models.html">Bereitstellungsmodelle</a></li><li><a href="/de/technical-architecture.html">Technische Architektur</a></li><li><a href="/de/ai-governance.html">KI-Governance</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h3 class="foot-col-title">Unternehmen</h3>
+        <ul class="foot-col-links"><li><a href="/de/about.html">Über uns</a></li><li><a href="/de/contact.html">Kontakt</a></li><li><a href="/de/resources.html">Ressourcen</a></li><li><a href="/de/contact.html#partnerships">Partner</a></li><li><a href="/de/resources.html#pressroom">Medien</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h3 class="foot-col-title">Rechtliches</h3>
+        <ul class="foot-col-links"><li><a href="/de/impressum.html">Impressum</a></li><li><a href="/de/privacy.html">Datenschutz</a></li><li><a href="/de/cookies.html">Cookie-Einstellungen</a></li><li><a href="/de/terms.html">Nutzungsbedingungen</a></li></ul>
+      </div>
+          <div class="foot-col">
+            <h3 class="foot-col-title">Sprache und Kontakt</h3>
+            <ul class="foot-col-links">
+              <li><span class="foot-muted">EN</span></li><li><span class="foot-muted">DE (aktiv)</span></li><li><span class="foot-muted">FR</span></li><li><span class="foot-muted">IT</span></li>
+              <li><a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot-bottom">
+          <a class="brand foot-brand" href="/de/" aria-label="Zuraio Startseite">
+            <img class="brand-logo" src="/assets/zuraio-logo.png" alt="Zuraio – Ihre Daten unter Ihrer Kontrolle" width="4796" height="1465" decoding="async">
+          </a>
+          <p class="foot-tagline">KI für Schweizer Unternehmen, die die Kontrolle über ihre Daten behalten wollen.</p>
+        </div>
+        <div id="footer-review-notes" data-internal-only="" hidden="" aria-hidden="true"></div>
+      </div>
+    </footer></div>
+<script type="module" src="../js/main.js"></script>
+
+
+<div id="internal-review-panel" hidden=""></div></body></html>

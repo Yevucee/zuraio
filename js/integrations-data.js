@@ -1,0 +1,158 @@
+/**
+ * Homepage integration marquee — named categories shown on the homepage.
+ */
+export const INTEGRATIONS = [
+  {
+    id: 'microsoft-365',
+    name: { en: 'Microsoft 365', de: 'Microsoft 365', fr: 'Microsoft 365', it: 'Microsoft 365' },
+    logo: 'assets/integrations/microsoft-365.svg',
+    alt: { en: 'Microsoft 365', de: 'Microsoft 365', fr: 'Microsoft 365', it: 'Microsoft 365' },
+    assetStatus: 'available',
+    productStatus: 'unverified',
+    link: null,
+  },
+  {
+    id: 'sharepoint',
+    name: { en: 'SharePoint', de: 'SharePoint', fr: 'SharePoint', it: 'SharePoint' },
+    logo: 'assets/integrations/sharepoint.svg',
+    alt: { en: 'SharePoint', de: 'SharePoint', fr: 'SharePoint', it: 'SharePoint' },
+    assetStatus: 'available',
+    productStatus: 'unverified',
+    link: null,
+  },
+  {
+    id: 'exchange',
+    name: { en: 'Exchange', de: 'Exchange', fr: 'Exchange', it: 'Exchange' },
+    logo: 'assets/integrations/outlook.svg',
+    alt: { en: 'Microsoft Exchange', de: 'Microsoft Exchange', fr: 'Microsoft Exchange', it: 'Microsoft Exchange' },
+    assetStatus: 'available',
+    productStatus: 'unverified',
+    link: null,
+  },
+  {
+    id: 'teams',
+    name: { en: 'Teams', de: 'Teams', fr: 'Teams', it: 'Teams' },
+    logo: 'assets/integrations/teams.svg',
+    alt: { en: 'Microsoft Teams', de: 'Microsoft Teams', fr: 'Microsoft Teams', it: 'Microsoft Teams' },
+    assetStatus: 'available',
+    productStatus: 'unverified',
+    link: null,
+  },
+  {
+    id: 'hubspot',
+    name: { en: 'HubSpot', de: 'HubSpot', fr: 'HubSpot', it: 'HubSpot' },
+    logo: 'assets/integrations/hubspot.svg',
+    alt: { en: 'HubSpot', de: 'HubSpot', fr: 'HubSpot', it: 'HubSpot' },
+    assetStatus: 'available',
+    productStatus: 'unverified',
+    link: null,
+  },
+  {
+    id: 'salesforce',
+    name: { en: 'Salesforce', de: 'Salesforce', fr: 'Salesforce', it: 'Salesforce' },
+    logo: 'assets/integrations/salesforce.svg',
+    alt: { en: 'Salesforce', de: 'Salesforce', fr: 'Salesforce', it: 'Salesforce' },
+    assetStatus: 'available',
+    productStatus: 'unverified',
+    link: null,
+  },
+  {
+    id: 'abacus',
+    name: { en: 'Abacus', de: 'Abacus', fr: 'Abacus', it: 'Abacus' },
+    logo: 'assets/integrations/abacus.svg',
+    alt: { en: 'Abacus', de: 'Abacus', fr: 'Abacus', it: 'Abacus' },
+    assetStatus: 'available',
+    productStatus: 'unverified',
+    link: null,
+  },
+  {
+    id: 'bexio',
+    name: { en: 'bexio', de: 'bexio', fr: 'bexio', it: 'bexio' },
+    logo: 'assets/integrations/bexio.svg',
+    alt: { en: 'bexio', de: 'bexio', fr: 'bexio', it: 'bexio' },
+    assetStatus: 'available',
+    productStatus: 'unverified',
+    link: null,
+  },
+  {
+    id: 'sap',
+    name: { en: 'SAP', de: 'SAP', fr: 'SAP', it: 'SAP' },
+    logo: 'assets/integrations/sap.svg',
+    alt: { en: 'SAP', de: 'SAP', fr: 'SAP', it: 'SAP' },
+    assetStatus: 'available',
+    productStatus: 'unverified',
+    link: null,
+  },
+  {
+    id: 'microsoft-dynamics',
+    name: { en: 'Dynamics 365', de: 'Dynamics 365', fr: 'Dynamics 365', it: 'Dynamics 365' },
+    logo: 'assets/integrations/microsoft-dynamics.svg',
+    alt: { en: 'Microsoft Dynamics 365', de: 'Microsoft Dynamics 365', fr: 'Microsoft Dynamics 365', it: 'Microsoft Dynamics 365' },
+    assetStatus: 'available',
+    productStatus: 'unverified',
+    link: null,
+  },
+  {
+    id: 'odoo',
+    name: { en: 'Odoo', de: 'Odoo', fr: 'Odoo', it: 'Odoo' },
+    logo: 'assets/integrations/odoo.svg',
+    alt: { en: 'Odoo', de: 'Odoo', fr: 'Odoo', it: 'Odoo' },
+    assetStatus: 'available',
+    productStatus: 'unverified',
+    link: null,
+  },
+  {
+    id: 'sage',
+    name: { en: 'Sage', de: 'Sage', fr: 'Sage', it: 'Sage' },
+    logo: 'assets/integrations/sage.svg',
+    alt: { en: 'Sage', de: 'Sage', fr: 'Sage', it: 'Sage' },
+    assetStatus: 'available',
+    productStatus: 'unverified',
+    link: null,
+  },
+  {
+    id: 'proffix',
+    name: { en: 'Proffix', de: 'Proffix', fr: 'Proffix', it: 'Proffix' },
+    logo: 'assets/integrations/proffix.svg',
+    alt: { en: 'Proffix', de: 'Proffix', fr: 'Proffix', it: 'Proffix' },
+    assetStatus: 'available',
+    productStatus: 'unverified',
+    link: null,
+  },
+  {
+    id: 'klara',
+    name: { en: 'Klara', de: 'Klara', fr: 'Klara', it: 'Klara' },
+    logo: 'assets/integrations/klara.svg',
+    alt: { en: 'Klara', de: 'Klara', fr: 'Klara', it: 'Klara' },
+    assetStatus: 'available',
+    productStatus: 'unverified',
+    link: null,
+  },
+  {
+    id: 'apis-mcp',
+    name: {
+      en: 'APIs & MCP',
+      de: 'APIs & MCP',
+      fr: 'API & MCP',
+      it: 'API e MCP',
+    },
+    logo: 'assets/integrations/apis-mcp.png',
+    alt: {
+      en: 'REST APIs and Model Context Protocol',
+      de: 'REST-APIs und Model Context Protocol',
+      fr: 'API REST et Model Context Protocol',
+      it: 'API REST e Model Context Protocol',
+    },
+    assetStatus: 'available',
+    productStatus: 'unverified',
+    link: null,
+  },
+];
+
+export function getIntegrationLabel(integration, locale) {
+  return integration.name[locale] ?? integration.name.en;
+}
+
+export function getIntegrationAlt(integration, locale) {
+  return integration.alt[locale] ?? integration.alt.en;
+}
