@@ -1,0 +1,433 @@
+/* Local English homepage preview — /en/homepage-preview.html only */
+
+.hp-preview-banner {
+  background: var(--charcoal);
+  color: var(--white);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: 8px 16px;
+}
+
+.hp-preview-banner strong {
+  color: var(--soft-olive);
+}
+
+body[data-page="homepagePreview"] {
+  padding-top: var(--nav-h);
+}
+
+/* Hero: full subheading visible on mobile */
+.hp-preview-hero {
+  position: relative;
+  padding: clamp(2rem, 6vw, 4rem) 0 clamp(2.5rem, 8vw, 5rem);
+  background: var(--cloud);
+  overflow: visible;
+}
+
+.hp-preview-hero__inner {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .hp-preview-hero__inner {
+    grid-template-columns: 1.05fr 0.95fr;
+  }
+}
+
+.hp-preview-hero__copy {
+  position: relative;
+  z-index: 2;
+}
+
+.hp-preview-hero__copy .marker {
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.hp-preview-hero__copy h1 {
+  font-size: clamp(1.85rem, 5.5vw, 3rem);
+  max-width: 16ch;
+  margin-bottom: 1rem;
+}
+
+.hp-preview-hero__lede {
+  font-size: clamp(1rem, 2.8vw, 1.125rem);
+  line-height: 1.55;
+  color: var(--charcoal-soft);
+  max-width: 42rem;
+  margin-bottom: 1.5rem;
+}
+
+.hp-preview-hero__visual {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  background: var(--white);
+}
+
+.hp-preview-hero__visual img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 16 / 10;
+}
+
+@media (max-width: 899px) {
+  .hp-preview-hero__visual img {
+    aspect-ratio: 4 / 3;
+    object-position: top center;
+  }
+}
+
+.hp-preview-hero .cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Three-step flow */
+.hp-flow {
+  display: grid;
+  gap: 16px;
+  margin-top: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .hp-flow {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+.hp-flow__step {
+  background: var(--white);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.25rem 1.35rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.hp-flow__label {
+  display: inline-block;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--olive-deep);
+  margin-bottom: 0.5rem;
+}
+
+.hp-flow__step h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+
+.hp-flow__step p {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.hp-qualify {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* Everyday uses — compact cards */
+.hp-uses-grid {
+  display: grid;
+  gap: 14px;
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .hp-uses-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+}
+
+.hp-use-card {
+  padding: 1.15rem 1.2rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid var(--hairline);
+}
+
+.hp-use-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.hp-use-card p {
+  font-size: 0.92rem;
+  color: var(--muted);
+  margin-bottom: 0.65rem;
+}
+
+.hp-use-card a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--teal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hp-use-card a:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 2px;
+}
+
+/* Data control points */
+.hp-trust-grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .hp-trust-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.hp-trust-point {
+  padding: 1rem 1.1rem;
+  background: var(--teal-soft);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--teal);
+}
+
+.hp-trust-point h3 {
+  font-size: 0.98rem;
+  margin-bottom: 0.25rem;
+}
+
+.hp-trust-point p {
+  font-size: 0.88rem;
+  color: var(--charcoal-soft);
+}
+
+/* Section rhythm */
+.hp-preview-section {
+  padding: clamp(2.25rem, 6vw, 3.5rem) 0;
+}
+
+.hp-preview-section--emphasis {
+  background: var(--paper);
+}
+
+.hp-preview-section--muted {
+  background: var(--cloud);
+}
+
+.hp-preview-section h2 {
+  font-size: clamp(1.35rem, 4vw, 1.85rem);
+  max-width: 22ch;
+}
+
+.hp-preview-section .lede {
+  margin-top: 0.75rem;
+  color: var(--charcoal-soft);
+  max-width: 40rem;
+  line-height: 1.55;
+}
+
+.hp-section-teaser {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 38rem;
+}
+
+.hp-section-link--desktop {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hp-section-link--desktop {
+    display: block;
+  }
+
+  .hp-preview-faq-simple--desktop {
+    display: block;
+    margin-top: 1rem;
+  }
+
+  /* Avoid duplicate FAQ / integration copy when mobile <details> bodies are forced open */
+  .hp-preview-expand--mobile-only .hp-preview-faq-simple {
+    display: none;
+  }
+
+  #integrations .hp-section-teaser {
+    display: none;
+  }
+
+  #integrations .hp-preview-expand__body .section-link {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .hp-preview-faq-simple--desktop {
+    display: none;
+  }
+}
+
+.hp-preview-faq-simple {
+  display: grid;
+  gap: 1rem;
+}
+
+.hp-preview-faq-simple article {
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.hp-preview-faq-simple h3 {
+  font-size: 0.98rem;
+  margin-bottom: 0.35rem;
+}
+
+.hp-preview-faq-simple p {
+  font-size: 0.92rem;
+  color: var(--charcoal-soft);
+  line-height: 1.5;
+}
+
+.hp-preview-section .section-link {
+  margin-top: 1.25rem;
+}
+
+.hp-preview-section .section-link a {
+  font-weight: 500;
+  color: var(--teal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Mobile expandable (single level) */
+.hp-preview-expand {
+  margin-top: 1rem;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  background: var(--white);
+}
+
+.hp-preview-expand summary {
+  cursor: pointer;
+  padding: 1rem 1.1rem;
+  font-weight: 600;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.hp-preview-expand summary::-webkit-details-marker {
+  display: none;
+}
+
+.hp-preview-expand summary::after {
+  content: "+";
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1.1rem;
+  color: var(--olive-deep);
+  flex-shrink: 0;
+}
+
+.hp-preview-expand[open] summary::after {
+  content: "−";
+}
+
+.hp-preview-expand summary:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: -2px;
+}
+
+.hp-preview-expand__body {
+  padding: 0 1.1rem 1.1rem;
+  border-top: 1px solid var(--hairline);
+}
+
+.hp-preview-expand__summary-text {
+  font-weight: 400;
+  font-size: 0.92rem;
+  color: var(--muted);
+  margin-top: 0.35rem;
+}
+
+@media (min-width: 768px) {
+  .hp-preview-expand--mobile-only {
+    border: none;
+    background: transparent;
+  }
+
+  .hp-preview-expand--mobile-only summary {
+    display: none;
+  }
+
+  .hp-preview-expand--mobile-only .hp-preview-expand__body {
+    display: block;
+    padding: 0;
+    border: none;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .hp-preview-expand--mobile-only {
+    margin-top: 0.75rem;
+  }
+}
+
+/* Final CTA */
+.hp-preview-final {
+  text-align: center;
+  padding: clamp(2.5rem, 7vw, 4rem) 0;
+  background: linear-gradient(180deg, var(--soft-olive-tint) 0%, var(--paper) 100%);
+}
+
+.hp-preview-final h2 {
+  margin: 0 auto 0.75rem;
+  max-width: 20ch;
+}
+
+.hp-preview-final .lede {
+  margin: 0 auto 1.5rem;
+  max-width: 32rem;
+  color: var(--charcoal-soft);
+}
+
+/* Short FAQ */
+.hp-preview-faq {
+  margin-top: 1rem;
+}
+
+.hp-preview-faq .faq-item {
+  border-bottom: 1px solid var(--hairline);
+}
+
+.hp-preview-faq .faq-q {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 1rem 0;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hp-preview-faq .faq-q:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 2px;
+}
