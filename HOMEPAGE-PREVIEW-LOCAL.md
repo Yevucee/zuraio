@@ -10,9 +10,13 @@ npm install   # if needed
 npm run dev
 ```
 
-**URL:** [http://localhost:5173/zuraio-comparison/en/homepage-preview.html](http://localhost:5173/zuraio-comparison/en/homepage-preview.html)
+**Local URL:** [http://localhost:5173/zuraio-comparison/en/homepage-preview.html](http://localhost:5173/zuraio-comparison/en/homepage-preview.html)
 
-(`noindex` — not linked from production navigation.)
+**Yevucee GitHub Pages (after merge to `main` and deploy workflow):**
+
+[https://yevucee.github.io/zuraio/en/homepage-preview.html](https://yevucee.github.io/zuraio/en/homepage-preview.html)
+
+(`noindex` — not linked from production navigation; not synced to Mcwili/zuraio.ch unless you run sync separately.)
 
 ## Git isolation
 
