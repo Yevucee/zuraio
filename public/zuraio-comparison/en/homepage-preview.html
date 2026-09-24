@@ -9,9 +9,9 @@
 <meta name="description" content="Local English preview: AI executive assistant for Swiss SMEs. Not published on zuraio.ch." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/site.css?v=20260909-origin">
-<link rel="stylesheet" href="../css/homepage-preview.css?v=20260924">
+<link rel="stylesheet" href="../css/homepage-preview.css?v=20260925">
 </head>
 <body data-page="homepagePreview">
 
@@ -21,23 +21,134 @@
 
 <main id="top">
 
-  <section class="hp-preview-hero" aria-labelledby="hp-hero-heading">
-    <div class="wrap hp-preview-hero__inner">
-      <div class="hp-preview-hero__copy">
-        <span class="marker">AI executive assistant for Swiss SMEs</span>
-        <h1 id="hp-hero-heading">Your AI executive assistant, informed by your business.</h1>
-        <p class="hp-preview-hero__lede">Your company owns its data and controls what Zuraio can access. Zuraio uses approved company knowledge to find answers, prepare briefings and drafts, and show the sources behind its work.</p>
-        <div class="cta-row">
-          <a class="btn btn-primary btn-lg" href="../contact.html">Book a private demo</a>
-          <a class="btn btn-ghost btn-lg" href="#meeting-example">See an example</a>
+  <section class="hero-layered hero-layered--office" id="hero-comparison" data-preview-static-hero="true" tabindex="0" aria-label="Hero">
+    <div class="hero-layered__stage">
+      <div class="hero-layered__bg" aria-hidden="true">
+        <picture>
+          <source
+            type="image/avif"
+            srcset="../../zuraio/assets/hero/hero-640.avif 640w, ../../zuraio/assets/hero/hero-960.avif 960w, ../../zuraio/assets/hero/hero-1440.avif 1440w, ../../zuraio/assets/hero/hero-1920.avif 1920w"
+            sizes="100vw"
+          />
+          <source
+            type="image/webp"
+            srcset="../../zuraio/assets/hero/hero-640.webp 640w, ../../zuraio/assets/hero/hero-960.webp 960w, ../../zuraio/assets/hero/hero-1440.webp 1440w, ../../zuraio/assets/hero/hero-1920.webp 1920w"
+            sizes="100vw"
+          />
+          <img
+            src="../../zuraio/assets/260714_zuraio_hero_12.png?v=20260756"
+            alt=""
+            width="5504"
+            height="3072"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </picture>
+      </div>
+      <div class="hero-layered__scrim" aria-hidden="true"></div>
+
+      <div class="wrap hero-layered__content">
+        <div class="hero-grid">
+          <div class="hero-copy" data-hero-copy aria-live="polite">
+            <span class="marker hero-eyebrow">AI executive assistant for Swiss SMEs</span>
+            <h1 id="hp-hero-heading">Your AI executive <span class="headline-em">assistant</span>, informed by your business.</h1>
+            <p class="hero-lede">Your company owns its data and controls what Zuraio can access. Zuraio uses approved company knowledge to find answers, prepare briefings and drafts, and show the sources behind its work.</p>
+            <div class="cta-row">
+              <a class="btn btn-primary btn-lg" href="../contact.html">Book a private demo</a>
+              <a class="btn btn-ghost btn-lg" href="#meeting-example">See an example</a>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <img
+              class="hero-popup-img"
+              src="../../zuraio/assets/260707_UI_Apps_Vision.png?v=20260756"
+              alt="Zuraio AI Hub — apps and chat interface."
+              width="2850"
+              height="1744"
+              decoding="async"
+            />
+          </div>
         </div>
       </div>
-      <div class="hp-preview-hero__visual" aria-hidden="true">
-        <picture>
-          <source type="image/webp" srcset="../../zuraio/assets/hero/hero-960.webp" media="(max-width: 899px)">
-          <source type="image/webp" srcset="../../zuraio/assets/hero/hero-1440.webp">
-          <img src="../../zuraio/assets/260714_zuraio_hero_12.png" alt="" width="5504" height="3072" decoding="async" fetchpriority="high">
-        </picture>
+      <nav class="hero-trust-bar" data-hero-trust-bar aria-label="Trust signals">
+        <ul class="hero-trust-bar__list"></ul>
+      </nav>
+    </div>
+  </section>
+
+  <section class="problem-section hp-preview-diagram-section" id="problem">
+    <div class="problem-section__glow" aria-hidden="true"></div>
+    <div class="wrap problem-section__wrap">
+      <div class="problem-hero reveal" id="problem-comparison" tabindex="0" aria-label="Scattered knowledge diagram">
+        <div class="problem-copy" data-problem-copy>
+          <span class="marker">Recognise this?</span>
+          <h2>Important knowledge is spread across your company.</h2>
+          <p class="lede">Emails, documents, meetings, and business systems hold the context people need — but finding it and preparing the next step still takes too long.</p>
+        </div>
+        <div class="scattered-knowledge" data-scattered-knowledge aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad section-band section-band--paper hp-preview-diagram-section" id="routes-preview">
+    <div class="wrap">
+      <div class="head-block reveal">
+        <span class="marker">How it works</span>
+        <h2>From question to reviewed answer.</h2>
+        <p class="lede">Without Zuraio, people jump between tools. With Zuraio, approved knowledge and connected systems follow one route your team can review.</p>
+      </div>
+
+      <div class="routes-diagram reveal d1" data-routes-diagram>
+        <div class="routes-diagram__panel">
+          <section class="routes-lane routes-lane--without" data-route-lane="without" aria-label="Without Zuraio">
+            <header class="routes-lane__intro">
+              <span class="routes-lane__badge routes-lane__badge--neutral" data-routes-badge aria-hidden="true"></span>
+              <div class="routes-lane__titles">
+                <h3 class="routes-lane__title" data-routes-title="without">Without Zuraio</h3>
+                <p class="routes-lane__subtitle" data-routes-subtitle="without">A fragmented process</p>
+              </div>
+            </header>
+            <div class="routes-lane__flow" data-routes-flow>
+              <svg class="routes-lane__svg" data-routes-svg aria-hidden="true">
+                <path class="routes-lane__path routes-lane__path--without" data-route-path="without" fill="none"></path>
+                <circle class="routes-lane__dot routes-lane__dot--without" data-route-dot="without" r="5"></circle>
+              </svg>
+              <div class="routes-lane__track">
+                <ol class="routes-lane__stops" data-routes-stops="without"></ol>
+              </div>
+            </div>
+          </section>
+
+          <div class="routes-diagram__divider" role="presentation"></div>
+
+          <section class="routes-lane routes-lane--with" data-route-lane="with" aria-label="With Zuraio">
+            <header class="routes-lane__intro">
+              <span class="routes-lane__badge routes-lane__badge--olive" data-routes-badge aria-hidden="true"></span>
+              <div class="routes-lane__titles">
+                <h3 class="routes-lane__title" data-routes-title="with">With Zuraio</h3>
+                <p class="routes-lane__subtitle" data-routes-subtitle="with">One connected route</p>
+              </div>
+            </header>
+            <div class="routes-lane__flow" data-routes-flow>
+              <svg class="routes-lane__svg" data-routes-svg aria-hidden="true">
+                <path class="routes-lane__path routes-lane__path--with" data-route-path="with" fill="none"></path>
+                <circle class="routes-lane__dot routes-lane__dot--with" data-route-dot="with" r="5"></circle>
+              </svg>
+              <div class="routes-lane__track">
+                <ol class="routes-lane__stops" data-routes-stops="with"></ol>
+                <div class="routes-lane__outcome" data-routes-outcome="with">
+                  <div class="routes-stop routes-stop--outcome">
+                    <span class="routes-stop__marker routes-stop__marker--outcome">
+                      <span class="routes-stop__icon" data-routes-outcome-icon aria-hidden="true"></span>
+                    </span>
+                    <span class="routes-stop__label routes-stop__label--outcome" data-routes-outcome-label>You remain in control</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   </section>
@@ -182,6 +293,6 @@
 </main>
 
 <div id="site-footer"></div>
-<script type="module" src="../js/homepage-preview-page.js?v=20260924"></script>
+<script type="module" src="../js/homepage-preview-page.js?v=20260925"></script>
 </body>
 </html>
