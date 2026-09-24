@@ -47,6 +47,12 @@ export function initHeroComparison() {
   const root = document.getElementById('hero-comparison');
   if (!root) return;
 
+  if (root.dataset.previewStaticHero === 'true') {
+    renderTrustSignals();
+    updateHeroVisual();
+    return;
+  }
+
   let current = getHeroFromUrl();
   let autoTimer = null;
 
