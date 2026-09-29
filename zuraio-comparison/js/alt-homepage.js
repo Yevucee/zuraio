@@ -4,8 +4,8 @@ import { trackAltHome } from './alt-homepage-analytics.js';
 import { initFaq } from './faq-accordion.js';
 import { assetHref } from './path-locale.js';
 import { isPreviewDevMode, formatPreviewHtml } from './alt-preview-utils.js';
-import { ALT_INTEGRATION_TILES } from './alt-integration-logos.js';
 import { initControlParticles } from './control-particles.js';
+import { initAltPreviewMarquee } from './alt-integrations-marquee.js';
 
 const DEMO_CACHE = '20260805v2';
 const HERO_SCREENSHOT = 'zuraio/assets/zuraio-demo-reply-crop.png';
@@ -91,16 +91,6 @@ function renderMain(copy, locale, isDev) {
       </article>`,
     )
     .join('');
-
-  const logosHtml = ALT_INTEGRATION_TILES.map((tile) => {
-    const logoInner = tile.nameOnly
-      ? `<span class="alt-int-tile__wordmark alt-int-tile__wordmark--text">${tile.label}</span>`
-      : `<img src="${assetHref(`assets/integrations/${tile.file}`)}" alt="" width="120" height="32" loading="lazy" decoding="async" class="alt-int-tile__img" />`;
-    return `<li class="alt-int-tile">
-      <div class="alt-int-tile__logo">${logoInner}</div>
-      <span class="alt-int-tile__label">${tile.label}</span>
-    </li>`;
-  }).join('');
 
   const compareHtml = `
     <article class="alt-preview-card alt-home-compare">
@@ -236,9 +226,11 @@ function renderMain(copy, locale, isDev) {
     <section class="pad section-band section-band--cloud alt-home-integrations" id="integrations" aria-labelledby="alt-int-h">
       <div class="wrap">
         <h2 id="alt-int-h">${copy.integrations.heading}</h2>
-        <p class="lede">${fmt(copy.integrations.line, isDev, todos)}</p>
-        <ul class="alt-int-grid" aria-label="Integrations">${logosHtml}</ul>
-        <p class="section-link alt-home-integrations__link"><a href="../integrations.html">${copy.integrations.link}</a></p>
+        <p class="lede">${copy.integrations.line}</p>
+        <div class="marquee-track" data-alt-marquee tabindex="0" aria-label="${locale === 'de' ? 'Integrationen' : 'Integrations'}">
+          <div class="marquee-inner"></div>
+        </div>
+        <p class="section-link"><a href="../integrations.html">${copy.integrations.link}</a></p>
       </div>
     </section>
 
@@ -354,6 +346,7 @@ export function bootAltHomepage() {
   initFaq();
   initAltHomeDemoVideo();
   initControlParticles();
+  initAltPreviewMarquee();
   bindAnalytics(heroVariant);
 }
 

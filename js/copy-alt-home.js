@@ -79,7 +79,7 @@ export const copyAltHome = {
     },
     integrations: {
       heading: 'Arbeitet mit den Systemen, die Schweizer KMU wirklich nutzen.',
-      line: 'Ihr Team arbeitet dort, wo es schon arbeitet – in Outlook und Teams.',
+      line: 'Ihr Team arbeitet weiter in Microsoft Outlook und Microsoft Teams.',
       link: 'Alle Integrationen →',
     },
     compare: {
@@ -170,6 +170,8 @@ export const copyAltHome = {
       tagline: 'Ihr Betrieb. Ihre Informationen. Ihr OK.',
     },
     footerNewLink: { label: 'Neu bei Zuraio', href: 'neu-bei-zuraio.html' },
+    footerTrademark:
+      'Microsoft, Microsoft 365, Outlook, SharePoint, Teams, Exchange und Dynamics 365 sind Marken der Microsoft-Unternehmensgruppe. bexio, Abacus, Klara, Proffix, SAP, Salesforce, HubSpot, Odoo und Sage sind Marken ihrer jeweiligen Inhaber.',
   },
   en: {
     metaTitle: 'Zuraio – Alternative homepage (preview)',
@@ -235,7 +237,7 @@ export const copyAltHome = {
     },
     integrations: {
       heading: 'Works with the systems Swiss SMEs actually use.',
-      line: 'Your team works where it already works, in Outlook and Teams.',
+      line: 'Your team keeps working in Microsoft Outlook and Microsoft Teams.',
       link: 'All integrations →',
     },
     compare: {
@@ -326,6 +328,8 @@ export const copyAltHome = {
       tagline: 'Your company. Your information. Your OK.',
     },
     footerNewLink: { label: 'New in Zuraio', href: 'new-in-zuraio.html' },
+    footerTrademark:
+      'Microsoft, Microsoft 365, Outlook, SharePoint, Teams, Exchange and Dynamics 365 are trademarks of the Microsoft group of companies. bexio, Abacus, Klara, Proffix, SAP, Salesforce, HubSpot, Odoo and Sage are trademarks of their respective owners.',
   },
 };
 

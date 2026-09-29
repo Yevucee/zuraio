@@ -40,7 +40,7 @@ export function renderAltHomeHeader(copy, locale) {
           <nav class="nav-links" aria-label="${ui.primaryNavAria ?? 'Primary'}">
             <a href="#demo">${nav.howItWorks}</a>
             <a href="#skills">${nav.skills}</a>
-            <a href="#control">${nav.security}</a>
+            <a href="#data-control">${nav.security}</a>
             <a href="#team">${nav.about}</a>
           </nav>
           <div class="nav-actions alt-home-nav__actions">
@@ -118,6 +118,7 @@ export function renderAltHomeFooter(copy, locale) {
             <img class="brand-logo" src="${assetHref(SITE.logo)}" alt="" width="4796" height="1465" decoding="async" />
           </a>
           <p class="foot-tagline">${getCopy().site?.tagline ?? SITE.tagline}</p>
+          ${copy.footerTrademark ? `<p class="foot-trademark alt-home-trademark">${copy.footerTrademark}</p>` : ''}
         </div>
       </div>
     </footer>`;
