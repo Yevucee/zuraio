@@ -56,6 +56,7 @@ function boot() {
       <div class="wrap">
         <h2>${copy.companyHeading}</h2>
         <p class="lede">${copy.companyIntro}</p>
+        <p class="alt-pricing-routing-note">${copy.companyRoutingLine}</p>
         ${companyTable(copy.tableCompany, copy.companyRows)}
       </div>
     </section>

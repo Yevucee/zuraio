@@ -94,7 +94,9 @@ export const copyAltHome = {
     control: {
       eyebrow: 'DATENKONTROLLE',
       heading: 'Nichts verlässt den Betrieb ohne Ihr OK.',
-      intro: 'Standardmässig Schweiz. Global nur, wenn Sie es wählen.',
+      intro: 'Standardmässig Schweiz. Nie abhängig von einem einzigen KI-Anbieter.',
+      introSupport:
+        'Ändert ein Anbieter Preise, Bedingungen oder Verfügbarkeit, wechseln Sie das Modell – Ihre Daten und Ihre Skills bleiben bei Ihnen.',
       cards: [
         {
           title: 'Schweizer Hosting, Ihre Wahl der KI',
@@ -145,6 +147,10 @@ export const copyAltHome = {
         {
           q: 'Bleiben unsere Daten in der Schweiz?',
           a: 'Ja, standardmässig. Die Plattform und Ihre Firmendaten werden bei Infomaniak in der Schweiz gehostet, und auch das Standardmodell läuft in der Schweiz. Für einzelne Aufgaben können Sie ein anderes KI-Modell wählen. Jedes ist gekennzeichnet, damit Sie sehen, wo es arbeitet. Wählen Sie ein Modell ausserhalb der Schweiz, wird nur der Inhalt dieser Aufgabe übermittelt. So entscheiden Sie selbst, was die Schweiz verlässt – und was nicht.',
+        },
+        {
+          q: 'Was passiert, wenn ein KI-Anbieter Preise oder Bedingungen ändert?',
+          a: 'Sie wechseln direkt in Zuraio auf ein anderes Modell. Ihre Firmendaten, Ihr Firmenwissen und Ihre Skills bleiben unverändert, weil sie bei Zuraio in der Schweiz liegen und nicht beim Modellanbieter.',
         },
         {
           q: 'Können Mitarbeitende Informationen sehen, die sie nicht sehen dürfen?',
@@ -252,7 +258,9 @@ export const copyAltHome = {
     control: {
       eyebrow: 'DATA CONTROL',
       heading: 'Nothing leaves your company without your OK.',
-      intro: 'Swiss by default. Global only by choice.',
+      intro: 'Swiss by default. Never locked into a single AI provider.',
+      introSupport:
+        'If a provider changes its prices, terms or availability, you switch models – your data and your skills stay with you.',
       cards: [
         {
           title: 'Swiss hosting, your choice of AI',
@@ -303,6 +311,10 @@ export const copyAltHome = {
         {
           q: 'Is our data kept in Switzerland?',
           a: 'Yes, by default. The platform and your company data are hosted by Infomaniak in Switzerland, and the default AI model runs in Switzerland too. For individual tasks you can choose a different model, and each one is labelled so you can see where it runs. If you choose a model outside Switzerland, only the content of that task is sent. So you decide what leaves Switzerland, and what doesn\'t.',
+        },
+        {
+          q: 'What happens if an AI provider changes its prices or terms?',
+          a: 'You switch to another model directly in Zuraio. Your company data, knowledge and skills don\'t change, because they\'re stored in Switzerland with Zuraio, not with the model provider.',
         },
         {
           q: 'Can employees see information they shouldn\'t?',

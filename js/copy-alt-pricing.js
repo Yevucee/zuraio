@@ -8,6 +8,8 @@ export const copyAltPricing = {
     companyHeading: 'Firmenpläne',
     companyIntro:
       'Inklusive Konnektoren, Modell-Routing und gemeinsame Standard-KI-Nutzung. Bei jährlicher Zahlung zwei Monate gratis.',
+    companyRoutingLine:
+      'Dank Modell-Routing sind Sie nie von einem einzigen KI-Anbieter abhängig.',
     individualsHeading: 'Einzelpersonen und kleine Teams',
     /* Internal: Personal = Core (no second brain); Personal + Memory = Personal Brain; Team = Core Teams (no shared brain) */
     companyKnowledgeLine: 'Gemeinsames Firmenwissen für das ganze Team ist in den Firmenplänen enthalten.',
@@ -69,6 +71,8 @@ export const copyAltPricing = {
     companyHeading: 'Company plans',
     companyIntro:
       'Includes connectors, model routing and pooled standard AI usage. Pay yearly and get two months free.',
+    companyRoutingLine:
+      'Model routing means you\'re never dependent on a single AI provider.',
     individualsHeading: 'Individuals and small teams',
     companyKnowledgeLine: 'Need shared company knowledge across the team? That\'s included in the company plans.',
     setupHeading: 'Set-up and bespoke skills',

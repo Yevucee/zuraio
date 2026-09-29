@@ -248,6 +248,7 @@ function renderMain(copy, locale, isDev) {
           <span class="marker">${copy.control.eyebrow}</span>
           <h2 id="alt-control-h">${copy.control.heading}</h2>
           <p class="lede">${copy.control.intro}</p>
+          <p class="alt-control-intro-support">${copy.control.introSupport ?? ''}</p>
         </div>
         <div class="ctrl-panel">
           <div class="ctrl-grid">${controlCardsHtml}</div>
