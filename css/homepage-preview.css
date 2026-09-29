@@ -182,6 +182,14 @@ body[data-page="altHome"] .faq-q {
   min-height: 44px;
 }
 
+body[data-page="altHome"] .alt-home-cta.btn-lg {
+  font-size: 1rem;
+}
+
+body[data-page="altHome"] [data-alt-marquee] .tool {
+  font-size: 1rem;
+}
+
 body[data-page="altHome"] .alt-home-link-secondary {
   min-height: 44px;
   display: inline;
@@ -295,8 +303,9 @@ body[data-page="altHome"] .alt-home-hero__visual img {
   width: 100%;
   min-width: min(100%, 320px);
   height: auto;
+  aspect-ratio: 16 / 11;
   object-fit: cover;
-  object-position: center top;
+  object-position: 50% 42%;
 }
 
 @media (max-width: 959px) {
