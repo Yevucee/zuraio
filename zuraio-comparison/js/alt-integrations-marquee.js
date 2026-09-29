@@ -44,12 +44,12 @@ export const ALT_PREVIEW_MARQUEE_ITEMS = [
   { id: 'microsoft-dynamics', label: 'Microsoft Dynamics 365', textOnly: true },
 ];
 
-/** Intrinsic width × height at 22px logo height (matches SVG viewBox / PNG dimensions). */
+/** Intrinsic width × height (SVG viewBox / PNG dimensions; Klara/Proffix tuned for optical balance). */
 const WORDMARK_IMG_SIZE = {
   bexio: { width: 96, height: 22 },
   abacus: { width: 127, height: 22 },
-  klara: { width: 80, height: 22 },
-  proffix: { width: 78, height: 22 },
+  klara: { width: 95, height: 26 },
+  proffix: { width: 99, height: 28 },
 };
 
 function isWordmarkItem(item) {

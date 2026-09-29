@@ -57,7 +57,7 @@ body[data-page="altHome"] [data-alt-marquee] .integration-wordmark-wrap {
   align-items: center;
   justify-content: center;
   width: auto;
-  height: 22px;
+  height: 28px;
   flex-shrink: 0;
 }
 
@@ -67,6 +67,14 @@ body[data-page="altHome"] [data-alt-marquee] .integration-logo-img--wordmark {
   height: 22px;
   flex-shrink: 0;
   object-fit: contain;
+}
+
+body[data-page="altHome"] [data-alt-marquee] .integration-item--wordmark[data-integration="klara"] .integration-logo-img--wordmark {
+  height: 26px;
+}
+
+body[data-page="altHome"] [data-alt-marquee] .integration-item--wordmark[data-integration="proffix"] .integration-logo-img--wordmark {
+  height: 28px;
 }
 
 body[data-page="altHome"] .alt-home-trademark,
