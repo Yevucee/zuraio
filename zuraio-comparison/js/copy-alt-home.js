@@ -94,10 +94,10 @@ export const copyAltHome = {
       heading: 'Nichts verlässt den Betrieb ohne Ihr OK.',
       tagline: 'Standardmässig Schweiz. Global nur, wenn Sie es wählen.',
       points: [
-        'Schweizer Hosting, Ihre Wahl der KI: Plattform und Firmendaten liegen bei Infomaniak in der Schweiz (ISO 27001:2022, Swiss-Hosting-Label). Das Standardmodell ist in der Schweiz gehostet. Jedes andere KI-Modell ist gekennzeichnet, damit Sie sehen, wo es arbeitet. Wählen Sie eines ausserhalb der Schweiz, geht nur der Inhalt dieser Aufgabe dorthin – Ihr übriges Firmenwissen bleibt hier.',
-        'Zugriff nach Ihren Regeln: Mitarbeitende sehen nur, was sie schon heute sehen dürfen.',
-        'Jede Antwort zeigt ihre Quelle: prüfen, bevor man sich darauf verlässt.',
-        'Klar nachvollziehbar: jede Anfrage, ihre Quellen und wer das Ergebnis freigegeben hat – so kann Ihr Team zeigen, wie eine Antwort zustande kam.',
+        '**Schweizer Hosting, Ihre Wahl der KI:** gehostet bei Infomaniak in der Schweiz (ISO 27001:2022). Das Standardmodell läuft in der Schweiz; jedes andere Modell ist gekennzeichnet, und nur der Inhalt dieser Aufgabe geht dorthin.',
+        '**Zugriff nach Ihren Regeln:** Mitarbeitende sehen nur, was sie schon heute sehen dürfen.',
+        '**Jede Antwort zeigt ihre Quelle:** prüfen, bevor man sich darauf verlässt.',
+        '**Klar nachvollziehbar:** jede Anfrage, ihre Quellen und wer das Ergebnis freigegeben hat – so kann Ihr Team zeigen, wie eine Antwort zustande kam.',
       ],
       serversLine: 'Alles auf Ihren eigenen Servern oder ein bestimmtes KI-Modell? Sprechen wir darüber.',
       itLink: 'Für Ihren IT-Partner: technische Details und Sicherheits-Factsheet →',
@@ -107,14 +107,14 @@ export const copyAltHome = {
     start: {
       heading: 'Klein anfangen. Gemeinsam aufbauen.',
       steps: [
-        'Gespräch (30 Minuten). Wir schauen uns Ihre Tools an und wählen eine Aufgabe, die sich lohnt.',
-        'Einrichtungs-Workshop (3 Stunden, CHF 1\'490). Wir setzen uns mit den Menschen zusammen, die die Arbeit machen, und entwickeln Ihren ersten eigenen Skill – mit Ihren Daten. Die fertigen Skills funktionieren ab dem ersten Tag.',
-        'Nutzen, prüfen, verfeinern. Nach 2 Wochen schauen wir gemeinsam, was angepasst werden soll.',
-        'Entscheiden. Behalten, ausbauen oder stoppen. [Ausstiegsbedingungen]',
+        '**Gespräch (30 Minuten).** Wir schauen uns Ihre Tools an und wählen eine Aufgabe, die sich lohnt.',
+        '**Einrichtungs-Workshop (3 Stunden, CHF 1\'490).** Wir setzen uns mit den Menschen zusammen, die die Arbeit machen, und entwickeln Ihren ersten eigenen Skill – mit Ihren Daten. Die fertigen Skills funktionieren ab dem ersten Tag.',
+        '**Nutzen, prüfen, verfeinern.** Nach 2 Wochen schauen wir gemeinsam, was angepasst werden soll.',
+        '**Entscheiden.** Behalten, ausbauen oder stoppen. [Ausstiegsbedingungen]',
       ],
     },
     team: {
-      heading: 'Entwickelt in der Schweiz – von Menschen, die Sie anrufen können.',
+      heading: 'Entwickelt in der Schweiz – von Menschen, die Ihnen antworten.',
       body: 'Wir haben Zuraio gebaut, weil KI zwar Antworten schreiben konnte, aber unser Firmenwissen, unsere Zugriffsregeln und unsere Arbeitsweise nicht verstand.',
       contact: 'Schreiben Sie uns direkt – Sie erhalten eine Antwort von einem von uns.',
       people: [
@@ -234,10 +234,10 @@ export const copyAltHome = {
       heading: 'Nothing leaves your company without your OK.',
       tagline: 'Swiss by default. Global only by choice.',
       points: [
-        'Swiss hosting, your choice of AI: the platform and your company data are hosted by Infomaniak in Switzerland (ISO 27001:2022, Swiss Hosting label). The default model is hosted in Switzerland. Every other AI model is labelled with where it runs. If you pick one outside Switzerland, only the content of that task goes to it, and the rest of your company knowledge stays here.',
-        'Access follows your rules: people only see what they\'re already allowed to see.',
-        'Every answer shows its source: check before you rely on it.',
-        'A clear record: each request, its sources and who approved the result, so your team can show how an answer was reached.',
+        '**Swiss hosting, your choice of AI:** hosted by Infomaniak in Switzerland (ISO 27001:2022). The default model runs in Switzerland; any other model is labelled, and only that task\'s content goes to it.',
+        '**Access follows your rules:** people only see what they\'re already allowed to see.',
+        '**Every answer shows its source:** check before you rely on it.',
+        '**A clear record:** each request, its sources and who approved the result, so your team can show how an answer was reached.',
       ],
       serversLine: 'Need everything on your own servers, or a specific AI model? Let\'s talk.',
       itLink: 'For your IT partner: technical details and security factsheet →',
@@ -247,14 +247,14 @@ export const copyAltHome = {
     start: {
       heading: 'Start small. Build it together.',
       steps: [
-        'Talk (30 minutes). We look at your tools and pick one task worth improving.',
-        'Set-up workshop (3 hours, CHF 1,490). We sit with the people who do the work and turn it into your first bespoke skill, on your own data. Ready-made skills work from day one.',
-        'Use, review, refine. We check in after 2 weeks and adjust with you.',
-        'Decide. Keep it, expand it or stop. [Exit terms]',
+        '**Talk (30 minutes).** We look at your tools and pick one task worth improving.',
+        '**Set-up workshop (3 hours, CHF 1,490).** We sit with the people who do the work and turn it into your first bespoke skill, on your own data. Ready-made skills work from day one.',
+        '**Use, review, refine.** We check in after 2 weeks and adjust with you.',
+        '**Decide.** Keep it, expand it or stop. [Exit terms]',
       ],
     },
     team: {
-      heading: 'Developed in Switzerland, by people you can call.',
+      heading: 'Developed in Switzerland, by people who answer.',
       body: 'We built Zuraio because AI could write answers but didn\'t understand our company knowledge, access rules or the way we work.',
       contact: 'Write to us directly – you\'ll get a reply from one of us.',
       people: [

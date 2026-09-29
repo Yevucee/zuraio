@@ -3,6 +3,8 @@ import { renderAltHomeHeader, renderAltHomeFooter } from './alt-homepage-chrome.
 import { trackAltHome } from './alt-homepage-analytics.js';
 import { initFaq } from './faq-accordion.js';
 import { assetHref } from './path-locale.js';
+import { isPreviewDevMode, formatPreviewHtml } from './alt-preview-utils.js';
+
 const DEMO_CACHE = '20260805v2';
 
 function cacheBust(url) {
@@ -66,26 +68,11 @@ const INTEGRATION_LOGOS = [
 ];
 
 export function isAltHomeDevBuild() {
-  return (
-    /localhost|127\.0\.0\.1/.test(location.hostname) ||
-    location.search.includes('dev=1') ||
-    document.body.dataset.devTodos === 'true'
-  );
+  return isPreviewDevMode();
 }
 
-function markPlaceholders(text, isDev, todos) {
-  if (!text || !text.includes('[')) return text;
-  const parts = text.split(/(\[[^\]]+\])/g);
-  return parts
-    .map((part) => {
-      if (part.startsWith('[') && part.endsWith(']')) {
-        todos.push(part.slice(1, -1));
-        if (isDev) return `<span class="alt-todo">${part}</span>`;
-        return part;
-      }
-      return part;
-    })
-    .join('');
+function fmt(text, isDev, todos) {
+  return formatPreviewHtml(text, isDev, todos);
 }
 
 function getHeroVariant() {
@@ -98,14 +85,13 @@ function renderMain(copy, locale, isDev) {
   const todos = [];
   const heroKey = getHeroVariant();
   const heroTitle = copy.hero.variants[heroKey];
-  const assetBase = '../../zuraio/assets/';
 
   const reasonsHtml = copy.reasons.cards
     .map(
       (c) => `
       <article class="pain-card alt-home-reason">
-        <span class="n">${c.title}</span>
-        <p>${markPlaceholders(c.body, isDev, todos)}</p>
+        <span class="n alt-home-card-title">${c.title}</span>
+        <p>${fmt(c.body, isDev, todos)}</p>
       </article>`,
     )
     .join('');
@@ -122,7 +108,7 @@ function renderMain(copy, locale, isDev) {
 
   const logosHtml = INTEGRATION_LOGOS.map(
     ([file, label]) =>
-      `<li class="alt-home-logo"><img src="../assets/integrations/${file}.svg" alt="${label}" width="120" height="32" loading="lazy" decoding="async" /></li>`,
+      `<li class="alt-home-logo"><img src="${assetHref(`assets/integrations/${file}.svg`)}" alt="${label}" width="120" height="32" loading="lazy" decoding="async" /></li>`,
   ).join('');
 
   const compareHtml = `
@@ -140,7 +126,7 @@ function renderMain(copy, locale, isDev) {
     </article>`;
 
   const controlHtml = copy.control.points
-    .map((p) => `<article class="ccard alt-home-control-point"><p>${markPlaceholders(p, isDev, todos)}</p></article>`)
+    .map((p) => `<article class="ccard alt-home-control-point"><p>${fmt(p, isDev, todos)}</p></article>`)
     .join('');
 
   const stepsHtml = copy.start.steps
@@ -148,24 +134,27 @@ function renderMain(copy, locale, isDev) {
       (s, i) => `
       <li class="alt-home-step">
         <span class="alt-home-step__num">${i + 1}</span>
-        <p>${markPlaceholders(s, isDev, todos)}</p>
+        <p>${fmt(s, isDev, todos)}</p>
       </li>`,
     )
     .join('');
 
   const teamHtml = (copy.team?.people ?? [])
-    .map(
-      (p) => `
-      <article class="origin-portraits__cell alt-home-founder">
-        <picture>
-          <source type="image/webp" srcset="${assetBase}${p.img}.webp">
-          <img src="${assetBase}${p.img}.png" alt="" width="800" height="800" loading="lazy" decoding="async" />
-        </picture>
-        <h3>${p.name}</h3>
-        <p class="alt-home-founder__role">${markPlaceholders(p.role ?? '', isDev, todos)}</p>
+    .map((p) => {
+      const roleHtml = fmt(p.role ?? '', isDev, todos);
+      return `
+      <article class="alt-home-founder">
+        <div class="alt-home-founder__photo">
+          <picture>
+            <source type="image/webp" srcset="${assetHref(`zuraio/assets/${p.img}.webp`)}">
+            <img src="${assetHref(`zuraio/assets/${p.img}.png`)}" alt="" width="400" height="400" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+        <h3 class="alt-home-founder__name">${p.name}</h3>
+        ${roleHtml ? `<p class="alt-home-founder__role">${roleHtml}</p>` : ''}
         <p class="alt-home-founder__email"><a href="mailto:${p.email}">${p.email}</a></p>
-      </article>`,
-    )
+      </article>`;
+    })
     .join('');
 
   const faqHtml = (copy.faq?.items ?? [])
@@ -174,7 +163,7 @@ function renderMain(copy, locale, isDev) {
       <div class="faq-item">
         <button class="faq-q" type="button" aria-expanded="false" id="alt-faq-q-${i}">${item.q}</button>
         <div class="faq-a" hidden role="region" aria-labelledby="alt-faq-q-${i}">
-          <p>${item.aHtml ?? markPlaceholders(item.a ?? '', isDev, todos)}</p>
+          <p>${item.aHtml ?? fmt(item.a ?? '', isDev, todos)}</p>
         </div>
       </div>`,
     )
@@ -234,7 +223,7 @@ function renderMain(copy, locale, isDev) {
               preload="none"
             ></video>
           </div>
-          <p class="demo-static__caption alt-home-demo__caption">${markPlaceholders(copy.demo?.caption ?? '', isDev, todos)}</p>
+          <p class="demo-static__caption alt-home-demo__caption">${fmt(copy.demo?.caption ?? '', isDev, todos)}</p>
         </div>
       </div>
     </section>
@@ -244,7 +233,7 @@ function renderMain(copy, locale, isDev) {
         <h2 id="alt-skills-h">${copy.skills.heading}</h2>
         <p class="lede">${copy.skills.intro}</p>
         <div class="alt-home-skills-grid">${skillsHtml}</div>
-        <div class="alt-home-skills-band">${markPlaceholders(copy.skills.band, isDev, todos)}</div>
+        <div class="alt-home-skills-band">${fmt(copy.skills.band, isDev, todos)}</div>
         <p class="section-link"><a class="alt-home-link-secondary" href="${copy.skills.linkHref}">${copy.skills.link}</a></p>
       </div>
     </section>
@@ -252,7 +241,7 @@ function renderMain(copy, locale, isDev) {
     <section class="alt-home-section alt-home-section--muted" id="integrations" aria-labelledby="alt-int-h">
       <div class="wrap">
         <h2 id="alt-int-h">${copy.integrations.heading}</h2>
-        <p class="lede">${markPlaceholders(copy.integrations.line, isDev, todos)}</p>
+        <p class="lede">${fmt(copy.integrations.line, isDev, todos)}</p>
         <ul class="alt-home-logos" aria-label="Integrations">${logosHtml}</ul>
         <p class="section-link"><a class="alt-home-link-secondary" href="../integrations.html">${copy.integrations.link}</a></p>
       </div>
@@ -274,7 +263,7 @@ function renderMain(copy, locale, isDev) {
         <p class="section-link">
           <a class="alt-home-it-link" data-alt-cta="it_factsheet" href="${copy.control.itHref}">${copy.control.itLink}</a>
         </p>
-        <p class="alt-home-control__partner">${markPlaceholders(copy.control.partnerLine, isDev, todos)}</p>
+        <p class="alt-home-control__partner">${fmt(copy.control.partnerLine, isDev, todos)}</p>
       </div>
     </section>
 

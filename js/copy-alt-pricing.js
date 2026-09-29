@@ -4,17 +4,34 @@ export const copyAltPricing = {
   de: {
     title: 'Preise — Zuraio (Vorschau)',
     heading: 'Preise',
-    intro: 'Überblick für die alternative Startseite. Alle Preise exkl. MWST.',
+    intro: 'Klare Preise, keine Überraschungen. Alle Preise exkl. MWST.',
     companyHeading: 'Firmenpläne',
-    companyIntro: 'Inklusive Konnektoren, Modell-Routing und gemeinsame Standard-KI-Nutzung. Bei jährlicher Zahlung zwei Monate gratis.',
+    companyIntro:
+      'Inklusive Konnektoren, Modell-Routing und gemeinsame Standard-KI-Nutzung. Bei jährlicher Zahlung zwei Monate gratis.',
     individualsHeading: 'Einzelpersonen und kleine Teams',
     /* Internal: Personal = Core (no second brain); Personal + Memory = Personal Brain; Team = Core Teams (no shared brain) */
-    individualsNote: '[TODO: Kurzbeschreibung pro Plan — Personal, Personal + Memory, Team]',
+    companyKnowledgeLine: 'Gemeinsames Firmenwissen für das ganze Team ist in den Firmenplänen enthalten.',
     setupHeading: 'Einrichtung und eigene Skills',
     footnote: 'Alle Preise exkl. MWST.',
     employeeTodo: '[TODO: Was zählt als Mitarbeitende/r — alle Angestellten oder nur Nutzer/innen?]',
+    ctaLead: 'Unsicher, welcher Plan passt?',
+    ctaButton: '30-Minuten-Demo buchen',
     backLink: '← Zurück zur Startseiten-Vorschau',
     backHref: 'homepage-preview.html',
+    planDescriptions: [
+      {
+        name: 'Personal',
+        desc: 'Ihr eigener KI-Assistent für die tägliche Arbeit mit E-Mails und Dokumenten.',
+      },
+      {
+        name: 'Personal + Memory',
+        desc: 'Mit persönlichem Gedächtnis, das Ihre Projekte, Kontakte und Vorlieben kennt.',
+      },
+      {
+        name: 'Team',
+        desc: 'Für kleine Teams: jede Person erhält ihren eigenen Assistenten, abgerechnet pro Platz.',
+      },
+    ],
     companyRows: [
       ['Bis 5', 'CHF 225', 'CHF 2\'250', 'CHF 37.50'],
       ['Bis 10', 'CHF 350', 'CHF 3\'500', 'CHF 29.17'],
@@ -48,16 +65,33 @@ export const copyAltPricing = {
   en: {
     title: 'Pricing — Zuraio (preview)',
     heading: 'Pricing',
-    intro: 'Overview for the alternative homepage preview. All prices excl. VAT.',
+    intro: 'Clear prices, no surprises. All prices excl. VAT.',
     companyHeading: 'Company plans',
-    companyIntro: 'Includes connectors, model routing and pooled standard AI usage. Pay yearly and get two months free.',
+    companyIntro:
+      'Includes connectors, model routing and pooled standard AI usage. Pay yearly and get two months free.',
     individualsHeading: 'Individuals and small teams',
-    individualsNote: '[TODO: One-line description per plan — Personal, Personal + Memory, Team]',
+    companyKnowledgeLine: 'Need shared company knowledge across the team? That\'s included in the company plans.',
     setupHeading: 'Set-up and bespoke skills',
     footnote: 'All prices excl. VAT.',
     employeeTodo: '[TODO: What counts as an employee — all staff or licensed users only?]',
+    ctaLead: 'Not sure which plan fits?',
+    ctaButton: 'Book a 30-minute demo',
     backLink: '← Back to homepage preview',
     backHref: 'homepage-preview.html',
+    planDescriptions: [
+      {
+        name: 'Personal',
+        desc: 'Your own AI assistant for everyday work with your emails and documents.',
+      },
+      {
+        name: 'Personal + Memory',
+        desc: 'Adds a personal memory that keeps track of your projects, contacts and preferences.',
+      },
+      {
+        name: 'Team',
+        desc: 'For small teams: each person gets their own assistant, billed per seat.',
+      },
+    ],
     companyRows: [
       ['Up to 5', 'CHF 225', 'CHF 2,250', 'CHF 37.50'],
       ['Up to 10', 'CHF 350', 'CHF 3,500', 'CHF 29.17'],

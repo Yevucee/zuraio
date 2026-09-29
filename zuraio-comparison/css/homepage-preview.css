@@ -4,10 +4,27 @@ body[data-page="altHome"] {
   padding-top: var(--nav-h);
 }
 
+body[data-page="altHome"] .alt-home-hero .hero-eyebrow.marker {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 14px;
+  letter-spacing: 0.14em;
+  max-width: 100%;
+}
+
 body[data-page="altHome"] .alt-home-control__tagline {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.88);
-  margin: 0.35rem 0 1rem;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--white);
+  margin: 0.5rem 0 1.25rem;
+  max-width: 36rem;
+}
+
+body[data-page="altHome"] .alt-home-control-point strong,
+body[data-page="altHome"] .alt-home-step strong {
+  font-weight: 600;
+  color: inherit;
 }
 
 body[data-page="altHome"] .alt-home-founder__email {
@@ -92,15 +109,18 @@ body[data-page="altHome"] .alt-home-hero__visual {
 
 body[data-page="altHome"] .alt-home-hero__visual img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  min-height: 220px;
+  max-height: 400px;
   display: block;
   object-fit: cover;
+  object-position: 68% 22%;
 }
 
 @media (max-width: 899px) {
   body[data-page="altHome"] .alt-home-hero__visual img {
     max-height: 280px;
-    object-position: top center;
+    object-position: 62% 20%;
   }
 }
 
@@ -118,6 +138,42 @@ body[data-page="altHome"] .alt-home-reasons {
 
 body[data-page="altHome"] .alt-home-reason {
   min-height: 100%;
+}
+
+body[data-page="altHome"] .alt-home-reason.pain-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px) saturate(1.06);
+  -webkit-backdrop-filter: blur(16px) saturate(1.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 20px;
+  padding: 20px 20px 22px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    0 12px 40px rgba(25, 35, 45, 0.06);
+}
+
+body[data-page="altHome"] .alt-home-reason .alt-home-card-title,
+body[data-page="altHome"] .alt-home-reason .n {
+  display: block;
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  line-height: 1.42;
+  color: #1a1a18;
+}
+
+body[data-page="altHome"] .alt-home-reason p {
+  margin-top: 8px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #4a4a46;
 }
 
 /* Sections */
@@ -193,29 +249,44 @@ body[data-page="altHome"] .alt-home-skills-band {
 
 /* Integrations — static logos */
 body[data-page="altHome"] .alt-home-logos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px 20px;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
   list-style: none;
   padding: 0;
   margin: 1rem 0 1.25rem;
 }
 
-@media (max-width: 767px) {
+@media (min-width: 640px) {
   body[data-page="altHome"] .alt-home-logos {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    justify-items: center;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
+@media (min-width: 960px) {
+  body[data-page="altHome"] .alt-home-logos {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+}
+
+body[data-page="altHome"] .alt-home-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 10px 12px;
+  background: var(--white);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+}
+
 body[data-page="altHome"] .alt-home-logo img {
-  max-width: 100px;
+  max-width: 100%;
   max-height: 28px;
   width: auto;
   height: auto;
   object-fit: contain;
+  display: block;
 }
 
 /* Compare */
@@ -253,8 +324,10 @@ body[data-page="altHome"] .alt-home-control .ccard {
 body[data-page="altHome"] .alt-home-control__line,
 body[data-page="altHome"] .alt-home-control__partner {
   margin-top: 1rem;
-  font-size: 0.92rem;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.94);
+  max-width: 42rem;
 }
 
 body[data-page="altHome"] .alt-home-control a {
@@ -304,16 +377,57 @@ body[data-page="altHome"] .alt-home-step__num {
 /* Founders */
 body[data-page="altHome"] .alt-home-founders {
   margin-top: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 16px;
 }
 
-body[data-page="altHome"] .alt-home-founder h3 {
+@media (min-width: 900px) {
+  body[data-page="altHome"] .alt-home-founders {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+body[data-page="altHome"] .alt-home-founder {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+body[data-page="altHome"] .alt-home-founder__photo {
+  width: 100%;
+  max-width: 260px;
+  border-radius: 12px;
+  overflow: hidden;
+  line-height: 0;
+  border: 1px solid var(--hairline);
+}
+
+body[data-page="altHome"] .alt-home-founder__photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: top center;
+}
+
+body[data-page="altHome"] .alt-home-founder__name {
   font-size: 1rem;
-  margin-top: 0.5rem;
+  font-weight: 600;
+  margin-top: 0.65rem;
+  margin-bottom: 0.15rem;
 }
 
 body[data-page="altHome"] .alt-home-founder__role {
   font-size: 0.85rem;
   color: var(--muted);
+  margin: 0;
+}
+
+body[data-page="altHome"] .alt-home-founder__role:empty {
+  display: none;
 }
 
 body[data-page="altHome"] .alt-home-contact {
@@ -387,6 +501,85 @@ body[data-page="altHome"] .alt-todo-list {
 body[data-page="altHome"] .alt-todo-list__title {
   font-size: 1rem;
   margin-bottom: 0.5rem;
+}
+
+body[data-page="altHome"] .alt-home-skill-card.hp-use-card {
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  background: var(--white);
+}
+
+body[data-page="altHome"] .alt-home-skill-card h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+body[data-page="altPricing"] {
+  padding-top: var(--nav-h);
+}
+
+body[data-page="altPricing"] .alt-pricing-section {
+  padding: clamp(2rem, 5vw, 3rem) 0;
+}
+
+body[data-page="altPricing"] .alt-pricing-section--hero {
+  padding-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+body[data-page="altPricing"] .alt-pricing-section--muted {
+  background: var(--cloud);
+}
+
+body[data-page="altPricing"] .alt-pricing-section h2 {
+  font-size: clamp(1.25rem, 3vw, 1.65rem);
+  margin-bottom: 0.65rem;
+}
+
+body[data-page="altPricing"] .alt-pricing-section .lede {
+  margin-bottom: 1rem;
+}
+
+body[data-page="altPricing"] .alt-pricing-plan-desc {
+  margin: 1rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--charcoal-soft);
+}
+
+body[data-page="altPricing"] .alt-pricing-plan-desc li + li {
+  margin-top: 0.5rem;
+}
+
+body[data-page="altPricing"] .alt-pricing-company-note {
+  margin-top: 1rem;
+  font-size: 0.92rem;
+  color: var(--charcoal-soft);
+}
+
+body[data-page="altPricing"] .alt-pricing-section--cta {
+  text-align: center;
+  background: var(--soft-olive-tint);
+  padding: clamp(2rem, 5vw, 2.75rem) 0;
+}
+
+body[data-page="altPricing"] .alt-pricing-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+body[data-page="altPricing"] .alt-pricing-cta__text {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+body[data-page="altPricing"] .compare-table td strong {
+  font-weight: 600;
 }
 
 @media (prefers-reduced-motion: reduce) {
