@@ -44,12 +44,25 @@ export const ALT_PREVIEW_MARQUEE_ITEMS = [
   { id: 'microsoft-dynamics', label: 'Microsoft Dynamics 365', textOnly: true },
 ];
 
+/** Intrinsic width × height at 22px logo height (matches SVG viewBox / PNG dimensions). */
+const WORDMARK_IMG_SIZE = {
+  bexio: { width: 96, height: 22 },
+  abacus: { width: 127, height: 22 },
+  klara: { width: 80, height: 22 },
+  proffix: { width: 78, height: 22 },
+};
+
+function isWordmarkItem(item) {
+  return Boolean(item.logo?.includes('/official/'));
+}
+
 function renderLogo(item) {
   if (!item.logo) return '';
-  const wide = item.logo.includes('/official/');
-  const w = wide ? 88 : 20;
-  const h = 20;
-  return `<img class="integration-logo-img" src="${assetHref(item.logo)}" alt="${item.alt ?? item.label}" width="${w}" height="${h}" loading="lazy" decoding="async" />`;
+  if (isWordmarkItem(item)) {
+    const { width, height } = WORDMARK_IMG_SIZE[item.id] ?? { width: 88, height: 22 };
+    return `<img class="integration-logo-img integration-logo-img--wordmark" src="${assetHref(item.logo)}" alt="${item.alt ?? item.label}" width="${width}" height="${height}" loading="eager" decoding="async" />`;
+  }
+  return `<img class="integration-logo-img" src="${assetHref(item.logo)}" alt="${item.alt ?? item.label}" width="20" height="20" loading="eager" decoding="async" />`;
 }
 
 function renderItem(item) {
@@ -58,13 +71,17 @@ function renderItem(item) {
       <span class="integration-name">${item.label}</span>
     </span>`;
   }
-  const wordmark = item.logo.includes('/official/');
-  const visibleName = wordmark
-    ? `<span class="visually-hidden">${item.label}</span>`
-    : `<span class="integration-name">${item.label}</span><span class="visually-hidden">${item.alt ?? item.label}</span>`;
+  const wordmark = isWordmarkItem(item);
+  if (wordmark) {
+    return `<span class="tool integration-item integration-item--wordmark has-logo" data-integration="${item.id}">
+    <span class="integration-wordmark-wrap" aria-hidden="true">${renderLogo(item)}</span>
+    <span class="visually-hidden">${item.label}</span>
+  </span>`;
+  }
   return `<span class="tool integration-item has-logo" data-integration="${item.id}">
     <span class="integration-logo-wrap" aria-hidden="true">${renderLogo(item)}</span>
-    ${visibleName}
+    <span class="integration-name">${item.label}</span>
+    <span class="visually-hidden">${item.alt ?? item.label}</span>
   </span>`;
 }
 
