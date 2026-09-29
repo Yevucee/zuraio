@@ -222,6 +222,16 @@ function renderMain(copy, locale, isDev) {
       <h3 class="alt-preview-card__title">Zuraio</h3>
       <p>${copy.compare.zuraio}</p>
     </article>
+    <div class="alt-home-compare-snap" aria-label="ChatGPT and Copilot">
+      <article class="alt-preview-card alt-home-compare alt-home-compare--split alt-home-compare--chatgpt">
+        <h3 class="alt-preview-card__title">ChatGPT</h3>
+        <p>${copy.compare.chatgpt}</p>
+      </article>
+      <article class="alt-preview-card alt-home-compare alt-home-compare--split alt-home-compare--copilot">
+        <h3 class="alt-preview-card__title">Microsoft Copilot</h3>
+        <p>${copy.compare.copilot}</p>
+      </article>
+    </div>
     <article class="alt-preview-card alt-home-compare alt-home-compare--combined">
       <div class="alt-home-compare__row">
         <h3 class="alt-preview-card__title">ChatGPT</h3>
@@ -231,14 +241,6 @@ function renderMain(copy, locale, isDev) {
         <h3 class="alt-preview-card__title">Microsoft Copilot</h3>
         <p>${copy.compare.copilot}</p>
       </div>
-    </article>
-    <article class="alt-preview-card alt-home-compare alt-home-compare--split alt-home-compare--chatgpt">
-      <h3 class="alt-preview-card__title">ChatGPT</h3>
-      <p>${copy.compare.chatgpt}</p>
-    </article>
-    <article class="alt-preview-card alt-home-compare alt-home-compare--split alt-home-compare--copilot">
-      <h3 class="alt-preview-card__title">Microsoft Copilot</h3>
-      <p>${copy.compare.copilot}</p>
     </article>`;
 
   const controlCardsHtml = (copy.control.cards ?? [])
@@ -415,11 +417,13 @@ function renderMain(copy, locale, isDev) {
         </div>
         <div class="ctrl-panel">
           <div class="ctrl-grid">${controlCardsHtml}</div>
-          <p class="ctrl-note"><span style="color:var(--soft-olive);">▣</span><span>${copy.control.note}</span></p>
+          <div class="alt-home-control-footer">
+            <p class="ctrl-note"><span style="color:var(--soft-olive);">▣</span><span>${copy.control.note}</span></p>
+            <p class="section-link">
+              <a class="alt-home-it-link" data-alt-cta="it_factsheet" href="${copy.control.itHref}">${copy.control.itLink}</a>
+            </p>
+          </div>
         </div>
-        <p class="section-link">
-          <a class="alt-home-it-link" data-alt-cta="it_factsheet" href="${copy.control.itHref}">${copy.control.itLink}</a>
-        </p>
       </div>
     </section>
 

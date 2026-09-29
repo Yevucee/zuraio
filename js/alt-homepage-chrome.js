@@ -1,5 +1,10 @@
 import { SITE } from './config.js';
 import { assetHref } from './path-locale.js';
+
+/** 2× raster for ~92×28 CSS display (alt preview nav caps logo at 28px). */
+const ALT_HOME_LOGO = 'assets/zuraio-logo-nav@2x.webp';
+const ALT_HOME_LOGO_WIDTH = 184;
+const ALT_HOME_LOGO_HEIGHT = 56;
 import { SUPPORTED_LOCALES } from './locales.js';
 import { getLocaleLabels } from './locales.js';
 import { setLocale, getCopy } from './i18n.js';
@@ -31,7 +36,7 @@ export function renderAltHomeHeader(copy, locale) {
     <header class="nav alt-home-nav" id="nav">
       <div class="wrap nav-in">
         <a class="brand" href="${previewLangHref(locale)}" aria-label="${ui.zuraioHome}">
-          <img class="brand-logo" src="${assetHref(SITE.logo)}" alt="${ui.logoAlt ?? 'Zuraio'}" width="4796" height="1465" decoding="async" />
+          <img class="brand-logo" src="${assetHref(ALT_HOME_LOGO)}" alt="${ui.logoAlt ?? 'Zuraio'}" width="${ALT_HOME_LOGO_WIDTH}" height="${ALT_HOME_LOGO_HEIGHT}" decoding="async" fetchpriority="high" />
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="${ui.openMenu}">
           <span></span><span></span><span></span>
@@ -115,7 +120,7 @@ export function renderAltHomeFooter(copy, locale) {
         </div>
         <div class="foot-bottom">
           <a class="brand foot-brand" href="${previewLangHref(locale)}" aria-label="${ui.zuraioHome}">
-            <img class="brand-logo" src="${assetHref(SITE.logo)}" alt="" width="4796" height="1465" decoding="async" />
+            <img class="brand-logo" src="${assetHref(ALT_HOME_LOGO)}" alt="" width="${ALT_HOME_LOGO_WIDTH}" height="${ALT_HOME_LOGO_HEIGHT}" decoding="async" loading="lazy" />
           </a>
           <p class="foot-tagline">${getCopy().site?.tagline ?? SITE.tagline}</p>
           ${copy.footerTrademark ? `<p class="foot-trademark alt-home-trademark">${copy.footerTrademark}</p>` : ''}
