@@ -153,7 +153,7 @@ function renderMain(copy, locale, isDev) {
     )
     .join('');
 
-  const teamHtml = copy.team.people
+  const teamHtml = (copy.team?.people ?? [])
     .map(
       (p) => `
       <article class="origin-portraits__cell alt-home-founder">
@@ -162,29 +162,28 @@ function renderMain(copy, locale, isDev) {
           <img src="${assetBase}${p.img}.png" alt="" width="800" height="800" loading="lazy" decoding="async" />
         </picture>
         <h3>${p.name}</h3>
-        <p class="alt-home-founder__role">${markPlaceholders(p.role, isDev, todos)}</p>
+        <p class="alt-home-founder__role">${markPlaceholders(p.role ?? '', isDev, todos)}</p>
+        <p class="alt-home-founder__email"><a href="mailto:${p.email}">${p.email}</a></p>
       </article>`,
     )
     .join('');
 
-  const faqHtml = copy.faq.items
+  const faqHtml = (copy.faq?.items ?? [])
     .map(
       (item, i) => `
       <div class="faq-item">
         <button class="faq-q" type="button" aria-expanded="false" id="alt-faq-q-${i}">${item.q}</button>
         <div class="faq-a" hidden role="region" aria-labelledby="alt-faq-q-${i}">
-          <p>${markPlaceholders(item.a, isDev, todos)}</p>
+          <p>${item.aHtml ?? markPlaceholders(item.a ?? '', isDev, todos)}</p>
         </div>
       </div>`,
     )
     .join('');
 
-  const subtitleTrack =
-    locale === 'en'
-      ? `<p class="alt-home-video-note alt-todo">${copy.demo.subtitlesTodo ?? 'English subtitles: TODO'}</p>`
-      : '';
+  const mainEl = document.getElementById('alt-home-main');
+  if (!mainEl) return;
 
-  document.getElementById('alt-home-main').innerHTML = `
+  mainEl.innerHTML = `
     <section class="alt-home-hero" id="hero">
       <div class="wrap alt-home-hero__grid">
         <div class="alt-home-hero__copy">
@@ -235,9 +234,7 @@ function renderMain(copy, locale, isDev) {
               preload="none"
             ></video>
           </div>
-          ${subtitleTrack}
-          <p class="demo-static__caption alt-home-demo__caption">${markPlaceholders(copy.demo.caption, isDev, todos)}</p>
-          <p class="alt-home-video-note">${markPlaceholders(copy.demo.videoTodo, isDev, todos)}</p>
+          <p class="demo-static__caption alt-home-demo__caption">${markPlaceholders(copy.demo?.caption ?? '', isDev, todos)}</p>
         </div>
       </div>
     </section>
@@ -271,6 +268,7 @@ function renderMain(copy, locale, isDev) {
     <section class="control pad alt-home-control" id="control" aria-labelledby="alt-control-h">
       <div class="wrap">
         <h2 id="alt-control-h">${copy.control.heading}</h2>
+        <p class="alt-home-control__tagline">${copy.control.tagline ?? ''}</p>
         <div class="ctrl-grid alt-home-control-grid">${controlHtml}</div>
         <p class="alt-home-control__line">${copy.control.serversLine}</p>
         <p class="section-link">
@@ -292,7 +290,7 @@ function renderMain(copy, locale, isDev) {
         <h2 id="alt-team-h">${copy.team.heading}</h2>
         <p class="lede">${copy.team.body}</p>
         <div class="origin-portraits__grid alt-home-founders">${teamHtml}</div>
-        <p class="alt-home-contact">${markPlaceholders(copy.team.contact, isDev, todos)}</p>
+        <p class="alt-home-contact">${copy.team.contact ?? ''}</p>
       </div>
     </section>
 
@@ -353,11 +351,12 @@ function bindAnalytics(heroVariant) {
 export function bootAltHomepage() {
   const locale = document.documentElement.lang === 'en' ? 'en' : 'de';
   const copy = getAltHomeCopy(locale);
+  if (!copy) {
+    throw new Error('Alt home copy missing for locale: ' + locale);
+  }
   const isDev = isAltHomeDevBuild();
 
-  document.title = copy.metaTitle;
-  const banner = document.querySelector('[data-alt-banner]');
-  if (banner) banner.textContent = copy.banner;
+  document.title = copy.metaTitle ?? 'Zuraio preview';
 
   const heroVariant = getHeroVariant();
   renderAltHomeHeader(copy, locale);
@@ -368,4 +367,16 @@ export function bootAltHomepage() {
   bindAnalytics(heroVariant);
 }
 
-bootAltHomepage();
+try {
+  bootAltHomepage();
+} catch (err) {
+  console.error('[alt-homepage]', err);
+  const main = document.getElementById('alt-home-main');
+  const msg =
+    document.documentElement.lang === 'en'
+      ? 'This preview could not load. Please check the browser console.'
+      : 'Die Vorschau konnte nicht geladen werden. Bitte prüfen Sie die Browser-Konsole.';
+  if (main) {
+    main.innerHTML = `<div class="wrap pad"><p>${msg}</p></div>`;
+  }
+}
