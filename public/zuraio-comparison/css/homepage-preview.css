@@ -387,10 +387,14 @@ body[data-page="altHome"] .alt-home-hero__trust-item--lead::before {
 @media (min-width: 960px) {
   body[data-page="altHome"] .alt-home-hero__trust {
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
-    gap: 0 12px;
-    row-gap: 6px;
+    gap: 0;
+    font-size: 13px;
+  }
+
+  body[data-page="altHome"] .alt-home-hero__trust-item:not(:first-child) {
+    margin-left: 12px;
   }
 
   body[data-page="altHome"] .alt-home-hero__trust-item:not(:first-child) {
