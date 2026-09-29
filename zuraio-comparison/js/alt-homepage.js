@@ -116,8 +116,10 @@ function renderMain(copy, locale, isDev) {
       const body = fmt(s.body ?? '', isDev, todos);
       return `
       <article class="alt-preview-card alt-home-step">
-        <span class="alt-home-step__num" aria-hidden="true">${i + 1}</span>
-        <h3 class="alt-preview-card__title">${title}</h3>
+        <div class="alt-home-step__head">
+          <span class="alt-home-step__num" aria-hidden="true">${i + 1}</span>
+          <h3 class="alt-preview-card__title">${title}</h3>
+        </div>
         <p>${body}</p>
       </article>`;
     })
@@ -131,7 +133,7 @@ function renderMain(copy, locale, isDev) {
         <div class="alt-home-founder__photo">
           <picture>
             <source type="image/webp" srcset="${assetHref(`zuraio/assets/${p.img}.webp`)}">
-            <img src="${assetHref(`zuraio/assets/${p.img}.png`)}" alt="" width="400" height="400" loading="lazy" decoding="async" />
+            <img src="${assetHref(`zuraio/assets/${p.img}.png`)}" alt="" width="400" height="500" loading="lazy" decoding="async" />
           </picture>
         </div>
         <h3 class="alt-home-founder__name">${p.name}</h3>
@@ -156,43 +158,53 @@ function renderMain(copy, locale, isDev) {
   const mainEl = document.getElementById('alt-home-main');
   if (!mainEl) return;
 
+  const skillsEyebrow = copy.skills.eyebrowShort ?? copy.skills.eyebrow ?? '';
+  const heroImgBase = assetHref(HERO_SCREENSHOT);
+  const heroImgWebp = assetHref('zuraio/assets/zuraio-demo-reply-crop.webp');
+
   mainEl.innerHTML = `
-    <section class="alt-home-hero" id="hero">
+    <section class="alt-section alt-home-hero" id="hero">
       <div class="wrap alt-home-hero__grid">
         <div class="alt-home-hero__copy">
           <span class="marker hero-eyebrow">${copy.hero.eyebrow}</span>
           <h1 data-alt-hero-title>${heroTitle}</h1>
           <p class="hero-lede">${copy.hero.sub}</p>
-          <div class="cta-row">
+          <div class="alt-home-hero__actions">
             <a class="btn btn-primary btn-lg alt-home-cta" data-alt-cta="hero" href="../contact.html">${copy.hero.cta}</a>
+            <p class="alt-home-hero__micro">${copy.hero.ctaMicro}</p>
           </div>
-          <p class="alt-home-hero__micro">${copy.hero.ctaMicro}</p>
           <p class="alt-home-hero__trust">${copy.hero.trust}</p>
         </div>
         <div class="alt-home-hero__visual">
-          <img
-            src="${assetHref(HERO_SCREENSHOT)}"
-            alt="${copy.hero.screenshotAlt}"
-            width="1280"
-            height="720"
-            decoding="async"
-            fetchpriority="high"
-          />
+          <picture>
+            <source type="image/webp" srcset="${heroImgWebp} 1x, ${heroImgWebp} 2x" />
+            <img
+              src="${heroImgBase}"
+              srcset="${heroImgBase} 1x, ${heroImgBase} 2x"
+              alt="${copy.hero.screenshotAlt}"
+              width="1280"
+              height="720"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </picture>
         </div>
       </div>
     </section>
 
-    <section class="pad section-band section-band--paper" id="reasons" aria-labelledby="alt-reasons">
+    <section class="alt-section alt-section--paper" id="reasons" aria-labelledby="alt-reasons">
       <div class="wrap">
         <div class="alt-home-reasons">${reasonsHtml}</div>
       </div>
     </section>
 
-    <section class="pad section-band section-band--cloud demo" id="demo" aria-labelledby="alt-demo-h">
+    <section class="alt-section alt-section--paper demo" id="demo" aria-labelledby="alt-demo-h">
       <div class="wrap">
-        <h2 id="alt-demo-h">${copy.demo.heading}</h2>
+        <div class="alt-section-head">
+          <h2 id="alt-demo-h" class="alt-reveal">${copy.demo.heading}</h2>
+        </div>
         <div class="demo-static alt-home-demo">
-          <div class="demo-static__frame">
+          <div class="demo-static__frame alt-home-demo__frame">
             <video
               data-demo-video
               data-src="zuraio/assets/zuraio-demo.mp4"
@@ -211,42 +223,47 @@ function renderMain(copy, locale, isDev) {
       </div>
     </section>
 
-    <section class="pad section-band section-band--paper" id="skills" aria-labelledby="alt-skills-h">
+    <section class="alt-section alt-section--paper" id="skills" aria-labelledby="alt-skills-h">
       <div class="wrap">
-        <span class="marker alt-skills-eyebrow alt-skills-eyebrow--long">${copy.skills.eyebrow ?? ''}</span>
-        <span class="marker alt-skills-eyebrow alt-skills-eyebrow--short">${copy.skills.eyebrowShort ?? ''}</span>
-        <h2 id="alt-skills-h">${copy.skills.heading}</h2>
-        <p class="lede">${copy.skills.intro}</p>
+        <div class="alt-section-head">
+          <span class="marker alt-skills-eyebrow">${skillsEyebrow}</span>
+          <h2 id="alt-skills-h" class="alt-reveal">${copy.skills.heading}</h2>
+          <p class="lede">${copy.skills.intro}</p>
+        </div>
         <div class="alt-home-skills-grid">${skillsHtml}</div>
-        <div class="alt-home-skills-band">${fmt(copy.skills.band, isDev, todos)}</div>
-        <p class="section-link"><a class="alt-home-link-secondary" href="${copy.skills.linkHref}">${copy.skills.link}</a></p>
+        <p class="alt-home-skills-band">${fmt(copy.skills.band, isDev, todos)}</p>
+        <p class="alt-home-text-link"><a class="alt-home-link-secondary" href="${copy.skills.linkHref}">${copy.skills.link}</a></p>
       </div>
     </section>
 
-    <section class="pad section-band section-band--cloud alt-home-integrations" id="integrations" aria-labelledby="alt-int-h">
+    <section class="alt-section alt-section--tint alt-home-integrations" id="integrations" aria-labelledby="alt-int-h">
       <div class="wrap">
-        <h2 id="alt-int-h">${copy.integrations.heading}</h2>
-        <p class="lede">${copy.integrations.line}</p>
+        <div class="alt-section-head">
+          <h2 id="alt-int-h" class="alt-reveal">${copy.integrations.heading}</h2>
+          <p class="lede">${copy.integrations.line}</p>
+        </div>
         <div class="marquee-track" data-alt-marquee tabindex="0" aria-label="${locale === 'de' ? 'Integrationen' : 'Integrations'}">
           <div class="marquee-inner"></div>
         </div>
-        <p class="section-link"><a href="../integrations.html">${copy.integrations.link}</a></p>
+        <p class="alt-home-text-link"><a class="alt-home-link-secondary" href="../integrations.html">${copy.integrations.link}</a></p>
       </div>
     </section>
 
-    <section class="pad section-band section-band--paper" id="compare" aria-labelledby="alt-compare-h">
+    <section class="alt-section alt-section--paper" id="compare" aria-labelledby="alt-compare-h">
       <div class="wrap">
-        <h2 id="alt-compare-h">${copy.compare.heading}</h2>
+        <div class="alt-section-head">
+          <h2 id="alt-compare-h" class="alt-reveal">${copy.compare.heading}</h2>
+        </div>
         <div class="alt-home-compare-grid">${compareHtml}</div>
       </div>
     </section>
 
-    <section class="control pad" id="data-control" aria-labelledby="alt-control-h">
+    <section class="control alt-section alt-section--control" id="data-control" aria-labelledby="alt-control-h">
       <canvas class="control-particles" data-control-particles aria-hidden="true"></canvas>
       <div class="wrap">
-        <div class="head-block">
+        <div class="head-block alt-section-head">
           <span class="marker">${copy.control.eyebrow}</span>
-          <h2 id="alt-control-h">${copy.control.heading}</h2>
+          <h2 id="alt-control-h" class="alt-reveal">${copy.control.heading}</h2>
           <p class="lede">${copy.control.intro}</p>
           <p class="alt-control-intro-support">${copy.control.introSupport ?? ''}</p>
         </div>
@@ -260,35 +277,41 @@ function renderMain(copy, locale, isDev) {
       </div>
     </section>
 
-    <section class="pad section-band section-band--cloud" id="how-start" aria-labelledby="alt-start-h">
+    <section class="alt-section alt-section--paper" id="how-start" aria-labelledby="alt-start-h">
       <div class="wrap">
-        <h2 id="alt-start-h">${copy.start.heading}</h2>
+        <div class="alt-section-head">
+          <h2 id="alt-start-h" class="alt-reveal">${copy.start.heading}</h2>
+        </div>
         <div class="alt-home-steps">${stepsHtml}</div>
       </div>
     </section>
 
-    <section class="pad section-band section-band--paper alt-home-team" id="team" aria-labelledby="alt-team-h">
+    <section class="alt-section alt-section--paper alt-home-team" id="team" aria-labelledby="alt-team-h">
       <div class="wrap">
-        <h2 id="alt-team-h">${copy.team.heading}</h2>
-        <p class="lede">${copy.team.body}</p>
+        <div class="alt-section-head">
+          <h2 id="alt-team-h" class="alt-reveal">${copy.team.heading}</h2>
+          <p class="lede">${copy.team.body}</p>
+        </div>
         <div class="origin-portraits__grid alt-home-founders">${teamHtml}</div>
         <p class="alt-home-contact">${copy.team.contact ?? ''}</p>
       </div>
     </section>
 
-    <section class="pad section-band section-band--cloud" id="faq" aria-labelledby="alt-faq-h">
+    <section class="alt-section alt-section--paper" id="faq" aria-labelledby="alt-faq-h">
       <div class="wrap">
-        <h2 id="alt-faq-h">FAQ</h2>
+        <div class="alt-section-head">
+          <h2 id="alt-faq-h" class="alt-reveal">FAQ</h2>
+        </div>
         <div class="faq-list alt-home-faq">${faqHtml}</div>
-        <p class="section-link">
+        <p class="alt-home-faq-links">
           <a class="alt-home-link-secondary" href="../faq.html">${copy.faq.linkAll}</a>
-          ·
+          <span class="alt-home-faq-links__sep" aria-hidden="true">·</span>
           <a class="alt-home-link-secondary" href="${copy.faq.linkItHref}">${copy.faq.linkIt}</a>
         </p>
       </div>
     </section>
 
-    <section class="alt-home-final" id="final">
+    <section class="alt-section alt-home-final" id="final">
       <div class="wrap alt-home-final__inner">
         <h2>${copy.closing.heading}</h2>
         <a class="btn btn-primary btn-lg alt-home-cta" data-alt-cta="closing" href="../contact.html">${copy.closing.cta}</a>
