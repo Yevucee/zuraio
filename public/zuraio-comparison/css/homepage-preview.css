@@ -4,13 +4,31 @@ body[data-page="altHome"] {
   padding-top: var(--nav-h);
 }
 
-body[data-page="altHome"] .hp-preview-banner {
-  background: var(--charcoal);
-  color: var(--white);
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.75rem;
-  text-align: center;
-  padding: 8px 16px;
+body[data-page="altHome"] .alt-home-control__tagline {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0.35rem 0 1rem;
+}
+
+body[data-page="altHome"] .alt-home-founder__email {
+  font-size: 0.88rem;
+  margin-top: 0.25rem;
+}
+
+body[data-page="altHome"] .alt-home-founder__email a {
+  color: var(--teal);
+}
+
+body[data-page="altPricing"] .alt-pricing-secondary,
+body[data-page="altPricing"] .compare-table td.alt-pricing-secondary {
+  font-size: 0.88rem;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+body[data-page="altPricing"] .alt-home-pricing-foot {
+  margin-top: 1.25rem;
+  font-size: 0.92rem;
 }
 
 body[data-page="altHome"] .reveal {
