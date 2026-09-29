@@ -35,7 +35,20 @@ export const copyAltHome = {
       cta: '30-Minuten-Demo buchen',
       ctaMicro: 'Mit Ihren eigenen Beispielen. Unverbindlich.',
       trust: 'Gehostet bei Infomaniak in der Schweiz · ISO 27001:2022 · Arbeitet mit bexio, Abacus, Microsoft 365',
-      screenshotAlt: 'Zuraio entwirft eine Kundenantwort mit sichtbaren Quellen.',
+      cardCaption: 'Illustration: Zuraio entwirft eine Kundenantwort mit Quellen.',
+      card: {
+        headerLabel: 'Antwortentwurf',
+        incoming: 'Re: Terminplan Projekt Seebach – können wir die Übergabe verschieben?',
+        draftLines: [
+          'Guten Tag Herr Keller, vielen Dank für Ihre Nachricht.',
+          'Gemäss aktuellem Terminplan können wir die Übergabe auf den 14. November verschieben.',
+          'Den angepassten Plan finden Sie im Anhang.',
+          'Freundliche Grüsse',
+        ],
+        sources: ['E-Mail · 3. Okt.', 'Vertrag §4.2', 'bexio · Projekt 2031'],
+        footerTag: 'Schweizer Modell · Infomaniak',
+        footerAction: 'Prüfen & senden',
+      },
     },
     reasons: {
       cards: [
@@ -74,6 +87,7 @@ export const copyAltHome = {
       ],
       band:
         'Gemeinsam mit Ihnen entwickelt – Beispiele: «Offerte in unserem Format, mit unseren Rabattregeln» · «Antwort an Mieter in unserem Ton, mit unseren Standardklauseln» · «Monatsreport, so wie ihn unsere Partner mögen» [durch echte Pilot-Beispiele ersetzen]',
+      footnoteLabel: 'Mit Ihnen entwickelt',
       link: 'Alle Skills ansehen →',
       linkHref: '../how-it-helps.html#skills',
     },
@@ -124,7 +138,8 @@ export const copyAltHome = {
       steps: [
         { title: 'Gespräch (30 Min.).', body: 'Wir wählen eine Aufgabe, die sich lohnt.' },
         {
-          title: 'Einrichtungs-Workshop (3 Std., CHF 1\'490).',
+          title: 'Einrichtungs-Workshop',
+          titleMeta: '3 Std. · CHF 1\'490',
           body: 'Wir entwickeln mit Ihrem Team Ihren ersten eigenen Skill – mit Ihren Daten.',
         },
         { title: 'Nutzen und verfeinern.', body: 'Nach 2 Wochen schauen wir gemeinsam darauf.' },
@@ -169,6 +184,7 @@ export const copyAltHome = {
       linkAll: 'Alle Fragen →',
       linkIt: 'Fragen, die Ihre IT stellen wird →',
       linkItHref: '../faq.html#it-questions',
+      moreLabel: 'Weitere Fragen',
     },
     closing: {
       heading: 'Was könnte Zuraio Ihnen abnehmen?',
@@ -199,7 +215,20 @@ export const copyAltHome = {
       cta: 'Book a 30-minute demo',
       ctaMicro: 'With your own examples. No commitment.',
       trust: 'Hosted by Infomaniak in Switzerland · ISO 27001:2022 · Works with bexio, Abacus, Microsoft 365',
-      screenshotAlt: 'Zuraio drafts a customer reply with sources listed.',
+      cardCaption: 'Illustration: Zuraio drafting a customer reply with sources.',
+      card: {
+        headerLabel: 'Draft reply',
+        incoming: 'Re: Schedule for Seebach project – can we move the handover?',
+        draftLines: [
+          'Dear Mr Keller, thank you for your message.',
+          'Based on the current schedule, we can move the handover to 14 November.',
+          'The updated plan is attached.',
+          'Kind regards',
+        ],
+        sources: ['Email · 3 Oct', 'Contract §4.2', 'bexio · Project 2031'],
+        footerTag: 'Swiss model · Infomaniak',
+        footerAction: 'Review & send',
+      },
     },
     reasons: {
       cards: [
@@ -238,6 +267,7 @@ export const copyAltHome = {
       ],
       band:
         'Built with you – examples: "Quote in our house format with our discount rules" · "Reply to tenants in our tone, with our standard clauses" · "Monthly client report the way our partners like it" [replace with real pilot examples]',
+      footnoteLabel: 'Built with you',
       link: 'See all skills →',
       linkHref: '../how-it-helps.html#skills',
     },
@@ -288,7 +318,8 @@ export const copyAltHome = {
       steps: [
         { title: 'Talk (30 min).', body: 'We pick one task worth improving.' },
         {
-          title: 'Set-up workshop (3 h, CHF 1,490).',
+          title: 'Set-up workshop',
+          titleMeta: '3 h · CHF 1,490',
           body: 'We build your first bespoke skill with your team, on your data.',
         },
         { title: 'Use and refine.', body: 'We check in after 2 weeks.' },
@@ -333,6 +364,7 @@ export const copyAltHome = {
       linkAll: 'View all questions →',
       linkIt: 'Questions your IT team will ask →',
       linkItHref: '../faq.html#it-questions',
+      moreLabel: 'More questions',
     },
     closing: {
       heading: 'What could Zuraio take off your plate?',

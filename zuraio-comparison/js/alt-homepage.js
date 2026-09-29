@@ -6,13 +6,26 @@ import { assetHref } from './path-locale.js';
 import { isPreviewDevMode, formatPreviewHtml } from './alt-preview-utils.js';
 import { initControlParticles } from './control-particles.js';
 import { initAltPreviewMarquee } from './alt-integrations-marquee.js';
+import { SITE } from './config.js';
 
 const DEMO_CACHE = '20260805v2';
-const HERO_SCREENSHOT = 'zuraio/assets/zuraio-demo-reply-crop.png';
+const FOUNDER_PREVIEW = 'zuraio/assets/team-preview';
 
 function cacheBust(url) {
   if (!url) return url;
   return url.includes('?') ? url : `${url}?v=${DEMO_CACHE}`;
+}
+
+function initAltFaqMore() {
+  const toggle = document.querySelector('[data-alt-faq-more]');
+  const panel = document.querySelector('.alt-home-faq-more');
+  if (!toggle || !panel) return;
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', open ? 'false' : 'true');
+    panel.hidden = open;
+    if (!open) initFaq();
+  });
 }
 
 function initAltHomeDemoVideo() {
@@ -67,6 +80,50 @@ function getHeroVariant() {
   return 'a';
 }
 
+function trustParts(trustLine) {
+  return (trustLine ?? '')
+    .split('·')
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
+function parseSkillExamples(band) {
+  const cleaned = (band ?? '').replace(/\[.*?\]/g, '').trim();
+  const colon = cleaned.indexOf(':');
+  const tail = colon >= 0 ? cleaned.slice(colon + 1) : cleaned;
+  return tail
+    .split('·')
+    .map((s) => s.trim().replace(/^["«]|["»]$/g, ''))
+    .filter(Boolean);
+}
+
+function renderTrustLine(trustLine) {
+  const parts = trustParts(trustLine);
+  return parts.map((part) => `<span class="alt-home-hero__trust-item">${part}</span>`).join('');
+}
+
+function renderHeroProductCard(card) {
+  if (!card) return '';
+  const sources = (card.sources ?? [])
+    .map((s) => `<span class="alt-hero-card__chip">${s}</span>`)
+    .join('');
+  const draft = (card.draftLines ?? []).map((line) => `<p>${line}</p>`).join('');
+  return `
+    <div class="alt-hero-card" aria-hidden="true">
+      <div class="alt-hero-card__header">
+        <img class="alt-hero-card__mark" src="${assetHref(SITE.logo)}" alt="" width="120" height="36" decoding="async" />
+        <span class="alt-hero-card__label">${card.headerLabel ?? ''}</span>
+      </div>
+      <p class="alt-hero-card__incoming">${card.incoming ?? ''}</p>
+      <div class="alt-hero-card__draft">${draft}</div>
+      <div class="alt-hero-card__sources">${sources}</div>
+      <div class="alt-hero-card__footer">
+        <span class="alt-hero-card__tag">${card.footerTag ?? ''}</span>
+        <span class="alt-hero-card__action">${card.footerAction ?? ''}</span>
+      </div>
+    </div>`;
+}
+
 function renderMain(copy, locale, isDev) {
   const todos = [];
   const heroKey = getHeroVariant();
@@ -93,17 +150,27 @@ function renderMain(copy, locale, isDev) {
     .join('');
 
   const compareHtml = `
-    <article class="alt-preview-card alt-home-compare">
-      <h3 class="alt-preview-card__title">ChatGPT</h3>
-      <p>${copy.compare.chatgpt}</p>
-    </article>
-    <article class="alt-preview-card alt-home-compare">
-      <h3 class="alt-preview-card__title">Microsoft Copilot</h3>
-      <p>${copy.compare.copilot}</p>
-    </article>
     <article class="alt-preview-card alt-home-compare alt-home-compare--zuraio">
       <h3 class="alt-preview-card__title">Zuraio</h3>
       <p>${copy.compare.zuraio}</p>
+    </article>
+    <article class="alt-preview-card alt-home-compare alt-home-compare--combined">
+      <div class="alt-home-compare__row">
+        <h3 class="alt-preview-card__title">ChatGPT</h3>
+        <p>${copy.compare.chatgpt}</p>
+      </div>
+      <div class="alt-home-compare__row">
+        <h3 class="alt-preview-card__title">Microsoft Copilot</h3>
+        <p>${copy.compare.copilot}</p>
+      </div>
+    </article>
+    <article class="alt-preview-card alt-home-compare alt-home-compare--split alt-home-compare--chatgpt">
+      <h3 class="alt-preview-card__title">ChatGPT</h3>
+      <p>${copy.compare.chatgpt}</p>
+    </article>
+    <article class="alt-preview-card alt-home-compare alt-home-compare--split alt-home-compare--copilot">
+      <h3 class="alt-preview-card__title">Microsoft Copilot</h3>
+      <p>${copy.compare.copilot}</p>
     </article>`;
 
   const controlCardsHtml = (copy.control.cards ?? [])
@@ -114,11 +181,15 @@ function renderMain(copy, locale, isDev) {
     .map((s, i) => {
       const title = s.title ?? '';
       const body = fmt(s.body ?? '', isDev, todos);
+      const meta = s.titleMeta ? `<p class="alt-home-step__meta">${s.titleMeta}</p>` : '';
       return `
       <article class="alt-preview-card alt-home-step">
         <div class="alt-home-step__head">
           <span class="alt-home-step__num" aria-hidden="true">${i + 1}</span>
-          <h3 class="alt-preview-card__title">${title}</h3>
+          <div class="alt-home-step__titles">
+            <h3 class="alt-preview-card__title">${title}</h3>
+            ${meta}
+          </div>
         </div>
         <p>${body}</p>
       </article>`;
@@ -132,8 +203,8 @@ function renderMain(copy, locale, isDev) {
       <article class="alt-home-founder">
         <div class="alt-home-founder__photo">
           <picture>
-            <source type="image/webp" srcset="${assetHref(`zuraio/assets/${p.img}.webp`)}">
-            <img src="${assetHref(`zuraio/assets/${p.img}.png`)}" alt="" width="400" height="500" loading="lazy" decoding="async" />
+            <source type="image/webp" srcset="${assetHref(`${FOUNDER_PREVIEW}/${p.img}.webp`)}">
+            <img src="${assetHref(`${FOUNDER_PREVIEW}/${p.img}.webp`)}" alt="" width="250" height="312" loading="lazy" decoding="async" />
           </picture>
         </div>
         <h3 class="alt-home-founder__name">${p.name}</h3>
@@ -143,24 +214,35 @@ function renderMain(copy, locale, isDev) {
     })
     .join('');
 
-  const faqHtml = (copy.faq?.items ?? [])
-    .map(
-      (item, i) => `
+  const faqItems = copy.faq?.items ?? [];
+  const faqPrimary = faqItems.slice(0, 4);
+  const faqMore = faqItems.slice(4);
+  const faqItemHtml = (item, i) => `
       <div class="faq-item">
         <button class="faq-q" type="button" aria-expanded="false" id="alt-faq-q-${i}">${item.q}</button>
         <div class="faq-a" hidden role="region" aria-labelledby="alt-faq-q-${i}">
           <p>${item.aHtml ?? fmt(item.a ?? '', isDev, todos)}</p>
         </div>
-      </div>`,
-    )
-    .join('');
+      </div>`;
+  const faqHtml =
+    faqPrimary.map((item, i) => faqItemHtml(item, i)).join('') +
+    (faqMore.length
+      ? `<div class="alt-home-faq-more" hidden>
+          ${faqMore.map((item, j) => faqItemHtml(item, j + 4)).join('')}
+        </div>
+        <button type="button" class="alt-home-faq-more-toggle faq-q" aria-expanded="false" data-alt-faq-more>
+          ${copy.faq.moreLabel ?? 'More questions'}
+        </button>`
+      : '');
 
   const mainEl = document.getElementById('alt-home-main');
   if (!mainEl) return;
 
   const skillsEyebrow = copy.skills.eyebrowShort ?? copy.skills.eyebrow ?? '';
-  const heroImgBase = assetHref(HERO_SCREENSHOT);
-  const heroImgWebp = assetHref('zuraio/assets/zuraio-demo-reply-crop.webp');
+  const skillExamples = parseSkillExamples(copy.skills.band ?? '');
+  const skillChips = skillExamples
+    .map((ex) => `<span class="alt-home-skills-note__chip">${fmt(ex, isDev, todos)}</span>`)
+    .join('');
 
   mainEl.innerHTML = `
     <section class="alt-section alt-home-hero" id="hero">
@@ -173,21 +255,11 @@ function renderMain(copy, locale, isDev) {
             <a class="btn btn-primary btn-lg alt-home-cta" data-alt-cta="hero" href="../contact.html">${copy.hero.cta}</a>
             <p class="alt-home-hero__micro">${copy.hero.ctaMicro}</p>
           </div>
-          <p class="alt-home-hero__trust">${copy.hero.trust}</p>
+          <p class="alt-home-hero__trust">${renderTrustLine(copy.hero.trust)}</p>
         </div>
         <div class="alt-home-hero__visual">
-          <picture>
-            <source type="image/webp" srcset="${heroImgWebp} 1x, ${heroImgWebp} 2x" />
-            <img
-              src="${heroImgBase}"
-              srcset="${heroImgBase} 1x, ${heroImgBase} 2x"
-              alt="${copy.hero.screenshotAlt}"
-              width="1280"
-              height="720"
-              decoding="async"
-              fetchpriority="high"
-            />
-          </picture>
+          ${renderHeroProductCard(copy.hero.card)}
+          <p class="visually-hidden">${copy.hero.cardCaption ?? ''}</p>
         </div>
       </div>
     </section>
@@ -231,8 +303,13 @@ function renderMain(copy, locale, isDev) {
           <p class="lede">${copy.skills.intro}</p>
         </div>
         <div class="alt-home-skills-grid">${skillsHtml}</div>
-        <p class="alt-home-skills-band">${fmt(copy.skills.band, isDev, todos)}</p>
-        <p class="alt-home-text-link"><a class="alt-home-link-secondary" href="${copy.skills.linkHref}">${copy.skills.link}</a></p>
+        <div class="alt-home-skills-note">
+          <div class="alt-home-skills-note__body">
+            <span class="alt-home-skills-note__label">${copy.skills.footnoteLabel ?? ''}</span>
+            <div class="alt-home-skills-note__chips">${skillChips}</div>
+          </div>
+          <a class="alt-home-link-secondary alt-home-skills-note__link" href="${copy.skills.linkHref}">${copy.skills.link}</a>
+        </div>
       </div>
     </section>
 
@@ -368,6 +445,7 @@ export function bootAltHomepage() {
   renderMain(copy, locale, isDev);
   renderAltHomeFooter(copy, locale);
   initFaq();
+  initAltFaqMore();
   initAltHomeDemoVideo();
   initControlParticles();
   initAltPreviewMarquee();
