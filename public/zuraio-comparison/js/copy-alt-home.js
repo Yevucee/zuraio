@@ -35,20 +35,7 @@ export const copyAltHome = {
       cta: '30-Minuten-Demo buchen',
       ctaMicro: 'Mit Ihren eigenen Beispielen. Unverbindlich.',
       trust: 'Gehostet bei Infomaniak in der Schweiz · ISO 27001:2022 · Arbeitet mit bexio, Abacus, Microsoft 365',
-      cardCaption: 'Illustration: Zuraio entwirft eine Kundenantwort mit Quellen.',
-      card: {
-        headerLabel: 'Antwortentwurf',
-        incoming: 'Re: Terminplan Projekt Seebach – können wir die Übergabe verschieben?',
-        draftLines: [
-          'Guten Tag Herr Keller, vielen Dank für Ihre Nachricht.',
-          'Gemäss aktuellem Terminplan können wir die Übergabe auf den 14. November verschieben.',
-          'Den angepassten Plan finden Sie im Anhang.',
-          'Freundliche Grüsse',
-        ],
-        sources: ['E-Mail · 3. Okt.', 'Vertrag §4.2', 'bexio · Projekt 2031'],
-        footerTag: 'Schweizer Modell · Infomaniak',
-        footerAction: 'Prüfen & senden',
-      },
+      imageAlt: 'Zuraio entwirft eine Antwort auf eine Kunden-E-Mail, mit Quellenangaben',
     },
     reasons: {
       cards: [
@@ -215,20 +202,7 @@ export const copyAltHome = {
       cta: 'Book a 30-minute demo',
       ctaMicro: 'With your own examples. No commitment.',
       trust: 'Hosted by Infomaniak in Switzerland · ISO 27001:2022 · Works with bexio, Abacus, Microsoft 365',
-      cardCaption: 'Illustration: Zuraio drafting a customer reply with sources.',
-      card: {
-        headerLabel: 'Draft reply',
-        incoming: 'Re: Schedule for Seebach project – can we move the handover?',
-        draftLines: [
-          'Dear Mr Keller, thank you for your message.',
-          'Based on the current schedule, we can move the handover to 14 November.',
-          'The updated plan is attached.',
-          'Kind regards',
-        ],
-        sources: ['Email · 3 Oct', 'Contract §4.2', 'bexio · Project 2031'],
-        footerTag: 'Swiss model · Infomaniak',
-        footerAction: 'Review & send',
-      },
+      imageAlt: 'Zuraio drafts a reply to a client email, with its sources shown',
     },
     reasons: {
       cards: [

@@ -6,10 +6,15 @@ import { assetHref } from './path-locale.js';
 import { isPreviewDevMode, formatPreviewHtml } from './alt-preview-utils.js';
 import { initControlParticles } from './control-particles.js';
 import { initAltPreviewMarquee } from './alt-integrations-marquee.js';
-import { SITE } from './config.js';
-
 const DEMO_CACHE = '20260805v2';
 const FOUNDER_PREVIEW = 'zuraio/assets/team-preview';
+const HERO_REPLY_IMAGE = {
+  en: 'assets/hero/zuraio-hero-reply-en@2x.webp',
+  de: 'assets/hero/zuraio-hero-reply-de@2x.webp',
+};
+/** 2× asset for 520×390 display slot */
+const HERO_IMG_WIDTH = 1040;
+const HERO_IMG_HEIGHT = 780;
 
 function cacheBust(url) {
   if (!url) return url;
@@ -99,29 +104,92 @@ function parseSkillExamples(band) {
 
 function renderTrustLine(trustLine) {
   const parts = trustParts(trustLine);
-  return parts.map((part) => `<span class="alt-home-hero__trust-item">${part}</span>`).join('');
+  return parts
+    .map(
+      (part, i) =>
+        `<span class="alt-home-hero__trust-item${i === 0 ? ' alt-home-hero__trust-item--lead' : ''}">${part}</span>`,
+    )
+    .join('');
 }
 
-function renderHeroProductCard(card) {
-  if (!card) return '';
-  const sources = (card.sources ?? [])
-    .map((s) => `<span class="alt-hero-card__chip">${s}</span>`)
-    .join('');
-  const draft = (card.draftLines ?? []).map((line) => `<p>${line}</p>`).join('');
+function heroReplyImageSrc(locale) {
+  const key = locale === 'de' ? 'de' : 'en';
+  return assetHref(HERO_REPLY_IMAGE[key]);
+}
+
+function renderHeroVisual(locale, copy, isDev) {
+  const src = heroReplyImageSrc(locale);
+  const alt = copy.hero.imageAlt ?? '';
+  const placeholder = isDev
+    ? '<div class="alt-home-hero__placeholder" aria-hidden="true"></div>'
+    : '';
   return `
-    <div class="alt-hero-card" aria-hidden="true">
-      <div class="alt-hero-card__header">
-        <img class="alt-hero-card__mark" src="${assetHref(SITE.logo)}" alt="" width="120" height="36" decoding="async" />
-        <span class="alt-hero-card__label">${card.headerLabel ?? ''}</span>
-      </div>
-      <p class="alt-hero-card__incoming">${card.incoming ?? ''}</p>
-      <div class="alt-hero-card__draft">${draft}</div>
-      <div class="alt-hero-card__sources">${sources}</div>
-      <div class="alt-hero-card__footer">
-        <span class="alt-hero-card__tag">${card.footerTag ?? ''}</span>
-        <span class="alt-hero-card__action">${card.footerAction ?? ''}</span>
-      </div>
+    <div class="alt-home-hero__frame" data-alt-hero-frame hidden>
+      ${placeholder}
+      <img
+        class="alt-home-hero__img"
+        data-alt-hero-img
+        data-src="${src}"
+        alt="${alt}"
+        width="${HERO_IMG_WIDTH}"
+        height="${HERO_IMG_HEIGHT}"
+        fetchpriority="high"
+        decoding="async"
+      />
     </div>`;
+}
+
+function initHeroVisualSlot(isDev) {
+  const hero = document.querySelector('.alt-home-hero');
+  const frame = document.querySelector('[data-alt-hero-frame]');
+  const img = document.querySelector('[data-alt-hero-img]');
+  const visualCol = document.querySelector('.alt-home-hero__visual');
+  if (!hero || !frame) return;
+
+  const setVisualVisible = (visible) => {
+    hero.classList.toggle('alt-home-hero--has-visual', visible);
+    hero.classList.toggle('alt-home-hero--text-only', !visible);
+    frame.hidden = !visible;
+    if (visualCol) visualCol.hidden = !visible;
+  };
+
+  setVisualVisible(false);
+
+  const src = img?.dataset.src;
+  if (!src) {
+    if (isDev) setVisualVisible(true);
+    return;
+  }
+
+  const onReady = () => {
+    const placeholder = frame.querySelector('.alt-home-hero__placeholder');
+    if (placeholder) placeholder.hidden = true;
+    setVisualVisible(true);
+  };
+
+  const onMissing = () => {
+    img?.remove();
+    if (isDev) {
+      setVisualVisible(true);
+      return;
+    }
+    setVisualVisible(false);
+  };
+
+  const probe = new Image();
+  probe.onload = () => {
+    if (!img) return;
+    img.src = src;
+    img.classList.add('is-loaded');
+    if (img.complete && img.naturalWidth > 0) {
+      onReady();
+      return;
+    }
+    img.addEventListener('load', onReady, { once: true });
+    img.addEventListener('error', onMissing, { once: true });
+  };
+  probe.onerror = onMissing;
+  probe.src = src;
 }
 
 function renderMain(copy, locale, isDev) {
@@ -245,21 +313,22 @@ function renderMain(copy, locale, isDev) {
     .join('');
 
   mainEl.innerHTML = `
-    <section class="alt-section alt-home-hero" id="hero">
+    <section class="alt-section alt-home-hero alt-home-hero--text-only" id="hero">
       <div class="wrap alt-home-hero__grid">
         <div class="alt-home-hero__copy">
-          <span class="marker hero-eyebrow">${copy.hero.eyebrow}</span>
-          <h1 data-alt-hero-title>${heroTitle}</h1>
-          <p class="hero-lede">${copy.hero.sub}</p>
-          <div class="alt-home-hero__actions">
-            <a class="btn btn-primary btn-lg alt-home-cta" data-alt-cta="hero" href="../contact.html">${copy.hero.cta}</a>
-            <p class="alt-home-hero__micro">${copy.hero.ctaMicro}</p>
+          <div class="alt-home-hero__stack">
+            <span class="marker hero-eyebrow">${copy.hero.eyebrow}</span>
+            <h1 data-alt-hero-title>${heroTitle}</h1>
+            <p class="alt-home-hero__sub">${copy.hero.sub}</p>
+            <div class="alt-home-hero__actions">
+              <a class="btn btn-primary btn-lg alt-home-cta" data-alt-cta="hero" href="../contact.html">${copy.hero.cta}</a>
+              <p class="alt-home-hero__micro">${copy.hero.ctaMicro}</p>
+            </div>
+            <div class="alt-home-hero__trust">${renderTrustLine(copy.hero.trust)}</div>
           </div>
-          <p class="alt-home-hero__trust">${renderTrustLine(copy.hero.trust)}</p>
         </div>
-        <div class="alt-home-hero__visual">
-          ${renderHeroProductCard(copy.hero.card)}
-          <p class="visually-hidden">${copy.hero.cardCaption ?? ''}</p>
+        <div class="alt-home-hero__visual" hidden>
+          ${renderHeroVisual(locale, copy, isDev)}
         </div>
       </div>
     </section>
@@ -406,6 +475,7 @@ function renderMain(copy, locale, isDev) {
   }
 
   window.__altHomeTodos = [...new Set(todos)];
+  initHeroVisualSlot(isDev);
 }
 
 function bindAnalytics(heroVariant) {
