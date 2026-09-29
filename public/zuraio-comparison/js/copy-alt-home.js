@@ -31,38 +31,39 @@ export const copyAltHome = {
         c: 'Ihr Team nutzt KI längst. Wissen Sie, wo Ihre Daten landen?',
         h: 'Ein KI-Assistent, eingerichtet für Ihren Betrieb – von Menschen, die sich die Zeit nehmen, ihn zu verstehen.',
       },
-      sub: 'Zuraio beantwortet E-Mails, bereitet Sitzungen vor und findet alles in Ihrem Firmenwissen – mit Quellenangabe, in der Schweiz gehostet und unter Ihrer Kontrolle.',
+      sub: 'Zuraio beantwortet E-Mails, bereitet Sitzungen vor und findet, was Sie in Ihrem Firmenwissen suchen – mit Quellen, in der Schweiz gehostet.',
       cta: '30-Minuten-Demo buchen',
       ctaMicro: 'Mit Ihren eigenen Beispielen. Unverbindlich.',
-      trust: 'In der Schweiz gehostet bei Infomaniak · ISO 27001:2022 · Arbeitet mit bexio, Abacus und Microsoft 365',
-      sector: 'Für Architektur- und Ingenieurbüros, Treuhänder und Immobilienverwaltungen.',
+      trust: 'Gehostet bei Infomaniak in der Schweiz · ISO 27001:2022 · Arbeitet mit bexio, Abacus, Microsoft 365',
       screenshotAlt: 'Zuraio entwirft eine Kundenantwort mit sichtbaren Quellen.',
     },
     reasons: {
       cards: [
         {
           title: 'Kennt Ihren Betrieb bereits.',
-          body: 'Antworten kommen aus Ihren E-Mails, Dokumenten und Systemen – nicht aus dem Internet. Jede Antwort zeigt, woher sie stammt.',
+          body: 'Antworten aus Ihren E-Mails, Dokumenten und Systemen – jede mit Quelle.',
         },
         {
           title: 'Sie entscheiden, wohin Ihre Daten gehen.',
-          body: 'Zuraio läuft auf Schweizer Servern bei Infomaniak, und standardmässig bleibt alles in der Schweiz. Wenn Sie für eine Aufgabe ein anderes KI-Modell wählen, sehen Sie vorher, wo es arbeitet. Zugriffe folgen Ihren bestehenden Berechtigungen.',
+          body: 'Gehostet bei Infomaniak in der Schweiz. Standardmässig bleibt alles hier; wählen Sie ein anderes KI-Modell, sehen Sie vorher, wo es arbeitet.',
         },
         {
           title: 'Skills, gemeinsam mit Ihnen entwickelt.',
-          body: 'Fertige Skills ab dem ersten Tag. Danach entwickeln wir mit Ihrem Team eigene Skills – so, wie Ihr Betrieb wirklich arbeitet.',
+          body: 'Fertige Skills ab dem ersten Tag. Danach entwickeln wir mit Ihrem Team Ihre eigenen.',
         },
       ],
     },
     demo: {
       heading: 'So beantwortet Zuraio eine Kundenanfrage.',
       caption:
-        'Ein Kunde fragt nach seinem Projekt. Zuraio holt die letzte Korrespondenz, den Vertrag und die Zahlen aus bexio, entwirft eine Antwort und zeigt jede Quelle. Ihr Team prüft den Entwurf und entscheidet, ob er versendet wird.',
+        'Zuraio entwirft eine Antwort aus den letzten E-Mails, dem Vertrag und den Zahlen aus bexio – mit allen Quellen. Ihr Team prüft und entscheidet.',
     },
     skills: {
+      eyebrow: 'FÜR ARCHITEKTUR- UND INGENIEURBÜROS, TREUHÄNDER UND IMMOBILIENVERWALTUNGEN',
+      eyebrowShort: 'FÜR ARCHITEKTEN, TREUHÄNDER UND VERWALTUNGEN',
       heading: 'Skills, gemeinsam mit Ihnen entwickelt – für die Art, wie Ihr Betrieb arbeitet.',
       intro:
-        'Starten Sie mit fertigen Skills, die ab dem ersten Tag funktionieren. Danach setzen wir uns mit Ihrem Team zusammen, lernen, wie Sie wirklich arbeiten, und entwickeln Skills, die nur Ihr Betrieb hat: Ihre Offerten, Ihr Ton, Ihre Abläufe. Zuraio übernimmt das Mühsame – das Urteil bleibt bei Ihrem Team.',
+        'Starten Sie mit fertigen Skills. Danach entwickeln wir mit Ihrem Team die Skills, die nur Ihr Betrieb hat – Ihre Offerten, Ihr Ton, Ihre Abläufe.',
       readyMade: [
         ['Kundenanfrage beantworten', 'Entwirft eine Antwort aus Korrespondenz, Verträgen und Ihren Konditionen'],
         ['Sitzung vorbereiten', 'Einseitiges Briefing: letzte E-Mails, offene Punkte, Dokumente'],
@@ -91,26 +92,41 @@ export const copyAltHome = {
         'Kennt Ihren Betrieb über alle Systeme hinweg, startet mit fertigen Skills, entwickelt eigene mit Ihnen – in der Schweiz gehostet, und Sie entscheiden, welche KI was sieht.',
     },
     control: {
+      eyebrow: 'DATENKONTROLLE',
       heading: 'Nichts verlässt den Betrieb ohne Ihr OK.',
-      tagline: 'Standardmässig Schweiz. Global nur, wenn Sie es wählen.',
-      points: [
-        '**Schweizer Hosting, Ihre Wahl der KI:** gehostet bei Infomaniak in der Schweiz (ISO 27001:2022). Das Standardmodell läuft in der Schweiz; jedes andere Modell ist gekennzeichnet, und nur der Inhalt dieser Aufgabe geht dorthin.',
-        '**Zugriff nach Ihren Regeln:** Mitarbeitende sehen nur, was sie schon heute sehen dürfen.',
-        '**Jede Antwort zeigt ihre Quelle:** prüfen, bevor man sich darauf verlässt.',
-        '**Klar nachvollziehbar:** jede Anfrage, ihre Quellen und wer das Ergebnis freigegeben hat – so kann Ihr Team zeigen, wie eine Antwort zustande kam.',
+      intro: 'Standardmässig Schweiz. Global nur, wenn Sie es wählen.',
+      cards: [
+        {
+          title: 'Schweizer Hosting, Ihre Wahl der KI',
+          body: 'Gehostet bei Infomaniak in der Schweiz (ISO 27001:2022). Andere KI-Modelle sind gekennzeichnet; nur der Inhalt dieser Aufgabe geht dorthin.',
+        },
+        {
+          title: 'Zugriff nach Ihren Regeln',
+          body: 'Mitarbeitende sehen nur, was sie schon heute sehen dürfen.',
+        },
+        {
+          title: 'Jede Antwort zeigt ihre Quelle',
+          body: 'Prüfen, bevor man sich darauf verlässt.',
+        },
+        {
+          title: 'Klar nachvollziehbar',
+          body: 'Wer gefragt hat, welche Quellen genutzt wurden, wer freigegeben hat.',
+        },
       ],
-      serversLine: 'Alles auf Ihren eigenen Servern oder ein bestimmtes KI-Modell? Sprechen wir darüber.',
+      note: 'Sie arbeiten mit einem IT-Partner? Wir beziehen ihn ab dem ersten Gespräch ein – auch für eigene Server oder ein bestimmtes KI-Modell.',
       itLink: 'Für Ihren IT-Partner: technische Details und Sicherheits-Factsheet →',
       itHref: '../technical-architecture.html',
-      partnerLine: 'Sie arbeiten mit einem IT-Partner? Wir beziehen ihn ab dem ersten Gespräch ein.',
     },
     start: {
       heading: 'Klein anfangen. Gemeinsam aufbauen.',
       steps: [
-        '**Gespräch (30 Minuten).** Wir schauen uns Ihre Tools an und wählen eine Aufgabe, die sich lohnt.',
-        '**Einrichtungs-Workshop (3 Stunden, CHF 1\'490).** Wir setzen uns mit den Menschen zusammen, die die Arbeit machen, und entwickeln Ihren ersten eigenen Skill – mit Ihren Daten. Die fertigen Skills funktionieren ab dem ersten Tag.',
-        '**Nutzen, prüfen, verfeinern.** Nach 2 Wochen schauen wir gemeinsam, was angepasst werden soll.',
-        '**Entscheiden.** Behalten, ausbauen oder stoppen. [Ausstiegsbedingungen]',
+        { title: 'Gespräch (30 Min.).', body: 'Wir wählen eine Aufgabe, die sich lohnt.' },
+        {
+          title: 'Einrichtungs-Workshop (3 Std., CHF 1\'490).',
+          body: 'Wir entwickeln mit Ihrem Team Ihren ersten eigenen Skill – mit Ihren Daten.',
+        },
+        { title: 'Nutzen und verfeinern.', body: 'Nach 2 Wochen schauen wir gemeinsam darauf.' },
+        { title: 'Entscheiden.', body: 'Behalten, ausbauen oder stoppen. [Ausstiegsbedingungen]' },
       ],
     },
     team: {
@@ -171,38 +187,39 @@ export const copyAltHome = {
         c: 'Your team already uses AI. Do you know where your data goes?',
         h: 'An AI assistant set up around your business, by people who take the time to understand it.',
       },
-      sub: 'Zuraio answers emails, prepares meetings and finds anything in your company knowledge, with sources shown, hosted in Switzerland and under your control.',
+      sub: 'Zuraio answers emails, prepares meetings and finds what you need in your company knowledge – with sources, hosted in Switzerland.',
       cta: 'Book a 30-minute demo',
       ctaMicro: 'With your own examples. No commitment.',
-      trust: 'Hosted in Switzerland by Infomaniak · ISO 27001:2022 · Works with bexio, Abacus and Microsoft 365',
-      sector: 'Built for architecture and engineering offices, fiduciaries and property managers.',
+      trust: 'Hosted by Infomaniak in Switzerland · ISO 27001:2022 · Works with bexio, Abacus, Microsoft 365',
       screenshotAlt: 'Zuraio drafts a customer reply with sources listed.',
     },
     reasons: {
       cards: [
         {
           title: 'Already knows your business.',
-          body: 'Answers come from your emails, documents and systems, not from the internet. Every answer shows where it came from.',
+          body: 'Answers from your emails, documents and systems – each with its source.',
         },
         {
           title: 'You decide where your data goes.',
-          body: 'Zuraio runs on Swiss servers at Infomaniak, and by default everything stays in Switzerland. If you choose a different AI model for a task, you see where it runs before you use it. Access follows your existing permissions.',
+          body: 'Hosted by Infomaniak in Switzerland. Swiss by default; if you choose another AI model, you see where it runs first.',
         },
         {
           title: 'Skills built with you.',
-          body: 'Start with ready-made skills on day one. Then we build bespoke ones with your team, around the way your company actually works.',
+          body: 'Ready-made skills from day one. Then we build your own with your team.',
         },
       ],
     },
     demo: {
       heading: 'Watch Zuraio answer a customer email.',
       caption:
-        'A customer asks about their project. Zuraio pulls the latest correspondence, the contract and the figures from bexio, drafts a reply and shows every source. Your employee checks it and decides whether to send.',
+        'Zuraio drafts a reply from the latest emails, the contract and the figures in bexio – with every source shown. Your team checks it and decides.',
     },
     skills: {
+      eyebrow: 'FOR ARCHITECTURE AND ENGINEERING OFFICES, FIDUCIARIES AND PROPERTY MANAGERS',
+      eyebrowShort: 'BUILT FOR ARCHITECTS, FIDUCIARIES AND PROPERTY MANAGERS',
       heading: 'Skills built with you, for the way your company works.',
       intro:
-        'Start with ready-made skills that work on day one. Then we sit down with your team, learn how you actually do the work, and build skills only your company has: your offers, your tone, your processes. Zuraio does the tedious part and your team keeps the judgement.',
+        'Start with ready-made skills. Then we sit down with your team and build the ones only your company has – your offers, your tone, your processes.',
       readyMade: [
         ['Reply to a client, tenant or customer', 'Drafts an answer using the correspondence, contracts and your terms'],
         ['Prepare a meeting', 'One-page briefing on the client: last emails, open points, documents'],
@@ -231,26 +248,41 @@ export const copyAltHome = {
         'Knows your company across all of your systems, starts with ready-made skills and builds your own with you. Hosted in Switzerland, and you decide which AI sees what.',
     },
     control: {
+      eyebrow: 'DATA CONTROL',
       heading: 'Nothing leaves your company without your OK.',
-      tagline: 'Swiss by default. Global only by choice.',
-      points: [
-        '**Swiss hosting, your choice of AI:** hosted by Infomaniak in Switzerland (ISO 27001:2022). The default model runs in Switzerland; any other model is labelled, and only that task\'s content goes to it.',
-        '**Access follows your rules:** people only see what they\'re already allowed to see.',
-        '**Every answer shows its source:** check before you rely on it.',
-        '**A clear record:** each request, its sources and who approved the result, so your team can show how an answer was reached.',
+      intro: 'Swiss by default. Global only by choice.',
+      cards: [
+        {
+          title: 'Swiss hosting, your choice of AI',
+          body: 'Hosted by Infomaniak in Switzerland (ISO 27001:2022). Other AI models are labelled, and only that task\'s content goes to them.',
+        },
+        {
+          title: 'Access follows your rules',
+          body: 'People only see what they\'re already allowed to see.',
+        },
+        {
+          title: 'Every answer shows its source',
+          body: 'Check before you rely on it.',
+        },
+        {
+          title: 'A clear record',
+          body: 'Who asked, which sources were used, who approved the result.',
+        },
       ],
-      serversLine: 'Need everything on your own servers, or a specific AI model? Let\'s talk.',
+      note: 'Working with an IT partner? We involve them from the first call, including for on-premise options or a specific AI model.',
       itLink: 'For your IT partner: technical details and security factsheet →',
       itHref: '../technical-architecture.html',
-      partnerLine: 'Working with an IT partner? We involve them from the first call.',
     },
     start: {
       heading: 'Start small. Build it together.',
       steps: [
-        '**Talk (30 minutes).** We look at your tools and pick one task worth improving.',
-        '**Set-up workshop (3 hours, CHF 1,490).** We sit with the people who do the work and turn it into your first bespoke skill, on your own data. Ready-made skills work from day one.',
-        '**Use, review, refine.** We check in after 2 weeks and adjust with you.',
-        '**Decide.** Keep it, expand it or stop. [Exit terms]',
+        { title: 'Talk (30 min).', body: 'We pick one task worth improving.' },
+        {
+          title: 'Set-up workshop (3 h, CHF 1,490).',
+          body: 'We build your first bespoke skill with your team, on your data.',
+        },
+        { title: 'Use and refine.', body: 'We check in after 2 weeks.' },
+        { title: 'Decide.', body: 'Keep it, expand it or stop. [Exit terms]' },
       ],
     },
     team: {
