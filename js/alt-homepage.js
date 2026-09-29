@@ -4,8 +4,11 @@ import { trackAltHome } from './alt-homepage-analytics.js';
 import { initFaq } from './faq-accordion.js';
 import { assetHref } from './path-locale.js';
 import { isPreviewDevMode, formatPreviewHtml } from './alt-preview-utils.js';
+import { ALT_INTEGRATION_TILES } from './alt-integration-logos.js';
+import { initControlParticles } from './control-particles.js';
 
 const DEMO_CACHE = '20260805v2';
+const HERO_SCREENSHOT = 'zuraio/assets/zuraio-demo-reply-crop.png';
 
 function cacheBust(url) {
   if (!url) return url;
@@ -50,23 +53,6 @@ function initAltHomeDemoVideo() {
   observer.observe(videoEl);
 }
 
-const INTEGRATION_LOGOS = [
-  ['bexio', 'bexio'],
-  ['abacus', 'Abacus'],
-  ['klara', 'Klara'],
-  ['proffix', 'Proffix'],
-  ['microsoft-365', 'Microsoft 365'],
-  ['outlook', 'Outlook'],
-  ['sharepoint', 'SharePoint'],
-  ['teams', 'Teams'],
-  ['sap', 'SAP'],
-  ['microsoft-dynamics', 'Dynamics 365'],
-  ['salesforce', 'Salesforce'],
-  ['hubspot', 'HubSpot'],
-  ['odoo', 'Odoo'],
-  ['sage', 'Sage'],
-];
-
 export function isAltHomeDevBuild() {
   return isPreviewDevMode();
 }
@@ -89,8 +75,8 @@ function renderMain(copy, locale, isDev) {
   const reasonsHtml = copy.reasons.cards
     .map(
       (c) => `
-      <article class="pain-card alt-home-reason">
-        <span class="n alt-home-card-title">${c.title}</span>
+      <article class="alt-preview-card alt-home-reason">
+        <h3 class="alt-preview-card__title">${c.title}</h3>
         <p>${fmt(c.body, isDev, todos)}</p>
       </article>`,
     )
@@ -99,44 +85,52 @@ function renderMain(copy, locale, isDev) {
   const skillsHtml = copy.skills.readyMade
     .map(
       ([title, line]) => `
-      <article class="hp-use-card alt-home-skill-card">
-        <h3>${title}</h3>
+      <article class="alt-preview-card alt-home-skill-card">
+        <h3 class="alt-preview-card__title">${title}</h3>
         <p>${line}</p>
       </article>`,
     )
     .join('');
 
-  const logosHtml = INTEGRATION_LOGOS.map(
-    ([file, label]) =>
-      `<li class="alt-home-logo"><img src="${assetHref(`assets/integrations/${file}.svg`)}" alt="${label}" width="120" height="32" loading="lazy" decoding="async" /></li>`,
-  ).join('');
+  const logosHtml = ALT_INTEGRATION_TILES.map((tile) => {
+    const logoInner = tile.nameOnly
+      ? `<span class="alt-int-tile__wordmark alt-int-tile__wordmark--text">${tile.label}</span>`
+      : `<img src="${assetHref(`assets/integrations/${tile.file}`)}" alt="" width="120" height="32" loading="lazy" decoding="async" class="alt-int-tile__img" />`;
+    return `<li class="alt-int-tile">
+      <div class="alt-int-tile__logo">${logoInner}</div>
+      <span class="alt-int-tile__label">${tile.label}</span>
+    </li>`;
+  }).join('');
 
   const compareHtml = `
-    <article class="compare-trio__col alt-home-compare">
-      <h3 class="compare-trio__name">ChatGPT</h3>
-      <p class="compare-trio__body">${copy.compare.chatgpt}</p>
+    <article class="alt-preview-card alt-home-compare">
+      <h3 class="alt-preview-card__title">ChatGPT</h3>
+      <p>${copy.compare.chatgpt}</p>
     </article>
-    <article class="compare-trio__col alt-home-compare">
-      <h3 class="compare-trio__name">Microsoft Copilot</h3>
-      <p class="compare-trio__body">${copy.compare.copilot}</p>
+    <article class="alt-preview-card alt-home-compare">
+      <h3 class="alt-preview-card__title">Microsoft Copilot</h3>
+      <p>${copy.compare.copilot}</p>
     </article>
-    <article class="compare-trio__col compare-trio__col--zuraio alt-home-compare alt-home-compare--zuraio">
-      <h3 class="compare-trio__name">Zuraio</h3>
-      <p class="compare-trio__body">${copy.compare.zuraio}</p>
+    <article class="alt-preview-card alt-home-compare alt-home-compare--zuraio">
+      <h3 class="alt-preview-card__title">Zuraio</h3>
+      <p>${copy.compare.zuraio}</p>
     </article>`;
 
-  const controlHtml = copy.control.points
-    .map((p) => `<article class="ccard alt-home-control-point"><p>${fmt(p, isDev, todos)}</p></article>`)
+  const controlCardsHtml = (copy.control.cards ?? [])
+    .map((c) => `<div class="ccard"><h4>${c.title}</h4><p>${c.body}</p></div>`)
     .join('');
 
   const stepsHtml = copy.start.steps
-    .map(
-      (s, i) => `
-      <li class="alt-home-step">
-        <span class="alt-home-step__num">${i + 1}</span>
-        <p>${fmt(s, isDev, todos)}</p>
-      </li>`,
-    )
+    .map((s, i) => {
+      const title = s.title ?? '';
+      const body = fmt(s.body ?? '', isDev, todos);
+      return `
+      <article class="alt-preview-card alt-home-step">
+        <span class="alt-home-step__num" aria-hidden="true">${i + 1}</span>
+        <h3 class="alt-preview-card__title">${title}</h3>
+        <p>${body}</p>
+      </article>`;
+    })
     .join('');
 
   const teamHtml = (copy.team?.people ?? [])
@@ -184,11 +178,10 @@ function renderMain(copy, locale, isDev) {
           </div>
           <p class="alt-home-hero__micro">${copy.hero.ctaMicro}</p>
           <p class="alt-home-hero__trust">${copy.hero.trust}</p>
-          <p class="alt-home-hero__sector">${copy.hero.sector}</p>
         </div>
         <div class="alt-home-hero__visual">
           <img
-            src="${assetHref('zuraio/assets/zuraio-demo-mail.png')}"
+            src="${assetHref(HERO_SCREENSHOT)}"
             alt="${copy.hero.screenshotAlt}"
             width="1280"
             height="720"
@@ -199,13 +192,13 @@ function renderMain(copy, locale, isDev) {
       </div>
     </section>
 
-    <section class="alt-home-section" id="reasons" aria-labelledby="alt-reasons">
+    <section class="pad section-band section-band--paper" id="reasons" aria-labelledby="alt-reasons">
       <div class="wrap">
         <div class="alt-home-reasons">${reasonsHtml}</div>
       </div>
     </section>
 
-    <section class="alt-home-section alt-home-section--cloud" id="demo" aria-labelledby="alt-demo-h">
+    <section class="pad section-band section-band--cloud demo" id="demo" aria-labelledby="alt-demo-h">
       <div class="wrap">
         <h2 id="alt-demo-h">${copy.demo.heading}</h2>
         <div class="demo-static alt-home-demo">
@@ -228,8 +221,10 @@ function renderMain(copy, locale, isDev) {
       </div>
     </section>
 
-    <section class="alt-home-section" id="skills" aria-labelledby="alt-skills-h">
+    <section class="pad section-band section-band--paper" id="skills" aria-labelledby="alt-skills-h">
       <div class="wrap">
+        <span class="marker alt-skills-eyebrow alt-skills-eyebrow--long">${copy.skills.eyebrow ?? ''}</span>
+        <span class="marker alt-skills-eyebrow alt-skills-eyebrow--short">${copy.skills.eyebrowShort ?? ''}</span>
         <h2 id="alt-skills-h">${copy.skills.heading}</h2>
         <p class="lede">${copy.skills.intro}</p>
         <div class="alt-home-skills-grid">${skillsHtml}</div>
@@ -238,43 +233,48 @@ function renderMain(copy, locale, isDev) {
       </div>
     </section>
 
-    <section class="alt-home-section alt-home-section--muted" id="integrations" aria-labelledby="alt-int-h">
+    <section class="pad section-band section-band--cloud alt-home-integrations" id="integrations" aria-labelledby="alt-int-h">
       <div class="wrap">
         <h2 id="alt-int-h">${copy.integrations.heading}</h2>
         <p class="lede">${fmt(copy.integrations.line, isDev, todos)}</p>
-        <ul class="alt-home-logos" aria-label="Integrations">${logosHtml}</ul>
-        <p class="section-link"><a class="alt-home-link-secondary" href="../integrations.html">${copy.integrations.link}</a></p>
+        <ul class="alt-int-grid" aria-label="Integrations">${logosHtml}</ul>
+        <p class="section-link alt-home-integrations__link"><a href="../integrations.html">${copy.integrations.link}</a></p>
       </div>
     </section>
 
-    <section class="alt-home-section" id="compare" aria-labelledby="alt-compare-h">
+    <section class="pad section-band section-band--paper" id="compare" aria-labelledby="alt-compare-h">
       <div class="wrap">
         <h2 id="alt-compare-h">${copy.compare.heading}</h2>
-        <div class="compare-trio__grid alt-home-compare-grid">${compareHtml}</div>
+        <div class="alt-home-compare-grid">${compareHtml}</div>
       </div>
     </section>
 
-    <section class="control pad alt-home-control" id="control" aria-labelledby="alt-control-h">
+    <section class="control pad" id="data-control" aria-labelledby="alt-control-h">
+      <canvas class="control-particles" data-control-particles aria-hidden="true"></canvas>
       <div class="wrap">
-        <h2 id="alt-control-h">${copy.control.heading}</h2>
-        <p class="alt-home-control__tagline">${copy.control.tagline ?? ''}</p>
-        <div class="ctrl-grid alt-home-control-grid">${controlHtml}</div>
-        <p class="alt-home-control__line">${copy.control.serversLine}</p>
+        <div class="head-block">
+          <span class="marker">${copy.control.eyebrow}</span>
+          <h2 id="alt-control-h">${copy.control.heading}</h2>
+          <p class="lede">${copy.control.intro}</p>
+        </div>
+        <div class="ctrl-panel">
+          <div class="ctrl-grid">${controlCardsHtml}</div>
+          <p class="ctrl-note"><span style="color:var(--soft-olive);">▣</span><span>${copy.control.note}</span></p>
+        </div>
         <p class="section-link">
           <a class="alt-home-it-link" data-alt-cta="it_factsheet" href="${copy.control.itHref}">${copy.control.itLink}</a>
         </p>
-        <p class="alt-home-control__partner">${fmt(copy.control.partnerLine, isDev, todos)}</p>
       </div>
     </section>
 
-    <section class="alt-home-section" id="how-start" aria-labelledby="alt-start-h">
+    <section class="pad section-band section-band--cloud" id="how-start" aria-labelledby="alt-start-h">
       <div class="wrap">
         <h2 id="alt-start-h">${copy.start.heading}</h2>
-        <ol class="alt-home-steps">${stepsHtml}</ol>
+        <div class="alt-home-steps">${stepsHtml}</div>
       </div>
     </section>
 
-    <section class="alt-home-section alt-home-section--paper" id="team" aria-labelledby="alt-team-h">
+    <section class="pad section-band section-band--paper alt-home-team" id="team" aria-labelledby="alt-team-h">
       <div class="wrap">
         <h2 id="alt-team-h">${copy.team.heading}</h2>
         <p class="lede">${copy.team.body}</p>
@@ -283,7 +283,7 @@ function renderMain(copy, locale, isDev) {
       </div>
     </section>
 
-    <section class="alt-home-section alt-home-section--paper" id="faq" aria-labelledby="alt-faq-h">
+    <section class="pad section-band section-band--cloud" id="faq" aria-labelledby="alt-faq-h">
       <div class="wrap">
         <h2 id="alt-faq-h">FAQ</h2>
         <div class="faq-list alt-home-faq">${faqHtml}</div>
@@ -353,6 +353,7 @@ export function bootAltHomepage() {
   renderAltHomeFooter(copy, locale);
   initFaq();
   initAltHomeDemoVideo();
+  initControlParticles();
   bindAnalytics(heroVariant);
 }
 
