@@ -288,7 +288,7 @@ body[data-page="altHome"] .alt-home-hero__sub {
   color: var(--charcoal-soft);
   font-size: 17px;
   line-height: 1.5;
-  max-width: 34ch;
+  max-width: 38ch;
   text-wrap: pretty;
   margin: 0 0 32px;
 }
@@ -764,7 +764,7 @@ body[data-page="altHome"] #data-control .ccard p {
   line-height: 1.55;
 }
 
-@media (max-width: 899px) {
+@media (min-width: 600px) and (max-width: 899px) {
   body[data-page="altHome"] #data-control .ctrl-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
@@ -772,6 +772,65 @@ body[data-page="altHome"] #data-control .ccard p {
 
   body[data-page="altHome"] #data-control .ctrl-panel {
     padding: 16px;
+  }
+}
+
+@media (max-width: 599px) {
+  body[data-page="altHome"] #data-control.alt-section {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  body[data-page="altHome"] #data-control .alt-section-head {
+    margin-bottom: 10px;
+  }
+
+  body[data-page="altHome"] #data-control .head-block > * + * {
+    margin-top: 0.4rem;
+  }
+
+  body[data-page="altHome"] #data-control .ctrl-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  body[data-page="altHome"] #data-control .ctrl-panel {
+    padding: 12px 14px;
+    margin-top: 8px;
+  }
+
+  body[data-page="altHome"] #data-control .ccard {
+    height: auto;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 14px 0;
+    box-shadow: none;
+  }
+
+  body[data-page="altHome"] #data-control .ccard:last-child {
+    border-bottom: none;
+  }
+
+  body[data-page="altHome"] #data-control .ccard:hover {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.14);
+  }
+
+  body[data-page="altHome"] #data-control .ccard h4 {
+    display: block;
+    margin: 0 0 0.35rem;
+    font-size: var(--alt-card-title);
+    font-weight: 600;
+    color: #fff;
+  }
+
+  body[data-page="altHome"] #data-control .ccard p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
   }
 }
 
@@ -1193,10 +1252,6 @@ body[data-page="altHome"] .alt-todo-list__title {
   }
 
   body[data-page="altHome"] #skills .alt-section-head .lede {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
     line-height: 1.45;
   }
 
@@ -1207,10 +1262,7 @@ body[data-page="altHome"] .alt-todo-list__title {
   }
 
   body[data-page="altHome"] .alt-home-skills-grid .alt-home-skill-card p {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    line-height: 1.45;
   }
 
   body[data-page="altHome"] .alt-home-skills-note {
@@ -1269,10 +1321,6 @@ body[data-page="altHome"] .alt-todo-list__title {
   }
 
   body[data-page="altHome"] .alt-home-compare-snap .alt-home-compare--split p {
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
     line-height: 1.45;
   }
 
@@ -1296,16 +1344,21 @@ body[data-page="altHome"] .alt-todo-list__title {
 
   body[data-page="altHome"] #data-control .ctrl-panel {
     margin-top: 12px;
-    padding: 16px;
   }
 
-  body[data-page="altHome"] #data-control .ccard {
-    padding: 12px;
-  }
+  @media (min-width: 600px) {
+    body[data-page="altHome"] #data-control .ctrl-panel {
+      padding: 16px;
+    }
 
-  body[data-page="altHome"] #data-control .ccard h4 {
-    margin-bottom: 0.35rem;
-    font-size: var(--alt-card-title);
+    body[data-page="altHome"] #data-control .ccard {
+      padding: 12px;
+    }
+
+    body[data-page="altHome"] #data-control .ccard h4 {
+      margin-bottom: 0.35rem;
+      font-size: var(--alt-card-title);
+    }
   }
 
   body[data-page="altHome"] .alt-home-control-footer {
@@ -1350,10 +1403,6 @@ body[data-page="altHome"] .alt-todo-list__title {
   }
 
   body[data-page="altHome"] #team .alt-section-head .lede {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
     line-height: 1.45;
   }
 
@@ -1369,9 +1418,7 @@ body[data-page="altHome"] .alt-todo-list__title {
 
   body[data-page="altHome"] .alt-home-contact {
     margin-top: 12px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    line-height: 1.45;
   }
 
   body[data-page="altHome"] #faq.alt-section {
