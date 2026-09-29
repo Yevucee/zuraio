@@ -593,6 +593,21 @@ body[data-page="altHome"] .alt-home-step .alt-preview-card__title {
     left: auto;
     top: auto;
   }
+
+  body[data-page="altHome"] .alt-home-step:not(:last-child) .alt-home-step__head::after {
+    content: "";
+    position: absolute;
+    top: 0.65rem;
+    left: calc(100% + var(--alt-grid-gap) * 0.5);
+    width: calc(100% + var(--alt-grid-gap));
+    height: 1px;
+    background: var(--hairline);
+    pointer-events: none;
+  }
+
+  body[data-page="altHome"] .alt-home-step .alt-home-step__head {
+    position: relative;
+  }
 }
 
 /* Team */
