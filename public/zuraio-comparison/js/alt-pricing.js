@@ -1,70 +1,84 @@
 import { getAltPricingCopy } from './copy-alt-pricing.js';
 import { getAltHomeCopy } from './copy-alt-home.js';
 import { renderAltHomeHeader, renderAltHomeFooter } from './alt-homepage-chrome.js';
+import { isPreviewDevMode, formatPreviewHtml } from './alt-preview-utils.js';
 
-function table(headers, rows, secondaryCol) {
+function companyTable(headers, rows) {
   const head = headers.map((h) => `<th scope="col">${h}</th>`).join('');
   const body = rows
-    .map((row) => {
-      const cells = row
-        .map((cell, i) => {
-          if (secondaryCol === i) {
-            return `<td><strong>${row[0]}</strong><br><span class="alt-pricing-secondary">${cell}</span></td>`;
-          }
-          if (i === 0 && secondaryCol != null) return '';
-          return `<td>${cell}</td>`;
-        })
-        .filter(Boolean)
-        .join('');
-      if (secondaryCol != null) {
-        return `<tr><td><strong>${row[0]}</strong></td><td>${row[1]}</td><td>${row[2]}</td><td class="alt-pricing-secondary">${row[3]}</td></tr>`;
-      }
-      return `<tr>${cells}</tr>`;
-    })
+    .map(
+      (row) => `<tr>
+        <td>${row[0]}</td>
+        <td><strong>${row[1]}</strong></td>
+        <td>${row[2]}</td>
+        <td class="alt-pricing-secondary">${row[3]}</td>
+      </tr>`,
+    )
     .join('');
   return `<div class="table-wrap"><table class="compare-table alt-pricing-table"><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
+}
+
+function simpleTable(headers, rows) {
+  const head = headers.map((h) => `<th scope="col">${h}</th>`).join('');
+  const body = rows.map((row) => `<tr>${row.map((cell) => `<td>${cell}</td>`).join('')}</tr>`).join('');
+  return `<div class="table-wrap"><table class="compare-table alt-pricing-table"><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
+}
+
+function planDescriptionsList(plans) {
+  return `<ul class="alt-pricing-plan-desc">${plans
+    .map((p) => `<li><strong>${p.name}</strong> — ${p.desc}</li>`)
+    .join('')}</ul>`;
 }
 
 function boot() {
   const locale = document.documentElement.lang === 'en' ? 'en' : 'de';
   const copy = getAltPricingCopy(locale);
   const homeCopy = getAltHomeCopy(locale);
+  const isDev = isPreviewDevMode();
+  const todos = [];
 
   document.title = copy.title;
   renderAltHomeHeader(homeCopy, locale);
 
-  const companyTable = table(copy.tableCompany, copy.companyRows);
-  const indTable = table(copy.tableIndividual, copy.individualRows);
-  const setupTable = table(copy.tableSetup, copy.setupRows);
+  const employeeTodoHtml = copy.employeeTodo
+    ? `<p class="alt-todo alt-pricing-employee-todo">${formatPreviewHtml(copy.employeeTodo, isDev, todos)}</p>`
+    : '';
 
   document.getElementById('alt-pricing-main').innerHTML = `
-    <section class="page-hero pad">
+    <section class="alt-pricing-section alt-pricing-section--hero">
       <div class="wrap">
         <h1>${copy.heading}</h1>
         <p class="lede">${copy.intro}</p>
         <p class="section-link"><a href="${copy.backHref}">${copy.backLink}</a></p>
       </div>
     </section>
-    <section class="pad alt-home-section">
+    <section class="alt-pricing-section">
       <div class="wrap">
         <h2>${copy.companyHeading}</h2>
         <p class="lede">${copy.companyIntro}</p>
-        ${companyTable}
+        ${companyTable(copy.tableCompany, copy.companyRows)}
       </div>
     </section>
-    <section class="pad alt-home-section alt-home-section--muted">
+    <section class="alt-pricing-section alt-pricing-section--muted">
       <div class="wrap">
         <h2>${copy.individualsHeading}</h2>
-        <p class="alt-todo">${copy.individualsNote}</p>
-        ${indTable}
+        ${simpleTable(copy.tableIndividual, copy.individualRows)}
+        ${planDescriptionsList(copy.planDescriptions)}
+        <p class="alt-pricing-company-note">${copy.companyKnowledgeLine}</p>
       </div>
     </section>
-    <section class="pad alt-home-section">
+    <section class="alt-pricing-section">
       <div class="wrap">
         <h2>${copy.setupHeading}</h2>
-        ${setupTable}
+        ${simpleTable(copy.tableSetup, copy.setupRows)}
         <p class="alt-home-pricing-foot">${copy.footnote}</p>
-        <p class="alt-todo">${copy.employeeTodo}</p>
+        ${isDev ? employeeTodoHtml : ''}
+      </div>
+    </section>
+    <section class="alt-pricing-section alt-pricing-section--cta">
+      <div class="wrap alt-pricing-cta">
+        <p class="alt-pricing-cta__text">${copy.ctaLead}</p>
+        <a class="btn btn-primary btn-lg" href="../contact.html">${copy.ctaButton}</a>
       </div>
     </section>`;
 
