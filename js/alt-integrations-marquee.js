@@ -67,7 +67,7 @@ function renderLogo(item) {
 
 function renderItem(item) {
   if (item.textOnly) {
-    return `<span class="tool integration-item" data-integration="${item.id}">
+    return `<span class="tool integration-item integration-item--text" data-integration="${item.id}">
       <span class="integration-name">${item.label}</span>
     </span>`;
   }
@@ -78,11 +78,20 @@ function renderItem(item) {
     <span class="visually-hidden">${item.label}</span>
   </span>`;
   }
-  return `<span class="tool integration-item has-logo" data-integration="${item.id}">
+  return `<span class="tool integration-item integration-item--logo-only has-logo" data-integration="${item.id}">
     <span class="integration-logo-wrap" aria-hidden="true">${renderLogo(item)}</span>
-    <span class="integration-name">${item.label}</span>
     <span class="visually-hidden">${item.alt ?? item.label}</span>
   </span>`;
+}
+
+function prefersReducedMotion() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function setMarqueeContent(track, inner, html) {
+  const reduced = prefersReducedMotion();
+  inner.innerHTML = reduced ? html : html + html;
+  track.classList.toggle('is-static', reduced);
 }
 
 /** Same behaviour as integrations-marquee.js initMarquee, scoped to preview tracks. */
@@ -95,7 +104,7 @@ export function initAltPreviewMarquee() {
 
     if (!track.dataset.marqueeReady) {
       track.dataset.marqueeReady = 'true';
-      inner.innerHTML = html + html;
+      setMarqueeContent(track, inner, html);
       track.addEventListener('mouseenter', () => track.classList.add('is-paused'));
       track.addEventListener('mouseleave', () => track.classList.remove('is-paused'));
       track.addEventListener('focusin', () => track.classList.add('is-paused'));
@@ -103,6 +112,6 @@ export function initAltPreviewMarquee() {
       return;
     }
 
-    inner.innerHTML = html + html;
+    setMarqueeContent(track, inner, html);
   });
 }
