@@ -2,6 +2,9 @@
 
 body[data-page="altHome"] {
   padding-top: var(--nav-h);
+  /* ~2.5% darker than paper — subtler than global --cloud */
+  --alt-tint: #f6f6f3;
+  --alt-tint: color-mix(in srgb, var(--paper) 97.5%, var(--charcoal) 2.5%);
   --alt-section-y: clamp(56px, 4vw, 80px);
   --alt-head-gap: clamp(20px, 2vw, 28px);
   --alt-grid-gap: clamp(14px, 1.5vw, 22px);
@@ -36,8 +39,37 @@ body[data-page="altHome"] .alt-section {
   background: var(--paper);
 }
 
-body[data-page="altHome"] .alt-section--tint {
-  background: var(--cloud);
+/* Chapter bands (hard edges, no alternation) */
+body[data-page="altHome"] #hero,
+body[data-page="altHome"] #reasons,
+body[data-page="altHome"] #demo,
+body[data-page="altHome"] #compare,
+body[data-page="altHome"] #faq,
+body[data-page="altHome"] #final {
+  background: var(--paper);
+}
+
+body[data-page="altHome"] #skills,
+body[data-page="altHome"] #integrations,
+body[data-page="altHome"] #how-start,
+body[data-page="altHome"] #team {
+  background: var(--alt-tint);
+}
+
+body[data-page="altHome"] #skills.alt-section {
+  padding-block: var(--alt-section-y) calc(var(--alt-section-y) / 2);
+}
+
+body[data-page="altHome"] #integrations.alt-section {
+  padding-block: calc(var(--alt-section-y) / 2) var(--alt-section-y);
+}
+
+body[data-page="altHome"] #how-start.alt-section {
+  padding-block: var(--alt-section-y) calc(var(--alt-section-y) / 2);
+}
+
+body[data-page="altHome"] #team.alt-section {
+  padding-block: calc(var(--alt-section-y) / 2) var(--alt-section-y);
 }
 
 body[data-page="altHome"] .alt-section--control.control {
@@ -1041,24 +1073,6 @@ body[data-page="altHome"] .alt-home-contact {
   line-height: 1.55;
 }
 
-body[data-page="altHome"] #how-start.alt-section {
-  padding-bottom: var(--alt-section-y);
-}
-
-body[data-page="altHome"] #team.alt-section {
-  padding-top: var(--alt-section-y);
-}
-
-@media (min-width: 900px) {
-  body[data-page="altHome"] #how-start.alt-section {
-    padding-bottom: calc(var(--alt-section-y) * 0.75);
-  }
-
-  body[data-page="altHome"] #team.alt-section {
-    padding-top: calc(var(--alt-section-y) * 0.75);
-  }
-}
-
 body[data-page="altHome"] #team .alt-home-contact {
   margin-bottom: 0;
 }
@@ -1248,7 +1262,8 @@ body[data-page="altHome"] .alt-todo-list__title {
   }
 
   body[data-page="altHome"] #skills.alt-section {
-    padding-bottom: 40px;
+    padding-top: var(--alt-section-y);
+    padding-bottom: calc(var(--alt-section-y) / 2);
   }
 
   body[data-page="altHome"] #skills .alt-section-head .lede {
@@ -1305,6 +1320,7 @@ body[data-page="altHome"] .alt-todo-list__title {
   }
 
   body[data-page="altHome"] #integrations.alt-section {
+    padding-top: calc(var(--alt-section-y) / 2);
     padding-bottom: 40px;
   }
 
@@ -1373,7 +1389,8 @@ body[data-page="altHome"] .alt-todo-list__title {
   }
 
   body[data-page="altHome"] #how-start.alt-section {
-    padding-bottom: 40px;
+    padding-top: var(--alt-section-y);
+    padding-bottom: calc(var(--alt-section-y) / 2);
   }
 
   body[data-page="altHome"] .alt-home-step__titles {
@@ -1398,7 +1415,7 @@ body[data-page="altHome"] .alt-todo-list__title {
   }
 
   body[data-page="altHome"] #team.alt-section {
-    padding-top: 40px;
+    padding-top: calc(var(--alt-section-y) / 2);
     padding-bottom: 40px;
   }
 

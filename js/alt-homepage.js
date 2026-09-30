@@ -366,7 +366,7 @@ function renderMain(copy, locale, isDev) {
       </div>
     </section>
 
-    <section class="alt-section alt-section--paper" id="skills" aria-labelledby="alt-skills-h">
+    <section class="alt-section" id="skills" aria-labelledby="alt-skills-h">
       <div class="wrap">
         <div class="alt-section-head">
           <span class="marker alt-skills-eyebrow">${skillsEyebrow}</span>
@@ -384,7 +384,7 @@ function renderMain(copy, locale, isDev) {
       </div>
     </section>
 
-    <section class="alt-section alt-section--tint alt-home-integrations" id="integrations" aria-labelledby="alt-int-h">
+    <section class="alt-section alt-home-integrations" id="integrations" aria-labelledby="alt-int-h">
       <div class="wrap">
         <div class="alt-section-head">
           <h2 id="alt-int-h" class="alt-reveal">${copy.integrations.heading}</h2>
