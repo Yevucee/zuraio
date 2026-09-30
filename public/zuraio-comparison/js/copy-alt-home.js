@@ -46,7 +46,7 @@ export const copyAltHome = {
         },
         {
           title: 'Sie entscheiden, wohin Ihre Daten gehen.',
-          body: 'Gehostet bei Infomaniak in der Schweiz. Standardmässig bleibt alles hier; wählen Sie ein anderes KI-Modell, sehen Sie vorher, wo es arbeitet.',
+          body: 'Gehostet bei Infomaniak in der Schweiz. Andere KI-Modelle nur, wenn Sie es wählen.',
         },
         {
           title: 'Skills, gemeinsam mit Ihnen entwickelt.',
@@ -216,7 +216,7 @@ export const copyAltHome = {
         },
         {
           title: 'You decide where your data goes.',
-          body: 'Hosted by Infomaniak in Switzerland. Swiss by default; if you choose another AI model, you see where it runs first.',
+          body: 'Hosted by Infomaniak in Switzerland. Other AI models only when you choose them.',
         },
         {
           title: 'Skills built with you.',
