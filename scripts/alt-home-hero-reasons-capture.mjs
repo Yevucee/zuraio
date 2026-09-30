@@ -13,7 +13,7 @@ const browser = await chromium.launch();
 for (const locale of ['en', 'de']) {
   for (const vp of [
     { name: '1280x800', width: 1280, height: 800 },
-    { name: '390', width: 390, height: 844 },
+    { name: '390', width: 390, height: 1400 },
   ]) {
     const context = await browser.newContext({ viewport: { width: vp.width, height: vp.height } });
     const page = await context.newPage();
@@ -44,7 +44,7 @@ for (const locale of ['en', 'de']) {
           x: box.x,
           y: Math.max(0, box.y),
           width: box.width,
-          height: Math.min(box.height, vp.name === '390' ? 1280 : 720),
+          height: Math.min(box.height, vp.name === '390' ? 1500 : 720),
         },
       });
     }
