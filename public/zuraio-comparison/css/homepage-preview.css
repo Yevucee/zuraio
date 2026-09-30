@@ -40,7 +40,10 @@ body[data-page="altHome"] .alt-section {
 }
 
 /* Chapter bands (hard edges, no alternation) */
-body[data-page="altHome"] #hero,
+body[data-page="altHome"] #hero {
+  background: var(--alt-tint);
+}
+
 body[data-page="altHome"] #reasons,
 body[data-page="altHome"] #demo,
 body[data-page="altHome"] #compare,
@@ -153,6 +156,7 @@ body[data-page="altHome"] .reveal {
 /* Nav */
 body[data-page="altHome"] .alt-home-nav.nav {
   max-height: 56px;
+  border-bottom: 1px solid var(--hairline);
 }
 
 body[data-page="altHome"] .alt-home-nav .nav-in {
@@ -248,10 +252,29 @@ body[data-page="altHome"] .alt-home-link-secondary {
 body[data-page="altHome"] .alt-home-hero {
   padding-top: clamp(40px, 4.5vw, 56px);
   padding-bottom: calc(var(--alt-head-gap) * 2);
+  position: relative;
+  z-index: 1;
 }
 
 body[data-page="altHome"] #reasons.alt-section {
   padding-top: calc(var(--alt-head-gap) * 2);
+}
+
+@media (min-width: 900px) {
+  body[data-page="altHome"] .alt-home-hero {
+    padding-bottom: calc(var(--alt-head-gap) * 2 + 56px);
+  }
+
+  body[data-page="altHome"] #reasons.alt-section {
+    margin-top: -56px;
+    position: relative;
+    z-index: 2;
+  }
+
+  body[data-page="altHome"] .alt-home-reasons .alt-preview-card {
+    background: var(--white);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  }
 }
 
 body[data-page="altHome"] .alt-home-hero .hero-eyebrow.marker,
