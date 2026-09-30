@@ -117,11 +117,11 @@ export const copyAltHome = {
     compare: {
       heading: 'Warum nicht einfach ChatGPT oder Copilot?',
       chatgpt:
-        'Intelligent, kennt aber Ihren Betrieb nicht. Den Kontext muss jemand jedes Mal hineinkopieren. Und es ist schwer nachzuvollziehen, welche Firmendaten wo landen.',
+        'Intelligent, kennt aber Ihren Betrieb nicht. Den Kontext muss jemand jedes Mal hineinkopieren, und es ist schwer nachzuvollziehen, welche Firmendaten wo landen.',
       copilot:
         'Kennt die Microsoft-Welt. Daten aus bexio, Abacus oder Ihrem CRM brauchen Zusatzaufwand, und der Nutzen hängt von Lizenzen und Einrichtung ab.',
       zuraio:
-        'Kennt Ihren Betrieb über alle Systeme hinweg, startet mit fertigen Skills, entwickelt eigene mit Ihnen. In der Schweiz gehostet, und Sie entscheiden, welche KI was sieht.',
+        'Kennt Ihren Betrieb über alle Systeme hinweg, startet mit fertigen Skills, entwickelt eigene mit Ihnen. Gehostet in der Schweiz, und Sie entscheiden, welche KI was sieht.',
     },
     control: {
       eyebrow: 'DATENKONTROLLE',
