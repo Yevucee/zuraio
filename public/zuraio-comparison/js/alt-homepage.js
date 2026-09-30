@@ -2,19 +2,25 @@ import { getAltHomeCopy } from './copy-alt-home.js';
 import { renderAltHomeHeader, renderAltHomeFooter } from './alt-homepage-chrome.js';
 import { trackAltHome } from './alt-homepage-analytics.js';
 import { initFaq } from './faq-accordion.js';
-import { assetHref } from './path-locale.js';
+import { assetHref, detectSiteBase } from './path-locale.js';
 import { isPreviewDevMode, formatPreviewHtml } from './alt-preview-utils.js';
 import { initControlParticles } from './control-particles.js';
 import { initAltPreviewMarquee } from './alt-integrations-marquee.js';
+
 const DEMO_CACHE = '20260805v2';
 const FOUNDER_PREVIEW = 'zuraio/assets/team-preview';
+const PRODUCT_IMG_WIDTH = 2080;
+const PRODUCT_IMG_HEIGHT = 1560;
+
 const HERO_REPLY_IMAGE = {
   en: 'assets/hero/zuraio-hero-reply-en@2x.webp',
   de: 'assets/hero/zuraio-hero-reply-de@2x.webp',
 };
-/** 2× asset for 520×390 display slot */
-const HERO_IMG_WIDTH = 1040;
-const HERO_IMG_HEIGHT = 780;
+
+const SKILLS_PRESENTATION_IMAGE = {
+  en: 'assets/skills/zuraio-skills-presentation-en@2x.webp',
+  de: 'assets/skills/zuraio-skills-presentation-de@2x.webp',
+};
 
 function cacheBust(url) {
   if (!url) return url;
@@ -112,37 +118,101 @@ function renderTrustLine(trustLine) {
     .join('');
 }
 
-function heroReplyImageSrc(locale) {
-  const key = locale === 'de' ? 'de' : 'en';
-  return assetHref(HERO_REPLY_IMAGE[key]);
+function localeKey(locale) {
+  return locale === 'de' ? 'de' : 'en';
 }
 
-function renderHeroVisual(locale, copy, isDev) {
-  const src = heroReplyImageSrc(locale);
-  const alt = copy.hero.imageAlt ?? '';
-  const placeholder = isDev
-    ? '<div class="alt-home-hero__placeholder" aria-hidden="true"></div>'
-    : '';
+/** Alt-home static assets live under `zuraio-comparison/assets/` (also copied to site `/assets/` on deploy). */
+function altHomeAssetHref(relativePath) {
+  const path = relativePath.replace(/^\//, '');
+  const siteBase = detectSiteBase();
+  if (siteBase) return `${siteBase}/${path}`;
+  const segments = location.pathname.split('/').filter(Boolean);
+  if (segments[0] === 'zuraio-comparison') {
+    return `../${path}`;
+  }
+  return assetHref(path);
+}
+
+function heroReplyImageSrc(locale) {
+  return altHomeAssetHref(HERO_REPLY_IMAGE[localeKey(locale)]);
+}
+
+function skillsPresentationImageSrc(locale) {
+  return altHomeAssetHref(SKILLS_PRESENTATION_IMAGE[localeKey(locale)]);
+}
+
+function renderProductFrameImg({ src, alt, imgAttrs = '', imgExtraClass = '', dataAttr = '' }) {
   return `
-    <div class="alt-home-hero__frame" data-alt-hero-frame hidden>
-      ${placeholder}
       <img
-        class="alt-home-hero__img"
-        data-alt-hero-img
+        class="alt-home-product-frame__img${imgExtraClass ? ` ${imgExtraClass}` : ''}"
+        ${dataAttr}
         data-src="${src}"
         alt="${alt}"
-        width="${HERO_IMG_WIDTH}"
-        height="${HERO_IMG_HEIGHT}"
-        fetchpriority="high"
+        width="${PRODUCT_IMG_WIDTH}"
+        height="${PRODUCT_IMG_HEIGHT}"
         decoding="async"
-      />
+        ${imgAttrs}
+      />`;
+}
+
+function renderHeroVisual(locale, copy) {
+  const src = heroReplyImageSrc(locale);
+  const alt = copy.hero.imageAlt ?? '';
+  return `
+    <div class="alt-home-product-frame alt-home-hero__frame" data-alt-hero-frame hidden>
+      ${renderProductFrameImg({
+        src,
+        alt,
+        imgAttrs: 'fetchpriority="high"',
+        dataAttr: 'data-alt-hero-img',
+      })}
     </div>`;
 }
 
-function initHeroVisualSlot(isDev) {
+function renderSkillsVisual(locale, copy) {
+  const src = skillsPresentationImageSrc(locale);
+  const alt = copy.skills.presentationImageAlt ?? '';
+  return `
+    <div class="alt-home-skills-head__visual" data-alt-skills-visual hidden>
+      <div class="alt-home-product-frame alt-home-skills__frame" data-alt-skills-frame hidden>
+        ${renderProductFrameImg({ src, alt, imgAttrs: 'loading="lazy"' })}
+      </div>
+    </div>`;
+}
+
+function probeProductImage(frame, img, onReady, onMissing) {
+  if (!frame || !img) {
+    onMissing();
+    return;
+  }
+  const src = img.dataset.src;
+  if (!src) {
+    onMissing();
+    return;
+  }
+
+  const ready = () => {
+    img.src = src;
+    img.classList.add('is-loaded');
+    if (img.complete && img.naturalWidth > 0) {
+      onReady();
+      return;
+    }
+    img.addEventListener('load', onReady, { once: true });
+    img.addEventListener('error', onMissing, { once: true });
+  };
+
+  const probe = new Image();
+  probe.onload = ready;
+  probe.onerror = onMissing;
+  probe.src = src;
+}
+
+function initHeroVisualSlot() {
   const hero = document.querySelector('.alt-home-hero');
   const frame = document.querySelector('[data-alt-hero-frame]');
-  const img = document.querySelector('[data-alt-hero-img]');
+  const img = frame?.querySelector('[data-alt-hero-img]');
   const visualCol = document.querySelector('.alt-home-hero__visual');
   if (!hero || !frame) return;
 
@@ -155,41 +225,47 @@ function initHeroVisualSlot(isDev) {
 
   setVisualVisible(false);
 
-  const src = img?.dataset.src;
-  if (!src) {
-    if (isDev) setVisualVisible(true);
-    return;
-  }
+  probeProductImage(
+    frame,
+    img,
+    () => setVisualVisible(true),
+    () => {
+      img?.remove();
+      setVisualVisible(false);
+    },
+  );
+}
 
-  const onReady = () => {
-    const placeholder = frame.querySelector('.alt-home-hero__placeholder');
-    if (placeholder) placeholder.hidden = true;
-    setVisualVisible(true);
+function initSkillsVisualSlot() {
+  const section = document.getElementById('skills');
+  const outer = section?.querySelector('[data-alt-skills-visual]');
+  const frame = section?.querySelector('[data-alt-skills-frame]');
+  const img = frame?.querySelector('.alt-home-product-frame__img');
+  if (!section || !outer || !frame) return;
+
+  const show = () => {
+    section.classList.add('alt-home-skills--has-visual');
+    outer.hidden = false;
+    frame.hidden = false;
   };
 
-  const onMissing = () => {
-    img?.remove();
-    if (isDev) {
-      setVisualVisible(true);
-      return;
-    }
-    setVisualVisible(false);
+  const hide = () => {
+    section.classList.remove('alt-home-skills--has-visual');
+    outer.hidden = true;
+    frame.hidden = true;
   };
 
-  const probe = new Image();
-  probe.onload = () => {
-    if (!img) return;
-    img.src = src;
-    img.classList.add('is-loaded');
-    if (img.complete && img.naturalWidth > 0) {
-      onReady();
-      return;
-    }
-    img.addEventListener('load', onReady, { once: true });
-    img.addEventListener('error', onMissing, { once: true });
-  };
-  probe.onerror = onMissing;
-  probe.src = src;
+  hide();
+
+  probeProductImage(
+    frame,
+    img,
+    show,
+    () => {
+      img?.remove();
+      hide();
+    },
+  );
 }
 
 function renderMain(copy, locale, isDev) {
@@ -330,7 +406,7 @@ function renderMain(copy, locale, isDev) {
           </div>
         </div>
         <div class="alt-home-hero__visual" hidden>
-          ${renderHeroVisual(locale, copy, isDev)}
+          ${renderHeroVisual(locale, copy)}
         </div>
       </div>
     </section>
@@ -368,10 +444,13 @@ function renderMain(copy, locale, isDev) {
 
     <section class="alt-section" id="skills" aria-labelledby="alt-skills-h">
       <div class="wrap">
-        <div class="alt-section-head">
-          <span class="marker alt-skills-eyebrow">${skillsEyebrow}</span>
-          <h2 id="alt-skills-h" class="alt-reveal">${copy.skills.heading}</h2>
-          <p class="lede">${copy.skills.intro}</p>
+        <div class="alt-home-skills-head">
+          <div class="alt-section-head alt-home-skills-head__copy">
+            <span class="marker alt-skills-eyebrow">${skillsEyebrow}</span>
+            <h2 id="alt-skills-h" class="alt-reveal">${copy.skills.heading}</h2>
+            <p class="lede">${copy.skills.intro}</p>
+          </div>
+          ${renderSkillsVisual(locale, copy)}
         </div>
         <div class="alt-home-skills-grid">${skillsHtml}</div>
         <div class="alt-home-skills-note">
@@ -479,7 +558,8 @@ function renderMain(copy, locale, isDev) {
   }
 
   window.__altHomeTodos = [...new Set(todos)];
-  initHeroVisualSlot(isDev);
+  initHeroVisualSlot();
+  initSkillsVisualSlot();
 }
 
 function bindAnalytics(heroVariant) {
