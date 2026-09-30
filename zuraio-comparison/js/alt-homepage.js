@@ -6,6 +6,7 @@ import { assetHref, detectSiteBase } from './path-locale.js';
 import { isPreviewDevMode, formatPreviewHtml } from './alt-preview-utils.js';
 import { initControlParticles } from './control-particles.js';
 import { initAltPreviewMarquee } from './alt-integrations-marquee.js';
+import { ALT_HOME_REASON_ICONS } from './alt-home-reason-icons.js';
 
 const DEMO_CACHE = '20260805v2';
 const FOUNDER_PREVIEW = 'zuraio/assets/team-preview';
@@ -15,6 +16,19 @@ const PRODUCT_IMG_HEIGHT = 1560;
 const HERO_REPLY_IMAGE = {
   en: 'assets/hero/zuraio-hero-reply-en@2x.webp',
   de: 'assets/hero/zuraio-hero-reply-de@2x.webp',
+};
+
+const HERO_REPLY_IMAGE_MOBILE = {
+  en: {
+    path: 'assets/hero/zuraio-hero-reply-en-mobile@3x.webp',
+    width: 1170,
+    height: 852,
+  },
+  de: {
+    path: 'assets/hero/zuraio-hero-reply-de-mobile@3x.webp',
+    width: 1170,
+    height: 909,
+  },
 };
 
 const SKILLS_PRESENTATION_IMAGE = {
@@ -138,6 +152,10 @@ function heroReplyImageSrc(locale) {
   return altHomeAssetHref(HERO_REPLY_IMAGE[localeKey(locale)]);
 }
 
+function heroReplyMobileImageSrc(locale) {
+  return altHomeAssetHref(HERO_REPLY_IMAGE_MOBILE[localeKey(locale)].path);
+}
+
 function skillsPresentationImageSrc(locale) {
   return altHomeAssetHref(SKILLS_PRESENTATION_IMAGE[localeKey(locale)]);
 }
@@ -157,16 +175,34 @@ function renderProductFrameImg({ src, alt, imgAttrs = '', imgExtraClass = '', da
 }
 
 function renderHeroVisual(locale, copy) {
+  const key = localeKey(locale);
   const src = heroReplyImageSrc(locale);
+  const mobileSrc = heroReplyMobileImageSrc(locale);
+  const mobile = HERO_REPLY_IMAGE_MOBILE[key];
   const alt = copy.hero.imageAlt ?? '';
   return `
     <div class="alt-home-product-frame alt-home-hero__frame" data-alt-hero-frame hidden>
-      ${renderProductFrameImg({
-        src,
-        alt,
-        imgAttrs: 'fetchpriority="high"',
-        dataAttr: 'data-alt-hero-img',
-      })}
+      <picture>
+        <source
+          type="image/webp"
+          media="(max-width: 599px)"
+          data-src="${mobileSrc}"
+          width="${mobile.width}"
+          height="${mobile.height}"
+        />
+        <img
+          class="alt-home-product-frame__img"
+          data-alt-hero-img
+          data-src="${src}"
+          data-mobile-width="${mobile.width}"
+          data-mobile-height="${mobile.height}"
+          alt="${alt}"
+          width="${PRODUCT_IMG_WIDTH}"
+          height="${PRODUCT_IMG_HEIGHT}"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
     </div>`;
 }
 
@@ -194,6 +230,11 @@ function probeProductImage(frame, img, onReady, onMissing) {
 
   const ready = () => {
     img.src = src;
+    const mobileSource = frame?.querySelector('picture source[data-src]');
+    const mobileSrc = mobileSource?.dataset.src;
+    if (mobileSource && mobileSrc) {
+      mobileSource.srcset = mobileSrc;
+    }
     img.classList.add('is-loaded');
     if (img.complete && img.naturalWidth > 0) {
       onReady();
@@ -273,13 +314,16 @@ function renderMain(copy, locale, isDev) {
   const heroKey = getHeroVariant();
   const heroTitle = copy.hero.variants[heroKey];
 
-  const reasonsHtml = copy.reasons.cards
+  const reasonsStripHtml = copy.reasons.cards
     .map(
-      (c) => `
-      <article class="alt-preview-card alt-home-reason">
-        <h3 class="alt-preview-card__title">${c.title}</h3>
-        <p>${fmt(c.body, isDev, todos)}</p>
-      </article>`,
+      (c, i) => `
+      <div class="alt-home-reasons-strip__item" role="listitem">
+        <span class="alt-home-reasons-strip__icon" aria-hidden="true">${ALT_HOME_REASON_ICONS[i] ?? ''}</span>
+        <div class="alt-home-reasons-strip__text">
+          <h3 class="alt-home-reasons-strip__title">${c.title}</h3>
+          <p class="alt-home-reasons-strip__body">${fmt(c.body, isDev, todos)}</p>
+        </div>
+      </div>`,
     )
     .join('');
 
@@ -409,11 +453,9 @@ function renderMain(copy, locale, isDev) {
           ${renderHeroVisual(locale, copy)}
         </div>
       </div>
-    </section>
-
-    <section class="alt-section alt-section--paper" id="reasons" aria-labelledby="alt-reasons">
-      <div class="wrap">
-        <div class="alt-home-reasons">${reasonsHtml}</div>
+      <div class="wrap alt-home-hero__tail">
+        <hr class="alt-home-hero__strip-rule" aria-hidden="true" />
+        <div class="alt-home-reasons-strip" role="list">${reasonsStripHtml}</div>
       </div>
     </section>
 
