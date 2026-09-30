@@ -866,7 +866,6 @@ body[data-page="altHome"] .alt-home-integrations__sub {
 }
 
 body[data-page="altHome"] .alt-home-integrations__marquee {
-  margin: 32px 0 0;
   width: 100%;
 }
 
@@ -895,16 +894,35 @@ body[data-page="altHome"] [data-alt-marquee].marquee-track {
 }
 
 body[data-page="altHome"] [data-alt-marquee] {
-  margin: 0;
+  margin-inline: 0;
+  margin-bottom: 0;
   overflow: hidden;
   -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
   mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
+}
+
+body[data-page="altHome"] [data-alt-marquee].alt-home-integrations__marquee {
+  margin-top: 32px;
 }
 
 body[data-page="altHome"] [data-alt-marquee] .marquee-inner {
   display: flex;
   align-items: center;
   gap: 48px;
+  animation: altHomeMarqueeScroll var(--marquee-duration, 48s) linear infinite;
+}
+
+body[data-page="altHome"] [data-alt-marquee].is-paused .marquee-inner {
+  animation-play-state: paused;
+}
+
+@keyframes altHomeMarqueeScroll {
+  from {
+    transform: translateX(var(--marquee-offset, 0px));
+  }
+  to {
+    transform: translateX(calc(var(--marquee-offset, 0px) - 50%));
+  }
 }
 
 body[data-page="altHome"] [data-alt-marquee] .tool,
@@ -952,11 +970,26 @@ body[data-page="altHome"] [data-alt-marquee] .integration-item--wordmark[data-in
   height: 23px;
 }
 
-body[data-page="altHome"] [data-alt-marquee] .integration-item--text {
+body[data-page="altHome"] [data-alt-marquee] .integration-item--text,
+body[data-page="altHome"] [data-alt-marquee] .integration-item--symbol {
+  display: inline-flex;
   align-items: baseline;
+  gap: 8px;
 }
 
-body[data-page="altHome"] [data-alt-marquee] .integration-item--text .integration-name {
+body[data-page="altHome"] [data-alt-marquee] .integration-item--symbol .integration-logo-wrap {
+  width: 20px;
+  height: 20px;
+  align-self: center;
+}
+
+body[data-page="altHome"] [data-alt-marquee] .integration-item--symbol .integration-logo-img {
+  width: 20px;
+  height: 20px;
+}
+
+body[data-page="altHome"] [data-alt-marquee] .integration-item--text .integration-name,
+body[data-page="altHome"] [data-alt-marquee] .integration-item--symbol .integration-name {
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
@@ -964,6 +997,10 @@ body[data-page="altHome"] [data-alt-marquee] .integration-item--text .integratio
 }
 
 @media (max-width: 959px) {
+  body[data-page="altHome"] [data-alt-marquee].alt-home-integrations__marquee {
+    margin-top: 24px;
+  }
+
   body[data-page="altHome"] [data-alt-marquee] {
     -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
     mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
