@@ -35,7 +35,8 @@ export const copyAltHome = {
       cta: '30-Minuten-Demo buchen',
       ctaMicro: 'Mit Ihren eigenen Beispielen. Unverbindlich.',
       trust: 'Gehostet bei Infomaniak in der Schweiz · ISO 27001:2022 · Arbeitet mit bexio, Abacus, Microsoft 365',
-      imageAlt: 'Zuraio entwirft eine Antwort auf eine Kunden-E-Mail, mit Quellenangaben',
+      imageAlt:
+        'Zuraio entwirft aus drei Quellen eine Antwort auf eine Kunden-E-Mail und markiert einen fehlenden Preis zur Prüfung vor dem Versand',
     },
     reasons: {
       cards: [
@@ -77,6 +78,8 @@ export const copyAltHome = {
       footnoteLabel: 'Mit Ihnen entwickelt',
       link: 'Alle Skills ansehen →',
       linkHref: '../how-it-helps.html#skills',
+      presentationImageAlt:
+        'Zuraio erstellt aus der Firmenvorlage eine Verkaufspräsentation mit 12 Folien und listet die Lücken auf, die vor dem Versand zu füllen sind',
     },
     integrations: {
       heading: 'Arbeitet mit den Systemen, die Schweizer KMU wirklich nutzen.',
@@ -202,7 +205,8 @@ export const copyAltHome = {
       cta: 'Book a 30-minute demo',
       ctaMicro: 'With your own examples. No commitment.',
       trust: 'Hosted by Infomaniak in Switzerland · ISO 27001:2022 · Works with bexio, Abacus, Microsoft 365',
-      imageAlt: 'Zuraio drafts a reply to a client email, with its sources shown',
+      imageAlt:
+        'Zuraio drafts a reply to a client email from three sources and flags a missing price for you to check before sending',
     },
     reasons: {
       cards: [
@@ -244,6 +248,8 @@ export const copyAltHome = {
       footnoteLabel: 'Built with you',
       link: 'See all skills →',
       linkHref: '../how-it-helps.html#skills',
+      presentationImageAlt:
+        'Zuraio builds a 12-slide sales presentation from the company\'s own template and lists the gaps to fill before sending',
     },
     integrations: {
       heading: 'Works with the systems Swiss SMEs actually use.',
