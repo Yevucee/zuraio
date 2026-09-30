@@ -78,10 +78,23 @@ function renderItem(item) {
     <span class="visually-hidden">${item.label}</span>
   </span>`;
   }
-  return `<span class="tool integration-item integration-item--logo-only has-logo" data-integration="${item.id}">
+  return `<span class="tool integration-item integration-item--symbol has-logo" data-integration="${item.id}">
     <span class="integration-logo-wrap" aria-hidden="true">${renderLogo(item)}</span>
-    <span class="visually-hidden">${item.alt ?? item.label}</span>
+    <span class="integration-name">${item.label}</span>
   </span>`;
+}
+
+function applyMarqueeStartOffset(track, inner) {
+  if (prefersReducedMotion()) {
+    inner.style.removeProperty('--marquee-offset');
+    return;
+  }
+  const bexio = inner.querySelector('[data-integration="bexio"]');
+  if (!bexio) return;
+  const trackWidth = track.clientWidth;
+  const bexioCenter = bexio.offsetLeft + bexio.offsetWidth / 2;
+  const offset = trackWidth / 2 - bexioCenter;
+  inner.style.setProperty('--marquee-offset', `${offset}px`);
 }
 
 function prefersReducedMotion() {
@@ -92,6 +105,9 @@ function setMarqueeContent(track, inner, html) {
   const reduced = prefersReducedMotion();
   inner.innerHTML = reduced ? html : html + html;
   track.classList.toggle('is-static', reduced);
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => applyMarqueeStartOffset(track, inner));
+  });
 }
 
 /** Same behaviour as integrations-marquee.js initMarquee, scoped to preview tracks. */
