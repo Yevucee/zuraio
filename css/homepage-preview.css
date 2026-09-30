@@ -873,6 +873,16 @@ body[data-page="altHome"] .alt-home-integrations__marquee {
   width: 100%;
 }
 
+body[data-page="altHome"] #integrations > .wrap {
+  display: block;
+  min-height: auto;
+}
+
+body[data-page="altHome"] .alt-home-integrations__head-wrap,
+body[data-page="altHome"] .alt-home-integrations__foot {
+  min-height: auto;
+}
+
 body[data-page="altHome"] .alt-home-integrations__foot {
   margin-top: 20px;
 }

@@ -1,4 +1,4 @@
-/** Alternative homepage copy (DE + EN). Self-contained — no imports from copy-de/en. */
+/** Alternative homepage copy (DE + EN). Self-contained; no imports from copy-de/en. */
 
 export const ALT_HOME_LOCALES = ['de', 'en'];
 
@@ -16,7 +16,7 @@ const FAQ_AUTO_EN =
 
 export const copyAltHome = {
   de: {
-    metaTitle: 'Zuraio – Alternative Startseite (Vorschau)',
+    metaTitle: 'Zuraio | Alternative Startseite',
     nav: {
       howItWorks: 'So funktioniert\'s',
       skills: 'Skills',
@@ -29,9 +29,9 @@ export const copyAltHome = {
       variants: {
         a: 'KI, ohne die Schlüssel aus der Hand zu geben.',
         c: 'Ihr Team nutzt KI längst. Wissen Sie, wo Ihre Daten landen?',
-        h: 'Ein KI-Assistent, eingerichtet für Ihren Betrieb – von Menschen, die sich die Zeit nehmen, ihn zu verstehen.',
+        h: 'Ein KI-Assistent, eingerichtet für Ihren Betrieb. Von Menschen, die sich die Zeit nehmen, ihn zu verstehen.',
       },
-      sub: 'Zuraio beantwortet E-Mails, bereitet Sitzungen vor und findet, was Sie in Ihrem Firmenwissen suchen – mit Quellen, in der Schweiz gehostet.',
+      sub: 'Zuraio beantwortet E-Mails, bereitet Sitzungen vor und findet, was Sie in Ihrem Firmenwissen suchen. Mit Quellen und in der Schweiz gehostet.',
       cta: '30-Minuten-Demo buchen',
       ctaMicro: 'Mit Ihren eigenen Beispielen. Unverbindlich.',
       trust: [
@@ -46,7 +46,7 @@ export const copyAltHome = {
       cards: [
         {
           title: 'Kennt Ihren Betrieb bereits.',
-          body: 'Antworten aus Ihren E-Mails, Dokumenten und Systemen – jede mit Quelle.',
+          body: 'Antworten aus Ihren E-Mails, Dokumenten und Systemen, jede mit Quelle.',
         },
         {
           title: 'Sie entscheiden, wohin Ihre Daten gehen.',
@@ -66,9 +66,9 @@ export const copyAltHome = {
     skills: {
       eyebrow: 'FÜR ARCHITEKTUR- UND INGENIEURBÜROS, TREUHÄNDER UND IMMOBILIENVERWALTUNGEN',
       eyebrowShort: 'FÜR ARCHITEKTEN, TREUHÄNDER UND VERWALTUNGEN',
-      heading: 'Skills, gemeinsam mit Ihnen entwickelt – für die Art, wie Ihr Betrieb arbeitet.',
+      heading: 'Skills, gemeinsam mit Ihnen entwickelt. Für die Art, wie Ihr Betrieb arbeitet.',
       intro:
-        'Starten Sie mit fertigen Skills. Danach entwickeln wir mit Ihrem Team die Skills, die nur Ihr Betrieb hat – Ihre Offerten, Ihr Ton, Ihre Abläufe.',
+        'Starten Sie mit fertigen Skills. Danach entwickeln wir mit Ihrem Team die Skills, die nur Ihr Betrieb hat: Ihre Offerten, Ihr Ton, Ihre Abläufe.',
       readyMade: [
         {
           title: 'Kunden und Mieter beantworten',
@@ -82,7 +82,7 @@ export const copyAltHome = {
         },
         {
           title: 'Projektstatus',
-          body: 'Stand, offene Punkte und wer wartet – aus E-Mails und Dateien',
+          body: 'Wo es steht, was offen ist und wer wartet, aus E-Mails und Dateien',
           sources: 'E-Mails · Dateien · Aufgaben',
         },
         {
@@ -102,7 +102,7 @@ export const copyAltHome = {
         },
       ],
       band:
-        'Gemeinsam mit Ihnen entwickelt – Beispiele: «Offerte in unserem Format, mit unseren Rabattregeln» · «Antwort an Mieter in unserem Ton, mit unseren Standardklauseln» · «Monatsreport, so wie ihn unsere Partner mögen» [durch echte Pilot-Beispiele ersetzen]',
+        'Gemeinsam mit Ihnen entwickelt: «Offerte in unserem Format, mit unseren Rabattregeln» · «Antwort an Mieter in unserem Ton, mit unseren Standardklauseln» · «Monatsreport, so wie ihn unsere Partner mögen» [durch echte Pilot-Beispiele ersetzen]',
       footnoteLabel: 'Mit Ihnen entwickelt',
       link: 'Alle Skills ansehen →',
       linkHref: '../how-it-helps.html#skills',
@@ -117,18 +117,18 @@ export const copyAltHome = {
     compare: {
       heading: 'Warum nicht einfach ChatGPT oder Copilot?',
       chatgpt:
-        'Intelligent, kennt aber Ihren Betrieb nicht. Den Kontext muss jemand jedes Mal hineinkopieren – und es ist schwer nachzuvollziehen, welche Firmendaten wo landen.',
+        'Intelligent, kennt aber Ihren Betrieb nicht. Den Kontext muss jemand jedes Mal hineinkopieren. Und es ist schwer nachzuvollziehen, welche Firmendaten wo landen.',
       copilot:
         'Kennt die Microsoft-Welt. Daten aus bexio, Abacus oder Ihrem CRM brauchen Zusatzaufwand, und der Nutzen hängt von Lizenzen und Einrichtung ab.',
       zuraio:
-        'Kennt Ihren Betrieb über alle Systeme hinweg, startet mit fertigen Skills, entwickelt eigene mit Ihnen – in der Schweiz gehostet, und Sie entscheiden, welche KI was sieht.',
+        'Kennt Ihren Betrieb über alle Systeme hinweg, startet mit fertigen Skills, entwickelt eigene mit Ihnen. In der Schweiz gehostet, und Sie entscheiden, welche KI was sieht.',
     },
     control: {
       eyebrow: 'DATENKONTROLLE',
       heading: 'Nichts verlässt den Betrieb ohne Ihr OK.',
       intro: 'Standardmässig Schweiz. Nie abhängig von einem einzigen KI-Anbieter.',
       introSupport:
-        'Ändert ein Anbieter Preise, Bedingungen oder Verfügbarkeit, wechseln Sie das Modell – Ihre Daten und Ihre Skills bleiben bei Ihnen.',
+        'Ändert ein Anbieter Preise, Bedingungen oder Verfügbarkeit, wechseln Sie das Modell. Ihre Daten und Ihre Skills bleiben bei Ihnen.',
       cards: [
         {
           title: 'Schweizer Hosting, Ihre Wahl der KI',
@@ -147,7 +147,7 @@ export const copyAltHome = {
           body: 'Wer gefragt hat, welche Quellen genutzt wurden, wer freigegeben hat.',
         },
       ],
-      note: 'Sie arbeiten mit einem IT-Partner? Wir beziehen ihn ab dem ersten Gespräch ein – auch für eigene Server oder ein bestimmtes KI-Modell.',
+      note: 'Sie arbeiten mit einem IT-Partner? Wir beziehen ihn ab dem ersten Gespräch ein, auch für eigene Server oder ein bestimmtes KI-Modell.',
       itLink: 'Für Ihren IT-Partner: technische Details und Sicherheits-Factsheet →',
       itHref: '../technical-architecture.html',
     },
@@ -158,16 +158,16 @@ export const copyAltHome = {
         {
           title: 'Einrichtungs-Workshop',
           titleMeta: '3 Std. · CHF 1\'490',
-          body: 'Wir entwickeln mit Ihrem Team Ihren ersten eigenen Skill – mit Ihren Daten.',
+          body: 'Wir entwickeln mit Ihrem Team Ihren ersten eigenen Skill, mit Ihren Daten.',
         },
         { title: 'Nutzen und verfeinern.', body: 'Nach 2 Wochen schauen wir gemeinsam darauf.' },
         { title: 'Entscheiden.', body: 'Behalten, ausbauen oder stoppen. [Ausstiegsbedingungen]' },
       ],
     },
     team: {
-      heading: 'Entwickelt in der Schweiz – von Menschen, die Ihnen antworten.',
+      heading: 'Entwickelt in der Schweiz. Von Menschen, die Ihnen antworten.',
       body: 'Wir haben Zuraio gebaut, weil KI zwar Antworten schreiben konnte, aber unser Firmenwissen, unsere Zugriffsregeln und unsere Arbeitsweise nicht verstand.',
-      contact: 'Schreiben Sie uns direkt – Sie erhalten eine Antwort von einem von uns.',
+      contact: 'Schreiben Sie uns direkt. Sie erhalten eine Antwort von einem von uns.',
       people: [
         { name: 'Michael C. Wili', role: '[Rolle bestätigen]', email: 'michael.wili@zuraio.ch', img: 'Michael' },
         { name: 'Marcelo Zanette', role: '[Rolle bestätigen]', email: 'marcelo.zanette@zuraio.ch', img: 'Marcelo' },
@@ -179,7 +179,7 @@ export const copyAltHome = {
       items: [
         {
           q: 'Bleiben unsere Daten in der Schweiz?',
-          a: 'Ja, standardmässig. Die Plattform und Ihre Firmendaten werden bei Infomaniak in der Schweiz gehostet, und auch das Standardmodell läuft in der Schweiz. Für einzelne Aufgaben können Sie ein anderes KI-Modell wählen. Jedes ist gekennzeichnet, damit Sie sehen, wo es arbeitet. Wählen Sie ein Modell ausserhalb der Schweiz, wird nur der Inhalt dieser Aufgabe übermittelt. So entscheiden Sie selbst, was die Schweiz verlässt – und was nicht.',
+          a: 'Ja, standardmässig. Die Plattform und Ihre Firmendaten werden bei Infomaniak in der Schweiz gehostet, und auch das Standardmodell läuft in der Schweiz. Für einzelne Aufgaben können Sie ein anderes KI-Modell wählen. Jedes ist gekennzeichnet, damit Sie sehen, wo es arbeitet. Wählen Sie ein Modell ausserhalb der Schweiz, wird nur der Inhalt dieser Aufgabe übermittelt. So entscheiden Sie selbst, was die Schweiz verlässt und was nicht.',
         },
         {
           q: 'Was passiert, wenn ein KI-Anbieter Preise oder Bedingungen ändert?',
@@ -196,7 +196,7 @@ export const copyAltHome = {
         {
           q: 'Was kostet der Einstieg?',
           aHtml:
-            'Für Einzelpersonen ab CHF 19 pro Monat. Firmenpläne ab CHF 225 pro Monat für bis zu 5 Mitarbeitende – inklusive Konnektoren und Standard-KI-Nutzung. Der Einrichtungs-Workshop mit Ihrem ersten eigenen Skill kostet CHF 1\'490; die Hälfte rechnen wir an, wenn Sie innert 30 Tagen einen Jahresplan wählen. Bei jährlicher Zahlung sind zwei Monate gratis. Alle Preise exkl. MWST. <a href="preise.html">Alle Preise →</a>',
+            'Für Einzelpersonen ab CHF 19 pro Monat. Firmenpläne ab CHF 225 pro Monat für bis zu 5 Mitarbeitende, inklusive Konnektoren und Standard-KI-Nutzung. Der Einrichtungs-Workshop mit Ihrem ersten eigenen Skill kostet CHF 1\'490; die Hälfte rechnen wir an, wenn Sie innert 30 Tagen einen Jahresplan wählen. Bei jährlicher Zahlung sind zwei Monate gratis. Alle Preise exkl. MWST. <a href="preise.html">Alle Preise →</a>',
         },
       ],
       linkAll: 'Alle Fragen →',
@@ -214,7 +214,7 @@ export const copyAltHome = {
       'Microsoft, Microsoft 365, Outlook, SharePoint, Teams, Exchange und Dynamics 365 sind Marken der Microsoft-Unternehmensgruppe. bexio, Abacus, Klara, Proffix, SAP, Salesforce, HubSpot, Odoo und Sage sind Marken ihrer jeweiligen Inhaber.',
   },
   en: {
-    metaTitle: 'Zuraio – Alternative homepage (preview)',
+    metaTitle: 'Zuraio | Alternative homepage',
     nav: {
       howItWorks: 'How it works',
       skills: 'Skills',
@@ -229,7 +229,7 @@ export const copyAltHome = {
         c: 'Your team already uses AI. Do you know where your data goes?',
         h: 'An AI assistant set up around your business, by people who take the time to understand it.',
       },
-      sub: 'Zuraio answers emails, prepares meetings and finds what you need in your company knowledge – with sources, hosted in Switzerland.',
+      sub: 'Zuraio answers emails, prepares meetings and finds what you need in your company knowledge, with sources and hosted in Switzerland.',
       cta: 'Book a 30-minute demo',
       ctaMicro: 'With your own examples. No commitment.',
       trust: [
@@ -244,7 +244,7 @@ export const copyAltHome = {
       cards: [
         {
           title: 'Already knows your business.',
-          body: 'Answers from your emails, documents and systems – each with its source.',
+          body: 'Answers from your emails, documents and systems, each with its source.',
         },
         {
           title: 'You decide where your data goes.',
@@ -266,7 +266,7 @@ export const copyAltHome = {
       eyebrowShort: 'BUILT FOR ARCHITECTS, FIDUCIARIES AND PROPERTY MANAGERS',
       heading: 'Skills built with you, for the way your company works.',
       intro:
-        'Start with ready-made skills. Then we sit down with your team and build the ones only your company has – your offers, your tone, your processes.',
+        'Start with ready-made skills. Then we sit down with your team and build the ones only your company has: your offers, your tone, your processes.',
       readyMade: [
         {
           title: 'Reply to clients and tenants',
@@ -300,7 +300,7 @@ export const copyAltHome = {
         },
       ],
       band:
-        'Built with you – examples: "Quote in our house format with our discount rules" · "Reply to tenants in our tone, with our standard clauses" · "Monthly client report the way our partners like it" [replace with real pilot examples]',
+        'Built with you: "Quote in our house format with our discount rules" · "Reply to tenants in our tone, with our standard clauses" · "Monthly client report the way our partners like it" [replace with real pilot examples]',
       footnoteLabel: 'Built with you',
       link: 'See all skills →',
       linkHref: '../how-it-helps.html#skills',
@@ -326,7 +326,7 @@ export const copyAltHome = {
       heading: 'Nothing leaves your company without your OK.',
       intro: 'Swiss by default. Never locked into a single AI provider.',
       introSupport:
-        'If a provider changes its prices, terms or availability, you switch models – your data and your skills stay with you.',
+        'If a provider changes its prices, terms or availability, you switch models. Your data and your skills stay with you.',
       cards: [
         {
           title: 'Swiss hosting, your choice of AI',
@@ -365,7 +365,7 @@ export const copyAltHome = {
     team: {
       heading: 'Developed in Switzerland, by people who answer.',
       body: 'We built Zuraio because AI could write answers but didn\'t understand our company knowledge, access rules or the way we work.',
-      contact: 'Write to us directly – you\'ll get a reply from one of us.',
+      contact: 'Write to us directly. You\'ll get a reply from one of us.',
       people: [
         { name: 'Michael C. Wili', role: '[Role to confirm]', email: 'michael.wili@zuraio.ch', img: 'Michael' },
         { name: 'Marcelo Zanette', role: '[Role to confirm]', email: 'marcelo.zanette@zuraio.ch', img: 'Marcelo' },
