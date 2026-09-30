@@ -34,7 +34,11 @@ export const copyAltHome = {
       sub: 'Zuraio beantwortet E-Mails, bereitet Sitzungen vor und findet, was Sie in Ihrem Firmenwissen suchen – mit Quellen, in der Schweiz gehostet.',
       cta: '30-Minuten-Demo buchen',
       ctaMicro: 'Mit Ihren eigenen Beispielen. Unverbindlich.',
-      trust: 'Gehostet bei Infomaniak in der Schweiz · ISO 27001:2022 · Arbeitet mit bexio, Abacus, Microsoft 365',
+      trust: [
+        'Gehostet bei Infomaniak in der Schweiz',
+        'ISO 27001:2022',
+        'Arbeitet mit bexio, Abacus und Microsoft 365',
+      ],
       imageAlt:
         'Zuraio entwirft aus drei Quellen eine Antwort auf eine Kunden-E-Mail und markiert einen fehlenden Preis zur Prüfung vor dem Versand',
     },
@@ -57,7 +61,7 @@ export const copyAltHome = {
     demo: {
       heading: 'So beantwortet Zuraio eine Kundenanfrage.',
       caption:
-        'Zuraio entwirft eine Antwort aus den letzten E-Mails, dem Vertrag und den Zahlen aus bexio – mit allen Quellen. Ihr Team prüft und entscheidet.',
+        'Zuraio entwirft die Antwort aus den letzten E-Mails, dem Vertrag und bexio, mit allen Quellen. Ihr Team entscheidet.',
     },
     skills: {
       eyebrow: 'FÜR ARCHITEKTUR- UND INGENIEURBÜROS, TREUHÄNDER UND IMMOBILIENVERWALTUNGEN',
@@ -66,12 +70,36 @@ export const copyAltHome = {
       intro:
         'Starten Sie mit fertigen Skills. Danach entwickeln wir mit Ihrem Team die Skills, die nur Ihr Betrieb hat – Ihre Offerten, Ihr Ton, Ihre Abläufe.',
       readyMade: [
-        ['Kundenanfrage beantworten', 'Entwirft eine Antwort aus Korrespondenz, Verträgen und Ihren Konditionen'],
-        ['Sitzung vorbereiten', 'Einseitiges Briefing: letzte E-Mails, offene Punkte, Dokumente'],
-        ['Projektstatus', 'Stand, offene Punkte und wer wartet – aus E-Mails und Dateien'],
-        ['Verlauf zusammenfassen', 'Lange E-Mail-Verläufe in fünf Zeilen, Entscheide hervorgehoben'],
-        ['Aufgaben erfassen', 'Macht aus Sitzung oder E-Mail Aufgaben mit Verantwortlichen'],
-        ['Offerte vorbereiten', 'Entwurf aus Anfrage und Ihrer Produkt- oder Preisliste'],
+        {
+          title: 'Kunden und Mieter beantworten',
+          body: 'Entwirft eine Antwort aus Korrespondenz, Verträgen und Ihren Konditionen',
+          sources: 'E-Mails · Verträge · Ihre Konditionen',
+        },
+        {
+          title: 'Sitzung vorbereiten',
+          body: 'Einseitiges Briefing: letzte E-Mails, offene Punkte, Dokumente',
+          sources: 'E-Mails · Kalender · Dokumente',
+        },
+        {
+          title: 'Projektstatus',
+          body: 'Stand, offene Punkte und wer wartet – aus E-Mails und Dateien',
+          sources: 'E-Mails · Dateien · Aufgaben',
+        },
+        {
+          title: 'Verlauf zusammenfassen',
+          body: 'Lange E-Mail-Verläufe in fünf Zeilen, Entscheide hervorgehoben',
+          sources: 'E-Mails',
+        },
+        {
+          title: 'Aufgaben erfassen',
+          body: 'Macht aus Sitzung oder E-Mail Aufgaben mit Verantwortlichen',
+          sources: 'Sitzungen · E-Mails · Aufgaben',
+        },
+        {
+          title: 'Offerte vorbereiten',
+          body: 'Entwurf aus Anfrage und Ihrer Produkt- oder Preisliste',
+          sources: 'Anfrage · Preisliste · bexio',
+        },
       ],
       band:
         'Gemeinsam mit Ihnen entwickelt – Beispiele: «Offerte in unserem Format, mit unseren Rabattregeln» · «Antwort an Mieter in unserem Ton, mit unseren Standardklauseln» · «Monatsreport, so wie ihn unsere Partner mögen» [durch echte Pilot-Beispiele ersetzen]',
@@ -204,7 +232,11 @@ export const copyAltHome = {
       sub: 'Zuraio answers emails, prepares meetings and finds what you need in your company knowledge – with sources, hosted in Switzerland.',
       cta: 'Book a 30-minute demo',
       ctaMicro: 'With your own examples. No commitment.',
-      trust: 'Hosted by Infomaniak in Switzerland · ISO 27001:2022 · Works with bexio, Abacus, Microsoft 365',
+      trust: [
+        'Hosted by Infomaniak in Switzerland',
+        'ISO 27001:2022',
+        'Works with bexio, Abacus and Microsoft 365',
+      ],
       imageAlt:
         'Zuraio drafts a reply to a client email from three sources and flags a missing price for you to check before sending',
     },
@@ -227,7 +259,7 @@ export const copyAltHome = {
     demo: {
       heading: 'Watch Zuraio answer a customer email.',
       caption:
-        'Zuraio drafts a reply from the latest emails, the contract and the figures in bexio – with every source shown. Your team checks it and decides.',
+        'Zuraio drafts the reply from the latest emails, the contract and bexio, with every source shown. Your team decides.',
     },
     skills: {
       eyebrow: 'FOR ARCHITECTURE AND ENGINEERING OFFICES, FIDUCIARIES AND PROPERTY MANAGERS',
@@ -236,12 +268,36 @@ export const copyAltHome = {
       intro:
         'Start with ready-made skills. Then we sit down with your team and build the ones only your company has – your offers, your tone, your processes.',
       readyMade: [
-        ['Reply to a client, tenant or customer', 'Drafts an answer using the correspondence, contracts and your terms'],
-        ['Prepare a meeting', 'One-page briefing on the client: last emails, open points, documents'],
-        ['Project status', 'Where things stand, what\'s open, who\'s waiting, from emails and files'],
-        ['Summarise a thread', 'Long email chains in five lines, with the decisions highlighted'],
-        ['Capture tasks', 'Turns a meeting or email into tasks with owners'],
-        ['Prepare a quote', 'Draft offer from the enquiry and your product or price list'],
+        {
+          title: 'Reply to clients and tenants',
+          body: 'Drafts an answer using the correspondence, contracts and your terms',
+          sources: 'Email · Contracts · Your terms',
+        },
+        {
+          title: 'Prepare a meeting',
+          body: 'One-page briefing on the client: last emails, open points, documents',
+          sources: 'Email · Calendar · Documents',
+        },
+        {
+          title: 'Project status',
+          body: 'Where things stand, what\'s open, who\'s waiting, from emails and files',
+          sources: 'Email · Files · Tasks',
+        },
+        {
+          title: 'Summarise a thread',
+          body: 'Long email chains in five lines, with the decisions highlighted',
+          sources: 'Email',
+        },
+        {
+          title: 'Capture tasks',
+          body: 'Turns a meeting or email into tasks with owners',
+          sources: 'Meetings · Email · Tasks',
+        },
+        {
+          title: 'Prepare a quote',
+          body: 'Draft offer from the enquiry and your product or price list',
+          sources: 'Enquiry · Price list · bexio',
+        },
       ],
       band:
         'Built with you – examples: "Quote in our house format with our discount rules" · "Reply to tenants in our tone, with our standard clauses" · "Monthly client report the way our partners like it" [replace with real pilot examples]',

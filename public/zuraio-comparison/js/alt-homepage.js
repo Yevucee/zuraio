@@ -7,6 +7,8 @@ import { isPreviewDevMode, formatPreviewHtml } from './alt-preview-utils.js';
 import { initControlParticles } from './control-particles.js';
 import { initAltPreviewMarquee } from './alt-integrations-marquee.js';
 import { ALT_HOME_REASON_ICONS } from './alt-home-reason-icons.js';
+import { ALT_HOME_BUILT_WITH_ICON, ALT_HOME_SKILL_ICONS } from './alt-home-skill-icons.js';
+import { ROUTES_OUTCOME_CHECK } from './workflow-icons.js';
 
 const DEMO_CACHE = '20260805v2';
 const FOUNDER_PREVIEW = 'zuraio/assets/team-preview';
@@ -105,8 +107,9 @@ function getHeroVariant() {
   return 'a';
 }
 
-function trustParts(trustLine) {
-  return (trustLine ?? '')
+function trustLines(trust) {
+  if (Array.isArray(trust)) return trust.filter(Boolean);
+  return (trust ?? '')
     .split('·')
     .map((s) => s.trim())
     .filter(Boolean);
@@ -122,14 +125,14 @@ function parseSkillExamples(band) {
     .filter(Boolean);
 }
 
-function renderTrustLine(trustLine) {
-  const parts = trustParts(trustLine);
-  return parts
+function renderTrustLine(trust) {
+  const lines = trustLines(trust);
+  return `<ul class="alt-home-hero__trust-list">${lines
     .map(
-      (part, i) =>
-        `<span class="alt-home-hero__trust-item${i === 0 ? ' alt-home-hero__trust-item--lead' : ''}">${part}</span>`,
+      (line) =>
+        `<li class="alt-home-hero__trust-item"><span class="alt-home-hero__trust-icon" aria-hidden="true">${ROUTES_OUTCOME_CHECK}</span><span>${line}</span></li>`,
     )
-    .join('');
+    .join('')}</ul>`;
 }
 
 function localeKey(locale) {
@@ -328,13 +331,18 @@ function renderMain(copy, locale, isDev) {
     .join('');
 
   const skillsHtml = copy.skills.readyMade
-    .map(
-      ([title, line]) => `
-      <article class="alt-preview-card alt-home-skill-card">
-        <h3 class="alt-preview-card__title">${title}</h3>
-        <p>${line}</p>
-      </article>`,
-    )
+    .map((skill, i) => {
+      const title = skill.title ?? skill[0] ?? '';
+      const body = skill.body ?? skill[1] ?? '';
+      const sources = skill.sources ?? '';
+      return `
+      <article class="alt-home-skill-card">
+        <span class="alt-home-skill-card__icon" aria-hidden="true">${ALT_HOME_SKILL_ICONS[i] ?? ''}</span>
+        <h3 class="alt-home-skill-card__title">${title}</h3>
+        <p class="alt-home-skill-card__body">${fmt(body, isDev, todos)}</p>
+        <p class="alt-home-skill-card__sources">${sources}</p>
+      </article>`;
+    })
     .join('');
 
   const compareHtml = `
@@ -431,7 +439,7 @@ function renderMain(copy, locale, isDev) {
   const skillsEyebrow = copy.skills.eyebrowShort ?? copy.skills.eyebrow ?? '';
   const skillExamples = parseSkillExamples(copy.skills.band ?? '');
   const skillChips = skillExamples
-    .map((ex) => `<span class="alt-home-skills-note__chip">${fmt(ex, isDev, todos)}</span>`)
+    .map((ex) => `<span class="alt-home-skills-built__chip">${fmt(ex, isDev, todos)}</span>`)
     .join('');
 
   mainEl.innerHTML = `
@@ -495,26 +503,31 @@ function renderMain(copy, locale, isDev) {
           ${renderSkillsVisual(locale, copy)}
         </div>
         <div class="alt-home-skills-grid">${skillsHtml}</div>
-        <div class="alt-home-skills-note">
-          <div class="alt-home-skills-note__body">
-            <span class="alt-home-skills-note__label">${copy.skills.footnoteLabel ?? ''}</span>
-            <div class="alt-home-skills-note__chips">${skillChips}</div>
+        <div class="alt-home-skills-built">
+          <div class="alt-home-skills-built__main">
+            <p class="alt-home-skills-built__label">
+              <span class="alt-home-skills-built__label-icon" aria-hidden="true">${ALT_HOME_BUILT_WITH_ICON}</span>
+              ${copy.skills.footnoteLabel ?? ''}
+            </p>
+            <div class="alt-home-skills-built__chips">${skillChips}</div>
           </div>
-          <a class="alt-home-link-secondary alt-home-skills-note__link" href="${copy.skills.linkHref}">${copy.skills.link}</a>
+          <a class="alt-home-link-secondary alt-home-skills-built__link" href="${copy.skills.linkHref}">${copy.skills.link}</a>
         </div>
       </div>
     </section>
 
     <section class="alt-section alt-home-integrations" id="integrations" aria-labelledby="alt-int-h">
-      <div class="wrap">
-        <div class="alt-section-head">
+      <div class="wrap alt-home-integrations__head-wrap">
+        <div class="alt-home-integrations__head">
           <h2 id="alt-int-h" class="alt-reveal">${copy.integrations.heading}</h2>
-          <p class="lede">${copy.integrations.line}</p>
+          <p class="alt-home-integrations__sub">${copy.integrations.line}</p>
         </div>
-        <div class="marquee-track" data-alt-marquee tabindex="0" aria-label="${locale === 'de' ? 'Integrationen' : 'Integrations'}">
-          <div class="marquee-inner"></div>
-        </div>
-        <p class="alt-home-text-link"><a class="alt-home-link-secondary" href="../integrations.html">${copy.integrations.link}</a></p>
+      </div>
+      <div class="marquee-track alt-home-integrations__marquee" data-alt-marquee tabindex="0" aria-label="${locale === 'de' ? 'Integrationen' : 'Integrations'}">
+        <div class="marquee-inner"></div>
+      </div>
+      <div class="wrap alt-home-integrations__foot">
+        <p class="alt-home-integrations__link-wrap"><a class="alt-home-link-secondary" href="../integrations.html">${copy.integrations.link}</a></p>
       </div>
     </section>
 
