@@ -2,7 +2,7 @@
 
 export const copyAltPricing = {
   de: {
-    title: 'Preise — Zuraio (Vorschau)',
+    title: 'Preise: Zuraio (Vorschau)',
     heading: 'Preise',
     intro: 'Klare Preise, keine Überraschungen. Alle Preise exkl. MWST.',
     companyHeading: 'Firmenpläne',
@@ -15,7 +15,7 @@ export const copyAltPricing = {
     companyKnowledgeLine: 'Gemeinsames Firmenwissen für das ganze Team ist in den Firmenplänen enthalten.',
     setupHeading: 'Einrichtung und eigene Skills',
     footnote: 'Alle Preise exkl. MWST.',
-    employeeTodo: '[TODO: Was zählt als Mitarbeitende/r — alle Angestellten oder nur Nutzer/innen?]',
+    employeeTodo: '[TODO: Was zählt als Mitarbeitende/r, alle Angestellten oder nur Nutzer/innen?]',
     ctaLead: 'Unsicher, welcher Plan passt?',
     ctaButton: '30-Minuten-Demo buchen',
     backLink: '← Zurück zur Startseiten-Vorschau',
@@ -65,7 +65,7 @@ export const copyAltPricing = {
     tableSetup: ['Leistung', 'Preis', 'Enthalten'],
   },
   en: {
-    title: 'Pricing — Zuraio (preview)',
+    title: 'Pricing: Zuraio (preview)',
     heading: 'Pricing',
     intro: 'Clear prices, no surprises. All prices excl. VAT.',
     companyHeading: 'Company plans',
@@ -77,7 +77,7 @@ export const copyAltPricing = {
     companyKnowledgeLine: 'Need shared company knowledge across the team? That\'s included in the company plans.',
     setupHeading: 'Set-up and bespoke skills',
     footnote: 'All prices excl. VAT.',
-    employeeTodo: '[TODO: What counts as an employee — all staff or licensed users only?]',
+    employeeTodo: '[TODO: What counts as an employee, all staff or licensed users only?]',
     ctaLead: 'Not sure which plan fits?',
     ctaButton: 'Book a 30-minute demo',
     backLink: '← Back to homepage preview',
