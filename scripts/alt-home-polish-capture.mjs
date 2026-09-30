@@ -20,9 +20,9 @@ for (const locale of locales) {
     const context = await browser.newContext({ viewport: { width: vp.width, height: vp.height } });
     const page = await context.newPage();
     const url = `${BASE}/${locale}/homepage-preview.html?v=${CACHE}`;
-    await page.goto(url, { waitUntil: 'domcontentloaded' });
-    await page.waitForSelector('.alt-home-hero__trust-list', { timeout: 15000 });
-    await page.waitForTimeout(800);
+    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await page.waitForSelector('.alt-home-hero__trust-list', { timeout: 45000 });
+    await page.waitForTimeout(1200);
 
     const heroTrust = page.locator('.alt-home-hero__trust');
     await heroTrust.screenshot({ path: path.join(OUT, `${locale}-hero-trust-${vp.name}.png`) });
