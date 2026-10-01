@@ -7,7 +7,12 @@ const ALT_HOME_LOGO_WIDTH = 184;
 const ALT_HOME_LOGO_HEIGHT = 56;
 import { PUBLIC_SITE_LOCALES } from './locales.js';
 import { getLocaleLabels } from './locales.js';
-import { getCopy } from './i18n.js';
+import * as copyEn from './copy-en.js';
+import * as copyDe from './copy-de.js';
+
+function siteCopyBundle(locale) {
+  return locale === 'de' ? copyDe : copyEn;
+}
 
 function previewLangHref(locale, file = 'homepage-preview.html') {
   const base = locale === 'de' ? '../de/' : '../en/';
@@ -65,7 +70,7 @@ export function renderAltHomeHeader(copy, locale, options = {}) {
   if (!el) return;
 
   const mode = options.mode ?? 'preview';
-  const ui = getCopy().ui;
+  const ui = siteCopyBundle(locale).ui;
   const { nav } = copy;
 
   el.innerHTML = `
@@ -128,8 +133,9 @@ export function renderAltHomeFooter(copy, locale, options = {}) {
   if (!el) return;
 
   const mode = options.mode ?? 'preview';
-  const ui = getCopy().ui;
-  const groups = getCopy().footerGroups;
+  const bundle = siteCopyBundle(locale);
+  const ui = bundle.ui;
+  const groups = bundle.footerGroups;
   const localeLabels = getLocaleLabels(ui);
   const linkPrefix = mode === 'site' ? siteRootPrefix() : '../';
   const groupsHtml = groups
@@ -171,7 +177,7 @@ export function renderAltHomeFooter(copy, locale, options = {}) {
           <a class="brand foot-brand" href="${brandHref(mode, locale)}" aria-label="${ui.zuraioHome}">
             <img class="brand-logo" src="${assetHref(ALT_HOME_LOGO)}" alt="" width="${ALT_HOME_LOGO_WIDTH}" height="${ALT_HOME_LOGO_HEIGHT}" decoding="async" loading="lazy" />
           </a>
-          <p class="foot-tagline">${getCopy().site?.tagline ?? SITE.tagline}</p>
+          <p class="foot-tagline">${bundle.site?.tagline ?? SITE.tagline}</p>
           ${!options.omitFooterTrademark && copy.footerTrademark ? `<p class="foot-trademark alt-home-trademark">${copy.footerTrademark}</p>` : ''}
         </div>
       </div>

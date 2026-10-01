@@ -5,7 +5,7 @@ import { initControlParticles } from './control-particles.js';
 import { ALT_HOME_REASON_ICONS } from './alt-home-reason-icons.js';
 import { ROUTES_OUTCOME_CHECK } from './workflow-icons.js';
 
-const SECURITY_CACHE = '20261001e';
+const SECURITY_CACHE = '20261001f';
 
 function pageLocale() {
   return getLocaleFromPathname() ?? (document.documentElement.lang || 'en');
