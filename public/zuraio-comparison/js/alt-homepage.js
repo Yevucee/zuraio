@@ -2,19 +2,41 @@ import { getAltHomeCopy } from './copy-alt-home.js';
 import { renderAltHomeHeader, renderAltHomeFooter } from './alt-homepage-chrome.js';
 import { trackAltHome } from './alt-homepage-analytics.js';
 import { initFaq } from './faq-accordion.js';
-import { assetHref } from './path-locale.js';
+import { assetHref, detectSiteBase } from './path-locale.js';
 import { isPreviewDevMode, formatPreviewHtml } from './alt-preview-utils.js';
 import { initControlParticles } from './control-particles.js';
 import { initAltPreviewMarquee } from './alt-integrations-marquee.js';
+import { ALT_HOME_REASON_ICONS } from './alt-home-reason-icons.js';
+import { ALT_HOME_BUILT_WITH_ICON, ALT_HOME_SKILL_ICONS } from './alt-home-skill-icons.js';
+import { ROUTES_OUTCOME_CHECK } from './workflow-icons.js';
+
 const DEMO_CACHE = '20260805v2';
 const FOUNDER_PREVIEW = 'zuraio/assets/team-preview';
+const PRODUCT_IMG_WIDTH = 2080;
+const PRODUCT_IMG_HEIGHT = 1560;
+
 const HERO_REPLY_IMAGE = {
   en: 'assets/hero/zuraio-hero-reply-en@2x.webp',
   de: 'assets/hero/zuraio-hero-reply-de@2x.webp',
 };
-/** 2× asset for 520×390 display slot */
-const HERO_IMG_WIDTH = 1040;
-const HERO_IMG_HEIGHT = 780;
+
+const HERO_REPLY_IMAGE_MOBILE = {
+  en: {
+    path: 'assets/hero/zuraio-hero-reply-en-mobile@3x.webp',
+    width: 1170,
+    height: 852,
+  },
+  de: {
+    path: 'assets/hero/zuraio-hero-reply-de-mobile@3x.webp',
+    width: 1170,
+    height: 909,
+  },
+};
+
+const SKILLS_PRESENTATION_IMAGE = {
+  en: 'assets/skills/zuraio-skills-presentation-en@2x.webp',
+  de: 'assets/skills/zuraio-skills-presentation-de@2x.webp',
+};
 
 function cacheBust(url) {
   if (!url) return url;
@@ -85,8 +107,9 @@ function getHeroVariant() {
   return 'a';
 }
 
-function trustParts(trustLine) {
-  return (trustLine ?? '')
+function trustLines(trust) {
+  if (Array.isArray(trust)) return trust.filter(Boolean);
+  return (trust ?? '')
     .split('·')
     .map((s) => s.trim())
     .filter(Boolean);
@@ -102,47 +125,138 @@ function parseSkillExamples(band) {
     .filter(Boolean);
 }
 
-function renderTrustLine(trustLine) {
-  const parts = trustParts(trustLine);
-  return parts
+function renderTrustLine(trust) {
+  const lines = trustLines(trust);
+  return `<ul class="alt-home-hero__trust-list">${lines
     .map(
-      (part, i) =>
-        `<span class="alt-home-hero__trust-item${i === 0 ? ' alt-home-hero__trust-item--lead' : ''}">${part}</span>`,
+      (line) =>
+        `<li class="alt-home-hero__trust-item"><span class="alt-home-hero__trust-icon" aria-hidden="true">${ROUTES_OUTCOME_CHECK}</span><span>${line}</span></li>`,
     )
-    .join('');
+    .join('')}</ul>`;
+}
+
+function localeKey(locale) {
+  return locale === 'de' ? 'de' : 'en';
+}
+
+/** Alt-home static assets live under `zuraio-comparison/assets/` (also copied to site `/assets/` on deploy). */
+function altHomeAssetHref(relativePath) {
+  const path = relativePath.replace(/^\//, '');
+  const siteBase = detectSiteBase();
+  if (siteBase) return `${siteBase}/${path}`;
+  const segments = location.pathname.split('/').filter(Boolean);
+  if (segments[0] === 'zuraio-comparison') {
+    return `../${path}`;
+  }
+  return assetHref(path);
 }
 
 function heroReplyImageSrc(locale) {
-  const key = locale === 'de' ? 'de' : 'en';
-  return assetHref(HERO_REPLY_IMAGE[key]);
+  return altHomeAssetHref(HERO_REPLY_IMAGE[localeKey(locale)]);
 }
 
-function renderHeroVisual(locale, copy, isDev) {
-  const src = heroReplyImageSrc(locale);
-  const alt = copy.hero.imageAlt ?? '';
-  const placeholder = isDev
-    ? '<div class="alt-home-hero__placeholder" aria-hidden="true"></div>'
-    : '';
+function heroReplyMobileImageSrc(locale) {
+  return altHomeAssetHref(HERO_REPLY_IMAGE_MOBILE[localeKey(locale)].path);
+}
+
+function skillsPresentationImageSrc(locale) {
+  return altHomeAssetHref(SKILLS_PRESENTATION_IMAGE[localeKey(locale)]);
+}
+
+function renderProductFrameImg({ src, alt, imgAttrs = '', imgExtraClass = '', dataAttr = '' }) {
   return `
-    <div class="alt-home-hero__frame" data-alt-hero-frame hidden>
-      ${placeholder}
       <img
-        class="alt-home-hero__img"
-        data-alt-hero-img
+        class="alt-home-product-frame__img${imgExtraClass ? ` ${imgExtraClass}` : ''}"
+        ${dataAttr}
         data-src="${src}"
         alt="${alt}"
-        width="${HERO_IMG_WIDTH}"
-        height="${HERO_IMG_HEIGHT}"
-        fetchpriority="high"
+        width="${PRODUCT_IMG_WIDTH}"
+        height="${PRODUCT_IMG_HEIGHT}"
         decoding="async"
-      />
+        ${imgAttrs}
+      />`;
+}
+
+function renderHeroVisual(locale, copy) {
+  const key = localeKey(locale);
+  const src = heroReplyImageSrc(locale);
+  const mobileSrc = heroReplyMobileImageSrc(locale);
+  const mobile = HERO_REPLY_IMAGE_MOBILE[key];
+  const alt = copy.hero.imageAlt ?? '';
+  return `
+    <div class="alt-home-product-frame alt-home-hero__frame" data-alt-hero-frame hidden>
+      <picture>
+        <source
+          type="image/webp"
+          media="(max-width: 599px)"
+          data-src="${mobileSrc}"
+          width="${mobile.width}"
+          height="${mobile.height}"
+        />
+        <img
+          class="alt-home-product-frame__img"
+          data-alt-hero-img
+          data-src="${src}"
+          data-mobile-width="${mobile.width}"
+          data-mobile-height="${mobile.height}"
+          alt="${alt}"
+          width="${PRODUCT_IMG_WIDTH}"
+          height="${PRODUCT_IMG_HEIGHT}"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
     </div>`;
 }
 
-function initHeroVisualSlot(isDev) {
+function renderSkillsVisual(locale, copy) {
+  const src = skillsPresentationImageSrc(locale);
+  const alt = copy.skills.presentationImageAlt ?? '';
+  return `
+    <div class="alt-home-skills-head__visual" data-alt-skills-visual hidden>
+      <div class="alt-home-product-frame alt-home-skills__frame" data-alt-skills-frame hidden>
+        ${renderProductFrameImg({ src, alt, imgAttrs: 'loading="lazy"' })}
+      </div>
+    </div>`;
+}
+
+function probeProductImage(frame, img, onReady, onMissing) {
+  if (!frame || !img) {
+    onMissing();
+    return;
+  }
+  const src = img.dataset.src;
+  if (!src) {
+    onMissing();
+    return;
+  }
+
+  const ready = () => {
+    img.src = src;
+    const mobileSource = frame?.querySelector('picture source[data-src]');
+    const mobileSrc = mobileSource?.dataset.src;
+    if (mobileSource && mobileSrc) {
+      mobileSource.srcset = mobileSrc;
+    }
+    img.classList.add('is-loaded');
+    if (img.complete && img.naturalWidth > 0) {
+      onReady();
+      return;
+    }
+    img.addEventListener('load', onReady, { once: true });
+    img.addEventListener('error', onMissing, { once: true });
+  };
+
+  const probe = new Image();
+  probe.onload = ready;
+  probe.onerror = onMissing;
+  probe.src = src;
+}
+
+function initHeroVisualSlot() {
   const hero = document.querySelector('.alt-home-hero');
   const frame = document.querySelector('[data-alt-hero-frame]');
-  const img = document.querySelector('[data-alt-hero-img]');
+  const img = frame?.querySelector('[data-alt-hero-img]');
   const visualCol = document.querySelector('.alt-home-hero__visual');
   if (!hero || !frame) return;
 
@@ -155,41 +269,47 @@ function initHeroVisualSlot(isDev) {
 
   setVisualVisible(false);
 
-  const src = img?.dataset.src;
-  if (!src) {
-    if (isDev) setVisualVisible(true);
-    return;
-  }
+  probeProductImage(
+    frame,
+    img,
+    () => setVisualVisible(true),
+    () => {
+      img?.remove();
+      setVisualVisible(false);
+    },
+  );
+}
 
-  const onReady = () => {
-    const placeholder = frame.querySelector('.alt-home-hero__placeholder');
-    if (placeholder) placeholder.hidden = true;
-    setVisualVisible(true);
+function initSkillsVisualSlot() {
+  const section = document.getElementById('skills');
+  const outer = section?.querySelector('[data-alt-skills-visual]');
+  const frame = section?.querySelector('[data-alt-skills-frame]');
+  const img = frame?.querySelector('.alt-home-product-frame__img');
+  if (!section || !outer || !frame) return;
+
+  const show = () => {
+    section.classList.add('alt-home-skills--has-visual');
+    outer.hidden = false;
+    frame.hidden = false;
   };
 
-  const onMissing = () => {
-    img?.remove();
-    if (isDev) {
-      setVisualVisible(true);
-      return;
-    }
-    setVisualVisible(false);
+  const hide = () => {
+    section.classList.remove('alt-home-skills--has-visual');
+    outer.hidden = true;
+    frame.hidden = true;
   };
 
-  const probe = new Image();
-  probe.onload = () => {
-    if (!img) return;
-    img.src = src;
-    img.classList.add('is-loaded');
-    if (img.complete && img.naturalWidth > 0) {
-      onReady();
-      return;
-    }
-    img.addEventListener('load', onReady, { once: true });
-    img.addEventListener('error', onMissing, { once: true });
-  };
-  probe.onerror = onMissing;
-  probe.src = src;
+  hide();
+
+  probeProductImage(
+    frame,
+    img,
+    show,
+    () => {
+      img?.remove();
+      hide();
+    },
+  );
 }
 
 function renderMain(copy, locale, isDev) {
@@ -197,24 +317,32 @@ function renderMain(copy, locale, isDev) {
   const heroKey = getHeroVariant();
   const heroTitle = copy.hero.variants[heroKey];
 
-  const reasonsHtml = copy.reasons.cards
+  const reasonsStripHtml = copy.reasons.cards
     .map(
-      (c) => `
-      <article class="alt-preview-card alt-home-reason">
-        <h3 class="alt-preview-card__title">${c.title}</h3>
-        <p>${fmt(c.body, isDev, todos)}</p>
-      </article>`,
+      (c, i) => `
+      <div class="alt-home-reasons-strip__item" role="listitem">
+        <span class="alt-home-reasons-strip__icon" aria-hidden="true">${ALT_HOME_REASON_ICONS[i] ?? ''}</span>
+        <div class="alt-home-reasons-strip__text">
+          <h3 class="alt-home-reasons-strip__title">${c.title}</h3>
+          <p class="alt-home-reasons-strip__body">${fmt(c.body, isDev, todos)}</p>
+        </div>
+      </div>`,
     )
     .join('');
 
   const skillsHtml = copy.skills.readyMade
-    .map(
-      ([title, line]) => `
-      <article class="alt-preview-card alt-home-skill-card">
-        <h3 class="alt-preview-card__title">${title}</h3>
-        <p>${line}</p>
-      </article>`,
-    )
+    .map((skill, i) => {
+      const title = skill.title ?? skill[0] ?? '';
+      const body = skill.body ?? skill[1] ?? '';
+      const sources = skill.sources ?? '';
+      return `
+      <article class="alt-home-skill-card">
+        <span class="alt-home-skill-card__icon" aria-hidden="true">${ALT_HOME_SKILL_ICONS[i] ?? ''}</span>
+        <h3 class="alt-home-skill-card__title">${title}</h3>
+        <p class="alt-home-skill-card__body">${fmt(body, isDev, todos)}</p>
+        <p class="alt-home-skill-card__sources">${sources}</p>
+      </article>`;
+    })
     .join('');
 
   const compareHtml = `
@@ -222,6 +350,16 @@ function renderMain(copy, locale, isDev) {
       <h3 class="alt-preview-card__title">Zuraio</h3>
       <p>${copy.compare.zuraio}</p>
     </article>
+    <div class="alt-home-compare-snap" aria-label="ChatGPT and Copilot">
+      <article class="alt-preview-card alt-home-compare alt-home-compare--split alt-home-compare--chatgpt">
+        <h3 class="alt-preview-card__title">ChatGPT</h3>
+        <p>${copy.compare.chatgpt}</p>
+      </article>
+      <article class="alt-preview-card alt-home-compare alt-home-compare--split alt-home-compare--copilot">
+        <h3 class="alt-preview-card__title">Microsoft Copilot</h3>
+        <p>${copy.compare.copilot}</p>
+      </article>
+    </div>
     <article class="alt-preview-card alt-home-compare alt-home-compare--combined">
       <div class="alt-home-compare__row">
         <h3 class="alt-preview-card__title">ChatGPT</h3>
@@ -231,14 +369,6 @@ function renderMain(copy, locale, isDev) {
         <h3 class="alt-preview-card__title">Microsoft Copilot</h3>
         <p>${copy.compare.copilot}</p>
       </div>
-    </article>
-    <article class="alt-preview-card alt-home-compare alt-home-compare--split alt-home-compare--chatgpt">
-      <h3 class="alt-preview-card__title">ChatGPT</h3>
-      <p>${copy.compare.chatgpt}</p>
-    </article>
-    <article class="alt-preview-card alt-home-compare alt-home-compare--split alt-home-compare--copilot">
-      <h3 class="alt-preview-card__title">Microsoft Copilot</h3>
-      <p>${copy.compare.copilot}</p>
     </article>`;
 
   const controlCardsHtml = (copy.control.cards ?? [])
@@ -309,7 +439,7 @@ function renderMain(copy, locale, isDev) {
   const skillsEyebrow = copy.skills.eyebrowShort ?? copy.skills.eyebrow ?? '';
   const skillExamples = parseSkillExamples(copy.skills.band ?? '');
   const skillChips = skillExamples
-    .map((ex) => `<span class="alt-home-skills-note__chip">${fmt(ex, isDev, todos)}</span>`)
+    .map((ex) => `<span class="alt-home-skills-built__chip">${fmt(ex, isDev, todos)}</span>`)
     .join('');
 
   mainEl.innerHTML = `
@@ -328,14 +458,12 @@ function renderMain(copy, locale, isDev) {
           </div>
         </div>
         <div class="alt-home-hero__visual" hidden>
-          ${renderHeroVisual(locale, copy, isDev)}
+          ${renderHeroVisual(locale, copy)}
         </div>
       </div>
-    </section>
-
-    <section class="alt-section alt-section--paper" id="reasons" aria-labelledby="alt-reasons">
-      <div class="wrap">
-        <div class="alt-home-reasons">${reasonsHtml}</div>
+      <div class="wrap alt-home-hero__tail">
+        <hr class="alt-home-hero__strip-rule" aria-hidden="true" />
+        <div class="alt-home-reasons-strip" role="list">${reasonsStripHtml}</div>
       </div>
     </section>
 
@@ -364,34 +492,42 @@ function renderMain(copy, locale, isDev) {
       </div>
     </section>
 
-    <section class="alt-section alt-section--paper" id="skills" aria-labelledby="alt-skills-h">
+    <section class="alt-section" id="skills" aria-labelledby="alt-skills-h">
       <div class="wrap">
-        <div class="alt-section-head">
-          <span class="marker alt-skills-eyebrow">${skillsEyebrow}</span>
-          <h2 id="alt-skills-h" class="alt-reveal">${copy.skills.heading}</h2>
-          <p class="lede">${copy.skills.intro}</p>
+        <div class="alt-home-skills-head">
+          <div class="alt-section-head alt-home-skills-head__copy">
+            <span class="marker alt-skills-eyebrow">${skillsEyebrow}</span>
+            <h2 id="alt-skills-h" class="alt-reveal">${copy.skills.heading}</h2>
+            <p class="lede">${copy.skills.intro}</p>
+          </div>
+          ${renderSkillsVisual(locale, copy)}
         </div>
         <div class="alt-home-skills-grid">${skillsHtml}</div>
-        <div class="alt-home-skills-note">
-          <div class="alt-home-skills-note__body">
-            <span class="alt-home-skills-note__label">${copy.skills.footnoteLabel ?? ''}</span>
-            <div class="alt-home-skills-note__chips">${skillChips}</div>
+        <div class="alt-home-skills-built">
+          <div class="alt-home-skills-built__main">
+            <p class="alt-home-skills-built__label">
+              <span class="alt-home-skills-built__label-icon" aria-hidden="true">${ALT_HOME_BUILT_WITH_ICON}</span>
+              ${copy.skills.footnoteLabel ?? ''}
+            </p>
+            <div class="alt-home-skills-built__chips">${skillChips}</div>
           </div>
-          <a class="alt-home-link-secondary alt-home-skills-note__link" href="${copy.skills.linkHref}">${copy.skills.link}</a>
+          <a class="alt-home-link-secondary alt-home-skills-built__link" href="${copy.skills.linkHref}">${copy.skills.link}</a>
         </div>
       </div>
     </section>
 
-    <section class="alt-section alt-section--tint alt-home-integrations" id="integrations" aria-labelledby="alt-int-h">
-      <div class="wrap">
-        <div class="alt-section-head">
+    <section class="alt-section alt-home-integrations" id="integrations" aria-labelledby="alt-int-h">
+      <div class="wrap alt-home-integrations__head-wrap">
+        <div class="alt-home-integrations__head">
           <h2 id="alt-int-h" class="alt-reveal">${copy.integrations.heading}</h2>
-          <p class="lede">${copy.integrations.line}</p>
+          <p class="alt-home-integrations__sub">${copy.integrations.line}</p>
         </div>
-        <div class="marquee-track" data-alt-marquee tabindex="0" aria-label="${locale === 'de' ? 'Integrationen' : 'Integrations'}">
-          <div class="marquee-inner"></div>
-        </div>
-        <p class="alt-home-text-link"><a class="alt-home-link-secondary" href="../integrations.html">${copy.integrations.link}</a></p>
+      </div>
+      <div class="marquee-track alt-home-integrations__marquee" data-alt-marquee tabindex="0" aria-label="${locale === 'de' ? 'Integrationen' : 'Integrations'}">
+        <div class="marquee-inner"></div>
+      </div>
+      <div class="wrap alt-home-integrations__foot">
+        <p class="alt-home-integrations__link-wrap"><a class="alt-home-link-secondary" href="../integrations.html">${copy.integrations.link}</a></p>
       </div>
     </section>
 
@@ -401,6 +537,7 @@ function renderMain(copy, locale, isDev) {
           <h2 id="alt-compare-h" class="alt-reveal">${copy.compare.heading}</h2>
         </div>
         <div class="alt-home-compare-grid">${compareHtml}</div>
+        ${copy.compare.after ? `<p class="alt-home-compare__after">${copy.compare.after}</p>` : ''}
       </div>
     </section>
 
@@ -415,11 +552,13 @@ function renderMain(copy, locale, isDev) {
         </div>
         <div class="ctrl-panel">
           <div class="ctrl-grid">${controlCardsHtml}</div>
-          <p class="ctrl-note"><span style="color:var(--soft-olive);">▣</span><span>${copy.control.note}</span></p>
+          <div class="alt-home-control-footer">
+            <p class="ctrl-note"><span style="color:var(--soft-olive);">▣</span><span>${copy.control.note}</span></p>
+            <p class="section-link">
+              <a class="alt-home-it-link" data-alt-cta="it_factsheet" href="${copy.control.itHref}">${copy.control.itLink}</a>
+            </p>
+          </div>
         </div>
-        <p class="section-link">
-          <a class="alt-home-it-link" data-alt-cta="it_factsheet" href="${copy.control.itHref}">${copy.control.itLink}</a>
-        </p>
       </div>
     </section>
 
@@ -440,6 +579,7 @@ function renderMain(copy, locale, isDev) {
         </div>
         <div class="origin-portraits__grid alt-home-founders">${teamHtml}</div>
         <p class="alt-home-contact">${copy.team.contact ?? ''}</p>
+        ${copy.team.contactFollowUp ? `<p class="alt-home-contact alt-home-contact__followup">${copy.team.contactFollowUp}</p>` : ''}
       </div>
     </section>
 
@@ -475,7 +615,8 @@ function renderMain(copy, locale, isDev) {
   }
 
   window.__altHomeTodos = [...new Set(todos)];
-  initHeroVisualSlot(isDev);
+  initHeroVisualSlot();
+  initSkillsVisualSlot();
 }
 
 function bindAnalytics(heroVariant) {

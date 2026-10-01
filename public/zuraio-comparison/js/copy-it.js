@@ -545,9 +545,7 @@ export const footerGroups = [
     links: [
       { label: 'Chi siamo', href: 'about.html' },
       { label: 'Contatti', href: 'contact.html' },
-      { label: 'Risorse', href: 'resources.html' },
       { label: 'Partner', href: 'contact.html#partnerships' },
-      { label: 'Media', href: 'resources.html#pressroom' },
     ],
   },
   {
