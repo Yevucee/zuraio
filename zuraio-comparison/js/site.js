@@ -207,7 +207,10 @@ export function renderFooter() {
                     `<li><a href="${langHrefForLocale(file, code)}" hreflang="${code}">${localeLabels[code]}${locale === code ? ` (${uiData.languageActive})` : ''}</a></li>`,
                 ).join('');
               })()}
-              <li><a href="mailto:${SITE.contactEmail}">${SITE.contactEmail}</a></li>
+              <li><a href="${langHref('contact.html')}">${uiData.footerContactLink ?? 'Contact'}</a></li>
+              ${(SITE.founderEmails ?? [SITE.contactEmail])
+                .map((email) => `<li><a href="mailto:${email}">${email}</a></li>`)
+                .join('')}
             </ul>
           </div>
         </div>

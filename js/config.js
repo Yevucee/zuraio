@@ -39,6 +39,12 @@ export const SITE = {
   integrationsBackground: 'zuraio/assets/260707-fits-into-the-tools.png',
   heroImage: 'zuraio/assets/zuraio-hero.jpg',
   contactEmail: 'michael.wili@zuraio.ch',
+  founderEmails: [
+    'michael.wili@zuraio.ch',
+    'marcelo.zanette@zuraio.ch',
+    'samuel.polley@zuraio.ch',
+    'roland.steiner@zuraio.ch',
+  ],
   logo: 'assets/zuraio-logo.png',
 };
 

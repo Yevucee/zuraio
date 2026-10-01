@@ -118,6 +118,11 @@ export function renderAltHomeHeader(copy, locale, options = {}) {
   });
 }
 
+function founderEmailLinksHtml() {
+  const emails = SITE.founderEmails?.length ? SITE.founderEmails : [SITE.contactEmail];
+  return emails.map((email) => `<li><a href="mailto:${email}">${email}</a></li>`).join('');
+}
+
 export function renderAltHomeFooter(copy, locale, options = {}) {
   const el = document.getElementById('site-footer');
   if (!el) return;
@@ -157,7 +162,8 @@ export function renderAltHomeFooter(copy, locale, options = {}) {
             <h3 class="foot-col-title">${ui.languageContact}</h3>
             <ul class="foot-col-links">
               ${langLinks}
-              <li><a href="mailto:${SITE.contactEmail}">${SITE.contactEmail}</a></li>
+              <li><a href="${linkPrefix}contact.html">${ui.footerContactLink ?? 'Contact'}</a></li>
+              ${founderEmailLinksHtml()}
             </ul>
           </div>
         </div>
@@ -166,7 +172,7 @@ export function renderAltHomeFooter(copy, locale, options = {}) {
             <img class="brand-logo" src="${assetHref(ALT_HOME_LOGO)}" alt="" width="${ALT_HOME_LOGO_WIDTH}" height="${ALT_HOME_LOGO_HEIGHT}" decoding="async" loading="lazy" />
           </a>
           <p class="foot-tagline">${getCopy().site?.tagline ?? SITE.tagline}</p>
-          ${copy.footerTrademark ? `<p class="foot-trademark alt-home-trademark">${copy.footerTrademark}</p>` : ''}
+          ${!options.omitFooterTrademark && copy.footerTrademark ? `<p class="foot-trademark alt-home-trademark">${copy.footerTrademark}</p>` : ''}
         </div>
       </div>
     </footer>`;

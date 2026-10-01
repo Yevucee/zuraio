@@ -5,7 +5,7 @@ import { initControlParticles } from './control-particles.js';
 import { ALT_HOME_REASON_ICONS } from './alt-home-reason-icons.js';
 import { ROUTES_OUTCOME_CHECK } from './workflow-icons.js';
 
-const SECURITY_CACHE = '20261001c';
+const SECURITY_CACHE = '20261001e';
 
 function pageLocale() {
   return getLocaleFromPathname() ?? (document.documentElement.lang || 'en');
@@ -85,7 +85,7 @@ function renderMain(copy) {
       </div>
     </section>
 
-    <section class="control alt-section alt-section--control" id="today" aria-labelledby="security-models-h">
+    <section class="control alt-section alt-section--control" id="data-control" aria-labelledby="security-models-h">
       <canvas class="control-particles" data-control-particles aria-hidden="true"></canvas>
       <div class="wrap">
         <div class="head-block alt-section-head">
@@ -130,13 +130,17 @@ function renderMain(copy) {
 }
 
 function boot() {
+  document.body.setAttribute('data-alt-chrome', '');
   const locale = pageLocale();
   const copy = getSecurityCopy(copyLocale());
   document.title = copy.metaTitle;
   document.documentElement.lang = locale;
 
   renderAltHomeHeader(copy, copyLocale(), { mode: 'site', active: 'security' });
-  renderAltHomeFooter({ ...copy, footerTrademark: copy.footerTrademark }, copyLocale(), { mode: 'site' });
+  renderAltHomeFooter({ ...copy, footerTrademark: copy.footerTrademark }, copyLocale(), {
+    mode: 'site',
+    omitFooterTrademark: false,
+  });
 
   const main = document.getElementById('security-main');
   if (main) main.innerHTML = renderMain(copy);

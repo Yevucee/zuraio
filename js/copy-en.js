@@ -120,6 +120,7 @@ export const ui = {
   langIt: 'IT',
   languageLabel: 'Language',
   languageContact: 'Language / Contact',
+  footerContactLink: 'Contact',
   languageActive: 'active',
   openMenu: 'Open menu',
   closeMenu: 'Close menu',
@@ -558,18 +559,16 @@ export const footerGroups = [
   {
     title: 'Product',
     links: [
-      { label: 'How Zuraio helps', href: 'how-it-helps.html' },
-      { label: 'Knowledge', href: 'knowledge.html' },
+      { label: 'How it helps', href: 'how-it-helps.html' },
+      { label: 'Skills', href: 'how-it-helps.html#skills' },
       { label: 'Integrations', href: 'integrations.html' },
-      { label: 'Use cases', href: 'how-it-helps.html#use-cases' },
       { label: 'Book a demo', href: 'contact.html' },
     ],
   },
   {
-    title: 'Data & Security',
+    title: 'Data & security',
     links: [
       { label: 'Security', href: 'security.html' },
-      { label: 'Swiss hosting', href: 'security.html#hosting' },
       { label: 'For your IT partner', href: 'technical-architecture.html' },
     ],
   },
@@ -577,8 +576,8 @@ export const footerGroups = [
     title: 'Company',
     links: [
       { label: 'About', href: 'about.html' },
+      { label: 'FAQ', href: 'faq.html' },
       { label: 'Contact', href: 'contact.html' },
-      { label: 'Partners', href: 'contact.html#partnerships' },
     ],
   },
   {
