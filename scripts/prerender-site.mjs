@@ -208,6 +208,7 @@ function writeLegacySecurityRedirect(outDir, locale, legacyFile, target) {
   const [page, hash = ''] = target.split('#');
   const canonical = `${canonicalUrl(locale, page)}${hash ? `#${hash}` : ''}`;
   const refreshUrl = `${target}`;
+  const label = page.includes('how-it-helps') ? 'How it helps' : 'Security';
   const html = `<!DOCTYPE html>
 <html lang="${locale}">
 <head>
@@ -215,10 +216,10 @@ function writeLegacySecurityRedirect(outDir, locale, legacyFile, target) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="${canonical}">
 <meta http-equiv="refresh" content="0;url=${refreshUrl}">
-<title>Redirecting to Security</title>
+<title>Redirecting to ${label}</title>
 </head>
 <body>
-<p>Redirecting to <a href="${refreshUrl}">Security</a>.</p>
+<p>Redirecting to <a href="${refreshUrl}">${label}</a>.</p>
 </body>
 </html>
 `;
@@ -230,7 +231,6 @@ for (const locale of LOCALES) {
   const dirKey = LOCALE_DIRS[locale];
   const outDir = dirKey ? path.join(DIST, dirKey) : DIST;
   for (const [legacy, target] of LEGACY_REDIRECTS) {
-    if (!dirKey && fs.existsSync(path.join(outDir, legacy))) continue;
     writeLegacySecurityRedirect(outDir, locale, legacy, target);
   }
 }
