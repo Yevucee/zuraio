@@ -102,7 +102,7 @@ export const copyAltHome = {
         },
       ],
       band:
-        'Gemeinsam mit Ihnen entwickelt: «Offerte in unserem Format, mit unseren Rabattregeln» · «Antwort an Mieter in unserem Ton, mit unseren Standardklauseln» · «Monatsreport, so wie ihn unsere Partner mögen» [durch echte Pilot-Beispiele ersetzen]',
+        'Gemeinsam mit Ihnen entwickelt: «Offerte in unserem Format, mit unseren Rabattregeln» · «Antwort an Mieter in unserem Ton, mit unseren Standardklauseln» · «Monatsreport, so wie ihn unsere Partner mögen»',
       footnoteLabel: 'Mit Ihnen entwickelt',
       link: 'Alle Skills ansehen →',
       linkHref: '../how-it-helps.html#skills',
@@ -163,7 +163,7 @@ export const copyAltHome = {
           body: 'Wir entwickeln mit Ihrem Team Ihren ersten eigenen Skill, mit Ihren Daten.',
         },
         { title: 'Nutzen und verfeinern.', body: 'Nach 2 Wochen schauen wir gemeinsam darauf.' },
-        { title: 'Entscheiden.', body: 'Behalten, ausbauen oder stoppen. [Ausstiegsbedingungen]' },
+        { title: 'Entscheiden.', body: 'Behalten, ausbauen oder stoppen.' },
       ],
     },
     team: {
@@ -199,7 +199,7 @@ export const copyAltHome = {
         {
           q: 'Was kostet der Einstieg?',
           aHtml:
-            'Für Einzelpersonen ab CHF 19 pro Monat. Firmenpläne ab CHF 225 pro Monat für bis zu 5 Mitarbeitende, inklusive Konnektoren und Standard-KI-Nutzung. Der Einrichtungs-Workshop mit Ihrem ersten eigenen Skill kostet CHF 1\'490; die Hälfte rechnen wir an, wenn Sie innert 30 Tagen einen Jahresplan wählen. Bei jährlicher Zahlung sind zwei Monate gratis. Alle Preise exkl. MWST. <a href="preise.html">Alle Preise →</a>',
+            'Für Einzelpersonen ab CHF 19 pro Monat. Firmenpläne ab CHF 225 pro Monat für bis zu 5 Mitarbeitende, inklusive Konnektoren und Standard-KI-Nutzung. Der Einrichtungs-Workshop mit Ihrem ersten eigenen Skill kostet CHF 1\'490; die Hälfte rechnen wir an, wenn Sie innert 30 Tagen einen Jahresplan wählen. Bei jährlicher Zahlung sind zwei Monate gratis. Alle Preise exkl. MWST.',
         },
       ],
       linkAll: 'Alle Fragen →',
@@ -212,7 +212,6 @@ export const copyAltHome = {
       cta: '30-Minuten-Demo buchen',
       tagline: 'Ihr Betrieb. Ihre Informationen. Ihr OK.',
     },
-    footerNewLink: { label: 'Neu bei Zuraio', href: 'neu-bei-zuraio.html' },
     footerTrademark:
       'Microsoft, Microsoft 365, Outlook, SharePoint, Teams, Exchange und Dynamics 365 sind Marken der Microsoft-Unternehmensgruppe. bexio, Abacus, Klara, Proffix, SAP, Salesforce, HubSpot, Odoo und Sage sind Marken ihrer jeweiligen Inhaber.',
   },
@@ -303,7 +302,7 @@ export const copyAltHome = {
         },
       ],
       band:
-        'Built with you: "Quote in our house format with our discount rules" · "Reply to tenants in our tone, with our standard clauses" · "Monthly client report the way our partners like it" [replace with real pilot examples]',
+        'Built with you: "Quote in our house format with our discount rules" · "Reply to tenants in our tone, with our standard clauses" · "Monthly client report the way our partners like it"',
       footnoteLabel: 'Built with you',
       link: 'See all skills →',
       linkHref: '../how-it-helps.html#skills',
@@ -364,7 +363,7 @@ export const copyAltHome = {
           body: 'We build your first bespoke skill with your team, on your data.',
         },
         { title: 'Use and refine.', body: 'We check in after 2 weeks.' },
-        { title: 'Decide.', body: 'Keep it, expand it or stop. [Exit terms]' },
+        { title: 'Decide.', body: 'Keep it, expand it or stop.' },
       ],
     },
     team: {
@@ -400,7 +399,7 @@ export const copyAltHome = {
         {
           q: 'What does it cost to start?',
           aHtml:
-            'Individuals from CHF 19 per month. Company plans from CHF 225 per month for up to 5 employees, including connectors and standard AI usage. The set-up workshop with your first bespoke skill costs CHF 1,490, and we credit half of it if you choose an annual plan within 30 days. Pay yearly and get two months free. All prices excl. VAT. <a href="pricing.html">See all prices →</a>',
+            'Individuals from CHF 19 per month. Company plans from CHF 225 per month for up to 5 employees, including connectors and standard AI usage. The set-up workshop with your first bespoke skill costs CHF 1,490, and we credit half of it if you choose an annual plan within 30 days. Pay yearly and get two months free. All prices excl. VAT.',
         },
       ],
       linkAll: 'View all questions →',
@@ -413,7 +412,6 @@ export const copyAltHome = {
       cta: 'Book a 30-minute demo',
       tagline: 'Your company. Your information. Your OK.',
     },
-    footerNewLink: { label: 'New in Zuraio', href: 'new-in-zuraio.html' },
     footerTrademark:
       'Microsoft, Microsoft 365, Outlook, SharePoint, Teams, Exchange and Dynamics 365 are trademarks of the Microsoft group of companies. bexio, Abacus, Klara, Proffix, SAP, Salesforce, HubSpot, Odoo and Sage are trademarks of their respective owners.',
   },

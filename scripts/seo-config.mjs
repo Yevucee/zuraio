@@ -22,7 +22,6 @@ export const HTML_PAGES = [
   'about.html',
   'how-it-helps.html',
   'contact.html',
-  'resources.html',
   'technical-architecture.html',
   'knowledge.html',
   'data-control.html',

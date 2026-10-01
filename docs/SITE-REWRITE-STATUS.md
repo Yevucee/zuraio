@@ -15,6 +15,6 @@ Implement EN/DE review pages with the alt-home design system (`homepage-preview.
 1. `how-it-helps.html` (+ merge `knowledge` → `#skills`, redirects)
 2. `security.html` (new; merge data-control, deployment-models, ai-governance)
 3. `integrations.html`, `technical-architecture.html`, `about.html`, `faq.html`, `contact.html`
-4. Nav/footer aligned with alt homepage; hide pricing/resources/new-in-zuraio from links and sitemap
+4. ~~Nav/footer aligned with alt homepage; hide pricing/resources/new-in-zuraio from links and sitemap~~ **Done (Run 1)** — see `docs/RUN-1-CLEANUP-REMOVALS.md`
 
 Extend `scripts/check-alt-home-copy-dashes.mjs` to each new `copy-*.js` module as it is added (legacy `copy-en.js` / `copy-de.js` stay out of scope until those pages migrate).

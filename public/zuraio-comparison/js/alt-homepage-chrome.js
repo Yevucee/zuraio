@@ -89,8 +89,6 @@ export function renderAltHomeFooter(copy, locale) {
   const ui = getCopy().ui;
   const groups = getCopy().footerGroups;
   const localeLabels = getLocaleLabels(ui);
-  const newLink = copy.footerNewLink;
-
   const groupsHtml = groups
     .map(
       (g) => `
@@ -113,7 +111,6 @@ export function renderAltHomeFooter(copy, locale) {
                 (code) =>
                   `<li><a href="${previewLangHref(code)}">${localeLabels[code]}${locale === code ? ` (${ui.languageActive})` : ''}</a></li>`,
               ).join('')}
-              <li><a href="${newLink.href}">${newLink.label}</a></li>
               <li><a href="mailto:${SITE.contactEmail}">${SITE.contactEmail}</a></li>
             </ul>
           </div>

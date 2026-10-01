@@ -1,7 +1,6 @@
 import { getAltPricingCopy } from './copy-alt-pricing.js';
 import { getAltHomeCopy } from './copy-alt-home.js';
 import { renderAltHomeHeader, renderAltHomeFooter } from './alt-homepage-chrome.js';
-import { isPreviewDevMode, formatPreviewHtml } from './alt-preview-utils.js';
 
 function companyTable(headers, rows) {
   const head = headers.map((h) => `<th scope="col">${h}</th>`).join('');
@@ -34,15 +33,8 @@ function boot() {
   const locale = document.documentElement.lang === 'en' ? 'en' : 'de';
   const copy = getAltPricingCopy(locale);
   const homeCopy = getAltHomeCopy(locale);
-  const isDev = isPreviewDevMode();
-  const todos = [];
-
   document.title = copy.title;
   renderAltHomeHeader(homeCopy, locale);
-
-  const employeeTodoHtml = copy.employeeTodo
-    ? `<p class="alt-todo alt-pricing-employee-todo">${formatPreviewHtml(copy.employeeTodo, isDev, todos)}</p>`
-    : '';
 
   document.getElementById('alt-pricing-main').innerHTML = `
     <section class="alt-pricing-section alt-pricing-section--hero">
@@ -73,7 +65,6 @@ function boot() {
         <h2>${copy.setupHeading}</h2>
         ${simpleTable(copy.tableSetup, copy.setupRows)}
         <p class="alt-home-pricing-foot">${copy.footnote}</p>
-        ${isDev ? employeeTodoHtml : ''}
       </div>
     </section>
     <section class="alt-pricing-section alt-pricing-section--cta">

@@ -135,7 +135,7 @@ for (const locale of LOCALES) {
 // Sitemap audit
 const sitemap = fs.readFileSync(path.join(DIST, 'sitemap.xml'), 'utf8');
 const sitemapLocs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-if (sitemapLocs.length !== 64) err(`sitemap: expected 64 URLs, got ${sitemapLocs.length}`);
+if (sitemapLocs.length !== 60) err(`sitemap: expected 60 URLs, got ${sitemapLocs.length}`);
 for (const loc of sitemapLocs) {
   if (loc.includes('index.html')) err(`sitemap contains index.html variant: ${loc}`);
   if (!loc.startsWith(CANONICAL_BASE)) err(`sitemap URL not on canonical base: ${loc}`);
