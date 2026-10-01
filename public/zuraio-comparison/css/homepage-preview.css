@@ -1433,6 +1433,11 @@ body[data-page="altHome"] #team .alt-home-contact {
   margin-bottom: 0;
 }
 
+body[data-page="altHome"] .alt-home-contact__followup {
+  margin-top: 0.35rem;
+  color: var(--charcoal-soft);
+}
+
 /* FAQ */
 body[data-page="altHome"] .alt-home-faq {
   margin: 0;
