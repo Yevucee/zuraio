@@ -579,6 +579,7 @@ function renderMain(copy, locale, isDev) {
         </div>
         <div class="origin-portraits__grid alt-home-founders">${teamHtml}</div>
         <p class="alt-home-contact">${copy.team.contact ?? ''}</p>
+        ${copy.team.contactFollowUp ? `<p class="alt-home-contact alt-home-contact__followup">${copy.team.contactFollowUp}</p>` : ''}
       </div>
     </section>
 
