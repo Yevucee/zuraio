@@ -103,6 +103,15 @@ async function waitForPageReady(page, pageName, locale) {
   }
 
   const dataPage = await page.evaluate(() => document.body.dataset.page || '');
+  if (pageName === 'integrations.html') {
+    await page.waitForSelector('#integrations-main h1', { timeout: 45000 });
+    await page.waitForFunction(
+      (loc) => document.documentElement.lang === loc,
+      locale,
+      { timeout: 45000 },
+    );
+  }
+
   if (pageName === 'security.html') {
     await page.waitForSelector('#security-main h1', { timeout: 45000 });
     await page.waitForFunction(

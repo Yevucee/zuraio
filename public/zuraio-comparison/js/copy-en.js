@@ -466,9 +466,14 @@ export const pages = {
     hero: { marker: 'Knowledge', heading: 'Turn scattered company information into governed, usable context.', headingEmphasis: 'governed', lede: 'Important knowledge is often spread across inboxes, shared drives, meeting notes and business systems. Zuraio brings approved information and working methods together so employees and specialised assistants can use them more effectively.' },
   },
   integrations: {
-    title: 'Integrations — Zuraio',
-    description: 'How Zuraio connects with Microsoft 365, SharePoint, Exchange, Teams, CRM, ERP, MCP and REST APIs.',
-    hero: { marker: 'Integrations', heading: 'Works alongside the systems your team already uses.', headingEmphasis: 'already', lede: 'Zuraio is designed to connect company knowledge and workflows without forcing teams to replace the systems that already work.' },
+    title: 'Integrations | Zuraio',
+    description:
+      'How Zuraio connects to bexio, Klara, Microsoft 365, CAD/BIM tools and the systems Swiss SMEs use every day.',
+    hero: {
+      marker: 'Integrations',
+      heading: 'Works with the systems Swiss SMEs actually use.',
+      lede: 'Your team keeps working in the tools it knows. Zuraio connects to them so your knowledge stays in one place.',
+    },
   },
   security: {
     title: 'Security and data control | Zuraio',
