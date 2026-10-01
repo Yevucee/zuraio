@@ -369,12 +369,13 @@ export const home = {
 
 export const pages = {
   howItHelps: {
-    title: 'So hilft Zuraio — Zuraio',
+    title: 'So hilft Zuraio | Zuraio',
+    description:
+      'Wie Zuraio bei Sitzungen, E-Mail, Berichten, Wissenssuche und wiederkehrenden Abläufen hilft, mit Quellen, die Ihr Team prüfen kann.',
     hero: {
       marker: 'So hilft Zuraio',
-      heading: 'Weniger Administration. Mehr wertvolle Arbeit.',
-      headingEmphasis: 'wertvolle',
-      lede: 'Zuraio hilft Menschen, mit freigegebenem Unternehmenswissen vorzubereiten, zu suchen, zu entwerfen, zusammenzufassen und nachzufassen. Es arbeitet neben bestehenden Systemen und bringt den relevanten Kontext zusammen, wenn er gebraucht wird.',
+      heading: 'Weniger Administration. Mehr Zeit für die Arbeit, die zählt.',
+      lede: 'Zuraio bereitet Sitzungen vor, entwirft Antworten und findet Antworten in Ihren eigenen E-Mails, Dokumenten und Systemen. Jede Antwort zeigt ihre Quelle, und Ihr Team entscheidet, was weiter passiert.',
     },
   },
   knowledge: {
