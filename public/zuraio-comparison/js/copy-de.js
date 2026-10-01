@@ -65,11 +65,11 @@ export const problemOptions = [
 ];
 
 export const trustSignals = [
-  { label: 'Schweizer Hosting verfügbar', href: 'deployment-models.html#swiss-hosted' },
+  { label: 'Schweizer Hosting verfügbar', href: 'security.html#hosting' },
   { label: 'Quellen sichtbar', href: 'knowledge.html#traceability' },
   { label: 'Freigegebenes Unternehmenswissen', href: 'knowledge.html#skillos' },
   { label: 'Wahl des KI-Modells', href: 'technical-architecture.html#models' },
-  { label: 'Sie behalten die Kontrolle', href: 'data-control.html#data-ownership' },
+  { label: 'Sie behalten die Kontrolle', href: 'security.html' },
 ];
 
 export const integrations = [
@@ -99,17 +99,10 @@ export const integrations = [
 export const nav = {
   main: [
     { label: 'So hilft Zuraio', href: 'how-it-helps.html' },
-    { label: 'Wissen', href: 'knowledge.html' },
-    { label: 'Integrationen', href: 'integrations.html' },
-    { label: 'Datenkontrolle', href: 'data-control.html' },
+    { label: 'Skills', href: 'how-it-helps.html#skills' },
+    { label: 'Sicherheit', href: 'security.html' },
   ],
-  technical: [
-    { label: 'Technische Architektur', href: 'technical-architecture.html' },
-    { label: 'Bereitstellungsmodelle', href: 'deployment-models.html' },
-    { label: 'KI-Governance', href: 'ai-governance.html' },
-    { label: 'Datenkontrolle', href: 'data-control.html' },
-    { label: 'Wissen und SkillOS', href: 'knowledge.html#skillos' },
-  ],
+  technical: [],
   about: { label: 'Über uns', href: 'about.html' },
 };
 
@@ -399,12 +392,14 @@ export const pages = {
       lede: 'Zuraio ist darauf ausgelegt, Unternehmenswissen und Arbeitsabläufe zu verbinden, ohne funktionierende bestehende Systeme ersetzen zu müssen.',
     },
   },
-  dataControl: {
-    title: 'Datenkontrolle — Zuraio',
+  security: {
+    title: 'Sicherheit und Datenkontrolle | Zuraio',
+    description:
+      'Wie Zuraio Firmendaten in der Schweiz hält, Zugriffsregeln respektiert und Ihnen die Wahl der KI-Modelle lässt.',
     hero: {
-      marker: 'Datenkontrolle',
-      heading: 'Ihre Daten bleiben unter Ihrer Kontrolle.',
-      lede: 'Zuraio ist darauf ausgelegt, Unternehmensinformationen innerhalb der Grenzen der vereinbarten Bereitstellung und des Vertrags zu verarbeiten. Eigentum, zulässige Nutzung, Aufbewahrung und Verarbeitungsbedingungen müssen für die gewählte Lösung und die eingesetzten Modellanbieter dokumentiert werden.',
+      marker: 'Sicherheit',
+      heading: 'Ihre Daten bleiben Ihre. Sie entscheiden, wohin sie gehen.',
+      lede: 'Gehostet bei Infomaniak in der Schweiz. Der Zugriff folgt Ihren bestehenden Berechtigungen, und nichts wird ohne Ihr OK versendet.',
     },
   },
   deploymentModels: {
@@ -533,11 +528,9 @@ export const footerGroups = [
   {
     title: 'Daten und Sicherheit',
     links: [
-      { label: 'Datenkontrolle', href: 'data-control.html' },
-      { label: 'Schweizer Hosting', href: 'deployment-models.html#swiss-hosted' },
-      { label: 'Bereitstellungsmodelle', href: 'deployment-models.html' },
-      { label: 'Technische Architektur', href: 'technical-architecture.html' },
-      { label: 'KI-Governance', href: 'ai-governance.html' },
+      { label: 'Sicherheit', href: 'security.html' },
+      { label: 'Schweizer Hosting', href: 'security.html#hosting' },
+      { label: 'Für Ihren IT-Partner', href: 'technical-architecture.html' },
     ],
   },
   {

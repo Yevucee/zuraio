@@ -1,5 +1,8 @@
 /** Shared SEO / prerender configuration. */
 export const LOCALES = ['en', 'de', 'fr', 'it'];
+
+/** Locales included in sitemap.xml (EN + DE rewrite). */
+export const SITEMAP_LOCALES = ['en', 'de'];
 export const LOCALE_DIRS = { en: '', de: 'de', fr: 'fr', it: 'it' };
 
 /** Production canonical origin — override via CANONICAL_BASE env for previews. */
@@ -24,9 +27,7 @@ export const HTML_PAGES = [
   'contact.html',
   'technical-architecture.html',
   'knowledge.html',
-  'data-control.html',
-  'deployment-models.html',
-  'ai-governance.html',
+  'security.html',
   'integrations.html',
   'faq.html',
   'impressum.html',
@@ -51,5 +52,5 @@ export function canonicalUrl(locale, page) {
 export const SOFTWARE_APP_PAGES = new Set([
   'index.html',
   'technical-architecture.html',
-  'data-control.html',
+  'security.html',
 ]);

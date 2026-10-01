@@ -1,5 +1,6 @@
 import { getLocale, setLocale, getCopy, langHref } from './i18n.js';
-import { SUPPORTED_LOCALES, getLocaleLabels } from './locales.js';
+import { PUBLIC_SITE_LOCALES, getLocaleLabels } from './locales.js';
+import { langHrefForLocale } from './path-locale.js';
 import { SITE } from './config.js';
 import { assetHref } from './path-locale.js';
 import { enhanceFooterWithReview } from './internal-review.js';
@@ -25,7 +26,7 @@ const LOGO_SVG = `<svg viewBox="0 0 1182 1182" aria-hidden="true"><g transform="
 function renderLangDropdown(uiData, locale) {
   const labels = getLocaleLabels(uiData);
   const current = labels[locale] ?? locale.toUpperCase();
-  const options = SUPPORTED_LOCALES.map(
+  const options = PUBLIC_SITE_LOCALES.map(
     (code) =>
       `<button type="button" class="lang-dropdown-option${locale === code ? ' is-active' : ''}" role="option" data-lang="${code}" aria-selected="${locale === code}">${labels[code]}</button>`,
   ).join('');
@@ -100,9 +101,16 @@ export function renderHeader() {
   const uiData = getUi();
   const locale = getLocale();
 
-  const techLinks = navData.technical
+  const techLinks = (navData.technical ?? [])
     .map((l) => `<a href="${langHref(l.href)}" role="menuitem">${l.label}</a>`)
     .join('');
+  const technicalNav =
+    techLinks.length > 0
+      ? `<div class="nav-dropdown">
+              <button type="button" class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">${uiData.technical}</button>
+              <div class="nav-dropdown-menu" role="menu">${techLinks}</div>
+            </div>`
+      : '';
 
   el.innerHTML = `
     <header class="nav" id="nav">
@@ -116,10 +124,7 @@ export function renderHeader() {
         <div class="nav-menu" id="nav-menu">
           <nav class="nav-links" aria-label="${uiData.primaryNavAria ?? 'Primary'}">
             ${navData.main.map((l) => `<a href="${langHref(l.href)}">${l.label}</a>`).join('')}
-            <div class="nav-dropdown">
-              <button type="button" class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">${uiData.technical}</button>
-              <div class="nav-dropdown-menu" role="menu">${techLinks}</div>
-            </div>
+            ${technicalNav}
             <a href="${langHref(navData.about.href)}">${navData.about.label}</a>
           </nav>
           <div class="nav-actions">
@@ -141,7 +146,7 @@ export function renderHeader() {
   });
 
   const techDropdown = el.querySelector('.nav-links .nav-dropdown');
-  bindDropdown(el, techDropdown);
+  if (techDropdown) bindDropdown(el, techDropdown);
 
   const langDropdown = el.querySelector('.lang-dropdown');
   bindDropdown(el, langDropdown, (next) => {
@@ -194,10 +199,14 @@ export function renderFooter() {
           <div class="foot-col">
             <h3 class="foot-col-title">${uiData.languageContact}</h3>
             <ul class="foot-col-links">
-              ${SUPPORTED_LOCALES.map(
-                (code) =>
-                  `<li><span class="foot-muted">${localeLabels[code]}${locale === code ? ` (${uiData.languageActive})` : ''}</span></li>`,
-              ).join('')}
+              ${(() => {
+                const pageFile = location.pathname.split('/').filter(Boolean).pop() || 'index.html';
+                const file = pageFile.endsWith('.html') ? pageFile : 'index.html';
+                return PUBLIC_SITE_LOCALES.map(
+                  (code) =>
+                    `<li><a href="${langHrefForLocale(file, code)}" hreflang="${code}">${localeLabels[code]}${locale === code ? ` (${uiData.languageActive})` : ''}</a></li>`,
+                ).join('');
+              })()}
               <li><a href="mailto:${SITE.contactEmail}">${SITE.contactEmail}</a></li>
             </ul>
           </div>

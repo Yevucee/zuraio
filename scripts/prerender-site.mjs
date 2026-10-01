@@ -7,7 +7,7 @@ import path from 'node:path';
 import http from 'node:http';
 import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { HTML_PAGES, LOCALES, LOCALE_DIRS } from './seo-config.mjs';
+import { HTML_PAGES, LOCALES, LOCALE_DIRS, canonicalUrl } from './seo-config.mjs';
 import { postprocessHtml, injectLangRedirect } from './postprocess-seo.mjs';
 
 function rewriteAssetPathsForLocale(html, locale) {
@@ -103,14 +103,16 @@ async function waitForPageReady(page, pageName, locale) {
   }
 
   const dataPage = await page.evaluate(() => document.body.dataset.page || '');
-  const needsBody = [
-    'technicalArchitecture',
-    'knowledge',
-    'dataControl',
-    'deploymentModels',
-    'aiGovernance',
-    'integrations',
-  ];
+  if (pageName === 'security.html') {
+    await page.waitForSelector('#security-main h1', { timeout: 45000 });
+    await page.waitForFunction(
+      (loc) => document.documentElement.lang === loc,
+      locale,
+      { timeout: 45000 },
+    );
+  }
+
+  const needsBody = ['technicalArchitecture', 'knowledge', 'integrations'];
   if (needsBody.includes(dataPage)) {
     await page.waitForFunction(
       () => (document.querySelector('main')?.textContent?.trim().length ?? 0) > 300,
@@ -176,5 +178,43 @@ await browser.close();
 if (server) {
   server.kill('SIGKILL');
 }
+
+const LEGACY_SECURITY_REDIRECTS = [
+  ['data-control.html', 'security.html'],
+  ['deployment-models.html', 'security.html#hosting'],
+  ['ai-governance.html', 'security.html#today'],
+];
+
+function writeLegacySecurityRedirect(outDir, locale, legacyFile, target) {
+  const [page, hash = ''] = target.split('#');
+  const canonical = `${canonicalUrl(locale, page)}${hash ? `#${hash}` : ''}`;
+  const refreshUrl = `${target}`;
+  const html = `<!DOCTYPE html>
+<html lang="${locale}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="${canonical}">
+<meta http-equiv="refresh" content="0;url=${refreshUrl}">
+<title>Redirecting to Security</title>
+</head>
+<body>
+<p>Redirecting to <a href="${refreshUrl}">Security</a>.</p>
+</body>
+</html>
+`;
+  fs.mkdirSync(outDir, { recursive: true });
+  fs.writeFileSync(path.join(outDir, legacyFile), html);
+}
+
+for (const locale of LOCALES) {
+  const dirKey = LOCALE_DIRS[locale];
+  const outDir = dirKey ? path.join(DIST, dirKey) : DIST;
+  for (const [legacy, target] of LEGACY_SECURITY_REDIRECTS) {
+    if (!dirKey && fs.existsSync(path.join(outDir, legacy))) continue;
+    writeLegacySecurityRedirect(outDir, locale, legacy, target);
+  }
+}
+
 console.log('prerender-site: complete');
 process.exit(0);

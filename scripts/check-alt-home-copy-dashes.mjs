@@ -11,6 +11,7 @@ const root = path.dirname(fileURLToPath(import.meta.url));
 const COPY_FILES = [
   '../public/zuraio-comparison/js/copy-alt-home.js',
   '../public/zuraio-comparison/js/copy-alt-pricing.js',
+  '../public/zuraio-comparison/js/copy-security.js',
 ];
 
 /** Strip block and line comments so only string content is checked. */
