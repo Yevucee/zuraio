@@ -50,7 +50,7 @@ export const copyAltHome = {
         },
         {
           title: 'Sie entscheiden, wohin Ihre Daten gehen.',
-          body: 'Gehostet bei Infomaniak in der Schweiz. Andere KI-Modelle nur, wenn Sie es wählen.',
+          body: 'Jedes KI-Modell ist gekennzeichnet. Was die Schweiz verlässt, entscheiden Sie.',
         },
         {
           title: 'Skills, gemeinsam mit Ihnen entwickelt.',
@@ -66,7 +66,7 @@ export const copyAltHome = {
     skills: {
       eyebrow: 'FÜR ARCHITEKTUR- UND INGENIEURBÜROS, TREUHÄNDER UND IMMOBILIENVERWALTUNGEN',
       eyebrowShort: 'FÜR ARCHITEKTEN, TREUHÄNDER UND VERWALTUNGEN',
-      heading: 'Skills, gemeinsam mit Ihnen entwickelt. Für die Art, wie Ihr Betrieb arbeitet.',
+      heading: 'Ab dem ersten Tag bereit. Danach für Sie gemacht.',
       intro:
         'Starten Sie mit fertigen Skills. Danach entwickeln wir mit Ihrem Team die Skills, die nur Ihr Betrieb hat: Ihre Offerten, Ihr Ton, Ihre Abläufe.',
       readyMade: [
@@ -122,6 +122,8 @@ export const copyAltHome = {
         'Kennt die Microsoft-Welt. Daten aus bexio, Abacus oder Ihrem CRM brauchen Zusatzaufwand, und der Nutzen hängt von Lizenzen und Einrichtung ab.',
       zuraio:
         'Kennt Ihren Betrieb über alle Systeme hinweg, startet mit fertigen Skills, entwickelt eigene mit Ihnen. Gehostet in der Schweiz, und Sie entscheiden, welche KI was sieht.',
+      after:
+        'Wenn Ihre ganze Arbeit in Microsoft 365 stattfindet, deckt Copilot vieles ab. Zuraio ergänzt den Rest: bexio, Abacus, Ihre Dateien und Skills für Ihren Betrieb, gehostet in der Schweiz.',
     },
     control: {
       eyebrow: 'DATENKONTROLLE',
@@ -248,7 +250,7 @@ export const copyAltHome = {
         },
         {
           title: 'You decide where your data goes.',
-          body: 'Hosted by Infomaniak in Switzerland. Other AI models only when you choose them.',
+          body: 'Every AI model is labelled. You decide what leaves Switzerland.',
         },
         {
           title: 'Skills built with you.',
@@ -264,7 +266,7 @@ export const copyAltHome = {
     skills: {
       eyebrow: 'FOR ARCHITECTURE AND ENGINEERING OFFICES, FIDUCIARIES AND PROPERTY MANAGERS',
       eyebrowShort: 'BUILT FOR ARCHITECTS, FIDUCIARIES AND PROPERTY MANAGERS',
-      heading: 'Skills built with you, for the way your company works.',
+      heading: 'Ready from day one. Then made for you.',
       intro:
         'Start with ready-made skills. Then we sit down with your team and build the ones only your company has: your offers, your tone, your processes.',
       readyMade: [
@@ -320,6 +322,8 @@ export const copyAltHome = {
         'Knows the Microsoft world. Your bexio, Abacus or CRM data needs extra work, and the value depends on licences and setup.',
       zuraio:
         'Knows your company across all of your systems, starts with ready-made skills and builds your own with you. Hosted in Switzerland, and you decide which AI sees what.',
+      after:
+        'If all your work happens in Microsoft 365, Copilot covers a lot. Zuraio adds the rest: bexio, Abacus, your files and skills built for your company, hosted in Switzerland.',
     },
     control: {
       eyebrow: 'DATA CONTROL',
