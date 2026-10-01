@@ -1123,6 +1123,15 @@ body[data-page="altHome"] .alt-home-compare--combined {
   }
 }
 
+body[data-page="altHome"] .alt-home-compare__after {
+  margin: 24px 0 0;
+  max-width: 60ch;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--charcoal-soft);
+  text-align: left;
+}
+
 /* Control — equal card heights */
 body[data-page="altHome"] #data-control .ctrl-panel {
   margin-top: var(--alt-head-gap);

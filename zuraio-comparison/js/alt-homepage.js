@@ -537,6 +537,7 @@ function renderMain(copy, locale, isDev) {
           <h2 id="alt-compare-h" class="alt-reveal">${copy.compare.heading}</h2>
         </div>
         <div class="alt-home-compare-grid">${compareHtml}</div>
+        ${copy.compare.after ? `<p class="alt-home-compare__after">${copy.compare.after}</p>` : ''}
       </div>
     </section>
 
