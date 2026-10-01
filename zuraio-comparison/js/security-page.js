@@ -5,7 +5,7 @@ import { initControlParticles } from './control-particles.js';
 import { ALT_HOME_REASON_ICONS } from './alt-home-reason-icons.js';
 import { ROUTES_OUTCOME_CHECK } from './workflow-icons.js';
 
-const SECURITY_CACHE = '20261001f';
+const SECURITY_CACHE = '20261002a';
 
 function pageLocale() {
   return getLocaleFromPathname() ?? (document.documentElement.lang || 'en');
@@ -70,7 +70,9 @@ function renderMain(copy) {
     <section class="alt-section alt-section--tint alt-security-hero">
       <div class="wrap">
         <span class="marker hero-eyebrow">${copy.hero.eyebrow}</span>
-        <h1>${copy.hero.heading}</h1>
+        <h1>${(copy.hero.headingLines ?? [copy.hero.heading])
+          .map((line) => `<span class="alt-security-hero__line">${line}</span>`)
+          .join('')}</h1>
         <p class="lede alt-security-hero__sub">${copy.hero.sub}</p>
         ${renderTrustList(copy.hero.trust)}
       </div>
