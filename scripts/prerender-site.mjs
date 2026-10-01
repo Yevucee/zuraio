@@ -139,7 +139,16 @@ async function waitForPageReady(page, pageName, locale) {
     );
   }
 
-  const needsBody = ['technicalArchitecture', 'knowledge', 'integrations'];
+  if (pageName === 'technical-architecture.html') {
+    await page.waitForSelector('#tech-arch-main h1', { timeout: 45000 });
+    await page.waitForFunction(
+      (loc) => document.documentElement.lang === loc,
+      locale,
+      { timeout: 45000 },
+    );
+  }
+
+  const needsBody = ['knowledge', 'integrations'];
   if (needsBody.includes(dataPage)) {
     await page.waitForFunction(
       () => (document.querySelector('main')?.textContent?.trim().length ?? 0) > 300,
