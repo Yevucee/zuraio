@@ -274,7 +274,7 @@ export function applyHomeTranslations() {
     if (body) body.textContent = step.body;
   });
   setHtml('#reviewable .section-link a', home.reviewable.link);
-  setLinkHref('#reviewable .section-link a', 'security.html#today');
+  setLinkHref('#reviewable .section-link a', 'security.html#good-to-know');
 
   setText('#origin .marker', home.origin.marker);
   setText('#origin h2', home.origin.heading);

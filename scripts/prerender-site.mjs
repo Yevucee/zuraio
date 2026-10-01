@@ -182,7 +182,7 @@ if (server) {
 const LEGACY_SECURITY_REDIRECTS = [
   ['data-control.html', 'security.html'],
   ['deployment-models.html', 'security.html#hosting'],
-  ['ai-governance.html', 'security.html#today'],
+  ['ai-governance.html', 'security.html#good-to-know'],
 ];
 
 function writeLegacySecurityRedirect(outDir, locale, legacyFile, target) {

@@ -383,7 +383,7 @@ export const dataControl = {
     qualification:
       'Konkrete Aussagen zum Schweizer Datenschutzrecht, zur DSGVO, zu KI-Regulierung, Zertifizierungen und Unterauftragsbearbeitern erfordern eine separate rechtliche und technische Prüfung.',
     link: 'Mehr zur KI-Governance →',
-    linkHref: 'security.html#today',
+    linkHref: 'security.html#good-to-know',
   },
   cta: {
     heading: 'Besprechen Sie Ihre Anforderungen an die Datenkontrolle.',

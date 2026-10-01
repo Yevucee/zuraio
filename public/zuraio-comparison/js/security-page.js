@@ -109,7 +109,7 @@ function renderMain(copy) {
       </div>
     </section>
 
-    <section class="alt-section alt-section--paper">
+    <section class="alt-section alt-section--paper" id="good-to-know">
       <div class="wrap">
         <p class="alt-security-fine-print">${copy.finePrint}</p>
       </div>

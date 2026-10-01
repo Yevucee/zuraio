@@ -12,7 +12,7 @@
 |-----|--------|
 | `data-control.html` | `security.html` |
 | `deployment-models.html` | `security.html#hosting` |
-| `ai-governance.html` | `security.html#today` |
+| `ai-governance.html` | `security.html#good-to-know` |
 
 Locale copies written under `de/`, `fr/`, `it/` at build time (`prerender-site.mjs`).
 
