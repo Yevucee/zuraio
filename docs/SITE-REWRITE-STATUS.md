@@ -8,14 +8,22 @@ Canonical copy and Cursor brief: **`docs/zuraio-site-rewrite.md`**.
 - IT partner link: no factsheet wording; points to `technical-architecture.html`.
 - Founder cards: name, photo, email only (no role placeholders).
 
-## Next (Part B in rewrite doc)
+## Part B runs (EN + DE, alt chrome)
 
-Implement EN/DE review pages with the alt-home design system (`homepage-preview.css`, copy modules, dash guard):
+| Run | Page | Doc |
+|-----|------|-----|
+| 1 | Cleanup, nav, redirects | `docs/RUN-1-CLEANUP-REMOVALS.md` |
+| 2 | `security.html` | `docs/RUN-2-SECURITY.md` |
+| 3 | `integrations.html` | `docs/RUN-3-INTEGRATIONS.md` |
+| 4 | `how-it-helps.html` (+ `#skills`, redirects) | `docs/RUN-4-HOW-IT-HELPS.md` |
+| 5 | `contact.html` | `docs/RUN-5-CONTACT.md` |
+| 6 | `technical-architecture.html` | `docs/RUN-6-TECHNICAL-ARCHITECTURE.md` |
 
-1. `how-it-helps.html` (+ merge `knowledge` → `#skills`, redirects)
-2. `security.html` (new; merge data-control, deployment-models, ai-governance)
-3. `integrations.html`, `technical-architecture.html`, `about.html`, `faq.html`, `contact.html`
-4. ~~Nav/footer aligned with alt homepage; hide pricing/resources/new-in-zuraio from links and sitemap~~ **Done (Run 1)** — see `docs/RUN-1-CLEANUP-REMOVALS.md`
-5. ~~`security.html` (Part A §2) + redirects; FR/IT hidden from nav/sitemap~~ **Done (Run 2)** — see `docs/RUN-2-SECURITY.md`
+**Still to build:** `about.html`, `faq.html`.
 
 Extend `scripts/check-alt-home-copy-dashes.mjs` to each new `copy-*.js` module as it is added (legacy `copy-en.js` / `copy-de.js` stay out of scope until those pages migrate).
+
+## Go-live checklist
+
+- Connect the new contact form to the live site's existing form handling and send a test before switching.
+- Deploy Worker + PA secrets per `docs/CONTACT-FORM-GO-LIVE.md` when switching contact API on production (`Mcwili/zuraio`).
