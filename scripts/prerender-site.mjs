@@ -121,6 +121,15 @@ async function waitForPageReady(page, pageName, locale) {
     );
   }
 
+  if (pageName === 'how-it-helps.html') {
+    await page.waitForSelector('#how-it-helps-main h1', { timeout: 45000 });
+    await page.waitForFunction(
+      (loc) => document.documentElement.lang === loc,
+      locale,
+      { timeout: 45000 },
+    );
+  }
+
   const needsBody = ['technicalArchitecture', 'knowledge', 'integrations'];
   if (needsBody.includes(dataPage)) {
     await page.waitForFunction(
@@ -188,10 +197,11 @@ if (server) {
   server.kill('SIGKILL');
 }
 
-const LEGACY_SECURITY_REDIRECTS = [
+const LEGACY_REDIRECTS = [
   ['data-control.html', 'security.html'],
   ['deployment-models.html', 'security.html#hosting'],
   ['ai-governance.html', 'security.html#good-to-know'],
+  ['knowledge.html', 'how-it-helps.html#skills'],
 ];
 
 function writeLegacySecurityRedirect(outDir, locale, legacyFile, target) {
@@ -219,7 +229,7 @@ function writeLegacySecurityRedirect(outDir, locale, legacyFile, target) {
 for (const locale of LOCALES) {
   const dirKey = LOCALE_DIRS[locale];
   const outDir = dirKey ? path.join(DIST, dirKey) : DIST;
-  for (const [legacy, target] of LEGACY_SECURITY_REDIRECTS) {
+  for (const [legacy, target] of LEGACY_REDIRECTS) {
     if (!dirKey && fs.existsSync(path.join(outDir, legacy))) continue;
     writeLegacySecurityRedirect(outDir, locale, legacy, target);
   }

@@ -222,7 +222,7 @@ export const SWISS_WORDMARK_CARDS = [
   },
   {
     id: 'proffix',
-    logo: 'assets/integrations/proffix.svg',
+    logo: 'assets/integrations/official/zuraio-logo-proffix.png',
     alt: 'Proffix',
     width: 99,
     height: 28,

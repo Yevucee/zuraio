@@ -20,7 +20,7 @@ function pageHref(href) {
 
 function wordmarkCardsHtml() {
   return SWISS_WORDMARK_CARDS.map(
-    (w) => `<article class="alt-int-wordmark-card">
+    (w) => `<article class="alt-int-wordmark-card" data-integration="${w.id}">
       <img src="${assetHref(w.logo)}" alt="${w.alt}" width="${w.width}" height="${w.height}" loading="lazy" decoding="async" />
     </article>`,
   ).join('');

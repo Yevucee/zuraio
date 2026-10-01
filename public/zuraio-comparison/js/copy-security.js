@@ -14,7 +14,7 @@ export const copySecurity = {
     },
     hero: {
       eyebrow: 'SICHERHEIT UND DATENKONTROLLE',
-      heading: 'Ihre Daten bleiben Ihre. Sie entscheiden, wohin sie gehen.',
+      headingLines: ['Ihre Daten bleiben Ihre.', 'Sie entscheiden, wohin sie gehen.'],
       sub: 'Gehostet bei Infomaniak in der Schweiz. Der Zugriff folgt Ihren bestehenden Berechtigungen, und nichts wird ohne Ihr OK versendet.',
       trust: [
         'Gehostet bei Infomaniak in der Schweiz',
@@ -114,7 +114,7 @@ export const copySecurity = {
     },
     hero: {
       eyebrow: 'SECURITY AND DATA CONTROL',
-      heading: 'Your data stays yours. You decide where it goes.',
+      headingLines: ['Your data stays yours.', 'You decide where it goes.'],
       sub: 'Hosted by Infomaniak in Switzerland. Access follows your existing permissions, and nothing is sent without your OK.',
       trust: [
         'Hosted by Infomaniak in Switzerland',

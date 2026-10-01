@@ -457,9 +457,14 @@ export const faqCta = {
 
 export const pages = {
   howItHelps: {
-    title: 'How it helps — Zuraio',
-    description: 'Practical ways Zuraio helps Swiss teams prepare, search, draft and follow up using approved company knowledge.',
-    hero: { marker: 'How it helps', heading: 'Less administration. More valuable work.', headingEmphasis: 'valuable', lede: 'Zuraio helps people prepare, search, draft, summarise and follow up using approved company knowledge. It works alongside existing systems and brings the relevant context together when it is needed.' },
+    title: 'How it helps | Zuraio',
+    description:
+      'How Zuraio helps with meetings, email, reports, knowledge search and repeatable workflows, with sources your team can check.',
+    hero: {
+      marker: 'How it helps',
+      heading: 'Less admin. More time for the work that matters.',
+      lede: 'Zuraio prepares meetings, drafts replies and finds answers in your own emails, documents and systems. Every answer shows its source, and your team decides what happens next.',
+    },
   },
   knowledge: {
     title: 'Knowledge — Zuraio',
