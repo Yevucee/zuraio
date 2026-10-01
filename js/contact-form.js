@@ -1,8 +1,28 @@
 import { CONTACT_API_URL, SITE } from './config.js';
 import { getCopy, getLocale } from './i18n.js';
+import { getLocaleFromPathname } from './path-locale.js';
+import { getContactCopy } from './copy-contact.js';
 import { isInternalReviewMode } from './internal-review.js';
 
-function formMessages() {
+function formLocale() {
+  return getLocaleFromPathname() ?? getLocale();
+}
+
+function formMessages(formEl) {
+  if (formEl?.dataset.contactAlt === 'true') {
+    const f = getContactCopy(formLocale() === 'de' ? 'de' : 'en').form;
+    return {
+      sending: f.sending,
+      success: f.success,
+      error: f.error,
+      errorNetwork: f.errorNetwork,
+      fallback: f.fallback,
+      validationEmail: f.validationEmail,
+      validationRequired: f.validationRequired,
+      starterInterestLabel: f.starterInterestLabel,
+      websiteEnquiryLabel: f.websiteEnquiryLabel,
+    };
+  }
   const copy = getCopy();
   const form = copy.pages?.contact?.form ?? copy.contact?.form ?? {};
   return {
@@ -14,6 +34,9 @@ function formMessages() {
     validationMessageOrInterest:
       form.validationMessageOrInterest ?? 'Please add a message or select a main interest.',
     validationEmail: form.validationEmail ?? 'Please enter a valid email address.',
+    validationRequired: form.validationRequired ?? 'Please complete the required fields.',
+    starterInterestLabel: 'Starter partner',
+    websiteEnquiryLabel: 'Website contact',
   };
 }
 
@@ -30,13 +53,25 @@ function readField(form, name) {
   return String(el.value).trim();
 }
 
-function buildPayload(form) {
+function buildPayload(form, msg) {
   const interestEl = form.querySelector('#interest');
-  const interest = readField(form, 'interest');
+  let interest = readField(form, 'interest');
   let interestLabel = '';
   if (interestEl instanceof HTMLSelectElement && interestEl.selectedIndex >= 0) {
     interestLabel = interestEl.options[interestEl.selectedIndex]?.text?.trim() ?? '';
     if (interestLabel.toLowerCase().includes('select')) interestLabel = '';
+  }
+
+  const starterEl = form.querySelector('#starter-partner');
+  if (starterEl instanceof HTMLInputElement && starterEl.checked) {
+    interest = 'starter-partner';
+    interestLabel = msg.starterInterestLabel ?? 'Starter partner';
+  }
+
+  const message = readField(form, 'message');
+  if (!message && !interest) {
+    interest = 'website-enquiry';
+    interestLabel = msg.websiteEnquiryLabel ?? 'Website contact';
   }
 
   const ts = form.dataset.formTs || String(Date.now());
@@ -50,19 +85,24 @@ function buildPayload(form) {
     companySize: readField(form, 'company-size'),
     interest,
     interestLabel,
-    message: readField(form, 'message'),
-    locale: getLocale(),
+    message,
+    locale: formLocale(),
     source: window.location.pathname || '/contact.html',
     website: readField(form, 'website'),
     ts: Number(ts),
   };
 }
 
-function validateClient(payload, msg) {
+function validateClient(payload, msg, form) {
+  if (form?.dataset.contactAlt === 'true') {
+    if (!payload.name || !payload.company) {
+      return msg.validationRequired;
+    }
+  }
   if (!payload.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
     return msg.validationEmail;
   }
-  if (!payload.message && !payload.interest) {
+  if (!form?.dataset.contactAlt && !payload.message && !payload.interest) {
     return msg.validationMessageOrInterest;
   }
   return null;
@@ -100,7 +140,7 @@ export function initContactForm() {
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const msg = formMessages();
+    const msg = formMessages(form);
 
     if (isInternalReviewMode()) {
       setNotice(
@@ -122,8 +162,8 @@ export function initContactForm() {
       return;
     }
 
-    const payload = buildPayload(form);
-    const validationError = validateClient(payload, msg);
+    const payload = buildPayload(form, msg);
+    const validationError = validateClient(payload, msg, form);
     if (validationError) {
       setNotice(notice, validationError, true);
       return;
