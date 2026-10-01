@@ -6,12 +6,13 @@
 <link rel="icon" href="../assets/favicon-16x16.png" sizes="16x16" type="image/png">
 <link rel="shortcut icon" href="../assets/favicon.ico">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-<title>Integrationen — Zuraio</title>
+<title>Integrationen | Zuraio</title>
+<meta name="description" content="Wie Zuraio sich mit bexio, Klara, Microsoft 365, CAD/BIM-Werkzeugen und den Systemen verbindet, die Schweizer KMU täglich nutzen.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/site.css">
-  <meta name="description" content="Zuraio ist darauf ausgelegt, Unternehmenswissen und Arbeitsabläufe zu verbinden, ohne funktionierende bestehende Systeme ersetzen zu müssen.">
+<link rel="stylesheet" href="../css/site.css?v=20260909-origin">
+<link rel="stylesheet" href="../css/homepage-preview.css?v=20261001d">
 
   <link rel="canonical" href="https://zuraio.ch/de/integrations.html">
   <link rel="alternate" hreflang="en" href="https://zuraio.ch/integrations.html">
@@ -19,8 +20,8 @@
 <link rel="alternate" hreflang="fr" href="https://zuraio.ch/fr/integrations.html">
 <link rel="alternate" hreflang="it" href="https://zuraio.ch/it/integrations.html">
   <link rel="alternate" hreflang="x-default" href="https://zuraio.ch/integrations.html">
-  <meta property="og:title" content="Integrationen — Zuraio">
-  <meta property="og:description" content="Zuraio ist darauf ausgelegt, Unternehmenswissen und Arbeitsabläufe zu verbinden, ohne funktionierende bestehende Systeme ersetzen zu müssen.">
+  <meta property="og:title" content="Integrationen | Zuraio">
+  <meta property="og:description" content="Wie Zuraio sich mit bexio, Klara, Microsoft 365, CAD/BIM-Werkzeugen und den Systemen verbindet, die Schweizer KMU täglich nutzen.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://zuraio.ch/de/integrations.html">
   <meta property="og:image" content="https://zuraio.ch/zuraio/assets/zuraio-og-share.png">
@@ -44,143 +45,218 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
 })();
 </script>
 </head>
-<body data-page="integrations" class="public-mode">
-<div id="site-header" data-dropdown-dismiss-bound="true" data-scroll-bound="true">
-    <header class="nav" id="nav">
+<body data-page="integrations">
+<div id="site-header">
+    <header class="nav alt-home-nav" id="nav">
       <div class="wrap nav-in">
-        <a class="brand" href="/de/" aria-label="Zuraio Startseite">
-          <img class="brand-logo" src="/assets/zuraio-logo.png" alt="Zuraio – Ihre Daten unter Ihrer Kontrolle" width="4796" height="1465" decoding="async">
+        <a class="brand" href="../index.html" aria-label="Zuraio Startseite">
+          <img class="brand-logo" src="/assets/zuraio-logo-nav@2x.webp" alt="Zuraio – Ihre Daten unter Ihrer Kontrolle" width="184" height="56" decoding="async" fetchpriority="high">
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menü öffnen">
           <span></span><span></span><span></span>
         </button>
         <div class="nav-menu" id="nav-menu">
           <nav class="nav-links" aria-label="Hauptnavigation">
-            <a href="/de/how-it-helps.html">So hilft Zuraio</a><a href="/de/how-it-helps.html#skills">Skills</a><a href="/de/security.html">Sicherheit</a>
-            
-            <a href="/de/about.html">Über uns</a>
+            <a href="../how-it-helps.html">So hilft Zuraio</a><a href="../how-it-helps.html#skills">Skills</a><a href="../security.html">Sicherheit</a><a href="../about.html">Über uns</a>
           </nav>
-          <div class="nav-actions">
-            
-    <div class="lang-dropdown">
-      <button type="button" class="lang-dropdown-btn" aria-expanded="false" aria-haspopup="listbox" aria-label="Sprache">
-        <span class="lang-dropdown-current">DE</span>
-      </button>
-      <div class="lang-dropdown-menu" role="listbox" aria-label="Sprache">
-        <button type="button" class="lang-dropdown-option" role="option" data-lang="en" aria-selected="false">EN</button><button type="button" class="lang-dropdown-option is-active" role="option" data-lang="de" aria-selected="true">DE</button>
-      </div>
-    </div>
-            <a class="btn btn-primary" href="/de/contact.html">Demo buchen</a>
+          <div class="nav-actions alt-home-nav__actions">
+            <div class="lang-dropdown alt-home-lang">
+              <button type="button" class="lang-dropdown-btn" aria-expanded="false" aria-haspopup="listbox" aria-label="Sprache">
+                <span class="lang-dropdown-current">DE</span>
+              </button>
+              <div class="lang-dropdown-menu" role="listbox">
+                <a class="lang-dropdown-option" href="/security.html">EN</a><a class="lang-dropdown-option is-active" href="/de/security.html">DE</a>
+              </div>
+            </div>
+            <a class="btn btn-primary alt-home-cta" data-alt-cta="nav" href="../contact.html">30-Minuten-Demo buchen</a>
           </div>
         </div>
       </div>
     </header></div>
-<main>
+<main id="integrations-main" aria-live="polite">
+    <section class="alt-section alt-section--paper alt-int-hero">
+      <div class="wrap">
+        <h1>Arbeitet mit den Systemen, die Schweizer KMU wirklich nutzen.</h1>
+        <p class="lede">Ihr Team arbeitet weiter in den Werkzeugen, die es kennt: von bexio und Klara über Microsoft 365 bis zu Revit und ArchiCAD. Zuraio verbindet sich damit, so ist Ihr Wissen an einem Ort, ohne dass Sie es verschieben.</p>
+      </div>
+      <div class="marquee-track alt-home-integrations__marquee alt-int-hero__marquee" data-alt-marquee="" tabindex="0" aria-label="Integrations" data-marquee-ready="true">
+        <div class="marquee-inner" style="--marquee-offset: 612px;"><span class="tool integration-item integration-item--wordmark has-logo" data-integration="bexio">
+    <span class="integration-wordmark-wrap" aria-hidden="true"><img class="integration-logo-img integration-logo-img--wordmark" src="/assets/integrations/official/zuraio-logo-bexio.svg" alt="bexio" width="96" height="22" loading="eager" decoding="async"></span>
+    <span class="visually-hidden">bexio</span>
+  </span><span class="tool integration-item integration-item--wordmark has-logo" data-integration="abacus">
+    <span class="integration-wordmark-wrap" aria-hidden="true"><img class="integration-logo-img integration-logo-img--wordmark" src="/assets/integrations/official/zuraio-logo-abacus.svg" alt="Abacus" width="127" height="22" loading="eager" decoding="async"></span>
+    <span class="visually-hidden">Abacus</span>
+  </span><span class="tool integration-item integration-item--wordmark has-logo" data-integration="klara">
+    <span class="integration-wordmark-wrap" aria-hidden="true"><img class="integration-logo-img integration-logo-img--wordmark" src="/assets/integrations/official/zuraio-logo-klara.svg" alt="Klara" width="95" height="26" loading="eager" decoding="async"></span>
+    <span class="visually-hidden">Klara</span>
+  </span><span class="tool integration-item integration-item--wordmark has-logo" data-integration="proffix">
+    <span class="integration-wordmark-wrap" aria-hidden="true"><img class="integration-logo-img integration-logo-img--wordmark" src="/assets/integrations/official/zuraio-logo-proffix.png" alt="Proffix" width="99" height="28" loading="eager" decoding="async"></span>
+    <span class="visually-hidden">Proffix</span>
+  </span><span class="tool integration-item integration-item--symbol has-logo" data-integration="sap">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/sap.svg" alt="SAP" width="20" height="20" loading="eager" decoding="async"></span>
+    <span class="integration-name">SAP</span>
+  </span><span class="tool integration-item integration-item--symbol has-logo" data-integration="salesforce">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/salesforce.svg" alt="Salesforce" width="20" height="20" loading="eager" decoding="async"></span>
+    <span class="integration-name">Salesforce</span>
+  </span><span class="tool integration-item integration-item--symbol has-logo" data-integration="hubspot">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/hubspot.svg" alt="HubSpot" width="20" height="20" loading="eager" decoding="async"></span>
+    <span class="integration-name">HubSpot</span>
+  </span><span class="tool integration-item integration-item--symbol has-logo" data-integration="odoo">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/odoo.svg" alt="Odoo" width="20" height="20" loading="eager" decoding="async"></span>
+    <span class="integration-name">Odoo</span>
+  </span><span class="tool integration-item integration-item--symbol has-logo" data-integration="sage">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/sage.svg" alt="Sage" width="20" height="20" loading="eager" decoding="async"></span>
+    <span class="integration-name">Sage</span>
+  </span><span class="tool integration-item integration-item--text" data-integration="microsoft-365">
+      <span class="integration-name">Microsoft 365</span>
+    </span><span class="tool integration-item integration-item--text" data-integration="microsoft-outlook">
+      <span class="integration-name">Microsoft Outlook</span>
+    </span><span class="tool integration-item integration-item--text" data-integration="microsoft-sharepoint">
+      <span class="integration-name">Microsoft SharePoint</span>
+    </span><span class="tool integration-item integration-item--text" data-integration="microsoft-teams">
+      <span class="integration-name">Microsoft Teams</span>
+    </span><span class="tool integration-item integration-item--text" data-integration="microsoft-exchange">
+      <span class="integration-name">Microsoft Exchange</span>
+    </span><span class="tool integration-item integration-item--text" data-integration="microsoft-dynamics">
+      <span class="integration-name">Microsoft Dynamics 365</span>
+    </span><span class="tool integration-item integration-item--wordmark has-logo" data-integration="bexio">
+    <span class="integration-wordmark-wrap" aria-hidden="true"><img class="integration-logo-img integration-logo-img--wordmark" src="/assets/integrations/official/zuraio-logo-bexio.svg" alt="bexio" width="96" height="22" loading="eager" decoding="async"></span>
+    <span class="visually-hidden">bexio</span>
+  </span><span class="tool integration-item integration-item--wordmark has-logo" data-integration="abacus">
+    <span class="integration-wordmark-wrap" aria-hidden="true"><img class="integration-logo-img integration-logo-img--wordmark" src="/assets/integrations/official/zuraio-logo-abacus.svg" alt="Abacus" width="127" height="22" loading="eager" decoding="async"></span>
+    <span class="visually-hidden">Abacus</span>
+  </span><span class="tool integration-item integration-item--wordmark has-logo" data-integration="klara">
+    <span class="integration-wordmark-wrap" aria-hidden="true"><img class="integration-logo-img integration-logo-img--wordmark" src="/assets/integrations/official/zuraio-logo-klara.svg" alt="Klara" width="95" height="26" loading="eager" decoding="async"></span>
+    <span class="visually-hidden">Klara</span>
+  </span><span class="tool integration-item integration-item--wordmark has-logo" data-integration="proffix">
+    <span class="integration-wordmark-wrap" aria-hidden="true"><img class="integration-logo-img integration-logo-img--wordmark" src="/assets/integrations/official/zuraio-logo-proffix.png" alt="Proffix" width="99" height="28" loading="eager" decoding="async"></span>
+    <span class="visually-hidden">Proffix</span>
+  </span><span class="tool integration-item integration-item--symbol has-logo" data-integration="sap">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/sap.svg" alt="SAP" width="20" height="20" loading="eager" decoding="async"></span>
+    <span class="integration-name">SAP</span>
+  </span><span class="tool integration-item integration-item--symbol has-logo" data-integration="salesforce">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/salesforce.svg" alt="Salesforce" width="20" height="20" loading="eager" decoding="async"></span>
+    <span class="integration-name">Salesforce</span>
+  </span><span class="tool integration-item integration-item--symbol has-logo" data-integration="hubspot">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/hubspot.svg" alt="HubSpot" width="20" height="20" loading="eager" decoding="async"></span>
+    <span class="integration-name">HubSpot</span>
+  </span><span class="tool integration-item integration-item--symbol has-logo" data-integration="odoo">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/odoo.svg" alt="Odoo" width="20" height="20" loading="eager" decoding="async"></span>
+    <span class="integration-name">Odoo</span>
+  </span><span class="tool integration-item integration-item--symbol has-logo" data-integration="sage">
+    <span class="integration-logo-wrap" aria-hidden="true"><img class="integration-logo-img" src="/assets/integrations/sage.svg" alt="Sage" width="20" height="20" loading="eager" decoding="async"></span>
+    <span class="integration-name">Sage</span>
+  </span><span class="tool integration-item integration-item--text" data-integration="microsoft-365">
+      <span class="integration-name">Microsoft 365</span>
+    </span><span class="tool integration-item integration-item--text" data-integration="microsoft-outlook">
+      <span class="integration-name">Microsoft Outlook</span>
+    </span><span class="tool integration-item integration-item--text" data-integration="microsoft-sharepoint">
+      <span class="integration-name">Microsoft SharePoint</span>
+    </span><span class="tool integration-item integration-item--text" data-integration="microsoft-teams">
+      <span class="integration-name">Microsoft Teams</span>
+    </span><span class="tool integration-item integration-item--text" data-integration="microsoft-exchange">
+      <span class="integration-name">Microsoft Exchange</span>
+    </span><span class="tool integration-item integration-item--text" data-integration="microsoft-dynamics">
+      <span class="integration-name">Microsoft Dynamics 365</span>
+    </span></div>
+      </div>
+    </section>
 
-<section class="page-hero pad">
-  <div class="wrap">
-    <span class="marker">Integrationen</span>
-    <h1>Funktioniert mit den Systemen, die Ihr Team bereits nutzt.</h1>
-    <p class="lede">Zuraio ist darauf ausgelegt, Unternehmenswissen und Arbeitsabläufe zu verbinden, ohne funktionierende bestehende Systeme ersetzen zu müssen.</p>
-  </div>
-</section>
+    <section class="alt-section alt-section--tint">
+      <div class="wrap">
+        <div class="alt-section-head">
+          <h2>In Tagen verbunden, nicht in Monaten.</h2>
+          <p class="lede">Bei der Schweizer Software, mit der die meisten KMU arbeiten, ist die Verbindung schnell eingerichtet.</p>
+        </div>
+        <div class="alt-int-wordmark-grid"><article class="alt-int-wordmark-card">
+      <img src="/assets/integrations/official/zuraio-logo-bexio.svg" alt="bexio" width="96" height="22" loading="lazy" decoding="async">
+    </article><article class="alt-int-wordmark-card">
+      <img src="/assets/integrations/official/zuraio-logo-klara.svg" alt="Klara" width="95" height="26" loading="lazy" decoding="async">
+    </article><article class="alt-int-wordmark-card">
+      <img src="/assets/integrations/official/zuraio-logo-proffix.png" alt="Proffix" width="99" height="28" loading="lazy" decoding="async">
+    </article><article class="alt-int-wordmark-card">
+      <img src="/assets/integrations/official/zuraio-logo-abacus.svg" alt="Abacus" width="127" height="22" loading="lazy" decoding="async">
+    </article></div>
+      </div>
+    </section>
 
-<section class="pad">
-  <div class="wrap">
-    <span class="marker">Methoden</span>
-    <h2>Eine flexible Integrationsschicht.</h2>
-    <p class="lede">Zuraio kann freigegebene Systeme und Fähigkeiten über MCP, APIs, Webhooks und kundenspezifische Connectoren anbinden. Welche Integrationen verfügbar sind, hängt vom Anwendungsfall, der Bereitstellung und dem aktuellen Produktstatus ab.</p>
+    <section class="alt-section alt-section--paper">
+      <div class="wrap">
+        <div class="alt-section-head">
+          <h2>Womit sich Zuraio verbindet.</h2>
+        </div>
+        <div class="alt-int-groups"><div class="alt-int-group">
+        <h3 class="alt-int-group__title">Finanzen, Buchhaltung und ERP</h3>
+        <p class="alt-int-group__systems">bexio · Klara · Proffix · Abacus · Banana Buchhaltung · Sage 50 · SAP Business One · Microsoft Dynamics 365 · Odoo</p>
+      </div><div class="alt-int-group">
+        <h3 class="alt-int-group__title">E-Mail, Kalender und Zusammenarbeit</h3>
+        <p class="alt-int-group__systems">Microsoft Outlook · Microsoft Exchange · Microsoft Teams · Gmail · Google Calendar · Slack</p>
+      </div><div class="alt-int-group">
+        <h3 class="alt-int-group__title">Dokumente und Dateien</h3>
+        <p class="alt-int-group__systems">Microsoft SharePoint · Microsoft OneDrive · Google Drive · Dropbox · Netzlaufwerke</p>
+      </div><div class="alt-int-group">
+        <h3 class="alt-int-group__title">CRM und Verkauf</h3>
+        <p class="alt-int-group__systems">Salesforce · HubSpot · Microsoft Dynamics 365 Sales</p>
+      </div><div class="alt-int-group">
+        <h3 class="alt-int-group__title">CAD und BIM</h3>
+        <p class="alt-int-group__systems">Autodesk AutoCAD · Autodesk Revit · Graphisoft ArchiCAD · Allplan · Vectorworks · Bentley MicroStation · Trimble Tekla Structures</p>
+      </div><div class="alt-int-group">
+        <h3 class="alt-int-group__title">3D-Modellierung und Visualisierung</h3>
+        <p class="alt-int-group__systems">Rhino · SketchUp · Autodesk 3ds Max · Cinema 4D · Blender · Twinmotion · Lumion</p>
+      </div><div class="alt-int-group">
+        <h3 class="alt-int-group__title">Engineering und Produktentwicklung</h3>
+        <p class="alt-int-group__systems">SolidWorks · Autodesk Inventor · Autodesk Fusion · Siemens NX · PTC Creo</p>
+      </div><div class="alt-int-group">
+        <h3 class="alt-int-group__title">Bau- und Projektmanagement</h3>
+        <p class="alt-int-group__systems">Messerli · Sorba · Procore · Microsoft Project</p>
+      </div><div class="alt-int-group">
+        <h3 class="alt-int-group__title">Liegenschaftsverwaltung</h3>
+        <p class="alt-int-group__systems">ImmoTop2 · Rimo R5 · GARAIO REM · Abacus Immobilien</p>
+      </div><div class="alt-int-group">
+        <h3 class="alt-int-group__title">Karten und GIS</h3>
+        <p class="alt-int-group__systems">ArcGIS · QGIS</p>
+      </div><div class="alt-int-group">
+        <h3 class="alt-int-group__title">Eigene Systeme</h3>
+        <p class="alt-int-group__systems">APIs · Datenbanken · interne Werkzeuge</p>
+      </div></div>
+        <p class="alt-int-groups-note">Fehlt Ihre Software? Hat sie eine Schnittstelle oder einen Export, können wir sie meist anbinden. Fragen Sie uns.</p>
+      </div>
+    </section>
 
-    <div class="grid-cards cols-2">
-      <article class="pcard reveal">
-        <h3>MCP</h3>
-        <p>Standardisierter Zugriff auf freigegebene Fähigkeiten von Assistenten und Werkzeugen.</p>
-      </article>
-      <article class="pcard reveal d1">
-        <h3>APIs</h3>
-        <p>Anbindung von Geschäftsanwendungen, internen Diensten und Datenquellen über definierte Schnittstellen.</p>
-      </article>
-      <article class="pcard reveal d2">
-        <h3>Webhooks und Ereignisse</h3>
-        <p>Unterstützung ausgewählter asynchroner Arbeitsabläufe und Systemereignisse.</p>
-      </article>
-      <article class="pcard reveal d3">
-        <h3>Kundenspezifische Connectoren</h3>
-        <p>Projektbezogene Anbindungen für Fachsysteme und interne Anwendungen.</p>
-      </article>
-    </div>
-  </div>
-</section>
+    <section class="alt-section alt-section--tint">
+      <div class="wrap">
+        <div class="alt-section-head">
+          <h2>Wie Zuraio sich verbindet.</h2>
+        </div>
+        <div class="alt-int-connect-grid"><article class="alt-int-connect-card">
+        <h3><strong>Fertige Connectoren</strong> für verbreitete Systeme.</h3>
+      </article><article class="alt-int-connect-card">
+        <h3><strong>APIs</strong> für Geschäftssoftware mit Standardschnittstelle.</h3>
+      </article><article class="alt-int-connect-card">
+        <h3><strong>MCP</strong> der offene Standard, um KI mit Werkzeugen zu verbinden.</h3>
+      </article><article class="alt-int-connect-card">
+        <h3><strong>Eigene Connectoren</strong> für Ihre eigenen oder branchenspezifischen Systeme.</h3>
+      </article></div>
+        <p class="alt-int-connect-note">Zuraio ersetzt Ihre Systeme nicht. Ihre Daten bleiben dort, wo sie heute sind.</p>
+      </div>
+    </section>
 
-<section class="pad cloud-bg">
-  <div class="wrap">
-    <span class="marker">Kategorien</span>
-    <h2>Integrationskategorien.</h2>
-    <p class="lede" hidden="">The categories below describe the types of systems Zuraio is designed to connect. Availability must be confirmed for each customer setup.</p>
+    <section class="alt-section alt-section--paper alt-int-cta">
+      <div class="wrap alt-int-cta__inner">
+        <div>
+          <h2>Sagen Sie uns, welche Systeme für Ihre erste Aufgabe wichtig sind.</h2>
+          <p class="lede">Wir zeigen Ihnen in einer 30-Minuten-Demo, wie Zuraio sich damit verbindet.</p>
+        </div>
+        <div class="alt-int-cta__actions">
+          <a class="btn btn-primary btn-lg" href="../contact.html">30-Minuten-Demo buchen</a>
+          <a class="btn btn-ghost btn-lg" href="../technical-architecture.html">Für Ihren IT-Partner →</a>
+        </div>
+      </div>
+    </section>
 
-    <div class="grid-cards">
-      <article class="pcard reveal">
-        <h3>E-Mail und Kalender</h3>
-        <p>Outlook, Gmail und Kalenderumgebungen – abhängig vom aktuellen Integrationsstatus.</p>
-      </article>
-      <article class="pcard reveal d1">
-        <h3>Produktivität und Dokumente</h3>
-        <p>Microsoft 365, SharePoint, OneDrive, Google Workspace und freigegebene Dokumentablagen – abhängig vom aktuellen Integrationsstatus.</p>
-      </article>
-      <article class="pcard reveal d2">
-        <h3>Zusammenarbeit und Kommunikation</h3>
-        <p>Microsoft Teams, Slack und weitere freigegebene Kommunikationsplattformen – abhängig vom aktuellen Integrationsstatus.</p>
-      </article>
-      <article class="pcard reveal d3">
-        <h3>CRM, ERP und Fachsysteme</h3>
-        <p>Kunden-, Finanz-, Projekt- und Betriebssysteme über unterstützte oder kundenspezifische Schnittstellen.</p>
-      </article>
-      <article class="pcard reveal d4">
-        <h3>APIs und interne Anwendungen</h3>
-        <p>REST-APIs, Webhooks, Datenbanken, interne Werkzeuge und kundenspezifische Dienste.</p>
-      </article>
-    </div>
-
-    <p class="qualification">Kontaktieren Sie uns, um Status und möglichen Umfang einer konkreten Integration zu klären.</p>
-  </div>
-</section>
-
-<section class="pad">
-  <div class="wrap">
-    <span class="marker">Komponenten</span>
-    <h2>Aktueller Integrationskontext.</h2>
-
-    <article class="maturity-panel reveal">
-      <span class="maturity-label maturity-label--validation">In Validierung</span>
-      <h3>EmailAI</h3>
-      <p>EmailAI enthält implementierte Kernfunktionen für E-Mail, Kommunikationskontext, Aufgaben, Termine, Kontakte und Antwortentwürfe. Der vollständige Microsoft-365-Produktivbetrieb befindet sich weiterhin in Validierung.</p>
-    </article>
-
-    <article class="maturity-panel reveal">
-      <span class="maturity-label maturity-label--specified">Spezifiziert / in Entwicklung</span>
-      <h3>MSConnector</h3>
-      <p>Der Microsoft-365- und Office-Connector ist Bestandteil der spezifizierten Zielarchitektur. Die vollständige Automatisierung von Word, Excel, PowerPoint, SharePoint und OneDrive darf bis zum Abschluss von Implementierung und Pilotvalidierung nicht als allgemein verfügbar dargestellt werden.</p>
-    </article>
-
-    <article class="maturity-panel reveal">
-      <h3>Kundenspezifische Integrationen</h3>
-      <p>MCP, APIs, Webhooks und kundenspezifische Connectoren bilden die technische Grundlage für projektbezogene Integrationen. Die Verfügbarkeit muss für jedes System einzeln beurteilt werden.</p>
-    </article>
-  </div>
-</section>
-
-<section class="pad cta-band">
-  <div class="wrap center">
-    <h2>Besprechen Sie Ihre Integrationsanforderungen.</h2>
-    <p class="lede">Teilen Sie uns mit, welche Systeme, Identitäten und Datenquellen für Ihren ersten Anwendungsfall wichtig sind. Wir klären den aktuellen Integrationsstatus und den notwendigen Aufwand.</p>
-    <p style="margin-top:24px;">
-      <a class="btn btn-primary btn-lg" href="/de/contact.html">Integrationen besprechen</a>
-      <a class="btn btn-ghost btn-lg" href="/de/technical-architecture.html#integration-layer">Technische Architektur ansehen</a>
-    </p>
-  </div>
-</section>
-
-</main>
+    <div class="wrap alt-int-trademark-wrap">
+      <p class="alt-int-trademark">Alle Produktnamen sind Marken ihrer jeweiligen Inhaber. Ihre Nennung bedeutet keine Empfehlung oder Partnerschaft.</p>
+    </div></main>
 <div id="site-footer">
     <footer class="site-footer">
       <div class="wrap">
@@ -188,38 +264,38 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
           
       <div class="foot-col">
         <h3 class="foot-col-title">Produkt</h3>
-        <ul class="foot-col-links"><li><a href="/de/how-it-helps.html">So hilft Zuraio</a></li><li><a href="/de/knowledge.html">Wissen</a></li><li><a href="/de/integrations.html">Integrationen</a></li><li><a href="/de/how-it-helps.html#use-cases">Anwendungsfälle</a></li><li><a href="/de/contact.html">Demo buchen</a></li></ul>
+        <ul class="foot-col-links"><li><a href="../how-it-helps.html">So hilft Zuraio</a></li><li><a href="../knowledge.html">Wissen</a></li><li><a href="../integrations.html">Integrationen</a></li><li><a href="../how-it-helps.html#use-cases">Anwendungsfälle</a></li><li><a href="../contact.html">Demo buchen</a></li></ul>
       </div>
       <div class="foot-col">
         <h3 class="foot-col-title">Daten und Sicherheit</h3>
-        <ul class="foot-col-links"><li><a href="/de/security.html">Sicherheit</a></li><li><a href="/de/security.html#hosting">Schweizer Hosting</a></li><li><a href="/de/technical-architecture.html">Für Ihren IT-Partner</a></li></ul>
+        <ul class="foot-col-links"><li><a href="../security.html">Sicherheit</a></li><li><a href="../security.html#hosting">Schweizer Hosting</a></li><li><a href="../technical-architecture.html">Für Ihren IT-Partner</a></li></ul>
       </div>
       <div class="foot-col">
         <h3 class="foot-col-title">Unternehmen</h3>
-        <ul class="foot-col-links"><li><a href="/de/about.html">Über uns</a></li><li><a href="/de/contact.html">Kontakt</a></li><li><a href="/de/contact.html#partnerships">Partner</a></li></ul>
+        <ul class="foot-col-links"><li><a href="../about.html">Über uns</a></li><li><a href="../contact.html">Kontakt</a></li><li><a href="../contact.html#partnerships">Partner</a></li></ul>
       </div>
       <div class="foot-col">
         <h3 class="foot-col-title">Rechtliches</h3>
-        <ul class="foot-col-links"><li><a href="/de/impressum.html">Impressum</a></li><li><a href="/de/privacy.html">Datenschutz</a></li><li><a href="/de/cookies.html">Cookie-Einstellungen</a></li><li><a href="/de/terms.html">Nutzungsbedingungen</a></li></ul>
+        <ul class="foot-col-links"><li><a href="../impressum.html">Impressum</a></li><li><a href="../privacy.html">Datenschutz</a></li><li><a href="../cookies.html">Cookie-Einstellungen</a></li><li><a href="../terms.html">Nutzungsbedingungen</a></li></ul>
       </div>
           <div class="foot-col">
             <h3 class="foot-col-title">Sprache und Kontakt</h3>
             <ul class="foot-col-links">
-              <li><a href="/" hreflang="en">EN</a></li><li><a href="/de/" hreflang="de">DE (aktiv)</a></li>
+              <li><a href="/security.html" hreflang="en">EN</a></li><li><a href="/de/security.html" hreflang="de">DE (aktiv)</a></li>
               <li><a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a></li>
             </ul>
           </div>
         </div>
         <div class="foot-bottom">
-          <a class="brand foot-brand" href="/de/" aria-label="Zuraio Startseite">
-            <img class="brand-logo" src="/assets/zuraio-logo.png" alt="Zuraio – Ihre Daten unter Ihrer Kontrolle" width="4796" height="1465" decoding="async">
+          <a class="brand foot-brand" href="../index.html" aria-label="Zuraio Startseite">
+            <img class="brand-logo" src="/assets/zuraio-logo-nav@2x.webp" alt="" width="184" height="56" decoding="async" loading="lazy">
           </a>
           <p class="foot-tagline">KI für Schweizer Unternehmen, die die Kontrolle über ihre Daten behalten wollen.</p>
+          <p class="foot-trademark alt-home-trademark">Microsoft, Microsoft 365, Outlook, SharePoint, Teams, Exchange und Dynamics 365 sind Marken der Microsoft-Unternehmensgruppe. bexio, Abacus, Klara, Proffix, SAP, Salesforce, HubSpot, Odoo und Sage sind Marken ihrer jeweiligen Inhaber.</p>
         </div>
-        <div id="footer-review-notes" data-internal-only="" hidden="" aria-hidden="true"></div>
       </div>
     </footer></div>
-<script type="module" src="../js/main.js"></script>
+<script type="module" src="../js/integrations-page.js?v=20261001d"></script>
 
 
-<div id="internal-review-panel" hidden=""></div></body></html>
+</body></html>

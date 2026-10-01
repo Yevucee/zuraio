@@ -1964,3 +1964,129 @@ body[data-page="security"] .alt-security-cta__actions {
     grid-template-columns: 1fr;
   }
 }
+
+/* —— Integrations page —— */
+body[data-page="integrations"] {
+  padding-top: var(--nav-h);
+}
+
+body[data-page="integrations"] .alt-int-hero h1 {
+  font-size: var(--alt-h2);
+  max-width: 22ch;
+}
+
+body[data-page="integrations"] .alt-int-hero__marquee {
+  margin-top: 32px;
+}
+
+body[data-page="integrations"] .alt-int-wordmark-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--alt-grid-gap);
+}
+
+body[data-page="integrations"] .alt-int-wordmark-card {
+  background: #fff;
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  min-height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+body[data-page="integrations"] .alt-int-wordmark-card img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+body[data-page="integrations"] .alt-int-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+body[data-page="integrations"] .alt-int-group__title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  margin: 0 0 0.35rem;
+}
+
+body[data-page="integrations"] .alt-int-group__systems {
+  font-size: var(--alt-body);
+  margin: 0;
+  line-height: 1.55;
+  color: var(--charcoal);
+}
+
+body[data-page="integrations"] .alt-int-groups-note {
+  margin-top: 1.5rem;
+  font-size: var(--alt-body);
+  color: var(--secondary);
+}
+
+body[data-page="integrations"] .alt-int-connect-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--alt-grid-gap);
+}
+
+body[data-page="integrations"] .alt-int-connect-card {
+  background: #fff;
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 1.1rem 1.25rem;
+}
+
+body[data-page="integrations"] .alt-int-connect-card h3 {
+  font-size: var(--alt-body);
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.5;
+}
+
+body[data-page="integrations"] .alt-int-connect-note {
+  margin-top: 1.25rem;
+  font-size: var(--alt-small);
+  color: var(--secondary);
+}
+
+body[data-page="integrations"] .alt-int-cta__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+body[data-page="integrations"] .alt-int-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+body[data-page="integrations"] .alt-int-trademark-wrap {
+  padding-bottom: var(--alt-section-y);
+}
+
+body[data-page="integrations"] .alt-int-trademark {
+  font-size: var(--alt-small);
+  color: var(--secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 959px) {
+  body[data-page="integrations"] .alt-int-wordmark-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  body[data-page="integrations"] .alt-int-connect-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -385,11 +385,13 @@ export const pages = {
     },
   },
   integrations: {
-    title: 'Integrationen — Zuraio',
+    title: 'Integrationen | Zuraio',
+    description:
+      'Wie Zuraio sich mit bexio, Klara, Microsoft 365, CAD/BIM-Werkzeugen und den Systemen verbindet, die Schweizer KMU täglich nutzen.',
     hero: {
       marker: 'Integrationen',
-      heading: 'Funktioniert mit den Systemen, die Ihr Team bereits nutzt.',
-      lede: 'Zuraio ist darauf ausgelegt, Unternehmenswissen und Arbeitsabläufe zu verbinden, ohne funktionierende bestehende Systeme ersetzen zu müssen.',
+      heading: 'Arbeitet mit den Systemen, die Schweizer KMU wirklich nutzen.',
+      lede: 'Ihr Team arbeitet weiter in den Werkzeugen, die es kennt. Zuraio verbindet sich damit, damit Ihr Wissen an einem Ort bleibt.',
     },
   },
   security: {
