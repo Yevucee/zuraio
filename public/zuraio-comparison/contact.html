@@ -8,158 +8,18 @@
 <link rel="icon" href="assets/favicon-16x16.png" sizes="16x16" type="image/png">
 <link rel="shortcut icon" href="assets/favicon.ico">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<title>Contact — Zuraio</title>
+<title>Contact | Zuraio</title>
+<meta name="description" content="Contact Zuraio. Tell us about your company and one of the founders will reply within one working day.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/site.css?v=20260909-origin">
+<link rel="stylesheet" href="css/homepage-preview.css?v=20261002b">
 </head>
-<body data-page="contact">
+<body data-page="contact" data-alt-chrome>
 <div id="site-header"></div>
-<main>
-
-<section class="page-hero pad">
-  <div class="wrap">
-    <span class="marker">Contact</span>
-    <h1>Book a private Zuraio demo.</h1>
-    <p class="lede">We will discuss your company setup, data-control needs and the first workflows where controlled AI could help.</p>
-  </div>
-</section>
-
-<section class="pad">
-  <div class="wrap">
-    <div class="contact-grid">
-
-      <div class="contact-form-wrap">
-        <span class="marker">Enquiry form</span>
-        <h2>Tell us about your company.</h2>
-
-        <noscript>
-          <p class="form-trust">Send your enquiry to <a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a>.</p>
-        </noscript>
-
-        <form id="contact-form" class="contact-form reveal" novalidate>
-          <div class="form-row">
-            <label for="name">Name <span aria-hidden="true">*</span></label>
-            <input type="text" id="name" name="name" required autocomplete="name" minlength="2" maxlength="120">
-          </div>
-
-          <div class="form-row">
-            <label for="company">Company <span aria-hidden="true">*</span></label>
-            <input type="text" id="company" name="company" required autocomplete="organization" minlength="2" maxlength="200">
-          </div>
-
-          <div class="form-row">
-            <label for="role">Role</label>
-            <input type="text" id="role" name="role" autocomplete="organization-title" maxlength="120">
-          </div>
-
-          <div class="form-row">
-            <label for="email">Email <span aria-hidden="true">*</span></label>
-            <input type="email" id="email" name="email" required autocomplete="email" maxlength="254">
-          </div>
-
-          <div class="form-row">
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" autocomplete="tel" maxlength="30" pattern="[+]?[0-9\s\-().]{7,30}">
-          </div>
-
-          <div class="form-row">
-            <label for="company-size">Company size</label>
-            <input type="text" id="company-size" name="company-size" placeholder="e.g. 50–100 employees" maxlength="80">
-          </div>
-
-          <div class="form-row">
-            <label for="interest">Main interest</label>
-            <select id="interest" name="interest">
-              <option value="">Select an option</option>
-              <option value="meeting-preparation">Meeting preparation</option>
-              <option value="email-followup">Email and follow-up</option>
-              <option value="knowledge-search">Internal knowledge search</option>
-              <option value="reports-summaries">Reports and summaries</option>
-              <option value="data-control">Data control</option>
-              <option value="technical-architecture">Technical architecture</option>
-              <option value="starter-partner">Starter partner discussion</option>
-            </select>
-          </div>
-
-          <div class="form-row">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" maxlength="2000"></textarea>
-          </div>
-
-          <div class="form-row visually-hidden" aria-hidden="true">
-            <label for="website">Website</label>
-            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
-          </div>
-
-          <p class="form-trust mono">Your enquiry will be handled confidentially.</p>
-
-          <button type="submit" class="btn btn-primary btn-lg">Send enquiry</button>
-
-          <p id="form-notice" class="form-notice" tabindex="-1" hidden role="status" aria-live="polite"></p>
-        </form>
-      </div>
-
-      <aside class="contact-paths">
-        <span class="marker">Three ways to reach us</span>
-        <h2>Contact paths.</h2>
-
-        <article class="pcard reveal">
-          <h3>1. Book a demo</h3>
-          <p>Use the form to request a private demo. We typically respond within a few business days.</p>
-        </article>
-
-        <article class="pcard reveal d1">
-          <h3>2. Email directly</h3>
-          <p>For direct enquiries, email us at <a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a>.</p>
-        </article>
-
-        <article class="pcard reveal d2">
-          <h3>3. Starter partner conversation</h3>
-          <p>Interested in shaping Zuraio as an early partner? Mention "starter partner" in your message or use the form interest option.</p>
-        </article>
-
-        <p class="mono location">Switzerland</p>
-      </aside>
-
-    </div>
-  </div>
-</section>
-
-<section class="pad cloud-bg" id="partnerships">
-  <div class="wrap">
-    <span class="marker">Partnerships</span>
-    <h2>Starter partner programme.</h2>
-    <p class="lede">Zuraio works with selected starter partners to deploy practical AI workflows, test real use cases and shape the product roadmap.</p>
-
-    <div class="grid-cards cols-2">
-      <article class="pcard reveal">
-        <h3>Who it is for</h3>
-        <ul>
-          <li>Swiss companies with sensitive internal knowledge</li>
-          <li>Owner-managed and mid-sized organisations</li>
-          <li>Teams that want AI but need data control</li>
-          <li>Organisations that want practical first use cases</li>
-        </ul>
-      </article>
-      <article class="pcard reveal d1">
-        <h3>What partners can expect</h3>
-        <ul>
-          <li>Direct input into product development</li>
-          <li>Early access to Zuraio AI Hub</li>
-          <li>Practical workflow selection and controlled pilot setup</li>
-          <li>Roadmap influence — commercial terms to be agreed</li>
-        </ul>
-      </article>
-    </div>
-
-    <p style="margin-top:24px;"><a class="btn btn-primary" href="#contact-form">Start the conversation</a></p>
-  </div>
-</section>
-
-</main>
+<main id="contact-main" aria-live="polite"></main>
 <div id="site-footer"></div>
-<script type="module" src="js/main.js"></script>
+<script type="module" src="js/contact-page.js?v=20261002b"></script>
 </body>
 </html>

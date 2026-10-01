@@ -1,8 +1,9 @@
 import { getHowItHelpsCopy } from './copy-how-it-helps.js';
 import { renderAltHomeHeader, renderAltHomeFooter } from './alt-homepage-chrome.js';
 import { getLocaleFromPathname } from './path-locale.js';
-import { ALT_HOME_SKILL_ICONS, ALT_HOME_BUILT_WITH_ICON } from './alt-home-skill-icons.js';
+import { ALT_HOME_BUILT_WITH_ICON } from './alt-home-skill-icons.js';
 import { ALT_HOME_REASON_ICONS } from './alt-home-reason-icons.js';
+import { HOW_IT_HELPS_USE_CASE_ICONS, HOW_IT_HELPS_SKILL_ICONS } from './how-it-helps-icons.js';
 
 function pageLocale() {
   return getLocaleFromPathname() ?? (document.documentElement.lang || 'en');
@@ -23,10 +24,10 @@ function useCasesHtml(cards) {
   return cards
     .map(
       (c, i) => `<article class="alt-home-skill-card alt-help-use-card">
-        <span class="alt-help-use-card__num mono" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>
+        <span class="alt-home-skill-card__icon" aria-hidden="true">${HOW_IT_HELPS_USE_CASE_ICONS[i] ?? ''}</span>
         <h3 class="alt-home-skill-card__title">${c.title}</h3>
         <p class="alt-home-skill-card__body">${c.body}</p>
-        <p class="alt-help-use-card__examples mono">${c.examples}</p>
+        <p class="alt-home-skill-card__sources alt-help-use-card__examples">${c.examples}</p>
       </article>`,
     )
     .join('');
@@ -36,7 +37,7 @@ function skillsHtml(cards) {
   return cards
     .map(
       (c, i) => `<article class="alt-home-skill-card">
-        <span class="alt-home-skill-card__icon" aria-hidden="true">${ALT_HOME_SKILL_ICONS[i] ?? ''}</span>
+        <span class="alt-home-skill-card__icon" aria-hidden="true">${HOW_IT_HELPS_SKILL_ICONS[i] ?? ''}</span>
         <h3 class="alt-home-skill-card__title">${c.title}</h3>
         <p class="alt-home-skill-card__body">${c.body}</p>
       </article>`,
@@ -92,7 +93,7 @@ function renderMain(copy) {
           <h2>${copy.useCases.heading}</h2>
           <p class="lede">${copy.useCases.intro}</p>
         </div>
-        <div class="alt-help-use-grid">${useCasesHtml(copy.useCases.cards)}</div>
+        <div class="alt-home-skills-grid alt-help-use-grid">${useCasesHtml(copy.useCases.cards)}</div>
       </div>
     </section>
 

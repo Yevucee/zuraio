@@ -130,6 +130,15 @@ async function waitForPageReady(page, pageName, locale) {
     );
   }
 
+  if (pageName === 'contact.html') {
+    await page.waitForSelector('#contact-main h1', { timeout: 45000 });
+    await page.waitForFunction(
+      (loc) => document.documentElement.lang === loc,
+      locale,
+      { timeout: 45000 },
+    );
+  }
+
   const needsBody = ['technicalArchitecture', 'knowledge', 'integrations'];
   if (needsBody.includes(dataPage)) {
     await page.waitForFunction(

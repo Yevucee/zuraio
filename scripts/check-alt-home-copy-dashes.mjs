@@ -14,6 +14,7 @@ const COPY_FILES = [
   '../public/zuraio-comparison/js/copy-security.js',
   '../public/zuraio-comparison/js/copy-integrations.js',
   '../public/zuraio-comparison/js/copy-how-it-helps.js',
+  '../public/zuraio-comparison/js/copy-contact.js',
 ];
 
 /** Strip block and line comments so only string content is checked. */
