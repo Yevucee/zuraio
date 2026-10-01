@@ -19,7 +19,7 @@ export const copyContact = {
     },
     hero: {
       heading: 'Let\'s find your first task.',
-      sub: 'Tell us a little about your company. One of the founders will get back to you within one working day.',
+      sub: 'Tell us a little about your company. One of the founders will get back to you in days, not weeks.',
     },
     form: {
       name: 'Name',
@@ -39,7 +39,7 @@ export const copyContact = {
       submit: 'Send',
       trust: 'Your message goes straight to the founders, nowhere else.',
       sending: 'Sending…',
-      success: 'Thank you. We received your message and will reply within one working day.',
+      success: 'Thank you. We received your message. One of the founders will get back to you in days, not weeks.',
       error: 'Something went wrong. Please try again or email us directly at',
       errorNetwork: 'We could not reach the server. Please check your connection or email us at',
       fallback: 'This form is not yet connected. Please email us at',
@@ -71,7 +71,7 @@ export const copyContact = {
     },
     hero: {
       heading: 'Finden wir Ihre erste Aufgabe.',
-      sub: 'Erzählen Sie uns kurz von Ihrem Betrieb. Einer unserer Gründer meldet sich innerhalb eines Arbeitstags.',
+      sub: 'Erzählen Sie uns kurz von Ihrem Betrieb. Einer unserer Gründer meldet sich in Tagen, nicht in Wochen.',
     },
     form: {
       name: 'Name',
@@ -91,7 +91,7 @@ export const copyContact = {
       submit: 'Senden',
       trust: 'Ihre Nachricht geht direkt an die Gründer, sonst nirgendwohin.',
       sending: 'Wird gesendet…',
-      success: 'Vielen Dank. Wir haben Ihre Nachricht erhalten und antworten innerhalb eines Arbeitstags.',
+      success: 'Vielen Dank. Wir haben Ihre Nachricht erhalten. Einer unserer Gründer meldet sich in Tagen, nicht in Wochen.',
       error: 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut oder schreiben Sie uns an',
       errorNetwork: 'Der Server ist nicht erreichbar. Bitte prüfen Sie Ihre Verbindung oder schreiben Sie uns an',
       fallback: 'Das Formular ist noch nicht verbunden. Bitte schreiben Sie uns an',

@@ -2345,3 +2345,185 @@ body[data-alt-chrome] .alt-contact-starter__inner {
   justify-content: space-between;
   gap: 1.25rem;
 }
+
+body[data-alt-chrome] .alt-tech-hero h1 {
+  max-width: 18ch;
+  margin-top: 0.75rem;
+}
+
+body[data-alt-chrome] .alt-tech-hero__sub {
+  max-width: 58ch;
+}
+
+body[data-alt-chrome] .alt-tech-hero__cta {
+  margin-top: 1.75rem;
+}
+
+body[data-alt-chrome] .alt-tech-layer-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+body[data-alt-chrome] .alt-tech-layer-card {
+  padding: 1.15rem 1.35rem;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md, 12px);
+  background: var(--cloud);
+}
+
+body[data-alt-chrome] .alt-tech-layer-card__text {
+  margin: 0;
+  font-size: 15px;
+  color: var(--charcoal-soft);
+  line-height: 1.55;
+}
+
+body[data-alt-chrome] .alt-tech-diagram-box {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md, 12px);
+  background: var(--paper, #fff);
+}
+
+body[data-alt-chrome] .alt-tech-arch-svg {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+body[data-alt-chrome] .alt-tech-arch-box {
+  fill: var(--cloud);
+  stroke: var(--charcoal);
+  stroke-width: 1.5;
+}
+
+body[data-alt-chrome] .alt-tech-arch-box--accent {
+  fill: var(--zuraio-mist, #eaf0d6);
+  stroke: var(--zuraio-olive, #9faf52);
+}
+
+body[data-alt-chrome] .alt-tech-arch-box--olive {
+  fill: var(--zuraio-olive, #9faf52);
+  stroke: var(--zuraio-olive-dark, #788a36);
+}
+
+body[data-alt-chrome] .alt-tech-arch-label {
+  fill: var(--charcoal);
+  font-family: "IBM Plex Mono", monospace;
+}
+
+body[data-alt-chrome] .alt-tech-arch-label--light {
+  fill: #fff;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 600;
+}
+
+body[data-alt-chrome] .alt-tech-arch-line {
+  stroke: var(--zuraio-teal, #2f8f8a);
+  stroke-width: 1.5;
+}
+
+body[data-alt-chrome] .alt-tech-arch-line + marker path,
+body[data-alt-chrome] .alt-tech-arch-svg marker path {
+  fill: var(--zuraio-teal, #2f8f8a);
+}
+
+body[data-alt-chrome] .alt-tech-diagram-caption {
+  margin: 1rem 0 0;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+
+body[data-alt-chrome] .alt-tech-flow {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+body[data-alt-chrome] .alt-tech-flow__step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md, 12px);
+  background: var(--cloud);
+}
+
+body[data-alt-chrome] .alt-tech-flow__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: var(--zuraio-olive, #9faf52);
+  color: #fff;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+body[data-alt-chrome] .alt-tech-flow__text {
+  font-size: 15px;
+  color: var(--charcoal-soft);
+  line-height: 1.5;
+}
+
+body[data-alt-chrome] .alt-tech-checklist {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem 2rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+body[data-alt-chrome] .alt-tech-checklist li {
+  position: relative;
+  padding-left: 1.35rem;
+  font-size: 15px;
+  color: var(--charcoal-soft);
+  line-height: 1.45;
+}
+
+body[data-alt-chrome] .alt-tech-checklist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 2px;
+  background: var(--zuraio-teal, #2f8f8a);
+}
+
+@media (max-width: 640px) {
+  body[data-alt-chrome] .alt-tech-checklist {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-alt-chrome] .alt-tech-hero h1 {
+    max-width: none;
+  }
+}
+
+body[data-alt-chrome] .alt-tech-cta__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+body[data-alt-chrome] .alt-tech-cta__actions {
+  flex-shrink: 0;
+}

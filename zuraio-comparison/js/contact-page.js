@@ -1,7 +1,7 @@
 import { CONTACT_FOUNDERS, getContactCopy } from './copy-contact.js';
 import { renderAltHomeHeader, renderAltHomeFooter } from './alt-homepage-chrome.js';
 import { assetHref, getLocaleFromPathname } from './path-locale.js';
-import { initContactForm } from './contact-form.js?v=20261002c';
+import { initContactForm } from './contact-form.js?v=20261002d';
 
 const FOUNDER_PREVIEW = 'zuraio/assets/team-preview';
 
