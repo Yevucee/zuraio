@@ -23,7 +23,7 @@ export const ALT_PREVIEW_MARQUEE_ITEMS = [
   {
     id: 'proffix',
     label: 'Proffix',
-    logo: 'assets/integrations/official/zuraio-logo-proffix.png',
+    logo: 'assets/integrations/proffix.svg',
     alt: 'Proffix',
   },
   { id: 'sap', label: 'SAP', logo: 'assets/integrations/sap.svg', alt: 'SAP' },
@@ -52,8 +52,10 @@ const WORDMARK_IMG_SIZE = {
   proffix: { width: 99, height: 28 },
 };
 
+const WORDMARK_IDS = new Set(['bexio', 'abacus', 'klara', 'proffix']);
+
 function isWordmarkItem(item) {
-  return Boolean(item.logo?.includes('/official/'));
+  return WORDMARK_IDS.has(item.id);
 }
 
 function renderLogo(item) {
