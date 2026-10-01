@@ -587,12 +587,8 @@ export const integrations = {
     lede: 'Zuraio kann freigegebene Systeme und Fähigkeiten über MCP, APIs, Webhooks und kundenspezifische Connectoren anbinden. Welche Integrationen verfügbar sind, hängt vom Anwendungsfall, der Bereitstellung und dem aktuellen Produktstatus ab.',
     cards: [
       {
-        title: 'MCP',
-        body: 'Standardisierter Zugriff auf freigegebene Fähigkeiten von Assistenten und Werkzeugen.',
-      },
-      {
-        title: 'APIs',
-        body: 'Anbindung von Geschäftsanwendungen, internen Diensten und Datenquellen über definierte Schnittstellen.',
+        title: 'APIs & MCP',
+        body: 'REST-APIs und Model Context Protocol (MCP): Anbindung von Geschäftsanwendungen, internen Diensten, Datenquellen sowie freigegebenen Fähigkeiten von Assistenten und Werkzeugen über definierte Schnittstellen.',
       },
       {
         title: 'Webhooks und Ereignisse',

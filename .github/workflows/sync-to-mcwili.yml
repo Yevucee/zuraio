@@ -1,6 +1,6 @@
 # Push Yevucee/zuraio main to Mcwili/zuraio production (requires your collaborator PAT).
 # Setup: GitHub → Yevucee/zuraio → Settings → Secrets → MCWILI_PUSH_TOKEN
-# (fine-grained PAT: Mcwili/zuraio contents read+write, or classic repo scope)
+# Classic PAT: repo + workflow scopes (collaborators often cannot use fine-grained on Mcwili).
 # Run: Actions → Sync to Mcwili production → Run workflow
 
 name: Sync to Mcwili production

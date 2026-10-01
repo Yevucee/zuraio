@@ -4,10 +4,18 @@ The cloud agent cannot push to `Mcwili/zuraio` (403). Use **either** the GitHub 
 
 ## Option A — GitHub Action (recommended)
 
-1. Create a **fine-grained PAT** (your GitHub user) with **Contents: Read and write** on `Mcwili/zuraio`, or a classic token with `repo` access to that repository.
+1. Create a **classic PAT** at [New personal access token (classic)](https://github.com/settings/tokens/new): note e.g. `MCWILI_PUSH_TOKEN`, set expiration, enable **`repo`** and **`workflow`** (Mcwili `main` includes `.github/workflows/`; GitHub rejects pushes that add or update workflow files without `workflow` scope). Fine-grained tokens only work when you can select the owner of `Mcwili/zuraio`; as a **collaborator** (not owner), use classic scopes instead.
 2. **Yevucee/zuraio → Settings → Secrets and variables → Actions → New secret:** `MCWILI_PUSH_TOKEN` = the PAT.
-3. **Actions → Sync to Mcwili production → Run workflow** (leave “backup legacy” on `true` the first time).
-4. On **Mcwili/zuraio**: **Settings → Pages → Source: GitHub Actions**, then run **Deploy to GitHub Pages** on `main` (or wait for push if you add the same workflow there later).
+3. **Actions → Sync to Mcwili production → Run workflow** (leave “backup legacy” on `true` the first time). Checkout uses `persist-credentials: false` so the PAT in the remote URL is used (not `github-actions[bot]`).
+4. On **Mcwili/zuraio**: **Settings → Pages → Source: GitHub Actions**, then run **Deploy to GitHub Pages** on `main`.
+
+### Sync troubleshooting
+
+| Symptom | Fix |
+|--------|-----|
+| `Permission denied to github-actions[bot]` on push | Merge workflow fix: checkout `persist-credentials: false` (PR #82). |
+| `refusing to allow a Personal Access Token to create or update workflow` | Regenerate or edit the classic PAT to include **`workflow`** scope; update the secret if the token value changed. |
+| Fine-grained PAT cannot select Mcwili repo | Use classic **`repo`** (+ **`workflow`**) instead. |
 
 ## Option B — Local git
 

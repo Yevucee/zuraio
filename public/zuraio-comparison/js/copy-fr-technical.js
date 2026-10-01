@@ -631,12 +631,8 @@ export const integrations = {
     lede: "Zuraio peut connecter des systèmes et capacités approuvés via MCP, des API, des webhooks et des connecteurs spécifiques. Les intégrations disponibles dépendent du cas d'usage, du déploiement et du statut actuel du produit.",
     cards: [
       {
-        title: "MCP",
-        body: "Accès standardisé aux capacités approuvées des assistants et des outils.",
-      },
-      {
-        title: "API",
-        body: "Connexion aux applications métier, services internes et sources de données au moyen d'interfaces définies.",
+        title: "API & MCP",
+        body: "API REST et Model Context Protocol (MCP) : connexion aux applications métier, services internes, sources de données et capacités approuvées des assistants et des outils via des interfaces définies.",
       },
       {
         title: "Webhooks et événements",
