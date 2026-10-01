@@ -150,7 +150,7 @@ export const copyAltHome = {
         },
       ],
       note: 'Sie arbeiten mit einem IT-Partner? Wir beziehen ihn ab dem ersten Gespräch ein, auch für eigene Server oder ein bestimmtes KI-Modell.',
-      itLink: 'Für Ihren IT-Partner: technische Details und Sicherheits-Factsheet →',
+      itLink: 'Für Ihren IT-Partner: technische Details →',
       itHref: '../technical-architecture.html',
     },
     start: {
@@ -170,11 +170,12 @@ export const copyAltHome = {
       heading: 'Entwickelt in der Schweiz. Von Menschen, die Ihnen antworten.',
       body: 'Wir haben Zuraio gebaut, weil KI zwar Antworten schreiben konnte, aber unser Firmenwissen, unsere Zugriffsregeln und unsere Arbeitsweise nicht verstand.',
       contact: 'Schreiben Sie uns direkt. Sie erhalten eine Antwort von einem von uns.',
+      contactFollowUp: 'Wir antworten in Tagen, nicht in Wochen.',
       people: [
-        { name: 'Michael C. Wili', role: '[Rolle bestätigen]', email: 'michael.wili@zuraio.ch', img: 'Michael' },
-        { name: 'Marcelo Zanette', role: '[Rolle bestätigen]', email: 'marcelo.zanette@zuraio.ch', img: 'Marcelo' },
-        { name: 'Samuel A. Polley', role: '[Rolle bestätigen]', email: 'samuel.polley@zuraio.ch', img: 'Samuel' },
-        { name: 'Roland Steiner', role: '[Rolle bestätigen]', email: 'roland.steiner@zuraio.ch', img: 'Roland' },
+        { name: 'Michael C. Wili', role: '', email: 'michael.wili@zuraio.ch', img: 'Michael' },
+        { name: 'Marcelo Zanette', role: '', email: 'marcelo.zanette@zuraio.ch', img: 'Marcelo' },
+        { name: 'Samuel A. Polley', role: '', email: 'samuel.polley@zuraio.ch', img: 'Samuel' },
+        { name: 'Roland Steiner', role: '', email: 'roland.steiner@zuraio.ch', img: 'Roland' },
       ],
     },
     faq: {
@@ -350,7 +351,7 @@ export const copyAltHome = {
         },
       ],
       note: 'Working with an IT partner? We involve them from the first call, including for on-premise options or a specific AI model.',
-      itLink: 'For your IT partner: technical details and security factsheet →',
+      itLink: 'For your IT partner: technical details →',
       itHref: '../technical-architecture.html',
     },
     start: {
@@ -370,11 +371,12 @@ export const copyAltHome = {
       heading: 'Developed in Switzerland, by people who answer.',
       body: 'We built Zuraio because AI could write answers but didn\'t understand our company knowledge, access rules or the way we work.',
       contact: 'Write to us directly. You\'ll get a reply from one of us.',
+      contactFollowUp: 'We reply in days, not weeks.',
       people: [
-        { name: 'Michael C. Wili', role: '[Role to confirm]', email: 'michael.wili@zuraio.ch', img: 'Michael' },
-        { name: 'Marcelo Zanette', role: '[Role to confirm]', email: 'marcelo.zanette@zuraio.ch', img: 'Marcelo' },
-        { name: 'Samuel A. Polley', role: '[Role to confirm]', email: 'samuel.polley@zuraio.ch', img: 'Samuel' },
-        { name: 'Roland Steiner', role: '[Role to confirm]', email: 'roland.steiner@zuraio.ch', img: 'Roland' },
+        { name: 'Michael C. Wili', role: '', email: 'michael.wili@zuraio.ch', img: 'Michael' },
+        { name: 'Marcelo Zanette', role: '', email: 'marcelo.zanette@zuraio.ch', img: 'Marcelo' },
+        { name: 'Samuel A. Polley', role: '', email: 'samuel.polley@zuraio.ch', img: 'Samuel' },
+        { name: 'Roland Steiner', role: '', email: 'roland.steiner@zuraio.ch', img: 'Roland' },
       ],
     },
     faq: {
