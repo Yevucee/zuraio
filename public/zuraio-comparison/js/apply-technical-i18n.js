@@ -110,7 +110,7 @@ function applyTechnicalArchitecture(locale) {
   }
   if (heroCtas[1]) {
     setText(heroCtas[1], copy.secondaryCta);
-    heroCtas[1].href = langHref('deployment-models.html', locale);
+    heroCtas[1].href = langHref('security.html#hosting', locale);
   }
 
   const overview = document.querySelector('#overview');

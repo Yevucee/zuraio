@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import {
   CANONICAL_BASE,
   HTML_PAGES,
-  LOCALES,
+  SITEMAP_LOCALES,
   canonicalUrl,
 } from './seo-config.mjs';
 
@@ -18,10 +18,10 @@ const LASTMOD = process.env.SITEMAP_LASTMOD || '2026-08-20';
 
 function buildSitemap() {
   const urls = [];
-  for (const locale of LOCALES) {
+  for (const locale of SITEMAP_LOCALES) {
     for (const page of HTML_PAGES) {
       const loc = canonicalUrl(locale, page);
-      const alternates = LOCALES.map(
+      const alternates = SITEMAP_LOCALES.map(
         (l) =>
           `    <xhtml:link rel="alternate" hreflang="${l}" href="${canonicalUrl(l, page)}"/>`,
       ).join('\n');
