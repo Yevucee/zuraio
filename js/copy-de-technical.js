@@ -174,7 +174,7 @@ export const technicalArchitecture = {
     qualification:
       'Die für einen Kunden verfügbaren Modelle und Anbieter richten sich nach der vereinbarten Bereitstellung, der technischen Validierung und den kommerziellen Bedingungen.',
     link: 'Bereitstellungsmodelle vergleichen →',
-    linkHref: 'deployment-models.html',
+    linkHref: 'security.html#hosting',
   },
   integrationLayer: {
     marker: 'Offene Integrationsschicht',
@@ -356,7 +356,7 @@ export const dataControl = {
     heading: 'Steuern, welche Daten an welches Modell und welchen Ort gelangen dürfen.',
     lede: 'Richtlinien können Aufgabe, Datenklassifikation, zulässigen Verarbeitungsort und freigegebenen Modellanbieter berücksichtigen. Damit lassen sich Architekturen unterstützen, die lokale, Schweizer und freigegebene Cloud-Komponenten kombinieren.',
     link: 'Bereitstellungsmodelle vergleichen →',
-    linkHref: 'deployment-models.html',
+    linkHref: 'security.html#hosting',
   },
   security: {
     marker: 'Sicherheit',
@@ -383,13 +383,13 @@ export const dataControl = {
     qualification:
       'Konkrete Aussagen zum Schweizer Datenschutzrecht, zur DSGVO, zu KI-Regulierung, Zertifizierungen und Unterauftragsbearbeitern erfordern eine separate rechtliche und technische Prüfung.',
     link: 'Mehr zur KI-Governance →',
-    linkHref: 'ai-governance.html',
+    linkHref: 'security.html#good-to-know',
   },
   cta: {
     heading: 'Besprechen Sie Ihre Anforderungen an die Datenkontrolle.',
     lede: 'Wir prüfen gemeinsam Ihre Datenklassen, bestehenden Identitätssysteme, Infrastrukturvorgaben und die sinnvollste Bereitstellungsgrenze.',
     primary: 'Bereitstellungsmodelle ansehen',
-    primaryHref: 'deployment-models.html',
+    primaryHref: 'security.html#hosting',
     secondary: 'Private Demo buchen',
     secondaryHref: 'contact.html',
   },
@@ -561,7 +561,7 @@ export const aiGovernance = {
     qualification:
       'Protokollinhalte, Aufbewahrung, Exportmöglichkeiten und Sichtbarkeit in der Benutzeroberfläche hängen von Komponente und Audit-Konfiguration ab.',
     link: 'Datenkontrolle entdecken →',
-    linkHref: 'data-control.html',
+    linkHref: 'security.html',
   },
   limitations: {
     marker: 'Einschränkungen',
@@ -732,7 +732,7 @@ export const faqItItems = [
   {
     question: 'Wo werden unsere Daten gespeichert?',
     answer:
-      'Der Verarbeitungsort hängt von der gewählten Bereitstellung ab. Zuraio unterstützt Architekturen mit kundenseitig kontrollierter Infrastruktur, Private Cloud, Schweizer Hosting und hybriden Kombinationen. Konkrete Standorte, Modellanbieter und Datenflüsse werden für die vereinbarte Kundenumgebung dokumentiert. Siehe <a href="deployment-models.html">Bereitstellungsmodelle</a> für einen Überblick.',
+      'Der Verarbeitungsort hängt von der gewählten Bereitstellung ab. Zuraio unterstützt Architekturen mit kundenseitig kontrollierter Infrastruktur, Private Cloud, Schweizer Hosting und hybriden Kombinationen. Konkrete Standorte, Modellanbieter und Datenflüsse werden für die vereinbarte Kundenumgebung dokumentiert. Siehe <a href="security.html#hosting">Hosting-Optionen</a> für einen Überblick.',
   },
   {
     question: 'Verlassen Unternehmensdaten die gewählte Umgebung?',

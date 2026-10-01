@@ -254,7 +254,7 @@ export function applyHomeTranslations() {
   });
   setHtml('#data-control .ctrl-note span:last-child', home.dataControl.note);
   setHtml('#data-control .section-link a', home.dataControl.link);
-  setLinkHref('#data-control .section-link a', 'data-control.html');
+  setLinkHref('#data-control .section-link a', 'security.html');
 
   setText('#reviewable .marker', home.reviewable.marker);
   setText('#reviewable h2', home.reviewable.heading);
@@ -274,7 +274,7 @@ export function applyHomeTranslations() {
     if (body) body.textContent = step.body;
   });
   setHtml('#reviewable .section-link a', home.reviewable.link);
-  setLinkHref('#reviewable .section-link a', 'ai-governance.html');
+  setLinkHref('#reviewable .section-link a', 'security.html#good-to-know');
 
   setText('#origin .marker', home.origin.marker);
   setText('#origin h2', home.origin.heading);

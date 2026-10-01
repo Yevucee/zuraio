@@ -60,11 +60,11 @@ export const problemOptions = [
 ];
 
 export const trustSignals = [
-  { label: 'Swiss hosting available', href: 'deployment-models.html#swiss-hosted' },
+  { label: 'Swiss hosting available', href: 'security.html#hosting' },
   { label: 'Sources shown', href: 'knowledge.html#traceability' },
   { label: 'Approved company knowledge', href: 'knowledge.html#skillos' },
   { label: 'Choice of AI model', href: 'technical-architecture.html#models' },
-  { label: 'You remain in control', href: 'data-control.html#data-ownership' },
+  { label: 'You remain in control', href: 'security.html' },
 ];
 
 export const integrations = [
@@ -94,17 +94,10 @@ export const integrations = [
 export const nav = {
   main: [
     { label: 'How it helps', href: 'how-it-helps.html' },
-    { label: 'Knowledge', href: 'knowledge.html' },
-    { label: 'Integrations', href: 'integrations.html' },
-    { label: 'Data control', href: 'data-control.html' },
+    { label: 'Skills', href: 'how-it-helps.html#skills' },
+    { label: 'Security', href: 'security.html' },
   ],
-  technical: [
-    { label: 'Technical architecture', href: 'technical-architecture.html' },
-    { label: 'Deployment models', href: 'deployment-models.html' },
-    { label: 'AI governance', href: 'ai-governance.html' },
-    { label: 'Data control', href: 'data-control.html' },
-    { label: 'Knowledge and SkillOS', href: 'knowledge.html#skillos' },
-  ],
+  technical: [],
   about: { label: 'About', href: 'about.html' },
 };
 
@@ -371,7 +364,7 @@ export const faqItems = [
   {
     question: 'Where is our data processed?',
     answer:
-      'The processing location depends on the selected deployment. Zuraio supports architectures using customer-controlled infrastructure, private cloud, Swiss hosting and hybrid combinations. The exact locations, model providers and data flows are documented for the agreed customer setup. See <a href="deployment-models.html">deployment models</a> for an overview.',
+      'The processing location depends on the selected deployment. Zuraio supports architectures using customer-controlled infrastructure, private cloud, Swiss hosting and hybrid combinations. The exact locations, model providers and data flows are documented for the agreed customer setup. See <a href="security.html#hosting">hosting options</a> for an overview.',
   },
   {
     question: 'Can we choose which AI model handles which task?',
@@ -426,7 +419,7 @@ export const faqItItems = [
   {
     question: 'Where is our data stored?',
     answer:
-      'The processing location depends on the selected deployment. Zuraio supports architectures using customer-controlled infrastructure, private cloud, Swiss hosting and hybrid combinations. The exact locations, model providers and data flows are documented for the agreed customer setup. See <a href="deployment-models.html">deployment models</a> for an overview.',
+      'The processing location depends on the selected deployment. Zuraio supports architectures using customer-controlled infrastructure, private cloud, Swiss hosting and hybrid combinations. The exact locations, model providers and data flows are documented for the agreed customer setup. See <a href="security.html#hosting">hosting options</a> for an overview.',
   },
   {
     question: 'Does company data leave the selected environment?',
@@ -477,10 +470,14 @@ export const pages = {
     description: 'How Zuraio connects with Microsoft 365, SharePoint, Exchange, Teams, CRM, ERP, MCP and REST APIs.',
     hero: { marker: 'Integrations', heading: 'Works alongside the systems your team already uses.', headingEmphasis: 'already', lede: 'Zuraio is designed to connect company knowledge and workflows without forcing teams to replace the systems that already work.' },
   },
-  dataControl: {
-    title: 'Data control & security — Zuraio',
-    description: 'How Zuraio helps Swiss companies keep control of data, access, models and review while using AI.',
-    hero: { marker: 'Data control', heading: 'Keep control of company data while using AI.', headingEmphasis: 'control', lede: 'Zuraio is designed for companies that want AI benefits without uncontrolled data exposure, unclear model routing or generic external processing.' },
+  security: {
+    title: 'Security and data control | Zuraio',
+    description: 'How Zuraio keeps company data in Switzerland, respects access rules and lets you choose AI models.',
+    hero: {
+      marker: 'Security',
+      heading: 'Your data stays yours. You decide where it goes.',
+      lede: 'Hosted by Infomaniak in Switzerland. Access follows your existing permissions, and nothing is sent without your OK.',
+    },
   },
   deploymentModels: {
     title: 'Deployment models — Zuraio',
@@ -566,11 +563,9 @@ export const footerGroups = [
   {
     title: 'Data & Security',
     links: [
-      { label: 'Data control', href: 'data-control.html' },
-      { label: 'Swiss hosting', href: 'deployment-models.html#swiss-hosted' },
-      { label: 'Deployment models', href: 'deployment-models.html' },
-      { label: 'Technical architecture', href: 'technical-architecture.html' },
-      { label: 'AI governance', href: 'ai-governance.html' },
+      { label: 'Security', href: 'security.html' },
+      { label: 'Swiss hosting', href: 'security.html#hosting' },
+      { label: 'For your IT partner', href: 'technical-architecture.html' },
     ],
   },
   {
@@ -578,9 +573,7 @@ export const footerGroups = [
     links: [
       { label: 'About', href: 'about.html' },
       { label: 'Contact', href: 'contact.html' },
-      { label: 'Resources', href: 'resources.html' },
       { label: 'Partners', href: 'contact.html#partnerships' },
-      { label: 'Pressroom', href: 'resources.html#pressroom' },
     ],
   },
   {

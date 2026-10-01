@@ -116,7 +116,7 @@ function drawKey(context, x, y, size, alpha, elapsed, phase) {
 }
 
 export function initControlParticles() {
-  const section = document.getElementById('data-control');
+  const section = document.getElementById('data-control') ?? document.getElementById('today');
   const canvas = section?.querySelector('[data-control-particles]');
   if (!section || !canvas) return;
 

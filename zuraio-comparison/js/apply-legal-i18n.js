@@ -21,24 +21,8 @@ function applyLinkLocales(root, locale) {
   });
 }
 
-function renderBanners(banners) {
-  if (!banners?.length) return '';
-  return banners
-    .map((banner) => {
-      if (banner.type === 'status') {
-        return `<div class="todo-block data-internal-only reveal" role="status">
-      <p class="todo-label">${banner.label}</p>
-      <p>${banner.text}</p>
-    </div>`;
-      }
-      if (banner.type === 'mono') {
-        return `<div class="todo-block data-internal-only reveal">
-      <p class="mono">${banner.text}</p>
-    </div>`;
-      }
-      return '';
-    })
-    .join('\n\n    ');
+function renderBanners() {
+  return '';
 }
 
 function renderSection(section) {
@@ -76,28 +60,12 @@ function renderSection(section) {
     html += '</ul>';
   }
 
-  if (section.todo) {
-    html += `<p class="mono">${section.todo}</p>`;
-  }
-
-  if (section.todoBlock) {
-    html += `<div class="todo-block data-internal-only" style="margin-top:16px;">
-        <p class="mono">${section.todoBlock}</p>
-      </div>`;
-  }
-
   html += '</article>';
   return html;
 }
 
 function renderLegalPage(page) {
-  let html = renderBanners(page.banners);
-  if (html) html += '\n\n    ';
-  html += page.sections.map(renderSection).join('\n\n    ');
-  if (page.lastUpdated) {
-    html += `\n\n    <p class="mono reveal" style="margin-top:40px;">${page.lastUpdated}</p>`;
-  }
-  return html;
+  return page.sections.map(renderSection).join('\n\n    ');
 }
 
 export function applyLegalTranslations(locale) {
