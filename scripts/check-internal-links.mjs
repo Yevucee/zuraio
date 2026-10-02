@@ -11,6 +11,12 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(ROOT, '..', 'dist');
 const PORT = Number(process.env.LINK_CHECK_PORT || 4177);
+const LINK_CHECK_TIMEOUT_MS = Number(process.env.LINK_CHECK_TIMEOUT_MS || 120000);
+
+setTimeout(() => {
+  console.error('check-internal-links: timed out');
+  process.exit(1);
+}, LINK_CHECK_TIMEOUT_MS).unref();
 
 const PAGES = [
   { path: '/security.html', locale: 'en' },
@@ -106,7 +112,7 @@ for (const { path: pagePath } of PAGES) {
 }
 
 await browser.close();
-server.kill('SIGTERM');
+if (server?.kill) server.kill('SIGKILL');
 
 console.log(`check-internal-links: ${totalLinks} links scanned across ${PAGES.length} pages`);
 if (failures.length) {
