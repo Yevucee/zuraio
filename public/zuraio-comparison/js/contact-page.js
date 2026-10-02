@@ -1,7 +1,8 @@
 import { CONTACT_FOUNDERS, getContactCopy } from './copy-contact.js';
 import { renderAltHomeHeader, renderAltHomeFooter } from './alt-homepage-chrome.js';
 import { assetHref, getLocaleFromPathname } from './path-locale.js';
-import { initContactForm } from './contact-form.js?v=20261002d';
+import { resolveRouteFromLocation } from './site-routes.js';
+import { initContactForm } from './contact-form.js?v=20261002e';
 
 const FOUNDER_PREVIEW = 'zuraio/assets/team-preview';
 
@@ -13,11 +14,12 @@ function copyLocale() {
   return pageLocale() === 'de' ? 'de' : 'en';
 }
 
-function pageHref(href) {
-  if (href.startsWith('http') || href.startsWith('#')) return href;
-  const inLocale = getLocaleFromPathname() !== null;
-  if (!inLocale) return href;
-  return href.startsWith('../') ? href : `../${href.replace(/^\//, '')}`;
+function viewingLocale() {
+  return getLocaleFromPathname() === 'de' ? 'de' : 'en';
+}
+
+function routeHref(key) {
+  return resolveRouteFromLocation(key, viewingLocale(), location.pathname);
 }
 
 function foundersHtml(people) {
@@ -108,7 +110,7 @@ function renderMain(copy) {
           <h2>${copy.starter.heading}</h2>
           <p class="lede">${copy.starter.body}</p>
         </div>
-        <a class="alt-home-link-secondary" href="${pageHref('contact.html?interest=starter')}">${copy.starter.link}</a>
+        <a class="alt-home-link-secondary" data-route="contact" href="${routeHref('contact')}?interest=starter">${copy.starter.link}</a>
       </div>
     </section>`;
 }
