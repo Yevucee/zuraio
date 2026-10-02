@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/site.css?v=20260909-origin">
-<link rel="stylesheet" href="../css/homepage-preview.css?v=20261002b">
+<link rel="stylesheet" href="../css/homepage-preview.css?v=20261002f">
 
   <link rel="canonical" href="https://zuraio.ch/it/how-it-helps.html">
   <link rel="alternate" hreflang="en" href="https://zuraio.ch/how-it-helps.html">
@@ -49,7 +49,7 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
 <div id="site-header">
     <header class="nav alt-home-nav" id="nav">
       <div class="wrap nav-in">
-        <a class="brand" href="../index.html" aria-label="Zuraio home">
+        <a class="brand" href="en/homepage-preview.html" data-route="home" aria-label="Zuraio home">
           <img class="brand-logo" src="/assets/zuraio-logo-nav@2x.webp" alt="Zuraio – own your data" width="184" height="56" decoding="async" fetchpriority="high">
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
@@ -57,7 +57,7 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
         </button>
         <div class="nav-menu" id="nav-menu">
           <nav class="nav-links" aria-label="Primary">
-            <a href="../how-it-helps.html" aria-current="page">How it helps</a><a href="../how-it-helps.html#skills">Skills</a><a href="../security.html">Security</a><a href="../about.html">About</a>
+            <a href="how-it-helps.html" data-route="how-it-helps" aria-current="page">How it helps</a><a href="how-it-helps.html#skills" data-route="skills">Skills</a><a href="security.html" data-route="security">Security</a><a href="en/homepage-preview.html#team" data-route="about">About</a>
           </nav>
           <div class="nav-actions alt-home-nav__actions">
             <div class="lang-dropdown alt-home-lang">
@@ -65,10 +65,10 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
                 <span class="lang-dropdown-current">EN</span>
               </button>
               <div class="lang-dropdown-menu" role="listbox">
-                <a class="lang-dropdown-option is-active" href="/security.html">EN</a><a class="lang-dropdown-option" href="/de/security.html">DE</a>
+                <a class="lang-dropdown-option is-active" href="how-it-helps.html" hreflang="en">EN</a><a class="lang-dropdown-option" href="how-it-helps.html" hreflang="de">DE</a>
               </div>
             </div>
-            <a class="btn btn-primary alt-home-cta" data-alt-cta="nav" href="../contact.html">Book a 30-minute demo</a>
+            <a class="btn btn-primary alt-home-cta" data-alt-cta="nav" data-route="contact" href="contact.html">Book a 30-minute demo</a>
           </div>
         </div>
       </div>
@@ -80,7 +80,7 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
         <h1>Less admin. More time for the work that matters.</h1>
         <p class="lede alt-help-hero__sub">Zuraio prepares meetings, drafts replies and finds answers in your own emails, documents and systems. Every answer shows its source, and your team decides what happens next.</p>
         <div class="alt-help-hero__actions">
-          <a class="btn btn-primary btn-lg alt-home-cta" href="../contact.html">Book a 30-minute demo</a>
+          <a class="btn btn-primary btn-lg alt-home-cta" data-route="contact" href="contact.html">Book a 30-minute demo</a>
         </div>
       </div>
     </section>
@@ -211,7 +211,7 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
           <h2>Show us one task that takes too long.</h2>
           <p class="lede">In 30 minutes we'll show you how Zuraio would handle it, with your own example.</p>
         </div>
-        <a class="btn btn-primary btn-lg alt-home-cta" href="../contact.html">Book a 30-minute demo</a>
+        <a class="btn btn-primary btn-lg alt-home-cta" data-route="contact" href="contact.html">Book a 30-minute demo</a>
       </div>
     </section></main>
 <div id="site-footer">
@@ -221,31 +221,31 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
           
       <div class="foot-col">
         <h3 class="foot-col-title">Product</h3>
-        <ul class="foot-col-links"><li><a href="../how-it-helps.html">How it helps</a></li><li><a href="../how-it-helps.html#skills">Skills</a></li><li><a href="../integrations.html">Integrations</a></li><li><a href="../contact.html">Book a demo</a></li></ul>
+        <ul class="foot-col-links"><li><a href="how-it-helps.html" data-route="how-it-helps">How it helps</a></li><li><a href="how-it-helps.html#skills" data-route="skills">Skills</a></li><li><a href="integrations.html" data-route="integrations">Integrations</a></li><li><a href="contact.html" data-route="contact">Book a demo</a></li></ul>
       </div>
       <div class="foot-col">
         <h3 class="foot-col-title">Data &amp; security</h3>
-        <ul class="foot-col-links"><li><a href="../security.html">Security</a></li><li><a href="../technical-architecture.html">For your IT partner</a></li></ul>
+        <ul class="foot-col-links"><li><a href="security.html" data-route="security">Security</a></li><li><a href="technical-architecture.html" data-route="it-partner">For your IT partner</a></li></ul>
       </div>
       <div class="foot-col">
         <h3 class="foot-col-title">Company</h3>
-        <ul class="foot-col-links"><li><a href="../about.html">About</a></li><li><a href="../faq.html">FAQ</a></li><li><a href="../contact.html">Contact</a></li></ul>
+        <ul class="foot-col-links"><li><a href="en/homepage-preview.html#team" data-route="about">About</a></li><li><a href="en/homepage-preview.html#faq" data-route="faq">FAQ</a></li><li><a href="contact.html" data-route="contact">Contact</a></li></ul>
       </div>
       <div class="foot-col">
         <h3 class="foot-col-title">Legal</h3>
-        <ul class="foot-col-links"><li><a href="../impressum.html">Impressum</a></li><li><a href="../privacy.html">Privacy</a></li><li><a href="../cookies.html">Cookie settings</a></li><li><a href="../terms.html">Terms of use</a></li></ul>
+        <ul class="foot-col-links"><li><a href="impressum.html" data-route="impressum">Impressum</a></li><li><a href="privacy.html" data-route="privacy">Privacy</a></li><li><a href="cookies.html" data-route="cookies">Cookie settings</a></li><li><a href="terms.html" data-route="terms">Terms of use</a></li></ul>
       </div>
           <div class="foot-col">
             <h3 class="foot-col-title">Language / Contact</h3>
             <ul class="foot-col-links">
-              <li><a href="/security.html" hreflang="en">EN (active)</a></li><li><a href="/de/security.html" hreflang="de">DE</a></li>
-              <li><a href="../contact.html">Contact</a></li>
+              <li><a href="how-it-helps.html" hreflang="en">EN (active)</a></li><li><a href="how-it-helps.html" hreflang="de">DE</a></li>
+              <li><a href="contact.html" data-route="contact">Contact</a></li>
               <li><a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a></li><li><a href="mailto:marcelo.zanette@zuraio.ch">marcelo.zanette@zuraio.ch</a></li><li><a href="mailto:samuel.polley@zuraio.ch">samuel.polley@zuraio.ch</a></li><li><a href="mailto:roland.steiner@zuraio.ch">roland.steiner@zuraio.ch</a></li>
             </ul>
           </div>
         </div>
         <div class="foot-bottom">
-          <a class="brand foot-brand" href="../index.html" aria-label="Zuraio home">
+          <a class="brand foot-brand" href="en/homepage-preview.html" data-route="home" aria-label="Zuraio home">
             <img class="brand-logo" src="/assets/zuraio-logo-nav@2x.webp" alt="" width="184" height="56" decoding="async" loading="lazy">
           </a>
           <p class="foot-tagline">AI for Swiss companies that need control of their data.</p>
@@ -253,7 +253,7 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
         </div>
       </div>
     </footer></div>
-<script type="module" src="../js/how-it-helps-page.js?v=20261002b"></script>
+<script type="module" src="../js/how-it-helps-page.js?v=20261002f"></script>
 
 
 </body></html>

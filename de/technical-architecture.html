@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/site.css?v=20260909-origin">
-<link rel="stylesheet" href="../css/homepage-preview.css?v=20261002d">
+<link rel="stylesheet" href="../css/homepage-preview.css?v=20261002f">
 
   <link rel="canonical" href="https://zuraio.ch/de/technical-architecture.html">
   <link rel="alternate" hreflang="en" href="https://zuraio.ch/technical-architecture.html">
@@ -49,7 +49,7 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
 <div id="site-header">
     <header class="nav alt-home-nav" id="nav">
       <div class="wrap nav-in">
-        <a class="brand" href="../index.html" aria-label="Zuraio Startseite">
+        <a class="brand" href="homepage-preview.html" data-route="home" aria-label="Zuraio Startseite">
           <img class="brand-logo" src="/assets/zuraio-logo-nav@2x.webp" alt="Zuraio – Ihre Daten unter Ihrer Kontrolle" width="184" height="56" decoding="async" fetchpriority="high">
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menü öffnen">
@@ -57,7 +57,7 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
         </button>
         <div class="nav-menu" id="nav-menu">
           <nav class="nav-links" aria-label="Hauptnavigation">
-            <a href="../how-it-helps.html">So hilft Zuraio</a><a href="../how-it-helps.html#skills">Skills</a><a href="../security.html">Sicherheit</a><a href="../about.html">Über uns</a>
+            <a href="how-it-helps.html" data-route="how-it-helps">So hilft Zuraio</a><a href="how-it-helps.html#skills" data-route="skills">Skills</a><a href="security.html" data-route="security">Sicherheit</a><a href="homepage-preview.html#team" data-route="about">Über uns</a>
           </nav>
           <div class="nav-actions alt-home-nav__actions">
             <div class="lang-dropdown alt-home-lang">
@@ -65,10 +65,10 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
                 <span class="lang-dropdown-current">DE</span>
               </button>
               <div class="lang-dropdown-menu" role="listbox">
-                <a class="lang-dropdown-option" href="/security.html">EN</a><a class="lang-dropdown-option is-active" href="/de/security.html">DE</a>
+                <a class="lang-dropdown-option" href="../technical-architecture.html" hreflang="en">EN</a><a class="lang-dropdown-option is-active" href="technical-architecture.html" hreflang="de">DE</a>
               </div>
             </div>
-            <a class="btn btn-primary alt-home-cta" data-alt-cta="nav" href="../contact.html">30-Minuten-Demo buchen</a>
+            <a class="btn btn-primary alt-home-cta" data-alt-cta="nav" data-route="contact" href="contact.html">30-Minuten-Demo buchen</a>
           </div>
         </div>
       </div>
@@ -77,35 +77,68 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
     <section class="alt-section alt-section--tint alt-tech-hero">
       <div class="wrap">
         <span class="marker hero-eyebrow">FÜR IHREN IT-PARTNER</span>
-        <h1>Die technischen Details, an einem Ort.</h1>
-        <p class="lede alt-tech-hero__sub">Wie Zuraio mit Identitäten, Wissen, Modellen und Protokollen umgeht, und wo es läuft. Ist etwas unklar, schreiben Sie uns. Wir antworten in Tagen, nicht in Wochen.</p>
-        <p class="alt-tech-hero__cta">
-          <a class="btn btn-primary btn-lg" href="../contact.html">Technisches Gespräch vereinbaren</a>
+        <h1 class="alt-page-h1">Die technischen Details, an einem Ort.</h1>
+        <p class="lede alt-sub-max">Wie Zuraio mit Identitäten, Wissen, Modellen und Protokollen umgeht, und wo es läuft. Ist etwas unklar, schreiben Sie uns. Wir antworten in Tagen, nicht in Wochen.</p>
+        <p class="alt-page-hero-cta">
+          <a class="btn btn-primary btn-lg alt-page-hero-cta__btn" data-route="contact" href="contact.html">Technisches Gespräch vereinbaren</a>
         </p>
       </div>
     </section>
 
     <section class="alt-section alt-section--paper" id="architecture">
       <div class="wrap">
-        <div class="alt-section-head">
-          <h2>Eine Plattform, sieben Ebenen.</h2>
-        </div>
-        <div class="alt-tech-layer-grid"><article class="alt-tech-layer-card">
-        <p class="alt-tech-layer-card__text"><strong>Zugang.</strong> Mitarbeitende arbeiten in der Zuraio-Oberfläche oder in angebundenen Anwendungen.</p>
-      </article><article class="alt-tech-layer-card">
-        <p class="alt-tech-layer-card__text"><strong>Identität und Berechtigungen.</strong> Identitäten und Gruppen von Microsoft oder Google, ergänzt durch optionale Zuraio-Rollen. Geprüft, bevor Wissen oder Aktionen genutzt werden.</p>
-      </article><article class="alt-tech-layer-card">
-        <p class="alt-tech-layer-card__text"><strong>Orchestrierung.</strong> Versteht die Aufgabe, wählt den Ablauf und koordiniert Wissen, Werkzeuge und Modelle.</p>
-      </article><article class="alt-tech-layer-card">
-        <p class="alt-tech-layer-card__text"><strong>Skills und Firmenwissen.</strong> Versionierte Skills mit Vorlagen und Qualitätsregeln, verwaltet ausserhalb des KI-Modells.</p>
-      </article><article class="alt-tech-layer-card">
-        <p class="alt-tech-layer-card__text"><strong>Assistenten und Integrationen.</strong> Spezialisierte Assistenten, angebunden über MCP, APIs, Webhooks und Connectoren.</p>
-      </article><article class="alt-tech-layer-card">
-        <p class="alt-tech-layer-card__text"><strong>Modell-Gateway.</strong> Wählt pro Aufgabe ein freigegebenes Modell nach Datenklasse, Standort, Qualität und Kosten.</p>
-      </article><article class="alt-tech-layer-card">
-        <p class="alt-tech-layer-card__text"><strong>Protokolle und Betrieb.</strong> Anfragen, Quellen, Aktionen und Freigaben werden gemäss der vereinbarten Audit-Konfiguration festgehalten.</p>
+        <div class="alt-section-head"><h2>Eine Plattform, sieben Ebenen.</h2></div>
+        
+    <div class="alt-tech-layer-table-wrap">
+      <table class="alt-tech-layer-table">
+        <caption class="visually-hidden">Eine Plattform, sieben Ebenen.</caption>
+        <tbody><tr>
+        <th scope="row">1. Zugang</th>
+        <td>Mitarbeitende arbeiten in der Zuraio-Oberfläche oder in angebundenen Anwendungen.</td>
+      </tr><tr>
+        <th scope="row">2. Identität und Berechtigungen</th>
+        <td>Identitäten und Gruppen von Microsoft oder Google, ergänzt durch optionale Zuraio-Rollen. Geprüft, bevor Wissen oder Aktionen genutzt werden.</td>
+      </tr><tr>
+        <th scope="row">3. Orchestrierung</th>
+        <td>Versteht die Aufgabe, wählt den Ablauf und koordiniert Wissen, Werkzeuge und Modelle.</td>
+      </tr><tr>
+        <th scope="row">4. Skills und Firmenwissen</th>
+        <td>Versionierte Skills mit Vorlagen und Qualitätsregeln, verwaltet ausserhalb des KI-Modells.</td>
+      </tr><tr>
+        <th scope="row">5. Assistenten und Integrationen</th>
+        <td>Spezialisierte Assistenten, angebunden über MCP, APIs, Webhooks und Connectoren.</td>
+      </tr><tr>
+        <th scope="row">6. Modell-Gateway</th>
+        <td>Wählt pro Aufgabe ein freigegebenes Modell nach Datenklasse, Standort, Qualität und Kosten.</td>
+      </tr><tr>
+        <th scope="row">7. Protokolle und Betrieb</th>
+        <td>Anfragen, Quellen, Aktionen und Freigaben werden gemäss der vereinbarten Audit-Konfiguration festgehalten.</td>
+      </tr></tbody>
+      </table>
+    </div>
+    <div class="alt-kv-stack"><article class="alt-kv-card">
+        <p class="alt-kv-card__label">1. Zugang</p>
+        <p class="alt-kv-card__value">Mitarbeitende arbeiten in der Zuraio-Oberfläche oder in angebundenen Anwendungen.</p>
+      </article><article class="alt-kv-card">
+        <p class="alt-kv-card__label">2. Identität und Berechtigungen</p>
+        <p class="alt-kv-card__value">Identitäten und Gruppen von Microsoft oder Google, ergänzt durch optionale Zuraio-Rollen. Geprüft, bevor Wissen oder Aktionen genutzt werden.</p>
+      </article><article class="alt-kv-card">
+        <p class="alt-kv-card__label">3. Orchestrierung</p>
+        <p class="alt-kv-card__value">Versteht die Aufgabe, wählt den Ablauf und koordiniert Wissen, Werkzeuge und Modelle.</p>
+      </article><article class="alt-kv-card">
+        <p class="alt-kv-card__label">4. Skills und Firmenwissen</p>
+        <p class="alt-kv-card__value">Versionierte Skills mit Vorlagen und Qualitätsregeln, verwaltet ausserhalb des KI-Modells.</p>
+      </article><article class="alt-kv-card">
+        <p class="alt-kv-card__label">5. Assistenten und Integrationen</p>
+        <p class="alt-kv-card__value">Spezialisierte Assistenten, angebunden über MCP, APIs, Webhooks und Connectoren.</p>
+      </article><article class="alt-kv-card">
+        <p class="alt-kv-card__label">6. Modell-Gateway</p>
+        <p class="alt-kv-card__value">Wählt pro Aufgabe ein freigegebenes Modell nach Datenklasse, Standort, Qualität und Kosten.</p>
+      </article><article class="alt-kv-card">
+        <p class="alt-kv-card__label">7. Protokolle und Betrieb</p>
+        <p class="alt-kv-card__value">Anfragen, Quellen, Aktionen und Freigaben werden gemäss der vereinbarten Audit-Konfiguration festgehalten.</p>
       </article></div>
-        <div class="alt-tech-diagram-box">
+    <div class="alt-tech-diagram-box">
     <svg class="alt-tech-arch-svg" viewBox="0 0 480 720" role="img" aria-labelledby="alt-tech-arch-title alt-tech-arch-desc">
       <title id="alt-tech-arch-title">Zuraio Plattformarchitektur, sieben Ebenen</title>
       <desc id="alt-tech-arch-desc">Illustrativer vertikaler Ablauf von Zugang über Identität, Orchestrierung, Skills, Integrationen und Modell-Gateway bis zu Protokollen.</desc>
@@ -128,30 +161,99 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
 
     <section class="alt-section alt-section--tint" id="request-flow">
       <div class="wrap">
-        <div class="alt-section-head">
-          <h2>Von der Anfrage zum Ergebnis</h2>
-        </div>
+        <div class="alt-section-head"><h2>Von der Anfrage zum Ergebnis</h2></div>
         <ol class="alt-tech-flow"><li class="alt-tech-flow__step"><span class="alt-tech-flow__num">1</span><span class="alt-tech-flow__text">Eine Person stellt eine Frage oder startet eine Aufgabe.</span></li><li class="alt-tech-flow__step"><span class="alt-tech-flow__num">2</span><span class="alt-tech-flow__text">Zuraio prüft, wer sie ist und worauf sie zugreifen darf.</span></li><li class="alt-tech-flow__step"><span class="alt-tech-flow__num">3</span><span class="alt-tech-flow__text">Der passende Skill liefert Schritte, Vorlagen und Regeln.</span></li><li class="alt-tech-flow__step"><span class="alt-tech-flow__num">4</span><span class="alt-tech-flow__text">Zuraio wählt Assistenten, Quellen und ein freigegebenes Modell.</span></li><li class="alt-tech-flow__step"><span class="alt-tech-flow__num">5</span><span class="alt-tech-flow__text">Es bereitet eine Antwort, einen Entwurf oder eine vorgeschlagene Aktion vor.</span></li><li class="alt-tech-flow__step"><span class="alt-tech-flow__num">6</span><span class="alt-tech-flow__text">Alles, was Daten ändert oder nach aussen geht, wartet auf das OK einer Person.</span></li><li class="alt-tech-flow__step"><span class="alt-tech-flow__num">7</span><span class="alt-tech-flow__text">Quellen, Versionen und Freigaben werden festgehalten.</span></li></ol>
       </div>
     </section>
 
-    <section class="alt-section alt-section--paper" id="deployment">
+    <section class="alt-section alt-section--paper" id="skill-lifecycle">
+      <div class="wrap">
+        <div class="alt-section-head"><h2>Wie Skills unter Kontrolle bleiben.</h2></div>
+        
+    <p class="lede alt-sub-max">Neue oder geänderte Skills werden geprüft, bevor jemand sie nutzt. Ältere Versionen bleiben erhalten, damit jederzeit nachvollziehbar ist, was wann galt.</p>
+    <ol class="alt-skill-lifecycle" aria-label="Wie Skills unter Kontrolle bleiben."><li class="alt-skill-lifecycle__pill"><span>Entwurf</span></li><li class="alt-skill-lifecycle__pill"><span>In Prüfung</span></li><li class="alt-skill-lifecycle__pill"><span>Freigegeben</span></li><li class="alt-skill-lifecycle__pill alt-skill-lifecycle__pill--active"><span>Veröffentlicht</span></li><li class="alt-skill-lifecycle__pill"><span>Abgelöst</span></li><li class="alt-skill-lifecycle__pill"><span>Archiviert</span></li></ol>
+      </div>
+    </section>
+
+    <section class="alt-section alt-section--tint" id="hosting-compare">
+      <div class="wrap">
+        <div class="alt-section-head"><h2>Drei Hosting-Varianten im Vergleich.</h2></div>
+        
+    <div class="alt-tech-hosting-table-wrap">
+      <table class="alt-tech-hosting-table">
+        <thead><tr><th scope="col"></th><th scope="col">
+        <span class="alt-security-hosting-tag alt-security-hosting-tag--standard">Standard</span>
+        <span class="alt-tech-hosting-col-title">Schweizer Hosting</span>
+      </th><th scope="col">
+        <span class="alt-security-hosting-tag alt-security-hosting-tag--request">Auf Anfrage</span>
+        <span class="alt-tech-hosting-col-title">Hybrid</span>
+      </th><th scope="col">
+        <span class="alt-security-hosting-tag alt-security-hosting-tag--request">Auf Anfrage</span>
+        <span class="alt-tech-hosting-col-title">Eigene Server</span>
+      </th></tr></thead>
+        <tbody><tr><th scope="row">Wo die Daten liegen</th><td>In der Schweiz bei Infomaniak</td><td>Aufgeteilt nach System und Datenklasse</td><td>In Ihrer Infrastruktur</td></tr><tr><th scope="row">Aufwand für Ihre IT</th><td>Gering</td><td>Mittel</td><td>Höher</td></tr><tr><th scope="row">KI-Modelle</th><td>Schweizer Standard, andere nach Wahl</td><td>Nach Aufgabe und Richtlinie</td><td>Lokale und freigegebene Modelle</td></tr><tr><th scope="row">Wer betreibt es</th><td>Zuraio</td><td>Gemeinsam</td><td>Hauptsächlich Sie, mit unserer Unterstützung</td></tr></tbody>
+      </table>
+    </div>
+    <div class="alt-tech-hosting-cards"><article class="alt-home-skill-card alt-tech-hosting-card">
+        <span class="alt-security-hosting-tag alt-security-hosting-tag--standard">Standard</span>
+        <h3 class="alt-home-skill-card__title">Schweizer Hosting</h3>
+        <div class="alt-kv-card__row"><span class="alt-kv-card__label">Wo die Daten liegen</span><span class="alt-kv-card__value">In der Schweiz bei Infomaniak</span></div><div class="alt-kv-card__row"><span class="alt-kv-card__label">Aufwand für Ihre IT</span><span class="alt-kv-card__value">Gering</span></div><div class="alt-kv-card__row"><span class="alt-kv-card__label">KI-Modelle</span><span class="alt-kv-card__value">Schweizer Standard, andere nach Wahl</span></div><div class="alt-kv-card__row"><span class="alt-kv-card__label">Wer betreibt es</span><span class="alt-kv-card__value">Zuraio</span></div>
+      </article><article class="alt-home-skill-card alt-tech-hosting-card">
+        <span class="alt-security-hosting-tag alt-security-hosting-tag--request">Auf Anfrage</span>
+        <h3 class="alt-home-skill-card__title">Hybrid</h3>
+        <div class="alt-kv-card__row"><span class="alt-kv-card__label">Wo die Daten liegen</span><span class="alt-kv-card__value">Aufgeteilt nach System und Datenklasse</span></div><div class="alt-kv-card__row"><span class="alt-kv-card__label">Aufwand für Ihre IT</span><span class="alt-kv-card__value">Mittel</span></div><div class="alt-kv-card__row"><span class="alt-kv-card__label">KI-Modelle</span><span class="alt-kv-card__value">Nach Aufgabe und Richtlinie</span></div><div class="alt-kv-card__row"><span class="alt-kv-card__label">Wer betreibt es</span><span class="alt-kv-card__value">Gemeinsam</span></div>
+      </article><article class="alt-home-skill-card alt-tech-hosting-card">
+        <span class="alt-security-hosting-tag alt-security-hosting-tag--request">Auf Anfrage</span>
+        <h3 class="alt-home-skill-card__title">Eigene Server</h3>
+        <div class="alt-kv-card__row"><span class="alt-kv-card__label">Wo die Daten liegen</span><span class="alt-kv-card__value">In Ihrer Infrastruktur</span></div><div class="alt-kv-card__row"><span class="alt-kv-card__label">Aufwand für Ihre IT</span><span class="alt-kv-card__value">Höher</span></div><div class="alt-kv-card__row"><span class="alt-kv-card__label">KI-Modelle</span><span class="alt-kv-card__value">Lokale und freigegebene Modelle</span></div><div class="alt-kv-card__row"><span class="alt-kv-card__label">Wer betreibt es</span><span class="alt-kv-card__value">Hauptsächlich Sie, mit unserer Unterstützung</span></div>
+      </article></div>
+    <p class="alt-tech-hosting-more">
+      <a class="alt-home-link-secondary" data-route="security-hosting" href="security.html#hosting">Mehr zum Hosting →</a>
+    </p>
+      </div>
+    </section>
+
+    <section class="alt-section alt-section--paper" id="whats-recorded">
       <div class="wrap">
         <div class="alt-section-head">
-          <h2>Was wir bei jeder Lösung dokumentieren.</h2>
+          <h2>Was festgehalten wird.</h2>
+          <p class="lede alt-sub-max">Jede Antwort hinterlässt eine Spur, die Ihr IT-Partner prüfen kann.</p>
         </div>
+        <div class="alt-recorded-grid"><article class="alt-recorded-row">
+        <div class="alt-recorded-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9.5a4.5 4.5 0 0 1 9 0c0 2.2-1.2 3.4-2.4 4.2-.9.6-1.6 1-1.6 2.3V17"></path><circle cx="12" cy="20" r="1"></circle></svg></div>
+        <p class="alt-recorded-row__text"><strong>Die Anfrage:</strong> wer was wann gefragt hat.</p>
+      </article><article class="alt-recorded-row">
+        <div class="alt-recorded-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"></circle><circle cx="18" cy="6" r="2.5"></circle><circle cx="12" cy="18" r="2.5"></circle><path d="M8.2 7.4 10.8 16M15.8 7.4 13.2 16"></path></svg></div>
+        <p class="alt-recorded-row__text"><strong>Die Quellen:</strong> welche Dokumente und Systeme genutzt wurden.</p>
+      </article><article class="alt-recorded-row">
+        <div class="alt-recorded-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="m9 14 2 2 4-4"></path></svg></div>
+        <p class="alt-recorded-row__text"><strong>Der Skill:</strong> welcher Skill in welcher Version galt.</p>
+      </article><article class="alt-recorded-row">
+        <div class="alt-recorded-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6.5V11c0 4.4 3.1 8.5 8 9.5 4.9-1 8-5.1 8-9.5V6.5L12 3z"></path><path d="m9 12 2 2 4-4"></path></svg></div>
+        <p class="alt-recorded-row__text"><strong>Das Ergebnis:</strong> was Zuraio erstellt hat.</p>
+      </article><article class="alt-recorded-row">
+        <div class="alt-recorded-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9.5a4.5 4.5 0 0 1 9 0c0 2.2-1.2 3.4-2.4 4.2-.9.6-1.6 1-1.6 2.3V17"></path><circle cx="12" cy="20" r="1"></circle></svg></div>
+        <p class="alt-recorded-row__text"><strong>Die Freigabe:</strong> wer es geprüft und freigegeben hat.</p>
+      </article></div>
+      </div>
+    </section>
+
+    <section class="alt-section alt-section--tint" id="deployment">
+      <div class="wrap">
+        <div class="alt-section-head"><h2>Was wir bei jeder Lösung dokumentieren.</h2></div>
         <ul class="alt-tech-checklist"><li>Betreiber und Verantwortlichkeiten</li><li>Verarbeitungs- und Speicherorte</li><li>KI-Modellanbieter</li><li>Identity Provider</li><li>Datentrennung</li><li>Backup und Wiederherstellung</li><li>Monitoring und Support</li><li>Updates und Patches</li><li>Aufbewahrung und Löschung</li><li>Zulässige externe Dienste</li></ul>
       </div>
     </section>
 
-    <section class="alt-section alt-section--tint alt-tech-cta">
-      <div class="wrap alt-tech-cta__inner">
-        <div>
+    
+    <section class="alt-section alt-section--paper alt-page-cta">
+      <div class="wrap alt-page-cta__inner">
+        <div class="alt-page-cta__copy">
           <h2>Gehen wir es gemeinsam durch.</h2>
           <p class="lede">Ein technisches Gespräch mit einem unserer Gründer, gerne mit Ihrem IT-Partner.</p>
         </div>
-        <div class="alt-tech-cta__actions">
-          <a class="btn btn-primary btn-lg" href="../contact.html">Technisches Gespräch vereinbaren</a>
+        <div class="alt-page-cta__actions">
+          <a class="btn btn-primary btn-lg alt-page-cta__btn" data-route="contact" href="contact.html">Technisches Gespräch vereinbaren</a>
         </div>
       </div>
     </section></main>
@@ -162,31 +264,31 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
           
       <div class="foot-col">
         <h3 class="foot-col-title">Produkt</h3>
-        <ul class="foot-col-links"><li><a href="../how-it-helps.html">So hilft Zuraio</a></li><li><a href="../how-it-helps.html#skills">Skills</a></li><li><a href="../integrations.html">Integrationen</a></li><li><a href="../contact.html">Demo buchen</a></li></ul>
+        <ul class="foot-col-links"><li><a href="how-it-helps.html" data-route="how-it-helps">So hilft Zuraio</a></li><li><a href="how-it-helps.html#skills" data-route="skills">Skills</a></li><li><a href="integrations.html" data-route="integrations">Integrationen</a></li><li><a href="contact.html" data-route="contact">Demo buchen</a></li></ul>
       </div>
       <div class="foot-col">
         <h3 class="foot-col-title">Daten &amp; Sicherheit</h3>
-        <ul class="foot-col-links"><li><a href="../security.html">Sicherheit</a></li><li><a href="../technical-architecture.html">Für Ihren IT-Partner</a></li></ul>
+        <ul class="foot-col-links"><li><a href="security.html" data-route="security">Sicherheit</a></li><li><a href="technical-architecture.html" data-route="it-partner">Für Ihren IT-Partner</a></li></ul>
       </div>
       <div class="foot-col">
         <h3 class="foot-col-title">Unternehmen</h3>
-        <ul class="foot-col-links"><li><a href="../about.html">Über uns</a></li><li><a href="../faq.html">FAQ</a></li><li><a href="../contact.html">Kontakt</a></li></ul>
+        <ul class="foot-col-links"><li><a href="homepage-preview.html#team" data-route="about">Über uns</a></li><li><a href="homepage-preview.html#faq" data-route="faq">FAQ</a></li><li><a href="contact.html" data-route="contact">Kontakt</a></li></ul>
       </div>
       <div class="foot-col">
         <h3 class="foot-col-title">Rechtliches</h3>
-        <ul class="foot-col-links"><li><a href="../impressum.html">Impressum</a></li><li><a href="../privacy.html">Datenschutz</a></li><li><a href="../cookies.html">Cookie-Einstellungen</a></li><li><a href="../terms.html">Nutzungsbedingungen</a></li></ul>
+        <ul class="foot-col-links"><li><a href="impressum.html" data-route="impressum">Impressum</a></li><li><a href="privacy.html" data-route="privacy">Datenschutz</a></li><li><a href="cookies.html" data-route="cookies">Cookie-Einstellungen</a></li><li><a href="terms.html" data-route="terms">Nutzungsbedingungen</a></li></ul>
       </div>
           <div class="foot-col">
             <h3 class="foot-col-title">Sprache und Kontakt</h3>
             <ul class="foot-col-links">
-              <li><a href="/security.html" hreflang="en">EN</a></li><li><a href="/de/security.html" hreflang="de">DE (aktiv)</a></li>
-              <li><a href="../contact.html">Kontakt</a></li>
+              <li><a href="../technical-architecture.html" hreflang="en">EN</a></li><li><a href="technical-architecture.html" hreflang="de">DE (aktiv)</a></li>
+              <li><a href="contact.html" data-route="contact">Kontakt</a></li>
               <li><a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a></li><li><a href="mailto:marcelo.zanette@zuraio.ch">marcelo.zanette@zuraio.ch</a></li><li><a href="mailto:samuel.polley@zuraio.ch">samuel.polley@zuraio.ch</a></li><li><a href="mailto:roland.steiner@zuraio.ch">roland.steiner@zuraio.ch</a></li>
             </ul>
           </div>
         </div>
         <div class="foot-bottom">
-          <a class="brand foot-brand" href="../index.html" aria-label="Zuraio Startseite">
+          <a class="brand foot-brand" href="homepage-preview.html" data-route="home" aria-label="Zuraio Startseite">
             <img class="brand-logo" src="/assets/zuraio-logo-nav@2x.webp" alt="" width="184" height="56" decoding="async" loading="lazy">
           </a>
           <p class="foot-tagline">KI für Schweizer Unternehmen, die die Kontrolle über ihre Daten behalten wollen.</p>
@@ -194,7 +296,7 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
         </div>
       </div>
     </footer></div>
-<script type="module" src="../js/technical-architecture-page.js?v=20261002d"></script>
+<script type="module" src="../js/technical-architecture-page.js?v=20261002f"></script>
 
 
 </body></html>

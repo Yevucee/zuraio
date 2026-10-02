@@ -1,6 +1,7 @@
 import { getSecurityCopy } from './copy-security.js';
 import { renderAltHomeHeader, renderAltHomeFooter } from './alt-homepage-chrome.js';
 import { assetHref, getLocaleFromPathname } from './path-locale.js';
+import { resolveRouteFromLocation } from './site-routes.js';
 import { initControlParticles } from './control-particles.js';
 import { ALT_HOME_REASON_ICONS } from './alt-home-reason-icons.js';
 import { ROUTES_OUTCOME_CHECK } from './workflow-icons.js';
@@ -15,11 +16,12 @@ function copyLocale() {
   return pageLocale() === 'de' ? 'de' : 'en';
 }
 
-function pageHref(href) {
-  if (href.startsWith('http') || href.startsWith('#')) return href;
-  const inLocale = getLocaleFromPathname() !== null;
-  if (!inLocale) return href;
-  return href.startsWith('../') ? href : `../${href.replace(/^\//, '')}`;
+function viewingLocale() {
+  return getLocaleFromPathname() === 'de' ? 'de' : 'en';
+}
+
+function routeHref(key) {
+  return resolveRouteFromLocation(key, viewingLocale(), location.pathname);
 }
 
 function renderTrustList(lines) {
@@ -124,8 +126,8 @@ function renderMain(copy) {
           <p class="lede">${copy.cta.body}</p>
         </div>
         <div class="alt-security-cta__actions">
-          <a class="btn btn-ghost btn-lg" href="${pageHref(copy.cta.itHref)}">${copy.cta.itLink}</a>
-          <a class="btn btn-primary btn-lg" href="${pageHref('contact.html')}">${copy.cta.demo}</a>
+          <a class="btn btn-ghost btn-lg" data-route="it-partner" href="${routeHref('it-partner')}">${copy.cta.itLink}</a>
+          <a class="btn btn-primary btn-lg" data-route="contact" href="${routeHref('contact')}">${copy.cta.demo}</a>
         </div>
       </div>
     </section>`;

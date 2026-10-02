@@ -1,6 +1,7 @@
 import { getHowItHelpsCopy } from './copy-how-it-helps.js';
 import { renderAltHomeHeader, renderAltHomeFooter } from './alt-homepage-chrome.js';
 import { getLocaleFromPathname } from './path-locale.js';
+import { resolveRouteFromLocation } from './site-routes.js';
 import { ALT_HOME_BUILT_WITH_ICON } from './alt-home-skill-icons.js';
 import { ALT_HOME_REASON_ICONS } from './alt-home-reason-icons.js';
 import { HOW_IT_HELPS_USE_CASE_ICONS, HOW_IT_HELPS_SKILL_ICONS } from './how-it-helps-icons.js';
@@ -13,11 +14,12 @@ function copyLocale() {
   return pageLocale() === 'de' ? 'de' : 'en';
 }
 
-function pageHref(href) {
-  if (href.startsWith('http') || href.startsWith('#')) return href;
-  const inLocale = getLocaleFromPathname() !== null;
-  if (!inLocale) return href;
-  return href.startsWith('../') ? href : `../${href.replace(/^\//, '')}`;
+function viewingLocale() {
+  return getLocaleFromPathname() === 'de' ? 'de' : 'en';
+}
+
+function routeHref(key) {
+  return resolveRouteFromLocation(key, viewingLocale(), location.pathname);
 }
 
 function useCasesHtml(cards) {
@@ -82,7 +84,7 @@ function renderMain(copy) {
         <h1>${copy.hero.heading}</h1>
         <p class="lede alt-help-hero__sub">${copy.hero.sub}</p>
         <div class="alt-help-hero__actions">
-          <a class="btn btn-primary btn-lg alt-home-cta" href="${pageHref('contact.html')}">${copy.hero.cta}</a>
+          <a class="btn btn-primary btn-lg alt-home-cta" data-route="contact" href="${routeHref('contact')}">${copy.hero.cta}</a>
         </div>
       </div>
     </section>
@@ -141,7 +143,7 @@ function renderMain(copy) {
           <h2>${copy.cta.heading}</h2>
           <p class="lede">${copy.cta.body}</p>
         </div>
-        <a class="btn btn-primary btn-lg alt-home-cta" href="${pageHref('contact.html')}">${copy.cta.demo}</a>
+        <a class="btn btn-primary btn-lg alt-home-cta" data-route="contact" href="${routeHref('contact')}">${copy.cta.demo}</a>
       </div>
     </section>`;
 }

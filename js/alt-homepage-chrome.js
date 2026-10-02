@@ -1,5 +1,6 @@
 import { SITE } from './config.js';
-import { assetHref, getLocaleFromPathname, langHrefForLocale } from './path-locale.js';
+import { assetHref, getLocaleFromPathname } from './path-locale.js';
+import { resolveRouteFromLocation, langSwitchHref } from './site-routes.js';
 
 /** 2× raster for ~92×28 CSS display (alt preview nav caps logo at 28px). */
 const ALT_HOME_LOGO = 'assets/zuraio-logo-nav@2x.webp';
@@ -14,18 +15,28 @@ function siteCopyBundle(locale) {
   return locale === 'de' ? copyDe : copyEn;
 }
 
-function previewLangHref(locale, file = 'homepage-preview.html') {
-  const base = locale === 'de' ? '../de/' : '../en/';
-  return `${base}${file}`;
+function viewingLocale() {
+  return getLocaleFromPathname() === 'de' ? 'de' : 'en';
 }
 
-function siteRootPrefix() {
-  return getLocaleFromPathname() !== null ? '../' : '';
+function routeHref(routeKey, targetLocale = viewingLocale()) {
+  return resolveRouteFromLocation(routeKey, targetLocale, location.pathname);
 }
 
-function sitePageHref(path) {
-  return `${siteRootPrefix()}${path.replace(/^\//, '')}`;
-}
+const FOOTER_ROUTE_BY_HREF = {
+  'how-it-helps.html': 'how-it-helps',
+  'how-it-helps.html#skills': 'skills',
+  'integrations.html': 'integrations',
+  'contact.html': 'contact',
+  'security.html': 'security',
+  'technical-architecture.html': 'it-partner',
+  'about.html': 'about',
+  'faq.html': 'faq',
+  'impressum.html': 'impressum',
+  'privacy.html': 'privacy',
+  'cookies.html': 'cookies',
+  'terms.html': 'terms',
+};
 
 function bindNavUi(root, ui) {
   const toggle = root.querySelector('.nav-toggle');
@@ -39,30 +50,22 @@ function bindNavUi(root, ui) {
 }
 
 function navLinksHtml(nav, mode, active) {
-  if (mode === 'site') {
-    const items = [
-      { href: 'how-it-helps.html', label: nav.howItWorks, key: 'how' },
-      { href: 'how-it-helps.html#skills', label: nav.skills, key: 'skills' },
-      { href: 'security.html', label: nav.security, key: 'security' },
-      { href: 'about.html', label: nav.about, key: 'about' },
-    ];
-    return items
-      .map(({ href, label, key }) => {
-        const current = active === key ? ' aria-current="page"' : '';
-        return `<a href="${sitePageHref(href)}"${current}>${label}</a>`;
-      })
-      .join('');
-  }
-  return `
-            <a href="${sitePageHref('how-it-helps.html')}">${nav.howItWorks}</a>
-            <a href="${sitePageHref('how-it-helps.html#skills')}">${nav.skills}</a>
-            <a href="${sitePageHref('security.html')}">${nav.security}</a>
-            <a href="${sitePageHref('about.html')}">${nav.about}</a>`;
+  const items = [
+    { route: 'how-it-helps', label: nav.howItWorks, key: 'how' },
+    { route: 'skills', label: nav.skills, key: 'skills' },
+    { route: 'security', label: nav.security, key: 'security' },
+    { route: 'about', label: nav.about, key: 'about' },
+  ];
+  return items
+    .map(({ route, label, key }) => {
+      const isCurrent = active === key;
+      return `<a href="${routeHref(route)}" data-route="${route}"${isCurrent ? ' aria-current="page"' : ''}>${label}</a>`;
+    })
+    .join('');
 }
 
-function brandHref(mode, locale) {
-  if (mode === 'site') return sitePageHref('index.html');
-  return previewLangHref(locale);
+function brandHref(mode) {
+  return routeHref('home');
 }
 
 export function renderAltHomeHeader(copy, locale, options = {}) {
@@ -72,11 +75,12 @@ export function renderAltHomeHeader(copy, locale, options = {}) {
   const mode = options.mode ?? 'preview';
   const ui = siteCopyBundle(locale).ui;
   const { nav } = copy;
+  const active = options.active;
 
   el.innerHTML = `
     <header class="nav alt-home-nav" id="nav">
       <div class="wrap nav-in">
-        <a class="brand" href="${brandHref(mode, locale)}" aria-label="${ui.zuraioHome}">
+        <a class="brand" href="${brandHref(mode)}" data-route="home" aria-label="${ui.zuraioHome}">
           <img class="brand-logo" src="${assetHref(ALT_HOME_LOGO)}" alt="${ui.logoAlt ?? 'Zuraio'}" width="${ALT_HOME_LOGO_WIDTH}" height="${ALT_HOME_LOGO_HEIGHT}" decoding="async" fetchpriority="high" />
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="${ui.openMenu}">
@@ -84,7 +88,7 @@ export function renderAltHomeHeader(copy, locale, options = {}) {
         </button>
         <div class="nav-menu" id="nav-menu">
           <nav class="nav-links" aria-label="${ui.primaryNavAria ?? 'Primary'}">
-            ${navLinksHtml(nav, mode, options.active)}
+            ${navLinksHtml(nav, mode, active)}
           </nav>
           <div class="nav-actions alt-home-nav__actions">
             <div class="lang-dropdown alt-home-lang">
@@ -93,15 +97,12 @@ export function renderAltHomeHeader(copy, locale, options = {}) {
               </button>
               <div class="lang-dropdown-menu" role="listbox">
                 ${PUBLIC_SITE_LOCALES.map((code) => {
-                  const href =
-                    mode === 'site'
-                      ? langHrefForLocale('security.html', code)
-                      : previewLangHref(code);
-                  return `<a class="lang-dropdown-option${code === locale ? ' is-active' : ''}" href="${href}">${getLocaleLabels(ui)[code]}</a>`;
+                  const href = langSwitchHref(code, location.pathname, location.hash);
+                  return `<a class="lang-dropdown-option${code === locale ? ' is-active' : ''}" href="${href}" hreflang="${code}">${getLocaleLabels(ui)[code]}</a>`;
                 }).join('')}
               </div>
             </div>
-            <a class="btn btn-primary alt-home-cta" data-alt-cta="nav" href="${sitePageHref('contact.html')}">${nav.bookDemo}</a>
+            <a class="btn btn-primary alt-home-cta" data-alt-cta="nav" data-route="contact" href="${routeHref('contact')}">${nav.bookDemo}</a>
           </div>
         </div>
       </div>
@@ -128,36 +129,40 @@ function founderEmailLinksHtml() {
   return emails.map((email) => `<li><a href="mailto:${email}">${email}</a></li>`).join('');
 }
 
+function footerLinkHref(rawHref) {
+  const routeKey = FOOTER_ROUTE_BY_HREF[rawHref.replace(/^\.\.\//, '')];
+  if (routeKey) return { href: routeHref(routeKey), route: routeKey };
+  return { href: rawHref, route: null };
+}
+
 export function renderAltHomeFooter(copy, locale, options = {}) {
   const el = document.getElementById('site-footer');
   if (!el) return;
 
-  const mode = options.mode ?? 'preview';
   const bundle = siteCopyBundle(locale);
   const ui = bundle.ui;
   const groups = bundle.footerGroups;
   const localeLabels = getLocaleLabels(ui);
-  const linkPrefix = mode === 'site' ? siteRootPrefix() : '../';
   const groupsHtml = groups
     .map(
       (g) => `
       <div class="foot-col">
         <h3 class="foot-col-title">${g.title}</h3>
-        <ul class="foot-col-links">${g.links.map((l) => `<li><a href="${linkPrefix}${l.href.replace(/^\//, '')}">${l.label}</a></li>`).join('')}</ul>
+        <ul class="foot-col-links">${g.links
+          .map((l) => {
+            const { href, route } = footerLinkHref(l.href);
+            const routeAttr = route ? ` data-route="${route}"` : '';
+            return `<li><a href="${href}"${routeAttr}>${l.label}</a></li>`;
+          })
+          .join('')}</ul>
       </div>`,
     )
     .join('');
 
-  const langLinks =
-    mode === 'site'
-      ? PUBLIC_SITE_LOCALES.map((code) => {
-          const href = langHrefForLocale('security.html', code);
-          return `<li><a href="${href}" hreflang="${code}">${localeLabels[code]}${locale === code ? ` (${ui.languageActive})` : ''}</a></li>`;
-        }).join('')
-      : PUBLIC_SITE_LOCALES.map(
-          (code) =>
-            `<li><a href="${previewLangHref(code)}">${localeLabels[code]}${locale === code ? ` (${ui.languageActive})` : ''}</a></li>`,
-        ).join('');
+  const langLinks = PUBLIC_SITE_LOCALES.map((code) => {
+    const href = langSwitchHref(code, location.pathname, location.hash);
+    return `<li><a href="${href}" hreflang="${code}">${localeLabels[code]}${locale === code ? ` (${ui.languageActive})` : ''}</a></li>`;
+  }).join('');
 
   el.innerHTML = `
     <footer class="site-footer">
@@ -168,13 +173,13 @@ export function renderAltHomeFooter(copy, locale, options = {}) {
             <h3 class="foot-col-title">${ui.languageContact}</h3>
             <ul class="foot-col-links">
               ${langLinks}
-              <li><a href="${linkPrefix}contact.html">${ui.footerContactLink ?? 'Contact'}</a></li>
+              <li><a href="${routeHref('contact')}" data-route="contact">${ui.footerContactLink ?? 'Contact'}</a></li>
               ${founderEmailLinksHtml()}
             </ul>
           </div>
         </div>
         <div class="foot-bottom">
-          <a class="brand foot-brand" href="${brandHref(mode, locale)}" aria-label="${ui.zuraioHome}">
+          <a class="brand foot-brand" href="${brandHref()}" data-route="home" aria-label="${ui.zuraioHome}">
             <img class="brand-logo" src="${assetHref(ALT_HOME_LOGO)}" alt="" width="${ALT_HOME_LOGO_WIDTH}" height="${ALT_HOME_LOGO_HEIGHT}" decoding="async" loading="lazy" />
           </a>
           <p class="foot-tagline">${bundle.site?.tagline ?? SITE.tagline}</p>

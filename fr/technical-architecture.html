@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/site.css?v=20260909-origin">
-<link rel="stylesheet" href="../css/homepage-preview.css?v=20261002d">
+<link rel="stylesheet" href="../css/homepage-preview.css?v=20261002f">
 
   <link rel="canonical" href="https://zuraio.ch/fr/technical-architecture.html">
   <link rel="alternate" hreflang="en" href="https://zuraio.ch/technical-architecture.html">
@@ -49,7 +49,7 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
 <div id="site-header">
     <header class="nav alt-home-nav" id="nav">
       <div class="wrap nav-in">
-        <a class="brand" href="../index.html" aria-label="Zuraio home">
+        <a class="brand" href="en/homepage-preview.html" data-route="home" aria-label="Zuraio home">
           <img class="brand-logo" src="/assets/zuraio-logo-nav@2x.webp" alt="Zuraio – own your data" width="184" height="56" decoding="async" fetchpriority="high">
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
@@ -57,7 +57,7 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
         </button>
         <div class="nav-menu" id="nav-menu">
           <nav class="nav-links" aria-label="Primary">
-            <a href="../how-it-helps.html">How it helps</a><a href="../how-it-helps.html#skills">Skills</a><a href="../security.html">Security</a><a href="../about.html">About</a>
+            <a href="how-it-helps.html" data-route="how-it-helps">How it helps</a><a href="how-it-helps.html#skills" data-route="skills">Skills</a><a href="security.html" data-route="security">Security</a><a href="en/homepage-preview.html#team" data-route="about">About</a>
           </nav>
           <div class="nav-actions alt-home-nav__actions">
             <div class="lang-dropdown alt-home-lang">
@@ -65,10 +65,10 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
                 <span class="lang-dropdown-current">EN</span>
               </button>
               <div class="lang-dropdown-menu" role="listbox">
-                <a class="lang-dropdown-option is-active" href="/security.html">EN</a><a class="lang-dropdown-option" href="/de/security.html">DE</a>
+                <a class="lang-dropdown-option is-active" href="technical-architecture.html" hreflang="en">EN</a><a class="lang-dropdown-option" href="technical-architecture.html" hreflang="de">DE</a>
               </div>
             </div>
-            <a class="btn btn-primary alt-home-cta" data-alt-cta="nav" href="../contact.html">Book a 30-minute demo</a>
+            <a class="btn btn-primary alt-home-cta" data-alt-cta="nav" data-route="contact" href="contact.html">Book a 30-minute demo</a>
           </div>
         </div>
       </div>
@@ -77,35 +77,68 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
     <section class="alt-section alt-section--tint alt-tech-hero">
       <div class="wrap">
         <span class="marker hero-eyebrow">FOR YOUR IT PARTNER</span>
-        <h1>The technical details, in one place.</h1>
-        <p class="lede alt-tech-hero__sub">How Zuraio handles identity, knowledge, models and records, and where it runs. If something here is unclear, write to us. We reply in days, not weeks.</p>
-        <p class="alt-tech-hero__cta">
-          <a class="btn btn-primary btn-lg" href="../contact.html">Book a technical call</a>
+        <h1 class="alt-page-h1">The technical details, in one place.</h1>
+        <p class="lede alt-sub-max">How Zuraio handles identity, knowledge, models and records, and where it runs. If something here is unclear, write to us. We reply in days, not weeks.</p>
+        <p class="alt-page-hero-cta">
+          <a class="btn btn-primary btn-lg alt-page-hero-cta__btn" data-route="contact" href="contact.html">Book a technical call</a>
         </p>
       </div>
     </section>
 
     <section class="alt-section alt-section--paper" id="architecture">
       <div class="wrap">
-        <div class="alt-section-head">
-          <h2>One platform, seven layers.</h2>
-        </div>
-        <div class="alt-tech-layer-grid"><article class="alt-tech-layer-card">
-        <p class="alt-tech-layer-card__text"><strong>Access.</strong> People work in the Zuraio interface or in connected apps.</p>
-      </article><article class="alt-tech-layer-card">
-        <p class="alt-tech-layer-card__text"><strong>Identity and permissions.</strong> Microsoft or Google identities and groups, plus optional Zuraio roles. Checked before any knowledge or action is used.</p>
-      </article><article class="alt-tech-layer-card">
-        <p class="alt-tech-layer-card__text"><strong>Orchestration.</strong> Understands the task, picks the workflow, and coordinates knowledge, tools and models.</p>
-      </article><article class="alt-tech-layer-card">
-        <p class="alt-tech-layer-card__text"><strong>Skills and company knowledge.</strong> Versioned skills with templates and quality rules, managed outside the AI model.</p>
-      </article><article class="alt-tech-layer-card">
-        <p class="alt-tech-layer-card__text"><strong>Assistants and integrations.</strong> Specialised assistants, connected via MCP, APIs, webhooks and connectors.</p>
-      </article><article class="alt-tech-layer-card">
-        <p class="alt-tech-layer-card__text"><strong>Model gateway.</strong> Chooses an approved model per task, based on data class, location, quality and cost.</p>
-      </article><article class="alt-tech-layer-card">
-        <p class="alt-tech-layer-card__text"><strong>Records and operations.</strong> Requests, sources, actions and approvals are logged according to the agreed audit set-up.</p>
+        <div class="alt-section-head"><h2>One platform, seven layers.</h2></div>
+        
+    <div class="alt-tech-layer-table-wrap">
+      <table class="alt-tech-layer-table">
+        <caption class="visually-hidden">One platform, seven layers.</caption>
+        <tbody><tr>
+        <th scope="row">1. Access</th>
+        <td>People work in the Zuraio interface or in connected apps.</td>
+      </tr><tr>
+        <th scope="row">2. Identity and permissions</th>
+        <td>Microsoft or Google identities and groups, plus optional Zuraio roles. Checked before any knowledge or action is used.</td>
+      </tr><tr>
+        <th scope="row">3. Orchestration</th>
+        <td>Understands the task, picks the workflow, and coordinates knowledge, tools and models.</td>
+      </tr><tr>
+        <th scope="row">4. Skills and company knowledge</th>
+        <td>Versioned skills with templates and quality rules, managed outside the AI model.</td>
+      </tr><tr>
+        <th scope="row">5. Assistants and integrations</th>
+        <td>Specialised assistants, connected via MCP, APIs, webhooks and connectors.</td>
+      </tr><tr>
+        <th scope="row">6. Model gateway</th>
+        <td>Chooses an approved model per task, based on data class, location, quality and cost.</td>
+      </tr><tr>
+        <th scope="row">7. Records and operations</th>
+        <td>Requests, sources, actions and approvals are logged according to the agreed audit set-up.</td>
+      </tr></tbody>
+      </table>
+    </div>
+    <div class="alt-kv-stack"><article class="alt-kv-card">
+        <p class="alt-kv-card__label">1. Access</p>
+        <p class="alt-kv-card__value">People work in the Zuraio interface or in connected apps.</p>
+      </article><article class="alt-kv-card">
+        <p class="alt-kv-card__label">2. Identity and permissions</p>
+        <p class="alt-kv-card__value">Microsoft or Google identities and groups, plus optional Zuraio roles. Checked before any knowledge or action is used.</p>
+      </article><article class="alt-kv-card">
+        <p class="alt-kv-card__label">3. Orchestration</p>
+        <p class="alt-kv-card__value">Understands the task, picks the workflow, and coordinates knowledge, tools and models.</p>
+      </article><article class="alt-kv-card">
+        <p class="alt-kv-card__label">4. Skills and company knowledge</p>
+        <p class="alt-kv-card__value">Versioned skills with templates and quality rules, managed outside the AI model.</p>
+      </article><article class="alt-kv-card">
+        <p class="alt-kv-card__label">5. Assistants and integrations</p>
+        <p class="alt-kv-card__value">Specialised assistants, connected via MCP, APIs, webhooks and connectors.</p>
+      </article><article class="alt-kv-card">
+        <p class="alt-kv-card__label">6. Model gateway</p>
+        <p class="alt-kv-card__value">Chooses an approved model per task, based on data class, location, quality and cost.</p>
+      </article><article class="alt-kv-card">
+        <p class="alt-kv-card__label">7. Records and operations</p>
+        <p class="alt-kv-card__value">Requests, sources, actions and approvals are logged according to the agreed audit set-up.</p>
       </article></div>
-        <div class="alt-tech-diagram-box">
+    <div class="alt-tech-diagram-box">
     <svg class="alt-tech-arch-svg" viewBox="0 0 480 720" role="img" aria-labelledby="alt-tech-arch-title alt-tech-arch-desc">
       <title id="alt-tech-arch-title">Zuraio platform architecture, seven layers</title>
       <desc id="alt-tech-arch-desc">Illustrative vertical flow from access through identity, orchestration, skills, integrations, model gateway to records.</desc>
@@ -128,30 +161,99 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
 
     <section class="alt-section alt-section--tint" id="request-flow">
       <div class="wrap">
-        <div class="alt-section-head">
-          <h2>From request to result</h2>
-        </div>
+        <div class="alt-section-head"><h2>From request to result</h2></div>
         <ol class="alt-tech-flow"><li class="alt-tech-flow__step"><span class="alt-tech-flow__num">1</span><span class="alt-tech-flow__text">A person asks a question or starts a task.</span></li><li class="alt-tech-flow__step"><span class="alt-tech-flow__num">2</span><span class="alt-tech-flow__text">Zuraio checks who they are and what they may access.</span></li><li class="alt-tech-flow__step"><span class="alt-tech-flow__num">3</span><span class="alt-tech-flow__text">The right skill supplies the steps, templates and rules.</span></li><li class="alt-tech-flow__step"><span class="alt-tech-flow__num">4</span><span class="alt-tech-flow__text">Zuraio picks the assistants, sources and an approved model.</span></li><li class="alt-tech-flow__step"><span class="alt-tech-flow__num">5</span><span class="alt-tech-flow__text">It prepares an answer, a draft or a proposed action.</span></li><li class="alt-tech-flow__step"><span class="alt-tech-flow__num">6</span><span class="alt-tech-flow__text">Anything that changes data or goes out waits for a person's OK.</span></li><li class="alt-tech-flow__step"><span class="alt-tech-flow__num">7</span><span class="alt-tech-flow__text">Sources, versions and approvals are recorded.</span></li></ol>
       </div>
     </section>
 
-    <section class="alt-section alt-section--paper" id="deployment">
+    <section class="alt-section alt-section--paper" id="skill-lifecycle">
+      <div class="wrap">
+        <div class="alt-section-head"><h2>How skills are kept under control.</h2></div>
+        
+    <p class="lede alt-sub-max">New or changed skills go through review before anyone uses them. Older versions are kept, so you can always see what applied when.</p>
+    <ol class="alt-skill-lifecycle" aria-label="How skills are kept under control."><li class="alt-skill-lifecycle__pill"><span>Draft</span></li><li class="alt-skill-lifecycle__pill"><span>In review</span></li><li class="alt-skill-lifecycle__pill"><span>Approved</span></li><li class="alt-skill-lifecycle__pill alt-skill-lifecycle__pill--active"><span>Published</span></li><li class="alt-skill-lifecycle__pill"><span>Superseded</span></li><li class="alt-skill-lifecycle__pill"><span>Archived</span></li></ol>
+      </div>
+    </section>
+
+    <section class="alt-section alt-section--tint" id="hosting-compare">
+      <div class="wrap">
+        <div class="alt-section-head"><h2>Three ways to host, side by side.</h2></div>
+        
+    <div class="alt-tech-hosting-table-wrap">
+      <table class="alt-tech-hosting-table">
+        <thead><tr><th scope="col"></th><th scope="col">
+        <span class="alt-security-hosting-tag alt-security-hosting-tag--standard">Standard</span>
+        <span class="alt-tech-hosting-col-title">Swiss hosting</span>
+      </th><th scope="col">
+        <span class="alt-security-hosting-tag alt-security-hosting-tag--request">On request</span>
+        <span class="alt-tech-hosting-col-title">Hybrid</span>
+      </th><th scope="col">
+        <span class="alt-security-hosting-tag alt-security-hosting-tag--request">On request</span>
+        <span class="alt-tech-hosting-col-title">Own servers</span>
+      </th></tr></thead>
+        <tbody><tr><th scope="row">Where data lives</th><td>In Switzerland at Infomaniak</td><td>Split by system and data class</td><td>In your infrastructure</td></tr><tr><th scope="row">Effort for your IT</th><td>Low</td><td>Medium</td><td>Higher</td></tr><tr><th scope="row">AI models</th><td>Swiss default, others by choice</td><td>By task and policy</td><td>Local and approved models</td></tr><tr><th scope="row">Who runs it</th><td>Zuraio</td><td>Shared</td><td>Mainly you, with our support</td></tr></tbody>
+      </table>
+    </div>
+    <div class="alt-tech-hosting-cards"><article class="alt-home-skill-card alt-tech-hosting-card">
+        <span class="alt-security-hosting-tag alt-security-hosting-tag--standard">Standard</span>
+        <h3 class="alt-home-skill-card__title">Swiss hosting</h3>
+        <div class="alt-kv-card__row"><span class="alt-kv-card__label">Where data lives</span><span class="alt-kv-card__value">In Switzerland at Infomaniak</span></div><div class="alt-kv-card__row"><span class="alt-kv-card__label">Effort for your IT</span><span class="alt-kv-card__value">Low</span></div><div class="alt-kv-card__row"><span class="alt-kv-card__label">AI models</span><span class="alt-kv-card__value">Swiss default, others by choice</span></div><div class="alt-kv-card__row"><span class="alt-kv-card__label">Who runs it</span><span class="alt-kv-card__value">Zuraio</span></div>
+      </article><article class="alt-home-skill-card alt-tech-hosting-card">
+        <span class="alt-security-hosting-tag alt-security-hosting-tag--request">On request</span>
+        <h3 class="alt-home-skill-card__title">Hybrid</h3>
+        <div class="alt-kv-card__row"><span class="alt-kv-card__label">Where data lives</span><span class="alt-kv-card__value">Split by system and data class</span></div><div class="alt-kv-card__row"><span class="alt-kv-card__label">Effort for your IT</span><span class="alt-kv-card__value">Medium</span></div><div class="alt-kv-card__row"><span class="alt-kv-card__label">AI models</span><span class="alt-kv-card__value">By task and policy</span></div><div class="alt-kv-card__row"><span class="alt-kv-card__label">Who runs it</span><span class="alt-kv-card__value">Shared</span></div>
+      </article><article class="alt-home-skill-card alt-tech-hosting-card">
+        <span class="alt-security-hosting-tag alt-security-hosting-tag--request">On request</span>
+        <h3 class="alt-home-skill-card__title">Own servers</h3>
+        <div class="alt-kv-card__row"><span class="alt-kv-card__label">Where data lives</span><span class="alt-kv-card__value">In your infrastructure</span></div><div class="alt-kv-card__row"><span class="alt-kv-card__label">Effort for your IT</span><span class="alt-kv-card__value">Higher</span></div><div class="alt-kv-card__row"><span class="alt-kv-card__label">AI models</span><span class="alt-kv-card__value">Local and approved models</span></div><div class="alt-kv-card__row"><span class="alt-kv-card__label">Who runs it</span><span class="alt-kv-card__value">Mainly you, with our support</span></div>
+      </article></div>
+    <p class="alt-tech-hosting-more">
+      <a class="alt-home-link-secondary" data-route="security-hosting" href="security.html#hosting">More on hosting →</a>
+    </p>
+      </div>
+    </section>
+
+    <section class="alt-section alt-section--paper" id="whats-recorded">
       <div class="wrap">
         <div class="alt-section-head">
-          <h2>What we document for every set-up.</h2>
+          <h2>What's recorded.</h2>
+          <p class="lede alt-sub-max">Every answer leaves a trail your IT partner can check.</p>
         </div>
+        <div class="alt-recorded-grid"><article class="alt-recorded-row">
+        <div class="alt-recorded-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9.5a4.5 4.5 0 0 1 9 0c0 2.2-1.2 3.4-2.4 4.2-.9.6-1.6 1-1.6 2.3V17"></path><circle cx="12" cy="20" r="1"></circle></svg></div>
+        <p class="alt-recorded-row__text"><strong>The request:</strong> who asked what, and when.</p>
+      </article><article class="alt-recorded-row">
+        <div class="alt-recorded-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"></circle><circle cx="18" cy="6" r="2.5"></circle><circle cx="12" cy="18" r="2.5"></circle><path d="M8.2 7.4 10.8 16M15.8 7.4 13.2 16"></path></svg></div>
+        <p class="alt-recorded-row__text"><strong>The sources:</strong> which documents and systems were used.</p>
+      </article><article class="alt-recorded-row">
+        <div class="alt-recorded-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="m9 14 2 2 4-4"></path></svg></div>
+        <p class="alt-recorded-row__text"><strong>The skill:</strong> which skill and version applied.</p>
+      </article><article class="alt-recorded-row">
+        <div class="alt-recorded-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6.5V11c0 4.4 3.1 8.5 8 9.5 4.9-1 8-5.1 8-9.5V6.5L12 3z"></path><path d="m9 12 2 2 4-4"></path></svg></div>
+        <p class="alt-recorded-row__text"><strong>The result:</strong> what Zuraio produced.</p>
+      </article><article class="alt-recorded-row">
+        <div class="alt-recorded-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9.5a4.5 4.5 0 0 1 9 0c0 2.2-1.2 3.4-2.4 4.2-.9.6-1.6 1-1.6 2.3V17"></path><circle cx="12" cy="20" r="1"></circle></svg></div>
+        <p class="alt-recorded-row__text"><strong>The approval:</strong> who checked and released it.</p>
+      </article></div>
+      </div>
+    </section>
+
+    <section class="alt-section alt-section--tint" id="deployment">
+      <div class="wrap">
+        <div class="alt-section-head"><h2>What we document for every set-up.</h2></div>
         <ul class="alt-tech-checklist"><li>Operator and responsibilities</li><li>Processing and storage locations</li><li>AI model providers</li><li>Identity provider</li><li>Data separation</li><li>Backup and recovery</li><li>Monitoring and support</li><li>Updates and patches</li><li>Retention and deletion</li><li>Approved external services</li></ul>
       </div>
     </section>
 
-    <section class="alt-section alt-section--tint alt-tech-cta">
-      <div class="wrap alt-tech-cta__inner">
-        <div>
+    
+    <section class="alt-section alt-section--paper alt-page-cta">
+      <div class="wrap alt-page-cta__inner">
+        <div class="alt-page-cta__copy">
           <h2>Let's go through it together.</h2>
           <p class="lede">A technical call with one of our founders, with your IT partner if you like.</p>
         </div>
-        <div class="alt-tech-cta__actions">
-          <a class="btn btn-primary btn-lg" href="../contact.html">Book a technical call</a>
+        <div class="alt-page-cta__actions">
+          <a class="btn btn-primary btn-lg alt-page-cta__btn" data-route="contact" href="contact.html">Book a technical call</a>
         </div>
       </div>
     </section></main>
@@ -162,31 +264,31 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
           
       <div class="foot-col">
         <h3 class="foot-col-title">Product</h3>
-        <ul class="foot-col-links"><li><a href="../how-it-helps.html">How it helps</a></li><li><a href="../how-it-helps.html#skills">Skills</a></li><li><a href="../integrations.html">Integrations</a></li><li><a href="../contact.html">Book a demo</a></li></ul>
+        <ul class="foot-col-links"><li><a href="how-it-helps.html" data-route="how-it-helps">How it helps</a></li><li><a href="how-it-helps.html#skills" data-route="skills">Skills</a></li><li><a href="integrations.html" data-route="integrations">Integrations</a></li><li><a href="contact.html" data-route="contact">Book a demo</a></li></ul>
       </div>
       <div class="foot-col">
         <h3 class="foot-col-title">Data &amp; security</h3>
-        <ul class="foot-col-links"><li><a href="../security.html">Security</a></li><li><a href="../technical-architecture.html">For your IT partner</a></li></ul>
+        <ul class="foot-col-links"><li><a href="security.html" data-route="security">Security</a></li><li><a href="technical-architecture.html" data-route="it-partner">For your IT partner</a></li></ul>
       </div>
       <div class="foot-col">
         <h3 class="foot-col-title">Company</h3>
-        <ul class="foot-col-links"><li><a href="../about.html">About</a></li><li><a href="../faq.html">FAQ</a></li><li><a href="../contact.html">Contact</a></li></ul>
+        <ul class="foot-col-links"><li><a href="en/homepage-preview.html#team" data-route="about">About</a></li><li><a href="en/homepage-preview.html#faq" data-route="faq">FAQ</a></li><li><a href="contact.html" data-route="contact">Contact</a></li></ul>
       </div>
       <div class="foot-col">
         <h3 class="foot-col-title">Legal</h3>
-        <ul class="foot-col-links"><li><a href="../impressum.html">Impressum</a></li><li><a href="../privacy.html">Privacy</a></li><li><a href="../cookies.html">Cookie settings</a></li><li><a href="../terms.html">Terms of use</a></li></ul>
+        <ul class="foot-col-links"><li><a href="impressum.html" data-route="impressum">Impressum</a></li><li><a href="privacy.html" data-route="privacy">Privacy</a></li><li><a href="cookies.html" data-route="cookies">Cookie settings</a></li><li><a href="terms.html" data-route="terms">Terms of use</a></li></ul>
       </div>
           <div class="foot-col">
             <h3 class="foot-col-title">Language / Contact</h3>
             <ul class="foot-col-links">
-              <li><a href="/security.html" hreflang="en">EN (active)</a></li><li><a href="/de/security.html" hreflang="de">DE</a></li>
-              <li><a href="../contact.html">Contact</a></li>
+              <li><a href="technical-architecture.html" hreflang="en">EN (active)</a></li><li><a href="technical-architecture.html" hreflang="de">DE</a></li>
+              <li><a href="contact.html" data-route="contact">Contact</a></li>
               <li><a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a></li><li><a href="mailto:marcelo.zanette@zuraio.ch">marcelo.zanette@zuraio.ch</a></li><li><a href="mailto:samuel.polley@zuraio.ch">samuel.polley@zuraio.ch</a></li><li><a href="mailto:roland.steiner@zuraio.ch">roland.steiner@zuraio.ch</a></li>
             </ul>
           </div>
         </div>
         <div class="foot-bottom">
-          <a class="brand foot-brand" href="../index.html" aria-label="Zuraio home">
+          <a class="brand foot-brand" href="en/homepage-preview.html" data-route="home" aria-label="Zuraio home">
             <img class="brand-logo" src="/assets/zuraio-logo-nav@2x.webp" alt="" width="184" height="56" decoding="async" loading="lazy">
           </a>
           <p class="foot-tagline">AI for Swiss companies that need control of their data.</p>
@@ -194,7 +296,7 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
         </div>
       </div>
     </footer></div>
-<script type="module" src="../js/technical-architecture-page.js?v=20261002d"></script>
+<script type="module" src="../js/technical-architecture-page.js?v=20261002f"></script>
 
 
 </body></html>
