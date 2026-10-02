@@ -1,6 +1,6 @@
-/** Technical architecture page copy (EN + DE). Source: docs/zuraio-site-rewrite.md §4 */
+/** For your IT partner page (EN + DE). Source: docs/zuraio-site-rewrite.md §4 + Run 6 extensions */
 
-export const copyTechnicalArchitecture = {
+export const copyTechnical = {
   en: {
     metaTitle: 'For your IT partner | Zuraio',
     metaDescription:
@@ -21,10 +21,7 @@ export const copyTechnicalArchitecture = {
     architecture: {
       heading: 'One platform, seven layers.',
       layers: [
-        {
-          title: 'Access',
-          body: 'People work in the Zuraio interface or in connected apps.',
-        },
+        { title: 'Access', body: 'People work in the Zuraio interface or in connected apps.' },
         {
           title: 'Identity and permissions',
           body: 'Microsoft or Google identities and groups, plus optional Zuraio roles. Checked before any knowledge or action is used.',
@@ -77,6 +74,39 @@ export const copyTechnicalArchitecture = {
         'Sources, versions and approvals are recorded.',
       ],
     },
+    lifecycle: {
+      heading: 'How skills are kept under control.',
+      body: 'New or changed skills go through review before anyone uses them. Older versions are kept, so you can always see what applied when.',
+      stages: ['Draft', 'In review', 'Approved', 'Published', 'Superseded', 'Archived'],
+      highlightIndex: 3,
+    },
+    hosting: {
+      heading: 'Three ways to host, side by side.',
+      columns: [
+        { title: 'Swiss hosting', tag: 'Standard', tagKind: 'standard' },
+        { title: 'Hybrid', tag: 'On request', tagKind: 'request' },
+        { title: 'Own servers', tag: 'On request', tagKind: 'request' },
+      ],
+      rowLabels: ['Where data lives', 'Effort for your IT', 'AI models', 'Who runs it'],
+      rows: [
+        ['In Switzerland at Infomaniak', 'Split by system and data class', 'In your infrastructure'],
+        ['Low', 'Medium', 'Higher'],
+        ['Swiss default, others by choice', 'By task and policy', 'Local and approved models'],
+        ['Zuraio', 'Shared', 'Mainly you, with our support'],
+      ],
+      moreLink: 'More on hosting',
+    },
+    recorded: {
+      heading: 'What\'s recorded.',
+      intro: 'Every answer leaves a trail your IT partner can check.',
+      items: [
+        { label: 'The request', text: 'who asked what, and when.' },
+        { label: 'The sources', text: 'which documents and systems were used.' },
+        { label: 'The skill', text: 'which skill and version applied.' },
+        { label: 'The result', text: 'what Zuraio produced.' },
+        { label: 'The approval', text: 'who checked and released it.' },
+      ],
+    },
     deployment: {
       heading: 'What we document for every set-up.',
       items: [
@@ -96,6 +126,7 @@ export const copyTechnicalArchitecture = {
       heading: 'Let\'s go through it together.',
       body: 'A technical call with one of our founders, with your IT partner if you like.',
       button: 'Book a technical call',
+      buttonRoute: 'contact',
     },
     footerTrademark:
       'Microsoft, Microsoft 365, Outlook, SharePoint, Teams, Exchange and Dynamics 365 are trademarks of the Microsoft group of companies. bexio, Abacus, Klara, Proffix, SAP, Salesforce, HubSpot, Odoo and Sage are trademarks of their respective owners.',
@@ -120,10 +151,7 @@ export const copyTechnicalArchitecture = {
     architecture: {
       heading: 'Eine Plattform, sieben Ebenen.',
       layers: [
-        {
-          title: 'Zugang',
-          body: 'Mitarbeitende arbeiten in der Zuraio-Oberfläche oder in angebundenen Anwendungen.',
-        },
+        { title: 'Zugang', body: 'Mitarbeitende arbeiten in der Zuraio-Oberfläche oder in angebundenen Anwendungen.' },
         {
           title: 'Identität und Berechtigungen',
           body: 'Identitäten und Gruppen von Microsoft oder Google, ergänzt durch optionale Zuraio-Rollen. Geprüft, bevor Wissen oder Aktionen genutzt werden.',
@@ -176,6 +204,39 @@ export const copyTechnicalArchitecture = {
         'Quellen, Versionen und Freigaben werden festgehalten.',
       ],
     },
+    lifecycle: {
+      heading: 'Wie Skills unter Kontrolle bleiben.',
+      body: 'Neue oder geänderte Skills werden geprüft, bevor jemand sie nutzt. Ältere Versionen bleiben erhalten, damit jederzeit nachvollziehbar ist, was wann galt.',
+      stages: ['Entwurf', 'In Prüfung', 'Freigegeben', 'Veröffentlicht', 'Abgelöst', 'Archiviert'],
+      highlightIndex: 3,
+    },
+    hosting: {
+      heading: 'Drei Hosting-Varianten im Vergleich.',
+      columns: [
+        { title: 'Schweizer Hosting', tag: 'Standard', tagKind: 'standard' },
+        { title: 'Hybrid', tag: 'Auf Anfrage', tagKind: 'request' },
+        { title: 'Eigene Server', tag: 'Auf Anfrage', tagKind: 'request' },
+      ],
+      rowLabels: ['Wo die Daten liegen', 'Aufwand für Ihre IT', 'KI-Modelle', 'Wer betreibt es'],
+      rows: [
+        ['In der Schweiz bei Infomaniak', 'Aufgeteilt nach System und Datenklasse', 'In Ihrer Infrastruktur'],
+        ['Gering', 'Mittel', 'Höher'],
+        ['Schweizer Standard, andere nach Wahl', 'Nach Aufgabe und Richtlinie', 'Lokale und freigegebene Modelle'],
+        ['Zuraio', 'Gemeinsam', 'Hauptsächlich Sie, mit unserer Unterstützung'],
+      ],
+      moreLink: 'Mehr zum Hosting',
+    },
+    recorded: {
+      heading: 'Was festgehalten wird.',
+      intro: 'Jede Antwort hinterlässt eine Spur, die Ihr IT-Partner prüfen kann.',
+      items: [
+        { label: 'Die Anfrage', text: 'wer was wann gefragt hat.' },
+        { label: 'Die Quellen', text: 'welche Dokumente und Systeme genutzt wurden.' },
+        { label: 'Der Skill', text: 'welcher Skill in welcher Version galt.' },
+        { label: 'Das Ergebnis', text: 'was Zuraio erstellt hat.' },
+        { label: 'Die Freigabe', text: 'wer es geprüft und freigegeben hat.' },
+      ],
+    },
     deployment: {
       heading: 'Was wir bei jeder Lösung dokumentieren.',
       items: [
@@ -195,13 +256,13 @@ export const copyTechnicalArchitecture = {
       heading: 'Gehen wir es gemeinsam durch.',
       body: 'Ein technisches Gespräch mit einem unserer Gründer, gerne mit Ihrem IT-Partner.',
       button: 'Technisches Gespräch vereinbaren',
+      buttonRoute: 'contact',
     },
     footerTrademark:
       'Microsoft, Microsoft 365, Outlook, SharePoint, Teams, Exchange und Dynamics 365 sind Marken der Microsoft-Unternehmensgruppe. bexio, Abacus, Klara, Proffix, SAP, Salesforce, HubSpot, Odoo und Sage sind Marken ihrer jeweiligen Inhaber.',
   },
 };
 
-export function getTechnicalArchitectureCopy(locale) {
-  const key = locale === 'de' ? 'de' : 'en';
-  return copyTechnicalArchitecture[key];
+export function getTechnicalCopy(locale) {
+  return copyTechnical[locale === 'de' ? 'de' : 'en'];
 }

@@ -26,4 +26,9 @@ Extend `scripts/check-alt-home-copy-dashes.mjs` to each new `copy-*.js` module a
 ## Go-live checklist
 
 - Connect the new contact form to the live site's existing form handling and send a test before switching.
+- Remap preview routes in `public/zuraio-comparison/js/site-routes.js` (home to `/` and `/de/`, etc.), run `node scripts/apply-routes.mjs`, then verify links with `node scripts/check-route-hrefs.mjs` and `node scripts/check-internal-links.mjs`.
 - Deploy Worker + PA secrets per `docs/CONTACT-FORM-GO-LIVE.md` when switching contact API on production (`Mcwili/zuraio`).
+
+## Preview routes (single source of truth)
+
+- **`public/zuraio-comparison/js/site-routes.js`** (mirrored by `scripts/site-routes.mjs`): EN/DE paths for home (`en/homepage-preview.html`, `de/homepage-preview.html`), site pages at root and under `de/`. About and FAQ temporarily point at homepage `#team` / `#faq` (TODO Run 7).

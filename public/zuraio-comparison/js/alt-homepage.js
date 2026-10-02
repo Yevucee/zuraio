@@ -3,6 +3,7 @@ import { renderAltHomeHeader, renderAltHomeFooter } from './alt-homepage-chrome.
 import { trackAltHome } from './alt-homepage-analytics.js';
 import { initFaq } from './faq-accordion.js';
 import { assetHref, detectSiteBase } from './path-locale.js';
+import { resolveRouteFromLocation } from './site-routes.js';
 import { isPreviewDevMode, formatPreviewHtml } from './alt-preview-utils.js';
 import { initControlParticles } from './control-particles.js';
 import { initAltPreviewMarquee } from './alt-integrations-marquee.js';
@@ -11,6 +12,14 @@ import { ALT_HOME_BUILT_WITH_ICON, ALT_HOME_SKILL_ICONS } from './alt-home-skill
 import { ROUTES_OUTCOME_CHECK } from './workflow-icons.js';
 
 const DEMO_CACHE = '20260805v2';
+
+function previewLocale() {
+  return document.documentElement.lang === 'de' ? 'de' : 'en';
+}
+
+function routeHref(routeKey) {
+  return resolveRouteFromLocation(routeKey, previewLocale(), location.pathname);
+}
 const FOUNDER_PREVIEW = 'zuraio/assets/team-preview';
 const PRODUCT_IMG_WIDTH = 2080;
 const PRODUCT_IMG_HEIGHT = 1560;
@@ -451,7 +460,7 @@ function renderMain(copy, locale, isDev) {
             <h1 data-alt-hero-title>${heroTitle}</h1>
             <p class="alt-home-hero__sub">${copy.hero.sub}</p>
             <div class="alt-home-hero__actions">
-              <a class="btn btn-primary btn-lg alt-home-cta" data-alt-cta="hero" href="../contact.html">${copy.hero.cta}</a>
+              <a class="btn btn-primary btn-lg alt-home-cta" data-alt-cta="hero" data-route="contact" href="${routeHref('contact')}">${copy.hero.cta}</a>
               <p class="alt-home-hero__micro">${copy.hero.ctaMicro}</p>
             </div>
             <div class="alt-home-hero__trust">${renderTrustLine(copy.hero.trust)}</div>
@@ -511,7 +520,7 @@ function renderMain(copy, locale, isDev) {
             </p>
             <div class="alt-home-skills-built__chips">${skillChips}</div>
           </div>
-          <a class="alt-home-link-secondary alt-home-skills-built__link" href="${copy.skills.linkHref}">${copy.skills.link}</a>
+          <a class="alt-home-link-secondary alt-home-skills-built__link" data-route="skills" href="${routeHref('skills')}">${copy.skills.link}</a>
         </div>
       </div>
     </section>
@@ -527,7 +536,7 @@ function renderMain(copy, locale, isDev) {
         <div class="marquee-inner"></div>
       </div>
       <div class="wrap alt-home-integrations__foot">
-        <p class="alt-home-integrations__link-wrap"><a class="alt-home-link-secondary" href="../integrations.html">${copy.integrations.link}</a></p>
+        <p class="alt-home-integrations__link-wrap"><a class="alt-home-link-secondary" data-route="integrations" href="${routeHref('integrations')}">${copy.integrations.link}</a></p>
       </div>
     </section>
 
@@ -555,7 +564,7 @@ function renderMain(copy, locale, isDev) {
           <div class="alt-home-control-footer">
             <p class="ctrl-note"><span style="color:var(--soft-olive);">▣</span><span>${copy.control.note}</span></p>
             <p class="section-link">
-              <a class="alt-home-it-link" data-alt-cta="it_factsheet" href="${copy.control.itHref}">${copy.control.itLink}</a>
+              <a class="alt-home-it-link" data-alt-cta="it_factsheet" data-route="it-partner" href="${routeHref('it-partner')}">${copy.control.itLink}</a>
             </p>
           </div>
         </div>
@@ -590,9 +599,9 @@ function renderMain(copy, locale, isDev) {
         </div>
         <div class="faq-list alt-home-faq">${faqHtml}</div>
         <p class="alt-home-faq-links">
-          <a class="alt-home-link-secondary" href="../faq.html">${copy.faq.linkAll}</a>
+          <a class="alt-home-link-secondary" data-route="faq" href="${routeHref('faq')}">${copy.faq.linkAll}</a>
           <span class="alt-home-faq-links__sep" aria-hidden="true">·</span>
-          <a class="alt-home-link-secondary" href="${copy.faq.linkItHref}">${copy.faq.linkIt}</a>
+          <a class="alt-home-link-secondary" data-route="faq" href="${routeHref('faq')}">${copy.faq.linkIt}</a>
         </p>
       </div>
     </section>
@@ -600,7 +609,7 @@ function renderMain(copy, locale, isDev) {
     <section class="alt-section alt-home-final" id="final">
       <div class="wrap alt-home-final__inner">
         <h2>${copy.closing.heading}</h2>
-        <a class="btn btn-primary btn-lg alt-home-cta" data-alt-cta="closing" href="../contact.html">${copy.closing.cta}</a>
+        <a class="btn btn-primary btn-lg alt-home-cta" data-alt-cta="closing" data-route="contact" href="${routeHref('contact')}">${copy.closing.cta}</a>
         <p class="alt-home-final__tag">${copy.closing.tagline}</p>
       </div>
     </section>
