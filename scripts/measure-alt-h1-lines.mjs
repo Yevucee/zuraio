@@ -79,10 +79,9 @@ async function run() {
       const at390 = await measurePage(page, `${base}${p}`, 390);
       rows.push({ label, at1280, at390 });
     }
-    await page.close();
-
     const sqEn390 = await measureSameQuestionHeight(page, `${base}/en/homepage-preview.html`);
     const sqDe390 = await measureSameQuestionHeight(page, `${base}/de/homepage-preview.html`);
+    await page.close();
 
     const page390 = await browser.newPage();
     await page390.setViewportSize({ width: 390, height: 12000 });

@@ -1252,7 +1252,7 @@ body[data-alt-chrome] .alt-sq-sources {
 
 body[data-alt-chrome] .alt-sq-sources__label {
   display: block;
-  font-size: var(--alt-small);
+  font-size: 15px;
   font-weight: 600;
   color: var(--secondary);
   margin-bottom: 0.35rem;
@@ -1817,18 +1817,35 @@ body[data-alt-chrome] .alt-todo-list__title {
   }
 
   body[data-alt-chrome] #same-question.alt-section {
-    padding-block: 24px;
+    padding-block: 14px;
+  }
+
+  body[data-alt-chrome] #same-question .alt-section-head {
+    margin-bottom: 8px;
   }
 
   body[data-alt-chrome] .alt-sq-question-pill {
-    margin-top: 0.65rem;
+    margin-top: 8px;
     padding: 12px;
+    gap: 0.5rem;
     border-radius: 12px;
   }
 
+  body[data-alt-chrome] .alt-sq-question-pill__label {
+    margin-bottom: 4px;
+  }
+
   body[data-alt-chrome] .alt-sq-bubbles {
-    margin-top: 0.65rem;
-    gap: 10px;
+    margin-top: 8px;
+    gap: 8px;
+  }
+
+  body[data-alt-chrome] .alt-sq-intro {
+    line-height: 1.4;
+  }
+
+  body[data-alt-chrome] .alt-sq-head h2 {
+    line-height: 1.12;
   }
 
   body[data-alt-chrome] .alt-sq-bubble {
@@ -1837,17 +1854,37 @@ body[data-alt-chrome] .alt-todo-list__title {
   }
 
   body[data-alt-chrome] .alt-sq-bubble__body {
-    line-height: 1.4;
+    line-height: 1.35;
+  }
+
+  body[data-alt-chrome] .alt-sq-sources {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 8px;
+    padding-top: 0;
+  }
+
+  body[data-alt-chrome] .alt-sq-sources__label {
+    margin-bottom: 0;
+  }
+
+  body[data-alt-chrome] .alt-sq-bubble__label {
+    gap: 0.35rem;
+  }
+
+  body[data-alt-chrome] .alt-sq-bubble__mark {
+    height: 16px;
   }
 
   body[data-alt-chrome] .alt-sq-closing {
     font-size: 18px;
-    margin-top: 0.65rem;
-    line-height: 1.3;
+    margin-top: 10px;
+    line-height: 1.25;
   }
 
   body[data-alt-chrome] .alt-sq-link-wrap {
-    margin-top: 0.5rem;
+    margin-top: 8px;
   }
 
   body[data-alt-chrome] #data-control.alt-section {
@@ -2119,9 +2156,22 @@ body[data-alt-chrome] .alt-security-hero h1 {
   body[data-alt-chrome]:not([data-page="altHome"]) .alt-security-hero h1,
   body[data-alt-chrome]:not([data-page="altHome"]) .alt-help-hero h1,
   body[data-alt-chrome]:not([data-page="altHome"]) #how-it-helps-main .alt-section--tint h1 {
+    max-width: none;
     font-size: 34px;
     line-height: 1.12;
     text-wrap: balance;
+    letter-spacing: -0.025em;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+
+  body[data-alt-chrome]:not([data-page="altHome"]) .alt-security-hero h1 .alt-security-hero__line {
+    display: inline;
+    max-width: none;
+  }
+
+  body[data-alt-chrome]:not([data-page="altHome"]) .alt-security-hero h1 .alt-security-hero__line + .alt-security-hero__line::before {
+    content: " ";
   }
 }
 
