@@ -6,12 +6,13 @@
 <link rel="icon" href="../assets/favicon-16x16.png" sizes="16x16" type="image/png">
 <link rel="shortcut icon" href="../assets/favicon.ico">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-<meta name="description" content="Réponses aux questions fréquentes concernant les connaissances de l’entreprise, le déploiement, les autorisations, les modèles et l’utilisation quotidienne.">
 <title>FAQ — Zuraio</title>
+<meta name="description" content="Réponses aux questions fréquentes concernant les connaissances de l’entreprise, le déploiement, les autorisations, les modèles et l’utilisation quotidienne.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/site.css">
+<link rel="stylesheet" href="../css/site.css?v=20260909-origin">
+<link rel="stylesheet" href="../css/homepage-preview.css?v=20261003c">
 
   <link rel="canonical" href="https://zuraio.ch/fr/faq.html">
   <link rel="alternate" hreflang="en" href="https://zuraio.ch/faq.html">
@@ -44,222 +45,217 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
 })();
 </script>
 </head>
-<body data-page="faq" class="public-mode">
-<div id="site-header" data-dropdown-dismiss-bound="true" data-scroll-bound="true">
-    <header class="nav" id="nav">
+<body data-page="faq" data-alt-chrome="">
+<div id="site-header">
+    <header class="nav alt-home-nav" id="nav">
       <div class="wrap nav-in">
-        <a class="brand" href="/fr/" aria-label="Accueil Zuraio">
-          <img class="brand-logo" src="/assets/zuraio-logo.png" alt="Zuraio – vos données sous votre contrôle" width="4796" height="1465" decoding="async">
+        <a class="brand" href="en/homepage-preview.html" data-route="home" aria-label="Zuraio home">
+          <img class="brand-logo" src="/assets/zuraio-logo-nav@2x.webp" alt="Zuraio – own your data" width="184" height="56" decoding="async" fetchpriority="high">
         </a>
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Ouvrir le menu">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
         <div class="nav-menu" id="nav-menu">
-          <nav class="nav-links" aria-label="Navigation principale">
-            <a href="/fr/how-it-helps.html">Comment Zuraio vous aide</a><a href="/fr/knowledge.html">Connaissances</a><a href="/fr/integrations.html">Intégrations</a><a href="/fr/data-control.html">Contrôle des données</a>
-            <div class="nav-dropdown">
-              <button type="button" class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">Technique</button>
-              <div class="nav-dropdown-menu" role="menu"><a href="/fr/technical-architecture.html" role="menuitem">Architecture technique</a><a href="/fr/deployment-models.html" role="menuitem">Modes de déploiement</a><a href="/fr/ai-governance.html" role="menuitem">Gouvernance de l’IA</a><a href="/fr/data-control.html" role="menuitem">Contrôle des données</a><a href="/fr/knowledge.html#skillos" role="menuitem">Connaissances et SkillOS</a></div>
-            </div>
-            <a href="/fr/about.html">À propos</a>
+          <nav class="nav-links" aria-label="Primary">
+            <a href="how-it-helps.html" data-route="how-it-helps">How it helps</a><a href="how-it-helps.html#skills" data-route="skills">Skills</a><a href="security.html" data-route="security">Security</a><a href="about.html" data-route="about">About</a>
           </nav>
-          <div class="nav-actions">
-            
-    <div class="lang-dropdown">
-      <button type="button" class="lang-dropdown-btn" aria-expanded="false" aria-haspopup="listbox" aria-label="Langue">
-        <span class="lang-dropdown-current">FR</span>
-      </button>
-      <div class="lang-dropdown-menu" role="listbox" aria-label="Langue">
-        <button type="button" class="lang-dropdown-option" role="option" data-lang="en" aria-selected="false">EN</button><button type="button" class="lang-dropdown-option" role="option" data-lang="de" aria-selected="false">DE</button>
-      </div>
-    </div>
-            <a class="btn btn-primary" href="/fr/contact.html">Réserver une démonstration</a>
+          <div class="nav-actions alt-home-nav__actions">
+            <div class="lang-dropdown alt-home-lang">
+              <button type="button" class="lang-dropdown-btn" aria-expanded="false" aria-haspopup="listbox" aria-label="Language">
+                <span class="lang-dropdown-current">EN</span>
+              </button>
+              <div class="lang-dropdown-menu" role="listbox">
+                <a class="lang-dropdown-option is-active" href="faq.html" hreflang="en">EN</a><a class="lang-dropdown-option" href="faq.html" hreflang="de">DE</a>
+              </div>
+            </div>
+            <a class="btn btn-primary alt-home-cta" data-alt-cta="nav" data-route="contact" href="contact.html">Book a 30-minute demo</a>
           </div>
         </div>
       </div>
     </header></div>
-<main>
+<main id="faq-main" aria-live="polite">
+    <section class="alt-section alt-section--tint alt-faq-hero">
+      <div class="wrap">
+        <h1 class="alt-page-h1">Questions we're often asked.</h1>
+        <p class="lede alt-faq-hero__sub">Short, honest answers. If yours isn't here, write to us.</p>
+      </div>
+    </section>
 
-<section class="page-hero pad">
-  <div class="wrap">
-    <span class="marker">FAQ</span>
-    <h1>Questions pratiques sur l’utilisation de Zuraio en entreprise.</h1>
-    <p class="lede">Réponses aux questions fréquentes concernant les connaissances de l’entreprise, le déploiement, les autorisations, les modèles et l’utilisation quotidienne.</p>
-  </div>
-</section>
+    <section class="alt-section alt-section--paper alt-faq-main">
+      <div class="wrap">
+        
+        <section class="alt-faq-group" aria-labelledby="alt-faq-group-about-zuraio">
+          <h2 id="alt-faq-group-about-zuraio" class="alt-faq-group__heading">About Zuraio</h2>
+          <div class="faq-list alt-faq-page-list">
+      <div class="faq-item" id="chatgpt-copilot">
+        <button class="faq-q" type="button" aria-expanded="false" id="faq-page-q-0" data-faq-bound="1">Why not just use ChatGPT or Copilot?</button>
+        <div class="faq-a" hidden="" role="region" aria-labelledby="faq-page-q-0">
+          <p>You don't have to choose. ChatGPT only knows your company if someone shares the context each time. Copilot knows your Microsoft 365 world well, and reaching other systems usually needs connectors your IT builds. Zuraio comes connected to the systems Swiss SMEs use, like bexio, Abacus and Proffix, with skills we build with your team. It is model neutral: Swiss models by default, and GPT or Claude for tasks your company approves.</p>
+        </div>
+      </div>
+      <div class="faq-item" id="what-is-zuraio">
+        <button class="faq-q" type="button" aria-expanded="false" id="faq-page-q-1" data-faq-bound="1">What is Zuraio?</button>
+        <div class="faq-a" hidden="" role="region" aria-labelledby="faq-page-q-1">
+          <p>An AI assistant for Swiss SMEs. It answers emails, prepares meetings and finds information in your company knowledge, with sources, hosted in Switzerland. It works with skills: tasks it knows how to do your way.</p>
+        </div>
+      </div>
+      <div class="faq-item" id="who-is-zuraio-for">
+        <button class="faq-q" type="button" aria-expanded="false" id="faq-page-q-2" data-faq-bound="1">Who is Zuraio for?</button>
+        <div class="faq-a" hidden="" role="region" aria-labelledby="faq-page-q-2">
+          <p>Swiss companies with roughly 5 to 250 employees whose knowledge is spread across email, documents and business software. Many of our first conversations are with architecture and engineering offices, fiduciaries and property managers.</p>
+        </div>
+      </div>
+      <div class="faq-item" id="which-software-does-zuraio-work-with">
+        <button class="faq-q" type="button" aria-expanded="false" id="faq-page-q-3" data-faq-bound="1">Which software does Zuraio work with?</button>
+        <div class="faq-a" hidden="" role="region" aria-labelledby="faq-page-q-3">
+          <p>Swiss business software such as bexio, Klara, Proffix and Abacus, Microsoft 365 and Google Workspace, CRM systems, and technical software such as AutoCAD, Revit, ArchiCAD and Rhino. The full list is on our Integrations page.</p>
+        </div>
+      </div>
+      <div class="faq-item" id="how-do-we-get-started">
+        <button class="faq-q" type="button" aria-expanded="false" id="faq-page-q-4" data-faq-bound="1">How do we get started?</button>
+        <div class="faq-a" hidden="" role="region" aria-labelledby="faq-page-q-4">
+          <p>With a 30-minute talk where we pick one task worth improving. Then a set-up workshop where we build your first skill with your team, a check-in after two weeks, and you decide whether to continue.</p>
+        </div>
+      </div>
+      <div class="faq-item" id="what-is-a-starter-partner">
+        <button class="faq-q" type="button" aria-expanded="false" id="faq-page-q-5" data-faq-bound="1">What is a starter partner?</button>
+        <div class="faq-a" hidden="" role="region" aria-labelledby="faq-page-q-5">
+          <p>One of our first customers. Starter partners work directly with the founders, get early access and help decide what we build next. Commercial terms are agreed individually.</p>
+        </div>
+      </div></div>
+          
+        </section>
+        <section class="alt-faq-group" aria-labelledby="alt-faq-group-data-and-control">
+          <h2 id="alt-faq-group-data-and-control" class="alt-faq-group__heading">Data and control</h2>
+          <div class="faq-list alt-faq-page-list">
+      <div class="faq-item" id="is-our-data-kept-in-switzerland">
+        <button class="faq-q" type="button" aria-expanded="false" id="faq-page-q-6" data-faq-bound="1">Is our data kept in Switzerland?</button>
+        <div class="faq-a" hidden="" role="region" aria-labelledby="faq-page-q-6">
+          <p>Yes, by default. Zuraio and your company data are hosted by Infomaniak in Switzerland, and the default AI model runs in Switzerland too. For individual tasks you can choose another model; each one is labelled with where it runs, and only that task's content is sent.</p>
+        </div>
+      </div>
+      <div class="faq-item" id="is-our-data-used-to-train-ai-models">
+        <button class="faq-q" type="button" aria-expanded="false" id="faq-page-q-7" data-faq-bound="1">Is our data used to train AI models?</button>
+        <div class="faq-a" hidden="" role="region" aria-labelledby="faq-page-q-7">
+          <p>No. Your data is never used to train AI models.</p>
+        </div>
+      </div>
+      <div class="faq-item" id="can-employees-see-information-they-shouldnt">
+        <button class="faq-q" type="button" aria-expanded="false" id="faq-page-q-8" data-faq-bound="1">Can employees see information they shouldn't?</button>
+        <div class="faq-a" hidden="" role="region" aria-labelledby="faq-page-q-8">
+          <p>No. Zuraio uses your existing permissions from Microsoft or Google. People only see what they're already allowed to see.</p>
+        </div>
+      </div>
+      <div class="faq-item" id="does-zuraio-send-anything-automatically">
+        <button class="faq-q" type="button" aria-expanded="false" id="faq-page-q-9" data-faq-bound="1">Does Zuraio send anything automatically?</button>
+        <div class="faq-a" hidden="" role="region" aria-labelledby="faq-page-q-9">
+          <p>No. Replies and changes are prepared as drafts. A person checks them and decides.</p>
+        </div>
+      </div>
+      <div class="faq-item" id="what-happens-if-an-ai-provider-changes-its-prices-or-terms">
+        <button class="faq-q" type="button" aria-expanded="false" id="faq-page-q-10" data-faq-bound="1">What happens if an AI provider changes its prices or terms?</button>
+        <div class="faq-a" hidden="" role="region" aria-labelledby="faq-page-q-10">
+          <p>You switch to another model. Your data and your skills stay with you, because they're kept separate from the model.</p>
+        </div>
+      </div>
+      <div class="faq-item" id="can-we-see-which-sources-were-used">
+        <button class="faq-q" type="button" aria-expanded="false" id="faq-page-q-11" data-faq-bound="1">Can we see which sources were used?</button>
+        <div class="faq-a" hidden="" role="region" aria-labelledby="faq-page-q-11">
+          <p>Yes. Answers based on your company knowledge show the documents or systems they came from.</p>
+        </div>
+      </div></div>
+          
+        </section>
+        <section class="alt-faq-group" aria-labelledby="alt-faq-group-for-your-it-team">
+          <h2 id="alt-faq-group-for-your-it-team" class="alt-faq-group__heading">For your IT team</h2>
+          <div class="faq-list alt-faq-page-list">
+      <div class="faq-item" id="where-is-our-data-stored">
+        <button class="faq-q" type="button" aria-expanded="false" id="faq-page-q-12" data-faq-bound="1">Where is our data stored?</button>
+        <div class="faq-a" hidden="" role="region" aria-labelledby="faq-page-q-12">
+          <p>In Swiss hosting at Infomaniak (ISO 27001:2022). Hybrid and on-premise set-ups are possible on request.</p>
+        </div>
+      </div>
+      <div class="faq-item" id="can-external-ai-models-be-switched-off">
+        <button class="faq-q" type="button" aria-expanded="false" id="faq-page-q-13" data-faq-bound="1">Can external AI models be switched off?</button>
+        <div class="faq-a" hidden="" role="region" aria-labelledby="faq-page-q-13">
+          <p>Yes. You decide which models are allowed, and you can limit Zuraio to Swiss-hosted models only.</p>
+        </div>
+      </div>
+      <div class="faq-item" id="are-our-chats-with-zuraio-saved">
+        <button class="faq-q" type="button" aria-expanded="false" id="faq-page-q-14" data-faq-bound="1">Are our chats with Zuraio saved?</button>
+        <div class="faq-a" hidden="" role="region" aria-labelledby="faq-page-q-14">
+          <p>Yes, inside your company's Zuraio, so people can come back to earlier work. Chats belong to the employee and to your company. They aren't shared outside your company and are never used to train AI models.</p>
+        </div>
+      </div>
+      <div class="faq-item" id="are-there-audit-records">
+        <button class="faq-q" type="button" aria-expanded="false" id="faq-page-q-15" data-faq-bound="1">Are there audit records?</button>
+        <div class="faq-a" hidden="" role="region" aria-labelledby="faq-page-q-15">
+          <p>Yes. Requests, sources, actions and approvals are recorded according to the audit set-up we agree with you.</p>
+        </div>
+      </div>
+      <div class="faq-item" id="how-do-you-connect-to-our-systems">
+        <button class="faq-q" type="button" aria-expanded="false" id="faq-page-q-16" data-faq-bound="1">How do you connect to our systems?</button>
+        <div class="faq-a" hidden="" role="region" aria-labelledby="faq-page-q-16">
+          <p>Through ready connectors, APIs, MCP or custom connectors. The Integrations page lists the systems we connect to.</p>
+        </div>
+      </div></div>
+          <p class="alt-faq-it-link"><a class="alt-home-link-secondary" data-route="it-partner" href="technical-architecture.html">Questions for your IT team? See the technical details →</a></p>
+        </section>
+      </div>
+    </section>
 
-<section class="pad">
-  <div class="wrap">
-    <div class="faq-list">
-    <div class="faq-item reveal in">
-      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Qu'est-ce que Zuraio AI Hub ?</button>
-      <div class="faq-a" hidden="">
-        <p>Zuraio AI Hub est une plateforme qui réunit les connaissances de l'entreprise, des assistants IA spécialisés, des modèles autorisés et des intégrations aux systèmes métier. Les collaborateurs utilisent un environnement commun, tandis que Zuraio applique les règles d'identité, d'autorisation et de processus pertinentes.</p>
+    
+    <section class="alt-section alt-section--tint alt-page-cta">
+      <div class="wrap alt-page-cta__inner">
+        <div class="alt-page-cta__copy">
+          <h2>Still have a question?</h2>
+          <p class="lede">Write to us. One of the founders will get back to you in days, not weeks.</p>
+        </div>
+        <div class="alt-page-cta__actions">
+          <a class="btn btn-primary btn-lg alt-page-cta__btn" data-route="contact" href="contact.html">Contact us</a>
+        </div>
       </div>
-    </div>
-    <div class="faq-item reveal d1">
-      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">À qui s'adresse Zuraio ?</button>
-      <div class="faq-a" hidden="">
-        <p>Zuraio s'adresse en premier lieu aux PME suisses qui souhaitent utiliser l'IA de manière pratique tout en gardant le contrôle des connaissances, des accès et des possibilités de déploiement. Son architecture technique peut également répondre à des besoins organisationnels plus complexes.</p>
-      </div>
-    </div>
-    <div class="faq-item reveal d2">
-      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Où nos données sont-elles traitées ?</button>
-      <div class="faq-a" hidden="">
-        <p>Le lieu de traitement dépend du déploiement retenu. Zuraio prend en charge des architectures utilisant une infrastructure contrôlée par le client, un cloud privé, un hébergement suisse ou une combinaison hybride. Les lieux précis, les fournisseurs de modèles et les flux de données sont documentés pour l'environnement convenu.</p>
-      </div>
-    </div>
-    <div class="faq-item reveal d3">
-      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Pouvons-nous choisir le modèle d'IA utilisé pour chaque tâche ?</button>
-      <div class="faq-a" hidden="">
-        <p>Zuraio est conçu pour utiliser différents modèles approuvés selon la tâche, la classification des données, le lieu de traitement admis, la qualité requise et le coût. Les modèles disponibles dépendent du déploiement et des fournisseurs sélectionnés.</p>
-      </div>
-    </div>
-    <div class="faq-item reveal d4">
-      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Les utilisateurs n'accèdent-ils qu'aux informations autorisées ?</button>
-      <div class="faq-a" hidden="">
-        <p>Zuraio peut utiliser les identités, groupes et autorisations Microsoft ou Google, complétés si nécessaire par des rôles Zuraio. Le comportement précis dépend du système connecté, de la méthode d'intégration et de la configuration convenue.</p>
-      </div>
-    </div>
-    <div class="faq-item reveal d5">
-      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Pouvons-nous voir les sources utilisées dans une réponse ?</button>
-      <div class="faq-a" hidden="">
-        <p>Lorsque des connaissances d'entreprise fondées sur des sources sont utilisées, Zuraio peut conserver et présenter les informations d'origine selon l'assistant et l'interface. Tous les résultats ne reposent pas nécessairement sur des sources, et leur présentation varie selon le composant.</p>
-      </div>
-    </div>
-    <div class="faq-item reveal d5">
-      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Comment Zuraio se connecte-t-il à nos outils existants ?</button>
-      <div class="faq-a" hidden="">
-        <p>Zuraio est conçu pour utiliser MCP, des API, des webhooks et des connecteurs spécifiques. Le périmètre disponible dépend du système, du cas d'usage et de la maturité actuelle de l'intégration.</p>
-      </div>
-    </div>
-    <div class="faq-item reveal d5">
-      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Nos données servent-elles à entraîner des modèles d'IA publics ?</button>
-      <div class="faq-a" hidden="">
-        <p>Cela dépend du modèle, du fournisseur et des conditions contractuelles retenus. Les règles de conservation, de traitement et d'éventuelle utilisation pour l'entraînement doivent être définies avant de connecter des informations d'entreprise.</p>
-      </div>
-    </div>
-    <div class="faq-item reveal d5">
-      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Zuraio effectue-t-il automatiquement des modifications ?</button>
-      <div class="faq-a" hidden="">
-        <p>Zuraio peut préparer des réponses, des projets et des actions proposées pour contrôle. Les actions pouvant être exécutées automatiquement dépendent du composant, des autorisations, des règles d'approbation et de la configuration choisie.</p>
-      </div>
-    </div>
-    <div class="faq-item reveal d5">
-      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Qu'est-ce qui est disponible aujourd'hui ?</button>
-      <div class="faq-a" hidden="">
-        <p>SkillOS est le composant Zuraio le plus avancé et fournit des connaissances versionnées, des fonctions de recherche et de gouvernance. EmailAI comprend des fonctions de communication implémentées qui font encore l'objet d'une validation pour la production. L'automatisation complète de Microsoft 365 et d'Office reste spécifiée ou en développement.</p>
-      </div>
-    </div>
-    <div class="faq-item reveal d5">
-      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Comment démarrer ?</button>
-      <div class="faq-a" hidden="">
-        <p>Nous commençons par des cas d'usage sélectionnés, les systèmes existants, les exigences d'identité et d'accès, les classes de données et la limite de déploiement souhaitée. Un pilote contrôlé permet ensuite de valider l'utilité, l'intégration et les exigences opérationnelles avant un déploiement plus large.</p>
-      </div>
-    </div>
-    <div class="faq-item reveal d5">
-      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Qu'est-ce qu'un Starter Partner ?</button>
-      <div class="faq-a" hidden="">
-        <p>Un Starter Partner travaille avec Zuraio sur un premier cas d'usage clairement défini et fournit un retour structuré pendant la validation du produit. Le périmètre, les responsabilités, le support et les conditions commerciales sont convenus avant le début du projet.</p>
-      </div>
-    </div></div>
-  </div>
-</section>
-
-<section class="pad section-band section-band--paper" id="it-questions">
-  <div class="wrap">
-    <div class="head-block reveal">
-      <h2 data-faq-it-heading="">Les questions que votre équipe informatique posera</h2>
-    </div>
-    <div class="faq-list">
-    <div class="faq-item reveal">
-      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Où nos données sont-elles stockées ?</button>
-      <div class="faq-a" hidden="">
-        <p>Le lieu de traitement dépend du déploiement choisi. Zuraio prend en charge des architectures utilisant une infrastructure contrôlée par le client, un cloud privé, un hébergement suisse et des combinaisons hybrides. Les emplacements, fournisseurs de modèles et flux de données exacts sont documentés pour l’environnement client convenu. Voir <a href="/fr/deployment-models.html">modes de déploiement</a> pour un aperçu.</p>
-      </div>
-    </div>
-    <div class="faq-item reveal d1">
-      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Les données de l’entreprise quittent-elles l’environnement choisi ?</button>
-      <div class="faq-a" hidden="">
-        <p>Les politiques peuvent tenir compte de la tâche, de la classification des données, du lieu de traitement autorisé et du fournisseur de modèle approuvé. Les emplacements et flux de données exacts sont documentés pour l’environnement client convenu.</p>
-      </div>
-    </div>
-    <div class="faq-item reveal d2">
-      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Peut-on désactiver les modèles d’IA cloud externes ?</button>
-      <div class="faq-a" hidden="">
-        <p>Les modèles disponibles et les données pouvant être envoyées à chaque modèle sont définis dans le déploiement convenu et les politiques de modèles. La disponibilité d’un modèle précis doit être confirmée dans le cadre du périmètre technique et commercial.</p>
-      </div>
-    </div>
-    <div class="faq-item reveal d3">
-      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Les requêtes des collaborateurs sont-elles conservées ?</button>
-      <div class="faq-a" hidden="">
-        <p>Les demandes, sources et actions pertinentes peuvent être conservées selon le modèle d’audit convenu et la maturité de chaque composant. Le comportement exact de conservation dépend des composants sélectionnés et de la configuration convenue.</p>
-      </div>
-    </div>
-    <div class="faq-item reveal d4">
-      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Des journaux d’audit sont-ils disponibles ?</button>
-      <div class="faq-a" hidden="">
-        <p>Les demandes, sources et actions pertinentes peuvent être conservées selon le modèle d’audit convenu et la maturité de chaque composant. L’étendue exacte dépend des composants sélectionnés et de la configuration convenue.</p>
-      </div>
-    </div>
-    <div class="faq-item reveal d5">
-      <button class="faq-q" type="button" aria-expanded="false" data-faq-bound="1">Comment les droits d’accès existants sont-ils appliqués ?</button>
-      <div class="faq-a" hidden="">
-        <p>Zuraio peut fonctionner avec les identités, groupes et autorisations Microsoft ou Google établis. Le contexte d’identité et d’autorisation peut être transmis à l’assistant et à la source de données concernés afin que l’accès soit vérifié lors de la récupération d’informations ou d’actions demandées. Le comportement exact des autorisations dépend du système connecté, de la méthode d’intégration et du déploiement convenu.</p>
-      </div>
-    </div></div>
-  </div>
-</section>
-
-<section class="pad cta-band">
-  <div class="wrap center">
-    <h2>Encore des questions ?</h2>
-    <p class="lede">Réservez une démonstration privée afin de discuter de vos systèmes, de vos exigences de contrôle des données et de vos premiers processus.</p>
-    <p style="margin-top:24px;"><a class="btn btn-primary btn-lg" href="/fr/contact.html">Nous contacter</a></p>
-  </div>
-</section>
-
-</main>
+    </section></main>
 <div id="site-footer">
     <footer class="site-footer">
       <div class="wrap">
         <div class="foot-grid">
           
       <div class="foot-col">
-        <h3 class="foot-col-title">Produit</h3>
-        <ul class="foot-col-links"><li><a href="/fr/how-it-helps.html">Comment Zuraio vous aide</a></li><li><a href="/fr/knowledge.html">Connaissances</a></li><li><a href="/fr/integrations.html">Intégrations</a></li><li><a href="/fr/how-it-helps.html#use-cases">Cas d’usage</a></li><li><a href="/fr/contact.html">Réserver une démonstration</a></li></ul>
+        <h3 class="foot-col-title">Product</h3>
+        <ul class="foot-col-links"><li><a href="how-it-helps.html" data-route="how-it-helps">How it helps</a></li><li><a href="how-it-helps.html#skills" data-route="skills">Skills</a></li><li><a href="integrations.html" data-route="integrations">Integrations</a></li><li><a href="contact.html" data-route="contact">Book a demo</a></li></ul>
       </div>
       <div class="foot-col">
-        <h3 class="foot-col-title">Données et sécurité</h3>
-        <ul class="foot-col-links"><li><a href="/fr/data-control.html">Contrôle des données</a></li><li><a href="/fr/deployment-models.html#swiss-hosted">Hébergement en Suisse</a></li><li><a href="/fr/deployment-models.html">Modes de déploiement</a></li><li><a href="/fr/technical-architecture.html">Architecture technique</a></li><li><a href="/fr/ai-governance.html">Gouvernance de l’IA</a></li></ul>
+        <h3 class="foot-col-title">Data &amp; security</h3>
+        <ul class="foot-col-links"><li><a href="security.html" data-route="security">Security</a></li><li><a href="technical-architecture.html" data-route="it-partner">For your IT partner</a></li></ul>
       </div>
       <div class="foot-col">
-        <h3 class="foot-col-title">Entreprise</h3>
-        <ul class="foot-col-links"><li><a href="/fr/about.html">À propos</a></li><li><a href="/fr/contact.html">Contact</a></li><li><a href="/fr/contact.html#partnerships">Partenaires</a></li></ul>
+        <h3 class="foot-col-title">Company</h3>
+        <ul class="foot-col-links"><li><a href="about.html" data-route="about">About</a></li><li><a href="faq.html" data-route="faq">FAQ</a></li><li><a href="contact.html" data-route="contact">Contact</a></li></ul>
       </div>
       <div class="foot-col">
-        <h3 class="foot-col-title">Mentions légales</h3>
-        <ul class="foot-col-links"><li><a href="/fr/impressum.html">Mentions légales</a></li><li><a href="/fr/privacy.html">Confidentialité</a></li><li><a href="/fr/cookies.html">Paramètres des cookies</a></li><li><a href="/fr/terms.html">Conditions d’utilisation</a></li></ul>
+        <h3 class="foot-col-title">Legal</h3>
+        <ul class="foot-col-links"><li><a href="impressum.html" data-route="impressum">Impressum</a></li><li><a href="privacy.html" data-route="privacy">Privacy</a></li><li><a href="cookies.html" data-route="cookies">Cookie settings</a></li><li><a href="terms.html" data-route="terms">Terms of use</a></li></ul>
       </div>
           <div class="foot-col">
-            <h3 class="foot-col-title">Langue et contact</h3>
+            <h3 class="foot-col-title">Language / Contact</h3>
             <ul class="foot-col-links">
-              <li><a href="/fr/faq.html" hreflang="en">EN</a></li><li><a href="/fr/faq.html" hreflang="de">DE</a></li>
-              <li><a href="/fr/contact.html">Contact</a></li>
+              <li><a href="faq.html" hreflang="en">EN (active)</a></li><li><a href="faq.html" hreflang="de">DE</a></li>
+              <li><a href="contact.html" data-route="contact">Contact</a></li>
               <li><a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a></li><li><a href="mailto:marcelo.zanette@zuraio.ch">marcelo.zanette@zuraio.ch</a></li><li><a href="mailto:samuel.polley@zuraio.ch">samuel.polley@zuraio.ch</a></li><li><a href="mailto:roland.steiner@zuraio.ch">roland.steiner@zuraio.ch</a></li>
             </ul>
           </div>
         </div>
         <div class="foot-bottom">
-          <a class="brand foot-brand" href="/fr/" aria-label="Accueil Zuraio">
-            <img class="brand-logo" src="/assets/zuraio-logo.png" alt="Zuraio – vos données sous votre contrôle" width="4796" height="1465" decoding="async">
+          <a class="brand foot-brand" href="en/homepage-preview.html" data-route="home" aria-label="Zuraio home">
+            <img class="brand-logo" src="/assets/zuraio-logo-nav@2x.webp" alt="" width="184" height="56" decoding="async" loading="lazy">
           </a>
-          <p class="foot-tagline">L’IA pour les entreprises suisses qui veulent garder le contrôle de leurs données.</p>
+          <p class="foot-tagline">AI for Swiss companies that need control of their data.</p>
+          <p class="foot-trademark alt-home-trademark">Microsoft, Microsoft 365, Outlook, SharePoint, Teams, Exchange and Dynamics 365 are trademarks of the Microsoft group of companies. bexio, Abacus, Klara, Proffix, SAP, Salesforce, HubSpot, Odoo and Sage are trademarks of their respective owners.</p>
         </div>
-        <div id="footer-review-notes" data-internal-only="" hidden="" aria-hidden="true"></div>
       </div>
     </footer></div>
-<script type="module" src="../js/main.js"></script>
+<script type="module" src="../js/faq-page.js?v=20261003c"></script>
 
 
-<div id="internal-review-panel" hidden=""></div></body></html>
+</body></html>

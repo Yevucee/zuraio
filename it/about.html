@@ -7,11 +7,12 @@
 <link rel="shortcut icon" href="../assets/favicon.ico">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <title>Chi siamo — Zuraio</title>
+<meta name="description" content="">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/site.css?v=20260909-about">
-  <meta name="description" content="">
+<link rel="stylesheet" href="../css/site.css?v=20260909-origin">
+<link rel="stylesheet" href="../css/homepage-preview.css?v=20261003c">
 
   <link rel="canonical" href="https://zuraio.ch/it/about.html">
   <link rel="alternate" hreflang="en" href="https://zuraio.ch/about.html">
@@ -44,173 +45,194 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
 })();
 </script>
 </head>
-<body data-page="about" class="public-mode">
-<div id="site-header" data-dropdown-dismiss-bound="true" data-scroll-bound="true">
-    <header class="nav" id="nav">
+<body data-page="about" data-alt-chrome="">
+<div id="site-header">
+    <header class="nav alt-home-nav" id="nav">
       <div class="wrap nav-in">
-        <a class="brand" href="/it/" aria-label="Pagina iniziale Zuraio">
-          <img class="brand-logo" src="/assets/zuraio-logo.png" alt="Zuraio – i vostri dati sotto il vostro controllo" width="4796" height="1465" decoding="async">
+        <a class="brand" href="en/homepage-preview.html" data-route="home" aria-label="Zuraio home">
+          <img class="brand-logo" src="/assets/zuraio-logo-nav@2x.webp" alt="Zuraio – own your data" width="184" height="56" decoding="async" fetchpriority="high">
         </a>
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Apri menu">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
         <div class="nav-menu" id="nav-menu">
-          <nav class="nav-links" aria-label="Navigazione principale">
-            <a href="/it/how-it-helps.html">Come aiuta Zuraio</a><a href="/it/knowledge.html">Conoscenza aziendale</a><a href="/it/integrations.html">Integrazioni</a><a href="/it/data-control.html">Controllo dei dati</a>
-            <div class="nav-dropdown">
-              <button type="button" class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">Tecnologia</button>
-              <div class="nav-dropdown-menu" role="menu"><a href="/it/technical-architecture.html" role="menuitem">Architettura tecnica</a><a href="/it/deployment-models.html" role="menuitem">Modelli di implementazione</a><a href="/it/ai-governance.html" role="menuitem">Governance dell’IA</a><a href="/it/data-control.html" role="menuitem">Controllo dei dati</a><a href="/it/knowledge.html#skillos" role="menuitem">Conoscenza e SkillOS</a></div>
-            </div>
-            <a href="/it/about.html">Chi siamo</a>
+          <nav class="nav-links" aria-label="Primary">
+            <a href="how-it-helps.html" data-route="how-it-helps">How it helps</a><a href="how-it-helps.html#skills" data-route="skills">Skills</a><a href="security.html" data-route="security">Security</a><a href="about.html" data-route="about">About</a>
           </nav>
-          <div class="nav-actions">
-            
-    <div class="lang-dropdown">
-      <button type="button" class="lang-dropdown-btn" aria-expanded="false" aria-haspopup="listbox" aria-label="Lingua">
-        <span class="lang-dropdown-current">IT</span>
-      </button>
-      <div class="lang-dropdown-menu" role="listbox" aria-label="Lingua">
-        <button type="button" class="lang-dropdown-option" role="option" data-lang="en" aria-selected="false">EN</button><button type="button" class="lang-dropdown-option" role="option" data-lang="de" aria-selected="false">DE</button>
-      </div>
-    </div>
-            <a class="btn btn-primary" href="/it/contact.html">Prenotate una demo</a>
+          <div class="nav-actions alt-home-nav__actions">
+            <div class="lang-dropdown alt-home-lang">
+              <button type="button" class="lang-dropdown-btn" aria-expanded="false" aria-haspopup="listbox" aria-label="Language">
+                <span class="lang-dropdown-current">EN</span>
+              </button>
+              <div class="lang-dropdown-menu" role="listbox">
+                <a class="lang-dropdown-option is-active" href="about.html" hreflang="en">EN</a><a class="lang-dropdown-option" href="about.html" hreflang="de">DE</a>
+              </div>
+            </div>
+            <a class="btn btn-primary alt-home-cta" data-alt-cta="nav" data-route="contact" href="contact.html">Book a 30-minute demo</a>
           </div>
         </div>
       </div>
     </header></div>
-<main>
-
-<section class="page-hero pad about-hero">
-  <div class="wrap">
-    <span class="marker">Su Zuraio</span>
-    <h1>IA pratica. Costruita intorno alle persone.</h1>
-  </div>
-</section>
-
-<section class="pad about-started">
-  <div class="wrap about-started__grid">
-    <div class="about-started__copy">
-      <span class="marker">Why we started</span>
-      <h2>Built from the same problem our clients face.</h2>
-      <p>We needed a better way to prepare for meetings, manage emails, find the right information, draft reports and reduce repeated admin. Public AI tools were useful, but they were not enough for serious company work.</p>
-      <p>We wanted one controlled layer connected to real business knowledge, with clear rules around access, data and model choice. That is what became Zuraio AI Hub.</p>
-    </div>
-    <aside class="about-beliefs">
-      <h3>What we believe</h3>
-      <ul class="about-beliefs__list">
-        <li>Human judgement comes first.</li>
-        <li>Company data stays under company control.</li>
-        <li>Start with real workflows.</li>
-        <li>Make sources and access clear.</li>
-        <li>Build tools people can use every day.</li>
-      </ul>
-    </aside>
-  </div>
-</section>
-
-<section class="pad about-team">
-  <div class="wrap team-section">
-    <span class="marker">Our team</span>
-    <h2>The people behind Zuraio.</h2>
-    <p class="lede">A small team building practical AI for Swiss companies.</p>
-
-    <div class="team-grid">
-      <article class="team-member reveal">
-        <div class="team-member__photo">
-          <picture>
-            <source type="image/webp" srcset="../zuraio/assets/Michael.webp">
-            <img class="team-portrait" src="../zuraio/assets/Michael.png" alt="Portrait of Michael C. Wili" width="800" height="800" loading="lazy" decoding="async">
-          </picture>
-        </div>
-        <h3>Michael C. Wili</h3>
-      </article>
-
-      <article class="team-member reveal d1">
-        <div class="team-member__photo">
-          <picture>
-            <source type="image/webp" srcset="../zuraio/assets/Marcelo.webp">
-            <img class="team-portrait" src="../zuraio/assets/Marcelo.png" alt="Portrait of Marcelo Zanette" width="800" height="800" loading="lazy" decoding="async">
-          </picture>
-        </div>
-        <h3>Marcelo Zanette</h3>
-      </article>
-
-      <article class="team-member reveal d2">
-        <div class="team-member__photo">
-          <picture>
-            <source type="image/webp" srcset="../zuraio/assets/Samuel.webp">
-            <img class="team-portrait" src="../zuraio/assets/Samuel.png" alt="Portrait of Samuel A. Polley" width="800" height="800" loading="lazy" decoding="async">
-          </picture>
-        </div>
-        <h3>Samuel A. Polley</h3>
-      </article>
-
-      <article class="team-member reveal d3">
-        <div class="team-member__photo">
-          <picture>
-            <source type="image/webp" srcset="../zuraio/assets/Roland.webp">
-            <img class="team-portrait" src="../zuraio/assets/Roland.png" alt="Portrait of Roland Steiner" width="800" height="800" loading="lazy" decoding="async">
-          </picture>
-        </div>
-        <h3>Roland Steiner</h3>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="pad about-cta">
-  <div class="wrap">
-    <div class="about-cta__band">
-      <div class="about-cta__copy">
-        <h2>Let’s talk about your company.</h2>
-        <p>Tell us about your workflows and what you would like to improve.</p>
+<main id="about-main" aria-live="polite">
+    <section class="alt-section alt-section--tint alt-about-hero">
+      <div class="wrap">
+        <span class="marker hero-eyebrow">ABOUT US</span>
+        <h1 class="alt-page-h1">Four people in Switzerland, building the AI we wanted ourselves.</h1>
+        <p class="lede alt-about-hero__sub">We kept losing hours to meeting prep, email and searching for the right document. Public AI tools helped, but they didn't know our company or respect our access rules. So we built Zuraio.</p>
       </div>
-      <a class="btn btn-primary" href="/it/contact.html">Contact the team →</a>
-    </div>
-  </div>
-</section>
+    </section>
 
-</main>
+    <section class="alt-section alt-section--paper alt-about-team" id="team">
+      <div class="wrap">
+        <div class="alt-section-head">
+          <h2>The people you'll talk to.</h2>
+        </div>
+        <div class="origin-portraits__grid alt-home-founders alt-about-founders">
+      <article class="alt-home-founder">
+        <div class="alt-home-founder__photo">
+          <picture>
+            <source type="image/webp" srcset="/zuraio/assets/team-preview/Michael.webp">
+            <img src="/zuraio/assets/team-preview/Michael.webp" alt="" width="250" height="312" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <h3 class="alt-home-founder__name">Michael C. Wili</h3>
+        <p class="alt-home-founder__email"><a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a></p>
+      </article>
+      <article class="alt-home-founder">
+        <div class="alt-home-founder__photo">
+          <picture>
+            <source type="image/webp" srcset="/zuraio/assets/team-preview/Marcelo.webp">
+            <img src="/zuraio/assets/team-preview/Marcelo.webp" alt="" width="250" height="312" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <h3 class="alt-home-founder__name">Marcelo Zanette</h3>
+        <p class="alt-home-founder__email"><a href="mailto:marcelo.zanette@zuraio.ch">marcelo.zanette@zuraio.ch</a></p>
+      </article>
+      <article class="alt-home-founder">
+        <div class="alt-home-founder__photo">
+          <picture>
+            <source type="image/webp" srcset="/zuraio/assets/team-preview/Samuel.webp">
+            <img src="/zuraio/assets/team-preview/Samuel.webp" alt="" width="250" height="312" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <h3 class="alt-home-founder__name">Samuel A. Polley</h3>
+        <p class="alt-home-founder__email"><a href="mailto:samuel.polley@zuraio.ch">samuel.polley@zuraio.ch</a></p>
+      </article>
+      <article class="alt-home-founder">
+        <div class="alt-home-founder__photo">
+          <picture>
+            <source type="image/webp" srcset="/zuraio/assets/team-preview/Roland.webp">
+            <img src="/zuraio/assets/team-preview/Roland.webp" alt="" width="250" height="312" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <h3 class="alt-home-founder__name">Roland Steiner</h3>
+        <p class="alt-home-founder__email"><a href="mailto:roland.steiner@zuraio.ch">roland.steiner@zuraio.ch</a></p>
+      </article></div>
+        <p class="alt-home-contact">Write to us directly. You'll get a reply from one of us.</p>
+      </div>
+    </section>
+
+    <section class="alt-section alt-section--tint alt-about-beliefs">
+      <div class="wrap">
+        <div class="alt-section-head">
+          <h2>What we believe</h2>
+        </div>
+        <div class="alt-about-beliefs-grid alt-home-reasons-strip" role="list"><article class="alt-home-reasons-strip__item alt-about-belief" role="listitem">
+        <span class="alt-home-reasons-strip__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="m9 14 2 2 4-4"></path></svg></span>
+        <div class="alt-home-reasons-strip__text">
+          <p class="alt-home-reasons-strip__title">People decide.</p>
+          <p class="alt-home-reasons-strip__body">AI prepares, your team judges and approves.</p>
+        </div>
+      </article><article class="alt-home-reasons-strip__item alt-about-belief" role="listitem">
+        <span class="alt-home-reasons-strip__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6.5V11c0 4.4 3.1 8.5 8 9.5 4.9-1 8-5.1 8-9.5V6.5L12 3z"></path><path d="m9 12 2 2 4-4"></path></svg></span>
+        <div class="alt-home-reasons-strip__text">
+          <p class="alt-home-reasons-strip__title">Your data stays yours.</p>
+          <p class="alt-home-reasons-strip__body">Swiss by default, and you choose what goes elsewhere.</p>
+        </div>
+      </article><article class="alt-home-reasons-strip__item alt-about-belief" role="listitem">
+        <span class="alt-home-reasons-strip__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 10-14h-7l0-6z"></path></svg></span>
+        <div class="alt-home-reasons-strip__text">
+          <p class="alt-home-reasons-strip__title">Start with real work.</p>
+          <p class="alt-home-reasons-strip__body">One task that matters, not a big AI project.</p>
+        </div>
+      </article><article class="alt-home-reasons-strip__item alt-about-belief" role="listitem">
+        <span class="alt-home-reasons-strip__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="m9 14 2 2 4-4"></path></svg></span>
+        <div class="alt-home-reasons-strip__text">
+          <p class="alt-home-reasons-strip__title">Show the source.</p>
+          <p class="alt-home-reasons-strip__body">So people can check before they rely on it.</p>
+        </div>
+      </article><article class="alt-home-reasons-strip__item alt-about-belief" role="listitem">
+        <span class="alt-home-reasons-strip__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6.5V11c0 4.4 3.1 8.5 8 9.5 4.9-1 8-5.1 8-9.5V6.5L12 3z"></path><path d="m9 12 2 2 4-4"></path></svg></span>
+        <div class="alt-home-reasons-strip__text">
+          <p class="alt-home-reasons-strip__title">Built with you.</p>
+          <p class="alt-home-reasons-strip__body">Your skills, your tone, your way of working.</p>
+        </div>
+      </article></div>
+      </div>
+    </section>
+
+    <section class="alt-section alt-section--paper alt-about-starter">
+      <div class="wrap alt-about-starter__inner">
+        <div>
+          <h2>We're working with our first starter partners.</h2>
+          <p class="lede">Swiss companies that shape Zuraio with us, work directly with the founders and influence what we build next.</p>
+        </div>
+        <a class="alt-home-link-secondary" data-route="contact" href="contact.html?interest=starter">Become a starter partner →</a>
+      </div>
+    </section>
+
+    
+    <section class="alt-section alt-section--tint alt-page-cta">
+      <div class="wrap alt-page-cta__inner">
+        <div class="alt-page-cta__copy">
+          <h2>Let's talk about your company.</h2>
+          <p class="lede"></p>
+        </div>
+        <div class="alt-page-cta__actions">
+          <a class="btn btn-primary btn-lg alt-page-cta__btn" data-route="contact" href="contact.html">Book a 30-minute demo</a>
+        </div>
+      </div>
+    </section></main>
 <div id="site-footer">
     <footer class="site-footer">
       <div class="wrap">
         <div class="foot-grid">
           
       <div class="foot-col">
-        <h3 class="foot-col-title">Prodotto</h3>
-        <ul class="foot-col-links"><li><a href="/it/how-it-helps.html">Come aiuta Zuraio</a></li><li><a href="/it/knowledge.html">Conoscenza aziendale</a></li><li><a href="/it/integrations.html">Integrazioni</a></li><li><a href="/it/how-it-helps.html#use-cases">Casi d’uso</a></li><li><a href="/it/contact.html">Prenotate una demo</a></li></ul>
+        <h3 class="foot-col-title">Product</h3>
+        <ul class="foot-col-links"><li><a href="how-it-helps.html" data-route="how-it-helps">How it helps</a></li><li><a href="how-it-helps.html#skills" data-route="skills">Skills</a></li><li><a href="integrations.html" data-route="integrations">Integrations</a></li><li><a href="contact.html" data-route="contact">Book a demo</a></li></ul>
       </div>
       <div class="foot-col">
-        <h3 class="foot-col-title">Dati e sicurezza</h3>
-        <ul class="foot-col-links"><li><a href="/it/data-control.html">Controllo dei dati</a></li><li><a href="/it/deployment-models.html#swiss-hosted">Hosting in Svizzera</a></li><li><a href="/it/deployment-models.html">Modelli di implementazione</a></li><li><a href="/it/technical-architecture.html">Architettura tecnica</a></li><li><a href="/it/ai-governance.html">Governance dell’IA</a></li></ul>
+        <h3 class="foot-col-title">Data &amp; security</h3>
+        <ul class="foot-col-links"><li><a href="security.html" data-route="security">Security</a></li><li><a href="technical-architecture.html" data-route="it-partner">For your IT partner</a></li></ul>
       </div>
       <div class="foot-col">
-        <h3 class="foot-col-title">Azienda</h3>
-        <ul class="foot-col-links"><li><a href="/it/about.html">Chi siamo</a></li><li><a href="/it/contact.html">Contatti</a></li><li><a href="/it/contact.html#partnerships">Partner</a></li></ul>
+        <h3 class="foot-col-title">Company</h3>
+        <ul class="foot-col-links"><li><a href="about.html" data-route="about">About</a></li><li><a href="faq.html" data-route="faq">FAQ</a></li><li><a href="contact.html" data-route="contact">Contact</a></li></ul>
       </div>
       <div class="foot-col">
-        <h3 class="foot-col-title">Note legali</h3>
-        <ul class="foot-col-links"><li><a href="/it/impressum.html">Note legali</a></li><li><a href="/it/privacy.html">Privacy</a></li><li><a href="/it/cookies.html">Impostazioni dei cookie</a></li><li><a href="/it/terms.html">Condizioni d’uso</a></li></ul>
+        <h3 class="foot-col-title">Legal</h3>
+        <ul class="foot-col-links"><li><a href="impressum.html" data-route="impressum">Impressum</a></li><li><a href="privacy.html" data-route="privacy">Privacy</a></li><li><a href="cookies.html" data-route="cookies">Cookie settings</a></li><li><a href="terms.html" data-route="terms">Terms of use</a></li></ul>
       </div>
           <div class="foot-col">
-            <h3 class="foot-col-title">Lingua e contatti</h3>
+            <h3 class="foot-col-title">Language / Contact</h3>
             <ul class="foot-col-links">
-              <li><a href="/it/about.html" hreflang="en">EN</a></li><li><a href="/it/about.html" hreflang="de">DE</a></li>
-              <li><a href="/it/contact.html">Contact</a></li>
+              <li><a href="about.html" hreflang="en">EN (active)</a></li><li><a href="about.html" hreflang="de">DE</a></li>
+              <li><a href="contact.html" data-route="contact">Contact</a></li>
               <li><a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a></li><li><a href="mailto:marcelo.zanette@zuraio.ch">marcelo.zanette@zuraio.ch</a></li><li><a href="mailto:samuel.polley@zuraio.ch">samuel.polley@zuraio.ch</a></li><li><a href="mailto:roland.steiner@zuraio.ch">roland.steiner@zuraio.ch</a></li>
             </ul>
           </div>
         </div>
         <div class="foot-bottom">
-          <a class="brand foot-brand" href="/it/" aria-label="Pagina iniziale Zuraio">
-            <img class="brand-logo" src="/assets/zuraio-logo.png" alt="Zuraio – i vostri dati sotto il vostro controllo" width="4796" height="1465" decoding="async">
+          <a class="brand foot-brand" href="en/homepage-preview.html" data-route="home" aria-label="Zuraio home">
+            <img class="brand-logo" src="/assets/zuraio-logo-nav@2x.webp" alt="" width="184" height="56" decoding="async" loading="lazy">
           </a>
-          <p class="foot-tagline">IA per le aziende svizzere che vogliono mantenere il controllo dei propri dati.</p>
+          <p class="foot-tagline">AI for Swiss companies that need control of their data.</p>
+          <p class="foot-trademark alt-home-trademark">Microsoft, Microsoft 365, Outlook, SharePoint, Teams, Exchange and Dynamics 365 are trademarks of the Microsoft group of companies. bexio, Abacus, Klara, Proffix, SAP, Salesforce, HubSpot, Odoo and Sage are trademarks of their respective owners.</p>
         </div>
-        <div id="footer-review-notes" data-internal-only="" hidden="" aria-hidden="true"></div>
       </div>
     </footer></div>
-<script type="module" src="../js/main.js"></script>
+<script type="module" src="../js/about-page.js?v=20261003c"></script>
 
 
-<div id="internal-review-panel" hidden=""></div></body></html>
+</body></html>
