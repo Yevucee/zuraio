@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css?v=20260909-origin">
-<link rel="stylesheet" href="css/homepage-preview.css?v=20261002f">
+<link rel="stylesheet" href="css/homepage-preview.css?v=20261002g">
 
   <link rel="canonical" href="https://zuraio.ch/technical-architecture.html">
   <link rel="alternate" hreflang="en" href="https://zuraio.ch/technical-architecture.html">
@@ -74,14 +74,14 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
       </div>
     </header></div>
 <main id="tech-arch-main" aria-live="polite">
-    <section class="alt-section alt-section--tint alt-tech-hero">
+    <section class="alt-section alt-section--tint alt-security-hero">
       <div class="wrap">
         <span class="marker hero-eyebrow">FOR YOUR IT PARTNER</span>
-        <h1 class="alt-page-h1">The technical details, in one place.</h1>
-        <p class="lede alt-sub-max">How Zuraio handles identity, knowledge, models and records, and where it runs. If something here is unclear, write to us. We reply in days, not weeks.</p>
-        <p class="alt-page-hero-cta">
-          <a class="btn btn-primary btn-lg alt-page-hero-cta__btn" data-route="contact" href="contact.html">Book a technical call</a>
-        </p>
+        <h1><span class="alt-security-hero__line">The technical details, in one place.</span></h1>
+        <p class="lede alt-security-hero__sub">How Zuraio handles identity, knowledge, models and records, and where it runs. If something here is unclear, write to us. We reply in days, not weeks.</p>
+        <div class="alt-help-hero__actions">
+          <a class="btn btn-primary btn-lg alt-home-cta" data-route="contact" href="contact.html">Book a technical call</a>
+        </div>
       </div>
     </section>
 
@@ -138,30 +138,12 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
         <p class="alt-kv-card__label">7. Records and operations</p>
         <p class="alt-kv-card__value">Requests, sources, actions and approvals are logged according to the agreed audit set-up.</p>
       </article></div>
-    <div class="alt-tech-diagram-box">
-    <svg class="alt-tech-arch-svg" viewBox="0 0 480 720" role="img" aria-labelledby="alt-tech-arch-title alt-tech-arch-desc">
-      <title id="alt-tech-arch-title">Zuraio platform architecture, seven layers</title>
-      <desc id="alt-tech-arch-desc">Illustrative vertical flow from access through identity, orchestration, skills, integrations, model gateway to records.</desc>
-      <defs>
-        <marker id="alt-tech-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z"></path></marker>
-      </defs>
-      <rect class="alt-tech-arch-box alt-tech-arch-box--accent" x="40" y="16" width="400" height="44" rx="8"></rect>
-        <text class="alt-tech-arch-label" x="240" y="44" text-anchor="middle" font-size="11">Access</text><line class="alt-tech-arch-line" x1="240" y1="60" x2="240" y2="76" marker-end="url(#alt-tech-arrow)"></line><rect class="alt-tech-arch-box" x="40" y="76" width="400" height="44" rx="8"></rect>
-        <text class="alt-tech-arch-label" x="240" y="104" text-anchor="middle" font-size="11">Identity &amp; permissions</text><line class="alt-tech-arch-line" x1="240" y1="120" x2="240" y2="136" marker-end="url(#alt-tech-arrow)"></line><rect class="alt-tech-arch-box alt-tech-arch-box--olive" x="40" y="136" width="400" height="44" rx="8"></rect>
-        <text class="alt-tech-arch-label alt-tech-arch-label--light" x="240" y="164" text-anchor="middle" font-size="11">Orchestration</text><line class="alt-tech-arch-line" x1="240" y1="180" x2="240" y2="196" marker-end="url(#alt-tech-arrow)"></line><rect class="alt-tech-arch-box" x="40" y="196" width="400" height="56" rx="8"></rect>
-        <text class="alt-tech-arch-label" x="240" y="228" text-anchor="middle" font-size="11">Skills &amp; knowledge</text><line class="alt-tech-arch-line" x1="240" y1="252" x2="240" y2="268" marker-end="url(#alt-tech-arrow)"></line><rect class="alt-tech-arch-box" x="40" y="268" width="400" height="44" rx="8"></rect>
-        <text class="alt-tech-arch-label" x="240" y="296" text-anchor="middle" font-size="11">Assistants &amp; integrations</text><line class="alt-tech-arch-line" x1="240" y1="312" x2="240" y2="328" marker-end="url(#alt-tech-arrow)"></line><rect class="alt-tech-arch-box alt-tech-arch-box--accent" x="40" y="328" width="400" height="44" rx="8"></rect>
-        <text class="alt-tech-arch-label" x="240" y="356" text-anchor="middle" font-size="11">Model gateway</text><line class="alt-tech-arch-line" x1="240" y1="372" x2="240" y2="388" marker-end="url(#alt-tech-arrow)"></line><rect class="alt-tech-arch-box" x="40" y="388" width="400" height="44" rx="8"></rect>
-        <text class="alt-tech-arch-label" x="240" y="416" text-anchor="middle" font-size="11">Records &amp; operations</text>
-    </svg>
-    <p class="mono alt-tech-diagram-caption">Illustrative platform architecture. Component boundaries and operating locations vary by customer deployment.</p>
-  </div>
       </div>
     </section>
 
     <section class="alt-section alt-section--tint" id="request-flow">
       <div class="wrap">
-        <div class="alt-section-head"><h2>From request to result</h2></div>
+        <div class="alt-section-head"><h2>From request to result.</h2></div>
         <ol class="alt-tech-flow"><li class="alt-tech-flow__step"><span class="alt-tech-flow__num">1</span><span class="alt-tech-flow__text">A person asks a question or starts a task.</span></li><li class="alt-tech-flow__step"><span class="alt-tech-flow__num">2</span><span class="alt-tech-flow__text">Zuraio checks who they are and what they may access.</span></li><li class="alt-tech-flow__step"><span class="alt-tech-flow__num">3</span><span class="alt-tech-flow__text">The right skill supplies the steps, templates and rules.</span></li><li class="alt-tech-flow__step"><span class="alt-tech-flow__num">4</span><span class="alt-tech-flow__text">Zuraio picks the assistants, sources and an approved model.</span></li><li class="alt-tech-flow__step"><span class="alt-tech-flow__num">5</span><span class="alt-tech-flow__text">It prepares an answer, a draft or a proposed action.</span></li><li class="alt-tech-flow__step"><span class="alt-tech-flow__num">6</span><span class="alt-tech-flow__text">Anything that changes data or goes out waits for a person's OK.</span></li><li class="alt-tech-flow__step"><span class="alt-tech-flow__num">7</span><span class="alt-tech-flow__text">Sources, versions and approvals are recorded.</span></li></ol>
       </div>
     </section>
@@ -215,10 +197,8 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
 
     <section class="alt-section alt-section--paper" id="whats-recorded">
       <div class="wrap">
-        <div class="alt-section-head">
-          <h2>What's recorded.</h2>
-          <p class="lede alt-sub-max">Every answer leaves a trail your IT partner can check.</p>
-        </div>
+        <div class="alt-section-head"><h2>What's recorded.</h2></div>
+        <p class="lede alt-sub-max alt-tech-recorded-intro">Every answer leaves a trail your IT partner can check.</p>
         <div class="alt-recorded-grid"><article class="alt-recorded-row">
         <div class="alt-recorded-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9.5a4.5 4.5 0 0 1 9 0c0 2.2-1.2 3.4-2.4 4.2-.9.6-1.6 1-1.6 2.3V17"></path><circle cx="12" cy="20" r="1"></circle></svg></div>
         <p class="alt-recorded-row__text"><strong>The request:</strong> who asked what, and when.</p>
@@ -226,13 +206,13 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
         <div class="alt-recorded-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"></circle><circle cx="18" cy="6" r="2.5"></circle><circle cx="12" cy="18" r="2.5"></circle><path d="M8.2 7.4 10.8 16M15.8 7.4 13.2 16"></path></svg></div>
         <p class="alt-recorded-row__text"><strong>The sources:</strong> which documents and systems were used.</p>
       </article><article class="alt-recorded-row">
-        <div class="alt-recorded-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="m9 14 2 2 4-4"></path></svg></div>
+        <div class="alt-recorded-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"></circle><circle cx="18" cy="6" r="2.5"></circle><circle cx="12" cy="18" r="2.5"></circle><path d="M8.2 7.4 10.8 16M15.8 7.4 13.2 16"></path></svg></div>
         <p class="alt-recorded-row__text"><strong>The skill:</strong> which skill and version applied.</p>
       </article><article class="alt-recorded-row">
-        <div class="alt-recorded-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6.5V11c0 4.4 3.1 8.5 8 9.5 4.9-1 8-5.1 8-9.5V6.5L12 3z"></path><path d="m9 12 2 2 4-4"></path></svg></div>
+        <div class="alt-recorded-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="m9 14 2 2 4-4"></path></svg></div>
         <p class="alt-recorded-row__text"><strong>The result:</strong> what Zuraio produced.</p>
       </article><article class="alt-recorded-row">
-        <div class="alt-recorded-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9.5a4.5 4.5 0 0 1 9 0c0 2.2-1.2 3.4-2.4 4.2-.9.6-1.6 1-1.6 2.3V17"></path><circle cx="12" cy="20" r="1"></circle></svg></div>
+        <div class="alt-recorded-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6.5V11c0 4.4 3.1 8.5 8 9.5 4.9-1 8-5.1 8-9.5V6.5L12 3z"></path><path d="m9 12 2 2 4-4"></path></svg></div>
         <p class="alt-recorded-row__text"><strong>The approval:</strong> who checked and released it.</p>
       </article></div>
       </div>
@@ -241,7 +221,7 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
     <section class="alt-section alt-section--tint" id="deployment">
       <div class="wrap">
         <div class="alt-section-head"><h2>What we document for every set-up.</h2></div>
-        <ul class="alt-tech-checklist"><li>Operator and responsibilities</li><li>Processing and storage locations</li><li>AI model providers</li><li>Identity provider</li><li>Data separation</li><li>Backup and recovery</li><li>Monitoring and support</li><li>Updates and patches</li><li>Retention and deletion</li><li>Approved external services</li></ul>
+        <ul class="alt-tech-checklist"><li class="alt-tech-checklist__item"><span class="alt-tech-checklist__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"></path></svg></span><span>Operator and responsibilities</span></li><li class="alt-tech-checklist__item"><span class="alt-tech-checklist__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"></path></svg></span><span>Processing and storage locations</span></li><li class="alt-tech-checklist__item"><span class="alt-tech-checklist__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"></path></svg></span><span>AI model providers</span></li><li class="alt-tech-checklist__item"><span class="alt-tech-checklist__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"></path></svg></span><span>Identity provider</span></li><li class="alt-tech-checklist__item"><span class="alt-tech-checklist__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"></path></svg></span><span>Data separation</span></li><li class="alt-tech-checklist__item"><span class="alt-tech-checklist__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"></path></svg></span><span>Backup and recovery</span></li><li class="alt-tech-checklist__item"><span class="alt-tech-checklist__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"></path></svg></span><span>Monitoring and support</span></li><li class="alt-tech-checklist__item"><span class="alt-tech-checklist__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"></path></svg></span><span>Updates and patches</span></li><li class="alt-tech-checklist__item"><span class="alt-tech-checklist__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"></path></svg></span><span>Retention and deletion</span></li><li class="alt-tech-checklist__item"><span class="alt-tech-checklist__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"></path></svg></span><span>Approved external services</span></li></ul>
       </div>
     </section>
 
@@ -296,7 +276,7 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
         </div>
       </div>
     </footer></div>
-<script type="module" src="js/technical-architecture-page.js?v=20261002f"></script>
+<script type="module" src="js/technical-architecture-page.js?v=20261002g"></script>
 
 
 </body></html>

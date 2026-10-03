@@ -63,7 +63,7 @@ export const copyTechnical = {
         'Illustrative vertical flow from access through identity, orchestration, skills, integrations, model gateway to records.',
     },
     requestFlow: {
-      heading: 'From request to result',
+      heading: 'From request to result.',
       steps: [
         'A person asks a question or starts a task.',
         'Zuraio checks who they are and what they may access.',
@@ -193,7 +193,7 @@ export const copyTechnical = {
         'Illustrativer vertikaler Ablauf von Zugang über Identität, Orchestrierung, Skills, Integrationen und Modell-Gateway bis zu Protokollen.',
     },
     requestFlow: {
-      heading: 'Von der Anfrage zum Ergebnis',
+      heading: 'Von der Anfrage zum Ergebnis.',
       steps: [
         'Eine Person stellt eine Frage oder startet eine Aufgabe.',
         'Zuraio prüft, wer sie ist und worauf sie zugreifen darf.',

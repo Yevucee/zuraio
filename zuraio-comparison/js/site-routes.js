@@ -94,7 +94,10 @@ export function resolveRouteFromLocation(routeKey, targetLocale, pathname = '') 
     if (targetLocale === 'en') {
       if (routeKey === 'home') return 'homepage-preview.html';
       const enPath = PREVIEW_SITE_ROUTES[routeKey].en;
-      if (enPath.startsWith('en/')) return `../${enPath.slice(3)}`;
+      const hashIdx = enPath.indexOf('#');
+      const pathPart = hashIdx >= 0 ? enPath.slice(0, hashIdx) : enPath;
+      const hash = hashIdx >= 0 ? enPath.slice(hashIdx) : '';
+      if (pathPart.startsWith('en/')) return `${pathPart.slice(3)}${hash}`;
       return `../${enPath}`;
     }
     if (routeKey === 'home') return '../de/homepage-preview.html';
