@@ -57,11 +57,10 @@ function renderMain(copy) {
         <h1>${copy.hero.heading}</h1>
         <p class="lede">${copy.hero.sub}</p>
       </div>
-    </section>
-
-    <section class="alt-section alt-section--paper alt-int-marquee" aria-label="${marqueeLabel}">
-      <div class="marquee-track alt-home-integrations__marquee" data-alt-marquee tabindex="0" aria-label="${marqueeLabel}">
-        <div class="marquee-inner"></div>
+      <div class="alt-int-marquee alt-int-marquee--in-hero" aria-label="${marqueeLabel}">
+        <div class="marquee-track alt-home-integrations__marquee" data-alt-marquee tabindex="0" aria-label="${marqueeLabel}">
+          <div class="marquee-inner"></div>
+        </div>
       </div>
     </section>
 
@@ -108,7 +107,7 @@ function renderMain(copy) {
       </div>
     </section>
 
-    <section class="alt-section alt-section--paper alt-int-trademark-band">
+    <section class="alt-section alt-section--tint alt-int-trademark-band">
       <div class="wrap">
         <p class="alt-int-trademark">${copy.trademark}</p>
       </div>
