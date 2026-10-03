@@ -3,7 +3,15 @@ import { renderAltHomeHeader, renderAltHomeFooter } from './alt-homepage-chrome.
 import { renderAltPageCta } from './alt-page-cta.js';
 import { getLocaleFromPathname } from './path-locale.js';
 import { resolveRouteFromLocation } from './site-routes.js';
-import { ROUTES_ICONS_WITH } from './workflow-icons.js';
+import { ROUTES_ICONS_WITH, ROUTES_OUTCOME_CHECK } from './workflow-icons.js';
+
+const RECORDED_ICONS = [
+  ROUTES_ICONS_WITH[0],
+  ROUTES_ICONS_WITH[1],
+  ROUTES_ICONS_WITH[1],
+  ROUTES_ICONS_WITH[2],
+  ROUTES_ICONS_WITH[3],
+];
 
 function pageLocale() {
   return getLocaleFromPathname() ?? (document.documentElement.lang || 'en');
@@ -46,53 +54,7 @@ function layerSection(arch) {
         <tbody>${tableRows}</tbody>
       </table>
     </div>
-    <div class="alt-kv-stack">${mobileCards}</div>
-    ${archDiagram(arch)}`;
-}
-
-function archDiagram(arch) {
-  const labels = arch.diagramLabels;
-  const markerId = 'alt-tech-arrow';
-  const rows = [
-    { y: 16, h: 44, kind: 'accent' },
-    { y: 76, h: 44, kind: 'paper' },
-    { y: 136, h: 44, kind: 'olive' },
-    { y: 196, h: 56, kind: 'paper' },
-    { y: 268, h: 44, kind: 'paper' },
-    { y: 328, h: 44, kind: 'accent' },
-    { y: 388, h: 44, kind: 'paper' },
-  ];
-  const boxes = rows
-    .map((row, i) => {
-      const label = labels[i] ?? '';
-      const fontSize = label.length > 34 ? 9 : label.length > 26 ? 10 : 11;
-      const textY = row.h === 56 ? row.y + 32 : row.y + 28;
-      const cls =
-        row.kind === 'olive'
-          ? 'alt-tech-arch-box alt-tech-arch-box--olive'
-          : row.kind === 'accent'
-            ? 'alt-tech-arch-box alt-tech-arch-box--accent'
-            : 'alt-tech-arch-box';
-      const lineBefore =
-        i === 0
-          ? ''
-          : `<line class="alt-tech-arch-line" x1="240" y1="${row.y - 16}" x2="240" y2="${row.y}" marker-end="url(#${markerId})"/>`;
-      return `${lineBefore}<rect class="${cls}" x="40" y="${row.y}" width="400" height="${row.h}" rx="8"/>
-        <text class="alt-tech-arch-label${row.kind === 'olive' ? ' alt-tech-arch-label--light' : ''}" x="240" y="${textY}" text-anchor="middle" font-size="${fontSize}">${label}</text>`;
-    })
-    .join('');
-
-  return `<div class="alt-tech-diagram-box">
-    <svg class="alt-tech-arch-svg" viewBox="0 0 480 720" role="img" aria-labelledby="alt-tech-arch-title alt-tech-arch-desc">
-      <title id="alt-tech-arch-title">${arch.diagramTitle}</title>
-      <desc id="alt-tech-arch-desc">${arch.diagramDesc}</desc>
-      <defs>
-        <marker id="${markerId}" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z"/></marker>
-      </defs>
-      ${boxes}
-    </svg>
-    <p class="mono alt-tech-diagram-caption">${arch.diagramCaption}</p>
-  </div>`;
+    <div class="alt-kv-stack">${mobileCards}</div>`;
 }
 
 function flowSteps(steps) {
@@ -165,7 +127,7 @@ function hostingHtml(hosting) {
 function recordedHtml(recorded) {
   return recorded.items
     .map((item, i) => {
-      const icon = ROUTES_ICONS_WITH[i % ROUTES_ICONS_WITH.length] ?? '';
+      const icon = RECORDED_ICONS[i] ?? ROUTES_ICONS_WITH[i % ROUTES_ICONS_WITH.length] ?? '';
       return `<article class="alt-recorded-row">
         <div class="alt-recorded-row__icon" aria-hidden="true">${icon}</div>
         <p class="alt-recorded-row__text"><strong>${item.label}:</strong> ${item.text}</p>
@@ -175,20 +137,25 @@ function recordedHtml(recorded) {
 }
 
 function deploymentChecklist(items) {
-  return `<ul class="alt-tech-checklist">${items.map((item) => `<li>${item}</li>`).join('')}</ul>`;
+  return `<ul class="alt-tech-checklist">${items
+    .map(
+      (item) =>
+        `<li class="alt-tech-checklist__item"><span class="alt-tech-checklist__icon" aria-hidden="true">${ROUTES_OUTCOME_CHECK}</span><span>${item}</span></li>`,
+    )
+    .join('')}</ul>`;
 }
 
 function renderMain(copy) {
   const arch = copy.architecture;
   return `
-    <section class="alt-section alt-section--tint alt-tech-hero">
+    <section class="alt-section alt-section--tint alt-security-hero">
       <div class="wrap">
         <span class="marker hero-eyebrow">${copy.hero.eyebrow}</span>
-        <h1 class="alt-page-h1">${copy.hero.heading}</h1>
-        <p class="lede alt-sub-max">${copy.hero.sub}</p>
-        <p class="alt-page-hero-cta">
-          <a class="btn btn-primary btn-lg alt-page-hero-cta__btn" data-route="contact" href="${routeHref('contact')}">${copy.hero.cta}</a>
-        </p>
+        <h1><span class="alt-security-hero__line">${copy.hero.heading}</span></h1>
+        <p class="lede alt-security-hero__sub">${copy.hero.sub}</p>
+        <div class="alt-help-hero__actions">
+          <a class="btn btn-primary btn-lg alt-home-cta" data-route="contact" href="${routeHref('contact')}">${copy.hero.cta}</a>
+        </div>
       </div>
     </section>
 
@@ -222,10 +189,8 @@ function renderMain(copy) {
 
     <section class="alt-section alt-section--paper" id="whats-recorded">
       <div class="wrap">
-        <div class="alt-section-head">
-          <h2>${copy.recorded.heading}</h2>
-          <p class="lede alt-sub-max">${copy.recorded.intro}</p>
-        </div>
+        <div class="alt-section-head"><h2>${copy.recorded.heading}</h2></div>
+        <p class="lede alt-sub-max alt-tech-recorded-intro">${copy.recorded.intro}</p>
         <div class="alt-recorded-grid">${recordedHtml(copy.recorded)}</div>
       </div>
     </section>

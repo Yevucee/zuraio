@@ -6,6 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { startStaticDistServer } from './static-dist-server.mjs';
+import { resolveRouteFromLocation } from '../public/zuraio-comparison/js/site-routes.js';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(ROOT, '..', 'dist');
@@ -33,6 +34,64 @@ const PAGES = [
   { path: '/de/homepage-preview.html', locale: 'de' },
 ];
 
+const EN_PREVIEW_ROUTE_EXPECT = {
+  about: 'homepage-preview.html#team',
+  faq: 'homepage-preview.html#faq',
+  'it-partner': '../technical-architecture.html',
+};
+
+function assertEnPreviewRouteResolution(failures) {
+  const pathname = '/en/homepage-preview.html';
+  for (const [routeKey, expected] of Object.entries(EN_PREVIEW_ROUTE_EXPECT)) {
+    const href = resolveRouteFromLocation(routeKey, 'en', pathname);
+    if (href !== expected) {
+      failures.push(`en preview route ${routeKey}: expected ${expected}, got ${href}`);
+    }
+  }
+}
+
+async function checkEnPreviewLinkHrefs(page, baseUrl, failures) {
+  const pagePath = '/en/homepage-preview.html';
+  await page.goto(`${baseUrl}${pagePath}`, {
+    waitUntil: 'domcontentloaded',
+    timeout: GOTO_TIMEOUT_MS,
+  });
+  await page.waitForSelector('.alt-home-faq-links', { timeout: SELECTOR_TIMEOUT_MS });
+
+  const hrefs = await page.evaluate(() => {
+    const navAbout = document.querySelector('#site-header a[data-route="about"]')?.getAttribute('href') ?? '';
+    const faqLinks = [...document.querySelectorAll('.alt-home-faq-links a[data-route]')];
+    const linkAll = faqLinks.find((a) => a.getAttribute('data-route') === 'faq')?.getAttribute('href') ?? '';
+    const linkIt = faqLinks.find((a) => a.getAttribute('data-route') === 'it-partner')?.getAttribute('href') ?? '';
+    const footerFaq = document.querySelector('#site-footer a[data-route="faq"]')?.getAttribute('href') ?? '';
+    return { navAbout, linkAll, linkIt, footerFaq };
+  });
+
+  const expected = {
+    navAbout: EN_PREVIEW_ROUTE_EXPECT.about,
+    linkAll: EN_PREVIEW_ROUTE_EXPECT.faq,
+    linkIt: EN_PREVIEW_ROUTE_EXPECT['it-partner'],
+    footerFaq: EN_PREVIEW_ROUTE_EXPECT.faq,
+  };
+
+  for (const [key, exp] of Object.entries(expected)) {
+    if (hrefs[key] !== exp) {
+      failures.push(`${pagePath}: ${key} href expected ${exp}, got ${hrefs[key] || '(missing)'}`);
+    }
+  }
+
+  const docBase = `${baseUrl.replace(/\/$/, '')}${pagePath}`;
+  const toFetch = [...new Set(Object.values(hrefs).filter(Boolean))];
+  for (const href of toFetch) {
+    const url = new URL(href, docBase);
+    url.hash = '';
+    const res = await page.request.get(url.toString());
+    if (!res.ok()) {
+      failures.push(`${pagePath}: GET ${href} resolved to ${url.href} → ${res.status()}`);
+    }
+  }
+}
+
 async function run() {
   if (!fs.existsSync(DIST)) {
     console.error('check-internal-links: dist/ missing');
@@ -48,6 +107,8 @@ async function run() {
   try {
     server = await startStaticDistServer(DIST, PORT);
     browser = await chromium.launch({ headless: true });
+
+    assertEnPreviewRouteResolution(failures);
 
     for (const { path: pagePath } of PAGES) {
       const page = await browser.newPage();
@@ -88,6 +149,15 @@ async function run() {
 
         totalLinks += result.count;
         for (const e of result.errors) failures.push(`${pagePath}: ${e}`);
+      } finally {
+        await page.close().catch(() => {});
+      }
+    }
+
+    {
+      const page = await browser.newPage();
+      try {
+        await checkEnPreviewLinkHrefs(page, `http://127.0.0.1:${PORT}`, failures);
       } finally {
         await page.close().catch(() => {});
       }
