@@ -601,7 +601,7 @@ function renderMain(copy, locale, isDev) {
         <p class="alt-home-faq-links">
           <a class="alt-home-link-secondary" data-route="faq" href="${routeHref('faq')}">${copy.faq.linkAll}</a>
           <span class="alt-home-faq-links__sep" aria-hidden="true">·</span>
-          <a class="alt-home-link-secondary" data-route="faq" href="${routeHref('faq')}">${copy.faq.linkIt}</a>
+          <a class="alt-home-link-secondary" data-route="it-partner" href="${routeHref('it-partner')}">${copy.faq.linkIt}</a>
         </p>
       </div>
     </section>

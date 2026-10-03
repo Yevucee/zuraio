@@ -18,7 +18,7 @@ export const copyAltHome = {
   de: {
     metaTitle: 'Zuraio | Alternative Startseite',
     nav: {
-      howItWorks: 'So funktioniert\'s',
+      howItWorks: 'So hilft Zuraio',
       skills: 'Skills',
       security: 'Sicherheit',
       about: 'Über uns',
@@ -218,7 +218,7 @@ export const copyAltHome = {
   en: {
     metaTitle: 'Zuraio | Alternative homepage',
     nav: {
-      howItWorks: 'How it works',
+      howItWorks: 'How it helps',
       skills: 'Skills',
       security: 'Security',
       about: 'About',
