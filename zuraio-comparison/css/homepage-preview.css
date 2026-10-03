@@ -2,6 +2,8 @@
 
 body[data-alt-chrome] {
   padding-top: var(--nav-h);
+  --alt-link: var(--olive-deep);
+  --alt-link-hover: var(--olive-dark, #4a5228);
   /* ~2.5% darker than paper — subtler than global --cloud */
   --alt-tint: #f6f6f3;
   --alt-tint: color-mix(in srgb, var(--paper) 97.5%, var(--charcoal) 2.5%);
@@ -41,40 +43,54 @@ body[data-alt-chrome] .alt-section {
   background: var(--paper);
 }
 
-/* Chapter bands (hard edges, no alternation) */
-body[data-alt-chrome] #hero {
+/* Homepage chapter bands — scoped so #team / #skills ids on other pages keep class bands */
+body[data-alt-chrome] main#alt-home-main #hero {
   background: var(--alt-tint);
 }
 
-body[data-alt-chrome] #demo,
-body[data-alt-chrome] #same-question,
-body[data-alt-chrome] #faq,
-body[data-alt-chrome] #final {
+body[data-alt-chrome] main#alt-home-main #demo,
+body[data-alt-chrome] main#alt-home-main #same-question,
+body[data-alt-chrome] main#alt-home-main #final {
   background: var(--paper);
 }
 
-body[data-alt-chrome] #skills,
-body[data-alt-chrome] #how-start,
-body[data-alt-chrome] #team {
+body[data-alt-chrome] main#alt-home-main #faq {
   background: var(--alt-tint);
 }
 
-body[data-alt-chrome] #skills.alt-section {
+body[data-alt-chrome] main#alt-home-main #skills,
+body[data-alt-chrome] main#alt-home-main #how-start {
+  background: var(--alt-tint);
+}
+
+body[data-alt-chrome] main#alt-home-main #team {
+  background: var(--paper);
+}
+
+body[data-alt-chrome] main#alt-home-main #skills.alt-section {
   padding-block: var(--alt-section-y);
 }
 
-body[data-alt-chrome] #integrations.alt-section {
+body[data-alt-chrome] main#alt-home-main #integrations.alt-section {
   background: #fff;
   border-block: 1px solid var(--hairline);
   padding-block: 56px;
 }
 
-body[data-alt-chrome] #how-start.alt-section {
+body[data-alt-chrome] main#alt-home-main #how-start.alt-section {
   padding-block: var(--alt-section-y) calc(var(--alt-section-y) / 2);
 }
 
-body[data-alt-chrome] #team.alt-section {
+body[data-alt-chrome] main#alt-home-main #team.alt-section {
   padding-block: calc(var(--alt-section-y) / 2) var(--alt-section-y);
+}
+
+body[data-alt-chrome] .alt-home-final__trademark {
+  margin: clamp(28px, 3vw, 40px) auto 0;
+  max-width: 52rem;
+  font-size: var(--alt-small);
+  color: var(--secondary);
+  line-height: 1.5;
 }
 
 body[data-alt-chrome] .alt-section--control.control {
@@ -215,13 +231,14 @@ body[data-alt-chrome] .alt-home-faq-links {
 
 body[data-alt-chrome] .alt-home-link-secondary {
   font-weight: 500;
-  color: var(--teal);
+  color: var(--alt-link);
   text-decoration: none;
   text-underline-offset: 3px;
 }
 
 body[data-alt-chrome] .alt-home-link-secondary:hover,
 body[data-alt-chrome] .alt-home-link-secondary:focus-visible {
+  color: var(--alt-link-hover);
   text-decoration: underline;
 }
 
@@ -1306,15 +1323,6 @@ body[data-alt-chrome] .alt-sq-link-wrap {
   text-align: center;
 }
 
-body[data-alt-chrome] #same-question .alt-home-link-secondary {
-  color: var(--olive-deep);
-}
-
-body[data-alt-chrome] #same-question .alt-home-link-secondary:hover,
-body[data-alt-chrome] #same-question .alt-home-link-secondary:focus-visible {
-  color: var(--olive-dark, #4a5228);
-}
-
 body[data-alt-chrome] .alt-home-trademark-band.alt-section {
   padding-top: 0;
   padding-bottom: var(--alt-section-y);
@@ -1612,7 +1620,26 @@ body[data-alt-chrome] .alt-home-founder__email {
 }
 
 body[data-alt-chrome] .alt-home-founder__email a {
-  color: var(--teal);
+  color: var(--alt-link);
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+body[data-alt-chrome] .alt-home-founder__email a:hover,
+body[data-alt-chrome] .alt-home-founder__email a:focus-visible {
+  color: var(--alt-link-hover);
+  text-decoration: underline;
+}
+
+body[data-alt-chrome] main .faq-a a {
+  color: var(--alt-link);
+  font-weight: 500;
+  text-underline-offset: 3px;
+}
+
+body[data-alt-chrome] main .faq-a a:hover,
+body[data-alt-chrome] main .faq-a a:focus-visible {
+  color: var(--alt-link-hover);
 }
 
 body[data-alt-chrome] .alt-home-founder__role:empty {
@@ -2337,6 +2364,10 @@ body[data-alt-chrome] .alt-int-marquee.alt-section {
   padding-bottom: var(--alt-section-y);
 }
 
+body[data-alt-chrome] .alt-int-marquee--in-hero {
+  margin-top: var(--alt-head-gap);
+}
+
 body[data-alt-chrome] .alt-int-marquee .alt-home-integrations__marquee {
   margin-top: 0;
 }
@@ -2440,6 +2471,7 @@ body[data-alt-chrome] .alt-int-cta__actions {
 body[data-alt-chrome] .alt-int-trademark-band.alt-section {
   padding-top: clamp(28px, 3vw, 40px);
   padding-bottom: clamp(28px, 3vw, 40px);
+  background: var(--alt-tint);
 }
 
 body[data-alt-chrome] .alt-int-trademark {
