@@ -613,7 +613,7 @@ function renderMain(copy, locale, isDev) {
       </div>
     </section>
 
-    <section class="alt-section alt-section--paper" id="faq" aria-labelledby="alt-faq-h">
+    <section class="alt-section alt-section--tint" id="faq" aria-labelledby="alt-faq-h">
       <div class="wrap">
         <div class="alt-section-head">
           <h2 id="alt-faq-h" class="alt-reveal">FAQ</h2>
@@ -625,21 +625,12 @@ function renderMain(copy, locale, isDev) {
       </div>
     </section>
 
-    ${
-      copy.aiTrademark
-        ? `<section class="alt-section alt-section--paper alt-home-trademark-band" aria-label="Trademarks">
-      <div class="wrap">
-        <p class="alt-int-trademark">${copy.aiTrademark}</p>
-      </div>
-    </section>`
-        : ''
-    }
-
     <section class="alt-section alt-home-final" id="final">
       <div class="wrap alt-home-final__inner">
         <h2>${copy.closing.heading}</h2>
         <a class="btn btn-primary btn-lg alt-home-cta" data-alt-cta="closing" data-route="contact" href="${routeHref('contact')}">${copy.closing.cta}</a>
         <p class="alt-home-final__tag">${copy.closing.tagline}</p>
+        ${copy.aiTrademark ? `<p class="alt-int-trademark alt-home-final__trademark">${copy.aiTrademark}</p>` : ''}
       </div>
     </section>
   `;

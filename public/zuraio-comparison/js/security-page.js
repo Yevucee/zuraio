@@ -119,7 +119,7 @@ function renderMain(copy) {
       </div>
     </section>
 
-    <section class="alt-section alt-section--paper alt-security-cta">
+    <section class="alt-section alt-section--tint alt-security-cta">
       <div class="wrap alt-security-cta__inner">
         <div>
           <h2>${copy.cta.heading}</h2>
