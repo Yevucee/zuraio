@@ -26,12 +26,16 @@ export const copyAltHome = {
     },
     hero: {
       eyebrow: 'KI-Assistent für Schweizer KMU',
+      headlineLines: [
+        'KI, die Ihr Unternehmen kennt.',
+        'Ihre Daten bleiben in der Schweiz.',
+      ],
       variants: {
-        a: 'KI, ohne die Schlüssel aus der Hand zu geben.',
+        a: 'KI, die Ihr Unternehmen kennt. Ihre Daten bleiben in der Schweiz.',
         c: 'Ihr Team nutzt KI längst. Wissen Sie, wo Ihre Daten landen?',
         h: 'Ein KI-Assistent, eingerichtet für Ihren Betrieb. Von Menschen, die sich die Zeit nehmen, ihn zu verstehen.',
       },
-      sub: 'Zuraio beantwortet E-Mails, bereitet Sitzungen vor und findet, was Sie in Ihrem Firmenwissen suchen. Mit Quellen und in der Schweiz gehostet.',
+      sub: 'Zuraio beantwortet E-Mails, bereitet Sitzungen vor und findet, was Sie im Wissen Ihres Unternehmens brauchen, immer mit Quellen.',
       cta: '30-Minuten-Demo buchen',
       ctaMicro: 'Mit Ihren eigenen Beispielen. Unverbindlich.',
       trust: [
@@ -114,17 +118,27 @@ export const copyAltHome = {
       line: 'Ihr Team arbeitet weiter in Microsoft Outlook und Microsoft Teams.',
       link: 'Alle Integrationen →',
     },
-    compare: {
-      heading: 'Warum nicht einfach ChatGPT oder Copilot?',
-      chatgpt:
-        'Intelligent, kennt aber Ihren Betrieb nicht. Den Kontext muss jemand jedes Mal hineinkopieren, und es ist schwer nachzuvollziehen, welche Firmendaten wo landen.',
-      copilot:
-        'Kennt die Microsoft-Welt. Daten aus bexio, Abacus oder Ihrem CRM brauchen Zusatzaufwand, und der Nutzen hängt von Lizenzen und Einrichtung ab.',
-      zuraio:
-        'Kennt Ihren Betrieb über alle Systeme hinweg, startet mit fertigen Skills, entwickelt eigene mit Ihnen. Gehostet in der Schweiz, und Sie entscheiden, welche KI was sieht.',
-      after:
-        'Wenn Ihre ganze Arbeit in Microsoft 365 stattfindet, deckt Copilot vieles ab. Zuraio ergänzt den Rest: bexio, Abacus, Ihre Dateien und Skills für Ihren Betrieb, gehostet in der Schweiz.',
+    sameQuestion: {
+      eyebrow: 'DAS WISSEN IHRES UNTERNEHMENS',
+      heading: 'Gleiche Frage. Andere Antwort.',
+      intro: 'Allgemeine KI-Tools sind klug. Aber sie wissen nur, was sie sehen.',
+      questionLabel: 'Die Frage',
+      question:
+        'Hat die Muster AG die letzte Rechnung bezahlt, und was haben wir zum Jahresabschluss vereinbart?',
+      leftLabel: 'Ohne Zugriff auf Ihre Systeme',
+      leftAnswer:
+        'Ich habe keinen Zugriff auf Ihre Rechnungen oder Ihre Vereinbarungen mit der Muster AG.',
+      rightLabel: 'Zuraio',
+      rightAnswer:
+        'Die Rechnung vom 30. September ist in bexio offen (fällig am 30. Oktober). Jahresabschluss bis 30. April, zum Pauschalpreis; die Lohnbuchhaltung wird separat verrechnet.',
+      sourcesLabel: 'Quellen',
+      sourceChips: ['bexio · Rechnung 2026-118', 'Mandatsvertrag · 12. März'],
+      closing: 'Der Unterschied ist nicht die KI. Sondern was sie über Ihr Unternehmen weiss.',
+      link: 'So unterscheiden wir uns von ChatGPT und Copilot →',
+      linkAnchor: 'chatgpt-copilot',
     },
+    aiTrademark:
+      'ChatGPT ist eine Marke von OpenAI. Copilot und Microsoft 365 sind Marken von Microsoft. Claude ist eine Marke von Anthropic.',
     control: {
       eyebrow: 'DATENKONTROLLE',
       heading: 'Nichts verlässt den Betrieb ohne Ihr OK.',
@@ -181,6 +195,11 @@ export const copyAltHome = {
     faq: {
       items: [
         {
+          id: 'chatgpt-copilot',
+          q: 'Warum nicht einfach ChatGPT oder Copilot?',
+          a: 'Sie müssen sich nicht entscheiden. ChatGPT kennt Ihr Unternehmen nur, wenn jemand den Kontext jedes Mal teilt. Copilot kennt Ihre Microsoft-365-Welt gut; für andere Systeme braucht es meist Konnektoren, die Ihre IT aufbaut. Zuraio ist bereits mit den Systemen verbunden, die Schweizer KMU nutzen, etwa bexio, Abacus und Proffix, und mit Skills, die wir mit Ihrem Team aufbauen. Zuraio ist modellneutral: standardmässig Schweizer Modelle, GPT oder Claude für Aufgaben, die Ihr Unternehmen freigibt.',
+        },
+        {
           q: 'Bleiben unsere Daten in der Schweiz?',
           a: 'Ja, standardmässig. Die Plattform und Ihre Firmendaten werden bei Infomaniak in der Schweiz gehostet, und auch das Standardmodell läuft in der Schweiz. Für einzelne Aufgaben können Sie ein anderes KI-Modell wählen. Jedes ist gekennzeichnet, damit Sie sehen, wo es arbeitet. Wählen Sie ein Modell ausserhalb der Schweiz, wird nur der Inhalt dieser Aufgabe übermittelt. So entscheiden Sie selbst, was die Schweiz verlässt und was nicht.',
         },
@@ -226,12 +245,16 @@ export const copyAltHome = {
     },
     hero: {
       eyebrow: 'AI assistant for Swiss SMEs',
+      headlineLines: [
+        'AI that knows your company.',
+        'Your data stays in Switzerland.',
+      ],
       variants: {
-        a: 'AI, without handing over the keys.',
+        a: 'AI that knows your company. Your data stays in Switzerland.',
         c: 'Your team already uses AI. Do you know where your data goes?',
         h: 'An AI assistant set up around your business, by people who take the time to understand it.',
       },
-      sub: 'Zuraio answers emails, prepares meetings and finds what you need in your company knowledge, with sources and hosted in Switzerland.',
+      sub: 'Zuraio answers emails, prepares meetings and finds what you need in your company knowledge, always with sources.',
       cta: 'Book a 30-minute demo',
       ctaMicro: 'With your own examples. No commitment.',
       trust: [
@@ -314,17 +337,27 @@ export const copyAltHome = {
       line: 'Your team keeps working in Microsoft Outlook and Microsoft Teams.',
       link: 'All integrations →',
     },
-    compare: {
-      heading: 'Why not just ChatGPT or Copilot?',
-      chatgpt:
-        'Smart, but it doesn\'t know your company. Someone has to paste in the context each time, and it\'s hard to see which company data ends up where.',
-      copilot:
-        'Knows the Microsoft world. Your bexio, Abacus or CRM data needs extra work, and the value depends on licences and setup.',
-      zuraio:
-        'Knows your company across all of your systems, starts with ready-made skills and builds your own with you. Hosted in Switzerland, and you decide which AI sees what.',
-      after:
-        'If all your work happens in Microsoft 365, Copilot covers a lot. Zuraio adds the rest: bexio, Abacus, your files and skills built for your company, hosted in Switzerland.',
+    sameQuestion: {
+      eyebrow: 'YOUR COMPANY\'S KNOWLEDGE',
+      heading: 'Same question. Different answer.',
+      intro: 'General AI tools are smart. But they only know what they can see.',
+      questionLabel: 'The question',
+      question:
+        'Has Muster AG paid the last invoice, and what did we agree about the year-end close?',
+      leftLabel: 'Without access to your systems',
+      leftAnswer:
+        'I don\'t have access to your invoices or your agreements with Muster AG.',
+      rightLabel: 'Zuraio',
+      rightAnswer:
+        'The invoice from 30 September is open in bexio (due 30 October). Year-end close by 30 April, at a fixed fee; payroll is billed separately.',
+      sourcesLabel: 'Sources',
+      sourceChips: ['bexio · Invoice 2026-118', 'Engagement letter · 12 March'],
+      closing: 'The difference isn\'t the AI. It\'s what the AI knows about your company.',
+      link: 'See how we compare to ChatGPT and Copilot →',
+      linkAnchor: 'chatgpt-copilot',
     },
+    aiTrademark:
+      'ChatGPT is a trademark of OpenAI. Copilot and Microsoft 365 are trademarks of Microsoft. Claude is a trademark of Anthropic.',
     control: {
       eyebrow: 'DATA CONTROL',
       heading: 'Nothing leaves your company without your OK.',
@@ -380,6 +413,11 @@ export const copyAltHome = {
     },
     faq: {
       items: [
+        {
+          id: 'chatgpt-copilot',
+          q: 'Why not just use ChatGPT or Copilot?',
+          a: 'You don\'t have to choose. ChatGPT only knows your company if someone shares the context each time. Copilot knows your Microsoft 365 world well, and reaching other systems usually needs connectors your IT builds. Zuraio comes connected to the systems Swiss SMEs use, like bexio, Abacus and Proffix, with skills we build with your team. It is model neutral: Swiss models by default, and GPT or Claude for tasks your company approves.',
+        },
         {
           q: 'Is our data kept in Switzerland?',
           a: 'Yes, by default. The platform and your company data are hosted by Infomaniak in Switzerland, and the default AI model runs in Switzerland too. For individual tasks you can choose a different model, and each one is labelled so you can see where it runs. If you choose a model outside Switzerland, only the content of that task is sent. So you decide what leaves Switzerland, and what doesn\'t.',

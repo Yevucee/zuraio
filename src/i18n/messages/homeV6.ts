@@ -118,7 +118,7 @@ export const homeV6En = {
   },
   control: {
     label: 'Controlled company AI',
-    title: 'AI, without handing over the keys.',
+    title: 'AI that knows your company. Your data stays in Switzerland.',
     body1: 'AI should not mean losing control of company data.',
     body2:
       'Zuraio gives companies control over where it runs, what it can use, who can access it and how outputs can be reviewed.',

@@ -1,7 +1,7 @@
 import { getAltHomeCopy } from './copy-alt-home.js';
 import { renderAltHomeHeader, renderAltHomeFooter } from './alt-homepage-chrome.js';
 import { trackAltHome } from './alt-homepage-analytics.js';
-import { initFaq } from './faq-accordion.js';
+import { initFaq, initFaqFromHash } from './faq-accordion.js';
 import { assetHref, detectSiteBase } from './path-locale.js';
 import { resolveRouteFromLocation } from './site-routes.js';
 import { isPreviewDevMode, formatPreviewHtml } from './alt-preview-utils.js';
@@ -13,12 +13,79 @@ import { ROUTES_OUTCOME_CHECK } from './workflow-icons.js';
 
 const DEMO_CACHE = '20260805v2';
 
+const SPEECH_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a7 7 0 0 0-4 12.7V19a1 1 0 0 0 1 1h2v-3.3A7 7 0 0 0 12 3z"/></svg>`;
+
 function previewLocale() {
   return document.documentElement.lang === 'de' ? 'de' : 'en';
 }
 
 function routeHref(routeKey) {
   return resolveRouteFromLocation(routeKey, previewLocale(), location.pathname);
+}
+
+function faqItemHref(anchorId) {
+  const base = routeHref('faq');
+  const path = base.split('#')[0];
+  return `${path}#${anchorId}`;
+}
+
+function renderHeroTitle(copy, heroKey) {
+  if (heroKey === 'a' && copy.hero.headlineLines?.length) {
+    return copy.hero.headlineLines
+      .map((line) => `<span class="alt-home-hero__line">${line}</span>`)
+      .join('');
+  }
+  return copy.hero.variants[heroKey] ?? '';
+}
+
+function renderSameQuestion(copy) {
+  const sq = copy.sameQuestion;
+  if (!sq) return '';
+  const chips = (sq.sourceChips ?? [])
+    .map(
+      (chip) =>
+        `<li class="alt-sq-source-chips__item"><span class="alt-sq-source-chips__icon" aria-hidden="true">${ROUTES_OUTCOME_CHECK}</span><span>${chip}</span></li>`,
+    )
+    .join('');
+  const logo = assetHref('assets/zuraio-logo-nav@2x.webp');
+  return `
+    <section class="alt-section alt-section--paper" id="same-question" aria-labelledby="alt-sq-h">
+      <div class="wrap">
+        <div class="alt-section-head alt-sq-head">
+          <span class="marker alt-sq-eyebrow">${sq.eyebrow}</span>
+          <h2 id="alt-sq-h" class="alt-reveal">${sq.heading}</h2>
+          <p class="lede alt-sq-intro">${sq.intro}</p>
+        </div>
+        <div class="alt-sq-question-pill">
+          <span class="alt-sq-question-pill__icon" aria-hidden="true">${SPEECH_ICON}</span>
+          <div class="alt-sq-question-pill__text">
+            <span class="alt-sq-question-pill__label">${sq.questionLabel}</span>
+            <p class="alt-sq-question-pill__q">${sq.question}</p>
+          </div>
+        </div>
+        <div class="alt-sq-bubbles">
+          <figure class="alt-sq-bubble alt-sq-bubble--plain">
+            <figcaption class="alt-sq-bubble__label">${sq.leftLabel}</figcaption>
+            <blockquote class="alt-sq-bubble__body">${sq.leftAnswer}</blockquote>
+          </figure>
+          <figure class="alt-sq-bubble alt-sq-bubble--zuraio">
+            <figcaption class="alt-sq-bubble__label">
+              <img class="alt-sq-bubble__mark" src="${logo}" width="72" height="20" alt="" decoding="async" />
+              <span>${sq.rightLabel}</span>
+            </figcaption>
+            <blockquote class="alt-sq-bubble__body">${sq.rightAnswer}</blockquote>
+            <div class="alt-sq-sources">
+              <span class="alt-sq-sources__label">${sq.sourcesLabel}</span>
+              <ul class="alt-sq-source-chips">${chips}</ul>
+            </div>
+          </figure>
+        </div>
+        <p class="alt-sq-closing">${sq.closing}</p>
+        <p class="alt-sq-link-wrap">
+          <a class="alt-home-link-secondary" data-route="faq" href="${faqItemHref(sq.linkAnchor ?? 'chatgpt-copilot')}">${sq.link}</a>
+        </p>
+      </div>
+    </section>`;
 }
 const FOUNDER_PREVIEW = 'zuraio/assets/team-preview';
 const PRODUCT_IMG_WIDTH = 2080;
@@ -324,7 +391,6 @@ function initSkillsVisualSlot() {
 function renderMain(copy, locale, isDev) {
   const todos = [];
   const heroKey = getHeroVariant();
-  const heroTitle = copy.hero.variants[heroKey];
 
   const reasonsStripHtml = copy.reasons.cards
     .map(
@@ -353,32 +419,6 @@ function renderMain(copy, locale, isDev) {
       </article>`;
     })
     .join('');
-
-  const compareHtml = `
-    <article class="alt-preview-card alt-home-compare alt-home-compare--zuraio">
-      <h3 class="alt-preview-card__title">Zuraio</h3>
-      <p>${copy.compare.zuraio}</p>
-    </article>
-    <div class="alt-home-compare-snap" aria-label="ChatGPT and Copilot">
-      <article class="alt-preview-card alt-home-compare alt-home-compare--split alt-home-compare--chatgpt">
-        <h3 class="alt-preview-card__title">ChatGPT</h3>
-        <p>${copy.compare.chatgpt}</p>
-      </article>
-      <article class="alt-preview-card alt-home-compare alt-home-compare--split alt-home-compare--copilot">
-        <h3 class="alt-preview-card__title">Microsoft Copilot</h3>
-        <p>${copy.compare.copilot}</p>
-      </article>
-    </div>
-    <article class="alt-preview-card alt-home-compare alt-home-compare--combined">
-      <div class="alt-home-compare__row">
-        <h3 class="alt-preview-card__title">ChatGPT</h3>
-        <p>${copy.compare.chatgpt}</p>
-      </div>
-      <div class="alt-home-compare__row">
-        <h3 class="alt-preview-card__title">Microsoft Copilot</h3>
-        <p>${copy.compare.copilot}</p>
-      </div>
-    </article>`;
 
   const controlCardsHtml = (copy.control.cards ?? [])
     .map((c) => `<div class="ccard"><h4>${c.title}</h4><p>${c.body}</p></div>`)
@@ -425,7 +465,7 @@ function renderMain(copy, locale, isDev) {
   const faqPrimary = faqItems.slice(0, 4);
   const faqMore = faqItems.slice(4);
   const faqItemHtml = (item, i) => `
-      <div class="faq-item">
+      <div class="faq-item"${item.id ? ` id="${item.id}"` : ''}>
         <button class="faq-q" type="button" aria-expanded="false" id="alt-faq-q-${i}">${item.q}</button>
         <div class="faq-a" hidden role="region" aria-labelledby="alt-faq-q-${i}">
           <p>${item.aHtml ?? fmt(item.a ?? '', isDev, todos)}</p>
@@ -457,7 +497,7 @@ function renderMain(copy, locale, isDev) {
         <div class="alt-home-hero__copy">
           <div class="alt-home-hero__stack">
             <span class="marker hero-eyebrow">${copy.hero.eyebrow}</span>
-            <h1 data-alt-hero-title>${heroTitle}</h1>
+            <h1 data-alt-hero-title>${renderHeroTitle(copy, heroKey)}</h1>
             <p class="alt-home-hero__sub">${copy.hero.sub}</p>
             <div class="alt-home-hero__actions">
               <a class="btn btn-primary btn-lg alt-home-cta" data-alt-cta="hero" data-route="contact" href="${routeHref('contact')}">${copy.hero.cta}</a>
@@ -540,15 +580,7 @@ function renderMain(copy, locale, isDev) {
       </div>
     </section>
 
-    <section class="alt-section alt-section--paper" id="compare" aria-labelledby="alt-compare-h">
-      <div class="wrap">
-        <div class="alt-section-head">
-          <h2 id="alt-compare-h" class="alt-reveal">${copy.compare.heading}</h2>
-        </div>
-        <div class="alt-home-compare-grid">${compareHtml}</div>
-        ${copy.compare.after ? `<p class="alt-home-compare__after">${copy.compare.after}</p>` : ''}
-      </div>
-    </section>
+    ${renderSameQuestion(copy)}
 
     <section class="control alt-section alt-section--control" id="data-control" aria-labelledby="alt-control-h">
       <canvas class="control-particles" data-control-particles aria-hidden="true"></canvas>
@@ -605,6 +637,16 @@ function renderMain(copy, locale, isDev) {
         </p>
       </div>
     </section>
+
+    ${
+      copy.aiTrademark
+        ? `<section class="alt-section alt-section--paper alt-home-trademark-band" aria-label="Trademarks">
+      <div class="wrap">
+        <p class="alt-int-trademark">${copy.aiTrademark}</p>
+      </div>
+    </section>`
+        : ''
+    }
 
     <section class="alt-section alt-home-final" id="final">
       <div class="wrap alt-home-final__inner">
@@ -666,6 +708,8 @@ export function bootAltHomepage() {
   renderAltHomeFooter(copy, locale);
   initFaq();
   initAltFaqMore();
+  initFaqFromHash();
+  window.addEventListener('hashchange', initFaqFromHash);
   initAltHomeDemoVideo();
   initControlParticles();
   initAltPreviewMarquee();
