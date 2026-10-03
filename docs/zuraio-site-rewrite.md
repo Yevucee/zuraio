@@ -27,6 +27,73 @@ DE nav: **So hilft Zuraio · Skills · Sicherheit · Über uns**.
 
 ---
 
+## 0. Homepage preview (en/homepage-preview.html, de/homepage-preview.html)
+
+### Hero
+**Eyebrow**
+- EN: AI assistant for Swiss SMEs
+- DE: KI-Assistent für Schweizer KMU
+
+**H1** (two lines on desktop)
+- EN: AI that knows your company. / Your data stays in Switzerland.
+- DE: KI, die Ihr Unternehmen kennt. / Ihre Daten bleiben in der Schweiz.
+
+**Sub**
+- EN: Zuraio answers emails, prepares meetings and finds what you need in your company knowledge, always with sources.
+- DE: Zuraio beantwortet E-Mails, bereitet Sitzungen vor und findet, was Sie im Wissen Ihres Unternehmens brauchen, immer mit Quellen.
+
+### Section: Same question (id="same-question"; after Integrations, before Data control)
+**Eyebrow**
+- EN: YOUR COMPANY'S KNOWLEDGE
+- DE: DAS WISSEN IHRES UNTERNEHMENS
+
+**H2**
+- EN: Same question. Different answer.
+- DE: Gleiche Frage. Andere Antwort.
+
+**Intro**
+- EN: General AI tools are smart. But they only know what they can see.
+- DE: Allgemeine KI-Tools sind klug. Aber sie wissen nur, was sie sehen.
+
+**Question label / Question**
+- EN: The question / Has Muster AG paid the last invoice, and what did we agree about the year-end close?
+- DE: Die Frage / Hat die Muster AG die letzte Rechnung bezahlt, und was haben wir zum Jahresabschluss vereinbart?
+
+**Left label / answer**
+- EN: Without access to your systems / I don't have access to your invoices or your agreements with Muster AG.
+- DE: Ohne Zugriff auf Ihre Systeme / Ich habe keinen Zugriff auf Ihre Rechnungen oder Ihre Vereinbarungen mit der Muster AG.
+
+**Right label / answer**
+- EN: Zuraio / The invoice from 30 September is open in bexio (due 30 October). Year-end close by 30 April, at a fixed fee; payroll is billed separately.
+- DE: Zuraio / Die Rechnung vom 30. September ist in bexio offen (fällig am 30. Oktober). Jahresabschluss bis 30. April, zum Pauschalpreis; die Lohnbuchhaltung wird separat verrechnet.
+
+**Sources**
+- EN label: Sources · chips: bexio · Invoice 2026-118 | Engagement letter · 12 March
+- DE label: Quellen · chips: bexio · Rechnung 2026-118 | Mandatsvertrag · 12. März
+
+**Closing**
+- EN: The difference isn't the AI. It's what the AI knows about your company.
+- DE: Der Unterschied ist nicht die KI. Sondern was sie über Ihr Unternehmen weiss.
+
+**Link** (to homepage FAQ item id="chatgpt-copilot")
+- EN: See how we compare to ChatGPT and Copilot →
+- DE: So unterscheiden wir uns von ChatGPT und Copilot →
+
+**AI trademark line** (above final CTA band)
+- EN: ChatGPT is a trademark of OpenAI. Copilot and Microsoft 365 are trademarks of Microsoft. Claude is a trademark of Anthropic.
+- DE: ChatGPT ist eine Marke von OpenAI. Copilot und Microsoft 365 sind Marken von Microsoft. Claude ist eine Marke von Anthropic.
+
+### Homepage FAQ (first visible item, id="chatgpt-copilot")
+**Q / A EN**
+- Why not just use ChatGPT or Copilot?
+- You don't have to choose. ChatGPT only knows your company if someone shares the context each time. Copilot knows your Microsoft 365 world well, and reaching other systems usually needs connectors your IT builds. Zuraio comes connected to the systems Swiss SMEs use, like bexio, Abacus and Proffix, with skills we build with your team. It is model neutral: Swiss models by default, and GPT or Claude for tasks your company approves.
+
+**Q / A DE**
+- Warum nicht einfach ChatGPT oder Copilot?
+- Sie müssen sich nicht entscheiden. ChatGPT kennt Ihr Unternehmen nur, wenn jemand den Kontext jedes Mal teilt. Copilot kennt Ihre Microsoft-365-Welt gut; für andere Systeme braucht es meist Konnektoren, die Ihre IT aufbaut. Zuraio ist bereits mit den Systemen verbunden, die Schweizer KMU nutzen, etwa bexio, Abacus und Proffix, und mit Skills, die wir mit Ihrem Team aufbauen. Zuraio ist modellneutral: standardmässig Schweizer Modelle, GPT oder Claude für Aufgaben, die Ihr Unternehmen freigibt.
+
+---
+
 ## 1. How it helps (how-it-helps.html)
 
 ### Hero
@@ -396,6 +463,10 @@ DE nav: **So hilft Zuraio · Skills · Sicherheit · Über uns**.
 - DE: Kurze, ehrliche Antworten. Fehlt Ihre Frage, schreiben Sie uns.
 
 ### Group 1: About Zuraio / Über Zuraio
+
+**Why not just use ChatGPT or Copilot? / Warum nicht einfach ChatGPT oder Copilot?** (homepage item id="chatgpt-copilot")
+- EN: You don't have to choose. ChatGPT only knows your company if someone shares the context each time. Copilot knows your Microsoft 365 world well, and reaching other systems usually needs connectors your IT builds. Zuraio comes connected to the systems Swiss SMEs use, like bexio, Abacus and Proffix, with skills we build with your team. It is model neutral: Swiss models by default, and GPT or Claude for tasks your company approves.
+- DE: Sie müssen sich nicht entscheiden. ChatGPT kennt Ihr Unternehmen nur, wenn jemand den Kontext jedes Mal teilt. Copilot kennt Ihre Microsoft-365-Welt gut; für andere Systeme braucht es meist Konnektoren, die Ihre IT aufbaut. Zuraio ist bereits mit den Systemen verbunden, die Schweizer KMU nutzen, etwa bexio, Abacus und Proffix, und mit Skills, die wir mit Ihrem Team aufbauen. Zuraio ist modellneutral: standardmässig Schweizer Modelle, GPT oder Claude für Aufgaben, die Ihr Unternehmen freigibt.
 
 **What is Zuraio? / Was ist Zuraio?**
 - EN: An AI assistant for Swiss SMEs. It answers emails, prepares meetings and finds information in your company knowledge, with sources, hosted in Switzerland. It works with skills: tasks it knows how to do your way.

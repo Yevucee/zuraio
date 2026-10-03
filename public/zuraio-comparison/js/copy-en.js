@@ -243,8 +243,8 @@ export const home = {
   dataControl: {
     marker: 'Data control',
     positioning: 'Built for Swiss SMEs that want the benefits of AI without losing control of company data.',
-    heading: 'AI, without handing over the keys.',
-    headingEmphasis: 'keys',
+    heading: 'AI that knows your company. Your data stays in Switzerland.',
+    headingEmphasis: '',
     body: 'Zuraio gives companies control over where it runs, which information it can use, who can access it and how its work is reviewed.',
     cards: [
       {

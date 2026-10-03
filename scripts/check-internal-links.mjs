@@ -90,6 +90,21 @@ async function checkEnPreviewLinkHrefs(page, baseUrl, failures) {
       failures.push(`${pagePath}: GET ${href} resolved to ${url.href} → ${res.status()}`);
     }
   }
+
+  await page.waitForSelector('#same-question .alt-sq-link-wrap a', { timeout: SELECTOR_TIMEOUT_MS });
+  const compareHref = await page.locator('#same-question .alt-sq-link-wrap a').getAttribute('href');
+  if (!compareHref?.includes('chatgpt-copilot')) {
+    failures.push(`${pagePath}: same-question link must target #chatgpt-copilot, got ${compareHref ?? '(missing)'}`);
+  } else {
+    await page.locator('#same-question .alt-sq-link-wrap a').click();
+    await page.waitForFunction(
+      () =>
+        document.getElementById('chatgpt-copilot')?.querySelector('.faq-q')?.getAttribute('aria-expanded') ===
+        'true',
+      null,
+      { timeout: SELECTOR_TIMEOUT_MS },
+    );
+  }
 }
 
 async function run() {
