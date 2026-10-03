@@ -13,7 +13,7 @@ import { ROUTES_OUTCOME_CHECK } from './workflow-icons.js';
 
 const DEMO_CACHE = '20260805v2';
 
-const SPEECH_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a7 7 0 0 0-4 12.7V19a1 1 0 0 0 1 1h2v-3.3A7 7 0 0 0 12 3z"/></svg>`;
+const SPEECH_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
 
 function previewLocale() {
   return document.documentElement.lang === 'de' ? 'de' : 'en';
@@ -30,6 +30,10 @@ function faqItemHref(anchorId) {
 }
 
 function renderHeroTitle(copy, heroKey) {
+  if (heroKey === 'a' && copy.hero.headlineLines?.length >= 2) {
+    const [primary, secondary] = copy.hero.headlineLines;
+    return `<span class="alt-home-hero__line alt-home-hero__line--primary">${primary}</span><span class="alt-home-hero__line alt-home-hero__line--secondary">${secondary}</span>`;
+  }
   if (heroKey === 'a' && copy.hero.headlineLines?.length) {
     return copy.hero.headlineLines
       .map((line) => `<span class="alt-home-hero__line">${line}</span>`)
@@ -42,10 +46,7 @@ function renderSameQuestion(copy) {
   const sq = copy.sameQuestion;
   if (!sq) return '';
   const chips = (sq.sourceChips ?? [])
-    .map(
-      (chip) =>
-        `<li class="alt-sq-source-chips__item"><span class="alt-sq-source-chips__icon" aria-hidden="true">${ROUTES_OUTCOME_CHECK}</span><span>${chip}</span></li>`,
-    )
+    .map((chip) => `<span class="alt-sq-source-chips__chip">${chip}</span>`)
     .join('');
   const logo = assetHref('assets/zuraio-logo-nav@2x.webp');
   return `
@@ -76,7 +77,10 @@ function renderSameQuestion(copy) {
             <blockquote class="alt-sq-bubble__body">${sq.rightAnswer}</blockquote>
             <div class="alt-sq-sources">
               <span class="alt-sq-sources__label">${sq.sourcesLabel}</span>
-              <ul class="alt-sq-source-chips">${chips}</ul>
+              <div class="alt-sq-source-chips">
+                <span class="alt-sq-source-chips__check" aria-hidden="true">${ROUTES_OUTCOME_CHECK}</span>
+                ${chips}
+              </div>
             </div>
           </figure>
         </div>
