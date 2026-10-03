@@ -2155,6 +2155,8 @@ body[data-alt-chrome] .alt-security-hero h1 {
   body[data-alt-chrome]:not([data-page="altHome"]) .alt-int-hero h1,
   body[data-alt-chrome]:not([data-page="altHome"]) .alt-security-hero h1,
   body[data-alt-chrome]:not([data-page="altHome"]) .alt-help-hero h1,
+  body[data-alt-chrome]:not([data-page="altHome"]) .alt-about-hero h1,
+  body[data-alt-chrome]:not([data-page="altHome"]) .alt-faq-hero h1,
   body[data-alt-chrome]:not([data-page="altHome"]) #how-it-helps-main .alt-section--tint h1 {
     max-width: none;
     font-size: 34px;
@@ -3112,4 +3114,117 @@ body[data-alt-chrome] .alt-recorded-row__icon svg {
   body[data-alt-chrome] .alt-int-hero h1 {
     max-width: none;
   }
+}
+
+/* About page */
+body[data-alt-chrome] .alt-about-hero h1,
+body[data-alt-chrome] .alt-faq-hero h1 {
+  margin: 0.75rem 0 20px;
+}
+
+@media (max-width: 480px) {
+  body[data-alt-chrome] .alt-about-hero h1 {
+    font-size: 31px;
+    line-height: 1.1;
+  }
+}
+
+body[data-alt-chrome] .alt-about-hero__sub,
+body[data-alt-chrome] .alt-faq-hero__sub {
+  max-width: 42rem;
+}
+
+body[data-alt-chrome] .alt-about-starter__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 20px 24px;
+  border-radius: var(--radius);
+  background: var(--soft-olive-tint);
+  border: 1px solid var(--hairline);
+}
+
+body[data-alt-chrome] .alt-about-beliefs-grid {
+  display: grid;
+  gap: 0;
+}
+
+@media (min-width: 900px) {
+  body[data-alt-chrome] .alt-about-beliefs-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0 32px;
+  }
+
+  body[data-alt-chrome] .alt-about-beliefs-grid .alt-about-belief:nth-child(n + 4) {
+    grid-column: span 1;
+  }
+}
+
+@media (min-width: 680px) and (max-width: 899px) {
+  body[data-alt-chrome] .alt-about-beliefs-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--alt-grid-gap);
+  }
+
+  body[data-alt-chrome] .alt-about-beliefs-grid .alt-about-belief:nth-child(4) {
+    grid-column: 1;
+  }
+
+  body[data-alt-chrome] .alt-about-beliefs-grid .alt-about-belief:nth-child(5) {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 679px) {
+  body[data-alt-chrome] .alt-about-beliefs-grid .alt-about-belief {
+    flex-direction: row;
+    border-top: 1px solid var(--hairline);
+    padding-block: 14px;
+  }
+
+  body[data-alt-chrome] .alt-about-beliefs-grid .alt-about-belief:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 959px) {
+  body[data-alt-chrome][data-page="about"] .alt-about-founders.alt-home-founders {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 16px;
+  }
+
+  body[data-alt-chrome][data-page="about"] .alt-about-founders .alt-home-founder__photo {
+    width: min(150px, 100%);
+    margin-inline: auto;
+  }
+}
+
+body[data-alt-chrome] .alt-home-faq-view-all {
+  margin: 0.75rem 0 0;
+  font-size: var(--alt-body);
+}
+
+body[data-alt-chrome] .alt-faq-group + .alt-faq-group {
+  margin-top: var(--alt-head-gap);
+  padding-top: var(--alt-head-gap);
+  border-top: 1px solid var(--hairline);
+}
+
+body[data-alt-chrome] .alt-faq-group__heading {
+  margin: 0 0 0.75rem;
+  font-size: var(--alt-h2);
+  line-height: 1.15;
+  color: var(--charcoal);
+}
+
+body[data-alt-chrome] .alt-faq-it-link {
+  margin: 1rem 0 0;
+  font-size: var(--alt-body);
+}
+
+body[data-alt-chrome] .faq-item {
+  scroll-margin-top: 88px;
 }

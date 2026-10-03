@@ -1,7 +1,4 @@
-/**
- * Preview site route map (EN + DE). At go-live, update paths here and re-run apply-routes.
- * TODO Run 7: flip about + faq to real pages.
- */
+/** Preview site route map (EN + DE). At go-live, update paths here and re-run apply-routes. */
 export const PREVIEW_SITE_ROUTES = {
   home: { en: 'en/homepage-preview.html', de: 'de/homepage-preview.html' },
   'how-it-helps': { en: 'how-it-helps.html', de: 'de/how-it-helps.html' },
@@ -11,10 +8,8 @@ export const PREVIEW_SITE_ROUTES = {
   'security-good-to-know': { en: 'security.html#good-to-know', de: 'de/security.html#good-to-know' },
   integrations: { en: 'integrations.html', de: 'de/integrations.html' },
   'it-partner': { en: 'technical-architecture.html', de: 'de/technical-architecture.html' },
-  /** TODO Run 7: about.html */
-  about: { en: 'en/homepage-preview.html#team', de: 'de/homepage-preview.html#team' },
-  /** TODO Run 7: faq.html */
-  faq: { en: 'en/homepage-preview.html#faq', de: 'de/homepage-preview.html#faq' },
+  about: { en: 'about.html', de: 'de/about.html' },
+  faq: { en: 'faq.html', de: 'de/faq.html' },
   contact: { en: 'contact.html', de: 'de/contact.html' },
   impressum: { en: 'impressum.html', de: 'de/impressum.html' },
   privacy: { en: 'privacy.html', de: 'de/privacy.html' },
@@ -28,6 +23,8 @@ const PAGE_TO_ROUTE = [
   ['integrations.html', 'integrations'],
   ['security.html', 'security'],
   ['contact.html', 'contact'],
+  ['about.html', 'about'],
+  ['faq.html', 'faq'],
   ['impressum.html', 'impressum'],
   ['privacy.html', 'privacy'],
   ['homepage-preview.html', 'home'],

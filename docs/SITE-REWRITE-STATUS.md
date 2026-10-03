@@ -19,9 +19,9 @@ Canonical copy and Cursor brief: **`docs/zuraio-site-rewrite.md`**.
 | 5 | `contact.html` | `docs/RUN-5-CONTACT.md` |
 | 6 | `technical-architecture.html` | `docs/RUN-6-TECHNICAL-ARCHITECTURE.md` |
 
-**Still to build:** `about.html`, `faq.html`.
+| 7 | `about.html`, `faq.html`, route flip | Run 7 |
 
-Extend `scripts/check-alt-home-copy-dashes.mjs` to each new `copy-*.js` module as it is added (legacy `copy-en.js` / `copy-de.js` stay out of scope until those pages migrate).
+Extend `scripts/check-alt-home-copy-dashes.mjs` to each new `copy-*.js` module as it is added (includes `copy-about.js`, `copy-faq.js`; legacy `copy-en.js` / `copy-de.js` stay out of scope until those pages migrate).
 
 ## Go-live checklist
 
@@ -31,4 +31,4 @@ Extend `scripts/check-alt-home-copy-dashes.mjs` to each new `copy-*.js` module a
 
 ## Preview routes (single source of truth)
 
-- **`public/zuraio-comparison/js/site-routes.js`** (mirrored by `scripts/site-routes.mjs`): EN/DE paths for home (`en/homepage-preview.html`, `de/homepage-preview.html`), site pages at root and under `de/`. About and FAQ temporarily point at homepage `#team` / `#faq` (TODO Run 7).
+- **`public/zuraio-comparison/js/site-routes.js`** (mirrored by `scripts/site-routes.mjs`): EN/DE paths for home (`en/homepage-preview.html`, `de/homepage-preview.html`), site pages at root and under `de/`. About → `about.html` / `de/about.html`, FAQ → `faq.html` / `de/faq.html`.

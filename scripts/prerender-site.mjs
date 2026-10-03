@@ -58,14 +58,22 @@ async function waitForPageReady(page, pageName, locale) {
   }
 
   if (pageName === 'faq.html') {
+    await page.waitForSelector('#faq-main h1', { timeout: 45000 });
     await page.waitForSelector('.faq-q', { timeout: 45000 });
-    if (locale !== 'en') {
-      await page.waitForFunction(
-        (loc) => document.documentElement.lang === loc,
-        locale,
-        { timeout: 45000 },
-      );
-    }
+    await page.waitForFunction(
+      (loc) => document.documentElement.lang === loc,
+      locale,
+      { timeout: 45000 },
+    );
+  }
+
+  if (pageName === 'about.html') {
+    await page.waitForSelector('#about-main h1', { timeout: 45000 });
+    await page.waitForFunction(
+      (loc) => document.documentElement.lang === loc,
+      locale,
+      { timeout: 45000 },
+    );
   }
 
   const dataPage = await page.evaluate(() => document.body.dataset.page || '');

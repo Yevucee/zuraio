@@ -2,7 +2,7 @@ import { CONTACT_FOUNDERS, getContactCopy } from './copy-contact.js';
 import { renderAltHomeHeader, renderAltHomeFooter } from './alt-homepage-chrome.js';
 import { assetHref, getLocaleFromPathname } from './path-locale.js';
 import { resolveRouteFromLocation } from './site-routes.js';
-import { initContactForm } from './contact-form.js?v=20261003b';
+import { initContactForm } from './contact-form.js?v=20261003c';
 
 const FOUNDER_PREVIEW = 'zuraio/assets/team-preview';
 
@@ -87,6 +87,7 @@ function renderMain(copy) {
                 <span>${f.starterLabel}</span>
               </label>
             </div>
+            <input type="hidden" name="interest" id="interest" value="">
             <div class="form-row visually-hidden" aria-hidden="true">
               <label for="website">Website</label>
               <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
@@ -120,6 +121,8 @@ function applyStarterQueryParam() {
   if (params.get('interest') !== 'starter') return;
   const box = document.getElementById('starter-partner');
   if (box) box.checked = true;
+  const hidden = document.getElementById('interest');
+  if (hidden instanceof HTMLInputElement) hidden.value = 'starter-partner';
 }
 
 function boot() {

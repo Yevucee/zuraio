@@ -2,6 +2,9 @@ import { getAltHomeCopy } from './copy-alt-home.js';
 import { renderAltHomeHeader, renderAltHomeFooter } from './alt-homepage-chrome.js';
 import { trackAltHome } from './alt-homepage-analytics.js';
 import { initFaq, initFaqFromHash } from './faq-accordion.js';
+import { getFaqCopy, getHomePreviewFaqItems } from './copy-faq.js';
+import { renderAltHomeFounders } from './alt-home-founders.js';
+import { renderFaqAccordionItem } from './faq-render.js';
 import { assetHref, detectSiteBase } from './path-locale.js';
 import { resolveRouteFromLocation } from './site-routes.js';
 import { isPreviewDevMode, formatPreviewHtml } from './alt-preview-utils.js';
@@ -91,7 +94,6 @@ function renderSameQuestion(copy) {
       </div>
     </section>`;
 }
-const FOUNDER_PREVIEW = 'zuraio/assets/team-preview';
 const PRODUCT_IMG_WIDTH = 2080;
 const PRODUCT_IMG_HEIGHT = 1560;
 
@@ -447,43 +449,26 @@ function renderMain(copy, locale, isDev) {
     })
     .join('');
 
-  const teamHtml = (copy.team?.people ?? [])
-    .map((p) => {
-      const roleHtml = fmt(p.role ?? '', isDev, todos);
-      return `
-      <article class="alt-home-founder">
-        <div class="alt-home-founder__photo">
-          <picture>
-            <source type="image/webp" srcset="${assetHref(`${FOUNDER_PREVIEW}/${p.img}.webp`)}">
-            <img src="${assetHref(`${FOUNDER_PREVIEW}/${p.img}.webp`)}" alt="" width="250" height="312" loading="lazy" decoding="async" />
-          </picture>
-        </div>
-        <h3 class="alt-home-founder__name">${p.name}</h3>
-        ${roleHtml ? `<p class="alt-home-founder__role">${roleHtml}</p>` : ''}
-        <p class="alt-home-founder__email"><a href="mailto:${p.email}">${p.email}</a></p>
-      </article>`;
-    })
-    .join('');
+  const teamHtml = renderAltHomeFounders(copy.team?.people ?? []);
 
-  const faqItems = copy.faq?.items ?? [];
+  const faqLocale = locale === 'en' ? 'en' : 'de';
+  const faqCopy = getFaqCopy(faqLocale);
+  const faqUi = faqCopy.homePreview;
+  const faqItems = getHomePreviewFaqItems(faqLocale);
   const faqPrimary = faqItems.slice(0, 4);
   const faqMore = faqItems.slice(4);
-  const faqItemHtml = (item, i) => `
-      <div class="faq-item"${item.id ? ` id="${item.id}"` : ''}>
-        <button class="faq-q" type="button" aria-expanded="false" id="alt-faq-q-${i}">${item.q}</button>
-        <div class="faq-a" hidden role="region" aria-labelledby="alt-faq-q-${i}">
-          <p>${item.aHtml ?? fmt(item.a ?? '', isDev, todos)}</p>
-        </div>
-      </div>`;
   const faqHtml =
-    faqPrimary.map((item, i) => faqItemHtml(item, i)).join('') +
+    faqPrimary.map((item, i) => renderFaqAccordionItem(item, i, { idPrefix: 'alt-faq' })).join('') +
     (faqMore.length
       ? `<div class="alt-home-faq-more" hidden>
-          ${faqMore.map((item, j) => faqItemHtml(item, j + 4)).join('')}
+          ${faqMore.map((item, j) => renderFaqAccordionItem(item, j + 4, { idPrefix: 'alt-faq' })).join('')}
         </div>
         <button type="button" class="alt-home-faq-more-toggle faq-q" aria-expanded="false" data-alt-faq-more>
-          ${copy.faq.moreLabel ?? 'More questions'}
-        </button>`
+          ${faqUi.moreLabel ?? 'More questions'}
+        </button>
+        <p class="alt-home-faq-view-all">
+          <a class="alt-home-link-secondary" data-route="faq" href="${routeHref('faq')}">${faqUi.linkAll}</a>
+        </p>`
       : '');
 
   const mainEl = document.getElementById('alt-home-main');
@@ -635,9 +620,7 @@ function renderMain(copy, locale, isDev) {
         </div>
         <div class="faq-list alt-home-faq">${faqHtml}</div>
         <p class="alt-home-faq-links">
-          <a class="alt-home-link-secondary" data-route="faq" href="${routeHref('faq')}">${copy.faq.linkAll}</a>
-          <span class="alt-home-faq-links__sep" aria-hidden="true">·</span>
-          <a class="alt-home-link-secondary" data-route="it-partner" href="${routeHref('it-partner')}">${copy.faq.linkIt}</a>
+          <a class="alt-home-link-secondary" data-route="it-partner" href="${routeHref('it-partner')}">${faqUi.linkIt}</a>
         </p>
       </div>
     </section>

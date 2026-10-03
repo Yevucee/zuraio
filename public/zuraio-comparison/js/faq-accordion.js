@@ -22,7 +22,10 @@ export function initFaqFromHash() {
   if (!item?.classList.contains('faq-item')) return;
   openFaqItem(item);
   requestAnimationFrame(() => {
-    item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const header = document.querySelector('#site-header');
+    const offset = (header?.getBoundingClientRect().height ?? 72) + 16;
+    const top = item.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
   });
 }
 

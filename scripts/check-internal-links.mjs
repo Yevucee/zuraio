@@ -28,6 +28,10 @@ const PAGES = [
   { path: '/de/how-it-helps.html', locale: 'de' },
   { path: '/contact.html', locale: 'en' },
   { path: '/de/contact.html', locale: 'de' },
+  { path: '/about.html', locale: 'en' },
+  { path: '/de/about.html', locale: 'de' },
+  { path: '/faq.html', locale: 'en' },
+  { path: '/de/faq.html', locale: 'de' },
   { path: '/technical-architecture.html', locale: 'en' },
   { path: '/de/technical-architecture.html', locale: 'de' },
   { path: '/en/homepage-preview.html', locale: 'en' },
@@ -35,8 +39,8 @@ const PAGES = [
 ];
 
 const EN_PREVIEW_ROUTE_EXPECT = {
-  about: 'homepage-preview.html#team',
-  faq: 'homepage-preview.html#faq',
+  about: '../about.html',
+  faq: '../faq.html',
   'it-partner': '../technical-architecture.html',
 };
 
@@ -56,13 +60,16 @@ async function checkEnPreviewLinkHrefs(page, baseUrl, failures) {
     waitUntil: 'domcontentloaded',
     timeout: GOTO_TIMEOUT_MS,
   });
+  await page.waitForSelector('.alt-home-faq-view-all a[data-route="faq"]', { timeout: SELECTOR_TIMEOUT_MS });
   await page.waitForSelector('.alt-home-faq-links', { timeout: SELECTOR_TIMEOUT_MS });
 
   const hrefs = await page.evaluate(() => {
     const navAbout = document.querySelector('#site-header a[data-route="about"]')?.getAttribute('href') ?? '';
-    const faqLinks = [...document.querySelectorAll('.alt-home-faq-links a[data-route]')];
-    const linkAll = faqLinks.find((a) => a.getAttribute('data-route') === 'faq')?.getAttribute('href') ?? '';
-    const linkIt = faqLinks.find((a) => a.getAttribute('data-route') === 'it-partner')?.getAttribute('href') ?? '';
+    const linkAll =
+      document.querySelector('.alt-home-faq-view-all a[data-route="faq"]')?.getAttribute('href') ??
+      document.querySelector('.alt-home-faq-links a[data-route="faq"]')?.getAttribute('href') ??
+      '';
+    const linkIt = document.querySelector('.alt-home-faq-links a[data-route="it-partner"]')?.getAttribute('href') ?? '';
     const footerFaq = document.querySelector('#site-footer a[data-route="faq"]')?.getAttribute('href') ?? '';
     return { navAbout, linkAll, linkIt, footerFaq };
   });
@@ -93,10 +100,13 @@ async function checkEnPreviewLinkHrefs(page, baseUrl, failures) {
 
   await page.waitForSelector('#same-question .alt-sq-link-wrap a', { timeout: SELECTOR_TIMEOUT_MS });
   const compareHref = await page.locator('#same-question .alt-sq-link-wrap a').getAttribute('href');
-  if (!compareHref?.includes('chatgpt-copilot')) {
-    failures.push(`${pagePath}: same-question link must target #chatgpt-copilot, got ${compareHref ?? '(missing)'}`);
+  if (!compareHref?.includes('faq.html') || !compareHref.includes('chatgpt-copilot')) {
+    failures.push(
+      `${pagePath}: same-question link must target faq.html#chatgpt-copilot, got ${compareHref ?? '(missing)'}`,
+    );
   } else {
     await page.locator('#same-question .alt-sq-link-wrap a').click();
+    await page.waitForURL(/faq\.html/, { timeout: SELECTOR_TIMEOUT_MS });
     await page.waitForFunction(
       () =>
         document.getElementById('chatgpt-copilot')?.querySelector('.faq-q')?.getAttribute('aria-expanded') ===
@@ -104,6 +114,38 @@ async function checkEnPreviewLinkHrefs(page, baseUrl, failures) {
       null,
       { timeout: SELECTOR_TIMEOUT_MS },
     );
+  }
+}
+
+async function checkFaqHashAndLangSwitch(page, baseUrl, failures) {
+  const faqPath = '/faq.html#can-we-see-which-sources-were-used';
+  await page.goto(`${baseUrl}${faqPath}`, { waitUntil: 'domcontentloaded', timeout: GOTO_TIMEOUT_MS });
+  await page.waitForSelector('#can-we-see-which-sources-were-used', { timeout: SELECTOR_TIMEOUT_MS });
+  await page.waitForFunction(
+    () => {
+      const link = [...document.querySelectorAll('#site-header a[hreflang="de"], #site-footer a[hreflang="de"]')][0];
+      return link?.getAttribute('href')?.includes('can-we-see-which-sources-were-used') ?? false;
+    },
+    null,
+    { timeout: SELECTOR_TIMEOUT_MS },
+  );
+  const open = await page.evaluate(
+    () =>
+      document.getElementById('can-we-see-which-sources-were-used')?.querySelector('.faq-q')?.getAttribute('aria-expanded') ===
+      'true',
+  );
+  if (!open) {
+    failures.push('faq.html#can-we-see-which-sources-were-used: item not open from hash');
+  }
+
+  const deHref = await page.evaluate(() => {
+    const link = [...document.querySelectorAll('#site-header .lang-dropdown-option, #site-footer a[hreflang]')].find(
+      (a) => a.getAttribute('hreflang') === 'de',
+    );
+    return link?.getAttribute('href') ?? '';
+  });
+  if (!deHref.includes('de/faq.html') || !deHref.includes('#can-we-see-which-sources-were-used')) {
+    failures.push(`faq.html lang switch to DE must keep hash, got ${deHref || '(missing)'}`);
   }
 }
 
@@ -172,7 +214,9 @@ async function run() {
     {
       const page = await browser.newPage();
       try {
-        await checkEnPreviewLinkHrefs(page, `http://127.0.0.1:${PORT}`, failures);
+        const baseUrl = `http://127.0.0.1:${PORT}`;
+        await checkEnPreviewLinkHrefs(page, baseUrl, failures);
+        await checkFaqHashAndLangSwitch(page, baseUrl, failures);
       } finally {
         await page.close().catch(() => {});
       }
