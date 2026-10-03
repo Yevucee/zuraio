@@ -24,6 +24,10 @@ const PAGES = [
   { path: '/de/technical-architecture.html', label: 'DE IT partner' },
   { path: '/contact.html', label: 'EN contact' },
   { path: '/de/contact.html', label: 'DE contact' },
+  { path: '/about.html', label: 'EN about' },
+  { path: '/de/about.html', label: 'DE about' },
+  { path: '/faq.html', label: 'EN faq' },
+  { path: '/de/faq.html', label: 'DE faq' },
 ];
 
 async function measurePage(page, url, width) {

@@ -188,3 +188,12 @@ export function renderAltHomeFooter(copy, locale, options = {}) {
       </div>
     </footer>`;
 }
+
+/** Keep language links aligned with the current URL hash (FAQ deep links). */
+export function syncLangSwitchHrefs() {
+  document.querySelectorAll('#site-header a[hreflang], #site-footer a[hreflang]').forEach((a) => {
+    const code = a.getAttribute('hreflang');
+    if (!code) return;
+    a.setAttribute('href', langSwitchHref(code, location.pathname, location.hash));
+  });
+}

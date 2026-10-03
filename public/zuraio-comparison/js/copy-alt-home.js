@@ -2,18 +2,6 @@
 
 export const ALT_HOME_LOCALES = ['de', 'en'];
 
-const FAQ_PERMISSION_DE =
-  'Zuraio ist darauf ausgelegt, die bestehenden Zugriffsregeln Ihres Unternehmens zu berücksichtigen. Mitarbeitende sollen nur Informationen verwenden können, für die sie eine entsprechende Berechtigung haben. Die genaue Umsetzung hängt von den angebundenen Systemen und der vereinbarten Konfiguration ab.';
-
-const FAQ_PERMISSION_EN =
-  'Zuraio is designed to respect your company\'s existing access rules. Employees should only be able to use information they are permitted to access. The exact implementation depends on connected systems and the agreed configuration.';
-
-const FAQ_AUTO_DE =
-  'Zuraio kann Antworten, Dokumente und nächste Schritte zur Prüfung vorbereiten. Welche Aktionen automatisch ausgeführt werden dürfen, richtet sich nach den Berechtigungen, Freigaberegeln und der gewählten Konfiguration Ihres Unternehmens.';
-
-const FAQ_AUTO_EN =
-  'Zuraio can prepare answers, drafts and proposed actions for review. Which actions may be executed automatically depends on the component, permissions, approval rules and selected configuration.';
-
 export const copyAltHome = {
   de: {
     metaTitle: 'Zuraio | Alternative Startseite',
@@ -191,40 +179,6 @@ export const copyAltHome = {
         { name: 'Samuel A. Polley', role: '', email: 'samuel.polley@zuraio.ch', img: 'Samuel' },
         { name: 'Roland Steiner', role: '', email: 'roland.steiner@zuraio.ch', img: 'Roland' },
       ],
-    },
-    faq: {
-      items: [
-        {
-          id: 'chatgpt-copilot',
-          q: 'Warum nicht einfach ChatGPT oder Copilot?',
-          a: 'Sie müssen sich nicht entscheiden. ChatGPT kennt Ihr Unternehmen nur, wenn jemand den Kontext jedes Mal teilt. Copilot kennt Ihre Microsoft-365-Welt gut; für andere Systeme braucht es meist Konnektoren, die Ihre IT aufbaut. Zuraio ist bereits mit den Systemen verbunden, die Schweizer KMU nutzen, etwa bexio, Abacus und Proffix, und mit Skills, die wir mit Ihrem Team aufbauen. Zuraio ist modellneutral: standardmässig Schweizer Modelle, GPT oder Claude für Aufgaben, die Ihr Unternehmen freigibt.',
-        },
-        {
-          q: 'Bleiben unsere Daten in der Schweiz?',
-          a: 'Ja, standardmässig. Die Plattform und Ihre Firmendaten werden bei Infomaniak in der Schweiz gehostet, und auch das Standardmodell läuft in der Schweiz. Für einzelne Aufgaben können Sie ein anderes KI-Modell wählen. Jedes ist gekennzeichnet, damit Sie sehen, wo es arbeitet. Wählen Sie ein Modell ausserhalb der Schweiz, wird nur der Inhalt dieser Aufgabe übermittelt. So entscheiden Sie selbst, was die Schweiz verlässt und was nicht.',
-        },
-        {
-          q: 'Was passiert, wenn ein KI-Anbieter Preise oder Bedingungen ändert?',
-          a: 'Sie wechseln direkt in Zuraio auf ein anderes Modell. Ihre Firmendaten, Ihr Firmenwissen und Ihre Skills bleiben unverändert, weil sie bei Zuraio in der Schweiz liegen und nicht beim Modellanbieter.',
-        },
-        {
-          q: 'Können Mitarbeitende Informationen sehen, die sie nicht sehen dürfen?',
-          a: FAQ_PERMISSION_DE,
-        },
-        {
-          q: 'Versendet Zuraio etwas automatisch?',
-          a: FAQ_AUTO_DE,
-        },
-        {
-          q: 'Was kostet der Einstieg?',
-          aHtml:
-            'Für Einzelpersonen ab CHF 19 pro Monat. Firmenpläne ab CHF 225 pro Monat für bis zu 5 Mitarbeitende, inklusive Konnektoren und Standard-KI-Nutzung. Der Einrichtungs-Workshop mit Ihrem ersten eigenen Skill kostet CHF 1\'490; die Hälfte rechnen wir an, wenn Sie innert 30 Tagen einen Jahresplan wählen. Bei jährlicher Zahlung sind zwei Monate gratis. Alle Preise exkl. MWST.',
-        },
-      ],
-      linkAll: 'Alle Fragen →',
-      linkIt: 'Fragen, die Ihre IT stellen wird →',
-      linkItHref: '../faq.html#it-questions',
-      moreLabel: 'Weitere Fragen',
     },
     closing: {
       heading: 'Was könnte Zuraio Ihnen abnehmen?',
@@ -410,40 +364,6 @@ export const copyAltHome = {
         { name: 'Samuel A. Polley', role: '', email: 'samuel.polley@zuraio.ch', img: 'Samuel' },
         { name: 'Roland Steiner', role: '', email: 'roland.steiner@zuraio.ch', img: 'Roland' },
       ],
-    },
-    faq: {
-      items: [
-        {
-          id: 'chatgpt-copilot',
-          q: 'Why not just use ChatGPT or Copilot?',
-          a: 'You don\'t have to choose. ChatGPT only knows your company if someone shares the context each time. Copilot knows your Microsoft 365 world well, and reaching other systems usually needs connectors your IT builds. Zuraio comes connected to the systems Swiss SMEs use, like bexio, Abacus and Proffix, with skills we build with your team. It is model neutral: Swiss models by default, and GPT or Claude for tasks your company approves.',
-        },
-        {
-          q: 'Is our data kept in Switzerland?',
-          a: 'Yes, by default. The platform and your company data are hosted by Infomaniak in Switzerland, and the default AI model runs in Switzerland too. For individual tasks you can choose a different model, and each one is labelled so you can see where it runs. If you choose a model outside Switzerland, only the content of that task is sent. So you decide what leaves Switzerland, and what doesn\'t.',
-        },
-        {
-          q: 'What happens if an AI provider changes its prices or terms?',
-          a: 'You switch to another model directly in Zuraio. Your company data, knowledge and skills don\'t change, because they\'re stored in Switzerland with Zuraio, not with the model provider.',
-        },
-        {
-          q: 'Can employees see information they shouldn\'t?',
-          a: FAQ_PERMISSION_EN,
-        },
-        {
-          q: 'Does Zuraio send anything automatically?',
-          a: FAQ_AUTO_EN,
-        },
-        {
-          q: 'What does it cost to start?',
-          aHtml:
-            'Individuals from CHF 19 per month. Company plans from CHF 225 per month for up to 5 employees, including connectors and standard AI usage. The set-up workshop with your first bespoke skill costs CHF 1,490, and we credit half of it if you choose an annual plan within 30 days. Pay yearly and get two months free. All prices excl. VAT.',
-        },
-      ],
-      linkAll: 'View all questions →',
-      linkIt: 'Questions your IT team will ask →',
-      linkItHref: '../faq.html#it-questions',
-      moreLabel: 'More questions',
     },
     closing: {
       heading: 'What could Zuraio take off your plate?',
