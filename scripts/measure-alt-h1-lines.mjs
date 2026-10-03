@@ -37,12 +37,32 @@ async function measurePage(page, url, width) {
     const lineHeight = parseFloat(style.lineHeight) || parseFloat(style.fontSize) * 1.05;
     const height = h1.getBoundingClientRect().height;
     const lines = Math.max(1, Math.round(height / lineHeight));
+    const primary = h1.querySelector('.alt-home-hero__line--primary');
+    const secondary = h1.querySelector('.alt-home-hero__line--secondary');
+    const countLines = (el) => {
+      if (!el) return null;
+      const s = getComputedStyle(el);
+      const lh = parseFloat(s.lineHeight) || parseFloat(s.fontSize) * 1.05;
+      return Math.max(1, Math.round(el.getBoundingClientRect().height / lh));
+    };
     return {
       lines,
+      heroPrimaryLines: countLines(primary),
+      heroSecondaryLines: countLines(secondary),
       fontSize: style.fontSize,
       maxWidth: style.maxWidth,
       text: h1.textContent?.trim().slice(0, 80),
     };
+  });
+}
+
+async function measureSameQuestionHeight(page, url) {
+  await page.setViewportSize({ width: 390, height: 4000 });
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
+  await page.waitForSelector('#same-question', { timeout: 15000 }).catch(() => {});
+  return page.evaluate(() => {
+    const el = document.getElementById('same-question');
+    return el ? Math.round(el.getBoundingClientRect().height) : null;
   });
 }
 
@@ -61,6 +81,9 @@ async function run() {
     }
     await page.close();
 
+    const sqEn390 = await measureSameQuestionHeight(page, `${base}/en/homepage-preview.html`);
+    const sqDe390 = await measureSameQuestionHeight(page, `${base}/de/homepage-preview.html`);
+
     const page390 = await browser.newPage();
     await page390.setViewportSize({ width: 390, height: 12000 });
     await page390.goto(`${base}/technical-architecture.html`, { waitUntil: 'domcontentloaded' });
@@ -69,7 +92,10 @@ async function run() {
     const itHeight = await page390.evaluate(() => document.body.scrollHeight);
     await page390.close();
 
-    console.log(JSON.stringify({ rows, itPageHeight390: itHeight }, null, 2));
+    const outPath = path.join('/opt/cursor/artifacts', 'h1-line-counts-run6d.json');
+    const report = { rows, sameQuestionHeight390: { en: sqEn390, de: sqDe390 }, itPageHeight390: itHeight };
+    fs.writeFileSync(outPath, JSON.stringify(report, null, 2));
+    console.log(JSON.stringify(report, null, 2));
   } finally {
     await browser.close();
     await server.close();

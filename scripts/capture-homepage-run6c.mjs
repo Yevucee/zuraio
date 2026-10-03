@@ -6,7 +6,7 @@ import { startStaticDistServer } from './static-dist-server.mjs';
 const OUT = '/opt/cursor/artifacts';
 const DIST = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'dist');
 const PORT = 4181;
-const V = '20261003a';
+const V = '20261003b';
 
 const server = await startStaticDistServer(DIST, PORT);
 const browser = await chromium.launch();
