@@ -58,48 +58,32 @@ export const copyAltHome = {
     skills: {
       eyebrow: 'FÜR ARCHITEKTUR- UND INGENIEURBÜROS, TREUHÄNDER UND IMMOBILIENVERWALTUNGEN',
       eyebrowShort: 'FÜR ARCHITEKTEN, TREUHÄNDER UND VERWALTUNGEN',
-      heading: 'Ab dem ersten Tag bereit. Danach für Sie gemacht.',
+      heading: 'Ab dem ersten Tag nützlich. Dann so eingerichtet, wie Sie arbeiten.',
       intro:
-        'Starten Sie mit fertigen Skills. Danach entwickeln wir mit Ihrem Team die Skills, die nur Ihr Betrieb hat: Ihre Offerten, Ihr Ton, Ihre Abläufe.',
-      readyMade: [
+        'Zuraio arbeitet mit Skills: Aufgaben, die Zuraio erledigen kann. Einige sind von Anfang an bereit. Andere bauen wir mit Ihrem Team, aus Ihren Vorlagen, Regeln und Ihrem Ton.',
+      colReady: 'Ab dem ersten Tag',
+      colCustom: 'Ihre Version, mit Ihnen gebaut',
+      usesLabel: 'Nutzt:',
+      pairs: [
         {
-          title: 'Kunden und Mieter beantworten',
-          body: 'Entwirft eine Antwort aus Korrespondenz, Verträgen und Ihren Konditionen',
-          sources: 'E-Mails · Verträge · Ihre Konditionen',
+          ready: 'Kunden oder Mietern antworten',
+          custom: 'Mietern in Ihrem Ton antworten, mit Ihren Standardklauseln.',
+          sources: ['Ihre Vorlagen', 'Mietverträge'],
         },
         {
-          title: 'Sitzung vorbereiten',
-          body: 'Einseitiges Briefing: letzte E-Mails, offene Punkte, Dokumente',
-          sources: 'E-Mails · Kalender · Dokumente',
+          ready: 'Offerte vorbereiten',
+          custom: 'Offerte in Ihrem Hausformat, mit Ihren Rabattregeln.',
+          sources: ['Preisliste', 'bexio'],
         },
         {
-          title: 'Projektstatus',
-          body: 'Wo es steht, was offen ist und wer wartet, aus E-Mails und Dateien',
-          sources: 'E-Mails · Dateien · Aufgaben',
-        },
-        {
-          title: 'Verlauf zusammenfassen',
-          body: 'Lange E-Mail-Verläufe in fünf Zeilen, Entscheide hervorgehoben',
-          sources: 'E-Mails',
-        },
-        {
-          title: 'Aufgaben erfassen',
-          body: 'Macht aus Sitzung oder E-Mail Aufgaben mit Verantwortlichen',
-          sources: 'Sitzungen · E-Mails · Aufgaben',
-        },
-        {
-          title: 'Offerte vorbereiten',
-          body: 'Entwurf aus Anfrage und Ihrer Produkt- oder Preisliste',
-          sources: 'Anfrage · Preisliste · bexio',
+          ready: 'Den Monat eines Mandanten zusammenfassen',
+          custom: 'Monatsreport für Mandanten, so wie Ihre Partner ihn wollen.',
+          sources: ['E-Mails', 'Abacus'],
         },
       ],
-      band:
-        'Gemeinsam mit Ihnen entwickelt: «Offerte in unserem Format, mit unseren Rabattregeln» · «Antwort an Mieter in unserem Ton, mit unseren Standardklauseln» · «Monatsreport, so wie ihn unsere Partner mögen»',
-      footnoteLabel: 'Mit Ihnen entwickelt',
+      footer: 'Wir beginnen mit einer Aufgabe, die Ihnen wichtig ist.',
       link: 'Alle Skills ansehen →',
       linkHref: '../how-it-helps.html#skills',
-      presentationImageAlt:
-        'Zuraio erstellt aus der Firmenvorlage eine Verkaufspräsentation mit 12 Folien und listet die Lücken auf, die vor dem Versand zu füllen sind',
     },
     integrations: {
       heading: 'Arbeitet mit den Systemen, die Schweizer KMU wirklich nutzen.',
@@ -243,48 +227,32 @@ export const copyAltHome = {
     skills: {
       eyebrow: 'FOR ARCHITECTURE AND ENGINEERING OFFICES, FIDUCIARIES AND PROPERTY MANAGERS',
       eyebrowShort: 'BUILT FOR ARCHITECTS, FIDUCIARIES AND PROPERTY MANAGERS',
-      heading: 'Ready from day one. Then made for you.',
+      heading: 'Useful from day one. Then set up the way you work.',
       intro:
-        'Start with ready-made skills. Then we sit down with your team and build the ones only your company has: your offers, your tone, your processes.',
-      readyMade: [
+        'Zuraio works with skills: tasks it knows how to do. Some are ready from the start. Others we build with your team, from your templates, rules and tone.',
+      colReady: 'Ready from day one',
+      colCustom: 'Your version, built with you',
+      usesLabel: 'Uses:',
+      pairs: [
         {
-          title: 'Reply to clients and tenants',
-          body: 'Drafts an answer using the correspondence, contracts and your terms',
-          sources: 'Email · Contracts · Your terms',
+          ready: 'Reply to a client or tenant',
+          custom: 'Reply to tenants in your tone, with your standard clauses.',
+          sources: ['Your templates', 'Rental contracts'],
         },
         {
-          title: 'Prepare a meeting',
-          body: 'One-page briefing on the client: last emails, open points, documents',
-          sources: 'Email · Calendar · Documents',
+          ready: 'Prepare a quote',
+          custom: 'Quote in your house format, with your discount rules.',
+          sources: ['Price list', 'bexio'],
         },
         {
-          title: 'Project status',
-          body: 'Where things stand, what\'s open, who\'s waiting, from emails and files',
-          sources: 'Email · Files · Tasks',
-        },
-        {
-          title: 'Summarise a thread',
-          body: 'Long email chains in five lines, with the decisions highlighted',
-          sources: 'Email',
-        },
-        {
-          title: 'Capture tasks',
-          body: 'Turns a meeting or email into tasks with owners',
-          sources: 'Meetings · Email · Tasks',
-        },
-        {
-          title: 'Prepare a quote',
-          body: 'Draft offer from the enquiry and your product or price list',
-          sources: 'Enquiry · Price list · bexio',
+          ready: 'Summarise a client\'s month',
+          custom: 'Monthly client report, the way your partners like it.',
+          sources: ['Emails', 'Abacus'],
         },
       ],
-      band:
-        'Built with you: "Quote in our house format with our discount rules" · "Reply to tenants in our tone, with our standard clauses" · "Monthly client report the way our partners like it"',
-      footnoteLabel: 'Built with you',
+      footer: 'We start with one task that matters to you.',
       link: 'See all skills →',
       linkHref: '../how-it-helps.html#skills',
-      presentationImageAlt:
-        'Zuraio builds a 12-slide sales presentation from the company\'s own template and lists the gaps to fill before sending',
     },
     integrations: {
       heading: 'Works with the systems Swiss SMEs actually use.',

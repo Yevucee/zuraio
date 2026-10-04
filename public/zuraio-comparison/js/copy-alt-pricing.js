@@ -11,7 +11,7 @@ export const copyAltPricing = {
     companyRoutingLine:
       'Dank Modell-Routing sind Sie nie von einem einzigen KI-Anbieter abhängig.',
     individualsHeading: 'Einzelpersonen und kleine Teams',
-    /* Internal: Personal = Core (no second brain); Personal + Memory = Personal Brain; Team = Core Teams (no shared brain) */
+    /* Internal: Personal = Core (memory off); Personal + Memory = Personal Brain; Team = Core Teams (no shared memory) */
     companyKnowledgeLine: 'Gemeinsames Firmenwissen für das ganze Team ist in den Firmenplänen enthalten.',
     setupHeading: 'Einrichtung und eigene Skills',
     footnote: 'Alle Preise exkl. MWST.',
