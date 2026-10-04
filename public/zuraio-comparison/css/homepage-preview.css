@@ -2,6 +2,7 @@
 
 body[data-alt-chrome] {
   padding-top: var(--nav-h);
+  --alt-h2-lede-gap: var(--alt-head-gap);
   --alt-link: var(--olive-deep);
   --alt-link-hover: var(--olive-dark, #4a5228);
   /* ~2.5% darker than paper — subtler than global --cloud */
@@ -127,11 +128,45 @@ body[data-alt-chrome] #data-control .marker {
 
 body[data-alt-chrome] .alt-section-head .lede,
 body[data-alt-chrome] .alt-section-head .alt-control-intro-support {
-  margin: 0;
+  margin-block-end: 0;
+  margin-inline: 0;
   max-width: 60ch;
   text-wrap: pretty;
   font-size: var(--alt-body);
   line-height: 1.55;
+}
+
+body[data-alt-chrome] .alt-section-head h2 + .lede,
+body[data-alt-chrome] .alt-section-head h2 + .alt-control-intro-support {
+  margin-top: var(--alt-h2-lede-gap);
+}
+
+body[data-alt-chrome] .alt-section-head + .lede {
+  margin-top: var(--alt-h2-lede-gap);
+  margin-bottom: 0;
+}
+
+body[data-alt-chrome] .alt-section-head h2 .alt-home-h2__line {
+  display: inline;
+}
+
+@media (min-width: 900px) {
+  body[data-alt-chrome] .alt-section-head h2:has(.alt-home-h2__line) {
+    max-width: min(36ch, 100%);
+    text-wrap: balance;
+  }
+
+  body[data-alt-chrome] .alt-section-head h2 .alt-home-h2__line {
+    display: block;
+  }
+}
+
+@media (max-width: 899px) {
+  body[data-alt-chrome] .alt-section-head h2.alt-home-skills-h2 {
+    max-width: none;
+    line-height: 1.15;
+    text-wrap: pretty;
+  }
 }
 
 body[data-alt-chrome] #data-control .alt-section-head .lede {
@@ -857,10 +892,6 @@ body[data-alt-chrome] .alt-skills-compare__link {
 
   body[data-alt-chrome] .alt-home-skills-head {
     margin-bottom: 12px;
-  }
-
-  body[data-alt-chrome] #skills .alt-section-head > * + * {
-    margin-top: 0.45rem;
   }
 
   body[data-alt-chrome] .alt-skills-compare__list {
@@ -3263,7 +3294,7 @@ body[data-alt-chrome] .alt-tech-hosting-more {
 }
 
 body[data-alt-chrome] .alt-tech-recorded-intro {
-  margin: var(--alt-head-gap) 0 1.25rem;
+  margin-bottom: 1.25rem;
 }
 
 body[data-alt-chrome] .alt-recorded-grid {
