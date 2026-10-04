@@ -11,7 +11,6 @@ import { isPreviewDevMode, formatPreviewHtml } from './alt-preview-utils.js';
 import { initControlParticles } from './control-particles.js';
 import { initAltPreviewMarquee } from './alt-integrations-marquee.js';
 import { ALT_HOME_REASON_ICONS } from './alt-home-reason-icons.js';
-import { ALT_HOME_BUILT_WITH_ICON, ALT_HOME_SKILL_ICONS } from './alt-home-skill-icons.js';
 import { ROUTES_OUTCOME_CHECK } from './workflow-icons.js';
 
 const DEMO_CACHE = '20260805v2';
@@ -115,10 +114,7 @@ const HERO_REPLY_IMAGE_MOBILE = {
   },
 };
 
-const SKILLS_PRESENTATION_IMAGE = {
-  en: 'assets/skills/zuraio-skills-presentation-en@2x.webp',
-  de: 'assets/skills/zuraio-skills-presentation-de@2x.webp',
-};
+const SKILLS_COMPARE_ARROW = `<svg class="alt-skills-compare__arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>`;
 
 function cacheBust(url) {
   if (!url) return url;
@@ -197,16 +193,6 @@ function trustLines(trust) {
     .filter(Boolean);
 }
 
-function parseSkillExamples(band) {
-  const cleaned = (band ?? '').replace(/\[.*?\]/g, '').trim();
-  const colon = cleaned.indexOf(':');
-  const tail = colon >= 0 ? cleaned.slice(colon + 1) : cleaned;
-  return tail
-    .split('·')
-    .map((s) => s.trim().replace(/^["«]|["»]$/g, ''))
-    .filter(Boolean);
-}
-
 function renderTrustLine(trust) {
   const lines = trustLines(trust);
   return `<ul class="alt-home-hero__trust-list">${lines
@@ -239,10 +225,6 @@ function heroReplyImageSrc(locale) {
 
 function heroReplyMobileImageSrc(locale) {
   return altHomeAssetHref(HERO_REPLY_IMAGE_MOBILE[localeKey(locale)].path);
-}
-
-function skillsPresentationImageSrc(locale) {
-  return altHomeAssetHref(SKILLS_PRESENTATION_IMAGE[localeKey(locale)]);
 }
 
 function renderProductFrameImg({ src, alt, imgAttrs = '', imgExtraClass = '', dataAttr = '' }) {
@@ -291,14 +273,51 @@ function renderHeroVisual(locale, copy) {
     </div>`;
 }
 
-function renderSkillsVisual(locale, copy) {
-  const src = skillsPresentationImageSrc(locale);
-  const alt = copy.skills.presentationImageAlt ?? '';
+function renderSkillsCompareSources(usesLabel, sources) {
+  const chips = (sources ?? [])
+    .map((s) => `<span class="alt-sq-source-chips__chip">${s}</span>`)
+    .join('');
+  return `<div class="alt-skills-compare__uses">
+    <span class="alt-skills-compare__uses-label">${usesLabel}</span>
+    <div class="alt-skills-compare__uses-chips">${chips}</div>
+  </div>`;
+}
+
+function renderSkillsCompare(copy) {
+  const sk = copy.skills;
+  const colReady = sk.colReady ?? '';
+  const colCustom = sk.colCustom ?? '';
+  const usesLabel = sk.usesLabel ?? 'Uses:';
+  const rows = (sk.pairs ?? [])
+    .map((row) => {
+      const ready = row.ready ?? '';
+      const custom = row.custom ?? '';
+      const sr = `${colReady}: ${ready}. ${colCustom}: ${custom}`;
+      const sourcesHtml = renderSkillsCompareSources(usesLabel, row.sources);
+      return `
+      <li class="alt-skills-compare__row">
+        <span class="visually-hidden">${sr}</span>
+        <div class="alt-skills-compare__left">${ready}</div>
+        <div class="alt-skills-compare__arrow">${SKILLS_COMPARE_ARROW}</div>
+        <div class="alt-skills-compare__right">
+          <p class="alt-skills-compare__statement">${custom}</p>
+          ${sourcesHtml}
+        </div>
+      </li>`;
+    })
+    .join('');
+
   return `
-    <div class="alt-home-skills-head__visual" data-alt-skills-visual hidden>
-      <div class="alt-home-product-frame alt-home-skills__frame" data-alt-skills-frame hidden>
-        ${renderProductFrameImg({ src, alt, imgAttrs: 'loading="lazy"' })}
+    <div class="alt-skills-compare">
+      <div class="alt-skills-compare__col-labels">
+        <span class="alt-skills-compare__col-label alt-skills-compare__col-label--muted">${colReady}</span>
+        <span class="alt-skills-compare__col-label alt-skills-compare__col-label--olive">${colCustom}</span>
       </div>
+      <ul class="alt-skills-compare__list">${rows}</ul>
+      <p class="alt-skills-compare__foot">
+        <span class="alt-skills-compare__foot-line">${sk.footer ?? ''}</span>
+        <a class="alt-home-link-secondary alt-skills-compare__link" data-route="skills" href="${routeHref('skills')}">${sk.link}</a>
+      </p>
     </div>`;
 }
 
@@ -362,38 +381,6 @@ function initHeroVisualSlot() {
   );
 }
 
-function initSkillsVisualSlot() {
-  const section = document.getElementById('skills');
-  const outer = section?.querySelector('[data-alt-skills-visual]');
-  const frame = section?.querySelector('[data-alt-skills-frame]');
-  const img = frame?.querySelector('.alt-home-product-frame__img');
-  if (!section || !outer || !frame) return;
-
-  const show = () => {
-    section.classList.add('alt-home-skills--has-visual');
-    outer.hidden = false;
-    frame.hidden = false;
-  };
-
-  const hide = () => {
-    section.classList.remove('alt-home-skills--has-visual');
-    outer.hidden = true;
-    frame.hidden = true;
-  };
-
-  hide();
-
-  probeProductImage(
-    frame,
-    img,
-    show,
-    () => {
-      img?.remove();
-      hide();
-    },
-  );
-}
-
 function renderMain(copy, locale, isDev) {
   const todos = [];
   const heroKey = getHeroVariant();
@@ -409,21 +396,6 @@ function renderMain(copy, locale, isDev) {
         </div>
       </div>`,
     )
-    .join('');
-
-  const skillsHtml = copy.skills.readyMade
-    .map((skill, i) => {
-      const title = skill.title ?? skill[0] ?? '';
-      const body = skill.body ?? skill[1] ?? '';
-      const sources = skill.sources ?? '';
-      return `
-      <article class="alt-home-skill-card">
-        <span class="alt-home-skill-card__icon" aria-hidden="true">${ALT_HOME_SKILL_ICONS[i] ?? ''}</span>
-        <h3 class="alt-home-skill-card__title">${title}</h3>
-        <p class="alt-home-skill-card__body">${fmt(body, isDev, todos)}</p>
-        <p class="alt-home-skill-card__sources">${sources}</p>
-      </article>`;
-    })
     .join('');
 
   const controlCardsHtml = (copy.control.cards ?? [])
@@ -475,10 +447,6 @@ function renderMain(copy, locale, isDev) {
   if (!mainEl) return;
 
   const skillsEyebrow = copy.skills.eyebrowShort ?? copy.skills.eyebrow ?? '';
-  const skillExamples = parseSkillExamples(copy.skills.band ?? '');
-  const skillChips = skillExamples
-    .map((ex) => `<span class="alt-home-skills-built__chip">${fmt(ex, isDev, todos)}</span>`)
-    .join('');
 
   mainEl.innerHTML = `
     <section class="alt-section alt-home-hero alt-home-hero--text-only" id="hero">
@@ -532,25 +500,12 @@ function renderMain(copy, locale, isDev) {
 
     <section class="alt-section" id="skills" aria-labelledby="alt-skills-h">
       <div class="wrap">
-        <div class="alt-home-skills-head">
-          <div class="alt-section-head alt-home-skills-head__copy">
-            <span class="marker alt-skills-eyebrow">${skillsEyebrow}</span>
-            <h2 id="alt-skills-h" class="alt-reveal">${copy.skills.heading}</h2>
-            <p class="lede">${copy.skills.intro}</p>
-          </div>
-          ${renderSkillsVisual(locale, copy)}
+        <div class="alt-section-head alt-home-skills-head">
+          <span class="marker alt-skills-eyebrow">${skillsEyebrow}</span>
+          <h2 id="alt-skills-h" class="alt-reveal">${copy.skills.heading}</h2>
+          <p class="lede alt-home-skills-intro">${copy.skills.intro}</p>
         </div>
-        <div class="alt-home-skills-grid">${skillsHtml}</div>
-        <div class="alt-home-skills-built">
-          <div class="alt-home-skills-built__main">
-            <p class="alt-home-skills-built__label">
-              <span class="alt-home-skills-built__label-icon" aria-hidden="true">${ALT_HOME_BUILT_WITH_ICON}</span>
-              ${copy.skills.footnoteLabel ?? ''}
-            </p>
-            <div class="alt-home-skills-built__chips">${skillChips}</div>
-          </div>
-          <a class="alt-home-link-secondary alt-home-skills-built__link" data-route="skills" href="${routeHref('skills')}">${copy.skills.link}</a>
-        </div>
+        ${renderSkillsCompare(copy)}
       </div>
     </section>
 
@@ -645,7 +600,6 @@ function renderMain(copy, locale, isDev) {
 
   window.__altHomeTodos = [...new Set(todos)];
   initHeroVisualSlot();
-  initSkillsVisualSlot();
 }
 
 function bindAnalytics(heroVariant) {
