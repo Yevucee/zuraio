@@ -31,6 +31,16 @@ function faqItemHref(anchorId) {
   return `${path}#${anchorId}`;
 }
 
+/** Split a two-sentence section H2 at the first “. ” (no copy change). */
+function renderTwoSentenceH2(heading) {
+  const text = (heading ?? '').trim();
+  const splitAt = text.indexOf('. ');
+  if (splitAt === -1) return text;
+  const first = text.slice(0, splitAt + 1);
+  const second = text.slice(splitAt + 2);
+  return `<span class="alt-home-h2__line">${first}</span><span class="alt-home-h2__line">${second}</span>`;
+}
+
 function renderHeroTitle(copy, heroKey) {
   if (heroKey === 'a' && copy.hero.headlineLines?.length >= 2) {
     const [primary, secondary] = copy.hero.headlineLines;
@@ -502,7 +512,7 @@ function renderMain(copy, locale, isDev) {
       <div class="wrap">
         <div class="alt-section-head alt-home-skills-head">
           <span class="marker alt-skills-eyebrow">${skillsEyebrow}</span>
-          <h2 id="alt-skills-h" class="alt-reveal">${copy.skills.heading}</h2>
+          <h2 id="alt-skills-h" class="alt-reveal alt-home-skills-h2">${renderTwoSentenceH2(copy.skills.heading)}</h2>
           <p class="lede alt-home-skills-intro">${copy.skills.intro}</p>
         </div>
         ${renderSkillsCompare(copy)}
