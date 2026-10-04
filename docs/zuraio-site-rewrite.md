@@ -42,6 +42,41 @@ DE nav: **So hilft Zuraio · Skills · Sicherheit · Über uns**.
 - EN: Zuraio answers emails, prepares meetings and finds what you need in your company knowledge, always with sources.
 - DE: Zuraio beantwortet E-Mails, bereitet Sitzungen vor und findet, was Sie im Wissen Ihres Unternehmens brauchen, immer mit Quellen.
 
+### Section: Skills (id="skills"; after Demo, before Integrations)
+
+**Eyebrow**
+- EN: BUILT FOR ARCHITECTS, FIDUCIARIES AND PROPERTY MANAGERS
+- DE: FÜR ARCHITEKTEN, TREUHÄNDER UND VERWALTUNGEN (full eyebrow in copy-alt-home: FÜR ARCHITEKTUR- UND INGENIEURBÜROS, TREUHÄNDER UND IMMOBILIENVERWALTUNGEN)
+
+**H2**
+- EN: Useful from day one. Then set up the way you work.
+- DE: Ab dem ersten Tag nützlich. Dann so eingerichtet, wie Sie arbeiten.
+
+**Intro**
+- EN: Zuraio works with skills: tasks it knows how to do. Some are ready from the start. Others we build with your team, from your templates, rules and tone.
+- DE: Zuraio arbeitet mit Skills: Aufgaben, die Zuraio erledigen kann. Einige sind von Anfang an bereit. Andere bauen wir mit Ihrem Team, aus Ihren Vorlagen, Regeln und Ihrem Ton.
+
+**Comparison (3 rows)**  
+Column labels: EN *Ready from day one* / *Your version, built with you* · DE *Ab dem ersten Tag* / *Ihre Version, mit Ihnen gebaut*
+
+| Row | Ready (EN) | Your version (EN) | Uses (EN) |
+|---|---|---|---|
+| 1 | Reply to a client or tenant | Reply to tenants in your tone, with your standard clauses. | Your templates · Rental contracts |
+| 2 | Prepare a quote | Quote in your house format, with your discount rules. | Price list · bexio |
+| 3 | Summarise a client's month | Monthly client report, the way your partners like it. | Emails · Abacus |
+
+| Row | Ready (DE) | Your version (DE) | Nutzt (DE) |
+|---|---|---|---|
+| 1 | Kunden oder Mietern antworten | Mietern in Ihrem Ton antworten, mit Ihren Standardklauseln. | Ihre Vorlagen · Mietverträge |
+| 2 | Offerte vorbereiten | Offerte in Ihrem Hausformat, mit Ihren Rabattregeln. | Preisliste · bexio |
+| 3 | Den Monat eines Mandanten zusammenfassen | Monatsreport für Mandanten, so wie Ihre Partner ihn wollen. | E-Mails · Abacus |
+
+**Footer / link**
+- EN: We start with one task that matters to you. · See all skills → (how-it-helps.html#skills)
+- DE: Wir beginnen mit einer Aufgabe, die Ihnen wichtig ist. · Alle Skills ansehen →
+
+The six ready-made skill cards and the «Built with you» chip box live on **how-it-helps.html#skills**, not on the homepage preview.
+
 ### Section: Same question (id="same-question"; after Integrations, before Data control)
 **Eyebrow**
 - EN: YOUR COMPANY'S KNOWLEDGE
