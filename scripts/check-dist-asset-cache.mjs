@@ -1,0 +1,75 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const ROOT = path.dirname(fileURLToPath(import.meta.url));
+const DIST = path.join(ROOT, '..', 'dist');
+const CACHE_FILE = path.join(ROOT, 'site-asset-cache.txt');
+const STALE = ['20261005c', '20261005b', '20261005a', '20261004b', '20261004a'];
+
+const expected = fs.readFileSync(CACHE_FILE, 'utf8').trim();
+if (!/^\d{8}[a-z]$/.test(expected)) {
+  console.error('check-dist-asset-cache: invalid site-asset-cache.txt');
+  process.exit(1);
+}
+
+function walk(dir, files = []) {
+  for (const name of fs.readdirSync(dir)) {
+    const full = path.join(dir, name);
+    if (fs.statSync(full).isDirectory()) walk(full, files);
+    else files.push(full);
+  }
+  return files;
+}
+
+if (!fs.existsSync(DIST)) {
+  console.error('check-dist-asset-cache: dist/ missing');
+  process.exit(1);
+}
+
+const hits = [];
+for (const file of walk(DIST)) {
+  if (!/\.(html|js|css|json|xml|txt)$/i.test(file)) continue;
+  const text = fs.readFileSync(file, 'utf8');
+  for (const stale of STALE) {
+    if (text.includes(stale)) hits.push({ file: path.relative(DIST, file), stale });
+  }
+}
+
+if (hits.length) {
+  console.error('check-dist-asset-cache: stale cache key(s) in dist:');
+  for (const h of hits.slice(0, 30)) {
+    console.error(`  ${h.file} → ${h.stale}`);
+  }
+  if (hits.length > 30) console.error(`  … and ${hits.length - 30} more`);
+  process.exit(1);
+}
+
+const mustHave = [
+  path.join(DIST, 'en', 'homepage-preview.html'),
+  path.join(DIST, 'de', 'homepage-preview.html'),
+  path.join(DIST, 'js', 'alt-skills-sector.js'),
+];
+for (const file of mustHave) {
+  if (!fs.existsSync(file)) {
+    console.error(`check-dist-asset-cache: missing ${path.relative(DIST, file)}`);
+    process.exit(1);
+  }
+  const text = fs.readFileSync(file, 'utf8');
+  if (!text.includes(`v=${expected}`) && !file.endsWith('alt-skills-sector.js')) {
+    console.error(`check-dist-asset-cache: ${path.relative(DIST, file)} missing v=${expected}`);
+    process.exit(1);
+  }
+}
+
+const sectorJs = fs.readFileSync(path.join(DIST, 'js', 'alt-skills-sector.js'), 'utf8');
+if (sectorJs.includes('syncPanelMinHeight')) {
+  console.error('check-dist-asset-cache: alt-skills-sector.js still has syncPanelMinHeight');
+  process.exit(1);
+}
+if (!sectorJs.includes('One continuous highlight')) {
+  console.error('check-dist-asset-cache: alt-skills-sector.js missing Run 8c hlAll');
+  process.exit(1);
+}
+
+console.log(`check-dist-asset-cache: OK (v=${expected}, no stale keys in dist)`);
