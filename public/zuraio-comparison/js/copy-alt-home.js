@@ -61,26 +61,6 @@ export const copyAltHome = {
       heading: 'Ab dem ersten Tag nützlich. Dann so eingerichtet, wie Sie arbeiten.',
       intro:
         'Zuraio arbeitet mit Skills: Aufgaben, die Zuraio erledigen kann. Einige sind von Anfang an bereit. Andere bauen wir mit Ihrem Team, aus Ihren Vorlagen, Regeln und Ihrem Ton.',
-      colReady: 'Ab dem ersten Tag',
-      colCustom: 'Ihre Version, mit Ihnen gebaut',
-      usesLabel: 'Nutzt:',
-      pairs: [
-        {
-          ready: 'Kunden oder Mietern antworten',
-          custom: 'Mietern in Ihrem Ton antworten, mit Ihren Standardklauseln.',
-          sources: ['Ihre Vorlagen', 'Mietverträge'],
-        },
-        {
-          ready: 'Offerte vorbereiten',
-          custom: 'Offerte in Ihrem Hausformat, mit Ihren Rabattregeln.',
-          sources: ['Preisliste', 'bexio'],
-        },
-        {
-          ready: 'Den Monat eines Mandanten zusammenfassen',
-          custom: 'Monatsreport für Mandanten, so wie Ihre Partner ihn wollen.',
-          sources: ['E-Mails', 'Abacus'],
-        },
-      ],
       footer: 'Wir beginnen mit einer Aufgabe, die Ihnen wichtig ist.',
       link: 'Alle Skills ansehen →',
       linkHref: '../how-it-helps.html#skills',
@@ -230,26 +210,6 @@ export const copyAltHome = {
       heading: 'Useful from day one. Then set up the way you work.',
       intro:
         'Zuraio works with skills: tasks it knows how to do. Some are ready from the start. Others we build with your team, from your templates, rules and tone.',
-      colReady: 'Ready from day one',
-      colCustom: 'Your version, built with you',
-      usesLabel: 'Uses:',
-      pairs: [
-        {
-          ready: 'Reply to a client or tenant',
-          custom: 'Reply to tenants in your tone, with your standard clauses.',
-          sources: ['Your templates', 'Rental contracts'],
-        },
-        {
-          ready: 'Prepare a quote',
-          custom: 'Quote in your house format, with your discount rules.',
-          sources: ['Price list', 'bexio'],
-        },
-        {
-          ready: 'Summarise a client\'s month',
-          custom: 'Monthly client report, the way your partners like it.',
-          sources: ['Emails', 'Abacus'],
-        },
-      ],
       footer: 'We start with one task that matters to you.',
       link: 'See all skills →',
       linkHref: '../how-it-helps.html#skills',
