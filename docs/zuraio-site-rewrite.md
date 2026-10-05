@@ -56,20 +56,20 @@ DE nav: **So hilft Zuraio · Skills · Sicherheit · Über uns**.
 - EN: Zuraio works with skills: tasks it knows how to do. Some are ready from the start. Others we build with your team, from your templates, rules and tone.
 - DE: Zuraio arbeitet mit Skills: Aufgaben, die Zuraio erledigen kann. Einige sind von Anfang an bereit. Andere bauen wir mit Ihrem Team, aus Ihren Vorlagen, Regeln und Ihrem Ton.
 
-**Comparison (3 rows)**  
-Column labels: EN *Ready from day one* / *Your version, built with you* · DE *Ab dem ersten Tag* / *Ihre Version, mit Ihnen gebaut*
+**Sector tabs (3)**  
+Tablist: EN *Choose your sector* · DE *Branche wählen*  
+Tabs (default first): EN *Architecture & engineering* · *Fiduciary* · *Property management* · DE *Architektur & Ingenieurwesen* · *Treuhand* · *Liegenschaftsverwaltung*  
+Optional deep links: `#skills-architecture`, `#skills-fiduciary`, `#skills-property` (same on DE).
 
-| Row | Ready (EN) | Your version (EN) | Uses (EN) |
-|---|---|---|---|
-| 1 | Reply to a client or tenant | Reply to tenants in your tone, with your standard clauses. | Your templates · Rental contracts |
-| 2 | Prepare a quote | Quote in your house format, with your discount rules. | Price list · bexio |
-| 3 | Summarise a client's month | Monthly client report, the way your partners like it. | Emails · Abacus |
+Each tab panel: left copy (title, one sentence, Uses chips, workshop line) + right **example document** (HTML/CSS, invented data; olive highlights with numbered labels). Caption under document: EN *Example with invented data* · DE *Beispiel mit erfundenen Daten*.
 
-| Row | Ready (DE) | Your version (DE) | Nutzt (DE) |
-|---|---|---|---|
-| 1 | Kunden oder Mietern antworten | Mietern in Ihrem Ton antworten, mit Ihren Standardklauseln. | Ihre Vorlagen · Mietverträge |
-| 2 | Offerte vorbereiten | Offerte in Ihrem Hausformat, mit Ihren Rabattregeln. | Preisliste · bexio |
-| 3 | Den Monat eines Mandanten zusammenfassen | Monatsreport für Mandanten, so wie Ihre Partner ihn wollen. | E-Mails · Abacus |
+| Tab | EN title | DE title |
+|---|---|---|
+| Architecture | Quote in your house format | Offerte in Ihrem Hausformat |
+| Fiduciary | Monthly client report, the way your partners like it | Monatsreport für Mandanten, so wie Ihre Partner ihn wollen |
+| Property | Replies to tenants in your tone | Antworten an Mieter in Ihrem Ton |
+
+Workshop line (every panel): EN *Ready-made to start. Set up with your team in a workshop.* · DE *Fertig zum Start. Mit Ihrem Team in einem Workshop eingerichtet.*
 
 **Footer / link**
 - EN: We start with one task that matters to you. · See all skills → (how-it-helps.html#skills)

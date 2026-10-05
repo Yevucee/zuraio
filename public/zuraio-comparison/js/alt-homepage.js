@@ -12,6 +12,7 @@ import { initControlParticles } from './control-particles.js';
 import { initAltPreviewMarquee } from './alt-integrations-marquee.js';
 import { ALT_HOME_REASON_ICONS } from './alt-home-reason-icons.js';
 import { ROUTES_OUTCOME_CHECK } from './workflow-icons.js';
+import { renderSkillsSectorTabs, initSkillsSectorTabs } from './alt-skills-sector.js';
 
 const DEMO_CACHE = '20260805v2';
 
@@ -123,8 +124,6 @@ const HERO_REPLY_IMAGE_MOBILE = {
     height: 909,
   },
 };
-
-const SKILLS_COMPARE_ARROW = `<svg class="alt-skills-compare__arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>`;
 
 function cacheBust(url) {
   if (!url) return url;
@@ -280,54 +279,6 @@ function renderHeroVisual(locale, copy) {
           decoding="async"
         />
       </picture>
-    </div>`;
-}
-
-function renderSkillsCompareSources(usesLabel, sources) {
-  const chips = (sources ?? [])
-    .map((s) => `<span class="alt-sq-source-chips__chip">${s}</span>`)
-    .join('');
-  return `<div class="alt-skills-compare__uses">
-    <span class="alt-skills-compare__uses-label">${usesLabel}</span>
-    <div class="alt-skills-compare__uses-chips">${chips}</div>
-  </div>`;
-}
-
-function renderSkillsCompare(copy) {
-  const sk = copy.skills;
-  const colReady = sk.colReady ?? '';
-  const colCustom = sk.colCustom ?? '';
-  const usesLabel = sk.usesLabel ?? 'Uses:';
-  const rows = (sk.pairs ?? [])
-    .map((row) => {
-      const ready = row.ready ?? '';
-      const custom = row.custom ?? '';
-      const sr = `${colReady}: ${ready}. ${colCustom}: ${custom}`;
-      const sourcesHtml = renderSkillsCompareSources(usesLabel, row.sources);
-      return `
-      <li class="alt-skills-compare__row">
-        <span class="visually-hidden">${sr}</span>
-        <div class="alt-skills-compare__left">${ready}</div>
-        <div class="alt-skills-compare__arrow">${SKILLS_COMPARE_ARROW}</div>
-        <div class="alt-skills-compare__right">
-          <p class="alt-skills-compare__statement">${custom}</p>
-          ${sourcesHtml}
-        </div>
-      </li>`;
-    })
-    .join('');
-
-  return `
-    <div class="alt-skills-compare">
-      <div class="alt-skills-compare__col-labels">
-        <span class="alt-skills-compare__col-label alt-skills-compare__col-label--muted">${colReady}</span>
-        <span class="alt-skills-compare__col-label alt-skills-compare__col-label--olive">${colCustom}</span>
-      </div>
-      <ul class="alt-skills-compare__list">${rows}</ul>
-      <p class="alt-skills-compare__foot">
-        <span class="alt-skills-compare__foot-line">${sk.footer ?? ''}</span>
-        <a class="alt-home-link-secondary alt-skills-compare__link" data-route="skills" href="${routeHref('skills')}">${sk.link}</a>
-      </p>
     </div>`;
 }
 
@@ -515,7 +466,7 @@ function renderMain(copy, locale, isDev) {
           <h2 id="alt-skills-h" class="alt-reveal alt-home-skills-h2">${renderTwoSentenceH2(copy.skills.heading)}</h2>
           <p class="lede alt-home-skills-intro">${copy.skills.intro}</p>
         </div>
-        ${renderSkillsCompare(copy)}
+        ${renderSkillsSectorTabs(copy, locale, routeHref)}
       </div>
     </section>
 
@@ -610,6 +561,7 @@ function renderMain(copy, locale, isDev) {
 
   window.__altHomeTodos = [...new Set(todos)];
   initHeroVisualSlot();
+  initSkillsSectorTabs();
 }
 
 function bindAnalytics(heroVariant) {

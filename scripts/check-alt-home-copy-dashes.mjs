@@ -10,6 +10,7 @@ const root = path.dirname(fileURLToPath(import.meta.url));
 
 const COPY_FILES = [
   '../public/zuraio-comparison/js/copy-alt-home.js',
+  '../public/zuraio-comparison/js/copy-alt-home-skills-tabs.js',
   '../public/zuraio-comparison/js/copy-alt-pricing.js',
   '../public/zuraio-comparison/js/copy-security.js',
   '../public/zuraio-comparison/js/copy-integrations.js',
@@ -33,7 +34,7 @@ function findDashOffenders(source) {
   const offenders = [];
   for (const match of body.matchAll(stringLiteral)) {
     const lit = match[0];
-    if (lit.includes(' – ') || lit.includes('—')) {
+    if (lit.includes(' – ') || lit.includes('—') || lit.includes('−')) {
       offenders.push(lit.slice(0, 120) + (lit.length > 120 ? '…' : ''));
     }
   }
