@@ -5,6 +5,7 @@ export const SKILLS_TAB_IDS = ['architecture', 'fiduciary', 'property'];
 export const skillsTabsMeta = {
   en: {
     tablistLabel: 'Choose your sector',
+    legendHeading: "What's yours",
     docCaption: 'Example with invented data',
     workshopLine: 'Ready-made to start. Set up with your team in a workshop.',
     tabs: [
@@ -56,6 +57,7 @@ export const skillsTabsMeta = {
   },
   de: {
     tablistLabel: 'Branche wählen',
+    legendHeading: 'Was Ihres ist',
     docCaption: 'Beispiel mit erfundenen Daten',
     workshopLine: 'Fertig zum Start. Mit Ihrem Team in einem Workshop eingerichtet.',
     tabs: [
