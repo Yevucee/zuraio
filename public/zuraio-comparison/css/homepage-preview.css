@@ -834,14 +834,6 @@ body[data-alt-chrome] .alt-skills-panel.is-hidden {
   width: 100%;
 }
 
-body[data-alt-chrome] .alt-skills-panel.is-measuring {
-  opacity: 0;
-  position: absolute;
-  inset: 0 auto auto 0;
-  width: 100%;
-  pointer-events: none;
-}
-
 @media (prefers-reduced-motion: reduce) {
   body[data-alt-chrome] .alt-skills-panel {
     transition: none;
@@ -1070,6 +1062,8 @@ body[data-alt-chrome] .alt-skills-doc__mark {
   border-radius: 2px;
   color: inherit;
   padding: 0 0.1em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 body[data-alt-chrome] .alt-skills-doc__hl {
@@ -1082,6 +1076,9 @@ body[data-alt-chrome] .alt-skills-doc__hl--block {
 
 body[data-alt-chrome] .alt-skills-doc__hl-nowrap {
   white-space: nowrap;
+  background: none;
+  box-shadow: none;
+  padding: 0;
 }
 
 body[data-alt-chrome] .alt-skills-doc__marker {

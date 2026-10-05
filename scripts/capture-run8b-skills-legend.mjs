@@ -7,7 +7,7 @@ const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(ROOT, '..', 'dist');
 const OUT = '/opt/cursor/artifacts';
 const PORT = 4190;
-const V = '20261005c';
+const V = '20261005d';
 
 const server = await startStaticDistServer(DIST, PORT);
 const base = `http://127.0.0.1:${PORT}`;
