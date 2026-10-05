@@ -998,7 +998,7 @@ body[data-alt-chrome] .alt-skills-doc__terms {
   color: var(--charcoal-soft);
 }
 
-body[data-alt-chrome] .alt-skills-doc__figures .alt-skills-doc__mark {
+body[data-alt-chrome] .alt-skills-doc__figures {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
@@ -1009,6 +1009,27 @@ body[data-alt-chrome] .alt-skills-doc__fig {
   flex-direction: column;
   gap: 4px;
   min-width: 0;
+}
+
+body[data-alt-chrome] .alt-skills-doc__fig--hl {
+  position: relative;
+  background: var(--soft-olive-tint);
+  box-shadow: inset 0 -2px 0 var(--olive-deep);
+  border-radius: 2px;
+  padding: 8px 8px 10px;
+}
+
+body[data-alt-chrome] .alt-skills-doc__fig--hl > .alt-skills-doc__marker {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  margin: 0;
+  z-index: 1;
+}
+
+body[data-alt-chrome] .alt-skills-doc__fig--hl.is-hl-linked {
+  outline: 2px solid var(--olive-deep);
+  outline-offset: 2px;
 }
 
 body[data-alt-chrome] .alt-skills-doc__fig-label,
@@ -1339,8 +1360,7 @@ body[data-alt-chrome] .alt-skills-sector__link {
     line-height: 1.4;
   }
 
-  body[data-alt-chrome] .alt-skills-doc__figures .alt-skills-doc__mark {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  body[data-alt-chrome] .alt-skills-doc__figures {
     gap: 4px;
   }
 
@@ -1385,7 +1405,7 @@ body[data-alt-chrome] .alt-skills-sector__link {
     line-height: 1.12;
   }
 
-  body[data-alt-chrome] .alt-skills-doc__figures .alt-skills-doc__mark {
+  body[data-alt-chrome] .alt-skills-doc__figures {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 4px;
   }

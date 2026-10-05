@@ -26,11 +26,24 @@ function hlBlock(innerHtml, n, tabId) {
   return `<span class="alt-skills-doc__hl alt-skills-doc__hl--block" data-hl="${n}" aria-describedby="${id}"><mark class="alt-skills-doc__mark"><span class="alt-skills-doc__hl-nowrap">${marker(n)}</span>${innerHtml}</mark></span>`;
 }
 
-function figuresRow(locale) {
+function figCells(label, value, note) {
+  return `<span class="alt-skills-doc__fig-label">${label}</span><span class="alt-skills-doc__fig-value">${value}</span><span class="alt-skills-doc__fig-note">${note}</span>`;
+}
+
+function figuresGrid(locale, tabId) {
+  const hlId = legendRowId(tabId, 2);
   if (locale === 'de') {
-    return `<span class="alt-skills-doc__fig"><span class="alt-skills-doc__fig-label">Umsatz</span><span class="alt-skills-doc__fig-value">CHF 184'200</span><span class="alt-skills-doc__fig-note">+6 % gegenüber August</span></span><span class="alt-skills-doc__fig"><span class="alt-skills-doc__fig-label">Offene Rechnungen</span><span class="alt-skills-doc__fig-value">CHF 42'750</span><span class="alt-skills-doc__fig-note">3 überfällig</span></span><span class="alt-skills-doc__fig"><span class="alt-skills-doc__fig-label">Liquidität</span><span class="alt-skills-doc__fig-value">2,4 Monate</span><span class="alt-skills-doc__fig-note">der Fixkosten</span></span>`;
+    return `<div class="alt-skills-doc__figures">
+      <div class="alt-skills-doc__fig">${figCells('Umsatz', "CHF 184'200", '+6 % gegenüber August')}</div>
+      <div class="alt-skills-doc__fig alt-skills-doc__fig--hl" data-hl="2" aria-describedby="${hlId}">${marker(2)}${figCells('Offene Rechnungen', "CHF 42'750", '3 überfällig')}</div>
+      <div class="alt-skills-doc__fig">${figCells('Liquidität', '2,4 Monate', 'der Fixkosten')}</div>
+    </div>`;
   }
-  return `<span class="alt-skills-doc__fig"><span class="alt-skills-doc__fig-label">Revenue</span><span class="alt-skills-doc__fig-value">CHF 184,200</span><span class="alt-skills-doc__fig-note">+6% vs August</span></span><span class="alt-skills-doc__fig"><span class="alt-skills-doc__fig-label">Open invoices</span><span class="alt-skills-doc__fig-value">CHF 42,750</span><span class="alt-skills-doc__fig-note">3 overdue</span></span><span class="alt-skills-doc__fig"><span class="alt-skills-doc__fig-label">Liquidity</span><span class="alt-skills-doc__fig-value">2.4 months</span><span class="alt-skills-doc__fig-note">of fixed costs</span></span>`;
+  return `<div class="alt-skills-doc__figures">
+    <div class="alt-skills-doc__fig">${figCells('Revenue', 'CHF 184,200', '+6% vs August')}</div>
+    <div class="alt-skills-doc__fig alt-skills-doc__fig--hl" data-hl="2" aria-describedby="${hlId}">${marker(2)}${figCells('Open invoices', 'CHF 42,750', '3 overdue')}</div>
+    <div class="alt-skills-doc__fig">${figCells('Liquidity', '2.4 months', 'of fixed costs')}</div>
+  </div>`;
 }
 
 function renderDocArchitecture(locale, meta, tabId) {
@@ -92,9 +105,9 @@ function renderDocFiduciary(locale, meta, tabId) {
         <div class="alt-skills-doc__paper">
           <h4 class="alt-skills-doc__title">Monatsreport September 2026</h4>
           <p class="alt-skills-doc__subtitle">Muster AG · für die VR-Sitzung vom 14. Oktober</p>
-          <h5 class="alt-skills-doc__section">${hlAll('1. Auf einen Blick', 1, tabId)}</h5>
-          <div class="alt-skills-doc__figures">${hlBlock(figuresRow('de'), 2, tabId)}</div>
-          <h5 class="alt-skills-doc__section">2. Zu besprechen</h5>
+          <h5 class="alt-skills-doc__section">${hlAll('Auf einen Blick', 1, tabId)}</h5>
+          ${figuresGrid('de', tabId)}
+          <h5 class="alt-skills-doc__section">Zu besprechen</h5>
           <ul class="alt-skills-doc__list">
             <li>${hlAll(`Die Beispiel GmbH ist 45 Tage im Verzug (CHF 18'300). Wir empfehlen diese Woche eine Mahnung.`, 3, tabId)}</li>
             <li>MWST-Abrechnung Q3 fällig am 30. November.</li>
@@ -109,9 +122,9 @@ function renderDocFiduciary(locale, meta, tabId) {
       <div class="alt-skills-doc__paper">
         <h4 class="alt-skills-doc__title">Monthly report September 2026</h4>
         <p class="alt-skills-doc__subtitle">Muster AG · for the board meeting on 14 October</p>
-        <h5 class="alt-skills-doc__section">${hlAll('1. At a glance', 1, tabId)}</h5>
-        <div class="alt-skills-doc__figures">${hlBlock(figuresRow('en'), 2, tabId)}</div>
-        <h5 class="alt-skills-doc__section">2. Points to discuss</h5>
+        <h5 class="alt-skills-doc__section">${hlAll('At a glance', 1, tabId)}</h5>
+        ${figuresGrid('en', tabId)}
+        <h5 class="alt-skills-doc__section">Points to discuss</h5>
         <ul class="alt-skills-doc__list">
           <li>${hlAll('Beispiel GmbH is 45 days overdue (CHF 18,300). We suggest a reminder this week.', 3, tabId)}</li>
           <li>VAT return Q3 due on 30 November.</li>
@@ -282,7 +295,20 @@ function bindHighlightLinking(root) {
   });
 }
 
-function selectTab(root, tabId, { focusTab = false } = {}) {
+function skillsLocaleFromPage() {
+  return document.documentElement.lang === 'de' ? 'de' : 'en';
+}
+
+function replaceSkillsTabHash(tabId) {
+  const tab = getSkillsTabsMeta(skillsLocaleFromPage()).tabs.find((t) => t.id === tabId);
+  if (!tab?.hash) return;
+  const nextHash = `#${tab.hash}`;
+  if (window.location.hash === nextHash) return;
+  const url = `${window.location.pathname}${window.location.search}${nextHash}`;
+  history.replaceState(null, '', url);
+}
+
+function selectTab(root, tabId, { focusTab = false, updateHash = false } = {}) {
   const tabs = [...root.querySelectorAll('[role="tab"]')];
   const panels = [...root.querySelectorAll('[role="tabpanel"]')];
   tabs.forEach((tab) => {
@@ -290,13 +316,14 @@ function selectTab(root, tabId, { focusTab = false } = {}) {
     tab.classList.toggle('is-active', active);
     tab.setAttribute('aria-selected', active ? 'true' : 'false');
     tab.tabIndex = active ? 0 : -1;
-    if (active && focusTab) tab.focus();
+    if (active && focusTab) tab.focus({ preventScroll: true });
   });
   panels.forEach((panel) => {
     const active = panel.dataset.skillsPanel === tabId;
     panel.classList.toggle('is-hidden', !active);
     panel.setAttribute('aria-hidden', active ? 'false' : 'true');
   });
+  if (updateHash) replaceSkillsTabHash(tabId);
 }
 
 function bindTabsKeyboard(root) {
@@ -314,8 +341,7 @@ function bindTabsKeyboard(root) {
     else return;
     e.preventDefault();
     const tab = tabs[next];
-    selectTab(root, tab.dataset.skillsTab, { focusTab: true });
-    tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    selectTab(root, tab.dataset.skillsTab, { focusTab: true, updateHash: true });
   });
 }
 
@@ -324,7 +350,9 @@ export function initSkillsSectorTabs() {
   if (!root) return;
 
   root.querySelectorAll('[role="tab"]').forEach((tab) => {
-    tab.addEventListener('click', () => selectTab(root, tab.dataset.skillsTab, { focusTab: true }));
+    tab.addEventListener('click', () => {
+      selectTab(root, tab.dataset.skillsTab, { focusTab: true, updateHash: true });
+    });
   });
 
   bindTabsKeyboard(root);
