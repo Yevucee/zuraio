@@ -10,31 +10,20 @@ function marker(n) {
   return `<span class="alt-skills-doc__marker" aria-hidden="true">${n}</span>`;
 }
 
-function hl(text, n, tabId) {
-  const id = legendRowId(tabId, n);
-  const space = text.indexOf(' ');
-  const first = space === -1 ? text : text.slice(0, space);
-  const rest = space === -1 ? '' : text.slice(space + 1);
-  const markStart = `<mark class="alt-skills-doc__mark">${first}</mark>`;
-  const markRest = rest ? `<mark class="alt-skills-doc__mark">${rest}</mark>` : '';
-  return `<span class="alt-skills-doc__hl" data-hl="${n}" aria-describedby="${id}"><span class="alt-skills-doc__hl-nowrap">${marker(n)}${markStart}</span>${markRest}</span>`;
-}
-
-/** Whole phrase highlighted (short spans). */
+/** One continuous highlight: marker + first word nowrap inside a single <mark>. */
 function hlAll(text, n, tabId) {
   const id = legendRowId(tabId, n);
   const space = text.indexOf(' ');
   const first = space === -1 ? text : text.slice(0, space);
   const rest = space === -1 ? '' : text.slice(space + 1);
-  if (!rest) {
-    return `<span class="alt-skills-doc__hl" data-hl="${n}" aria-describedby="${id}"><span class="alt-skills-doc__hl-nowrap">${marker(n)}<mark class="alt-skills-doc__mark">${first}</mark></span></span>`;
-  }
-  return `<span class="alt-skills-doc__hl" data-hl="${n}" aria-describedby="${id}"><span class="alt-skills-doc__hl-nowrap">${marker(n)}<mark class="alt-skills-doc__mark">${first}</mark></span> <mark class="alt-skills-doc__mark">${rest}</mark></span>`;
+  const nowrapLead = rest ? `${marker(n)}${first} ` : `${marker(n)}${first}`;
+  const tail = rest ? rest : '';
+  return `<span class="alt-skills-doc__hl" data-hl="${n}" aria-describedby="${id}"><mark class="alt-skills-doc__mark"><span class="alt-skills-doc__hl-nowrap">${nowrapLead}</span>${tail}</mark></span>`;
 }
 
 function hlBlock(innerHtml, n, tabId) {
   const id = legendRowId(tabId, n);
-  return `<span class="alt-skills-doc__hl alt-skills-doc__hl--block" data-hl="${n}" aria-describedby="${id}">${marker(n)}<mark class="alt-skills-doc__mark">${innerHtml}</mark></span>`;
+  return `<span class="alt-skills-doc__hl alt-skills-doc__hl--block" data-hl="${n}" aria-describedby="${id}"><mark class="alt-skills-doc__mark"><span class="alt-skills-doc__hl-nowrap">${marker(n)}</span>${innerHtml}</mark></span>`;
 }
 
 function figuresRow(locale) {
@@ -308,24 +297,6 @@ function selectTab(root, tabId, { focusTab = false } = {}) {
     panel.classList.toggle('is-hidden', !active);
     panel.setAttribute('aria-hidden', active ? 'false' : 'true');
   });
-  syncPanelMinHeight(root);
-}
-
-function syncPanelMinHeight(root) {
-  const stack = root.querySelector('[data-skills-panels]');
-  if (!stack) return;
-  if (window.matchMedia('(max-width: 899px)').matches) {
-    stack.style.minHeight = '';
-    return;
-  }
-  const panels = [...root.querySelectorAll('[role="tabpanel"]')];
-  let max = 0;
-  panels.forEach((panel) => {
-    panel.classList.add('is-measuring');
-    max = Math.max(max, panel.offsetHeight);
-    panel.classList.remove('is-measuring');
-  });
-  stack.style.minHeight = `${max}px`;
 }
 
 function bindTabsKeyboard(root) {
@@ -361,9 +332,6 @@ export function initSkillsSectorTabs() {
 
   const fromHash = tabIdFromHash(window.location.hash);
   if (fromHash) selectTab(root, fromHash);
-
-  syncPanelMinHeight(root);
-  window.addEventListener('resize', () => syncPanelMinHeight(root), { passive: true });
 
   window.addEventListener('hashchange', () => {
     const id = tabIdFromHash(window.location.hash);
