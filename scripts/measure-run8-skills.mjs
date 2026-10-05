@@ -6,7 +6,7 @@ import { startStaticDistServer } from './static-dist-server.mjs';
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(ROOT, '..', 'dist');
 const PORT = 4184;
-const V = '20261005b';
+const V = '20261005c';
 const TAB_IDS = ['architecture', 'fiduciary', 'property'];
 
 async function measurePage(page, pagePath, width) {

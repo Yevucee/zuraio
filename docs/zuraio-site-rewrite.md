@@ -61,7 +61,7 @@ Tablist: EN *Choose your sector* · DE *Branche wählen*
 Tabs (default first): EN *Architecture & engineering* · *Fiduciary* · *Property management* · DE *Architektur & Ingenieurwesen* · *Treuhand* · *Liegenschaftsverwaltung*  
 Optional deep links: `#skills-architecture`, `#skills-fiduciary`, `#skills-property` (same on DE).
 
-Each tab panel: left copy (title, one sentence, Uses chips, workshop line) + right **example document** (HTML/CSS, invented data; olive highlights with numbered labels). Caption under document: EN *Example with invented data* · DE *Beispiel mit erfundenen Daten*.
+Each tab panel: left copy (title, one sentence, Uses chips, **legend** «What's yours» / «Was Ihres ist» with three numbered rows, workshop line) + right **example document** (HTML/CSS, invented data; olive tint highlights with inline numbered markers; legend explains each marker). Caption under document: EN *Example with invented data* · DE *Beispiel mit erfundenen Daten*.
 
 | Tab | EN title | DE title |
 |---|---|---|
