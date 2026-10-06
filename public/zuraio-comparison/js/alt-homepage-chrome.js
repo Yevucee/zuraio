@@ -49,6 +49,21 @@ function bindNavUi(root, ui) {
   });
 }
 
+/** Same floating pill + scroll state as main site header (site.js). */
+function bindAltNavScroll(root) {
+  if (!root || root.dataset.scrollBound) return;
+  root.dataset.scrollBound = 'true';
+  const navEl = root.querySelector('#nav');
+  const update = () => {
+    const floating = window.scrollY > 48;
+    root.classList.toggle('is-floating', floating);
+    navEl?.classList.toggle('is-floating', floating);
+    navEl?.classList.toggle('scrolled', floating);
+  };
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+}
+
 function navLinksHtml(nav, mode, active) {
   const items = [
     { route: 'how-it-helps', label: nav.howItWorks, key: 'how' },
@@ -122,6 +137,8 @@ export function renderAltHomeHeader(copy, locale, options = {}) {
     langBtn?.setAttribute('aria-expanded', 'false');
     langMenu?.classList.remove('is-open');
   });
+
+  bindAltNavScroll(el);
 }
 
 function founderEmailLinksHtml() {

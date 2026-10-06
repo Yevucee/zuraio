@@ -212,6 +212,19 @@ body[data-alt-chrome] .alt-home-nav.nav {
   border-bottom: 1px solid var(--hairline);
 }
 
+body[data-alt-chrome] .alt-home-nav.nav.is-floating {
+  border-bottom: none;
+  background: rgba(251, 251, 248, 0.62);
+  backdrop-filter: saturate(150%) blur(14px);
+  -webkit-backdrop-filter: saturate(150%) blur(14px);
+  box-shadow: 0 4px 22px rgba(38, 40, 35, 0.08);
+}
+
+body[data-alt-chrome] .alt-home-nav.nav.is-floating.scrolled {
+  background: rgba(251, 251, 248, 0.72);
+  box-shadow: 0 10px 32px rgba(38, 40, 35, 0.1);
+}
+
 body[data-alt-chrome] .alt-home-nav .nav-in {
   min-height: 56px;
   max-height: 56px;
