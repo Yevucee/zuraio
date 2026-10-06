@@ -49,12 +49,12 @@ export const copyAltPricing = {
     setupRows: [
       [
         'Einrichtungs-Workshop',
-        'CHF 1\'490',
+        'Auf Anfrage',
         'Workshop 3 Stunden (vor Ort oder remote), Ihr erster eigener Skill, Check-in nach 2 Wochen. Hälfte wird angerechnet bei Jahresplan innert 30 Tagen.',
       ],
       [
         'Team-Workshop (ab 50 Mitarbeitende)',
-        'CHF 2\'990',
+        'Auf Anfrage',
         'Halbtages-Workshop mit zwei Zuraio-Mitarbeitenden, bis zu zwei eigene Skills, Check-in nach 2 Wochen. Hälfte wird angerechnet bei Jahresplan innert 30 Tagen.',
       ],
       ['Zusätzlicher eigener Skill', 'CHF 590 pro Stück', 'Mit Ihnen gebaut und getestet, mit Ihren Daten'],
@@ -110,12 +110,12 @@ export const copyAltPricing = {
     setupRows: [
       [
         'Set-up workshop',
-        'CHF 1,490',
+        'On request',
         '3-hour workshop (on site or remote), your first bespoke skill, check-in after 2 weeks. Half credited against an annual plan booked within 30 days.',
       ],
       [
         'Team workshop (from 50 employees)',
-        'CHF 2,990',
+        'On request',
         'Half-day workshop with two Zuraio people, up to two bespoke skills, check-in after 2 weeks. Half credited against an annual plan booked within 30 days.',
       ],
       ['Additional bespoke skill', 'CHF 590 each', 'Built and tested with you, using your own data'],

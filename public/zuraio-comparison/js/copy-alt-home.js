@@ -121,15 +121,29 @@ export const copyAltHome = {
     },
     start: {
       heading: 'Klein anfangen. Gemeinsam aufbauen.',
+      cta: '30-Minuten-Gespräch buchen',
       steps: [
-        { title: 'Gespräch (30 Min.).', body: 'Wir wählen eine Aufgabe, die sich lohnt.' },
+        {
+          title: 'Gespräch',
+          meta: '30 Min.',
+          body: 'Wir wählen eine Aufgabe, die sich lohnt.',
+        },
         {
           title: 'Einrichtungs-Workshop',
-          titleMeta: '3 Std. · CHF 1\'490',
-          body: 'Wir entwickeln mit Ihrem Team Ihren ersten eigenen Skill, mit Ihren Daten.',
+          meta: '3 Stunden',
+          body: 'Wir bauen mit Ihrem Team den ersten Skill, mit Ihren Daten.',
         },
-        { title: 'Nutzen und verfeinern.', body: 'Nach 2 Wochen schauen wir gemeinsam darauf.' },
-        { title: 'Entscheiden.', body: 'Behalten, ausbauen oder stoppen.' },
+        {
+          title: 'Nutzen und verfeinern',
+          meta: '2 Wochen',
+          body: 'Ihr Team arbeitet damit. Danach schauen wir es gemeinsam an.',
+        },
+        {
+          title: 'Entscheiden',
+          meta: 'Ihre Wahl',
+          body: 'Behalten, ausbauen oder aufhören.',
+          tone: 'exit',
+        },
       ],
     },
     team: {
@@ -270,15 +284,29 @@ export const copyAltHome = {
     },
     start: {
       heading: 'Start small. Build it together.',
+      cta: 'Book the 30-minute talk',
       steps: [
-        { title: 'Talk (30 min).', body: 'We pick one task worth improving.' },
+        {
+          title: 'Talk',
+          meta: '30 min',
+          body: 'We pick one task worth improving.',
+        },
         {
           title: 'Set-up workshop',
-          titleMeta: '3 h · CHF 1,490',
-          body: 'We build your first bespoke skill with your team, on your data.',
+          meta: '3 hours',
+          body: 'We build your first skill with your team, on your data.',
         },
-        { title: 'Use and refine.', body: 'We check in after 2 weeks.' },
-        { title: 'Decide.', body: 'Keep it, expand it or stop.' },
+        {
+          title: 'Use and refine',
+          meta: '2 weeks',
+          body: 'Your team works with it. Then we review it together.',
+        },
+        {
+          title: 'Decide',
+          meta: 'Your call',
+          body: 'Keep it, expand it or stop.',
+          tone: 'exit',
+        },
       ],
     },
     team: {

@@ -6,7 +6,7 @@ import { startStaticDistServer } from './static-dist-server.mjs';
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(ROOT, '..', 'dist');
 const OUT = '/opt/cursor/artifacts';
-const V = '20261006b';
+const V = '20261006c';
 const LIVE = process.argv.includes('--live');
 const base = LIVE
   ? 'https://yevucee.github.io/zuraio'

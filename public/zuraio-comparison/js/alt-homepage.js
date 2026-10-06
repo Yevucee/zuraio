@@ -367,17 +367,16 @@ function renderMain(copy, locale, isDev) {
     .map((s, i) => {
       const title = s.title ?? '';
       const body = fmt(s.body ?? '', isDev, todos);
-      const meta = s.titleMeta ? `<p class="alt-home-step__meta">${s.titleMeta}</p>` : '';
+      const meta = s.meta ? `<p class="alt-home-step__meta">${s.meta}</p>` : '';
+      const exitClass = s.tone === 'exit' ? ' alt-home-step--exit' : '';
       return `
-      <article class="alt-preview-card alt-home-step">
+      <article class="alt-preview-card alt-home-step${exitClass}">
         <div class="alt-home-step__head">
           <span class="alt-home-step__num" aria-hidden="true">${i + 1}</span>
-          <div class="alt-home-step__titles">
-            <h3 class="alt-preview-card__title">${title}</h3>
-            ${meta}
-          </div>
+          <h3 class="alt-preview-card__title alt-home-step__title">${title}</h3>
         </div>
-        <p>${body}</p>
+        ${meta}
+        <p class="alt-home-step__body">${body}</p>
       </article>`;
     })
     .join('');
@@ -514,6 +513,9 @@ function renderMain(copy, locale, isDev) {
           <h2 id="alt-start-h" class="alt-reveal">${copy.start.heading}</h2>
         </div>
         <div class="alt-home-steps">${stepsHtml}</div>
+        <p class="alt-home-steps__cta">
+          <a class="btn btn-primary btn-lg alt-home-cta" data-alt-cta="how_start" data-route="contact" href="${routeHref('contact')}">${copy.start.cta ?? ''}</a>
+        </p>
       </div>
     </section>
 
