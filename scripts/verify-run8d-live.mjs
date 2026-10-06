@@ -1,6 +1,6 @@
 import { chromium } from 'playwright';
 
-const CACHE = '20261006b';
+const CACHE = '20261006c';
 const BASE = `https://yevucee.github.io/zuraio/de/homepage-preview.html?v=${CACHE}`;
 
 const browser = await chromium.launch();
