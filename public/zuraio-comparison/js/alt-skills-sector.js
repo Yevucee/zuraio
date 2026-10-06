@@ -16,8 +16,8 @@ function hlAll(text, n, tabId) {
   const space = text.indexOf(' ');
   const first = space === -1 ? text : text.slice(0, space);
   const rest = space === -1 ? '' : text.slice(space + 1);
-  const nowrapLead = rest ? `${marker(n)}${first} ` : `${marker(n)}${first}`;
-  const tail = rest ? rest : '';
+  const nowrapLead = `${marker(n)}${first}`;
+  const tail = rest ? ` ${rest}` : '';
   return `<span class="alt-skills-doc__hl" data-hl="${n}" aria-describedby="${id}"><mark class="alt-skills-doc__mark"><span class="alt-skills-doc__hl-nowrap">${nowrapLead}</span>${tail}</mark></span>`;
 }
 

@@ -1080,10 +1080,9 @@ body[data-alt-chrome] .alt-skills-doc__caption {
 
 body[data-alt-chrome] .alt-skills-doc__mark {
   background: var(--soft-olive-tint);
-  box-shadow: inset 0 -2px 0 var(--olive-deep);
   border-radius: 2px;
   color: inherit;
-  padding: 0 0.1em;
+  padding: 0;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
