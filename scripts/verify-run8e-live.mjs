@@ -1,4 +1,4 @@
-const CACHE = '20261006a';
+const CACHE = '20261006b';
 const base = 'https://yevucee.github.io/zuraio';
 
 const css = await fetch(`${base}/css/homepage-preview.css?v=${CACHE}`).then((r) => {
