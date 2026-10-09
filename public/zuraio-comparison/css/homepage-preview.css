@@ -14,11 +14,21 @@ body[data-alt-chrome] {
   --alt-grid-gap: clamp(14px, 1.5vw, 22px);
   --alt-wrap-max: 1120px;
   --alt-gutter: clamp(16px, 2.5vw, 24px);
+  --maxw: var(--alt-wrap-max);
   --alt-h2: clamp(1.75rem, 2.2vw + 1rem, 2.5rem);
   --alt-body: clamp(1rem, 0.15vw + 0.95rem, 1.0625rem);
   --alt-card-title: clamp(1.0625rem, 0.2vw + 1rem, 1.1875rem);
   --alt-small: 0.875rem;
   overflow-x: hidden;
+}
+
+/* Desktop: wider column (~40% less side margin vs 1120px + 24px gutters) */
+@media (min-width: 960px) {
+  body[data-alt-chrome] {
+    --alt-wrap-max: 1440px;
+    --alt-gutter: clamp(10px, 1.5vw, 14px);
+    --maxw: var(--alt-wrap-max);
+  }
 }
 
 @media (max-width: 959px) {
