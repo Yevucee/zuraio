@@ -44,7 +44,7 @@ export const legalPages = {
       {
         heading: 'Protezione dei dati',
         paragraphs: [
-          'Le informazioni sul trattamento dei dati personali sono disponibili nella nostra <a href="privacy.html">informativa sulla protezione dei dati</a>.',
+          'Il modo in cui trattiamo i dati personali è descritto nella nostra <a href="privacy.html">informativa sulla protezione dei dati</a>.',
         ],
       },
     ],

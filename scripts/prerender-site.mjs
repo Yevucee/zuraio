@@ -28,22 +28,11 @@ const PORT = Number(process.env.PRERENDER_PORT || 4175);
 const GOTO_TIMEOUT_MS = 15_000;
 
 function prerenderPath(htmlPage, locale) {
-  if (htmlPage === 'impressum.html' && locale === 'en') {
-    return '/en/impressum.html';
-  }
   const dir = LOCALE_DIRS[locale];
   if (!dir) {
     return htmlPage === 'index.html' ? '/' : `/${htmlPage}`;
   }
   return htmlPage === 'index.html' ? `/${dir}/` : `/${dir}/${htmlPage}`;
-}
-
-function prerenderOutDir(htmlPage, locale) {
-  if (htmlPage === 'impressum.html' && locale === 'en') {
-    return path.join(DIST, 'en');
-  }
-  const dirKey = LOCALE_DIRS[locale];
-  return dirKey ? path.join(DIST, dirKey) : DIST;
 }
 
 async function waitForPageReady(page, pageName, locale) {
@@ -222,7 +211,8 @@ async function runPrerender() {
         html = postprocessHtml(html, locale, htmlPage);
         html = injectLangRedirect(html);
 
-        const outDir = prerenderOutDir(htmlPage, locale);
+        const dirKey = LOCALE_DIRS[locale];
+        const outDir = dirKey ? path.join(DIST, dirKey) : DIST;
         fs.mkdirSync(outDir, { recursive: true });
         fs.writeFileSync(path.join(outDir, htmlPage), html);
       }
