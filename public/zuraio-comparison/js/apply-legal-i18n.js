@@ -94,6 +94,26 @@ export function applyLegalTranslations(locale) {
 
   container.innerHTML = renderLegalPage(page);
   applyLinkLocales(container, locale);
+  scrollToLegalHashIfPresent();
+}
+
+function scrollToLegalHashIfPresent() {
+  const raw = location.hash;
+  if (!raw || raw.length < 2) return;
+  const id = decodeURIComponent(raw.slice(1));
+  const target = document.getElementById(id);
+  if (!target) return;
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      const offset =
+        parseFloat(getComputedStyle(target).scrollMarginTop) ||
+        parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) + 16 ||
+        72;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'instant' });
+    });
+  });
 }
 
 export function isLegalPage(pageId) {
