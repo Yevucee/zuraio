@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import {
   CANONICAL_BASE,
   HTML_PAGES,
+  HREFLANG_TAGS,
   SITEMAP_LOCALES,
   canonicalUrl,
 } from './seo-config.mjs';
@@ -23,7 +24,7 @@ function buildSitemap() {
       const loc = canonicalUrl(locale, page);
       const alternates = SITEMAP_LOCALES.map(
         (l) =>
-          `    <xhtml:link rel="alternate" hreflang="${l}" href="${canonicalUrl(l, page)}"/>`,
+          `    <xhtml:link rel="alternate" hreflang="${HREFLANG_TAGS[l] ?? l}" href="${canonicalUrl(l, page)}"/>`,
       ).join('\n');
       urls.push(`  <url>
     <loc>${loc}</loc>

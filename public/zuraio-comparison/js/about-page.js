@@ -2,7 +2,7 @@ import { getAboutCopy } from './copy-about.js';
 import { renderAltHomeHeader, renderAltHomeFooter } from './alt-homepage-chrome.js';
 import { renderAltHomeFounders } from './alt-home-founders.js';
 import { renderAltPageCta } from './alt-page-cta.js';
-import { getLocaleFromPathname } from './path-locale.js';
+import { currentLocale, getLocaleFromPathname } from './path-locale.js';
 import { resolveRouteFromLocation } from './site-routes.js';
 import { ALT_HOME_REASON_ICONS } from './alt-home-reason-icons.js';
 
@@ -13,7 +13,7 @@ function pageLocale() {
 }
 
 function copyLocale() {
-  return pageLocale() === 'de' ? 'de' : 'en';
+  return currentLocale();
 }
 
 function routeHref(key) {

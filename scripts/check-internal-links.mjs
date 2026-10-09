@@ -19,23 +19,27 @@ setTimeout(() => {
   process.exit(1);
 }, 240_000).unref();
 
+const PREVIEW_SUBPAGES = [
+  'security.html',
+  'integrations.html',
+  'how-it-helps.html',
+  'contact.html',
+  'about.html',
+  'faq.html',
+  'technical-architecture.html',
+];
+
 const PAGES = [
-  { path: '/security.html', locale: 'en' },
-  { path: '/de/security.html', locale: 'de' },
-  { path: '/integrations.html', locale: 'en' },
-  { path: '/de/integrations.html', locale: 'de' },
-  { path: '/how-it-helps.html', locale: 'en' },
-  { path: '/de/how-it-helps.html', locale: 'de' },
-  { path: '/contact.html', locale: 'en' },
-  { path: '/de/contact.html', locale: 'de' },
-  { path: '/about.html', locale: 'en' },
-  { path: '/de/about.html', locale: 'de' },
-  { path: '/faq.html', locale: 'en' },
-  { path: '/de/faq.html', locale: 'de' },
-  { path: '/technical-architecture.html', locale: 'en' },
-  { path: '/de/technical-architecture.html', locale: 'de' },
+  ...PREVIEW_SUBPAGES.flatMap((p) => [
+    { path: `/${p}`, locale: 'en' },
+    { path: `/de/${p}`, locale: 'de' },
+    { path: `/fr/${p}`, locale: 'fr' },
+    { path: `/it/${p}`, locale: 'it' },
+  ]),
   { path: '/en/homepage-preview.html', locale: 'en' },
   { path: '/de/homepage-preview.html', locale: 'de' },
+  { path: '/fr/homepage-preview.html', locale: 'fr' },
+  { path: '/it/homepage-preview.html', locale: 'it' },
 ];
 
 const EN_PREVIEW_ROUTE_EXPECT = {

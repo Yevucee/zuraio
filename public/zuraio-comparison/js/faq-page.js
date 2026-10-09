@@ -3,7 +3,7 @@ import { renderAltHomeHeader, renderAltHomeFooter, syncLangSwitchHrefs } from '.
 import { renderAltPageCta } from './alt-page-cta.js';
 import { renderFaqAccordionItem } from './faq-render.js';
 import { initFaq, initFaqFromHash } from './faq-accordion.js';
-import { getLocaleFromPathname } from './path-locale.js';
+import { currentLocale, getLocaleFromPathname } from './path-locale.js';
 import { resolveRouteFromLocation } from './site-routes.js';
 
 const PAGE_CACHE = '20261009b';
@@ -13,7 +13,7 @@ function pageLocale() {
 }
 
 function copyLocale() {
-  return pageLocale() === 'de' ? 'de' : 'en';
+  return currentLocale();
 }
 
 function routeHref(key) {

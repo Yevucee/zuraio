@@ -523,36 +523,32 @@ export const footerGroups = [
   {
     title: 'Produit',
     links: [
-      { label: 'Comment Zuraio vous aide', href: 'how-it-helps.html' },
-      { label: 'Connaissances', href: 'knowledge.html' },
+      { label: 'Comment Zuraio aide', href: 'how-it-helps.html' },
+      { label: 'Skills', href: 'how-it-helps.html#skills' },
       { label: 'Intégrations', href: 'integrations.html' },
-      { label: 'Cas d’usage', href: 'how-it-helps.html#use-cases' },
-      { label: 'Réserver une démonstration', href: 'contact.html' },
+      { label: 'Réserver une démo', href: 'contact.html' },
     ],
   },
   {
     title: 'Données et sécurité',
     links: [
-      { label: 'Contrôle des données', href: 'data-control.html' },
-      { label: 'Hébergement en Suisse', href: 'deployment-models.html#swiss-hosted' },
-      { label: 'Modes de déploiement', href: 'deployment-models.html' },
-      { label: 'Architecture technique', href: 'technical-architecture.html' },
-      { label: 'Gouvernance de l’IA', href: 'ai-governance.html' },
+      { label: 'Sécurité', href: 'security.html' },
+      { label: 'Pour votre partenaire informatique', href: 'technical-architecture.html' },
     ],
   },
   {
     title: 'Entreprise',
     links: [
       { label: 'À propos', href: 'about.html' },
+      { label: 'FAQ', href: 'faq.html' },
       { label: 'Contact', href: 'contact.html' },
-      { label: 'Partenaires', href: 'contact.html#partnerships' },
     ],
   },
   {
     title: 'Mentions légales',
     links: [
       { label: 'Mentions légales', href: 'impressum.html' },
-      { label: 'Confidentialité', href: 'privacy.html' },
+      { label: 'Protection des données', href: 'privacy.html' },
       { label: 'Paramètres des cookies', href: 'cookies.html' },
       { label: 'Conditions d’utilisation', href: 'terms.html' },
     ],

@@ -1,21 +1,19 @@
 import { CONTACT_API_URL, SITE } from './config.js';
 import { getCopy, getLocale } from './i18n.js';
-import { getLocaleFromPathname } from './path-locale.js';
+import { currentLocale, getLocaleFromPathname } from './path-locale.js';
 import { getContactCopy } from './copy-contact.js';
 import { isInternalReviewMode } from './internal-review.js';
 
 function formLocale(formEl) {
   if (formEl?.dataset.contactAlt === 'true') {
-    const lang = document.documentElement.lang;
-    if (lang === 'de') return 'de';
-    return 'en';
+    return currentLocale();
   }
   return getLocaleFromPathname() ?? getLocale();
 }
 
 function formMessages(formEl) {
   if (formEl?.dataset.contactAlt === 'true') {
-    const f = getContactCopy(formLocale(formEl) === 'de' ? 'de' : 'en').form;
+    const f = getContactCopy(formLocale(formEl)).form;
     return {
       sending: f.sending,
       success: f.success,

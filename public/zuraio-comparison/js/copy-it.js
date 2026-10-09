@@ -524,35 +524,31 @@ export const footerGroups = [
     title: 'Prodotto',
     links: [
       { label: 'Come aiuta Zuraio', href: 'how-it-helps.html' },
-      { label: 'Conoscenza aziendale', href: 'knowledge.html' },
+      { label: 'Skill', href: 'how-it-helps.html#skills' },
       { label: 'Integrazioni', href: 'integrations.html' },
-      { label: 'Casi d’uso', href: 'how-it-helps.html#use-cases' },
-      { label: 'Prenotate una demo', href: 'contact.html' },
+      { label: 'Prenotare una demo', href: 'contact.html' },
     ],
   },
   {
     title: 'Dati e sicurezza',
     links: [
-      { label: 'Controllo dei dati', href: 'data-control.html' },
-      { label: 'Hosting in Svizzera', href: 'deployment-models.html#swiss-hosted' },
-      { label: 'Modelli di implementazione', href: 'deployment-models.html' },
-      { label: 'Architettura tecnica', href: 'technical-architecture.html' },
-      { label: 'Governance dell’IA', href: 'ai-governance.html' },
+      { label: 'Sicurezza', href: 'security.html' },
+      { label: 'Per il vostro partner informatico', href: 'technical-architecture.html' },
     ],
   },
   {
     title: 'Azienda',
     links: [
       { label: 'Chi siamo', href: 'about.html' },
+      { label: 'FAQ', href: 'faq.html' },
       { label: 'Contatti', href: 'contact.html' },
-      { label: 'Partner', href: 'contact.html#partnerships' },
     ],
   },
   {
     title: 'Note legali',
     links: [
       { label: 'Note legali', href: 'impressum.html' },
-      { label: 'Privacy', href: 'privacy.html' },
+      { label: 'Protezione dei dati', href: 'privacy.html' },
       { label: 'Impostazioni dei cookie', href: 'cookies.html' },
       { label: 'Condizioni d’uso', href: 'terms.html' },
     ],

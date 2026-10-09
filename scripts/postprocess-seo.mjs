@@ -8,6 +8,7 @@ import * as it from '../public/zuraio-comparison/js/copy-it.js';
 import {
   CANONICAL_BASE,
   LOCALES,
+  HREFLANG_TAGS,
   OG_IMAGE_PATH,
   OG_LOCALE,
   SOFTWARE_APP_PAGES,
@@ -72,7 +73,7 @@ function getMeta(locale, page) {
 function buildHreflangLinks(page) {
   return LOCALES.map(
     (loc) =>
-      `<link rel="alternate" hreflang="${loc}" href="${escapeHtml(canonicalUrl(loc, page))}">`,
+      `<link rel="alternate" hreflang="${HREFLANG_TAGS[loc] ?? loc}" href="${escapeHtml(canonicalUrl(loc, page))}">`,
   ).join('\n');
 }
 

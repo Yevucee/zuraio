@@ -36,7 +36,7 @@ const errors = [];
 for (const f of fs.readdirSync(siteRoot).filter((n) => n.endsWith('.html'))) {
   errors.push(...checkFile(f, 'en'));
 }
-for (const loc of ['en', 'de']) {
+for (const loc of ['en', 'de', 'fr', 'it']) {
   const dir = path.join(siteRoot, loc);
   if (!fs.existsSync(dir)) continue;
   for (const f of fs.readdirSync(dir).filter((n) => n.endsWith('.html'))) {

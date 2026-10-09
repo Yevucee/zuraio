@@ -1,5 +1,5 @@
 import { SITE } from './config.js';
-import { assetHref, getLocaleFromPathname } from './path-locale.js';
+import { assetHref, currentLocale, getLocaleFromPathname } from './path-locale.js';
 import { resolveRouteFromLocation, langSwitchHref } from './site-routes.js';
 
 /** 2× raster for ~92×28 CSS display (alt preview nav caps logo at 28px). */
@@ -10,13 +10,18 @@ import { PUBLIC_SITE_LOCALES } from './locales.js';
 import { getLocaleLabels } from './locales.js';
 import * as copyEn from './copy-en.js';
 import * as copyDe from './copy-de.js';
+import * as copyFr from './copy-fr.js';
+import * as copyIt from './copy-it.js';
 
 function siteCopyBundle(locale) {
-  return locale === 'de' ? copyDe : copyEn;
+  if (locale === 'de') return copyDe;
+  if (locale === 'fr') return copyFr;
+  if (locale === 'it') return copyIt;
+  return copyEn;
 }
 
 function viewingLocale() {
-  return getLocaleFromPathname() === 'de' ? 'de' : 'en';
+  return currentLocale();
 }
 
 function routeHref(routeKey, targetLocale = viewingLocale()) {

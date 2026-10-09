@@ -1,20 +1,63 @@
-/** Preview site route map (EN + DE). At go-live, update paths here and re-run apply-routes. */
+/** Preview site route map (EN + DE + FR + IT). At go-live, update paths here and re-run apply-routes. */
+export const PREVIEW_LOCALES = ['en', 'de', 'fr', 'it'];
+const LOCALE_SUBDIRS = ['de', 'fr', 'it'];
+
 export const PREVIEW_SITE_ROUTES = {
-  home: { en: 'en/homepage-preview.html', de: 'de/homepage-preview.html' },
-  'how-it-helps': { en: 'how-it-helps.html', de: 'de/how-it-helps.html' },
-  skills: { en: 'how-it-helps.html#skills', de: 'de/how-it-helps.html#skills' },
-  security: { en: 'security.html', de: 'de/security.html' },
-  'security-hosting': { en: 'security.html#hosting', de: 'de/security.html#hosting' },
-  'security-good-to-know': { en: 'security.html#good-to-know', de: 'de/security.html#good-to-know' },
-  integrations: { en: 'integrations.html', de: 'de/integrations.html' },
-  'it-partner': { en: 'technical-architecture.html', de: 'de/technical-architecture.html' },
-  about: { en: 'about.html', de: 'de/about.html' },
-  faq: { en: 'faq.html', de: 'de/faq.html' },
-  contact: { en: 'contact.html', de: 'de/contact.html' },
-  impressum: { en: 'impressum.html', de: 'de/impressum.html' },
-  privacy: { en: 'privacy.html', de: 'de/privacy.html' },
-  cookies: { en: 'cookies.html', de: 'de/cookies.html' },
-  terms: { en: 'terms.html', de: 'de/terms.html' },
+  home: {
+    en: 'en/homepage-preview.html',
+    de: 'de/homepage-preview.html',
+    fr: 'fr/homepage-preview.html',
+    it: 'it/homepage-preview.html',
+  },
+  'how-it-helps': {
+    en: 'how-it-helps.html',
+    de: 'de/how-it-helps.html',
+    fr: 'fr/how-it-helps.html',
+    it: 'it/how-it-helps.html',
+  },
+  skills: {
+    en: 'how-it-helps.html#skills',
+    de: 'de/how-it-helps.html#skills',
+    fr: 'fr/how-it-helps.html#skills',
+    it: 'it/how-it-helps.html#skills',
+  },
+  security: {
+    en: 'security.html',
+    de: 'de/security.html',
+    fr: 'fr/security.html',
+    it: 'it/security.html',
+  },
+  'security-hosting': {
+    en: 'security.html#hosting',
+    de: 'de/security.html#hosting',
+    fr: 'fr/security.html#hosting',
+    it: 'it/security.html#hosting',
+  },
+  'security-good-to-know': {
+    en: 'security.html#good-to-know',
+    de: 'de/security.html#good-to-know',
+    fr: 'fr/security.html#good-to-know',
+    it: 'it/security.html#good-to-know',
+  },
+  integrations: {
+    en: 'integrations.html',
+    de: 'de/integrations.html',
+    fr: 'fr/integrations.html',
+    it: 'it/integrations.html',
+  },
+  'it-partner': {
+    en: 'technical-architecture.html',
+    de: 'de/technical-architecture.html',
+    fr: 'fr/technical-architecture.html',
+    it: 'it/technical-architecture.html',
+  },
+  about: { en: 'about.html', de: 'de/about.html', fr: 'fr/about.html', it: 'it/about.html' },
+  faq: { en: 'faq.html', de: 'de/faq.html', fr: 'fr/faq.html', it: 'it/faq.html' },
+  contact: { en: 'contact.html', de: 'de/contact.html', fr: 'fr/contact.html', it: 'it/contact.html' },
+  impressum: { en: 'impressum.html', de: 'de/impressum.html', fr: 'fr/impressum.html', it: 'it/impressum.html' },
+  privacy: { en: 'privacy.html', de: 'de/privacy.html', fr: 'fr/privacy.html', it: 'it/privacy.html' },
+  cookies: { en: 'cookies.html', de: 'de/cookies.html', fr: 'fr/cookies.html', it: 'it/cookies.html' },
+  terms: { en: 'terms.html', de: 'de/terms.html', fr: 'fr/terms.html', it: 'it/terms.html' },
 };
 
 const PAGE_TO_ROUTE = [
@@ -30,21 +73,34 @@ const PAGE_TO_ROUTE = [
   ['homepage-preview.html', 'home'],
 ];
 
+function viewingLocaleFromPath(pathname) {
+  for (const loc of LOCALE_SUBDIRS) {
+    if (pathname.includes(`/${loc}/`)) return loc;
+  }
+  if (pathname.includes('/en/')) return 'en';
+  return 'en';
+}
+
+function inHomePreview(pathname, locale) {
+  return pathname.includes(`/${locale}/homepage-preview`);
+}
+
 /**
  * @param {string} routeKey
- * @param {'en'|'de'} targetLocale link target language
- * @param {'en'|'de'} viewingLocale language of the current page URL
+ * @param {string} targetLocale
+ * @param {string} viewingLocale language of the current page URL
  */
 export function resolveRoute(routeKey, targetLocale, viewingLocale = 'en') {
   const entry = PREVIEW_SITE_ROUTES[routeKey];
   if (!entry) throw new Error(`Unknown route: ${routeKey}`);
   const canonical = entry[targetLocale] ?? entry.en;
-  if (viewingLocale === 'de') {
-    if (targetLocale === 'de') return canonical.replace(/^de\//, '');
-    if (canonical.startsWith('en/')) return `../${canonical}`;
-    return `../${canonical}`;
+  if (viewingLocale === 'en') return canonical;
+  if (targetLocale === viewingLocale) return canonical.replace(new RegExp(`^${viewingLocale}/`), '');
+  if (targetLocale === 'en') {
+    const enPath = entry.en;
+    return enPath.startsWith('en/') ? `../${enPath}` : `../${enPath}`;
   }
-  return canonical;
+  return `../${entry[targetLocale] ?? entry.en}`;
 }
 
 export function detectRouteFromPathname(pathname = '', hash = '') {
@@ -61,48 +117,27 @@ export function detectRouteFromPathname(pathname = '', hash = '') {
   return 'home';
 }
 
-function inDeSite(pathname) {
-  return /\/de\//.test(pathname) && !pathname.includes('/de/en/');
-}
-
-function inEnPreview(pathname) {
-  return /\/en\/homepage-preview/i.test(pathname) || pathname.endsWith('/en/homepage-preview.html');
-}
-
-function inDePreview(pathname) {
-  return /\/de\/homepage-preview/i.test(pathname);
-}
-
 /** Location-aware href for preview + site pages. */
 export function resolveRouteFromLocation(routeKey, targetLocale, pathname = '') {
-  const canonical = PREVIEW_SITE_ROUTES[routeKey]?.[targetLocale] ?? PREVIEW_SITE_ROUTES[routeKey].en;
+  const entry = PREVIEW_SITE_ROUTES[routeKey];
+  if (!entry) throw new Error(`Unknown route: ${routeKey}`);
+  const canonical = entry[targetLocale] ?? entry.en;
 
-  if (inDePreview(pathname)) {
-    if (targetLocale === 'de') {
+  for (const loc of PREVIEW_LOCALES) {
+    if (!inHomePreview(pathname, loc)) continue;
+    if (targetLocale === loc) {
       if (routeKey === 'home') return 'homepage-preview.html';
-      return canonical.replace(/^de\//, '');
+      const sameLocale = canonical.replace(new RegExp(`^${loc}/`), '');
+      if (loc === 'en' && !canonical.startsWith('en/')) return `../${sameLocale}`;
+      return sameLocale;
     }
-    if (routeKey === 'home') return '../en/homepage-preview.html';
-    const enPath = PREVIEW_SITE_ROUTES[routeKey].en;
-    return enPath.startsWith('en/') ? `../${enPath}` : `../${enPath}`;
+    if (routeKey === 'home') return `../${PREVIEW_SITE_ROUTES.home[targetLocale]}`;
+    return `../${entry[targetLocale] ?? entry.en}`;
   }
 
-  if (inEnPreview(pathname)) {
-    if (targetLocale === 'en') {
-      if (routeKey === 'home') return 'homepage-preview.html';
-      const enPath = PREVIEW_SITE_ROUTES[routeKey].en;
-      const hashIdx = enPath.indexOf('#');
-      const pathPart = hashIdx >= 0 ? enPath.slice(0, hashIdx) : enPath;
-      const hash = hashIdx >= 0 ? enPath.slice(hashIdx) : '';
-      if (pathPart.startsWith('en/')) return `${pathPart.slice(3)}${hash}`;
-      return `../${enPath}`;
-    }
-    if (routeKey === 'home') return '../de/homepage-preview.html';
-    return `../${PREVIEW_SITE_ROUTES[routeKey].de}`;
-  }
-
-  const viewing = inDeSite(pathname) ? 'de' : 'en';
-  return resolveRoute(routeKey, targetLocale, viewing);
+  const viewing = viewingLocaleFromPath(pathname);
+  const onLocaleSite = LOCALE_SUBDIRS.some((loc) => pathname.includes(`/${loc}/`));
+  return resolveRoute(routeKey, targetLocale, onLocaleSite ? viewing : 'en');
 }
 
 export function langSwitchHref(targetLocale, pathname, hash = '') {

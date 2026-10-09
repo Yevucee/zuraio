@@ -1,4 +1,5 @@
 import { getSkillsTabsMeta, SKILLS_TAB_IDS } from './copy-alt-home-skills-tabs.js';
+import { currentLocale } from './path-locale.js';
 
 const PEOPLE_ICON = `<svg class="alt-skills-panel__workshop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`;
 
@@ -32,21 +33,92 @@ function figCells(label, value, note) {
 
 function figuresGrid(locale, tabId) {
   const hlId = legendRowId(tabId, 2);
-  if (locale === 'de') {
-    return `<div class="alt-skills-doc__figures">
-      <div class="alt-skills-doc__fig">${figCells('Umsatz', "CHF 184'200", '+6 % gegenüber August')}</div>
-      <div class="alt-skills-doc__fig alt-skills-doc__fig--hl" data-hl="2" aria-describedby="${hlId}">${marker(2)}${figCells('Offene Rechnungen', "CHF 42'750", '3 überfällig')}</div>
-      <div class="alt-skills-doc__fig">${figCells('Liquidität', '2,4 Monate', 'der Fixkosten')}</div>
-    </div>`;
-  }
-  return `<div class="alt-skills-doc__figures">
-    <div class="alt-skills-doc__fig">${figCells('Revenue', 'CHF 184,200', '+6% vs August')}</div>
-    <div class="alt-skills-doc__fig alt-skills-doc__fig--hl" data-hl="2" aria-describedby="${hlId}">${marker(2)}${figCells('Open invoices', 'CHF 42,750', '3 overdue')}</div>
-    <div class="alt-skills-doc__fig">${figCells('Liquidity', '2.4 months', 'of fixed costs')}</div>
-  </div>`;
+  const presets = {
+    de: [
+      ['Umsatz', "CHF 184'200", '+6 % gegenüber August', false],
+      ['Offene Rechnungen', "CHF 42'750", '3 überfällig', true],
+      ['Liquidität', '2,4 Monate', 'der Fixkosten', false],
+    ],
+    fr: [
+      ['Chiffre d’affaires', "CHF 184'200", '+6 % par rapport à août', false],
+      ['Factures ouvertes', "CHF 42'750", '3 en retard', true],
+      ['Liquidités', '2,4 mois', 'des frais fixes', false],
+    ],
+    it: [
+      ['Fatturato', "CHF 184'200", '+6 % rispetto ad agosto', false],
+      ['Fatture aperte', "CHF 42'750", '3 scadute', true],
+      ['Liquidità', '2,4 mesi', 'dei costi fissi', false],
+    ],
+    en: [
+      ['Revenue', 'CHF 184,200', '+6% vs August', false],
+      ['Open invoices', 'CHF 42,750', '3 overdue', true],
+      ['Liquidity', '2.4 months', 'of fixed costs', false],
+    ],
+  };
+  const rows = presets[locale] ?? presets.en;
+  const figs = rows
+    .map(([label, value, note, hl]) => {
+      const inner = figCells(label, value, note);
+      if (hl) {
+        return `<div class="alt-skills-doc__fig alt-skills-doc__fig--hl" data-hl="2" aria-describedby="${hlId}">${marker(2)}${inner}</div>`;
+      }
+      return `<div class="alt-skills-doc__fig">${inner}</div>`;
+    })
+    .join('');
+  return `<div class="alt-skills-doc__figures">${figs}</div>`;
 }
 
 function renderDocArchitecture(locale, meta, tabId) {
+  if (locale === 'fr') {
+    return `
+      <div class="alt-skills-doc alt-skills-doc--quote">
+        <span class="alt-skills-doc__badge">${meta.panels.architecture.badge}</span>
+        <div class="alt-skills-doc__paper">
+          <p class="alt-skills-doc__letterhead">${hlAll('Muster Architectes SA · Winterthour', 1, tabId)}</p>
+          <h4 class="alt-skills-doc__title">Offre 2026-041</h4>
+          <p class="alt-skills-doc__subtitle">Transformation d’une maison individuelle, Winterthour</p>
+          <p class="alt-skills-doc__meta">À : Famille Brunner</p>
+          <table class="alt-skills-doc__table">
+            <thead><tr><th>Phase (SIA 102)</th><th>Honoraires</th></tr></thead>
+            <tbody>
+              <tr><td>31 Avant-projet</td><td>CHF 8'400</td></tr>
+              <tr><td>32 Projet de l’ouvrage</td><td>CHF 12'600</td></tr>
+              <tr><td>33 Procédure de demande d’autorisation</td><td>CHF 4'200</td></tr>
+              <tr><td>41 Appel d’offres</td><td>CHF 6'300</td></tr>
+              <tr><td>Sous-total</td><td>CHF 31'500</td></tr>
+              <tr><td>${hlAll('Rabais clients fidèles (5 %)', 2, tabId)}</td><td>CHF 1'575</td></tr>
+              <tr class="alt-skills-doc__total"><td>Total hors TVA</td><td>CHF 29'925</td></tr>
+            </tbody>
+          </table>
+          <p class="alt-skills-doc__terms">${hlAll('Payable à 30 jours. Nos conditions générales s’appliquent.', 3, tabId)}</p>
+        </div>
+      </div>`;
+  }
+  if (locale === 'it') {
+    return `
+      <div class="alt-skills-doc alt-skills-doc--quote">
+        <span class="alt-skills-doc__badge">${meta.panels.architecture.badge}</span>
+        <div class="alt-skills-doc__paper">
+          <p class="alt-skills-doc__letterhead">${hlAll('Muster Architetti SA · Winterthur', 1, tabId)}</p>
+          <h4 class="alt-skills-doc__title">Offerta 2026-041</h4>
+          <p class="alt-skills-doc__subtitle">Ristrutturazione di una casa unifamiliare, Winterthur</p>
+          <p class="alt-skills-doc__meta">A: Famiglia Brunner</p>
+          <table class="alt-skills-doc__table">
+            <thead><tr><th>Fase (SIA 102)</th><th>Onorario</th></tr></thead>
+            <tbody>
+              <tr><td>31 Progetto di massima</td><td>CHF 8'400</td></tr>
+              <tr><td>32 Progetto definitivo</td><td>CHF 12'600</td></tr>
+              <tr><td>33 Procedura di autorizzazione</td><td>CHF 4'200</td></tr>
+              <tr><td>41 Appalto</td><td>CHF 6'300</td></tr>
+              <tr><td>Subtotale</td><td>CHF 31'500</td></tr>
+              <tr><td>${hlAll('Sconto clienti abituali (5 %)', 2, tabId)}</td><td>CHF 1'575</td></tr>
+              <tr class="alt-skills-doc__total"><td>Totale IVA esclusa</td><td>CHF 29'925</td></tr>
+            </tbody>
+          </table>
+          <p class="alt-skills-doc__terms">${hlAll('Pagabile entro 30 giorni. Valgono le nostre condizioni generali.', 3, tabId)}</p>
+        </div>
+      </div>`;
+  }
   if (locale === 'de') {
     return `
       <div class="alt-skills-doc alt-skills-doc--quote">
@@ -98,6 +170,42 @@ function renderDocArchitecture(locale, meta, tabId) {
 }
 
 function renderDocFiduciary(locale, meta, tabId) {
+  if (locale === 'fr') {
+    return `
+      <div class="alt-skills-doc alt-skills-doc--report">
+        <span class="alt-skills-doc__badge">${meta.panels.fiduciary.badge}</span>
+        <div class="alt-skills-doc__paper">
+          <h4 class="alt-skills-doc__title">Rapport mensuel septembre 2026</h4>
+          <p class="alt-skills-doc__subtitle">Muster SA · pour la séance du conseil d’administration du 14 octobre</p>
+          <h5 class="alt-skills-doc__section">${hlAll('En bref', 1, tabId)}</h5>
+          ${figuresGrid('fr', tabId)}
+          <h5 class="alt-skills-doc__section">À discuter</h5>
+          <ul class="alt-skills-doc__list">
+            <li>${hlAll('Exemple Sàrl a 45 jours de retard (CHF 18\'300). Nous proposons un rappel cette semaine.', 3, tabId)}</li>
+            <li>Décompte TVA du 3e trimestre dû le 30 novembre.</li>
+            <li>Bouclement annuel : documents d’ici au 31 janvier.</li>
+          </ul>
+        </div>
+      </div>`;
+  }
+  if (locale === 'it') {
+    return `
+      <div class="alt-skills-doc alt-skills-doc--report">
+        <span class="alt-skills-doc__badge">${meta.panels.fiduciary.badge}</span>
+        <div class="alt-skills-doc__paper">
+          <h4 class="alt-skills-doc__title">Rapporto mensile settembre 2026</h4>
+          <p class="alt-skills-doc__subtitle">Muster SA · per la seduta del consiglio d’amministrazione del 14 ottobre</p>
+          <h5 class="alt-skills-doc__section">${hlAll('In sintesi', 1, tabId)}</h5>
+          ${figuresGrid('it', tabId)}
+          <h5 class="alt-skills-doc__section">Da discutere</h5>
+          <ul class="alt-skills-doc__list">
+            <li>${hlAll('Esempio Sagl è in ritardo di 45 giorni (CHF 18\'300). Suggeriamo un sollecito questa settimana.', 3, tabId)}</li>
+            <li>Rendiconto IVA del 3° trimestre in scadenza il 30 novembre.</li>
+            <li>Chiusura annuale: documenti entro il 31 gennaio.</li>
+          </ul>
+        </div>
+      </div>`;
+  }
   if (locale === 'de') {
     return `
       <div class="alt-skills-doc alt-skills-doc--report">
@@ -136,6 +244,42 @@ function renderDocFiduciary(locale, meta, tabId) {
 
 function renderDocProperty(locale, meta, tabId) {
   const badge = meta.panels.property.badge;
+  if (locale === 'fr') {
+    return `
+      <div class="alt-skills-doc alt-skills-doc--email">
+        <span class="alt-skills-doc__badge">${hlAll(badge, 3, tabId)}</span>
+        <div class="alt-skills-doc__paper">
+          <div class="alt-skills-doc__email-head">
+            <p><span class="alt-skills-doc__email-k">À :</span> Mme Baumann</p>
+            <p><span class="alt-skills-doc__email-k">Objet :</span> RE: Machine à laver de la buanderie</p>
+          </div>
+          <div class="alt-skills-doc__email-body">
+            <p>Bonjour Madame Baumann,</p>
+            <p>${hlAll('Merci de nous avoir prévenus.', 1, tabId)} Notre partenaire de service contrôlera la machine à laver le jeudi 8 octobre, entre 8 h et 10 h. D’ici là, vous pouvez volontiers utiliser la machine de la maison B.</p>
+            <p>${hlAll('Conformément au règlement de maison (ch. 5), nous vous prions de ne pas utiliser la machine avant son contrôle.', 2, tabId)}</p>
+            <p>Meilleures salutations<br>Muster Gérances SA</p>
+          </div>
+        </div>
+      </div>`;
+  }
+  if (locale === 'it') {
+    return `
+      <div class="alt-skills-doc alt-skills-doc--email">
+        <span class="alt-skills-doc__badge">${hlAll(badge, 3, tabId)}</span>
+        <div class="alt-skills-doc__paper">
+          <div class="alt-skills-doc__email-head">
+            <p><span class="alt-skills-doc__email-k">A:</span> Signora Baumann</p>
+            <p><span class="alt-skills-doc__email-k">Oggetto:</span> R: Lavatrice nella lavanderia</p>
+          </div>
+          <div class="alt-skills-doc__email-body">
+            <p>Gentile signora Baumann,</p>
+            <p>${hlAll('Grazie per la segnalazione.', 1, tabId)} Il nostro partner di servizio controllerà la lavatrice giovedì 8 ottobre, tra le 8 e le 10. Nel frattempo può usare la lavatrice della casa B.</p>
+            <p>${hlAll('Secondo il regolamento della casa (cifra 5), la preghiamo di non usare la lavatrice fino al controllo.', 2, tabId)}</p>
+            <p>Cordiali saluti<br>Muster Amministrazioni SA</p>
+          </div>
+        </div>
+      </div>`;
+  }
   if (locale === 'de') {
     return `
       <div class="alt-skills-doc alt-skills-doc--email">
@@ -224,7 +368,7 @@ function renderPanelDoc(tabId, locale, meta, caption) {
 }
 
 export function renderSkillsSectorTabs(copy, locale, routeHref) {
-  const meta = getSkillsTabsMeta(locale === 'de' ? 'de' : 'en');
+  const meta = getSkillsTabsMeta(locale);
   const sk = copy.skills;
   const tabsHtml = meta.tabs
     .map((tab, i) => {
@@ -240,7 +384,7 @@ export function renderSkillsSectorTabs(copy, locale, routeHref) {
       <div role="tabpanel" id="skills-panel-${tabId}" class="alt-skills-panel${hidden ? ' is-hidden' : ''}" aria-labelledby="skills-tab-${tabId}" data-skills-panel="${tabId}" aria-hidden="${hidden ? 'true' : 'false'}">
         <div class="alt-skills-panel__grid">
           ${renderPanelCopy(tabId, panel, meta, meta.workshopLine)}
-          ${renderPanelDoc(tabId, locale === 'de' ? 'de' : 'en', meta, meta.docCaption)}
+          ${renderPanelDoc(tabId, locale, meta, meta.docCaption)}
         </div>
       </div>`;
   }).join('');
@@ -296,7 +440,7 @@ function bindHighlightLinking(root) {
 }
 
 function skillsLocaleFromPage() {
-  return document.documentElement.lang === 'de' ? 'de' : 'en';
+  return currentLocale();
 }
 
 function replaceSkillsTabHash(tabId) {

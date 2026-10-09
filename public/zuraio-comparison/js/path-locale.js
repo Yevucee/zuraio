@@ -1,5 +1,16 @@
 /** Path-based locale and deployment-aware URL helpers. */
 export const LOCALE_SEGMENTS = ['de', 'fr', 'it'];
+export const PREVIEW_LOCALES = ['en', 'de', 'fr', 'it'];
+
+/** Active locale from path or `<html lang>` (en when not under de/fr/it). */
+export function currentLocale(pathname = location.pathname) {
+  const fromPath = getLocaleFromPathname(pathname);
+  if (fromPath) return fromPath;
+  const lang = typeof document !== 'undefined' ? document.documentElement?.lang?.split('-')[0] : '';
+  if (lang === 'en') return 'en';
+  if (LOCALE_SEGMENTS.includes(lang)) return lang;
+  return 'en';
+}
 
 export function detectSiteBase() {
   const segments = location.pathname.split('/').filter(Boolean);
