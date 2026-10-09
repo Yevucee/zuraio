@@ -118,7 +118,7 @@ export const ui = {
   heroOptionsGroup: 'Opzioni di messaging hero',
   trustAria: 'Fiducia e controllo dei dati',
   primaryNavAria: 'Navigazione principale',
-  logoAlt: 'Zuraio – i vostri dati sotto il vostro controllo',
+  logoAlt: 'Zuraio',
   langEn: 'EN',
   langDe: 'DE',
   langFr: 'FR',
@@ -368,7 +368,7 @@ export const home = {
 
 export const pages = {
   howItHelps: {
-    title: 'Come aiuta Zuraio — Zuraio',
+    title: 'Come aiuta Zuraio | Zuraio',
     hero: {
       marker: 'Come aiuta Zuraio',
       heading: 'Meno amministrazione. Più lavoro di valore.',
@@ -377,7 +377,7 @@ export const pages = {
     },
   },
   knowledge: {
-    title: 'Conoscenza e SkillOS — Zuraio',
+    title: 'Conoscenza e SkillOS | Zuraio',
     hero: {
       marker: 'Conoscenza',
       heading: 'Trasformare informazioni disperse in un contesto governato e utilizzabile.',
@@ -385,7 +385,7 @@ export const pages = {
     },
   },
   integrations: {
-    title: 'Integrazioni — Zuraio',
+    title: 'Integrazioni | Zuraio',
     hero: {
       marker: 'Integrazioni',
       heading: 'Funziona con i sistemi che il vostro team utilizza già.',
@@ -393,7 +393,7 @@ export const pages = {
     },
   },
   dataControl: {
-    title: 'Controllo dei dati — Zuraio',
+    title: 'Controllo dei dati | Zuraio',
     hero: {
       marker: 'Controllo dei dati',
       heading: 'I vostri dati restano sotto il vostro controllo.',
@@ -401,7 +401,7 @@ export const pages = {
     },
   },
   deploymentModels: {
-    title: 'Modalità di implementazione — Zuraio',
+    title: 'Modalità di implementazione | Zuraio',
     hero: {
       marker: 'Implementazione',
       heading: 'Locale, ibrida o con hosting in Svizzera.',
@@ -409,7 +409,7 @@ export const pages = {
     },
   },
   technicalArchitecture: {
-    title: 'Architettura tecnica — Zuraio',
+    title: 'Architettura tecnica | Zuraio',
     hero: {
       marker: 'Architettura tecnica',
       heading: 'Una piattaforma IA controllabile per conoscenza aziendale, assistenti specializzati e processi operativi.',
@@ -417,7 +417,7 @@ export const pages = {
     },
   },
   aiGovernance: {
-    title: 'Governance dell’IA — Zuraio',
+    title: 'Governance dell’IA | Zuraio',
     hero: {
       marker: 'Governance dell’IA',
       heading: 'Un utilizzo dell’IA che rimane comprensibile e verificabile.',
@@ -425,7 +425,7 @@ export const pages = {
     },
   },
   faq: {
-    title: 'FAQ — Zuraio',
+    title: 'FAQ | Zuraio',
     hero: {
       marker: 'FAQ',
       heading: 'Domande pratiche sull’utilizzo di Zuraio in azienda.',
@@ -433,14 +433,14 @@ export const pages = {
     },
   },
   about: {
-    title: 'Chi siamo — Zuraio',
+    title: 'Chi siamo | Zuraio',
     hero: {
       marker: 'Su Zuraio',
       heading: 'IA pratica. Costruita intorno alle persone.',
     },
   },
   contact: {
-    title: 'Contatti — Zuraio',
+    title: 'Contatti | Zuraio',
     hero: {
       marker: 'Contatti',
       heading: 'Individuate il primo caso d’uso pratico per la vostra azienda.',
@@ -458,7 +458,7 @@ export const pages = {
     },
   },
   resources: {
-    title: 'Risorse — Zuraio',
+    title: 'Risorse | Zuraio',
     hero: {
       marker: 'Risorse',
       heading: 'Informazioni tecniche e pratiche su Zuraio.',
@@ -467,18 +467,18 @@ export const pages = {
     },
   },
   privacy: {
-    title: 'Informativa sulla protezione dei dati — Zuraio',
+    title: 'Informativa sulla protezione dei dati | Zuraio',
     description:
       'Come Zuraio tratta i dati personali quando utilizzate questo sito e ci contattate.',
     hero: { marker: 'Note legali', heading: 'Informativa sulla protezione dei dati' },
   },
   impressum: {
-    title: 'Note legali — Zuraio',
+    title: 'Note legali | Zuraio',
     description: 'Note legali e informazioni sul gestore del sito Zuraio.',
     hero: { marker: 'Note legali', heading: 'Note legali' },
   },
   terms: {
-    title: 'Condizioni d’uso — Zuraio',
+    title: 'Condizioni d’uso | Zuraio',
     description:
       'Questa pagina costituisce un modello strutturato. Prima della pubblicazione dovranno essere predisposte condizioni complete e sottoposte alla revisione di un consulente legale qualificato.',
     hero: {
@@ -488,7 +488,7 @@ export const pages = {
     },
   },
   cookies: {
-    title: 'Impostazioni dei cookie — Zuraio',
+    title: 'Impostazioni dei cookie | Zuraio',
     description:
       'Questa pagina costituisce un modello strutturato. Le categorie di cookie effettivamente utilizzate e le relative opzioni di controllo saranno pubblicate dopo la revisione legale e tecnica.',
     hero: {

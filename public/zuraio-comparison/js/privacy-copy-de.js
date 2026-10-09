@@ -1,6 +1,6 @@
 /** Generated from docs/legal/zuraio-privacy-policy-4lang.md — do not edit by hand. */
 export const privacyPage = {
-  "title": "Datenschutzerklärung — Zuraio",
+  "title": "Datenschutzerklärung | Zuraio",
   "description": "Wie Zuraio Personendaten bearbeitet, wenn Sie diese Website nutzen und uns kontaktieren.",
   "lastUpdated": "Stand: [Datum]",
   "sections": [

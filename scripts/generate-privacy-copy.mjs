@@ -30,20 +30,20 @@ const SECTION_IDS = {
 
 const META = {
   en: {
-    title: 'Privacy policy — Zuraio',
+    title: 'Privacy policy | Zuraio',
     description: 'How Zuraio processes personal data when you use this website and contact us.',
   },
   de: {
-    title: 'Datenschutzerklärung — Zuraio',
+    title: 'Datenschutzerklärung | Zuraio',
     description: 'Wie Zuraio Personendaten bearbeitet, wenn Sie diese Website nutzen und uns kontaktieren.',
   },
   fr: {
-    title: 'Politique de protection des données — Zuraio',
+    title: 'Politique de protection des données | Zuraio',
     description:
       'Comment Zuraio traite les données personnelles lorsque vous utilisez ce site et nous contactez.',
   },
   it: {
-    title: 'Informativa sulla protezione dei dati — Zuraio',
+    title: 'Informativa sulla protezione dei dati | Zuraio',
     description:
       'Come Zuraio tratta i dati personali quando utilizzate questo sito e ci contattate.',
   },

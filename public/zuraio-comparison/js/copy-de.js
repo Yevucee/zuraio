@@ -118,7 +118,7 @@ export const ui = {
   heroOptionsGroup: 'Hero-Messaging-Optionen',
   trustAria: 'Vertrauen und Datenkontrolle',
   primaryNavAria: 'Hauptnavigation',
-  logoAlt: 'Zuraio – Ihre Daten unter Ihrer Kontrolle',
+  logoAlt: 'Zuraio',
   langEn: 'EN',
   langDe: 'DE',
   langFr: 'FR',
@@ -379,7 +379,7 @@ export const pages = {
     },
   },
   knowledge: {
-    title: 'Wissen und SkillOS — Zuraio',
+    title: 'Wissen und SkillOS | Zuraio',
     hero: {
       marker: 'Wissen',
       heading: 'Verteilte Unternehmensinformationen werden zu kontrolliert nutzbarem Kontext.',
@@ -407,7 +407,7 @@ export const pages = {
     },
   },
   deploymentModels: {
-    title: 'Bereitstellungsmodelle — Zuraio',
+    title: 'Bereitstellungsmodelle | Zuraio',
     hero: {
       marker: 'Bereitstellung',
       heading: 'Lokal, hybrid oder in der Schweiz gehostet.',
@@ -415,7 +415,7 @@ export const pages = {
     },
   },
   technicalArchitecture: {
-    title: 'Technische Architektur — Zuraio',
+    title: 'Technische Architektur | Zuraio',
     hero: {
       marker: 'Technische Architektur',
       heading: 'Eine kontrollierbare KI-Plattform für Unternehmenswissen, spezialisierte Assistenten und Geschäftsprozesse.',
@@ -423,7 +423,7 @@ export const pages = {
     },
   },
   aiGovernance: {
-    title: 'KI-Governance — Zuraio',
+    title: 'KI-Governance | Zuraio',
     hero: {
       marker: 'KI-Governance',
       heading: 'KI-Nutzung, die verständlich und überprüfbar bleibt.',
@@ -431,7 +431,7 @@ export const pages = {
     },
   },
   faq: {
-    title: 'FAQ — Zuraio',
+    title: 'FAQ | Zuraio',
     hero: {
       marker: 'FAQ',
       heading: 'Praktische Fragen zum Einsatz von Zuraio im Unternehmen.',
@@ -439,14 +439,14 @@ export const pages = {
     },
   },
   about: {
-    title: 'Über uns — Zuraio',
+    title: 'Über uns | Zuraio',
     hero: {
       marker: 'Über Zuraio',
       heading: 'Praktische KI. Gebaut für Menschen.',
     },
   },
   contact: {
-    title: 'Kontakt — Zuraio',
+    title: 'Kontakt | Zuraio',
     hero: {
       marker: 'Kontakt',
       heading: 'Den ersten praktischen Anwendungsfall für Ihr Unternehmen finden.',
@@ -464,7 +464,7 @@ export const pages = {
     },
   },
   resources: {
-    title: 'Ressourcen — Zuraio',
+    title: 'Ressourcen | Zuraio',
     hero: {
       marker: 'Ressourcen',
       heading: 'Technische und praktische Informationen über Zuraio.',
@@ -473,17 +473,17 @@ export const pages = {
     },
   },
   privacy: {
-    title: 'Datenschutzerklärung — Zuraio',
+    title: 'Datenschutzerklärung | Zuraio',
     description: 'Wie Zuraio Personendaten bearbeitet, wenn Sie diese Website nutzen und uns kontaktieren.',
     hero: { marker: 'Rechtliches', heading: 'Datenschutzerklärung' },
   },
   impressum: {
-    title: 'Impressum — Zuraio',
+    title: 'Impressum | Zuraio',
     description: 'Impressum und Angaben zum Betreiber der Zuraio-Website.',
     hero: { marker: 'Rechtliches', heading: 'Impressum' },
   },
   terms: {
-    title: 'Nutzungsbedingungen — Zuraio',
+    title: 'Nutzungsbedingungen | Zuraio',
     description:
       'Diese Seite ist eine strukturierte Vorlage. Vollständige Nutzungsbedingungen müssen vor der Veröffentlichung erstellt und von einer qualifizierten Rechtsberatung geprüft werden.',
     hero: {
@@ -493,7 +493,7 @@ export const pages = {
     },
   },
   cookies: {
-    title: 'Cookie-Einstellungen — Zuraio',
+    title: 'Cookie-Einstellungen | Zuraio',
     description:
       'Diese Seite ist eine strukturierte Vorlage. Die tatsächlich verwendeten Cookie-Kategorien und Einstellungsmöglichkeiten werden nach Abschluss der rechtlichen und technischen Prüfung veröffentlicht.',
     hero: {
