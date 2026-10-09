@@ -3,6 +3,7 @@
  */
 import { copyAltHome } from '../public/zuraio-comparison/js/copy-alt-home.js';
 import { CANONICAL_BASE, OG_LOCALE } from './seo-config.mjs';
+import { buildOgShareImageMetaTags } from './og-share-meta.mjs';
 
 const LOCALES = ['en', 'de', 'fr', 'it'];
 
@@ -16,10 +17,6 @@ export function altHomePageTitle(locale) {
 export function altHomeMetaDescription(locale) {
   const copy = copyAltHome[locale] ?? copyAltHome.en;
   return copy.metaDescription ?? copy.hero?.sub ?? '';
-}
-
-export function altHomeOgImageUrl(locale) {
-  return `${CANONICAL_BASE}/assets/hero/zuraio-hero-reply-${locale}@2x.webp`;
 }
 
 export function homepagePreviewCanonical(locale) {
@@ -43,7 +40,6 @@ export function injectHomepagePreviewHead(html, locale) {
   const ogTitle = title;
   const ogDescription = description;
   const canonical = homepagePreviewCanonical(locale);
-  const ogImage = altHomeOgImageUrl(locale);
   const ogLocale = OG_LOCALE[locale] ?? 'en_CH';
 
   let out = html.replace(/<title>[^<]*<\/title>/, `<title>${escapeHtml(title)}</title>`);
@@ -65,9 +61,8 @@ export function injectHomepagePreviewHead(html, locale) {
   <meta property="og:description" content="${escapeHtml(ogDescription)}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="${escapeHtml(canonical)}">
-  <meta property="og:image" content="${escapeHtml(ogImage)}">
+  ${buildOgShareImageMetaTags(locale).trim()}
   <meta property="og:locale" content="${ogLocale}">
-  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${escapeHtml(ogTitle)}">
   <meta name="twitter:description" content="${escapeHtml(ogDescription)}">
 `;

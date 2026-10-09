@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    background: linear-gradient(180deg, #f3f4ee 0%, #fbfbf8 100%);
+    color: #262823;
+  }
+  .canvas {
+    display: flex;
+    align-items: center;
+    width: 1200px;
+    height: 630px;
+    padding: 60px;
+    gap: 32px;
+  }
+  .copy {
+    flex: 0 0 45%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .logo {
+    width: 184px;
+    height: auto;
+    display: block;
+  }
+  .primary {
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    max-width: 11ch;
+  }
+  .secondary {
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.25;
+    color: #6c6f66;
+    max-width: 14ch;
+  }
+  .visual {
+    flex: 1 1 55%;
+    min-width: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0 40px 8px;
+  }
+  .frame {
+    max-height: calc(630px - 120px);
+    max-width: 100%;
+    border: 1px solid #e4e6dc;
+    border-radius: 14px;
+    box-shadow: 0 12px 40px rgba(15, 16, 14, 0.08);
+    overflow: hidden;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .frame img {
+    display: block;
+    max-height: calc(630px - 120px - 80px);
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="copy">
+      <img class="logo" src="{{LOGO_URL}}" alt="" width="184" height="56">
+      <p class="primary">{{PRIMARY}}</p>
+      <p class="secondary">{{SECONDARY}}</p>
+    </div>
+    <div class="visual">
+      <div class="frame">
+        <img src="{{HERO_URL}}" alt="">
+      </div>
+    </div>
+  </div>
+</body>
+</html>
