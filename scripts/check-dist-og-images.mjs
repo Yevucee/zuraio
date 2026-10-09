@@ -3,15 +3,10 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import sharp from 'sharp';
 import { fileURLToPath } from 'node:url';
 import { listPreviewSiteHtmlFiles } from './preview-site-html-paths.mjs';
-import {
-  OG_SHARE_HEIGHT,
-  OG_SHARE_LOCALES,
-  OG_SHARE_MAX_BYTES,
-  OG_SHARE_WIDTH,
-} from './og-share-meta.mjs';
+import { validateOgShareJpg } from './og-image-validate.mjs';
+import { OG_SHARE_HEIGHT, OG_SHARE_LOCALES, OG_SHARE_WIDTH } from './og-share-meta.mjs';
 
 const DIST = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'dist');
 const OG_DIR = path.join(DIST, 'assets', 'og');
@@ -20,20 +15,7 @@ const offenders = [];
 
 for (const locale of OG_SHARE_LOCALES) {
   const file = path.join(OG_DIR, `zuraio-og-${locale}.jpg`);
-  if (!fs.existsSync(file)) {
-    offenders.push(`missing ${path.relative(DIST, file)}`);
-    continue;
-  }
-  const stat = fs.statSync(file);
-  if (stat.size > OG_SHARE_MAX_BYTES) {
-    offenders.push(`${path.relative(DIST, file)}: ${stat.size} bytes (max ${OG_SHARE_MAX_BYTES})`);
-  }
-  const meta = await sharp(file).metadata();
-  if (meta.width !== OG_SHARE_WIDTH || meta.height !== OG_SHARE_HEIGHT) {
-    offenders.push(
-      `${path.relative(DIST, file)}: ${meta.width}×${meta.height} (expected ${OG_SHARE_WIDTH}×${OG_SHARE_HEIGHT})`,
-    );
-  }
+  offenders.push(...(await validateOgShareJpg(file)));
 }
 
 const zuraioOgDir = path.join(DIST, 'zuraio', 'assets', 'og');
