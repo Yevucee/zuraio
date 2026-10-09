@@ -7,6 +7,9 @@ import { CANONICAL_BASE } from './seo-config.mjs';
 export const OG_SHARE_WIDTH = 1200;
 export const OG_SHARE_HEIGHT = 630;
 export const OG_SHARE_MAX_BYTES = 300 * 1024;
+export const OG_SHARE_MIN_BYTES = 60 * 1024;
+/** Right panel (hero) must vary — broken renders are a flat empty panel. */
+export const OG_SHARE_RIGHT_MIN_STDDEV = 12;
 
 export const OG_SHARE_LOCALES = ['en', 'de', 'fr', 'it'];
 
