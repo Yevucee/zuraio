@@ -1,3 +1,5 @@
+import { privacyPage } from './privacy-copy-de.js';
+
 export const legalPages = {
   impressum: {
     sections: [
@@ -50,97 +52,7 @@ export const legalPages = {
     ],
   },
 
-  privacy: {
-    banners: [
-      {
-        type: 'status',
-        label: 'PLATZHALTER — NICHT RECHTSVERBINDLICH',
-        text: 'Dies ist ausschliesslich ein Platzhalter für die Entwicklungsphase. Kein Text auf dieser Seite ist als endgültige oder verbindliche Datenschutzerklärung zu verstehen. Nach der rechtlichen Prüfung ist der gesamte Inhalt zu ersetzen.',
-      },
-      {
-        type: 'mono',
-        text: 'NOCH ZU ERGÄNZEN: Die gesamte Seite durch eine rechtlich geprüfte Datenschutzerklärung ersetzen. Der Platzhaltertext ist nicht verbindlich.',
-      },
-    ],
-    sections: [
-      {
-        heading: '1. Verantwortlicher',
-        paragraphs: ['—<br>—<br><a href=\"mailto:michael.wili@zuraio.ch\">michael.wili@zuraio.ch</a>'],
-      },
-      {
-        heading: '2. Geltungsbereich',
-        paragraphs: [
-          'Diese Datenschutzerklärung wird beschreiben, wie wir Personendaten bearbeiten, wenn Sie diese Website besuchen, eine Anfrage senden, den Zuraio AI Hub nutzen oder auf andere Weise mit uns interagieren.',
-        ],
-      },
-      {
-        heading: '3. Von uns erhobene Daten',
-        paragraphs: ['Zu den Kategorien können gehören:'],
-        list: [
-          'Kontakt- und Identitätsdaten (Name, E-Mail-Adresse, Unternehmen, Funktion)',
-          'Kommunikationsdaten (Anfragen, Supportkorrespondenz)',
-          'Technische Daten (IP-Adresse, Browsertyp, Geräteinformationen)',
-          'Nutzungsdaten (wie Sie die Website oder gegebenenfalls das Produkt nutzen)',
-          'Unternehmensdaten, die über den Zuraio AI Hub bearbeitet werden (Gegenstand einer separaten Vereinbarung)',
-        ],
-      },
-      {
-        heading: '4. Zwecke und Rechtsgrundlagen',
-        paragraphs: [
-          'Zu den Bearbeitungszwecken können die Beantwortung von Anfragen, die Erbringung der Dienstleistung, die Verbesserung des Produkts, die Sicherheit und die Erfüllung gesetzlicher Pflichten gehören.',
-        ],
-      },
-      {
-        heading: '5. Weitergabe von Daten und Auftragsbearbeiter',
-        paragraphs: [
-          'Wir können Daten an Dienstleister weitergeben, die uns beim Betrieb der Website und des Produkts unterstützen, beispielsweise in den Bereichen Hosting, E-Mail, Analyse und KI-Modelle. Eine aktuelle Liste der Unterauftragsbearbeiter wird hier veröffentlicht.',
-        ],
-      },
-      {
-        heading: '6. Internationale Datenübermittlungen',
-        paragraphs: [
-          'Werden Daten ausserhalb der Schweiz oder des EWR übermittelt, kommen angemessene Schutzmassnahmen zur Anwendung.',
-        ],
-      },
-      {
-        heading: '7. Aufbewahrung',
-        paragraphs: [
-          'Personendaten werden nur so lange aufbewahrt, wie es für die beschriebenen Zwecke erforderlich oder gesetzlich vorgeschrieben ist.',
-        ],
-      },
-      {
-        heading: '8. Ihre Rechte',
-        paragraphs: [
-          'Je nach anwendbarem Recht können Sie das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Bearbeitung, Widerspruch und Datenübertragbarkeit haben. Sie können zudem berechtigt sein, bei einer Aufsichtsbehörde Beschwerde einzureichen.',
-        ],
-      },
-      {
-        heading: '9. Cookies und Analyse',
-        id: 'cookies',
-        paragraphs: [
-          'Diese Website kann notwendige Cookies und, sofern erforderlich und mit Ihrer Einwilligung, Analyse-Cookies verwenden. Eine Möglichkeit zur Verwaltung der Cookie-Einstellungen wird bereitgestellt.',
-        ],
-      },
-      {
-        heading: '10. Sicherheit',
-        paragraphs: [
-          'Wir setzen angemessene technische und organisatorische Massnahmen zum Schutz von Personendaten ein. Die konkreten Massnahmen richten sich nach der Dienstleistung und dem Bereitstellungsmodell.',
-        ],
-      },
-      {
-        heading: '11. Änderungen dieser Datenschutzerklärung',
-        paragraphs: [
-          'Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Die jeweils aktuelle Version wird mit einem aktualisierten Datum auf dieser Seite veröffentlicht.',
-        ],
-      },
-      {
-        heading: '12. Kontakt',
-        paragraphs: [
-          'Für Datenschutzanfragen: <a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a>',
-        ],
-      },
-    ],
-  },
+  privacy: privacyPage,
 
   terms: {
     banners: [

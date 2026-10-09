@@ -535,9 +535,9 @@ export const pages = {
     hero: { marker: 'Resources', heading: 'Technical and practical information about Zuraio.', headingEmphasis: 'practical', lede: 'Guides, overviews and reference material for teams evaluating or deploying Zuraio.' },
   },
   privacy: {
-    title: 'Privacy — Zuraio',
-    description: 'Zuraio privacy policy information.',
-    hero: { marker: 'Legal', heading: 'Privacy policy.', lede: 'This page is a structured placeholder. A complete privacy policy must be prepared and reviewed by qualified legal counsel before publication.' },
+    title: 'Privacy policy — Zuraio',
+    description: 'How Zuraio processes personal data when you use this website and contact us.',
+    hero: { marker: 'Legal', heading: 'Privacy policy' },
   },
   impressum: {
     title: 'Legal notice — Zuraio',

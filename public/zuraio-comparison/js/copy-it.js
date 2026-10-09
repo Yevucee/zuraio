@@ -99,17 +99,10 @@ export const integrations = [
 export const nav = {
   main: [
     { label: 'Come aiuta Zuraio', href: 'how-it-helps.html' },
-    { label: 'Conoscenza aziendale', href: 'knowledge.html' },
-    { label: 'Integrazioni', href: 'integrations.html' },
-    { label: 'Controllo dei dati', href: 'data-control.html' },
+    { label: 'Skills', href: 'how-it-helps.html#skills' },
+    { label: 'Sicurezza', href: 'security.html' },
   ],
-  technical: [
-    { label: 'Architettura tecnica', href: 'technical-architecture.html' },
-    { label: 'Modelli di implementazione', href: 'deployment-models.html' },
-    { label: 'Governance dell’IA', href: 'ai-governance.html' },
-    { label: 'Controllo dei dati', href: 'data-control.html' },
-    { label: 'Conoscenza e SkillOS', href: 'knowledge.html#skillos' },
-  ],
+  technical: [],
   about: { label: 'Chi siamo', href: 'about.html' },
 };
 
@@ -474,14 +467,10 @@ export const pages = {
     },
   },
   privacy: {
-    title: 'Privacy — Zuraio',
+    title: 'Informativa sulla protezione dei dati — Zuraio',
     description:
-      'Questa pagina costituisce un modello strutturato. Prima della pubblicazione dovrà essere predisposta un’informativa completa sulla privacy e sottoposta alla revisione di un consulente legale qualificato.',
-    hero: {
-      marker: 'INFORMAZIONI LEGALI',
-      heading: 'Informativa sulla privacy.',
-      lede: 'Questa pagina costituisce un modello strutturato. Prima della pubblicazione dovrà essere predisposta un’informativa completa sulla privacy e sottoposta alla revisione di un consulente legale qualificato.',
-    },
+      'Come Zuraio tratta i dati personali quando utilizzate questo sito e ci contattate.',
+    hero: { marker: 'Note legali', heading: 'Informativa sulla protezione dei dati' },
   },
   impressum: {
     title: 'Note legali — Zuraio',

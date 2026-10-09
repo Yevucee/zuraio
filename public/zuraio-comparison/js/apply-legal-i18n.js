@@ -27,9 +27,9 @@ function renderBanners() {
 }
 
 function renderSection(section) {
-  const idAttr = section.id ? ` id="${section.id}"` : '';
-  let html = `<article class="legal-section reveal"${idAttr}>`;
-  html += `<h2>${section.heading}</h2>`;
+  const headingId = section.id ? ` id="${section.id}"` : '';
+  let html = `<article class="legal-section reveal">`;
+  html += `<h2${headingId}>${section.heading}</h2>`;
 
   if (section.type === 'dl' && section.items) {
     html += '<dl class="legal-dl">';
@@ -69,6 +69,16 @@ function renderLegalPage(page) {
   return page.sections.map(renderSection).join('\n\n    ');
 }
 
+function applyLegalPageMeta(page) {
+  if (page.title) document.title = page.title;
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc && page.description) metaDesc.setAttribute('content', page.description);
+  if (page.lastUpdated) {
+    const el = document.querySelector('.page-hero .legal-last-updated');
+    if (el) el.textContent = page.lastUpdated;
+  }
+}
+
 export function applyLegalTranslations(locale) {
   const pageId = document.body.dataset.page;
   if (!LEGAL_PAGE_IDS.has(pageId)) return;
@@ -76,6 +86,8 @@ export function applyLegalTranslations(locale) {
   const bundle = BUNDLES[locale] ?? BUNDLES.en;
   const page = bundle?.legalPages?.[pageId];
   if (!page) return;
+
+  applyLegalPageMeta(page);
 
   const container = document.querySelector('.legal-content');
   if (!container) return;

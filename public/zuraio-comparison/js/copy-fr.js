@@ -99,17 +99,10 @@ export const integrations = [
 export const nav = {
   main: [
     { label: 'Comment Zuraio vous aide', href: 'how-it-helps.html' },
-    { label: 'Connaissances', href: 'knowledge.html' },
-    { label: 'Intégrations', href: 'integrations.html' },
-    { label: 'Contrôle des données', href: 'data-control.html' },
+    { label: 'Skills', href: 'how-it-helps.html#skills' },
+    { label: 'Sécurité', href: 'security.html' },
   ],
-  technical: [
-    { label: 'Architecture technique', href: 'technical-architecture.html' },
-    { label: 'Modes de déploiement', href: 'deployment-models.html' },
-    { label: 'Gouvernance de l’IA', href: 'ai-governance.html' },
-    { label: 'Contrôle des données', href: 'data-control.html' },
-    { label: 'Connaissances et SkillOS', href: 'knowledge.html#skillos' },
-  ],
+  technical: [],
   about: { label: 'À propos', href: 'about.html' },
 };
 
@@ -474,14 +467,10 @@ export const pages = {
     },
   },
   privacy: {
-    title: 'Confidentialité — Zuraio',
+    title: 'Politique de protection des données — Zuraio',
     description:
-      'Cette page constitue un modèle structuré. Une politique de confidentialité complète doit être préparée et examinée par un conseil juridique qualifié avant publication.',
-    hero: {
-      marker: 'JURIDIQUE',
-      heading: 'Politique de confidentialité.',
-      lede: 'Cette page constitue un modèle structuré. Une politique de confidentialité complète doit être préparée et examinée par un conseil juridique qualifié avant publication.',
-    },
+      'Comment Zuraio traite les données personnelles lorsque vous utilisez ce site et nous contactez.',
+    hero: { marker: 'Mentions légales', heading: 'Politique de protection des données' },
   },
   impressum: {
     title: 'Mentions légales — Zuraio',

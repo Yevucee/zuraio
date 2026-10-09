@@ -64,10 +64,24 @@ for (const { file, exportName } of MODULES) {
   }
 }
 
+const enPrivacy = await loadExport('privacy-copy-en.js', 'privacyPage');
+const enPrivacyPaths = collectKeyPaths(enPrivacy);
+for (const loc of REQUIRED) {
+  const bundle = await loadExport(`privacy-copy-${loc}.js`, 'privacyPage');
+  const locPaths = collectKeyPaths(bundle);
+  for (const p of enPrivacyPaths) {
+    if (!locPaths.has(p)) {
+      missing.push(`privacy-copy-${loc}.js: missing key "${p}" (present in privacy-copy-en.js)`);
+    }
+  }
+}
+
 if (missing.length) {
   console.error('check-copy-key-parity: FAIL\n' + missing.slice(0, 80).map((m) => `  ${m}`).join('\n'));
   if (missing.length > 80) console.error(`  … and ${missing.length - 80} more`);
   process.exit(1);
 }
 
-console.log(`check-copy-key-parity: OK (${MODULES.length} modules, en keys checked in de/fr/it)`);
+console.log(
+  `check-copy-key-parity: OK (${MODULES.length} modules + privacy legal copy, en keys checked in de/fr/it)`,
+);

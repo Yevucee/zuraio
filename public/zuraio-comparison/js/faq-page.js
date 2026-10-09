@@ -6,7 +6,7 @@ import { initFaq, initFaqFromHash } from './faq-accordion.js';
 import { currentLocale, getLocaleFromPathname } from './path-locale.js';
 import { resolveRouteFromLocation } from './site-routes.js';
 
-const PAGE_CACHE = '20261009c';
+const PAGE_CACHE = '20261009d';
 
 function pageLocale() {
   return getLocaleFromPathname() ?? (document.documentElement.lang || 'en');

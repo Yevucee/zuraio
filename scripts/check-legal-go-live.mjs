@@ -20,29 +20,47 @@ const FORBIDDEN = [
   'Da confermare',
 ];
 
+const VARIANT_MARKERS = [
+  'Variant A',
+  'Variant B',
+  'Variante A',
+  'Variante B',
+  'Option A',
+  'Option B',
+  'Variante A',
+  'Variante B',
+];
+
 function mainText(html) {
   const main = html.match(/<main[\s\S]*?<\/main>/i)?.[0] ?? html;
   return main.replace(/<script[\s\S]*?<\/script>/gi, '').replace(/<[^>]+>/g, ' ');
 }
 
+function localeLabel(rel) {
+  if (rel.startsWith('de/')) return 'DE';
+  if (rel.startsWith('fr/')) return 'FR';
+  if (rel.startsWith('it/')) return 'IT';
+  return 'EN';
+}
+
 function checkFile(absPath, rel) {
   if (!fs.existsSync(absPath)) {
     console.error(`check-legal-go-live: missing ${rel}`);
-    return false;
+    return { ok: false, issues: ['missing file'] };
   }
   const text = mainText(fs.readFileSync(absPath, 'utf8'));
-  let ok = true;
+  const issues = [];
   for (const phrase of FORBIDDEN) {
-    if (text.includes(phrase)) {
-      console.error(`check-legal-go-live: ${rel} contains forbidden phrase: ${phrase}`);
-      ok = false;
-    }
+    if (text.includes(phrase)) issues.push(`forbidden phrase: ${phrase}`);
   }
-  if (/\[[^\]]+\]/.test(text)) {
-    console.error(`check-legal-go-live: ${rel} contains bracket placeholder text`);
-    ok = false;
+  const brackets = text.match(/\[[^\]]+\]/g);
+  if (brackets?.length) {
+    issues.push(`bracket placeholders: ${[...new Set(brackets)].slice(0, 8).join(', ')}${brackets.length > 8 ? '…' : ''}`);
   }
-  return ok;
+  for (const marker of VARIANT_MARKERS) {
+    if (text.includes(marker)) issues.push(`open variant block: ${marker}`);
+  }
+  return { ok: issues.length === 0, issues };
 }
 
 if (!fs.existsSync(DIST)) {
@@ -51,17 +69,30 @@ if (!fs.existsSync(DIST)) {
 }
 
 let allOk = true;
+const byLocale = { EN: [], DE: [], FR: [], IT: [] };
+
 for (const dir of LEGAL_DIRS) {
   for (const page of LEGAL_PAGES) {
     const rel = dir ? `${dir}/${page}` : page;
     const abs = path.join(DIST, rel);
-    if (!checkFile(abs, rel)) allOk = false;
+    const { ok, issues } = checkFile(abs, rel);
+    if (!ok) {
+      allOk = false;
+      byLocale[localeLabel(rel)].push(`${rel}: ${issues.join('; ')}`);
+    }
   }
 }
 
 if (!allOk) {
+  console.error('check-legal-go-live: FAILED — open Impressum/privacy placeholders:\n');
+  for (const loc of ['EN', 'DE', 'FR', 'IT']) {
+    if (byLocale[loc].length) {
+      console.error(`  ${loc}:`);
+      byLocale[loc].forEach((line) => console.error(`    - ${line}`));
+    }
+  }
   console.error(
-    'check-legal-go-live: FAILED — replace Impressum/privacy placeholders before Mcwili production sync.',
+    '\ncheck-legal-go-live: resolve placeholders before Mcwili production sync.',
   );
   process.exit(1);
 }
