@@ -39,6 +39,10 @@ export function getLocale() {
   if (isSupportedLocale(fromUrl)) return fromUrl;
   const fromPath = getLocaleFromPath();
   if (fromPath) return fromPath;
+  if (!isInLocaleSubdir()) {
+    const htmlLang = document.documentElement.lang?.split('-')[0];
+    if (isSupportedLocale(htmlLang)) return htmlLang;
+  }
   const stored = localStorage.getItem(LOCALE_KEY);
   if (isSupportedLocale(stored)) return stored;
   return 'de';

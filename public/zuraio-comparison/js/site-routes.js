@@ -1,6 +1,6 @@
 /** Preview site route map (EN + DE + FR + IT). At go-live, update paths here and re-run apply-routes. */
 export const PREVIEW_LOCALES = ['en', 'de', 'fr', 'it'];
-const LOCALE_SUBDIRS = ['de', 'fr', 'it'];
+const LOCALE_SUBDIRS = ['en', 'de', 'fr', 'it'];
 
 export const PREVIEW_SITE_ROUTES = {
   home: {

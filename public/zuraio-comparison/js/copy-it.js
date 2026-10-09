@@ -485,13 +485,8 @@ export const pages = {
   },
   impressum: {
     title: 'Note legali — Zuraio',
-    description:
-      'Questa pagina costituisce un modello strutturato. Tutti i dati aziendali riportati di seguito devono essere verificati e completati prima della pubblicazione.',
-    hero: {
-      marker: 'INFORMAZIONI LEGALI',
-      heading: 'Note legali.',
-      lede: 'Questa pagina costituisce un modello strutturato. Tutti i dati aziendali riportati di seguito devono essere verificati e completati prima della pubblicazione.',
-    },
+    description: 'Note legali e informazioni sul gestore del sito Zuraio.',
+    hero: { marker: 'Note legali', heading: 'Note legali' },
   },
   terms: {
     title: 'Condizioni d’uso — Zuraio',

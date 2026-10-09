@@ -1,4 +1,6 @@
 /** Path-based locale and deployment-aware URL helpers. */
+import { PREVIEW_SITE_ROUTES } from './site-routes.js';
+
 export const LOCALE_SEGMENTS = ['de', 'fr', 'it'];
 export const PREVIEW_LOCALES = ['en', 'de', 'fr', 'it'];
 
@@ -23,6 +25,7 @@ export function getLocaleFromPathname(pathname = location.pathname) {
   let idx = 0;
   if (segments[0] === 'zuraio') idx = 1;
   const seg = segments[idx];
+  if (seg === 'en') return 'en';
   if (LOCALE_SEGMENTS.includes(seg)) return seg;
   return null;
 }
@@ -74,14 +77,18 @@ export function normalizePageRef(path, siteBase = detectSiteBase()) {
   if (file.startsWith('/')) file = file.slice(1);
   while (file.startsWith('../')) file = file.slice(3);
 
-  for (const loc of LOCALE_SEGMENTS) {
-    if (file === loc || file === `${loc}/`) {
-      file = '';
-      break;
-    }
-    if (file.startsWith(`${loc}/`)) {
-      file = file.slice(loc.length + 1);
-      break;
+  if (file === 'en' || file.startsWith('en/')) {
+    file = file === 'en' ? '' : file.slice(3);
+  } else {
+    for (const loc of LOCALE_SEGMENTS) {
+      if (file === loc || file === `${loc}/`) {
+        file = '';
+        break;
+      }
+      if (file.startsWith(`${loc}/`)) {
+        file = file.slice(loc.length + 1);
+        break;
+      }
     }
   }
 
@@ -112,6 +119,14 @@ export function langHrefForLocale(path, locale, siteBase = detectSiteBase()) {
   }
 
   if (!file.endsWith('.html')) return path;
+
+  for (const entry of Object.values(PREVIEW_SITE_ROUTES)) {
+    const enTail = entry.en?.split('/').pop();
+    if (enTail && enTail === file) {
+      const routed = entry[locale] ?? entry.en;
+      return joinUrl('', base ? `${base}/${routed}` : `/${routed}`, hash);
+    }
+  }
 
   if (locale === 'en') {
     return joinUrl('', base ? `${base}/${file}` : `/${file}`, hash);

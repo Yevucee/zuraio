@@ -1,9 +1,10 @@
+import * as enLegal from './copy-en-legal.js';
 import * as deLegal from './copy-de-legal.js';
 import * as frLegal from './copy-fr-legal.js';
 import * as itLegal from './copy-it-legal.js';
 import { langHrefForLocale } from './path-locale.js';
 
-const BUNDLES = { de: deLegal, fr: frLegal, it: itLegal };
+const BUNDLES = { en: enLegal, de: deLegal, fr: frLegal, it: itLegal };
 
 const LEGAL_PAGE_IDS = new Set(['impressum', 'privacy', 'terms', 'cookies']);
 
@@ -45,7 +46,7 @@ function renderSection(section) {
   }
 
   section.paragraphs?.forEach((p) => {
-    html += `<p>${p}</p>`;
+    html += p.includes('<') ? `<p>${p}</p>` : `<p>${p}</p>`;
   });
 
   if (section.list?.length) {
@@ -70,9 +71,9 @@ function renderLegalPage(page) {
 
 export function applyLegalTranslations(locale) {
   const pageId = document.body.dataset.page;
-  if (!LEGAL_PAGE_IDS.has(pageId) || locale === 'en') return;
+  if (!LEGAL_PAGE_IDS.has(pageId)) return;
 
-  const bundle = BUNDLES[locale];
+  const bundle = BUNDLES[locale] ?? BUNDLES.en;
   const page = bundle?.legalPages?.[pageId];
   if (!page) return;
 

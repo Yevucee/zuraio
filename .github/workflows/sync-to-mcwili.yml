@@ -30,6 +30,27 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install chromium --with-deps
+
+      - name: Build production dist
+        run: npm run build
+        env:
+          CANONICAL_BASE: https://zuraio.ch
+          SITE_BASE_PATH: ''
+
+      - name: Legal go-live guard (Impressum / privacy)
+        run: node scripts/check-legal-go-live.mjs
+
       - name: Push to Mcwili/zuraio
         env:
           MCWILI_TOKEN: ${{ secrets.MCWILI_PUSH_TOKEN }}

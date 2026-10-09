@@ -1,72 +1,51 @@
 export const legalPages = {
   impressum: {
-    banners: [
-      {
-        type: 'mono',
-        text: 'NOCH ZU ERGÄNZEN: Alle nachstehenden Felder mit rechtlich geprüften Angaben vervollständigen. Nicht mit Platzhalterinhalten veröffentlichen.',
-      },
-    ],
     sections: [
       {
-        heading: 'Unternehmen / Rechtsträger',
+        heading: 'Betreiber dieser Website',
         type: 'dl',
         items: [
-          { dt: 'Rechtlicher Name', dd: '—' },
-          { dt: 'Rechtsform', dd: '—' },
-          { dt: 'UID-/CHE-Nummer', dd: '—' },
-        ],
-      },
-      {
-        heading: 'Sitzadresse',
-        type: 'dl',
-        items: [
-          { dt: 'Strasse', dd: '—' },
-          { dt: 'PLZ und Ort', dd: '—' },
-          { dt: 'Kanton / Land', dd: '—' },
+          { dt: 'Rechtlicher Name und Rechtsform', dd: 'Noch zu bestätigen' },
+          { dt: 'Postanschrift', dd: 'Noch zu bestätigen' },
         ],
       },
       {
         heading: 'Kontakt',
         type: 'dl',
-        items: [
-          { dt: 'E-Mail', dd: '', mailto: true },
-          { dt: 'Telefon', dd: '—' },
-          { dt: 'Website', dd: '—' },
-        ],
-      },
-      {
-        heading: 'Vertreten durch',
-        type: 'dl',
-        items: [
-          { dt: 'Geschäftsführung / Zeichnungsberechtigte', dd: '—' },
-        ],
+        items: [{ dt: 'E-Mail', dd: '', mailto: true }],
       },
       {
         heading: 'Handelsregister',
         type: 'dl',
-        items: [
-          { dt: 'Register', dd: '—' },
-          { dt: 'Eintragsnummer', dd: '—' },
-        ],
+        items: [{ dt: 'Eintrag und Kanton', dd: 'Noch zu bestätigen' }],
       },
       {
-        heading: 'MWST / Steuern',
+        heading: 'Unternehmensidentifikation',
         type: 'dl',
-        items: [{ dt: 'MWST-Nummer', dd: '—' }],
+        items: [{ dt: 'Unternehmens-Identifikationsnummer (UID)', dd: 'Noch zu bestätigen' }],
       },
       {
-        heading: 'Verantwortlich für den Inhalt',
+        heading: 'Mehrwertsteuer',
         type: 'dl',
-        items: [{ dt: 'Inhaltliche Verantwortung', dd: '—' }],
+        items: [{ dt: 'MWST-Status und MWST-Nummer', dd: 'Noch zu bestätigen' }],
       },
       {
-        heading: 'Haftungsausschluss',
+        heading: 'Inhalte und externe Links',
         paragraphs: [
-          'Die Inhalte dieser Website dienen ausschliesslich der allgemeinen Information. Trotz sorgfältiger Erstellung übernehmen wir keine Gewähr für die Richtigkeit, Vollständigkeit oder Aktualität der Inhalte.',
+          'Wir erstellen die Inhalte dieser Website mit Sorgfalt. Sie dienen der allgemeinen Information und können geändert werden. Verlinkte Websites werden von Dritten betrieben; für deren Inhalte gelten die Angaben und Bedingungen der jeweiligen Betreiber.',
         ],
       },
       {
-        heading: 'Streitbeilegung',
+        heading: 'Urheberrechte',
+        paragraphs: [
+          'Die Inhalte dieser Website sind geschützt, soweit das anwendbare Recht dies vorsieht. Rechte Dritter bleiben vorbehalten. Für eine Nutzung ausserhalb der gesetzlich erlaubten Fälle ist die Zustimmung des jeweiligen Rechteinhabers erforderlich.',
+        ],
+      },
+      {
+        heading: 'Datenschutz',
+        paragraphs: [
+          'Informationen zur Bearbeitung von Personendaten finden Sie in unserer <a href="privacy.html">Datenschutzerklärung</a>.',
+        ],
       },
     ],
   },
