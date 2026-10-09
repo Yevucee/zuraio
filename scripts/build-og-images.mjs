@@ -14,6 +14,7 @@ import {
   OG_SHARE_MIN_BYTES,
   OG_SHARE_WIDTH,
 } from './og-share-meta.mjs';
+import { OG_HERO_CROP } from './og-hero-crop.mjs';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const ASSETS = path.join(ROOT, '..', 'public', 'zuraio-comparison', 'assets');
@@ -39,14 +40,25 @@ async function embedAsPngDataUri(filePath) {
   return `data:image/png;base64,${png.toString('base64')}`;
 }
 
+async function embedHeroCropPngDataUri(locale) {
+  const filePath = path.join(ASSETS, 'hero', `zuraio-hero-reply-${locale}@2x.webp`);
+  const crop = OG_HERO_CROP[locale];
+  if (!crop) throw new Error(`build-og-images: no crop for ${locale}`);
+  const meta = await sharp(filePath).metadata();
+  const left = Math.min(crop.left, Math.max(0, (meta.width ?? 0) - crop.width));
+  const top = Math.min(crop.top, Math.max(0, (meta.height ?? 0) - crop.height));
+  const width = Math.min(crop.width, (meta.width ?? crop.width) - left);
+  const height = Math.min(crop.height, (meta.height ?? crop.height) - top);
+  const png = await sharp(filePath).extract({ left, top, width, height }).png().toBuffer();
+  return `data:image/png;base64,${png.toString('base64')}`;
+}
+
 async function buildPageHtml(locale) {
   const copy = copyAltHome[locale];
   const primary = escapeHtml(copy.hero.headlineLines[0]);
   const secondary = escapeHtml(copy.hero.headlineLines[1]);
   const logo = await embedAsPngDataUri(path.join(ASSETS, 'zuraio-logo-nav@2x.webp'));
-  const hero = await embedAsPngDataUri(
-    path.join(ASSETS, 'hero', `zuraio-hero-reply-${locale}@2x.webp`),
-  );
+  const hero = await embedHeroCropPngDataUri(locale);
   return TEMPLATE.replace('{{LOGO_URL}}', logo)
     .replace('{{PRIMARY}}', primary)
     .replace('{{SECONDARY}}', secondary)
@@ -89,7 +101,7 @@ async function renderLocale(page, locale, outPath) {
   await waitForRenderReady(page);
   await page.waitForTimeout(100);
 
-  let quality = 92;
+  let quality = 95;
   let buffer = await page.screenshot({
     type: 'jpeg',
     quality,
