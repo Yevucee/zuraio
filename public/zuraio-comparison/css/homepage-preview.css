@@ -387,7 +387,7 @@ body[data-alt-chrome] .alt-home-hero {
   padding-bottom: var(--alt-section-y);
 }
 
-body[data-alt-chrome] .alt-home-hero .hero-eyebrow.marker,
+body[data-alt-chrome] .hero-eyebrow.marker,
 body[data-alt-chrome] .alt-skills-eyebrow.marker {
   display: inline-flex;
   align-items: center;
@@ -397,13 +397,22 @@ body[data-alt-chrome] .alt-skills-eyebrow.marker {
   max-width: 100%;
   font-size: var(--alt-small);
   line-height: 1.35;
+  font-family: "IBM Plex Mono", monospace;
+  text-transform: uppercase;
+  color: var(--olive-deep);
 }
 
-body[data-alt-chrome] .alt-home-hero .hero-eyebrow.marker::before,
+body[data-alt-chrome] .hero-eyebrow.marker::before,
 body[data-alt-chrome] .alt-skills-eyebrow.marker::before {
+  content: "";
+  display: inline-block;
+  flex-shrink: 0;
   width: 8px;
   height: 8px;
   margin-top: 0.05em;
+  border-radius: 50%;
+  background: var(--olive);
+  box-shadow: none;
 }
 
 body[data-alt-chrome] .alt-home-hero__grid {
@@ -2969,6 +2978,28 @@ body[data-alt-chrome] .alt-security-hero h1 .alt-security-hero__line {
   }
 }
 
+/* About + FAQ: single-sentence heroes — 56px type, 860px balance (not 15/28ch) */
+body[data-alt-chrome] main#about-main .alt-security-hero h1,
+body[data-alt-chrome] main#faq-main .alt-security-hero h1 {
+  font-size: clamp(2.25rem, 4vw + 0.5rem, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  max-width: 860px;
+  text-wrap: balance;
+  margin: 0.75rem 0 20px;
+}
+
+body[data-alt-chrome] main#faq-main .alt-faq-hero h1 {
+  margin-top: 0;
+}
+
+body[data-alt-chrome] main#about-main .alt-security-hero h1 .alt-security-hero__line,
+body[data-alt-chrome] main#faq-main .alt-security-hero h1 .alt-security-hero__line {
+  display: block;
+  max-width: 860px;
+  text-wrap: balance;
+}
+
 body[data-alt-chrome] .alt-security-promise .alt-home-skill-card__body {
   display: block;
   overflow: visible;
@@ -3901,23 +3932,7 @@ body[data-alt-chrome] .alt-recorded-row__icon svg {
   }
 }
 
-/* About page */
-body[data-alt-chrome] .alt-about-hero h1,
-body[data-alt-chrome] .alt-faq-hero h1 {
-  margin: 0.75rem 0 20px;
-}
-
-@media (max-width: 480px) {
-  body[data-alt-chrome] .alt-about-hero h1 {
-    font-size: 31px;
-    line-height: 1.1;
-  }
-}
-
-body[data-alt-chrome] .alt-about-hero__sub,
-body[data-alt-chrome] .alt-faq-hero__sub {
-  max-width: 42rem;
-}
+/* About page (hero uses .alt-security-hero; wide H1 rules above) */
 
 body[data-alt-chrome] .alt-about-starter__inner {
   display: flex;
