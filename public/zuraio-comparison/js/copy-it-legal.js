@@ -1,72 +1,51 @@
 export const legalPages = {
   impressum: {
-    banners: [
-      {
-        type: 'mono',
-        text: 'DA COMPLETARE: Compilare tutti i campi seguenti con informazioni verificate sotto il profilo legale. Non pubblicare con contenuti provvisori.',
-      },
-    ],
     sections: [
       {
-        heading: 'Azienda / soggetto giuridico',
+        heading: 'Gestore di questo sito',
         type: 'dl',
         items: [
-          { dt: 'Ragione sociale', dd: '—' },
-          { dt: 'Forma giuridica', dd: '—' },
-          { dt: 'Numero IDI / CHE', dd: '—' },
+          { dt: 'Ragione sociale e forma giuridica', dd: 'Da confermare' },
+          { dt: 'Indirizzo postale', dd: 'Da confermare' },
         ],
       },
       {
-        heading: 'Sede legale',
+        heading: 'Contatto',
         type: 'dl',
-        items: [
-          { dt: 'Via', dd: '—' },
-          { dt: 'NPA e località', dd: '—' },
-          { dt: 'Cantone / Paese', dd: '—' },
-        ],
-      },
-      {
-        heading: 'Contatti',
-        type: 'dl',
-        items: [
-          { dt: 'E-mail', dd: '', mailto: true },
-          { dt: 'Telefono', dd: '—' },
-          { dt: 'Sito web', dd: '—' },
-        ],
-      },
-      {
-        heading: 'Rappresentata da',
-        type: 'dl',
-        items: [
-          { dt: 'Direzione / persone con diritto di firma', dd: '—' },
-        ],
+        items: [{ dt: 'E-mail', dd: '', mailto: true }],
       },
       {
         heading: 'Registro di commercio',
         type: 'dl',
-        items: [
-          { dt: 'Registro', dd: '—' },
-          { dt: 'Numero d’iscrizione', dd: '—' },
-        ],
+        items: [{ dt: 'Iscrizione e Cantone', dd: 'Da confermare' }],
       },
       {
-        heading: 'IVA / imposte',
+        heading: 'Identificazione dell’impresa',
         type: 'dl',
-        items: [{ dt: 'Numero IVA', dd: '—' }],
+        items: [{ dt: 'Numero d’identificazione delle imprese (IDI)', dd: 'Da confermare' }],
       },
       {
-        heading: 'Responsabile dei contenuti',
+        heading: 'Imposta sul valore aggiunto',
         type: 'dl',
-        items: [{ dt: 'Responsabilità editoriale', dd: '—' }],
+        items: [{ dt: 'Assoggettamento all’IVA e numero IVA', dd: 'Da confermare' }],
       },
       {
-        heading: 'Esclusione di responsabilità',
+        heading: 'Contenuti e link esterni',
         paragraphs: [
-          'Testo provvisorio: i contenuti di questo sito web sono forniti esclusivamente a scopo informativo generale. Nonostante la cura prestata nella loro preparazione, non garantiamo l’esattezza, la completezza o l’attualità dei contenuti.',
+          'Prepariamo con cura i contenuti di questo sito. Sono forniti a scopo informativo generale e possono essere modificati. I siti raggiungibili tramite link sono gestiti da terzi; ai loro contenuti si applicano le rispettive informazioni e condizioni.',
         ],
       },
       {
-        heading: 'Risoluzione delle controversie',
+        heading: 'Diritti d’autore',
+        paragraphs: [
+          'I contenuti di questo sito sono protetti nella misura prevista dalla legge applicabile. Restano riservati i diritti di terzi. Per qualsiasi utilizzo che ecceda quanto consentito dalla legge è necessaria l’autorizzazione del relativo titolare dei diritti.',
+        ],
+      },
+      {
+        heading: 'Protezione dei dati',
+        paragraphs: [
+          'Le informazioni sul trattamento dei dati personali sono disponibili nella nostra <a href="privacy.html">informativa sulla protezione dei dati</a>.',
+        ],
       },
     ],
   },

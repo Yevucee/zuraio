@@ -540,9 +540,9 @@ export const pages = {
     hero: { marker: 'Legal', heading: 'Privacy policy.', lede: 'This page is a structured placeholder. A complete privacy policy must be prepared and reviewed by qualified legal counsel before publication.' },
   },
   impressum: {
-    title: 'Impressum — Zuraio',
-    description: 'Legal disclosure and company information for Zuraio.',
-    hero: { marker: 'Legal', heading: 'Impressum.', lede: 'This page is a structured placeholder. All company details below must be verified and inserted before publication.' },
+    title: 'Legal notice — Zuraio',
+    description: 'Legal disclosure and operator information for the Zuraio website.',
+    hero: { marker: 'Legal', heading: 'Legal notice' },
   },
   terms: {
     title: 'Terms of use — Zuraio',

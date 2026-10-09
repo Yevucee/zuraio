@@ -1,72 +1,51 @@
 export const legalPages = {
   impressum: {
-    banners: [
-      {
-        type: 'mono',
-        text: 'À COMPLÉTER : Renseigner tous les champs ci-dessous avec des informations vérifiées sur le plan juridique. Ne pas publier avec des contenus provisoires.',
-      },
-    ],
     sections: [
       {
-        heading: 'Entreprise / entité juridique',
+        heading: 'Exploitant de ce site',
         type: 'dl',
         items: [
-          { dt: 'Raison sociale', dd: '—' },
-          { dt: 'Forme juridique', dd: '—' },
-          { dt: 'Numéro IDE / CHE', dd: '—' },
-        ],
-      },
-      {
-        heading: 'Adresse du siège',
-        type: 'dl',
-        items: [
-          { dt: 'Rue', dd: '—' },
-          { dt: 'Code postal et localité', dd: '—' },
-          { dt: 'Canton / pays', dd: '—' },
+          { dt: 'Raison sociale et forme juridique', dd: 'À confirmer' },
+          { dt: 'Adresse postale', dd: 'À confirmer' },
         ],
       },
       {
         heading: 'Contact',
         type: 'dl',
-        items: [
-          { dt: 'E-mail', dd: '', mailto: true },
-          { dt: 'Téléphone', dd: '—' },
-          { dt: 'Site internet', dd: '—' },
-        ],
-      },
-      {
-        heading: 'Représentation',
-        type: 'dl',
-        items: [
-          { dt: 'Direction / personnes habilitées à signer', dd: '—' },
-        ],
+        items: [{ dt: 'E-mail', dd: '', mailto: true }],
       },
       {
         heading: 'Registre du commerce',
         type: 'dl',
-        items: [
-          { dt: 'Registre', dd: '—' },
-          { dt: 'Numéro d’inscription', dd: '—' },
-        ],
+        items: [{ dt: 'Inscription et canton', dd: 'À confirmer' }],
       },
       {
-        heading: 'TVA / fiscalité',
+        heading: 'Identification de l’entreprise',
         type: 'dl',
-        items: [{ dt: 'Numéro de TVA', dd: '—' }],
+        items: [{ dt: 'Numéro d’identification des entreprises (IDE)', dd: 'À confirmer' }],
       },
       {
-        heading: 'Responsable du contenu',
+        heading: 'Taxe sur la valeur ajoutée',
         type: 'dl',
-        items: [{ dt: 'Responsabilité éditoriale', dd: '—' }],
+        items: [{ dt: 'Assujettissement à la TVA et numéro de TVA', dd: 'À confirmer' }],
       },
       {
-        heading: 'Clause de non-responsabilité',
+        heading: 'Contenu et liens externes',
         paragraphs: [
-          'Texte provisoire : le contenu de ce site internet est fourni uniquement à titre d’information générale. Malgré le soin apporté à sa préparation, nous ne garantissons pas son exactitude, son exhaustivité ni son actualité.',
+          'Nous apportons le plus grand soin au contenu de ce site. Il est fourni à titre d’information générale et peut être modifié. Les sites accessibles par des liens sont exploités par des tiers ; leurs propres informations et conditions s’appliquent à leur contenu.',
         ],
       },
       {
-        heading: 'Règlement des litiges',
+        heading: 'Droits d’auteur',
+        paragraphs: [
+          'Le contenu de ce site est protégé dans la mesure prévue par le droit applicable. Les droits des tiers sont réservés. Toute utilisation au-delà de ce que la loi autorise nécessite l’accord du titulaire des droits concerné.',
+        ],
+      },
+      {
+        heading: 'Protection des données',
+        paragraphs: [
+          'Vous trouverez des informations sur notre traitement des données personnelles dans notre <a href="privacy.html">déclaration de protection des données</a>.',
+        ],
       },
     ],
   },

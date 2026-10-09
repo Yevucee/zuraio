@@ -1,6 +1,6 @@
 /** Preview site route map (EN + DE + FR + IT). At go-live, update paths here and re-run apply-routes. */
 export const PREVIEW_LOCALES = ['en', 'de', 'fr', 'it'];
-const LOCALE_SUBDIRS = ['de', 'fr', 'it'];
+const LOCALE_SUBDIRS = ['en', 'de', 'fr', 'it'];
 
 export const PREVIEW_SITE_ROUTES = {
   home: {
@@ -54,7 +54,7 @@ export const PREVIEW_SITE_ROUTES = {
   about: { en: 'about.html', de: 'de/about.html', fr: 'fr/about.html', it: 'it/about.html' },
   faq: { en: 'faq.html', de: 'de/faq.html', fr: 'fr/faq.html', it: 'it/faq.html' },
   contact: { en: 'contact.html', de: 'de/contact.html', fr: 'fr/contact.html', it: 'it/contact.html' },
-  impressum: { en: 'impressum.html', de: 'de/impressum.html', fr: 'fr/impressum.html', it: 'it/impressum.html' },
+  impressum: { en: 'en/impressum.html', de: 'de/impressum.html', fr: 'fr/impressum.html', it: 'it/impressum.html' },
   privacy: { en: 'privacy.html', de: 'de/privacy.html', fr: 'fr/privacy.html', it: 'it/privacy.html' },
   cookies: { en: 'cookies.html', de: 'de/cookies.html', fr: 'fr/cookies.html', it: 'it/cookies.html' },
   terms: { en: 'terms.html', de: 'de/terms.html', fr: 'fr/terms.html', it: 'it/terms.html' },

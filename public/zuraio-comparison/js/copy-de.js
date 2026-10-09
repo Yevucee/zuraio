@@ -484,13 +484,8 @@ export const pages = {
   },
   impressum: {
     title: 'Impressum — Zuraio',
-    description:
-      'Diese Seite ist eine strukturierte Vorlage. Sämtliche nachstehenden Unternehmensangaben müssen überprüft und vor der Veröffentlichung ergänzt werden.',
-    hero: {
-      marker: 'RECHTLICHES',
-      heading: 'Impressum.',
-      lede: 'Diese Seite ist eine strukturierte Vorlage. Sämtliche nachstehenden Unternehmensangaben müssen überprüft und vor der Veröffentlichung ergänzt werden.',
-    },
+    description: 'Impressum und Angaben zum Betreiber der Zuraio-Website.',
+    hero: { marker: 'Rechtliches', heading: 'Impressum' },
   },
   terms: {
     title: 'Nutzungsbedingungen — Zuraio',

@@ -485,13 +485,8 @@ export const pages = {
   },
   impressum: {
     title: 'Mentions légales — Zuraio',
-    description:
-      'Cette page constitue un modèle structuré. Toutes les informations relatives à l’entreprise ci-dessous doivent être vérifiées et complétées avant publication.',
-    hero: {
-      marker: 'JURIDIQUE',
-      heading: 'Mentions légales.',
-      lede: 'Cette page constitue un modèle structuré. Toutes les informations relatives à l’entreprise ci-dessous doivent être vérifiées et complétées avant publication.',
-    },
+    description: 'Mentions légales et informations sur l’exploitant du site Zuraio.',
+    hero: { marker: 'Mentions légales', heading: 'Mentions légales' },
   },
   terms: {
     title: 'Conditions d’utilisation — Zuraio',
