@@ -55,7 +55,7 @@
     },
     hero: {
       eyebrow: 'CHI SIAMO',
-      heading: 'Quattro persone in Svizzera, che creano l’IA che volevano.',
+      heading: 'Quattro persone in Svizzera, che costruiscono l’IA che volevano per sé.',
       sub: 'Perdevamo ore a preparare riunioni, a gestire e-mail e a cercare il documento giusto. Gli strumenti di IA pubblici aiutavano, ma non conoscevano la nostra azienda né rispettavano le nostre regole di accesso. Così abbiamo creato Zuraio.',
     },
     team: {

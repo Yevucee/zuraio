@@ -236,7 +236,7 @@ export const copyIntegrations = {
       bookDemo: 'Réserver une démo de 30 minutes',
     },
     hero: {
-      heading: 'Fonctionne avec les systèmes que les PME suisses utilisent vraiment.',
+      heading: 'Fonctionne avec les systèmes des PME suisses.',
       sub: 'Votre équipe continue de travailler avec les outils qu’elle connaît : de bexio et Klara à Microsoft 365, Revit et ArchiCAD. Zuraio s’y connecte, pour que vos connaissances soient réunies sans rien déplacer.',
     },
     swissBand: {
