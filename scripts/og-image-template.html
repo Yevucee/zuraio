@@ -21,14 +21,14 @@
     width: 1200px;
     height: 630px;
     padding: 60px;
-    gap: 32px;
+    gap: 24px;
   }
   .copy {
-    flex: 0 0 45%;
+    flex: 0 0 40%;
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
   }
   .logo {
     width: 150px;
@@ -36,46 +36,47 @@
     display: block;
   }
   .primary {
-    font-size: 56px;
+    font-size: 48px;
     font-weight: 600;
-    line-height: 1.08;
+    line-height: 1.1;
     letter-spacing: -0.02em;
-    max-width: 11ch;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
   }
   .secondary {
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 500;
-    line-height: 1.25;
+    line-height: 1.28;
     color: #6c6f66;
-    max-width: 14ch;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
   }
   .visual {
-    flex: 1 1 55%;
+    flex: 1 1 60%;
     min-width: 0;
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 40px 0 40px 8px;
+    justify-content: flex-end;
+    padding: 0;
   }
   .frame {
-    max-height: calc(630px - 120px);
-    max-width: 100%;
     border: 1px solid #e4e6dc;
     border-radius: 14px;
     box-shadow: 0 12px 40px rgba(15, 16, 14, 0.08);
     overflow: hidden;
     background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    line-height: 0;
   }
   .frame img {
     display: block;
-    max-height: calc(630px - 120px - 40px);
-    max-width: 100%;
-    width: auto;
+    width: 520px;
     height: auto;
+    max-height: calc(630px - 120px);
     object-fit: contain;
   }
 </style>
