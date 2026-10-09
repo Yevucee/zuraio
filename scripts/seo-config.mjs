@@ -18,7 +18,8 @@ export const CANONICAL_BASE = (process.env.CANONICAL_BASE || 'https://zuraio.ch'
 /** Path prefix when hosted under GitHub Pages project site (empty on zuraio.ch). */
 export const SITE_BASE_PATH = (process.env.SITE_BASE_PATH || '').replace(/\/$/, '');
 
-export const OG_IMAGE_PATH = '/zuraio/assets/zuraio-og-share.png';
+/** @deprecated Use locale JPGs via scripts/og-share-meta.mjs */
+export const OG_IMAGE_PATH = '/assets/og/zuraio-og-en.jpg';
 
 export const OG_LOCALE = {
   en: 'en_CH',

@@ -16,12 +16,12 @@ import {
   CANONICAL_BASE,
   LOCALES,
   HREFLANG_TAGS,
-  OG_IMAGE_PATH,
   OG_LOCALE,
   SOFTWARE_APP_PAGES,
   SITE_BASE_PATH,
   canonicalUrl,
 } from './seo-config.mjs';
+import { buildOgShareImageMetaTags } from './og-share-meta.mjs';
 
 const copies = { en, de, fr, it };
 
@@ -318,7 +318,6 @@ function rewriteLangLinks(html, locale) {
 export function postprocessHtml(html, locale, page) {
   const meta = getMeta(locale, page);
   const canonical = canonicalUrl(locale, page);
-  const ogImage = `${CANONICAL_BASE}${OG_IMAGE_PATH}`;
   const ogLocale = OG_LOCALE[locale] ?? 'en_CH';
   const altLocales = LOCALES.filter((l) => l !== locale)
     .map((l) => OG_LOCALE[l])
@@ -351,15 +350,18 @@ export function postprocessHtml(html, locale, page) {
   <meta property="og:description" content="${escapeHtml(meta.ogDescription)}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="${escapeHtml(canonical)}">
-  <meta property="og:image" content="${escapeHtml(ogImage)}">
+  ${buildOgShareImageMetaTags(locale).trim()}
   <meta property="og:locale" content="${ogLocale}">
 ${altLocales.map((l) => `  <meta property="og:locale:alternate" content="${l}">`).join('\n')}
+  <meta name="twitter:title" content="${escapeHtml(meta.ogTitle)}">
+  <meta name="twitter:description" content="${escapeHtml(meta.ogDescription)}">
   ${buildJsonLd(locale, page)}
 `;
 
   out = out.replace(/<link rel="canonical"[^>]*>\s*/g, '');
   out = out.replace(/<link rel="alternate" hreflang="[^"]*"[^>]*>\s*/g, '');
   out = out.replace(/<meta property="og:[^"]+"[^>]*>\s*/g, '');
+  out = out.replace(/<meta name="twitter:[^"]+"[^>]*>\s*/g, '');
   out = out.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/g, '');
 
   out = out.replace('</head>', `${headInject}</head>`);

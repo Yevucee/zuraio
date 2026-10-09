@@ -13,6 +13,11 @@ Today, **`/index.html`** (and locale roots that still redirect to it) remain the
 
 Go-live means promoting those pages (or equivalent) to locale roots with correct SEO head baked into the HTML.
 
+After promotion, confirm each locale OG JPG is reachable, then spot-check link previews:
+
+- `https://zuraio.ch/assets/og/zuraio-og-en.jpg` (and `-de.jpg`, `-fr.jpg`, `-it.jpg`) return **200**
+- Test a homepage URL in [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/) and paste the same URL in a WhatsApp chat to confirm the 1200×630 JPG preview
+
 ## Legal pages
 
 Impressum and privacy must pass `scripts/check-legal-go-live.mjs` (no bracket placeholders) before production sync to Mcwili/zuraio.
