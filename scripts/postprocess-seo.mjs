@@ -5,6 +5,13 @@ import * as en from '../public/zuraio-comparison/js/copy-en.js';
 import * as de from '../public/zuraio-comparison/js/copy-de.js';
 import * as fr from '../public/zuraio-comparison/js/copy-fr.js';
 import * as it from '../public/zuraio-comparison/js/copy-it.js';
+import { copyAbout } from '../public/zuraio-comparison/js/copy-about.js';
+import { copyContact } from '../public/zuraio-comparison/js/copy-contact.js';
+import { copyFaq } from '../public/zuraio-comparison/js/copy-faq.js';
+import { copyHowItHelps } from '../public/zuraio-comparison/js/copy-how-it-helps.js';
+import { copyIntegrations } from '../public/zuraio-comparison/js/copy-integrations.js';
+import { copySecurity } from '../public/zuraio-comparison/js/copy-security.js';
+import { copyTechnical } from '../public/zuraio-comparison/js/copy-technical.js';
 import {
   CANONICAL_BASE,
   LOCALES,
@@ -46,7 +53,35 @@ function resolvePageId(page) {
   return PAGE_ID_BY_FILE[page] ?? page.replace('.html', '');
 }
 
+const PREVIEW_COPY_BY_PAGE = {
+  'about.html': copyAbout,
+  'contact.html': copyContact,
+  'faq.html': copyFaq,
+  'how-it-helps.html': copyHowItHelps,
+  'integrations.html': copyIntegrations,
+  'security.html': copySecurity,
+  'technical-architecture.html': copyTechnical,
+};
+
+function metaFromPreviewModule(locale, page) {
+  const bundle = PREVIEW_COPY_BY_PAGE[page];
+  if (!bundle) return null;
+  const c = bundle[locale] ?? bundle.en;
+  if (!c) return null;
+  const description = c.metaDescription ?? c.hero?.sub ?? c.hero?.lede ?? '';
+  const title = c.metaTitle ?? 'Zuraio';
+  return {
+    title,
+    description,
+    ogTitle: title,
+    ogDescription: description,
+  };
+}
+
 function getMeta(locale, page) {
+  const previewMeta = metaFromPreviewModule(locale, page);
+  if (previewMeta) return previewMeta;
+
   const copy = copies[locale] ?? copies.en;
   if (page === 'index.html') {
     const m = copy.home?.meta ?? {};
