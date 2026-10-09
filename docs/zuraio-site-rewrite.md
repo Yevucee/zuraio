@@ -311,6 +311,7 @@ The six ready-made skill cards and the «Built with you» chip box live on **how
 **H1**
 - EN: Works with the systems Swiss SMEs actually use.
 - DE: Arbeitet mit den Systemen, die Schweizer KMU wirklich nutzen.
+- FR: Fonctionne avec les systèmes des PME suisses.
 
 **Sub**
 - EN: Your team keeps working in the tools it knows: from bexio and Klara to Microsoft 365, Revit and ArchiCAD. Zuraio connects to them, so your knowledge is in one place without moving it anywhere.
@@ -448,8 +449,10 @@ The six ready-made skill cards and the «Built with you» chip box live on **how
 - DE: ÜBER UNS
 
 **H1**
-- EN: Four people in Switzerland, building the AI we wanted ourselves.
-- DE: Vier Menschen in der Schweiz, die die KI bauen, die sie selbst wollten.
+- EN: Four people in Switzerland, building the AI we wanted.
+- DE: Vier Menschen in der Schweiz, die die KI bauen, die sie wollten.
+- FR: Quatre personnes en Suisse, qui créent l’IA qu’elles voulaient.
+- IT: Quattro persone in Svizzera, che creano l’IA che volevano.
 
 **Sub**
 - EN: We kept losing hours to meeting prep, email and searching for the right document. Public AI tools helped, but they didn't know our company or respect our access rules. So we built Zuraio.

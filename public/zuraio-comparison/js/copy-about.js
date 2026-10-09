@@ -16,7 +16,7 @@ export const copyAbout = {
     },
     hero: {
       eyebrow: 'ABOUT US',
-      heading: 'Four people in Switzerland, building the AI we wanted ourselves.',
+      heading: 'Four people in Switzerland, building the AI we wanted.',
       sub: 'We kept losing hours to meeting prep, email and searching for the right document. Public AI tools helped, but they didn\'t know our company or respect our access rules. So we built Zuraio.',
     },
     team: {
@@ -59,7 +59,7 @@ export const copyAbout = {
     },
     hero: {
       eyebrow: 'ÜBER UNS',
-      heading: 'Vier Menschen in der Schweiz, die die KI bauen, die sie selbst wollten.',
+      heading: 'Vier Menschen in der Schweiz, die die KI bauen, die sie wollten.',
       sub: 'Wir haben Stunden mit Sitzungsvorbereitung, E-Mails und der Suche nach dem richtigen Dokument verloren. Öffentliche KI-Tools halfen, kannten aber weder unseren Betrieb noch unsere Zugriffsregeln. Also haben wir Zuraio gebaut.',
     },
     team: {
@@ -102,7 +102,7 @@ export const copyAbout = {
     },
     hero: {
       eyebrow: 'À PROPOS',
-      heading: 'Quatre personnes en Suisse, qui créent l’IA qu’elles voulaient pour elles-mêmes.',
+      heading: 'Quatre personnes en Suisse, qui créent l’IA qu’elles voulaient.',
       sub: 'Nous perdions des heures à préparer des séances, à traiter des e-mails et à chercher le bon document. Les outils d’IA publics aidaient, mais ils ne connaissaient pas notre entreprise et ne respectaient pas nos règles d’accès. Alors nous avons créé Zuraio.',
     },
     team: {
@@ -145,7 +145,7 @@ export const copyAbout = {
     },
     hero: {
       eyebrow: 'CHI SIAMO',
-      heading: 'Quattro persone in Svizzera, che costruiscono l’IA che volevano per sé.',
+      heading: 'Quattro persone in Svizzera, che creano l’IA che volevano.',
       sub: 'Perdevamo ore a preparare riunioni, a gestire e-mail e a cercare il documento giusto. Gli strumenti di IA pubblici aiutavano, ma non conoscevano la nostra azienda né rispettavano le nostre regole di accesso. Così abbiamo creato Zuraio.',
     },
     team: {
