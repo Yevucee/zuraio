@@ -5,7 +5,7 @@ import { initFaq, initFaqFromHash } from './faq-accordion.js';
 import { getFaqCopy, getHomePreviewFaqItems } from './copy-faq.js';
 import { renderAltHomeFounders } from './alt-home-founders.js';
 import { renderFaqAccordionItem } from './faq-render.js';
-import { assetHref, detectSiteBase } from './path-locale.js';
+import { assetHref, currentLocale, detectSiteBase } from './path-locale.js';
 import { resolveRouteFromLocation } from './site-routes.js';
 import { isPreviewDevMode, formatPreviewHtml } from './alt-preview-utils.js';
 import { initControlParticles } from './control-particles.js';
@@ -19,7 +19,7 @@ const DEMO_CACHE = '20260805v2';
 const SPEECH_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
 
 function previewLocale() {
-  return document.documentElement.lang === 'de' ? 'de' : 'en';
+  return currentLocale();
 }
 
 function routeHref(routeKey) {
@@ -110,6 +110,8 @@ const PRODUCT_IMG_HEIGHT = 1560;
 const HERO_REPLY_IMAGE = {
   en: 'assets/hero/zuraio-hero-reply-en@2x.webp',
   de: 'assets/hero/zuraio-hero-reply-de@2x.webp',
+  fr: 'assets/hero/zuraio-hero-reply-fr@2x.webp',
+  it: 'assets/hero/zuraio-hero-reply-it@2x.webp',
 };
 
 const HERO_REPLY_IMAGE_MOBILE = {
@@ -122,6 +124,16 @@ const HERO_REPLY_IMAGE_MOBILE = {
     path: 'assets/hero/zuraio-hero-reply-de-mobile@3x.webp',
     width: 1170,
     height: 909,
+  },
+  fr: {
+    path: 'assets/hero/zuraio-hero-reply-fr-mobile@3x.webp',
+    width: 1170,
+    height: 909,
+  },
+  it: {
+    path: 'assets/hero/zuraio-hero-reply-it-mobile@3x.webp',
+    width: 1170,
+    height: 969,
   },
 };
 
@@ -213,7 +225,9 @@ function renderTrustLine(trust) {
 }
 
 function localeKey(locale) {
-  return locale === 'de' ? 'de' : 'en';
+  const loc = locale ?? currentLocale();
+  if (loc === 'de' || loc === 'fr' || loc === 'it') return loc;
+  return 'en';
 }
 
 /** Alt-home static assets live under `zuraio-comparison/assets/` (also copied to site `/assets/` on deploy). */
@@ -476,7 +490,7 @@ function renderMain(copy, locale, isDev) {
           <p class="alt-home-integrations__sub">${copy.integrations.line}</p>
         </div>
       </div>
-      <div class="marquee-track alt-home-integrations__marquee" data-alt-marquee tabindex="0" aria-label="${locale === 'de' ? 'Integrationen' : 'Integrations'}">
+      <div class="marquee-track alt-home-integrations__marquee" data-alt-marquee tabindex="0" aria-label="${({ en: 'Integrations', de: 'Integrationen', fr: 'Intégrations', it: 'Integrazioni' })[locale] ?? 'Integrations'}">
         <div class="marquee-inner"></div>
       </div>
       <div class="wrap alt-home-integrations__foot">
@@ -589,7 +603,7 @@ function bindAnalytics(heroVariant) {
 }
 
 export function bootAltHomepage() {
-  const locale = document.documentElement.lang === 'en' ? 'en' : 'de';
+  const locale = previewLocale();
   const copy = getAltHomeCopy(locale);
   if (!copy) {
     throw new Error('Alt home copy missing for locale: ' + locale);
@@ -617,10 +631,13 @@ try {
 } catch (err) {
   console.error('[alt-homepage]', err);
   const main = document.getElementById('alt-home-main');
-  const msg =
-    document.documentElement.lang === 'en'
-      ? 'This preview could not load. Please check the browser console.'
-      : 'Die Vorschau konnte nicht geladen werden. Bitte prüfen Sie die Browser-Konsole.';
+  const loadErrors = {
+    en: 'This preview could not load. Please check the browser console.',
+    de: 'Die Vorschau konnte nicht geladen werden. Bitte prüfen Sie die Browser-Konsole.',
+    fr: 'Cet aperçu n’a pas pu se charger. Veuillez consulter la console du navigateur.',
+    it: 'Non è stato possibile caricare l’anteprima. Controllate la console del browser.',
+  };
+  const msg = loadErrors[previewLocale()] ?? loadErrors.en;
   if (main) {
     main.innerHTML = `<div class="wrap pad"><p>${msg}</p></div>`;
   }

@@ -27,7 +27,7 @@ function applyFile(rel, viewingLocale) {
 
 const enHtml = fs.readdirSync(siteRoot).filter((f) => f.endsWith('.html'));
 for (const f of enHtml) applyFile(f, 'en');
-for (const loc of ['en', 'de']) {
+for (const loc of ['en', 'de', 'fr', 'it']) {
   const dir = path.join(siteRoot, loc);
   if (!fs.existsSync(dir)) continue;
   for (const f of fs.readdirSync(dir).filter((n) => n.endsWith('.html'))) {

@@ -1,7 +1,7 @@
 import { getTechnicalCopy } from './copy-technical.js';
 import { renderAltHomeHeader, renderAltHomeFooter } from './alt-homepage-chrome.js';
 import { renderAltPageCta } from './alt-page-cta.js';
-import { getLocaleFromPathname } from './path-locale.js';
+import { currentLocale, getLocaleFromPathname } from './path-locale.js';
 import { resolveRouteFromLocation } from './site-routes.js';
 import { ROUTES_ICONS_WITH, ROUTES_OUTCOME_CHECK } from './workflow-icons.js';
 
@@ -18,11 +18,11 @@ function pageLocale() {
 }
 
 function copyLocale() {
-  return pageLocale() === 'de' ? 'de' : 'en';
+  return currentLocale();
 }
 
 function viewingLocale() {
-  return getLocaleFromPathname() === 'de' ? 'de' : 'en';
+  return currentLocale();
 }
 
 function routeHref(key) {

@@ -48,6 +48,8 @@ if (hits.length) {
 const mustHave = [
   path.join(DIST, 'en', 'homepage-preview.html'),
   path.join(DIST, 'de', 'homepage-preview.html'),
+  path.join(DIST, 'fr', 'homepage-preview.html'),
+  path.join(DIST, 'it', 'homepage-preview.html'),
   path.join(DIST, 'js', 'alt-skills-sector.js'),
 ];
 for (const file of mustHave) {

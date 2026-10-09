@@ -1,9 +1,9 @@
 /** Shared final CTA band for alt-chrome pages. */
 import { resolveRouteFromLocation } from './site-routes.js';
-import { getLocaleFromPathname } from './path-locale.js';
+import { currentLocale } from './path-locale.js';
 
 function viewingLocale() {
-  return getLocaleFromPathname() === 'de' ? 'de' : 'en';
+  return currentLocale();
 }
 
 function routeHref(key) {

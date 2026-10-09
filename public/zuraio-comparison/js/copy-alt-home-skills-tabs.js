@@ -107,8 +107,113 @@ export const skillsTabsMeta = {
       },
     },
   },
+  fr: {
+    tablistLabel: 'Choisir votre secteur',
+    legendHeading: 'Ce qui vous est propre',
+    docCaption: 'Exemple avec des données fictives',
+    workshopLine: 'Prêt à l’emploi au départ. Configuré avec votre équipe lors d’un atelier.',
+    tabs: [
+      { id: 'architecture', label: 'Architecture et ingénierie', hash: 'skills-architecture' },
+      { id: 'fiduciary', label: 'Fiduciaire', hash: 'skills-fiduciary' },
+      { id: 'property', label: 'Gérance immobilière', hash: 'skills-property' },
+    ],
+    panels: {
+      architecture: {
+        title: 'Une offre dans votre format maison',
+        body:
+          'Zuraio rédige l’offre à partir de la demande, avec votre structure d’honoraires, vos règles de rabais et vos conditions. Vous la vérifiez et l’envoyez.',
+        usesLabel: 'Utilise :',
+        sources: ['Demande', 'Liste de prix', 'bexio'],
+        badge: 'Brouillon',
+        highlights: [
+          { n: 1, label: 'Votre format maison' },
+          { n: 2, label: 'Votre règle de rabais' },
+          { n: 3, label: 'Vos conditions standard' },
+        ],
+      },
+      fiduciary: {
+        title: 'Le rapport mensuel client, tel que vos associés l’aiment',
+        body:
+          'Les chiffres d’Abacus et les points ouverts de vos e-mails, dans la structure qu’attendent vos associés.',
+        usesLabel: 'Utilise :',
+        sources: ['Abacus', 'E-mails', 'Dernier rapport'],
+        badge: 'Brouillon',
+        highlights: [
+          { n: 1, label: 'La structure de vos associés' },
+          { n: 2, label: 'Tiré d’Abacus' },
+          { n: 3, label: 'Votre formulation' },
+        ],
+      },
+      property: {
+        title: 'Des réponses aux locataires dans votre ton',
+        body:
+          'Des réponses tirées du message du locataire, du règlement de maison et de vos clauses standard. Rien ne part sans votre feu vert.',
+        usesLabel: 'Utilise :',
+        sources: ['E-mail du locataire', 'Règlement de maison', 'Vos modèles'],
+        badge: 'Brouillon · non envoyé',
+        highlights: [
+          { n: 1, label: 'Votre ton' },
+          { n: 2, label: 'Votre clause standard' },
+          { n: 3, label: 'Attend votre feu vert' },
+        ],
+      },
+    },
+  },
+  it: {
+    tablistLabel: 'Scegliete il vostro settore',
+    legendHeading: 'Ciò che è vostro',
+    docCaption: 'Esempio con dati inventati',
+    workshopLine: 'Pronte per iniziare. Configurate con il vostro team in un workshop.',
+    tabs: [
+      { id: 'architecture', label: 'Architettura e ingegneria', hash: 'skills-architecture' },
+      { id: 'fiduciary', label: 'Fiduciaria', hash: 'skills-fiduciary' },
+      { id: 'property', label: 'Amministrazione immobiliare', hash: 'skills-property' },
+    ],
+    panels: {
+      architecture: {
+        title: 'Offerta nel vostro formato aziendale',
+        body:
+          'Zuraio prepara l’offerta partendo dalla richiesta, con la vostra struttura degli onorari, le vostre regole di sconto e le vostre condizioni. Voi la verificate e la inviate.',
+        usesLabel: 'Usa:',
+        sources: ['Richiesta', 'Listino prezzi', 'bexio'],
+        badge: 'Bozza',
+        highlights: [
+          { n: 1, label: 'Il vostro formato aziendale' },
+          { n: 2, label: 'La vostra regola di sconto' },
+          { n: 3, label: 'Le vostre condizioni standard' },
+        ],
+      },
+      fiduciary: {
+        title: 'Il rapporto mensile per i clienti, come piace ai vostri soci',
+        body:
+          'Cifre da Abacus e punti aperti dalle vostre e-mail, nella struttura che i vostri soci si aspettano.',
+        usesLabel: 'Usa:',
+        sources: ['Abacus', 'E-mail', 'Ultimo rapporto'],
+        badge: 'Bozza',
+        highlights: [
+          { n: 1, label: 'La struttura dei vostri soci' },
+          { n: 2, label: 'Da Abacus' },
+          { n: 3, label: 'La vostra formulazione' },
+        ],
+      },
+      property: {
+        title: 'Risposte agli inquilini con il vostro tono',
+        body:
+          'Risposte dal messaggio dell’inquilino, dal regolamento della casa e dalle vostre clausole standard. Nulla parte senza il vostro via libera.',
+        usesLabel: 'Usa:',
+        sources: ['E-mail dell’inquilino', 'Regolamento della casa', 'I vostri modelli'],
+        badge: 'Bozza · non inviata',
+        highlights: [
+          { n: 1, label: 'Il vostro tono' },
+          { n: 2, label: 'La vostra clausola standard' },
+          { n: 3, label: 'Attende il vostro via libera' },
+        ],
+      },
+    },
+  },
+
 };
 
 export function getSkillsTabsMeta(locale) {
-  return locale === 'de' ? skillsTabsMeta.de : skillsTabsMeta.en;
+  return skillsTabsMeta[locale] ?? skillsTabsMeta.en;
 }

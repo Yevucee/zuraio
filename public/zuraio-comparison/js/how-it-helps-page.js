@@ -1,6 +1,6 @@
 import { getHowItHelpsCopy } from './copy-how-it-helps.js';
 import { renderAltHomeHeader, renderAltHomeFooter } from './alt-homepage-chrome.js';
-import { getLocaleFromPathname } from './path-locale.js';
+import { currentLocale, getLocaleFromPathname } from './path-locale.js';
 import { resolveRouteFromLocation } from './site-routes.js';
 import { ALT_HOME_BUILT_WITH_ICON } from './alt-home-skill-icons.js';
 import { ALT_HOME_REASON_ICONS } from './alt-home-reason-icons.js';
@@ -11,11 +11,11 @@ function pageLocale() {
 }
 
 function copyLocale() {
-  return pageLocale() === 'de' ? 'de' : 'en';
+  return currentLocale();
 }
 
 function viewingLocale() {
-  return getLocaleFromPathname() === 'de' ? 'de' : 'en';
+  return currentLocale();
 }
 
 function routeHref(key) {

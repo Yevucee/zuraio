@@ -1,7 +1,7 @@
 export const SUPPORTED_LOCALES = ['en', 'de', 'fr', 'it'];
 
 /** Locales shown in nav, footer language switcher and sitemap (EN + DE site rewrite). */
-export const PUBLIC_SITE_LOCALES = ['en', 'de'];
+export const PUBLIC_SITE_LOCALES = ['en', 'de', 'fr', 'it'];
 
 export function isSupportedLocale(locale) {
   return SUPPORTED_LOCALES.includes(locale);

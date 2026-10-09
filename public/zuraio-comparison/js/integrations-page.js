@@ -1,6 +1,6 @@
 import { getIntegrationsCopy, SWISS_WORDMARK_CARDS } from './copy-integrations.js';
 import { renderAltHomeHeader, renderAltHomeFooter } from './alt-homepage-chrome.js';
-import { assetHref, getLocaleFromPathname } from './path-locale.js';
+import { assetHref, currentLocale, getLocaleFromPathname } from './path-locale.js';
 import { resolveRouteFromLocation } from './site-routes.js';
 import { initAltPreviewMarquee } from './alt-integrations-marquee.js';
 
@@ -9,11 +9,11 @@ function pageLocale() {
 }
 
 function copyLocale() {
-  return pageLocale() === 'de' ? 'de' : 'en';
+  return currentLocale();
 }
 
 function viewingLocale() {
-  return getLocaleFromPathname() === 'de' ? 'de' : 'en';
+  return currentLocale();
 }
 
 function routeHref(key) {
@@ -50,7 +50,8 @@ function connectCardsHtml(cards) {
 }
 
 function renderMain(copy) {
-  const marqueeLabel = copyLocale() === 'de' ? 'Integrationen' : 'Integrations';
+  const marqueeLabels = { en: 'Integrations', de: 'Integrationen', fr: 'Intégrations', it: 'Integrazioni' };
+  const marqueeLabel = marqueeLabels[copyLocale()] ?? 'Integrations';
   return `
     <section class="alt-section alt-section--paper alt-int-hero">
       <div class="wrap alt-int-hero__stack">

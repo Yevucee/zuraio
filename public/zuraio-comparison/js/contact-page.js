@@ -1,6 +1,6 @@
 import { CONTACT_FOUNDERS, getContactCopy } from './copy-contact.js';
 import { renderAltHomeHeader, renderAltHomeFooter } from './alt-homepage-chrome.js';
-import { assetHref, getLocaleFromPathname } from './path-locale.js';
+import { assetHref, currentLocale, getLocaleFromPathname } from './path-locale.js';
 import { resolveRouteFromLocation } from './site-routes.js';
 import { initContactForm } from './contact-form.js?v=20261009b';
 
@@ -11,11 +11,11 @@ function pageLocale() {
 }
 
 function copyLocale() {
-  return pageLocale() === 'de' ? 'de' : 'en';
+  return currentLocale();
 }
 
 function viewingLocale() {
-  return getLocaleFromPathname() === 'de' ? 'de' : 'en';
+  return currentLocale();
 }
 
 function routeHref(key) {

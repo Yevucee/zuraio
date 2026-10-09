@@ -1,8 +1,15 @@
 /** Shared SEO / prerender configuration. */
 export const LOCALES = ['en', 'de', 'fr', 'it'];
 
-/** Locales included in sitemap.xml (EN + DE rewrite). */
-export const SITEMAP_LOCALES = ['en', 'de'];
+/** Locales included in sitemap.xml (preview site rewrite). */
+export const SITEMAP_LOCALES = ['en', 'de', 'fr', 'it'];
+
+export const HREFLANG_TAGS = {
+  en: 'en',
+  de: 'de-CH',
+  fr: 'fr-CH',
+  it: 'it-CH',
+};
 export const LOCALE_DIRS = { en: '', de: 'de', fr: 'fr', it: 'it' };
 
 /** Production canonical origin — override via CANONICAL_BASE env for previews. */
