@@ -4,7 +4,7 @@ export const ALT_HOME_LOCALES = ['de', 'en', 'fr', 'it'];
 
 export const copyAltHome = {
   de: {
-    metaTitle: 'Zuraio | Alternative Startseite',
+    metaTitle: 'Zuraio | KI, die Ihr Unternehmen kennt',
     nav: {
       howItWorks: 'So hilft Zuraio',
       skills: 'Skills',
@@ -167,7 +167,7 @@ export const copyAltHome = {
       'Microsoft, Microsoft 365, Outlook, SharePoint, Teams, Exchange und Dynamics 365 sind Marken der Microsoft-Unternehmensgruppe. bexio, Abacus, Klara, Proffix, SAP, Salesforce, HubSpot, Odoo und Sage sind Marken ihrer jeweiligen Inhaber.',
   },
   en: {
-    metaTitle: 'Zuraio | Alternative homepage',
+    metaTitle: 'Zuraio | AI that knows your company',
     nav: {
       howItWorks: 'How it helps',
       skills: 'Skills',
@@ -330,7 +330,7 @@ export const copyAltHome = {
       'Microsoft, Microsoft 365, Outlook, SharePoint, Teams, Exchange and Dynamics 365 are trademarks of the Microsoft group of companies. bexio, Abacus, Klara, Proffix, SAP, Salesforce, HubSpot, Odoo and Sage are trademarks of their respective owners.',
   },
   fr: {
-    metaTitle: 'Zuraio | Page d’accueil',
+    metaTitle: 'Zuraio | L’IA qui connaît votre entreprise',
     nav: {
       howItWorks: 'Comment Zuraio aide',
       skills: 'Skills',
@@ -493,7 +493,7 @@ export const copyAltHome = {
       'Microsoft, Microsoft 365, Outlook, SharePoint, Teams, Exchange et Dynamics 365 sont des marques du groupe Microsoft. bexio, Abacus, Klara, Proffix, SAP, Salesforce, HubSpot, Odoo et Sage sont des marques de leurs propriétaires respectifs.',
   },
   it: {
-    metaTitle: 'Zuraio | Pagina iniziale',
+    metaTitle: 'Zuraio | L’IA che conosce la vostra azienda',
     nav: {
       howItWorks: 'Come aiuta Zuraio',
       skills: 'Skill',
