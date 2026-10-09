@@ -466,8 +466,8 @@ header.nav.is-floating.scrolled {
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: 1px solid var(--hairline);
   border-radius: 10px;
