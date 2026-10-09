@@ -3751,6 +3751,15 @@ footer.site-footer {
   margin-top: 12px;
 }
 
+.legal-content a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.legal-content h2[id] {
+  scroll-margin-top: calc(var(--nav-h, 56px) + 24px);
+}
+
 /* ==========================================================================
    10. Reveal animations
    ========================================================================== */

@@ -1,3 +1,5 @@
+import { privacyPage } from './privacy-copy-fr.js';
+
 export const legalPages = {
   impressum: {
     sections: [
@@ -50,97 +52,7 @@ export const legalPages = {
     ],
   },
 
-  privacy: {
-    banners: [
-      {
-        type: 'status',
-        label: 'TEXTE PROVISOIRE — SANS VALEUR JURIDIQUE',
-        text: 'Ce contenu est uniquement destiné à la phase de développement. Aucun texte figurant sur cette page ne doit être considéré comme une politique de confidentialité définitive ou contraignante. L’ensemble du contenu devra être remplacé après examen juridique.',
-      },
-      {
-        type: 'mono',
-        text: 'À COMPLÉTER : Remplacer toute la page par une politique de confidentialité approuvée par un conseil juridique. Le texte provisoire n’a aucune valeur contraignante.',
-      },
-    ],
-    sections: [
-      {
-        heading: '1. Responsable du traitement',
-        paragraphs: ['—<br>—<br><a href=\"mailto:michael.wili@zuraio.ch\">michael.wili@zuraio.ch</a>'],
-      },
-      {
-        heading: '2. Champ d’application',
-        paragraphs: [
-          'La présente politique décrira la manière dont nous traitons les données personnelles lorsque vous consultez ce site internet, envoyez une demande, utilisez Zuraio AI Hub ou interagissez avec nous d’une autre manière.',
-        ],
-      },
-      {
-        heading: '3. Données collectées',
-        paragraphs: ['Les catégories peuvent notamment comprendre :'],
-        list: [
-          'Données de contact et d’identification (nom, adresse e-mail, entreprise, fonction)',
-          'Données de communication (demandes, échanges avec le support)',
-          'Données techniques (adresse IP, type de navigateur, informations sur l’appareil)',
-          'Données d’utilisation (manière dont vous utilisez le site internet ou, le cas échéant, le produit)',
-          'Données d’entreprise traitées par Zuraio AI Hub (faisant l’objet d’un accord distinct)',
-        ],
-      },
-      {
-        heading: '4. Finalités et bases juridiques',
-        paragraphs: [
-          'Les finalités du traitement peuvent notamment comprendre la réponse aux demandes, la fourniture du service, l’amélioration du produit, la sécurité et le respect des obligations légales.',
-        ],
-      },
-      {
-        heading: '5. Partage des données et sous-traitants',
-        paragraphs: [
-          'Nous pouvons partager des données avec des prestataires qui nous aident à exploiter le site internet et le produit, notamment pour l’hébergement, la messagerie électronique, l’analyse et les fournisseurs de modèles d’IA. Une liste actualisée des sous-traitants sera publiée ici.',
-        ],
-      },
-      {
-        heading: '6. Transferts internationaux',
-        paragraphs: [
-          'Lorsque des données sont transférées hors de Suisse ou de l’EEE, des garanties appropriées s’appliquent.',
-        ],
-      },
-      {
-        heading: '7. Conservation',
-        paragraphs: [
-          'Les données personnelles sont conservées uniquement aussi longtemps que nécessaire aux finalités décrites ou que l’exige la loi.',
-        ],
-      },
-      {
-        heading: '8. Vos droits',
-        paragraphs: [
-          'Selon le droit applicable, vous pouvez disposer de droits d’accès, de rectification, d’effacement, de limitation du traitement, d’opposition et de portabilité des données. Vous pouvez également avoir le droit de déposer une réclamation auprès d’une autorité de contrôle.',
-        ],
-      },
-      {
-        heading: '9. Cookies et analyse',
-        id: 'cookies',
-        paragraphs: [
-          'Ce site internet peut utiliser des cookies essentiels et, avec votre consentement lorsque celui-ci est requis, des cookies d’analyse. Un mécanisme de gestion des préférences en matière de cookies sera mis à disposition.',
-        ],
-      },
-      {
-        heading: '10. Sécurité',
-        paragraphs: [
-          'Nous mettons en œuvre des mesures techniques et organisationnelles appropriées afin de protéger les données personnelles. Les mesures précises dépendent du service et du modèle de déploiement.',
-        ],
-      },
-      {
-        heading: '11. Modifications de la présente politique',
-        paragraphs: [
-          'Nous pouvons mettre à jour cette politique de temps à autre. La version en vigueur sera publiée sur cette page avec une date actualisée.',
-        ],
-      },
-      {
-        heading: '12. Contact',
-        paragraphs: [
-          'Pour toute question relative à la protection des données : <a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a>',
-        ],
-      },
-    ],
-  },
+  privacy: privacyPage,
 
   terms: {
     banners: [

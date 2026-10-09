@@ -1,3 +1,5 @@
+import { privacyPage } from './privacy-copy-en.js';
+
 export const legalPages = {
   impressum: {
     sections: [
@@ -49,4 +51,6 @@ export const legalPages = {
       },
     ],
   },
+
+  privacy: privacyPage,
 };

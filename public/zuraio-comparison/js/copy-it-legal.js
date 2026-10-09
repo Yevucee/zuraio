@@ -1,3 +1,5 @@
+import { privacyPage } from './privacy-copy-it.js';
+
 export const legalPages = {
   impressum: {
     sections: [
@@ -50,97 +52,7 @@ export const legalPages = {
     ],
   },
 
-  privacy: {
-    banners: [
-      {
-        type: 'status',
-        label: 'TESTO PROVVISORIO — NON GIURIDICAMENTE VINCOLANTE',
-        text: 'Questo contenuto è destinato esclusivamente alla fase di sviluppo. Nessun testo presente in questa pagina deve essere considerato un’informativa sulla privacy definitiva o vincolante. L’intero contenuto dovrà essere sostituito dopo la revisione legale.',
-      },
-      {
-        type: 'mono',
-        text: 'DA COMPLETARE: Sostituire l’intera pagina con un’informativa sulla privacy approvata da un consulente legale. Il testo provvisorio non è vincolante.',
-      },
-    ],
-    sections: [
-      {
-        heading: '1. Titolare del trattamento',
-        paragraphs: ['—<br>—<br><a href=\"mailto:michael.wili@zuraio.ch\">michael.wili@zuraio.ch</a>'],
-      },
-      {
-        heading: '2. Ambito di applicazione',
-        paragraphs: [
-          'La presente informativa descriverà come trattiamo i dati personali quando visitate questo sito web, inviate una richiesta, utilizzate Zuraio AI Hub o interagite con noi in altro modo.',
-        ],
-      },
-      {
-        heading: '3. Dati raccolti',
-        paragraphs: ['Le categorie possono includere:'],
-        list: [
-          'Dati di contatto e identificazione (nome, indirizzo e-mail, azienda, ruolo)',
-          'Dati relativi alle comunicazioni (richieste, corrispondenza con l’assistenza)',
-          'Dati tecnici (indirizzo IP, tipo di browser, informazioni sul dispositivo)',
-          'Dati di utilizzo (modalità di utilizzo del sito web o, se applicabile, del prodotto)',
-          'Dati aziendali trattati tramite Zuraio AI Hub (oggetto di un accordo separato)',
-        ],
-      },
-      {
-        heading: '4. Finalità e basi giuridiche',
-        paragraphs: [
-          'Le finalità del trattamento possono includere la risposta alle richieste, la fornitura del servizio, il miglioramento del prodotto, la sicurezza e l’adempimento degli obblighi legali.',
-        ],
-      },
-      {
-        heading: '5. Condivisione dei dati e responsabili del trattamento',
-        paragraphs: [
-          'Possiamo condividere i dati con fornitori che ci assistono nella gestione del sito web e del prodotto, ad esempio per l’hosting, la posta elettronica, l’analisi e la fornitura di modelli di IA. Un elenco aggiornato dei sub-responsabili sarà pubblicato qui.',
-        ],
-      },
-      {
-        heading: '6. Trasferimenti internazionali',
-        paragraphs: [
-          'Qualora i dati vengano trasferiti al di fuori della Svizzera o del SEE, saranno applicate garanzie adeguate.',
-        ],
-      },
-      {
-        heading: '7. Conservazione',
-        paragraphs: [
-          'I dati personali saranno conservati soltanto per il tempo necessario alle finalità descritte o richiesto dalla legge.',
-        ],
-      },
-      {
-        heading: '8. I vostri diritti',
-        paragraphs: [
-          'In base alla normativa applicabile, potreste avere il diritto di accesso, rettifica, cancellazione, limitazione del trattamento, opposizione e portabilità dei dati. Potreste inoltre avere il diritto di presentare un reclamo a un’autorità di controllo.',
-        ],
-      },
-      {
-        heading: '9. Cookie e analisi',
-        id: 'cookies',
-        paragraphs: [
-          'Questo sito web può utilizzare cookie essenziali e, con il consenso ove richiesto, cookie di analisi. Sarà messo a disposizione un sistema per la gestione delle preferenze relative ai cookie.',
-        ],
-      },
-      {
-        heading: '10. Sicurezza',
-        paragraphs: [
-          'Adottiamo misure tecniche e organizzative adeguate per proteggere i dati personali. Le misure specifiche dipendono dal servizio e dal modello di implementazione.',
-        ],
-      },
-      {
-        heading: '11. Modifiche alla presente informativa',
-        paragraphs: [
-          'La presente informativa potrà essere aggiornata periodicamente. La versione in vigore sarà pubblicata su questa pagina con la data aggiornata.',
-        ],
-      },
-      {
-        heading: '12. Contatti',
-        paragraphs: [
-          'Per domande relative alla protezione dei dati: <a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a>',
-        ],
-      },
-    ],
-  },
+  privacy: privacyPage,
 
   terms: {
     banners: [

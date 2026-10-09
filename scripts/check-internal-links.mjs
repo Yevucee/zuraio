@@ -40,6 +40,10 @@ const PAGES = [
   { path: '/de/homepage-preview.html', locale: 'de' },
   { path: '/fr/homepage-preview.html', locale: 'fr' },
   { path: '/it/homepage-preview.html', locale: 'it' },
+  { path: '/privacy.html', locale: 'en' },
+  { path: '/de/privacy.html', locale: 'de' },
+  { path: '/fr/privacy.html', locale: 'fr' },
+  { path: '/it/privacy.html', locale: 'it' },
 ];
 
 const EN_PREVIEW_ROUTE_EXPECT = {

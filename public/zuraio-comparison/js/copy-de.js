@@ -473,14 +473,9 @@ export const pages = {
     },
   },
   privacy: {
-    title: 'Datenschutz — Zuraio',
-    description:
-      'Diese Seite ist eine strukturierte Vorlage. Vor der Veröffentlichung muss eine vollständige Datenschutzerklärung erstellt und von einer qualifizierten Rechtsberatung geprüft werden.',
-    hero: {
-      marker: 'RECHTLICHES',
-      heading: 'Datenschutzerklärung.',
-      lede: 'Diese Seite ist eine strukturierte Vorlage. Vor der Veröffentlichung muss eine vollständige Datenschutzerklärung erstellt und von einer qualifizierten Rechtsberatung geprüft werden.',
-    },
+    title: 'Datenschutzerklärung — Zuraio',
+    description: 'Wie Zuraio Personendaten bearbeitet, wenn Sie diese Website nutzen und uns kontaktieren.',
+    hero: { marker: 'Rechtliches', heading: 'Datenschutzerklärung' },
   },
   impressum: {
     title: 'Impressum — Zuraio',
