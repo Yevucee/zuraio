@@ -6,7 +6,7 @@ import { initFaq, initFaqFromHash } from './faq-accordion.js';
 import { currentLocale, getLocaleFromPathname } from './path-locale.js';
 import { resolveRouteFromLocation } from './site-routes.js';
 
-const PAGE_CACHE = '20261009b';
+const PAGE_CACHE = '20261009c';
 
 function pageLocale() {
   return getLocaleFromPathname() ?? (document.documentElement.lang || 'en');
@@ -61,10 +61,10 @@ function renderGroups(copy) {
 
 function renderMain(copy) {
   return `
-    <section class="alt-section alt-section--tint alt-faq-hero">
+    <section class="alt-section alt-section--tint alt-security-hero alt-faq-hero">
       <div class="wrap">
-        <h1 class="alt-page-h1">${copy.hero.heading}</h1>
-        <p class="lede alt-faq-hero__sub">${copy.hero.sub}</p>
+        <h1><span class="alt-security-hero__line">${copy.hero.heading}</span></h1>
+        <p class="lede alt-security-hero__sub">${copy.hero.sub}</p>
       </div>
     </section>
 

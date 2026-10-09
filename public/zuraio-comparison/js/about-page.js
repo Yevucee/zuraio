@@ -6,7 +6,7 @@ import { currentLocale, getLocaleFromPathname } from './path-locale.js';
 import { resolveRouteFromLocation } from './site-routes.js';
 import { ALT_HOME_REASON_ICONS } from './alt-home-reason-icons.js';
 
-const PAGE_CACHE = '20261009b';
+const PAGE_CACHE = '20261009c';
 
 function pageLocale() {
   return getLocaleFromPathname() ?? (document.documentElement.lang || 'en');
@@ -39,11 +39,11 @@ function renderMain(copy) {
   const founders = renderAltHomeFounders(copy.team.people);
   const starterHref = `${routeHref('contact')}?interest=starter`;
   return `
-    <section class="alt-section alt-section--tint alt-about-hero">
+    <section class="alt-section alt-section--tint alt-security-hero">
       <div class="wrap">
         <span class="marker hero-eyebrow">${copy.hero.eyebrow}</span>
-        <h1 class="alt-page-h1">${copy.hero.heading}</h1>
-        <p class="lede alt-about-hero__sub">${copy.hero.sub}</p>
+        <h1><span class="alt-security-hero__line">${copy.hero.heading}</span></h1>
+        <p class="lede alt-security-hero__sub">${copy.hero.sub}</p>
       </div>
     </section>
 
