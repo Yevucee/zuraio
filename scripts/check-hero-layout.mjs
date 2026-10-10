@@ -17,7 +17,7 @@ const LOCALES = [
   { loc: 'it', path: '/it/homepage-preview.html' },
 ];
 
-const WIDTHS = [1024, 1280, 1440, 1920];
+const WIDTHS = [390, 768, 1024, 1280, 1440, 1920];
 
 function rectsOverlap(a, b, tolerance = 1) {
   return !(
@@ -86,11 +86,23 @@ async function measureHero(page, url, width) {
       }
     }
 
+    const actions = document.querySelector('.alt-home-hero__actions');
+    const cta = actions?.querySelector('.alt-home-cta');
+    const micro = actions?.querySelector('.alt-home-hero__micro');
+    const aRect = actions?.getBoundingClientRect();
+    const cRect = cta?.getBoundingClientRect();
+    const mRect = micro?.getBoundingClientRect();
+
     return {
       heroPrimaryLines: lineCount(primary),
       overlaps,
       columnGap,
       frameWidth: frameRect ? Math.round(frameRect.width) : null,
+      ctaWidth: cRect ? Math.round(cRect.width) : null,
+      actionsWidth: aRect ? Math.round(aRect.width) : null,
+      ctaLeft: cRect ? Math.round(cRect.left) : null,
+      actionsLeft: aRect ? Math.round(aRect.left) : null,
+      microBelowCta: cRect && mRect ? mRect.top >= cRect.bottom - 2 : null,
     };
   });
 }
@@ -118,6 +130,21 @@ try {
       }
       if (width >= 1280 && m.columnGap != null && m.columnGap < 48) {
         failures.push(`${loc}@${width}: copy/image gap ${m.columnGap}px (min 48)`);
+      }
+      if (m.microBelowCta === false) {
+        failures.push(`${loc}@${width}: CTA micro not below button`);
+      }
+      if (m.ctaWidth != null && m.actionsWidth != null) {
+        if (width >= 600) {
+          if (m.ctaWidth >= m.actionsWidth - 8) {
+            failures.push(`${loc}@${width}: CTA full-width (${m.ctaWidth}px vs ${m.actionsWidth}px)`);
+          }
+          if (m.ctaLeft != null && m.actionsLeft != null && Math.abs(m.ctaLeft - m.actionsLeft) > 3) {
+            failures.push(`${loc}@${width}: CTA not left-aligned`);
+          }
+        } else if (m.ctaWidth < m.actionsWidth - 8) {
+          failures.push(`${loc}@${width}: CTA should be full-width on phone (${m.ctaWidth}px)`);
+        }
       }
     }
   }
