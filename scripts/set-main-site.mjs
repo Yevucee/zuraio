@@ -76,6 +76,21 @@ function writeLegacyRedirects(pages) {
   }
 }
 
+const LEGACY_PATH_REDIRECTS = [
+  ['data-control.html', '../security.html'],
+  ['deployment-models.html', '../technical-architecture.html'],
+  ['ai-governance.html', '../security.html#good-to-know'],
+  ['knowledge.html', '../how-it-helps.html#skills'],
+  ['resources.html', '../how-it-helps.html'],
+];
+
+function writeLegacyPathRedirectsUnderComparison() {
+  for (const [file, target] of LEGACY_PATH_REDIRECTS) {
+    const abs = path.join(SITE_SRC, file);
+    fs.writeFileSync(abs, redirectHtml(target));
+  }
+}
+
 function writeHomepagePreviewRedirects() {
   const redirects = [
     { rel: 'en/homepage-preview.html', target: '../index.html' },
@@ -130,6 +145,7 @@ for (const name of fs.readdirSync(SITE_SRC)) {
 
 removeViteAppArtifacts();
 writeLegacyRedirects(htmlPages);
+writeLegacyPathRedirectsUnderComparison();
 writeHomepagePreviewRedirects();
 updateZuraioEntryRedirect();
 copyFaviconsToRoot();
