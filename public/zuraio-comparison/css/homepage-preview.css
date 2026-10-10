@@ -1067,9 +1067,6 @@ body[data-alt-chrome] .alt-skills-panel__workshop-icon {
 
 body[data-alt-chrome] .alt-skills-doc {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
 }
 
 body[data-alt-chrome] .alt-skills-doc__paper {
@@ -1086,22 +1083,23 @@ body[data-alt-chrome] .alt-skills-doc__paper {
 }
 
 body[data-alt-chrome] .alt-skills-doc__badge {
-  position: static;
+  position: absolute;
+  top: 12px;
+  right: 12px;
   z-index: 2;
   display: inline-flex;
   align-items: center;
   flex-wrap: nowrap;
-  align-self: flex-start;
   gap: 6px;
-  margin: 0 0 10px;
+  margin: 0;
   font-size: 13px;
   line-height: 1.2;
   padding: 5px 10px;
   border-radius: 999px;
   background: var(--cloud);
   color: var(--charcoal-soft);
-  max-width: 100%;
-  text-align: left;
+  max-width: calc(100% - 24px);
+  text-align: right;
 }
 
 body[data-alt-chrome] .alt-skills-doc__letterhead {
@@ -1481,9 +1479,11 @@ body[data-alt-chrome] .alt-skills-sector__link {
   }
 
   body[data-alt-chrome] .alt-skills-doc__badge {
+    top: 10px;
+    right: 10px;
     font-size: 12px;
     padding: 4px 8px;
-    margin-bottom: 8px;
+    max-width: calc(100% - 20px);
   }
 
   body[data-alt-chrome] .alt-skills-doc__letterhead {
@@ -2478,6 +2478,12 @@ body[data-alt-chrome] .alt-home-founder__email a {
   color: var(--alt-link);
   text-decoration: none;
   text-underline-offset: 3px;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+body[data-alt-chrome] .alt-home-founder__email-local {
+  white-space: nowrap;
 }
 
 body[data-alt-chrome] .alt-home-founder__email a:hover,
@@ -2889,6 +2895,14 @@ body[data-alt-chrome] .alt-todo-list__title {
     display: none;
   }
 
+  body[data-alt-chrome] main#alt-home-main #hero.alt-section {
+    padding-bottom: 0;
+  }
+
+  body[data-alt-chrome] main#alt-home-main #skills.alt-section {
+    padding-top: var(--alt-section-y);
+  }
+
   body[data-alt-chrome] #data-control .control-particles {
     opacity: 0.25;
   }
@@ -2969,9 +2983,15 @@ body[data-alt-chrome] .alt-todo-list__title {
   }
 
   body[data-alt-chrome] .alt-home-founder__email {
-    overflow-wrap: anywhere;
     padding-right: 0;
     max-width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  body[data-alt-chrome] .alt-home-founder__email,
+  body[data-alt-chrome] .alt-home-founder__email a {
+    font-size: 0.8125rem;
   }
 }
 
