@@ -7,7 +7,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { startStaticDistServer } from './static-dist-server.mjs';
 import { HTML_PAGES, LOCALES, LOCALE_DIRS, canonicalUrl } from './seo-config.mjs';
-import { postprocessHtml, injectLangRedirect, injectFirstVisitBrowserLocale } from './postprocess-seo.mjs';
+import { postprocessHtml, injectLangRedirect } from './postprocess-seo.mjs';
 
 function rewriteAssetPathsForLocale(html, locale) {
   if (locale === 'en') return html;
@@ -219,7 +219,7 @@ async function runPrerender() {
         let html = await page.content();
 
         html = postprocessHtml(html, locale, htmlPage);
-        html = injectFirstVisitBrowserLocale(injectLangRedirect(html), locale, htmlPage);
+        html = injectLangRedirect(html);
 
         const dirKey = LOCALE_DIRS[locale];
         const outDir = dirKey ? path.join(DIST, dirKey) : DIST;

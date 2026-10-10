@@ -23,6 +23,7 @@ import {
 } from './seo-config.mjs';
 import { buildOgShareImageMetaTags } from './og-share-meta.mjs';
 import { altHomePageTitle, altHomeMetaDescription } from './homepage-preview-seo.mjs';
+import { injectHomeLocaleRedirectEarly } from './home-locale-redirect.mjs';
 
 const copies = { en, de, fr, it };
 
@@ -346,7 +347,7 @@ export function postprocessHtml(html, locale, page) {
   const headInject = `
   <link rel="canonical" href="${escapeHtml(canonical)}">
   ${buildHreflangLinks(page)}
-  <link rel="alternate" hreflang="x-default" href="${escapeHtml(canonicalUrl('en', page))}">
+  <link rel="alternate" hreflang="x-default" href="${escapeHtml(canonicalUrl('de', page))}">
   <meta property="og:title" content="${escapeHtml(meta.ogTitle)}">
   <meta property="og:description" content="${escapeHtml(meta.ogDescription)}">
   <meta property="og:type" content="website">
@@ -366,6 +367,7 @@ ${altLocales.map((l) => `  <meta property="og:locale:alternate" content="${l}">`
   out = out.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/g, '');
 
   out = out.replace('</head>', `${headInject}</head>`);
+  out = injectHomeLocaleRedirectEarly(out, locale, page);
 
   return out;
 }
@@ -410,21 +412,7 @@ location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
   return html.replace('</head>', `${snippet}\n</head>`);
 }
 
-/** EN homepage only: first visit browser-locale redirect (crawlers without JS stay on /). */
+/** @deprecated use injectHomeLocaleRedirectEarly from home-locale-redirect.mjs */
 export function injectFirstVisitBrowserLocale(html, locale, page) {
-  if (locale !== 'en' || page !== 'index.html') return html;
-  const snippet = `<script>
-(function(){
-  var path=location.pathname.replace(/\\/+$/, '')||'/';
-  if(path!=='/'&&path!=='/index.html')return;
-  try{if(localStorage.getItem('zuraio-locale'))return;}catch(e){}
-  var langs=(navigator.languages||[navigator.language||'']).map(function(l){return (l||'').toLowerCase().split('-')[0];});
-  for(var i=0;i<langs.length;i++){
-    if(langs[i]==='de'){location.replace('/de/'+location.search+location.hash);return;}
-    if(langs[i]==='fr'){location.replace('/fr/'+location.search+location.hash);return;}
-    if(langs[i]==='it'){location.replace('/it/'+location.search+location.hash);return;}
-  }
-})();
-</script>`;
-  return html.replace('</head>', `${snippet}\n</head>`);
+  return injectHomeLocaleRedirectEarly(html, locale, page);
 }

@@ -30,7 +30,7 @@ function buildSitemap() {
     <loc>${loc}</loc>
     <lastmod>${LASTMOD}</lastmod>
 ${alternates}
-    <xhtml:link rel="alternate" hreflang="x-default" href="${canonicalUrl('en', page)}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${canonicalUrl('de', page)}"/>
   </url>`);
     }
   }
