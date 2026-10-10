@@ -42,7 +42,6 @@ body[data-alt-chrome] {
   }
 
   body[data-alt-chrome] .alt-skills-tabs {
-    mask-image: none;
     scrollbar-width: none;
     padding-right: calc(var(--alt-gutter) + 4px);
     scroll-padding-inline: var(--alt-gutter);
@@ -388,7 +387,9 @@ body[data-alt-chrome] .alt-home-hero {
 }
 
 body[data-alt-chrome] .hero-eyebrow.marker,
-body[data-alt-chrome] .alt-skills-eyebrow.marker {
+body[data-alt-chrome] .alt-skills-eyebrow.marker,
+body[data-alt-chrome] .alt-sq-eyebrow.marker,
+body[data-alt-chrome] #data-control .marker {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -403,7 +404,9 @@ body[data-alt-chrome] .alt-skills-eyebrow.marker {
 }
 
 body[data-alt-chrome] .hero-eyebrow.marker::before,
-body[data-alt-chrome] .alt-skills-eyebrow.marker::before {
+body[data-alt-chrome] .alt-skills-eyebrow.marker::before,
+body[data-alt-chrome] .alt-sq-eyebrow.marker::before,
+body[data-alt-chrome] #data-control .marker::before {
   content: "";
   display: inline-block;
   flex-shrink: 0;
@@ -413,6 +416,14 @@ body[data-alt-chrome] .alt-skills-eyebrow.marker::before {
   border-radius: 50%;
   background: var(--olive);
   box-shadow: none;
+}
+
+body[data-alt-chrome] #data-control .marker {
+  color: var(--soft-olive);
+}
+
+body[data-alt-chrome] #data-control .marker::before {
+  background: var(--soft-olive);
 }
 
 body[data-alt-chrome] .alt-home-hero__grid {
@@ -1056,6 +1067,9 @@ body[data-alt-chrome] .alt-skills-panel__workshop-icon {
 
 body[data-alt-chrome] .alt-skills-doc {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 body[data-alt-chrome] .alt-skills-doc__paper {
@@ -1072,21 +1086,22 @@ body[data-alt-chrome] .alt-skills-doc__paper {
 }
 
 body[data-alt-chrome] .alt-skills-doc__badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
+  position: static;
   z-index: 2;
   display: inline-flex;
   align-items: center;
   flex-wrap: nowrap;
+  align-self: flex-start;
+  gap: 6px;
+  margin: 0 0 10px;
   font-size: 13px;
   line-height: 1.2;
   padding: 5px 10px;
   border-radius: 999px;
   background: var(--cloud);
   color: var(--charcoal-soft);
-  max-width: calc(100% - 24px);
-  text-align: right;
+  max-width: 100%;
+  text-align: left;
 }
 
 body[data-alt-chrome] .alt-skills-doc__letterhead {
@@ -1165,21 +1180,25 @@ body[data-alt-chrome] .alt-skills-doc__fig {
   min-width: 0;
 }
 
+body[data-alt-chrome] .alt-skills-doc__fig-head {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
 body[data-alt-chrome] .alt-skills-doc__fig--hl {
   position: relative;
   background: var(--soft-olive-tint);
   box-shadow: inset 0 -2px 0 var(--olive-deep);
   border-radius: 2px;
   padding: 8px 8px 10px;
-  padding-left: calc(18px + 6px);
 }
 
 body[data-alt-chrome] .alt-skills-doc__fig--hl > .alt-skills-doc__marker {
-  position: absolute;
-  top: 6px;
-  left: 6px;
+  position: static;
   margin: 0;
-  z-index: 1;
+  flex-shrink: 0;
 }
 
 body[data-alt-chrome] .alt-skills-doc__fig--hl.is-hl-linked {
@@ -1462,17 +1481,15 @@ body[data-alt-chrome] .alt-skills-sector__link {
   }
 
   body[data-alt-chrome] .alt-skills-doc__badge {
-    top: 10px;
-    right: 10px;
     font-size: 12px;
     padding: 4px 8px;
-    max-width: calc(100% - 20px);
+    margin-bottom: 8px;
   }
 
   body[data-alt-chrome] .alt-skills-doc__letterhead {
     margin-bottom: 6px;
     font-size: 11px;
-    padding-right: 42%;
+    padding-right: 0;
   }
 
   body[data-alt-chrome] .alt-skills-doc__title {
@@ -2303,6 +2320,13 @@ body[data-alt-chrome] .alt-home-step__body {
   padding-left: calc(1.35rem + 0.55rem);
 }
 
+@media (max-width: 899px) {
+  body[data-alt-chrome] .alt-home-step__meta,
+  body[data-alt-chrome] .alt-home-step__body {
+    padding-left: 0;
+  }
+}
+
 body[data-alt-chrome] .alt-home-steps__cta {
   margin: 24px 0 0;
   text-align: left;
@@ -2857,6 +2881,97 @@ body[data-alt-chrome] .alt-todo-list__title {
 
   body[data-alt-chrome] .alt-home-hero--has-visual .alt-home-hero__visual {
     margin-top: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  body[data-alt-chrome] main#alt-home-main #demo.alt-section {
+    display: none;
+  }
+
+  body[data-alt-chrome] #data-control .control-particles {
+    opacity: 0.25;
+  }
+}
+
+@media (max-width: 599px) {
+  body[data-alt-chrome] {
+    --alt-section-y: clamp(48px, 14vw, 64px);
+    --alt-head-gap: clamp(12px, 3vw, 18px);
+  }
+
+  body[data-alt-chrome] main#alt-home-main .alt-section {
+    padding-block: var(--alt-section-y);
+  }
+
+  body[data-alt-chrome] main#alt-home-main #how-start.alt-section {
+    padding-block: var(--alt-section-y) calc(var(--alt-section-y) / 2);
+  }
+
+  body[data-alt-chrome] main#alt-home-main #team.alt-section {
+    padding-block: calc(var(--alt-section-y) / 2) var(--alt-section-y);
+  }
+
+  body[data-alt-chrome] main#alt-home-main #integrations.alt-section {
+    padding-block: var(--alt-section-y);
+  }
+
+  body[data-alt-chrome] .alt-home-hero {
+    padding-top: clamp(28px, 8vw, 40px);
+    padding-bottom: calc(var(--alt-section-y) / 2);
+  }
+
+  body[data-alt-chrome] .alt-home-hero__tail {
+    margin-top: 20px;
+  }
+
+  body[data-alt-chrome] .alt-home-reasons-strip {
+    padding-top: 16px;
+  }
+
+  body[data-alt-chrome] .alt-home-hero__visual {
+    margin-top: 12px !important;
+  }
+
+  body[data-alt-chrome] .alt-skills-tabs {
+    mask-image: linear-gradient(to right, #000 calc(100% - 36px), transparent);
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 36px), transparent);
+  }
+
+  body[data-alt-chrome] .alt-skills-tabs__tab {
+    font-size: 15px;
+    padding: 8px 14px;
+    min-height: 40px;
+  }
+
+  body[data-alt-chrome] main#alt-home-main .alt-section-head,
+  body[data-alt-chrome] main#alt-home-main .alt-section-head h2,
+  body[data-alt-chrome] main#alt-home-main .alt-section-head .lede,
+  body[data-alt-chrome] main#alt-home-main .alt-home-skills-intro,
+  body[data-alt-chrome] main#alt-home-main .alt-sq-intro,
+  body[data-alt-chrome] main#alt-home-main .alt-home-integrations__head {
+    text-align: left;
+  }
+
+  body[data-alt-chrome] main#alt-home-main .alt-section-head h2 {
+    max-width: none;
+    text-wrap: pretty;
+  }
+
+  body[data-alt-chrome] .alt-home-founders {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  body[data-alt-chrome] .alt-home-founder__photo {
+    max-width: min(140px, 100%);
+    width: 100%;
+  }
+
+  body[data-alt-chrome] .alt-home-founder__email {
+    overflow-wrap: anywhere;
+    padding-right: 0;
+    max-width: 100%;
   }
 }
 

@@ -205,6 +205,7 @@ export function renderAltHomeFooter(copy, locale, options = {}) {
             <img class="brand-logo" src="${assetHref(ALT_HOME_LOGO)}" alt="" width="${ALT_HOME_LOGO_WIDTH}" height="${ALT_HOME_LOGO_HEIGHT}" decoding="async" loading="lazy" />
           </a>
           <p class="foot-tagline">${bundle.site?.tagline ?? SITE.tagline}</p>
+          ${!options.omitFooterTrademark && copy.aiTrademark ? `<p class="foot-trademark alt-home-trademark alt-home-trademark--ai">${copy.aiTrademark}</p>` : ''}
           ${!options.omitFooterTrademark && copy.footerTrademark ? `<p class="foot-trademark alt-home-trademark">${copy.footerTrademark}</p>` : ''}
         </div>
       </div>

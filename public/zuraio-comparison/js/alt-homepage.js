@@ -39,7 +39,7 @@ function renderTwoSentenceH2(heading) {
   if (splitAt === -1) return text;
   const first = text.slice(0, splitAt + 1);
   const second = text.slice(splitAt + 2);
-  return `<span class="alt-home-h2__line">${first}</span><span class="alt-home-h2__line">${second}</span>`;
+  return `<span class="alt-home-h2__line">${first}</span> <span class="alt-home-h2__line">${second}</span>`;
 }
 
 function renderHeroTitle(copy, heroKey) {
@@ -562,7 +562,6 @@ function renderMain(copy, locale, isDev) {
         <h2>${copy.closing.heading}</h2>
         <a class="btn btn-primary btn-lg alt-home-cta" data-alt-cta="closing" data-route="contact" href="${routeHref('contact')}">${copy.closing.cta}</a>
         <p class="alt-home-final__tag">${copy.closing.tagline}</p>
-        ${copy.aiTrademark ? `<p class="alt-int-trademark alt-home-final__trademark">${copy.aiTrademark}</p>` : ''}
       </div>
     </section>
   `;
