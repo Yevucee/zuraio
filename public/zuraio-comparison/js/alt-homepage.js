@@ -1,5 +1,5 @@
 import { getAltHomeCopy } from './copy-alt-home.js';
-import { renderAltHomeHeader, renderAltHomeFooter } from './alt-homepage-chrome.js';
+import { renderAltHomeHeader, renderAltHomeFooter, bindLocalePreference } from './alt-homepage-chrome.js';
 import { trackAltHome } from './alt-homepage-analytics.js';
 import { initFaq, initFaqFromHash } from './faq-accordion.js';
 import { getFaqCopy, getHomePreviewFaqItems } from './copy-faq.js';
@@ -616,6 +616,7 @@ export function bootAltHomepage() {
   renderAltHomeHeader(copy, locale);
   renderMain(copy, locale, isDev);
   renderAltHomeFooter(copy, locale);
+  bindLocalePreference();
   initFaq();
   initAltFaqMore();
   initFaqFromHash();

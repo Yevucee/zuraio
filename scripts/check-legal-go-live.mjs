@@ -83,14 +83,29 @@ for (const dir of LEGAL_DIRS) {
   }
 }
 
+const allowPlaceholders = process.env.ALLOW_LEGAL_PLACEHOLDERS === 'true';
+
 if (!allOk) {
-  console.error('check-legal-go-live: FAILED — open Impressum/privacy placeholders:\n');
+  const lines = ['check-legal-go-live: open Impressum/privacy placeholders:\n'];
   for (const loc of ['EN', 'DE', 'FR', 'IT']) {
     if (byLocale[loc].length) {
-      console.error(`  ${loc}:`);
-      byLocale[loc].forEach((line) => console.error(`    - ${line}`));
+      lines.push(`  ${loc}:`);
+      byLocale[loc].forEach((line) => lines.push(`    - ${line}`));
     }
   }
+  const report = lines.join('\n');
+  if (allowPlaceholders) {
+    console.warn(report);
+    console.warn(
+      '\ncheck-legal-go-live: WARNING ONLY (ALLOW_LEGAL_PLACEHOLDERS=true). Impressum/privacy remain noindex until placeholders are resolved.',
+    );
+    if (process.env.GITHUB_STEP_SUMMARY) {
+      fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n### Legal go-live guard (warning)\n\n\`\`\`\n${report}\n\`\`\`\n`);
+    }
+    process.exit(0);
+  }
+  console.error('check-legal-go-live: FAILED — open Impressum/privacy placeholders:\n');
+  console.error(report);
   console.error(
     '\ncheck-legal-go-live: resolve placeholders before Mcwili production sync.',
   );

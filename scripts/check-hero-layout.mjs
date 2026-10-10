@@ -11,10 +11,10 @@ const DIST = path.join(ROOT, '..', 'dist');
 const PORT = Number(process.env.HERO_LAYOUT_PORT || 4191);
 
 const LOCALES = [
-  { loc: 'en', path: '/en/homepage-preview.html' },
-  { loc: 'de', path: '/de/homepage-preview.html' },
-  { loc: 'fr', path: '/fr/homepage-preview.html' },
-  { loc: 'it', path: '/it/homepage-preview.html' },
+  { loc: 'en', path: '/' },
+  { loc: 'de', path: '/de/' },
+  { loc: 'fr', path: '/fr/' },
+  { loc: 'it', path: '/it/' },
 ];
 
 const WIDTHS = [390, 768, 1024, 1280, 1440, 1920];

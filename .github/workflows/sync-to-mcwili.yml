@@ -16,6 +16,11 @@ on:
         options:
           - 'true'
           - 'false'
+      allow_legal_placeholders:
+        description: 'Allow Impressum/privacy placeholders (one-time go-live override; default false)'
+        required: true
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -49,6 +54,8 @@ jobs:
           SITE_BASE_PATH: ''
 
       - name: Legal go-live guard (Impressum / privacy)
+        env:
+          ALLOW_LEGAL_PLACEHOLDERS: ${{ inputs.allow_legal_placeholders }}
         run: node scripts/check-legal-go-live.mjs
 
       - name: Push to Mcwili/zuraio
@@ -62,6 +69,12 @@ jobs:
           fi
           git remote add mcwili "https://x-access-token:${MCWILI_TOKEN}@github.com/Mcwili/zuraio.git"
           git fetch mcwili main || true
+
+          if git show-ref --verify --quiet refs/remotes/mcwili/main; then
+            git tag -f pre-new-site-2026-10-10 mcwili/main
+            git push mcwili refs/tags/pre-new-site-2026-10-10 --force
+            echo "Tagged Mcwili main as pre-new-site-2026-10-10 (rollback point)."
+          fi
 
           if [ "${{ inputs.backup_legacy }}" = "true" ] && git show-ref --verify --quiet refs/remotes/mcwili/main; then
             git push mcwili mcwili/main:refs/heads/legacy/mcwili-old-site

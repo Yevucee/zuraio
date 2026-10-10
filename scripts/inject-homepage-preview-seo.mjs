@@ -13,18 +13,27 @@ const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const SITE = path.join(ROOT, '..', 'public', 'zuraio-comparison');
 const DIST = path.join(ROOT, '..', 'dist');
 
-function previewPath(siteRoot, locale) {
-  return path.join(siteRoot, locale, 'homepage-preview.html');
+function homeShellPaths(siteRoot, locale) {
+  const paths = [];
+  if (locale === 'en') {
+    paths.push(path.join(siteRoot, 'index.html'));
+  } else {
+    paths.push(path.join(siteRoot, locale, 'index.html'));
+  }
+  paths.push(path.join(siteRoot, locale, 'homepage-preview.html'));
+  return paths;
 }
 
 let count = 0;
 for (const locale of HOMEPAGE_PREVIEW_LOCALES) {
   for (const siteRoot of [SITE, DIST]) {
-    const file = previewPath(siteRoot, locale);
-    if (!fs.existsSync(file)) continue;
-    const html = fs.readFileSync(file, 'utf8');
-    fs.writeFileSync(file, injectHomepagePreviewHead(html, locale));
-    count += 1;
+    for (const file of homeShellPaths(siteRoot, locale)) {
+      if (!fs.existsSync(file)) continue;
+      const html = fs.readFileSync(file, 'utf8');
+      if (!html.includes('data-alt-chrome')) continue;
+      fs.writeFileSync(file, injectHomepagePreviewHead(html, locale));
+      count += 1;
+    }
   }
 }
 

@@ -219,3 +219,20 @@ export function syncLangSwitchHrefs() {
     a.setAttribute('href', langSwitchHref(code, location.pathname, location.hash));
   });
 }
+
+/** Remember explicit language choice so the EN homepage first-visit redirect does not run again. */
+export function bindLocalePreference(root = document) {
+  root.querySelectorAll('#site-header a[hreflang], #site-footer a[hreflang]').forEach((a) => {
+    if (a.dataset.localeBound) return;
+    a.dataset.localeBound = 'true';
+    a.addEventListener('click', () => {
+      const code = a.getAttribute('hreflang');
+      if (!code) return;
+      try {
+        localStorage.setItem('zuraio-locale', code);
+      } catch {
+        /* ignore */
+      }
+    });
+  });
+}

@@ -15,6 +15,14 @@ export const PREVIEW_SUBPAGES = [
   'privacy.html',
 ];
 
+export const HOMEPAGE_INDEX_PATHS = [
+  'index.html',
+  'de/index.html',
+  'fr/index.html',
+  'it/index.html',
+];
+
+/** @deprecated redirect stubs only */
 export const HOMEPAGE_PREVIEW_PATHS = [
   'en/homepage-preview.html',
   'de/homepage-preview.html',
@@ -31,7 +39,7 @@ export function listPreviewSiteHtmlFiles(distRoot) {
       files.push(path.join(distRoot, loc, sub));
     }
   }
-  for (const hp of HOMEPAGE_PREVIEW_PATHS) {
+  for (const hp of HOMEPAGE_INDEX_PATHS) {
     files.push(path.join(distRoot, hp));
   }
   return files.filter((f) => fs.existsSync(f));

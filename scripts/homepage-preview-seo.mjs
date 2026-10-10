@@ -19,11 +19,13 @@ export function altHomeMetaDescription(locale) {
   return copy.metaDescription ?? copy.hero?.sub ?? '';
 }
 
+export function altHomeCanonical(locale) {
+  return locale === 'en' ? `${CANONICAL_BASE}/` : `${CANONICAL_BASE}/${locale}/`;
+}
+
+/** @deprecated use altHomeCanonical */
 export function homepagePreviewCanonical(locale) {
-  const page = 'homepage-preview.html';
-  return locale === 'en'
-    ? `${CANONICAL_BASE}/en/${page}`
-    : `${CANONICAL_BASE}/${locale}/${page}`;
+  return altHomeCanonical(locale);
 }
 
 function escapeHtml(text) {
@@ -39,7 +41,7 @@ export function injectHomepagePreviewHead(html, locale) {
   const description = altHomeMetaDescription(locale);
   const ogTitle = title;
   const ogDescription = description;
-  const canonical = homepagePreviewCanonical(locale);
+  const canonical = altHomeCanonical(locale);
   const ogLocale = OG_LOCALE[locale] ?? 'en_CH';
 
   let out = html.replace(/<title>[^<]*<\/title>/, `<title>${escapeHtml(title)}</title>`);

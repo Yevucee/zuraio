@@ -76,6 +76,23 @@ function writeLegacyRedirects(pages) {
   }
 }
 
+function writeHomepagePreviewRedirects() {
+  const redirects = [
+    { rel: 'en/homepage-preview.html', target: '../index.html' },
+    { rel: 'de/homepage-preview.html', target: '../de/index.html' },
+    { rel: 'fr/homepage-preview.html', target: '../fr/index.html' },
+    { rel: 'it/homepage-preview.html', target: '../it/index.html' },
+  ];
+  for (const { rel, target } of redirects) {
+    const abs = path.join(DIST, rel);
+    fs.mkdirSync(path.dirname(abs), { recursive: true });
+    fs.writeFileSync(abs, redirectHtml(target));
+    const legacy = path.join(SITE_SRC, rel);
+    fs.mkdirSync(path.dirname(legacy), { recursive: true });
+    fs.writeFileSync(legacy, redirectHtml(target));
+  }
+}
+
 function copyFaviconsToRoot() {
   const faviconDir = path.join(DIST, 'assets');
   const names = ['favicon.svg', 'favicon.ico', 'favicon-16x16.png', 'favicon-32x32.png', 'apple-touch-icon.png'];
@@ -113,6 +130,7 @@ for (const name of fs.readdirSync(SITE_SRC)) {
 
 removeViteAppArtifacts();
 writeLegacyRedirects(htmlPages);
+writeHomepagePreviewRedirects();
 updateZuraioEntryRedirect();
 copyFaviconsToRoot();
 

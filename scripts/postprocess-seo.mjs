@@ -22,6 +22,7 @@ import {
   canonicalUrl,
 } from './seo-config.mjs';
 import { buildOgShareImageMetaTags } from './og-share-meta.mjs';
+import { altHomePageTitle, altHomeMetaDescription } from './homepage-preview-seo.mjs';
 
 const copies = { en, de, fr, it };
 
@@ -84,12 +85,11 @@ function getMeta(locale, page) {
 
   const copy = copies[locale] ?? copies.en;
   if (page === 'index.html') {
-    const m = copy.home?.meta ?? {};
     return {
-      title: m.title ?? 'Zuraio',
-      description: m.description ?? '',
-      ogTitle: m.ogTitle ?? m.title ?? 'Zuraio',
-      ogDescription: m.ogDescription ?? m.description ?? '',
+      title: altHomePageTitle(locale),
+      description: altHomeMetaDescription(locale),
+      ogTitle: altHomePageTitle(locale),
+      ogDescription: altHomeMetaDescription(locale),
     };
   }
   const pid = resolvePageId(page);
@@ -118,13 +118,14 @@ function buildJsonLd(locale, page) {
   const url = canonicalUrl(locale, page);
 
   if (page === 'index.html') {
+    const homeDesc = altHomeMetaDescription(locale);
     blocks.push({
       '@context': 'https://schema.org',
       '@type': 'Organization',
       name: 'Zuraio',
       url: CANONICAL_BASE + '/',
       email: 'michael.wili@zuraio.ch',
-      description: copy.home?.meta?.description ?? copy.site?.tagline ?? '',
+      description: homeDesc || (copy.site?.tagline ?? ''),
     });
     blocks.push({
       '@context': 'https://schema.org',
@@ -132,7 +133,7 @@ function buildJsonLd(locale, page) {
       name: 'Zuraio',
       url: CANONICAL_BASE + '/',
       inLanguage: locale,
-      description: copy.home?.meta?.description ?? '',
+      description: homeDesc,
     });
   }
 
@@ -404,6 +405,25 @@ var isHome=!f||f==='index.html'||(inLoc&&seg.length===localeIdx+1);
 p.delete('lang');var q=p.toString(),suffix=(q?'?'+q:'')+location.hash;
 if(l==='en'){location.replace((isHome?(base?base+'/':'/'):(base?base+'/':'/')+f)+suffix);return;}
 location.replace((base||'')+'/'+l+'/'+(isHome?'':f)+suffix);
+})();
+</script>`;
+  return html.replace('</head>', `${snippet}\n</head>`);
+}
+
+/** EN homepage only: first visit browser-locale redirect (crawlers without JS stay on /). */
+export function injectFirstVisitBrowserLocale(html, locale, page) {
+  if (locale !== 'en' || page !== 'index.html') return html;
+  const snippet = `<script>
+(function(){
+  var path=location.pathname.replace(/\\/+$/, '')||'/';
+  if(path!=='/'&&path!=='/index.html')return;
+  try{if(localStorage.getItem('zuraio-locale'))return;}catch(e){}
+  var langs=(navigator.languages||[navigator.language||'']).map(function(l){return (l||'').toLowerCase().split('-')[0];});
+  for(var i=0;i<langs.length;i++){
+    if(langs[i]==='de'){location.replace('/de/'+location.search+location.hash);return;}
+    if(langs[i]==='fr'){location.replace('/fr/'+location.search+location.hash);return;}
+    if(langs[i]==='it'){location.replace('/it/'+location.search+location.hash);return;}
+  }
 })();
 </script>`;
   return html.replace('</head>', `${snippet}\n</head>`);
