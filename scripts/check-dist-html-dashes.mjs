@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  HOMEPAGE_PREVIEW_PATHS,
+  HOMEPAGE_INDEX_PATHS,
   listPreviewSiteHtmlFiles,
 } from './preview-site-html-paths.mjs';
 
@@ -41,7 +41,7 @@ if (!files.length) {
 }
 
 const homepageFiles = new Set(
-  HOMEPAGE_PREVIEW_PATHS.map((p) => path.join(DIST, p)),
+  HOMEPAGE_INDEX_PATHS.map((p) => path.join(DIST, p)),
 );
 
 const offenders = [];
@@ -66,7 +66,8 @@ for (const file of files) {
     }
   }
 
-  if (!hasMetaDescription(html)) {
+  const isRedirectStub = html.includes('location.replace(') && !html.includes('data-alt-chrome');
+  if (!isRedirectStub && !hasMetaDescription(html)) {
     offenders.push(`${rel}: missing meta description`);
   }
 

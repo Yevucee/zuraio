@@ -36,10 +36,10 @@ const PAGES = [
     { path: `/fr/${p}`, locale: 'fr' },
     { path: `/it/${p}`, locale: 'it' },
   ]),
-  { path: '/en/homepage-preview.html', locale: 'en' },
-  { path: '/de/homepage-preview.html', locale: 'de' },
-  { path: '/fr/homepage-preview.html', locale: 'fr' },
-  { path: '/it/homepage-preview.html', locale: 'it' },
+  { path: '/', locale: 'en' },
+  { path: '/de/', locale: 'de' },
+  { path: '/fr/', locale: 'fr' },
+  { path: '/it/', locale: 'it' },
   { path: '/privacy.html', locale: 'en' },
   { path: '/de/privacy.html', locale: 'de' },
   { path: '/fr/privacy.html', locale: 'fr' },
@@ -47,13 +47,13 @@ const PAGES = [
 ];
 
 const EN_PREVIEW_ROUTE_EXPECT = {
-  about: '../about.html',
-  faq: '../faq.html',
-  'it-partner': '../technical-architecture.html',
+  about: 'about.html',
+  faq: 'faq.html',
+  'it-partner': 'technical-architecture.html',
 };
 
 function assertEnPreviewRouteResolution(failures) {
-  const pathname = '/en/homepage-preview.html';
+  const pathname = '/';
   for (const [routeKey, expected] of Object.entries(EN_PREVIEW_ROUTE_EXPECT)) {
     const href = resolveRouteFromLocation(routeKey, 'en', pathname);
     if (href !== expected) {
@@ -63,7 +63,7 @@ function assertEnPreviewRouteResolution(failures) {
 }
 
 async function checkEnPreviewLinkHrefs(page, baseUrl, failures) {
-  const pagePath = '/en/homepage-preview.html';
+  const pagePath = '/';
   await page.goto(`${baseUrl}${pagePath}`, {
     waitUntil: 'domcontentloaded',
     timeout: GOTO_TIMEOUT_MS,

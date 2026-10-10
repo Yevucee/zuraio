@@ -7,7 +7,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { startStaticDistServer } from './static-dist-server.mjs';
 import { HTML_PAGES, LOCALES, LOCALE_DIRS, canonicalUrl } from './seo-config.mjs';
-import { postprocessHtml, injectLangRedirect } from './postprocess-seo.mjs';
+import { postprocessHtml, injectLangRedirect, injectFirstVisitBrowserLocale } from './postprocess-seo.mjs';
 
 function rewriteAssetPathsForLocale(html, locale) {
   if (locale === 'en') return html;
@@ -40,20 +40,29 @@ async function waitForPageReady(page, pageName, locale) {
   await page.waitForSelector('main', { timeout: 45000 });
 
   if (pageName === 'index.html') {
-    await page.waitForFunction(
-      () => document.querySelector('[data-hero-headline]')?.textContent?.trim().length > 8,
-      { timeout: 45000 },
-    );
-    await page.waitForFunction(
-      () => (document.querySelector('.hero-trust-bar__list')?.children.length ?? 0) >= 4,
-      { timeout: 45000 },
-    );
-    if (locale !== 'en') {
+    const isAltHome = await page.evaluate(() => document.body?.hasAttribute('data-alt-chrome'));
+    if (isAltHome) {
+      await page.waitForSelector('.alt-home-hero__line--primary', { timeout: 45000 });
       await page.waitForFunction(
-        (loc) => document.documentElement.lang === loc,
-        locale,
+        () => (document.querySelector('#alt-home-main')?.textContent?.trim().length ?? 0) > 200,
         { timeout: 45000 },
       );
+    } else {
+      await page.waitForFunction(
+        () => document.querySelector('[data-hero-headline]')?.textContent?.trim().length > 8,
+        { timeout: 45000 },
+      );
+      await page.waitForFunction(
+        () => (document.querySelector('.hero-trust-bar__list')?.children.length ?? 0) >= 4,
+        { timeout: 45000 },
+      );
+      if (locale !== 'en') {
+        await page.waitForFunction(
+          (loc) => document.documentElement.lang === loc,
+          locale,
+          { timeout: 45000 },
+        );
+      }
     }
   }
 
@@ -139,9 +148,10 @@ async function waitForPageReady(page, pageName, locale) {
 
 const LEGACY_REDIRECTS = [
   ['data-control.html', 'security.html'],
-  ['deployment-models.html', 'security.html#hosting'],
+  ['deployment-models.html', 'technical-architecture.html'],
   ['ai-governance.html', 'security.html#good-to-know'],
   ['knowledge.html', 'how-it-helps.html#skills'],
+  ['resources.html', 'how-it-helps.html'],
 ];
 
 function writeLegacySecurityRedirect(outDir, locale, legacyFile, target) {
@@ -209,7 +219,7 @@ async function runPrerender() {
         let html = await page.content();
 
         html = postprocessHtml(html, locale, htmlPage);
-        html = injectLangRedirect(html);
+        html = injectFirstVisitBrowserLocale(injectLangRedirect(html), locale, htmlPage);
 
         const dirKey = LOCALE_DIRS[locale];
         const outDir = dirKey ? path.join(DIST, dirKey) : DIST;

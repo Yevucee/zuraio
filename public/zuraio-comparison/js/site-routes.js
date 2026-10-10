@@ -4,10 +4,10 @@ const LOCALE_SUBDIRS = ['en', 'de', 'fr', 'it'];
 
 export const PREVIEW_SITE_ROUTES = {
   home: {
-    en: 'en/homepage-preview.html',
-    de: 'de/homepage-preview.html',
-    fr: 'fr/homepage-preview.html',
-    it: 'it/homepage-preview.html',
+    en: 'index.html',
+    de: 'de/index.html',
+    fr: 'fr/index.html',
+    it: 'it/index.html',
   },
   'how-it-helps': {
     en: 'how-it-helps.html',
@@ -81,8 +81,24 @@ function viewingLocaleFromPath(pathname) {
   return 'en';
 }
 
-function inHomePreview(pathname, locale) {
-  return pathname.includes(`/${locale}/homepage-preview`);
+function inAltHome(pathname, locale) {
+  const segments = pathname.split('/').filter(Boolean);
+  if (segments[0] === 'zuraio') segments.shift();
+  const file = segments[segments.length - 1] || '';
+  if (locale === 'en') {
+    if (segments[0] === 'en' && file === 'homepage-preview.html') return true;
+    return (
+      segments.length === 0 ||
+      file === 'index.html' ||
+      (segments.length === 1 && file === 'index.html')
+    );
+  }
+  const locIdx = segments.indexOf(locale);
+  if (locIdx === -1) return false;
+  const tail = segments.slice(locIdx + 1);
+  if (tail.length === 0) return true;
+  const last = tail[tail.length - 1];
+  return last === 'index.html' || last === 'homepage-preview.html';
 }
 
 /**
@@ -124,14 +140,17 @@ export function resolveRouteFromLocation(routeKey, targetLocale, pathname = '') 
   const canonical = entry[targetLocale] ?? entry.en;
 
   for (const loc of PREVIEW_LOCALES) {
-    if (!inHomePreview(pathname, loc)) continue;
+    if (!inAltHome(pathname, loc)) continue;
     if (targetLocale === loc) {
-      if (routeKey === 'home') return 'homepage-preview.html';
-      const sameLocale = canonical.replace(new RegExp(`^${loc}/`), '');
-      if (loc === 'en' && !canonical.startsWith('en/')) return `../${sameLocale}`;
-      return sameLocale;
+      if (routeKey === 'home') return 'index.html';
+      if (loc === 'en') return canonical;
+      return canonical.replace(new RegExp(`^${loc}/`), '');
     }
-    if (routeKey === 'home') return `../${PREVIEW_SITE_ROUTES.home[targetLocale]}`;
+    if (routeKey === 'home') {
+      const homeTarget = PREVIEW_SITE_ROUTES.home[targetLocale] ?? entry.en;
+      if (loc === 'en' && targetLocale === 'en') return `../${homeTarget}`;
+      return loc === 'en' ? homeTarget : `../${homeTarget}`;
+    }
     return `../${entry[targetLocale] ?? entry.en}`;
   }
 
