@@ -600,12 +600,9 @@ body[data-alt-chrome] .alt-home-hero__actions {
   width: 100%;
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 600px) {
   body[data-alt-chrome] .alt-home-hero__actions {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 12px;
+    align-items: flex-start;
   }
 }
 
@@ -616,13 +613,15 @@ body[data-alt-chrome] .alt-home-hero__actions .alt-home-cta {
   justify-content: center;
   min-height: 52px;
   margin: 0;
+  align-self: stretch;
 }
 
-@media (min-width: 960px) {
+@media (min-width: 600px) {
   body[data-alt-chrome] .alt-home-hero__actions .alt-home-cta {
     width: auto;
-    max-width: none;
+    max-width: 100%;
     flex-shrink: 0;
+    align-self: flex-start;
   }
 }
 
@@ -639,13 +638,6 @@ body[data-alt-chrome] .alt-home-hero__micro {
     text-align: left;
     max-width: 100%;
     overflow-wrap: break-word;
-  }
-}
-
-@media (min-width: 1440px) {
-  body[data-alt-chrome] .alt-home-hero__micro {
-    flex: 1 1 12rem;
-    min-width: 0;
   }
 }
 
