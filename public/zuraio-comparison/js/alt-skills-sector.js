@@ -58,10 +58,14 @@ function figuresGrid(locale, tabId) {
   const rows = presets[locale] ?? presets.en;
   const figs = rows
     .map(([label, value, note, hl]) => {
-      const inner = figCells(label, value, note);
       if (hl) {
-        return `<div class="alt-skills-doc__fig alt-skills-doc__fig--hl" data-hl="2" aria-describedby="${hlId}">${marker(2)}${inner}</div>`;
+        return `<div class="alt-skills-doc__fig alt-skills-doc__fig--hl" data-hl="2" aria-describedby="${hlId}">
+          <div class="alt-skills-doc__fig-head">${marker(2)}<span class="alt-skills-doc__fig-label">${label}</span></div>
+          <span class="alt-skills-doc__fig-value">${value}</span>
+          <span class="alt-skills-doc__fig-note">${note}</span>
+        </div>`;
       }
+      const inner = figCells(label, value, note);
       return `<div class="alt-skills-doc__fig">${inner}</div>`;
     })
     .join('');
@@ -460,7 +464,10 @@ function selectTab(root, tabId, { focusTab = false, updateHash = false } = {}) {
     tab.classList.toggle('is-active', active);
     tab.setAttribute('aria-selected', active ? 'true' : 'false');
     tab.tabIndex = active ? 0 : -1;
-    if (active && focusTab) tab.focus({ preventScroll: true });
+    if (active) {
+      tab.scrollIntoView({ inline: 'nearest', block: 'nearest', behavior: 'smooth' });
+      if (focusTab) tab.focus({ preventScroll: true });
+    }
   });
   panels.forEach((panel) => {
     const active = panel.dataset.skillsPanel === tabId;

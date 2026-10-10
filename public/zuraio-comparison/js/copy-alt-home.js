@@ -121,7 +121,7 @@ export const copyAltHome = {
     },
     start: {
       heading: 'Klein anfangen. Gemeinsam aufbauen.',
-      cta: '30-Minuten-Gespräch buchen',
+      cta: '30-Minuten-Demo buchen',
       steps: [
         {
           title: 'Gespräch',
@@ -284,7 +284,7 @@ export const copyAltHome = {
     },
     start: {
       heading: 'Start small. Build it together.',
-      cta: 'Book the 30-minute talk',
+      cta: 'Book a 30-minute demo',
       steps: [
         {
           title: 'Talk',
@@ -447,7 +447,7 @@ export const copyAltHome = {
     },
     start: {
       heading: 'Commencer petit. Construire ensemble.',
-      cta: 'Réserver l’entretien de 30 minutes',
+      cta: 'Réserver une démo de 30 minutes',
       steps: [
         {
           title: 'Entretien',
@@ -610,7 +610,7 @@ export const copyAltHome = {
     },
     start: {
       heading: 'Iniziare in piccolo. Costruire insieme.',
-      cta: 'Prenotare il colloquio di 30 minuti',
+      cta: 'Prenotare una demo di 30 minuti',
       steps: [
         {
           title: 'Colloquio',
