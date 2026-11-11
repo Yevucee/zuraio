@@ -1,4 +1,4 @@
-import { renderHeader, renderFooter, initReveal, initTabs } from './site.js?v=20260750';
+import { renderHeader, renderFooter, initReveal, initTabs } from './site.js?v=20260807';
 import { initHeroComparison } from './hero-comparison.js?v=20260773';
 import { initProblemComparison } from './problem-comparison.js?v=20260716';
 import { initControlParticles } from './control-particles.js?v=20260766';
