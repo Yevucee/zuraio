@@ -77,8 +77,11 @@ jobs:
           fi
 
           if [ "${{ inputs.backup_legacy }}" = "true" ] && git show-ref --verify --quiet refs/remotes/mcwili/main; then
-            git push mcwili mcwili/main:refs/heads/legacy/mcwili-old-site
-            echo "Updated legacy/mcwili-old-site from previous Mcwili main."
+            if git push mcwili mcwili/main:refs/heads/legacy/mcwili-old-site; then
+              echo "Updated legacy/mcwili-old-site from previous Mcwili main."
+            else
+              echo "::warning::Could not update legacy/mcwili-old-site (e.g. non-fast-forward). Continuing with Mcwili main push."
+            fi
           fi
 
           git push mcwili HEAD:refs/heads/main --force-with-lease=main
